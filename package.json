@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "xlsx": "^0.18.5"
   }
 }

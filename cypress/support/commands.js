@@ -67,12 +67,16 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.get('#usrpwd').clear();
     cy.get('#usrpwd').realType('lstventures');
     cy.get('.sc-guDLey').should('be.enabled')
-    cy.get('.sc-guDLey').click();
+    cy.get('button.sc-guDLey.decbXQ[form="login"]').click();
+    cy.wait(4000)
     cy.url({timeout: 10000}).should('contain', '/home')
     cy.get('.text-\\[2rem\\]').should('have.text', 'Welcome, lstv!');
+    cy.wait(2000);
   })
 
   Cypress.Commands.add('navigateToModule', (menuSelector, submenuSelector) => {
-    cy.get(menuSelector).click(); 
-    cy.get(submenuSelector).click(); 
+    cy.contains(menuSelector).click();
+    cy.wait(2000); 
+    cy.contains(submenuSelector).click();
+    cy.wait(2000); 
   });

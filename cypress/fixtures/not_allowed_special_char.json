@@ -1,0 +1,44 @@
+[
+    {
+        "notAllowedSpecialChar": "*"
+    },
+    {
+        "notAllowedSpecialChar": "("
+    },
+    {
+        "notAllowedSpecialChar": ")"
+    },
+    {
+        "notAllowedSpecialChar": "/"
+    },
+    {
+        "notAllowedSpecialChar": ";"
+    },
+    {
+        "notAllowedSpecialChar": "\""
+    },
+    {
+        "notAllowedSpecialChar": "'"
+    },
+    {
+        "notAllowedSpecialChar": "<"
+    },
+    {
+        "notAllowedSpecialChar": ">"
+    },
+    {
+        "notAllowedSpecialChar": "."
+    },
+    {
+        "allowSpecialChar": "{"
+    },
+    {
+        "allowSpecialChar": "}"
+    },
+    {
+        "allowSpecialChar": "["
+    },
+    {
+        "allowSpecialChar": "]"
+    }
+]
