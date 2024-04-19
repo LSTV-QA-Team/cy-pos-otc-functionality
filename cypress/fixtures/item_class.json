@@ -1,1 +1,6 @@
-[{"itemClass":"Beverages"}]
+[
+    {
+        "itemClass": "Beverages",
+        "editItemClass": "Desserts"
+    }
+]
