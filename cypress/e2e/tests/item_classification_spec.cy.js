@@ -19,6 +19,9 @@ describe('Item Classification', () => {
         // reset visibility for each test case
         visibility = [];
 
+        // Delete the download directory and recreate it
+        cy.task('clearDownloads')
+        
         cy.login();
         cy.navigateToModule('Master File', 'Item Classifications');
     });
@@ -654,7 +657,12 @@ describe('Item Classification', () => {
           .should('be.visible')
           .click();
 
+          cy.wait(5000)
 
+        cy.task('verifyDownloads', Cypress.config('downloadsFolder')).then((files) => {
+            const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file));
+            expect(fileName).to.exist;
+        });
     });
 });
 

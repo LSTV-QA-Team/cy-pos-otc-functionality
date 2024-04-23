@@ -4,6 +4,9 @@ require('dotenv').config(); // Load environment variables from .env file
 
 const { defineConfig } = require("cypress");
 const mysql = require("mysql");
+const fs = require('fs');
+const path = require('path');
+
 
 module.exports = defineConfig({
 
@@ -21,26 +24,67 @@ module.exports = defineConfig({
   },
 
   experimentalMemoryManagement: true,
+
   defaultCommandTimeout: 4000,
+
   pageLoadTimeout: 100000,
+
   watchForFileChanges: false,
+
   hideXHRInCommandLog: true,
+
+
 
   e2e: {
     baseUrl: 'http://localhost:5173/#/pages/login',
     experimentalStudio: true,
 
     setupNodeEvents(on, config) {
-      // implement node event listeners here
 
-      // Define the "queryDb" task
+      // Define the "queryDb" task9
       on("task", {
         queryDb: (query) => {
+
           return queryTestDb(query, config);
+
         },
       });
 
+
+      // verify downloded file
+      on('task', {
+        verifyDownloads: (downloadsPath) => {
+
+          try {
+            return fs.readdirSync(downloadsPath)
+          } catch (err) {
+            console.error("Error reading downloads:", err)
+            return null;
+          }
+        },
+      });
+
+      
+      // delete files in download 
+      on('task', {
+        clearDownloads() {
+          try {
+            const downloadsFolder = path.join(config.projectRoot, 'cypress', 'downloads');
+            fs.readdirSync(downloadsFolder).forEach((file) => {
+              const filePath = path.join(downloadsFolder, file);
+              fs.unlinkSync(filePath);
+            })
+          return null;
+          } catch (err) {
+            console.error("Error clearing downloads:", err);
+            return null;
+          }
+        },
+      });
+
+      
       return config; // Return the updated configuration
+
     },
   },
 });
