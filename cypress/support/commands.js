@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import "cypress-real-events";
+import "cypress-xpath";
 
 const mysql = require('mysql');
 
