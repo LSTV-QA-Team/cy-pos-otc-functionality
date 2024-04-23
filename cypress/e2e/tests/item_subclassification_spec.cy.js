@@ -24,6 +24,7 @@ describe('Item Subclassification', () => {
 
         cy.login();
         
+        // Navigate to page
         cy.navigateToModule('Master File', 'Item Subclassification');
     });
 
