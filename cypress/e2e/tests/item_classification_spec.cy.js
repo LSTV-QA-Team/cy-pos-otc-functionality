@@ -657,7 +657,7 @@ describe('Item Classification', () => {
           .should('be.visible')
           .click();
 
-          cy.wait(5000)
+        cy.wait(5000)
 
         cy.task('verifyDownloads', Cypress.config('downloadsFolder')).then((files) => {
             const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file));
