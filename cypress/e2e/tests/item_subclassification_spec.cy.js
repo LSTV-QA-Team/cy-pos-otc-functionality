@@ -15,7 +15,15 @@ describe('Item Subclassification', () => {
     });
     
     beforeEach(() => {
+
+        // reset visibility for each test case
+        visibility = [];
+
+        // Delete the download directory and recreate it
+        cy.task('clearDownloads')
+
         cy.login();
+        
         cy.navigateToModule('Master File', 'Item Subclassification');
     });
 
