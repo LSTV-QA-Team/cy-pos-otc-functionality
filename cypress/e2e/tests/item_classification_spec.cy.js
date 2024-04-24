@@ -649,7 +649,7 @@ describe('Item Classification', () => {
           .should('have.text', 'Masterfile');
     });
 
-    it.only('Check print functionality', () => {
+    it('Check print functionality', () => {
 
         cy.wait(2000)
 
