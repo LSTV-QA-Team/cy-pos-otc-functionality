@@ -5,6 +5,7 @@
     "cypress-xpath": "^2.0.1"
   },
   "dependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2",
     "dotenv": "^16.4.5",
     "mysql": "^2.18.1",
     "pdf-parse": "^1.1.1",
