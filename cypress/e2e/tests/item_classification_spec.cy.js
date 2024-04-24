@@ -12,6 +12,9 @@ describe('Item Classification', () => {
         cy.task("queryDb", "SELECT * FROM itemclassfile").then((records) => {
             expect(records.length).to.be.equal(0);
         });
+
+        // Delete all file in downloads for check print functinality test case
+        cy.task('clearDownloads');
     });
     
     beforeEach(() => {
@@ -19,10 +22,8 @@ describe('Item Classification', () => {
         // reset visibility for each test case
         visibility = [];
 
-        // Delete the download directory and recreate it
-        cy.task('clearDownloads')
-        
         cy.login();
+
         cy.navigateToModule('Master File', 'Item Classifications');
     });
 
@@ -86,6 +87,7 @@ describe('Item Classification', () => {
 
                 cy.wait(2000);
 
+                // add button should be visible and click add button
                 cy.get('.sc-eDLKkx > .anticon > svg')
                   .should('be.visible')
                   .click();
