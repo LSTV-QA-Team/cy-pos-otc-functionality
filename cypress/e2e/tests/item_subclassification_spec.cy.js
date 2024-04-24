@@ -12,15 +12,15 @@ describe('Item Subclassifications', () => {
         cy.task("queryDb", "SELECT * FROM itemsubclassfile").then((records) => {
             expect(records.length).to.be.equal(0);
         });
+
+        // Delete the download directory and recreate it
+        cy.task('clearDownloads');
     });
     
     beforeEach(() => {
 
         // reset visibility for each test case
         visibility = [];
-
-        // Delete the download directory and recreate it
-        cy.task('clearDownloads');
 
         cy.login();
         
@@ -82,7 +82,7 @@ describe('Item Subclassifications', () => {
         });   
     });
 
-    it.only('Check the dropdown list for Item Class', () => {
+    it('Check the dropdown list for Item Class', () => {
         cy.fixture('dropdown_item_class.json').then((data) => { 
             const expectedItems = data.items;
 
@@ -107,7 +107,7 @@ describe('Item Subclassifications', () => {
         })
     });
 
-    it.only('Check if user can add valid data', () => {
+    it('Check if user can add valid data', () => {
         cy.fixture('item_subclass.json').then((data) => {
             for (const key in data){
 
@@ -196,7 +196,7 @@ describe('Item Subclassifications', () => {
         });
     });
 
-    it.only('Check if special characters are allowed', () => {
+    it('Check if special characters are allowed', () => {
         cy.fixture('allowed_special_char.json').then((data) => {
             for (const key in data){
                 cy.wait(2000);
@@ -215,6 +215,7 @@ describe('Item Subclassifications', () => {
                                             if ($element.text().includes('Add new item subclass')) {
 
 
+                                                cy.wait(2000);
                                                 cy.wrap($element).should('be.visible');
                                                 cy.log('Visibility Passed');
                                                 visibility.push({ data: "passed" });
@@ -307,21 +308,27 @@ describe('Item Subclassifications', () => {
         cy.get('#itemsubclassdsc').should('be.empty');
 
 
-        cy.get('#itmclacde')
-          .should('be.enabled')
-          .should('be.empty')
-                
+        cy.get('#itmclacde').within(() => {
+            cy.contains('option', '-- Select an option --')
+              .should('have.attr', 'disabled', 'disabled');
+        });        
 
         cy.get('.border-blue-500')
           .should('be.enabled')
           .click();
 
                                         cy.get('.text-sm').then(($element) => {
+                                            
+                                            const text = $element.text();
+
+                                            const validationMsg = ['Item Subclassifications Name * is required', 
+                                                                        'Item Class * is required']
+                                            
+                                            const containsExpectdMsg = validationMsg.some(message => text.includes(message))
 
                                             // If locator is found
 
-                                            if ($element.text().includes('Item Subclassifications Name * is required')) {
-
+                                            if (containsExpectdMsg) {
 
                                                 cy.wrap($element).should('be.visible');
                                                 cy.log('Visibility Passed');
@@ -372,7 +379,7 @@ describe('Item Subclassifications', () => {
     });
 
     it('Check upon adding an existing data', () => {
-        cy.fixture('item_class.json').then((data) => {
+        cy.fixture('item_subclass.json').then((data) => {
             for (const key in data){
                 cy.get('.sc-eDLKkx > .anticon > svg').should('be.visible');
 
@@ -389,6 +396,10 @@ describe('Item Subclassifications', () => {
                   .clear();
 
                 cy.get('#itemsubclassdsc').type(data[key].itemSubclass);
+
+                cy.get('#itmclacde')
+                  .should('be.enabled')
+                  .select(data[key].itemClass)
 
                 cy.get('.border-blue-500')
                   .should('be.enabled')
@@ -421,6 +432,7 @@ describe('Item Subclassifications', () => {
 
                 cy.get('.MuiTableBody-root').find('tr').contains(data[key].itemSubclass)
                   .should('have.length', 1);
+                  
             }
 
         }).then(() => {
@@ -452,7 +464,7 @@ describe('Item Subclassifications', () => {
     });
 
     it('Check if user can edit data', () => {
-        cy.fixture('item_class.json').then((data) => {
+        cy.fixture('item_subclass.json').then((data) => {
             for (const key in data) {
                 // Should have an existing data to edit
                 // Find the table row containing the desired data to be edited
@@ -494,7 +506,11 @@ describe('Item Subclassifications', () => {
 
                 cy.get('#itemsubclassdsc')
                   .clear()
-                  .type(data[key].edititemSubclass);
+                  .type(data[key].editItemSubclass);
+
+                cy.get('#itmclacde')
+                .should('be.enabled')
+                .select(data[key].editItemClass)  
 
                 cy.get('.border-blue-500')
                   .should('be.visible')
@@ -503,7 +519,7 @@ describe('Item Subclassifications', () => {
 
                 cy.get('.Toastify__toast-body')
                   .should('be.visible')
-                  .and('have.text', 'Successfully updated Record!'); 
+                  .and('have.text', 'Successfully Updated!'); 
 
                 cy.get('.MuiTableBody-root').contains(data[key].edititemSubclass).should('exist');
             }
@@ -538,38 +554,46 @@ describe('Item Subclassifications', () => {
     });
 
     it('Check if user can search valid data', () => {
-        cy.fixture('item_class.json').then((data) => {
+        cy.fixture('item_subclass.json').then((data) => {
             for (const key in data) {
-                cy.get('[data-testid="SearchIcon"]')
+
+                cy.wait(2000);
+
+                cy.get('[aria-label="Show/Hide search"]')
                   .should('be.visible')
                   .click();
 
-                cy.get('#\\:rb\\:').should('be.visible')
+                cy.get('#\\:re\\:').should('be.visible')
                   .should('be.enabled')
                   .clear()
-                  .type(data[key].edititemSubclass)
+                  .type(data[key].editItemSubclass)
                   .type('{enter}');
 
-                cy.get('.MuiTableBody-root').contains(data[key].edititemSubclass).should('exist');
+                cy.get('.MuiTableBody-root').contains(data[key].editItemSubclass).should('exist');
             }
         })
     });
 
     it('Check if user can search invalid data', () => {
-        cy.fixture('item_class.json').then((data) => {
+        cy.fixture('item_subclass.json').then((data) => {
             for (const key in data) {
-                cy.get('[data-testid="SearchIcon"]')
+
+                cy.wait(2000);
+
+                cy.get('[aria-label="Show/Hide search"]')
                   .should('be.visible')
                   .click();
 
-                cy.get('#\\:rb\\:')
+                cy.get('#\\:re\\:')
                   .should('be.visible')
                   .should('be.enabled')
                   .clear()
-                  .type('Appetizer')
+                  .type('Chocolate Shake')
                   .type('{enter}');
 
-                cy.get('p.MuiTypography-root.MuiTypography-body1.css-8tf66k-MuiTypography-root')
+                cy.wait(2000)  
+
+                cy.get('td > .MuiTypography-root')
                   .should('have.text', 'No records to display');
 
             }
@@ -577,11 +601,11 @@ describe('Item Subclassifications', () => {
     });
 
     it('Check if user can delete data', () => {
-        cy.fixture('item_class.json').then((data) => {
+        cy.fixture('item_subclass.json').then((data) => {
             for (const key in data) {
                 // Should have an existing data to delete
                 // Find the table row containing the desired data to be deleted
-                cy.contains('tbody > tr', data[key].edititemSubclass).within(() => {
+                cy.contains('tbody > tr', data[key].editItemSubclass).within(() => {
                     // Click the delete button within this row
                     cy.get('[data-icon="delete"][aria-hidden="true"]').click();
                 });
@@ -590,7 +614,7 @@ describe('Item Subclassifications', () => {
                   .and('be.visible');
 
                 cy.get('.h-\\[500px\\] > h1')
-                  .should('have.text', 'Do you want to delete: ' + data[key].edititemSubclass + ' ?');
+                  .should('have.text', 'Do you want to delete: ' + data[key].editItemSubclass + ' ?');
 
                 cy.get('.border-red-500').should('be.visible');
 
@@ -608,29 +632,31 @@ describe('Item Subclassifications', () => {
     });
 
     it('Check back functionality', () => {
+
+        cy. wait(2000);
+
         cy.get(':nth-child(1) > .flex > .anticon > svg > path').should('be.visible');
 
         cy.get(':nth-child(1) > .flex > .anticon > svg').click();
 
-        cy.get('.text-\\[3rem\\]').should('be.visible');
-        
-        cy.get('.text-\\[3rem\\]').should('have.text', 'Masterfile');
+        cy.get('.text-\\[3rem\\]').should('be.visible')
+          .should('have.text', 'Masterfile');
     });
 
-    it.skip('Check print functionality', () => {
-        // print button should be enabled 
-        cy.get('.sc-guDLey.decbXQ')
+    it('Check print functionality', () => {
+
+        cy.wait(2000)
+
+        cy.xpath('//span[@aria-label="printer"]')
           .should('be.visible')
-          .and('be.enabled')
+          .click();
 
-        // click print button
-        cy.get('.sc-guDLey.decbXQ').click();
+        cy.wait(5000)
 
-    });
-
-    // Negative Testing
-    it('Check if text field have maximum length', () => {
-        
+        cy.task('verifyDownloads', Cypress.config('downloadsFolder')).then((files) => {
+            const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file));
+            expect(fileName).to.exist;
+        });
     });
 });
 
