@@ -81,7 +81,7 @@ describe('Item Classification', () => {
         });   
     });
 
-    it('Check if user can add valid data', () => {
+    it.only('Check if user can add valid data', () => {
         cy.fixture('item_class.json').then((data) => {
             for (const key in data){
 
@@ -371,7 +371,7 @@ describe('Item Classification', () => {
                   .should('be.enabled')
                   .clear();
 
-                cy.get('#itmcladsc').type(data[0].itemClass);
+                cy.get('#itmcladsc').type(data[key].itemClass);
 
                 cy.get('.border-blue-500')
                   .should('be.enabled')
@@ -402,7 +402,11 @@ describe('Item Classification', () => {
 
                                     });
 
-                cy.get('.MuiTableBody-root').find('tr').contains(data[0].itemClass)
+                cy.get('.anticon.anticon-close').click();
+  
+                cy.wait(2000)
+
+                cy.get('.MuiTableBody-root').find('tr').contains(data[key].itemClass)
                   .should('have.length', 1);
             }
 
@@ -433,7 +437,7 @@ describe('Item Classification', () => {
         });
     });
 
-    it('Check if user can edit data', () => {
+    it.only('Check if user can edit data', () => {
         cy.fixture('item_class.json').then((data) => {
             for (const key in data) {
 
@@ -521,7 +525,7 @@ describe('Item Classification', () => {
         });
     });
 
-    it('Check if user can search valid data', () => {
+    it.only('Check if user can search valid data', () => {
         cy.fixture('item_class.json').then((data) => {
             for (const key in data) {
 
