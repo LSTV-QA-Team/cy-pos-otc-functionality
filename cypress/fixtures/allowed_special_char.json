@@ -9,24 +9,9 @@
         "allowSpecialChar": "_"
     },
     {
-        "allowSpecialChar": "+"
+        "allowSpecialChar": "/"
     },
     {
-        "allowSpecialChar": "="
-    },
-    {
-        "allowSpecialChar": "|"
-    },
-    {
-        "allowSpecialChar": "\\"
-    },
-    {
-        "allowSpecialChar": ":"
-    },
-    {
-        "allowSpecialChar": ","
-    },
-    {
-        "allowSpecialChar": "?"
+        "allowSpecialChar": "."
     }
 ]
