@@ -6,6 +6,7 @@ const { defineConfig } = require("cypress");
 const mysql = require("mysql");
 const fs = require('fs');
 const path = require('path');
+const cypressMochawesomeReporter = require('cypress-mochawesome-reporter/plugin');
 
 
 module.exports = defineConfig({
@@ -32,6 +33,26 @@ module.exports = defineConfig({
   watchForFileChanges: false,
 
   hideXHRInCommandLog: true,
+
+  reporter: 'cypress-mochawesome-reporter',
+
+  video: true,
+
+  reporterOptions: {
+
+        charts: true,
+        reportPageTitle: 'Cypress React-POS Report',
+        embeddedScreenshots: true, 
+        html: true,
+        json: true,
+        inlineAssets: true,
+        enableCode: false,
+        reportFilename: "[status]_[datetime]-[name]-report",
+        timestamp: "longDate",
+        autoOpen: true,
+        debug: false,
+        quiet: true
+  },
 
 
 
