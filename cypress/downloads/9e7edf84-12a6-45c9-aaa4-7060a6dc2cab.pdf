@@ -10,7 +10,7 @@
 endobj
 4 0 obj
 <<
-/Length 876
+/Length 992
 >>
 stream
 0.200025 w
@@ -27,14 +27,14 @@ BT
 50. TL
 0 g
 30. 733. Td
-(Item Classification Masterfile) Tj
+(Item Subclassification Masterfile) Tj
 ET
 BT
 /F1 10 Tf
 50. TL
 0 g
 30. 718. Td
-(Date Printed: April 24th 2024,  1:08:55 PM) Tj
+(Date Printed: April 25th 2024,  9:50:08 AM) Tj
 ET
 30. 708. m
 582. 708. l
@@ -44,6 +44,13 @@ BT
 12. TL
 0 g
 30. 693. Td
+(Item Subclassification) Tj
+ET
+BT
+/F2 10 Tf
+12. TL
+0 g
+306. 693. Td
 (Item Classification) Tj
 ET
 30. 683. m
@@ -54,70 +61,70 @@ BT
 12. TL
 0 g
 30. 668. Td
-(~) Tj
-ET
-BT
-/F1 10 Tf
-12. TL
-0 g
-30. 637. Td
-(`) Tj
-ET
-BT
-/F1 10 Tf
-12. TL
-0 g
-30. 606. Td
-(!) Tj
-ET
-BT
-/F1 10 Tf
-12. TL
-0 g
-30. 575. Td
-(@) Tj
-ET
-BT
-/F1 10 Tf
-12. TL
-0 g
-30. 544. Td
-(#) Tj
-ET
-BT
-/F1 10 Tf
-12. TL
-0 g
-30. 513. Td
-($) Tj
-ET
-BT
-/F1 10 Tf
-12. TL
-0 g
-30. 482. Td
-(^) Tj
-ET
-BT
-/F1 10 Tf
-12. TL
-0 g
-30. 451. Td
 (&) Tj
 ET
 BT
 /F1 10 Tf
 12. TL
 0 g
-30. 420. Td
+306. 668. Td
+(Beverages) Tj
+ET
+BT
+/F1 10 Tf
+12. TL
+0 g
+30. 637. Td
 (-) Tj
 ET
 BT
 /F1 10 Tf
 12. TL
 0 g
-30. 389. Td
+306. 637. Td
+(Beverages) Tj
+ET
+BT
+/F1 10 Tf
+12. TL
+0 g
+30. 606. Td
 (_) Tj
+ET
+BT
+/F1 10 Tf
+12. TL
+0 g
+306. 606. Td
+(Beverages) Tj
+ET
+BT
+/F1 10 Tf
+12. TL
+0 g
+30. 575. Td
+(.) Tj
+ET
+BT
+/F1 10 Tf
+12. TL
+0 g
+306. 575. Td
+(Beverages) Tj
+ET
+BT
+/F1 10 Tf
+12. TL
+0 g
+30. 544. Td
+(/) Tj
+ET
+BT
+/F1 10 Tf
+12. TL
+0 g
+306. 544. Td
+(Beverages) Tj
 ET
 BT
 /F1 8 Tf
@@ -298,7 +305,7 @@ endobj
 19 0 obj
 <<
 /Producer (jsPDF 2.5.1)
-/CreationDate (D:20240424130858+08'00')
+/CreationDate (D:20240425095011+08'00')
 >>
 endobj
 20 0 obj
@@ -312,33 +319,33 @@ endobj
 xref
 0 21
 0000000000 65535 f 
-0000001047 00000 n 
-0000002864 00000 n 
+0000001163 00000 n 
+0000002980 00000 n 
 0000000015 00000 n 
 0000000120 00000 n 
-0000001104 00000 n 
-0000001229 00000 n 
-0000001359 00000 n 
-0000001492 00000 n 
-0000001629 00000 n 
-0000001752 00000 n 
-0000001881 00000 n 
-0000002013 00000 n 
-0000002149 00000 n 
-0000002277 00000 n 
-0000002404 00000 n 
-0000002533 00000 n 
-0000002666 00000 n 
-0000002768 00000 n 
-0000003112 00000 n 
-0000003198 00000 n 
+0000001220 00000 n 
+0000001345 00000 n 
+0000001475 00000 n 
+0000001608 00000 n 
+0000001745 00000 n 
+0000001868 00000 n 
+0000001997 00000 n 
+0000002129 00000 n 
+0000002265 00000 n 
+0000002393 00000 n 
+0000002520 00000 n 
+0000002649 00000 n 
+0000002782 00000 n 
+0000002884 00000 n 
+0000003228 00000 n 
+0000003314 00000 n 
 trailer
 <<
 /Size 21
 /Root 20 0 R
 /Info 19 0 R
-/ID [ <ED214A36FD371755B7DF8886D55DA3E6> <ED214A36FD371755B7DF8886D55DA3E6> ]
+/ID [ <9DF469C4C38813C81E1DE776DEC828FE> <9DF469C4C38813C81E1DE776DEC828FE> ]
 >>
 startxref
-3302
+3418
 %%EOF
