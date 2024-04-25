@@ -72,7 +72,7 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.wait(4000)
     cy.url({timeout: 10000}).should('contain', '/home')
     cy.get('.text-\\[2rem\\]').should('have.text', 'Welcome, lstv!');
-    cy.wait(2000);
+    cy.wait(4000);
   })
 
   Cypress.Commands.add('navigateToModule', (menuSelector, submenuSelector) => {
