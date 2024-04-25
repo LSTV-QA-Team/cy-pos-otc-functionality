@@ -13,7 +13,7 @@ To contribute to this project, please follow the steps below:
 2. Clone the repository you fork
 3. Create a new branch
 4. Make your changes
-5. Commit your changes
+5. Commit your changes (Excluding the file in the 'downloads' folder)
 6. Push your changes to the repository
 7. Create a pull request
 
