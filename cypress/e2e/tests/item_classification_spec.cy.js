@@ -12,6 +12,9 @@ describe('Item Classification', () => {
         cy.task("queryDb", "SELECT * FROM itemclassfile").then((records) => {
             expect(records.length).to.be.equal(0);
         });
+
+        // Delete all file in downloads for check print functinality test case
+        cy.task('clearDownloads');
     });
     
     beforeEach(() => {
@@ -19,10 +22,8 @@ describe('Item Classification', () => {
         // reset visibility for each test case
         visibility = [];
 
-        // Delete the download directory and recreate it
-        cy.task('clearDownloads')
-        
         cy.login();
+
         cy.navigateToModule('Master File', 'Item Classifications');
     });
 
@@ -33,7 +34,7 @@ describe('Item Classification', () => {
           .should('have.text', 'Item Classifications');
 
         cy.get('div.Mui-TableHeadCell-Content-Wrapper[title="Description"]').then(($element) => {
-            if ($element.text().includes('Item Classifications')) {
+            if ($element.text().includes('Description')) {
 
 
                 cy.wrap($element).should('be.visible');
@@ -86,6 +87,7 @@ describe('Item Classification', () => {
 
                 cy.wait(2000);
 
+                // add button should be visible and click add button
                 cy.get('.sc-eDLKkx > .anticon > svg')
                   .should('be.visible')
                   .click();
@@ -241,6 +243,33 @@ describe('Item Classification', () => {
                 cy.log('No failures detected!');
             }
         });
+
+        // delete the special character data in the table 'itemclassfile'
+
+        cy.fixture('allowed_special_char.json').then((data) => {
+            // Loop through each character and delete corresponding rows from the 'itemclassfile' table
+            data.forEach((item) => {
+                const specialChar = item.allowSpecialChar;
+                const deleteQuery = `DELETE FROM itemclassfile WHERE itmcladsc = '${specialChar}'`;
+                
+                cy.task('queryDb', deleteQuery).then(() => {
+                    cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
+                });
+            });
+    
+            // Ensure the table is clear of specified data
+            cy.task('queryDb', 'SELECT * FROM itemclassfile').then((records) => {
+                const remainingData = records.map((record) => record.description);
+                const deletedChars = data.map((item) => item.allowSpecialChar);
+                
+                // Ensure no deleted characters are still in the table
+                deletedChars.forEach((char) => {
+                    expect(remainingData).to.not.include(char);
+                });
+    
+                cy.log('Specified data successfully deleted'); // Log success
+            });
+        });
     });
 
     it('Check upon adding an empty data', () => {
@@ -342,7 +371,7 @@ describe('Item Classification', () => {
                   .should('be.enabled')
                   .clear();
 
-                cy.get('#itmcladsc').type(data[key].itemClass);
+                cy.get('#itmcladsc').type(data[0].itemClass);
 
                 cy.get('.border-blue-500')
                   .should('be.enabled')
@@ -373,7 +402,7 @@ describe('Item Classification', () => {
 
                                     });
 
-                cy.get('.MuiTableBody-root').find('tr').contains(data[key].itemClass)
+                cy.get('.MuiTableBody-root').find('tr').contains(data[0].itemClass)
                   .should('have.length', 1);
             }
 
@@ -505,10 +534,10 @@ describe('Item Classification', () => {
                 cy.get('#\\:rb\\:').should('be.visible')
                   .should('be.enabled')
                   .clear()
-                  .type(data[key].editItemClass)
+                  .type(data[0].editItemClass)
                   .type('{enter}');
 
-                cy.get('.MuiTableBody-root').contains(data[key].editItemClass).should('exist');
+                cy.get('.MuiTableBody-root').contains(data[0].editItemClass).should('exist');
             }
         })
     });
@@ -530,7 +559,7 @@ describe('Item Classification', () => {
                   .type('Appetizer')
                   .type('{enter}');
 
-                cy.get('p.MuiTypography-root.MuiTypography-body1.css-8tf66k-MuiTypography-root')
+                cy.get('td > .MuiTypography-root')
                   .should('have.text', 'No records to display');
 
             }
