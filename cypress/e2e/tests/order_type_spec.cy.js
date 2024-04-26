@@ -28,7 +28,7 @@ describe('Order Type', () => {
         cy.navigateToModule('Master File', 'Order Type');
     });
 
-    it.only('Check should be in Order Type module', () => {
+    it('Check should be in Order Type module', () => {
         cy.url({timeout: 10000}).should('contain', '/dineType/?menfield=masterfile_dinetype');
 
         cy.get(':nth-child(1) > .text-\\[2rem\\]')
@@ -61,7 +61,7 @@ describe('Order Type', () => {
             cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility))
 
 
-        })
+        });
 
         
         // Check the contents of the JSON file
@@ -247,12 +247,11 @@ describe('Order Type', () => {
                 cy.get('#postypdsc')
                   .should('be.enabled')
                   .clear()
-                  .type(data[key].dineTypeallowSpecialChar);
+                  .type(data[key].allowSpecialChar);
 
                 cy.get('#ordertyp')
                   .should('be.enabled')
-                  .select('Beverages')
-                
+                  .select('TAKEOUT')                   
 
                 cy.get('.border-blue-500')
                   .should('be.enabled')
@@ -262,7 +261,7 @@ describe('Order Type', () => {
                   .should('be.visible')
                   .and('have.text', 'Successfully uploaded'); 
 
-                cy.get('.MuiTableBody-root').contains(data[key].dineTypeallowSpecialChar).should('exist');
+                cy.get('.MuiTableBody-root').contains(data[key].allowSpecialChar).should('exist');
             }
 
         }).then(() => {
@@ -533,7 +532,7 @@ describe('Order Type', () => {
 
                 cy.get('.Toastify__toast-body')
                   .should('be.visible')
-                  .and('have.text', 'Successfully Updated!'); 
+                  .and('have.text', 'Successfully updated Record!'); 
 
                 cy.get('.MuiTableBody-root').contains(data[key].editDineType).should('exist');
             }
