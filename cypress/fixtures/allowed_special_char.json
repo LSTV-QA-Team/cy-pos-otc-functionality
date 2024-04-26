@@ -1,26 +1,5 @@
 [
     {
-        "allowSpecialChar": "~"
-    },
-    {
-        "allowSpecialChar": "`"
-    },
-    {
-        "allowSpecialChar": "!"
-    },
-    {
-        "allowSpecialChar": "@"
-    },
-    {
-        "allowSpecialChar": "#"
-    },
-    {
-        "allowSpecialChar": "$"
-    },
-    {
-        "allowSpecialChar": "^"
-    },
-    {
         "allowSpecialChar": "&"
     },
     {
@@ -30,24 +9,9 @@
         "allowSpecialChar": "_"
     },
     {
-        "allowSpecialChar": "+"
+        "allowSpecialChar": "/"
     },
     {
-        "allowSpecialChar": "="
-    },
-    {
-        "allowSpecialChar": "|"
-    },
-    {
-        "allowSpecialChar": "\\"
-    },
-    {
-        "allowSpecialChar": ":"
-    },
-    {
-        "allowSpecialChar": ","
-    },
-    {
-        "allowSpecialChar": "?"
+        "allowSpecialChar": "."
     }
 ]

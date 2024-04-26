@@ -58,7 +58,7 @@ Cypress.Commands.add('queryDatabase', (query) => {
 
 Cypress.Commands.add('login', (userCode, userPassword) => {
   
-    cy.visit(Cypress.config('baseUrl'), 10000)
+    cy.visit(Cypress.config('baseUrl'), 5000)
     cy.get('span[role="img"][aria-label="close"][tabindex="-1"].anticon.anticon-close').click();
     cy.wait(4000);
     cy.get('#usrcde').should('be.enabled')
@@ -72,7 +72,7 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.wait(4000)
     cy.url({timeout: 10000}).should('contain', '/home')
     cy.get('.text-\\[2rem\\]').should('have.text', 'Welcome, lstv!');
-    cy.wait(2000);
+    cy.wait(4000);
   })
 
   Cypress.Commands.add('navigateToModule', (menuSelector, submenuSelector) => {

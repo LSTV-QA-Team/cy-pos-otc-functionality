@@ -1,1 +1,5 @@
-Generate HTML Report:
+To Generate Report
+
+1. Run this command to terminal './run_headless.bat'
+2. Enter desire the name of desire test script you want to execute and generate Report
+3. Finish the execution to see the output

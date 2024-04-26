@@ -6,6 +6,8 @@ const { defineConfig } = require("cypress");
 const mysql = require("mysql");
 const fs = require('fs');
 const path = require('path');
+const cypressMochawesomeReporter = require('cypress-mochawesome-reporter/plugin');
+const { report } = require('process');
 
 
 module.exports = defineConfig({
@@ -23,6 +25,8 @@ module.exports = defineConfig({
     }
   },
 
+  redirectionLimit: 1000,
+
   experimentalMemoryManagement: true,
 
   defaultCommandTimeout: 4000,
@@ -33,6 +37,39 @@ module.exports = defineConfig({
 
   hideXHRInCommandLog: true,
 
+  reporter: 'cypress-mochawesome-reporter',
+
+  video: false,
+
+  videosFolder: 'cypress/reports/videos',
+
+  screenshotsFolder: 'cypress/reports/screenshots',
+
+
+  reporter: 'cypress-mochawesome-reporter',
+
+  reporterOptions: {
+
+            charts: true,
+            reportPageTitle: 'Cypress React-POS Report',
+            embeddedScreenshots: true, 
+            html: true,
+            json: true,
+            inlineAssets: true,
+            enableCode: false,
+            reportFilename: "[status]_[datetime]-[name]-report",
+            timestamp: "longDate",
+            autoOpen: false,
+            debug: false,
+            quiet: true,
+            overwrite: false,
+            // saveAllAttempts: false,
+            screenshotOnRunFailure: true
+
+        
+        
+  },
+
 
 
   e2e: {
@@ -40,6 +77,24 @@ module.exports = defineConfig({
     experimentalStudio: true,
 
     setupNodeEvents(on, config) {
+
+      require('cypress-mochawesome-reporter/plugin')(on);
+
+          on('before:browser:launch', (browser = {}, launchOptions) => {
+
+
+            console.log(launchOptions.args)
+        
+            if (browser.name == 'chrome') {
+              launchOptions.args.push(['--no-sandbox','--disable-gpu','--headless'])
+            }
+        
+            return launchOptions
+
+          })
+
+
+
 
       // Define the "queryDb" task9
       on("task", {
