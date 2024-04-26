@@ -1,1 +1,8 @@
-[{"dineType":"DINE IN","orderType":"DINEIN"}]
+[
+  {
+    "dineType": "FOODPANDA",
+    "orderTpe": "TAKEOUT",
+    "editDineType": "GRAB",
+    "editOrderType": "TAKEOUT"
+  }
+]

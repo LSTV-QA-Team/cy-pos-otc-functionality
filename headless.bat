@@ -25,5 +25,5 @@ REM Construct the full path
 set fullSpecPath=%basePath%%specFile%
 
 REM Run Cypress in headless mode with the constructed path
-npx cypress run --headless --spec %fullSpecPath%
+npx cypress run --browser chrome --spec %fullSpecPath%
 
