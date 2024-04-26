@@ -6,7 +6,6 @@ const { defineConfig } = require("cypress");
 const mysql = require("mysql");
 const fs = require('fs');
 const path = require('path');
-const cypressMochawesomeReporter = require('cypress-mochawesome-reporter/plugin');
 const { report } = require('process');
 
 
@@ -27,7 +26,7 @@ module.exports = defineConfig({
 
   redirectionLimit: 1000,
 
-  experimentalMemoryManagement: true,
+  // experimentalMemoryManagement: true,
 
   defaultCommandTimeout: 4000,
 
@@ -41,8 +40,6 @@ module.exports = defineConfig({
 
   video: false,
 
-  videosFolder: 'cypress/reports/videos',
-
   screenshotsFolder: 'cypress/reports/screenshots',
 
 
@@ -53,16 +50,16 @@ module.exports = defineConfig({
             charts: true,
             reportPageTitle: 'Cypress React-POS Report',
             embeddedScreenshots: true, 
-            html: true,
-            json: true,
+            // html: true,
+            // json: true,
             inlineAssets: true,
             enableCode: false,
             reportFilename: "[status]_[datetime]-[name]-report",
             timestamp: "longDate",
-            autoOpen: false,
-            debug: false,
-            quiet: true,
-            overwrite: false,
+            // autoOpen: false,
+            // debug: false,
+            // quiet: true,
+            overwrite: true,
             // saveAllAttempts: false,
             screenshotOnRunFailure: true
 
@@ -73,12 +70,16 @@ module.exports = defineConfig({
 
 
   e2e: {
+
     baseUrl: 'http://localhost:5173/#/pages/login',
     experimentalStudio: true,
+    reporter: 'cypress-mochawesome-reporter',
 
+    // implement node event listeners here
     setupNodeEvents(on, config) {
 
       require('cypress-mochawesome-reporter/plugin')(on);
+
 
           on('before:browser:launch', (browser = {}, launchOptions) => {
 

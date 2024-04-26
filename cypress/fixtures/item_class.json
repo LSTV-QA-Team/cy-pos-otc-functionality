@@ -1,10 +1,1 @@
-[
-    {
-        "itemClass": "Beverages",
-        "editItemClass": "Desserts"
-    },
-    {
-        "itemClass": "Rice Meals",
-        "editItemClass": "Breakfast Items"
-    }
-]
+[{"itemClass":"Beverages","editItemClass":"Desserts"},{"itemClass":"Rice Meals","editItemClass":"Breakfast Items"}]

@@ -27,6 +27,9 @@ import "cypress-real-events";
 import "cypress-xpath";
 
 const mysql = require('mysql');
+const addContext = require('mochawesome/addContext');
+
+
 
 Cypress.Commands.add('queryDatabase', (query) => {
   const connection = mysql.createConnection({
@@ -81,3 +84,9 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.contains(submenuSelector).click();
     cy.wait(2000); 
   });
+
+
+  Cypress.Commands.add('addTestContext', (context) => {
+    addContext({ test: cy.state('test') }, context);
+  });
+  
