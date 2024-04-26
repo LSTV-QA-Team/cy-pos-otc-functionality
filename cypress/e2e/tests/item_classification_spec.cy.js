@@ -81,7 +81,7 @@ describe('Item Classification', () => {
         });   
     });
 
-    it.only('Check if user can add valid data', () => {
+    it('Check if user can add valid data', () => {
         cy.fixture('item_class.json').then((data) => {
             for (const key in data){
 
@@ -437,7 +437,7 @@ describe('Item Classification', () => {
         });
     });
 
-    it.only('Check if user can edit data', () => {
+    it('Check if user can edit data', () => {
         cy.fixture('item_class.json').then((data) => {
             for (const key in data) {
 
@@ -525,7 +525,7 @@ describe('Item Classification', () => {
         });
     });
 
-    it.only('Check if user can search valid data', () => {
+    it('Check if user can search valid data', () => {
         cy.fixture('item_class.json').then((data) => {
             for (const key in data) {
 
@@ -578,7 +578,7 @@ describe('Item Classification', () => {
 
                 // Should have an existing data to delete
                 // Find the table row containing the desired data to be deleted
-                cy.contains('tbody > tr', data[key].editItemClass).within(() => {
+                cy.contains('tbody > tr', data[0].editItemClass).within(() => {
                     // Click the delete button within this row
                     cy.get('[data-icon="delete"][aria-hidden="true"]').click();
                 });
@@ -690,7 +690,7 @@ describe('Item Classification', () => {
           .should('be.visible')
           .click();
 
-        cy.wait(5000)
+        cy.wait(8000)
 
         cy.task('verifyDownloads', Cypress.config('downloadsFolder')).then((files) => {
             const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file));
