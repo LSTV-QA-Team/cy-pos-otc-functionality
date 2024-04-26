@@ -39,7 +39,7 @@ module.exports = defineConfig({
 
   reporter: 'cypress-mochawesome-reporter',
 
-  video: true,
+  video: false,
 
   videosFolder: 'cypress/reports/videos',
 
