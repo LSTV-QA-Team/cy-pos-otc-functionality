@@ -28,7 +28,7 @@ describe('Order Type', () => {
         cy.navigateToModule('Master File', 'Order Type');
     });
 
-    it('Check should be in Order Type module', () => {
+    it.only('Check should be in Order Type module', () => {
         cy.url({timeout: 10000}).should('contain', '/dineType/?menfield=masterfile_dinetype');
 
         cy.get(':nth-child(1) > .text-\\[2rem\\]')
@@ -144,7 +144,10 @@ describe('Order Type', () => {
                                       
 
                                 
-                cy.contains('label', 'Item Dine Type Description *')
+                cy.contains('label', 'Dine Type *')
+                  .should('be.visible');
+
+                cy.contains('label', 'Order Type *')
                   .should('be.visible');
 
                 cy.get('#postypdsc')
@@ -235,7 +238,11 @@ describe('Order Type', () => {
                                       
 
                                 
-                cy.contains('label', 'Item Dine Type Description *').should('be.visible');
+                cy.contains('label', 'Dine Type *')
+                  .should('be.visible');
+
+                cy.contains('label', 'Order Type *')
+                  .should('be.visible');
 
                 cy.get('#postypdsc')
                   .should('be.enabled')
@@ -243,8 +250,8 @@ describe('Order Type', () => {
                   .type(data[key].dineTypeallowSpecialChar);
 
                 cy.get('#ordertyp')
-                .should('be.enabled')
-                .select('Beverages')
+                  .should('be.enabled')
+                  .select('Beverages')
                 
 
                 cy.get('.border-blue-500')
@@ -297,7 +304,10 @@ describe('Order Type', () => {
           .should('have.text', 'Create new order type')
           .and('be.visible');
 
-        cy.contains('label', 'Item Dine Type Description *')
+        cy.contains('label', 'Dine Type *')
+          .should('be.visible');
+
+        cy.contains('label', 'Order Type *')
           .should('be.visible');
 
         cy.get('#postypdsc')
@@ -321,8 +331,8 @@ describe('Order Type', () => {
                                             
                                             const text = $element.text();
 
-                                            const validationMsg = ['Order Type Name * is required', 
-                                                                        'Item Class * is required']
+                                            const validationMsg = ['Dine Type * is required', 
+                                                                   'Order Type * is required']
                                             
                                             const containsExpectdMsg = validationMsg.some(message => text.includes(message))
 
@@ -389,7 +399,11 @@ describe('Order Type', () => {
                   .should('have.text', 'Create new order type')
                   .and('be.visible');
 
-                cy.contains('label', 'Item Dine Type Description *').should('be.visible');
+                cy.contains('label', 'Dine Type *')
+                  .should('be.visible');
+        
+                cy.contains('label', 'Order Type *')
+                  .should('be.visible');
 
                 cy.get('#postypdsc')
                   .should('be.enabled')
@@ -506,11 +520,11 @@ describe('Order Type', () => {
 
                 cy.get('#postypdsc')
                   .clear()
-                  .type(data[key].dineTypeedit);
+                  .type(data[key].editDineType);
 
                 cy.get('#ordertyp')
-                .should('be.enabled')
-                .select(data[key].dineTypeeditItemClass)  
+                  .should('be.enabled')
+                  .select(data[key].editOrderType)  
 
                 cy.get('.border-blue-500')
                   .should('be.visible')
@@ -521,7 +535,7 @@ describe('Order Type', () => {
                   .should('be.visible')
                   .and('have.text', 'Successfully Updated!'); 
 
-                cy.get('.MuiTableBody-root').contains(data[key].dineTypeedit).should('exist');
+                cy.get('.MuiTableBody-root').contains(data[key].editDineType).should('exist');
             }
 
 
@@ -566,10 +580,10 @@ describe('Order Type', () => {
                 cy.get('#\\:re\\:').should('be.visible')
                   .should('be.enabled')
                   .clear()
-                  .type(data[key].dineTypeedit)
+                  .type(data[key].editDineType)
                   .type('{enter}');
 
-                cy.get('.MuiTableBody-root').contains(data[key].dineTypeedit).should('exist');
+                cy.get('.MuiTableBody-root').contains(data[key].editDineType).should('exist');
             }
         })
     });
