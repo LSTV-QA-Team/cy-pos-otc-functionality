@@ -90,3 +90,92 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     addContext({ test: cy.state('test') }, context);
   });
   
+
+// // Custom command that attempts to verify text, but logs error without stopping the test
+// Cypress.Commands.add('checkLabel', (selector, expectedText, visibility) => {
+//   cy.get(selector).then($element => {
+//     if ($element.text().includes(expectedText)) {
+      
+//       cy.wrap($element).should('be.visible');
+//       cy.log('Visibility Passed');
+//       visibility.push({ data: "passed" });
+
+//     } else {
+
+//       cy.log('Visibility Failed');
+      // cy.log(`Expected text "${expectedText}" not found in ${selector}`);
+//       visibility.push({ data: "failed" });
+
+//     }
+//   }).then(() => {
+
+//     // / Write the visibility state to a JSON file
+//     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
+//     })
+//   })
+
+
+// commands.js
+
+Cypress.Commands.add('checkLabel', (selector, expectedText, visibility, failureMessages) => {
+  cy.get(selector).then($element => {
+    const containsExpectedText = $element.text().includes(expectedText);
+
+    if (containsExpectedText) {
+
+      cy.wrap($element).should('be.visible');
+      cy.log('Assertion Passed')
+      visibility.push({ data: "passed" });
+
+    } 
+
+    else {
+
+      cy.log('Assertion Failed')
+      visibility.push({ data: "failed" });
+      const failureMessage = `Expected text "${expectedText}" not found in selector ${selector}`;
+      failureMessages.push(failureMessage); // Record the failure message
+
+    }
+  }).then(() => {
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
+  });
+});
+
+
+
+
+// commands.js
+
+Cypress.Commands.add('checkForFailure', (assertions, failureMessages = []) => {
+  cy.fixture('message.json').then((data) => {
+    // Check if there's a failure in either the assertions or the JSON data
+    const hasFailedAssertions = assertions.some(entry => entry.data === 'failed');
+    const hasFailedJson = data.some(entry => entry.data === 'failed');
+
+    // Get unique failure messages
+    const uniqueFailureMessages = Array.from(new Set(failureMessages));
+
+    if (hasFailedAssertions) {
+      // Check if there are any corresponding failures in the JSON data
+      expect(hasFailedJson).to.be.true;
+
+      // Log all unique failure messages
+      uniqueFailureMessages.forEach(message => {
+        cy.log(`Failure: ${message}`);
+      });
+
+      // Ensure there are no failure messages; if there are, the test should fail
+      if (uniqueFailureMessages.length > 0) {
+        throw new Error(`Test failed with ${uniqueFailureMessages.length} unique failure(s): ${uniqueFailureMessages.join(', ')}`);
+      }
+    } else {
+      cy.log('No failures detected.');
+    }
+  });
+});
+
+
+
+
+
