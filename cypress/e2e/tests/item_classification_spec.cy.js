@@ -1,5 +1,6 @@
 
 let visibility = [];
+let failureMessages = [];
 
 describe('Item Classification', () => {
 
@@ -21,209 +22,166 @@ describe('Item Classification', () => {
 
         // reset visibility for each test case
         visibility = [];
+        failureMessages = [];
 
+        // Login with valid credentials
         cy.login();
 
+        // Navigate to page
         cy.navigateToModule('Master File', 'Item Classifications');
     });
 
-    it('Check should be in Item Classification module', () => {
-        cy.url({timeout: 10000}).should('contain', '/itemClassifications/?menfield=masterfile_itemclass');
+    it('Ensure User Is on Item Classification Page', () => {
 
+        cy.addTestContext(`
+            1. Verify that the test is running on the intended webpage by checking the URL (web address).
+            2. Verify that the main heading on the page reads "Item Classification".
+            3. Verify that a table is present. 
+            4. Verify that the table on the page has a specific header labeled "Description".
+        `)
+        // isang asserion na lang
+        // include na lang sa ibang test cases
+        // Summarization ng test cases
+
+        // Verify we're on the correct page by checking the URL
+        cy.url({timeout: 10000})
+            .should('contain', '/itemClassifications/?menfield=masterfile_itemclass');
+
+        // Verify the page header text should be 'Item Classifications'
         cy.get(':nth-child(1) > .text-\\[2rem\\]')
-          .should('have.text', 'Item Classifications');
+            .should('have.text', 'Item Classifications');
 
-        cy.get('div.Mui-TableHeadCell-Content-Wrapper[title="Description"]').then(($element) => {
-            if ($element.text().includes('Description')) {
+        // Verify that a table is present
+        cy.get('.MuiTable-root.css-12lx6p8-MuiTable-root')
+            .should('be.visible');     
 
-
-                cy.wrap($element).should('be.visible');
-                cy.log('Visibility Passed');
-                visibility.push({ data: "passed" });
-                                                
-                
-
-            }
-
-            else {
-
-
-                cy.log('Visibility Failed');
-                visibility.push({ data: "failed" });
-
-
-            }
-
-        }).then(() => {
-
-
-            cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
-
-
-        });
-
-        
-        // Check the contents of the JSON file
-        cy.fixture('message.json').then((data) => {
-        
-            // Check if 'failed' is present only when there should be a failure
-            // checks if there is any entry in the  visibility array where the property is equal to 'failed'  
-
-            if (visibility.some(entry => entry.data === 'failed')) {   
-                
-                expect(data.some(entry => entry.data === 'failed')).to.be.true;
-                cy.fail('Test failed, label should be "Item Classification"');
-
-            } else { // skip assertion for 'passed'
-
-                cy.log('No failures detected!');
-            }
-        });   
+        // Verify table visibility and has a header labeled "Description" 
+        cy.get('.css-za273f-MuiTableCell-root')
+            .should('contain', 'Description'); 
     });
 
-    it('Check if user can add valid data', () => {
+    it.only('Verify if user can add valid data, it should not failed ', () => {
+
+        cy.addTestContext(`
+            1. Verify that the "Add" button is visible and not disabled.
+            2. Click 'Add' button
+            2. Verify that a pop-up (modal) appears with a specific title: "Add new item classification".
+            3. Verify the pop-up has a text field labeled "Description *", indicating it's a required field.
+            4. Verify that the text field is enabled (not disabled) and allows users to enter text.
+            5. Type data in Item Class text field.
+            6. Verify that Item Class text field has data before clicking 'Add Data' button.
+            7. Verify that 'Add Data' button is enabled.
+            8. Click 'Add Data' button.
+            9. Verify "Successfully uploaded" pop-up (modal) should be visible.
+            10. Verify that the added data is visible in Item Class table. 
+        `)
+
         cy.fixture('item_class.json').then((data) => {
+
             for (const key in data){
 
                 cy.wait(2000);
 
-                // add button should be visible and click add button
+                // "Add" button should be clickable
                 cy.get('.sc-eDLKkx > .anticon > svg')
-                  .should('be.visible')
+                  .should('not.be.disabled')
                   .click();
 
-                    
-                                        cy.get('.px-8').then(($element) => {
+                cy.wait(4000);  
 
-                                            // If locator is found
+                // Verify Add Modal should have specific title "Add new item classification" and be visible
+                cy.checkLabel('.px-8', 'Add new item classification', visibility, failureMessages);  
+                
+                // Verify the pop-up has a text field labeled "Item Classification *", indicating it's a required field.
+                cy.checkLabel('.mb-2', 'Item Classification *', visibility, failureMessages);
 
-                                            if ($element.text().includes('Add new item classification')) {
-
-
-                                                cy.wrap($element).should('be.visible');
-                                                cy.log('Visibility Passed');
-                                                visibility.push({ data: "passed" });
-                                                
-
-                                            } 
-                                            
-                                            else {
-
-
-                                                cy.log('Visibility Failed');
-                                                visibility.push({ data: "failed" });
-
-                                            }
-
-                                        });
-                                      
-
-                                
-                cy.get('.mb-2').should('have.text', 'Item Classification Name *');
-
+                // Verify that text field allows users to enter text.
                 cy.get('#itmcladsc')
                   .should('be.enabled')
                   .clear();
 
+                // Type data in Item Class text field
                 cy.get('#itmcladsc').type(data[key].itemClass);
 
+                // Verify that Item Class text field has data before clicking 'Add Data' button
+                cy.get('#itmcladsc').should('have.value', data[key].itemClass);
+
+                // Verify "Add Data" button should be clickable
                 cy.get('.border-blue-500')
                   .should('be.enabled')
                   .click();
 
+                // Verify "Successfully uploaded" pop-up (modal) should be visible 
                 cy.get('.Toastify__toast-body')
                   .should('be.visible')
                   .and('have.text', 'Successfully uploaded'); 
 
+                // Verify that the added data is visible in Item Class table
                 cy.get('.MuiTableBody-root').contains(data[key].itemClass).should('exist');
             }
+        }) 
 
-        }).then(() => {
-
-
-            cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility))
-
-
-        })
-
+        cy.checkForFailure(visibility, failureMessages);
         
-        // Check the contents of the JSON file
-        cy.fixture('message.json').then((data) => {
-        
-            // Check if 'failed' is present only when there should be a failure
-            // checks if there is any entry in the  visibility array where the property is equal to 'failed'  
-
-            if (visibility.some(entry => entry.data === 'failed')) {   
-                
-                expect(data.some(entry => entry.data === 'failed')).to.be.true;
-                cy.fail('Test failed, should be Add new item classification');
-
-            } else { // skip assertion for 'passed'
-
-                cy.log('No failures detected!');
-            }
-        });
     });
 
-    it('Check if special characters are allowed', () => {
+    it('Verify If Special Characters are Allowed', () => {
+
+        cy.addTestContext(`
+            1. Verify that the "Add" button is visible and not disabled.
+            2. Click 'Add' button
+            2. Verify that a pop-up (modal) appears with a specific title: "Add new item classification".
+            3. Verify the pop-up has a text field labeled "Description *", indicating it's a required field.
+            4. Verify that the text field is enabled (not disabled) and allows users to enter text.
+            5. Type a special character (&-_/.) in Item Class text field.
+            6. Verify that Item Class text field has text special character (&-_/.).
+            7. Verify that 'Add Data' button is enabled.
+            8. Click 'Add Data' button.
+            9. Verify "Successfully uploaded" pop-up (modal) should be visible.
+            10. Verify that the added data is visible in Item Class table.  
+        `)
+
         cy.fixture('allowed_special_char.json').then((data) => {
             for (const key in data){
 
                 cy.wait(2000);
 
+                // "Add" button should be visible and clickable
                 cy.get('.sc-eDLKkx > .anticon > svg')
                   .should('be.visible')
+                  .and('not.be.disabled')
                   .click();
 
-                                        cy.get('.px-8').then(($element) => {
+                // Verify Add Modal should have specific title "Add new item classification" and be visible
+                cy.checkHeader('.px-8', 'Add new item classification', visibility);  
 
-                                        // If locator is found
+                // Verify the pop-up has a text field labeled "Description *", indicating it's a required field.
+                cy.checkLabel('.mb-2', 'Description', visibility);
 
-                                        if ($element.text().includes('Add new item classification')) {
-
-
-                                            cy.wrap($element).should('be.visible');
-                                            cy.log('Visibility Passed');
-                                            visibility.push({ data: "passed" });
-                                            
-
-                                        } 
-                                        
-                                        else {
-
-
-                                            cy.log('Visibility Failed');
-                                            visibility.push({ data: "failed" });
-
-                                        }
-
-                                    });                 
-                                
-                cy.get('.mb-2').should('have.text', 'Item Classification Name *');
-
+                // Verify that text field allows users to enter text.
                 cy.get('#itmcladsc')
                   .should('be.enabled')
                   .clear();
 
+                // Type data in Item Class text field
                 cy.get('#itmcladsc').type(data[key].allowSpecialChar);
 
+                // Verify that Item Class text field has data before clicking 'Add Data' button
+                cy.get('#itmcladsc').should('have.value', data[key].allowSpecialChar);
+
+                // Verify "Add Data" button should be clickable
                 cy.get('.border-blue-500')
                   .should('be.enabled')
                   .click();
 
+                // Verify "Successfully uploaded" pop-up (modal) should be visible 
                 cy.get('.Toastify__toast-body')
                   .should('be.visible')
-                  .should('have.text', 'Successfully uploaded');
-                                        
+                  .and('have.text', 'Successfully uploaded'); 
+
+                // Verify that the added data is visible in Item Class table
                 cy.get('.MuiTableBody-root').contains(data[key].allowSpecialChar).should('exist');
             }
-
-        }).then(() => {
-
-
-            cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility))
-
-
         })
 
         
@@ -238,7 +196,7 @@ describe('Item Classification', () => {
                 expect(data.some(entry => entry.data === 'failed')).to.be.true;
                 cy.fail('Test failed, should be Add new item classification');
 
-            } else { // skip assertion for 'passed'
+            } else { // skip visibility for 'passed'
 
                 cy.log('No failures detected!');
             }
@@ -305,7 +263,7 @@ describe('Item Classification', () => {
 
 
                                                 cy.wrap($element).should('be.visible');
-                                                cy.log('Visibility Passed');
+                                                cy.log('visibility Passed');
                                                 visibility.push({ data: "passed" });
                                                 
 
@@ -314,7 +272,7 @@ describe('Item Classification', () => {
                                             else {
 
 
-                                                cy.log('Visibility Failed');
+                                                cy.log('visibility Failed');
                                                 visibility.push({ data: "failed" });
 
                                             }
@@ -344,7 +302,7 @@ describe('Item Classification', () => {
                 expect(data.some(entry => entry.data === 'failed')).to.be.true;
                 cy.fail('Test failed, empty validation should be visible');
 
-            } else { // skip assertion for 'passed'
+            } else { // skip visibility for 'passed'
 
                 cy.log('No failures detected!');
             }
@@ -386,7 +344,7 @@ describe('Item Classification', () => {
 
 
                                             cy.wrap($element).should('be.visible');
-                                            cy.log('Visibility Passed');
+                                            cy.log('visibility Passed');
                                             visibility.push({ data: "passed" });
                                             
 
@@ -395,7 +353,7 @@ describe('Item Classification', () => {
                                         else {
 
 
-                                            cy.log('Visibility Failed');
+                                            cy.log('visibility Failed');
                                             visibility.push({ data: "failed" });
 
                                         }
@@ -430,7 +388,7 @@ describe('Item Classification', () => {
                 expect(data.some(entry => entry.data === 'failed')).to.be.true;
                 cy.fail('Test failed, "Duplicate entry! Kindly check your inputs." should be visible');
 
-            } else { // skip assertion for 'passed'
+            } else { // skip visibility for 'passed'
 
                 cy.log('No failures detected!');
             }
@@ -458,7 +416,7 @@ describe('Item Classification', () => {
 
 
                                                 cy.wrap($element).should('be.visible');
-                                                cy.log('Visibility Passed');
+                                                cy.log('visibility Passed');
                                                 visibility.push({ data: "passed" });
                                                 
 
@@ -467,7 +425,7 @@ describe('Item Classification', () => {
                                             else {
 
 
-                                                cy.log('Visibility Failed');
+                                                cy.log('visibility Failed');
                                                 visibility.push({ data: "failed" });
 
                                             }
@@ -518,7 +476,7 @@ describe('Item Classification', () => {
                 expect(data.some(entry => entry.data === 'failed')).to.be.true;
                 cy.fail('Test failed, edit modal header should be in text "Edit Item Classification"');
 
-            } else { // skip assertion for 'passed'
+            } else { // skip visibility for 'passed'
 
                 cy.log('No failures detected!');
             }
@@ -591,7 +549,7 @@ describe('Item Classification', () => {
 
 
                                                 cy.wrap($element).should('be.visible');
-                                                cy.log('Visibility Passed');
+                                                cy.log('visibility Passed');
                                                 visibility.push({ data: "passed" });
                                                 
 
@@ -601,7 +559,7 @@ describe('Item Classification', () => {
                                             else {
 
 
-                                                cy.log('Visibility Failed');
+                                                cy.log('visibility Failed');
                                                 visibility.push({ data: "failed" });
 
                                             }
@@ -617,7 +575,7 @@ describe('Item Classification', () => {
 
 
                                                 cy.wrap($element).should('be.visible');
-                                                cy.log('Visibility Passed');
+                                                cy.log('visibility Passed');
                                                 visibility.push({ data: "passed" });
                                                 
 
@@ -627,7 +585,7 @@ describe('Item Classification', () => {
                                             else {
 
 
-                                                cy.log('Visibility Failed');
+                                                cy.log('visibility Failed');
                                                 visibility.push({ data: "failed" });
 
                                             }
@@ -663,7 +621,7 @@ describe('Item Classification', () => {
                 expect(data.some(entry => entry.data === 'failed')).to.be.true;
                 cy.fail('Test failed, this should be visible "Do you want to delete: ' + data[key].editItemClass + ' ?"');
 
-            } else { // skip assertion for 'passed'
+            } else { // skip visibility for 'passed'
 
                 cy.log('No failures detected!');
             }
