@@ -31,7 +31,7 @@ For additional guidance, refer to this documentation:
    - **Variable Naming**: Follow established patterns for variable names.
 
    Refer to this documentation for more information on the coding standards:
-   - [Development Best Practices](https://docs.google.com/document/d/1GJaahxFG0YPwrgBfpK_GkT9MVqJVylHN0a2P5nyB2p0/edit?usp=sharing)
+   - [Development Best Practices](https://docs.google.com/document/d/1bX36h95cgX7Mqdn1QZdE2f2wSbhrNXswnYyg2WMwtUg/edit)
 
 3. Please follow the `Conventional Commits standard` for your commit messages (e.g., `Add new feature` or `Fix typo`).
 
