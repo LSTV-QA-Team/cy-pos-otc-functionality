@@ -20,7 +20,7 @@ Refer to this documentation: https://docs.google.com/document/d/1bX36h95cgX7Mqdn
 
 ## Rules
 ### Make sure that your code is working before pushing and pulling request!
-1.Ensure your new test scripts comply with our coding standards before submitting any changes. Make sure they meet the following criteria:
+1. Ensure your new test scripts comply with our coding standards before submitting any changes. Make sure they meet the following criteria:
   - Folder Structure: Organize files according to our project guidelines.
   - File Naming: Use consistent naming conventions for all files.
   - Code Organization: Maintain a clean and logical structure in you code.
