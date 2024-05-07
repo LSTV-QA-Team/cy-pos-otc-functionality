@@ -21,10 +21,10 @@ Refer to this documentation: https://docs.google.com/document/d/1bX36h95cgX7Mqdn
 ## Rules
 ### Make sure that your code is working before pushing and pulling request!
 1. Ensure your new test scripts comply with our coding standards before submitting any changes. Make sure they meet the following criteria:
-  - Folder Structure: Organize files according to our project guidelines.
-  - File Naming: Use consistent naming conventions for all files.
-  - Code Organization: Maintain a clean and logical structure in you code.
-  - Variable Naming: Follow established patterns for variables names.  
+    - Folder Structure: Organize files according to our project guidelines.
+    - File Naming: Use consistent naming conventions for all files.
+    - Code Organization: Maintain a clean and logical structure in you code.
+    - Variable Naming: Follow established patterns for variables names.  
 Refer to this documentation:
 2. Please follow the `Conventional Commits standard` for your commit messages
 e.g. `Add new feature` or `Fix typo`
