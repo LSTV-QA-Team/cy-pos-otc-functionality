@@ -15,7 +15,7 @@ To contribute to this project, please follow the steps below:
 4. Make your changes
 5. Commit your changes (Excluding the file in the 'downloads' folder)
 6. Push your changes to the repository
-7. Create a pull request
+7. Create a pull request</br>
 Refer to this documentation: https://docs.google.com/document/d/1GJaahxFG0YPwrgBfpK_GkT9MVqJVylHN0a2P5nyB2p0/edit?usp=sharing
 
 ## Rules
