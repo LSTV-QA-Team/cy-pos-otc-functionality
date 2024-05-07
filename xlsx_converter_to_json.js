@@ -10,7 +10,7 @@ if (!sheetName) {
     process.exit(1); // Exit with error code
 }
 
-const dataPathExcel = "cypress/fixtures/excel_data.xlsx";
+const dataPathExcel = "cypress/fixtures/pos-otc-data.xlsx";
 const workbook = xlsx.readFile(dataPathExcel);
 
 if (!workbook.SheetNames.includes(sheetName)) {

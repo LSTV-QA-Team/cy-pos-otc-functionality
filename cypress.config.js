@@ -6,7 +6,7 @@ const { defineConfig } = require("cypress");
 const mysql = require("mysql");
 const fs = require('fs');
 const path = require('path');
-const { report } = require('process');
+
 
 
 module.exports = defineConfig({
@@ -36,36 +36,23 @@ module.exports = defineConfig({
 
   hideXHRInCommandLog: true,
 
-  reporter: 'cypress-mochawesome-reporter',
-
   video: false,
 
-  screenshotsFolder: 'cypress/reports/screenshots',
-
+  // screenshotsFolder: 'cypress/reports/screenshots',
 
   reporter: 'cypress-mochawesome-reporter',
-
   reporterOptions: {
+    reportDir: "cypress/reports",
+    charts: true,
+    reportPageTitle: 'Cypress POS-OTC Functionality Report',
+    reportFilename: "[status]_[datetime]-[name]-report",
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    overwrite: true,
+    json: true,
 
-            charts: true,
-            reportPageTitle: 'Cypress React-POS Report',
-            embeddedScreenshots: true, 
-            html: true,
-            json: true,
-            inlineAssets: true,
-            enableCode: false,
-            reportFilename: "[status]_[datetime]-[name]-report",
-            timestamp: "longDate",
-            // autoOpen: false,
-            debug: false,
-            quiet: true,
-            overwrite: true,
-            // saveAllAttempts: false,
-            screenshotOnRunFailure: true
-
-        
-        
   },
+
 
 
 
@@ -73,13 +60,12 @@ module.exports = defineConfig({
 
     baseUrl: 'http://localhost:5173/#/pages/login',
     experimentalStudio: true,
-    reporter: 'cypress-mochawesome-reporter',
 
     // implement node event listeners here
     setupNodeEvents(on, config) {
 
       require('cypress-mochawesome-reporter/plugin')(on);
-
+      
 
           on('before:browser:launch', (browser = {}, launchOptions) => {
 
@@ -87,7 +73,7 @@ module.exports = defineConfig({
             console.log(launchOptions.args)
         
             if (browser.name == 'chrome') {
-              launchOptions.args.push(['--no-sandbox','--disable-gpu','--headless'])
+              launchOptions.args.push(['--no-sandbox','--disable-gpu'])
             }
         
             return launchOptions

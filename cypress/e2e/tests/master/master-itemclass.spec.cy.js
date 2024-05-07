@@ -20,6 +20,8 @@ describe('Item Classification', () => {
     
     beforeEach(() => {
 
+        cy.wrap(false).as('hasFailure');
+
         // reset visibility for each test case
         visibility = [];
         failureMessages = [];
@@ -31,50 +33,40 @@ describe('Item Classification', () => {
         cy.navigateToModule('Master File', 'Item Classifications');
     });
 
-    it('Ensure User Is on Item Classification Page', () => {
+    it('Verify if user is on Item Classification Page', () => {
 
         cy.addTestContext(`
-            1. Verify that the test is running on the intended webpage by checking the URL (web address).
-            2. Verify that the main heading on the page reads "Item Classification".
-            3. Verify that a table is present. 
-            4. Verify that the table on the page has a specific header labeled "Description".
+            Verify that the test is running on the intended webpage by checking the URL (web address), It should not failed
         `)
         // isang asserion na lang
         // include na lang sa ibang test cases
         // Summarization ng test cases
+        // Verify that the main heading on the page reads "Item Classification".
+        // Verify that a table is present. 
+        // Verify that the table on the page has a specific header labeled "Description".
 
-        // Verify we're on the correct page by checking the URL
+        // 1. Verify that the correct page is open by checking the URL.
         cy.url({timeout: 10000})
             .should('contain', '/itemClassifications/?menfield=masterfile_itemclass');
 
-        // Verify the page header text should be 'Item Classifications'
+        // 2. Verify the page header text should be 'Item Classifications'
         cy.get(':nth-child(1) > .text-\\[2rem\\]')
             .should('have.text', 'Item Classifications');
 
-        // Verify that a table is present
+        // 3. Verify that a table is present
         cy.get('.MuiTable-root.css-12lx6p8-MuiTable-root')
             .should('be.visible');     
 
-        // Verify table visibility and has a header labeled "Description" 
+        // 4. Verify table visibility and has a header labeled "Description" 
         cy.get('.css-za273f-MuiTableCell-root')
             .should('contain', 'Description'); 
     });
 
-    it.only('Verify if user can add valid data, it should not failed ', () => {
+    it('Verify if user can add valid data', () => {
 
         cy.addTestContext(`
-            1. Verify that the "Add" button is visible and not disabled.
-            2. Click 'Add' button
-            2. Verify that a pop-up (modal) appears with a specific title: "Add new item classification".
-            3. Verify the pop-up has a text field labeled "Description *", indicating it's a required field.
-            4. Verify that the text field is enabled (not disabled) and allows users to enter text.
-            5. Type data in Item Class text field.
-            6. Verify that Item Class text field has data before clicking 'Add Data' button.
-            7. Verify that 'Add Data' button is enabled.
-            8. Click 'Add Data' button.
-            9. Verify "Successfully uploaded" pop-up (modal) should be visible.
-            10. Verify that the added data is visible in Item Class table. 
-        `)
+            Verify that the user can successfully add valid data; it should appear in the Item Class table. 
+        ;`) 
 
         cy.fixture('item_class.json').then((data) => {
 
@@ -82,41 +74,41 @@ describe('Item Classification', () => {
 
                 cy.wait(2000);
 
-                // "Add" button should be clickable
+                // 1. "Add" button should be clickable
                 cy.get('.sc-eDLKkx > .anticon > svg')
                   .should('not.be.disabled')
                   .click();
 
                 cy.wait(4000);  
 
-                // Verify Add Modal should have specific title "Add new item classification" and be visible
+                // 2. Verify Add Modal should have specific title "Add new item classification" and be visible.
                 cy.checkLabel('.px-8', 'Add new item classification', visibility, failureMessages);  
                 
-                // Verify the pop-up has a text field labeled "Item Classification *", indicating it's a required field.
-                cy.checkLabel('.mb-2', 'Item Classification *', visibility, failureMessages);
+                // 3. Verify Add Modal has a text field labeled "Description *", indicating it's a required field.
+                cy.checkLabel('.mb-2', 'Description *', visibility, failureMessages);
 
-                // Verify that text field allows users to enter text.
+                // 4. Verify that text field allows users to enter text.
                 cy.get('#itmcladsc')
                   .should('be.enabled')
                   .clear();
 
-                // Type data in Item Class text field
+                // 5. Type valid data in Item Class text field (ex. Beverages).
                 cy.get('#itmcladsc').type(data[key].itemClass);
 
-                // Verify that Item Class text field has data before clicking 'Add Data' button
+                // 6. Verify that Item Class text field has valid data before clicking 'Add Data' button.
                 cy.get('#itmcladsc').should('have.value', data[key].itemClass);
 
-                // Verify "Add Data" button should be clickable
+                // 7. Verify "Add Data" button should be clickable.
                 cy.get('.border-blue-500')
                   .should('be.enabled')
                   .click();
 
-                // Verify "Successfully uploaded" pop-up (modal) should be visible 
+                // 8. Verify "Successfully uploaded" pop-up (modal) should be visible. 
                 cy.get('.Toastify__toast-body')
                   .should('be.visible')
                   .and('have.text', 'Successfully uploaded'); 
 
-                // Verify that the added data is visible in Item Class table
+                // 9. Verify that the added data is visible in Item Class table.
                 cy.get('.MuiTableBody-root').contains(data[key].itemClass).should('exist');
             }
         }) 
@@ -125,7 +117,7 @@ describe('Item Classification', () => {
         
     });
 
-    it('Verify If Special Characters are Allowed', () => {
+    it('Verify if special characters are allowed', () => {
 
         cy.addTestContext(`
             1. Verify that the "Add" button is visible and not disabled.

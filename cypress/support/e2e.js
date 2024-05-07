@@ -44,3 +44,13 @@ if (Cypress.config("hideXHRInCommandLog")) {
       app.document.head.appendChild(style);
   }
 }
+
+// Cypress.on('test:after:run', (test) => {
+//     if (test.state === 'failed') {
+//         addContext({ test }, 'TEST SCENARIO: FAILED');
+//     }
+//     else 
+//     if (test.state === 'passed'){
+//         addContext({ test }, 'TEST SCENARIO: PASSED');
+//     }
+// })

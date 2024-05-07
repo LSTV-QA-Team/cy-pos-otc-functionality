@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import "cypress-real-events";
 import "cypress-xpath";
+import "cypress-mochawesome-reporter/register";
 
 const mysql = require('mysql');
 const addContext = require('mochawesome/addContext');
@@ -78,17 +79,17 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.wait(4000);
   })
 
-  Cypress.Commands.add('navigateToModule', (menuSelector, submenuSelector) => {
-    cy.contains(menuSelector).click();
-    cy.wait(2000); 
-    cy.contains(submenuSelector).click();
-    cy.wait(2000); 
-  });
+Cypress.Commands.add('navigateToModule', (menuSelector, submenuSelector) => {
+  cy.contains(menuSelector).click();
+  cy.wait(2000); 
+  cy.contains(submenuSelector).click();
+  cy.wait(2000); 
+});
 
 
-  Cypress.Commands.add('addTestContext', (context) => {
-    addContext({ test: cy.state('test') }, context);
-  });
+Cypress.Commands.add('addTestContext', (context) => {
+  addContext({ test: cy.state('test') }, context);
+});
   
 
 // // Custom command that attempts to verify text, but logs error without stopping the test
@@ -103,7 +104,7 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
 //     } else {
 
 //       cy.log('Visibility Failed');
-      // cy.log(`Expected text "${expectedText}" not found in ${selector}`);
+//       cy.log(`Expected text "${expectedText}" not found in ${selector}`);
 //       visibility.push({ data: "failed" });
 
 //     }
@@ -113,9 +114,6 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
 //     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
 //     })
 //   })
-
-
-// commands.js
 
 Cypress.Commands.add('checkLabel', (selector, expectedText, visibility, failureMessages) => {
   cy.get(selector).then($element => {
@@ -145,7 +143,6 @@ Cypress.Commands.add('checkLabel', (selector, expectedText, visibility, failureM
 
 
 
-// commands.js
 
 Cypress.Commands.add('checkForFailure', (assertions, failureMessages = []) => {
   cy.fixture('message.json').then((data) => {
@@ -177,5 +174,40 @@ Cypress.Commands.add('checkForFailure', (assertions, failureMessages = []) => {
 
 
 
+
+// In cypress/support/commands.js
+
+// Custom command for safe assertions
+// Cypress.Commands.add('safeAssert', (selector, assertionFn, errorMessage) => {
+//   cy.get(selector).then(($element) => {
+//     try {
+//       assertionFn($element);
+//     } catch (e) {
+//       cy.log(`Safe assertion failed: ${errorMessage || 'No message provided'}`);
+//       // Optionally, you could record the error, or add additional logging here
+//     }
+//   });
+// });
+
+// In cypress/support/commands.js
+// Cypress.Commands.add('safeAssert', (selector, assertionFn, errorMessage) => {
+//   cy.get(selector).then(($element) => {
+//     try {
+//       assertionFn($element);
+//     } catch (e) {
+//       // Take a screenshot on failure
+//       const screenshotName = `safe-assertion-failed-${Date.now()}`; 
+//       cy.screenshot(screenshotName, {
+//         capture: 'runner', // This ensures the whole test runner, including logs and errors, is captured
+//       });
+  
+//       cy.log(`Safe assertion failed: ${errorMessage || 'No message provided'}`);
+//       // Set the global failure flag
+//       cy.get('@hasFailure').then((hasFailure) => {
+//         cy.wrap(true).as('hasFailure');
+//       });
+//     }
+//   });
+// });
 
 
