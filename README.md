@@ -19,7 +19,7 @@ To contribute to this project, please follow the steps below:
 7. Create a pull request to propose your changes.
 
 For additional guidance, refer to this documentation:
-- [Contribution Guidelines](https://docs.google.com/document/d/1bX36h95cgX7Mqdn1QZdE2f2wSbhrNXswnYyg2WMwtUg/edit?usp=sharing)
+- [Contribution Guidelines](https://docs.google.com/document/d/1GJaahxFG0YPwrgBfpK_GkT9MVqJVylHN0a2P5nyB2p0/edit?usp=sharing)
 
 
 ## Rules
