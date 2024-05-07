@@ -15,7 +15,7 @@ To contribute to this project, please follow the steps below:
 4. Make your changes
 5. Commit your changes (Excluding the file in the 'downloads' folder)
 6. Push your changes to the repository
-7. Create a pull request<br>
+7. Create a pull request  
 Refer to this documentation: https://docs.google.com/document/d/1bX36h95cgX7Mqdn1QZdE2f2wSbhrNXswnYyg2WMwtUg/edit?usp=sharinghttps://docs.google.com/document/d/1GJaahxFG0YPwrgBfpK_GkT9MVqJVylHN0a2P5nyB2p0/edit?usp=sharing
 
 ## Rules
@@ -24,7 +24,7 @@ Refer to this documentation: https://docs.google.com/document/d/1bX36h95cgX7Mqdn
   - Folder Structure: Organize files according to our project guidelines.
   - File Naming: Use consistent naming conventions for all files.
   - Code Organization: Maintain a clean and logical structure in you code.
-  - Variable Naming: Follow established patterns for variables names.<br>
+  - Variable Naming: Follow established patterns for variables names.  
 Refer to this documentation:
 2. Please follow the `Conventional Commits standard` for your commit messages
 e.g. `Add new feature` or `Fix typo`
