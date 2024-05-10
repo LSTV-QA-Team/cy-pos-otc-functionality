@@ -6,7 +6,7 @@ const { defineConfig } = require("cypress");
 const mysql = require("mysql");
 const fs = require('fs');
 const path = require('path');
-
+const moment = require('moment');
 
 
 module.exports = defineConfig({
@@ -45,16 +45,20 @@ module.exports = defineConfig({
     reportDir: "cypress/reports",
     charts: true,
     reportPageTitle: 'Cypress POS-OTC Functionality Report',
-    reportFilename: "[status]_[datetime]-[name]-report",
-    embeddedScreenshots: true,
+    reportFilename: `[status]-[name]-${moment().format('YYYY-MM-DD_HH-mm-ss')}-report`,
+    embeddedScreenshots: false,
     inlineAssets: true,
-    overwrite: true,
+    overwrite: false,
     json: true,
-
+    html: true,
+    debug: false,
+    quiet: true,
+    videoOnFailOnly: true,
+    code: false,
+    saveAllAttempts: false,
+    screenshotOnRunFailure: false,
+    screenshotsFolder: "cypress/screenshots"
   },
-
-
-
 
   e2e: {
 
@@ -79,7 +83,6 @@ module.exports = defineConfig({
             return launchOptions
 
           })
-
 
 
 

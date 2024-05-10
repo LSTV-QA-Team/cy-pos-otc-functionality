@@ -29,7 +29,7 @@ import "cypress-mochawesome-reporter/register";
 
 const mysql = require('mysql');
 const addContext = require('mochawesome/addContext');
-
+const failedAssertions = new Set();
 
 
 Cypress.Commands.add('queryDatabase', (query) => {
@@ -60,6 +60,7 @@ Cypress.Commands.add('queryDatabase', (query) => {
   })
 });
 
+
 Cypress.Commands.add('login', (userCode, userPassword) => {
   
     cy.visit(Cypress.config('baseUrl'), 5000)
@@ -79,6 +80,7 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.wait(4000);
   })
 
+
 Cypress.Commands.add('navigateToModule', (menuSelector, submenuSelector) => {
   cy.contains(menuSelector).click();
   cy.wait(2000); 
@@ -88,58 +90,91 @@ Cypress.Commands.add('navigateToModule', (menuSelector, submenuSelector) => {
 
 
 Cypress.Commands.add('addTestContext', (context) => {
-  addContext({ test: cy.state('test') }, context);
+  const test = cy.state('test');
+  if (test) {
+    addContext({ test }, context);
+  } else {
+    throw new Error("Test context is unavailable.");
+  }
 });
-  
 
-// // Custom command that attempts to verify text, but logs error without stopping the test
-// Cypress.Commands.add('checkLabel', (selector, expectedText, visibility) => {
-//   cy.get(selector).then($element => {
-//     if ($element.text().includes(expectedText)) {
-      
-//       cy.wrap($element).should('be.visible');
-//       cy.log('Visibility Passed');
-//       visibility.push({ data: "passed" });
-
-//     } else {
-
-//       cy.log('Visibility Failed');
-//       cy.log(`Expected text "${expectedText}" not found in ${selector}`);
-//       visibility.push({ data: "failed" });
-
-//     }
-//   }).then(() => {
-
-//     // / Write the visibility state to a JSON file
-//     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
-//     })
-//   })
-
-Cypress.Commands.add('checkLabel', (selector, expectedText, visibility, failureMessages) => {
+Cypress.Commands.add('checkHeaderTitle', (selector, expectedText, visibility, failureMessages) => {
   cy.get(selector).then($element => {
+    const actualText = $element.text().trim(); // Get the actual text from the element
     const containsExpectedText = $element.text().includes(expectedText);
 
     if (containsExpectedText) {
 
       cy.wrap($element).should('be.visible');
-      cy.log('Assertion Passed')
-      visibility.push({ data: "passed" });
+      cy.log('Assertion Passed');
+      visibility.push({ data: 'passed' });
 
-    } 
+    } else {
+      
+      const failureMessage = `The title header should be "${expectedText}" instead of "${actualText}"`;
 
-    else {
+      if (!failedAssertions.has(failureMessage)) {
+        cy.log('Assertion Failed');
+        failedAssertions.add(failureMessage);
+        failureMessages.push(failureMessage); // Record the failure message
+        cy.screenshot(`failure-${selector.replace(/\W/g, '-')}`, { capture: 'runner' });
+        
+      } 
+      
+      else {
 
-      cy.log('Assertion Failed')
-      visibility.push({ data: "failed" });
-      const failureMessage = `Expected text "${expectedText}" not found in selector ${selector}`;
-      failureMessages.push(failureMessage); // Record the failure message
+        cy.log('Skipping screenshot, failure already captured.');
 
+      }
+      
+      visibility.push({ data: 'failed' });
     }
+
   }).then(() => {
+
     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
+    
   });
 });
 
+Cypress.Commands.add('checkLabel', (selector, expectedText, visibility, failureMessages) => {
+  cy.get(selector).then($element => {
+    const actualText = $element.text().trim(); // Get the actual text from the element
+    const containsExpectedText = $element.text().includes(expectedText);
+
+    if (containsExpectedText) {
+
+      cy.wrap($element).should('be.visible');
+      cy.log('Assertion Passed');
+      visibility.push({ data: 'passed' });
+
+    } else {
+      
+      const failureMessage = `Expected text field label should be "${expectedText}" but the actual was "${actualText}" in selector "${selector}"`;
+
+      if (!failedAssertions.has(failureMessage)) {
+        cy.log('Assertion Failed');
+        failedAssertions.add(failureMessage);
+        failureMessages.push(failureMessage); // Record the failure message
+        cy.screenshot(`failure-${selector.replace(/\W/g, '-')}`, { capture: 'runner' });
+        
+      } 
+      
+      else {
+
+        cy.log('Skipping screenshot, failure already captured.');
+
+      }
+      
+      visibility.push({ data: 'failed' });
+    }
+
+  }).then(() => {
+
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
+    
+  });
+});
 
 
 
@@ -173,41 +208,39 @@ Cypress.Commands.add('checkForFailure', (assertions, failureMessages = []) => {
 });
 
 
+Cypress.Commands.add('checkValidation', (selector, expectedText, visibility, failureMessages) => {
+  cy.get(selector).then($element => {
+    const actualText = $element.text().trim(); // Get the actual text from the element
+    const containsExpectedText = $element.text().includes(expectedText);
+
+    if (containsExpectedText) {
+
+      cy.wrap($element).should('be.visible');
+      cy.log('Assertion Passed');
+      visibility.push({ data: 'passed' });
 
 
-// In cypress/support/commands.js
+    } else {
 
-// Custom command for safe assertions
-// Cypress.Commands.add('safeAssert', (selector, assertionFn, errorMessage) => {
-//   cy.get(selector).then(($element) => {
-//     try {
-//       assertionFn($element);
-//     } catch (e) {
-//       cy.log(`Safe assertion failed: ${errorMessage || 'No message provided'}`);
-//       // Optionally, you could record the error, or add additional logging here
-//     }
-//   });
-// });
+      const failureMessage = `Upon clicking of "Add" button on pager: Expected validation should be "${expectedText}" but the actual was "${actualText}" in selector "${selector}"`;
 
-// In cypress/support/commands.js
-// Cypress.Commands.add('safeAssert', (selector, assertionFn, errorMessage) => {
-//   cy.get(selector).then(($element) => {
-//     try {
-//       assertionFn($element);
-//     } catch (e) {
-//       // Take a screenshot on failure
-//       const screenshotName = `safe-assertion-failed-${Date.now()}`; 
-//       cy.screenshot(screenshotName, {
-//         capture: 'runner', // This ensures the whole test runner, including logs and errors, is captured
-//       });
-  
-//       cy.log(`Safe assertion failed: ${errorMessage || 'No message provided'}`);
-//       // Set the global failure flag
-//       cy.get('@hasFailure').then((hasFailure) => {
-//         cy.wrap(true).as('hasFailure');
-//       });
-//     }
-//   });
-// });
+      if (!failedAssertions.has(failureMessage)) {
+        cy.log('Assertion Failed');
+        failedAssertions.add(failureMessage);
+        failureMessages.push(failureMessage); // Record the failure message
+        cy.screenshot(`failure-${selector.replace(/\W/g, '-')}`, { capture: 'runner' });
+
+      } else {
+
+        cy.log('Skipping screenshot, failure already captured.');
+
+      }
+      
+      visibility.push({ data: 'failed' });
+    }
+  }).then(() => {
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
+  });
+});
 
 

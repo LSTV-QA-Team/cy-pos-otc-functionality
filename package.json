@@ -11,6 +11,8 @@
   "dependencies": {
     "cypress-mochawesome-reporter": "^3.8.2",
     "dotenv": "^16.4.5",
+    "esprima": "^4.0.1",
+    "moment": "^2.30.1",
     "mysql": "^2.18.1",
     "pdf-parse": "^1.1.1",
     "xlsx": "^0.18.5",

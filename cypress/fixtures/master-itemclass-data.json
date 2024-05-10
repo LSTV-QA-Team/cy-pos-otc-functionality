@@ -1,11 +1,27 @@
 [
   {
-    "itemClass": "FOOD"
+    "itemClass": "MAIN COURSE"
   },
   {
-    "itemClass": "DESSERT"
+    "itemClass": "DESSERTS"
   },
   {
-    "itemClass": "Breakfast"
+    "itemClass": "BEVERAGES"
+  },
+  {
+    "itemClass": "KIDS' MEAL"
+  },
+  {
+    "itemClass": "BREAKFAST"
+  },
+  {
+    "itemClass": "APPETIZER",
+    "editItemClass": "SIDES"
+  },
+  {
+    "itemClass": "&-_.'/"
+  },
+  {
+    "itemClass": " "
   }
 ]
