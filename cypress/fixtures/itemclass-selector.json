@@ -1,0 +1,42 @@
+[
+  {
+    "itemClassSelector": ":nth-child(2) > .sc-guDLey",
+    "assertion": "not.be.disabled"
+  },
+  {
+    "itemClassSelector": ".sc-eDLKkx > .anticon > svg",
+    "assertion": "not.be.disabled"
+  },
+  {
+    "itemClassSelector": "[data-testid=\"ViewColumnIcon\"]",
+    "assertion": "not.be.disabled"
+  },
+  {
+    "itemClassSelector": "[data-testid=\"SearchIcon\"]",
+    "assertion": "not.be.disabled"
+  },
+  {
+    "itemClassSelector": "[data-testid=\"FilterListIcon\"]",
+    "assertion": "not.be.disabled"
+  },
+  {
+    "itemClassSelector": "[data-testid=\"DensityMediumIcon\"]",
+    "assertion": "not.be.disabled"
+  },
+  {
+    "itemClassSelector": "[data-testid=\"FullscreenIcon\"]",
+    "assertion": "not.be.disabled"
+  },
+  {
+    "itemClassSelector": "[data-testid=\"KeyboardArrowLeftIcon\"]",
+    "assertion": "not.be.enabled"
+  },
+  {
+    "itemClassSelector": "[data-testid=\"KeyboardArrowRightIcon\"]",
+    "assertion": "not.be.enabled"
+  },
+  {
+    "itemClassSelector": "[id=\":r9:\"]",
+    "assertion": "not.be.disabled"
+  }
+]
