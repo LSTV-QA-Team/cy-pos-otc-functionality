@@ -48,21 +48,26 @@ describe('Item Classification', () => {
         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', 'Item Classifications', visibility, failureMessages)
 
         // 1.2.2 Check table column header caption
-        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', 'Item Classifications', visibility, failureMessages)
+        cy.get('table.MuiTable-root thead tr') 
+            .find('th.MuiTableCell-root')       
+            .should('have.length', 2)           
+            .then($headers => {                 
+                // Check individual headers:
+                expect($headers.eq(0)).to.contain.text('Actions');  
+                expect($headers.eq(1)).to.contain.text('Description'); 
+            });
 
+        // Check enabled/disabled of all objects
+        cy.fixture('itemclass-selector.json').then((data) => {
+            for (const key in data) {
+                cy.get(data[key].itemClassSelector)
+                    .should(data[key].assertion)
+            }
+        })
     });
 
     it('Add Functionality', () => {
         cy.addTestContext(`
-            1. Navigate to the 'Item Classification' page.
-            2. Click the 'Add' button.
-            3. Add Modal should be visible.
-            4. Upon clicking the text field, user should be able to input valid data.
-            5. Type "Beverages" in text field.
-            6. Click 'Add Data'.
-            7. Upon Clicking 'Add Data', "Successfully Uploaded" pop-up message should be visible.
-            8. The added data "Beverages" should be vis
-            Verify that can successfully add valid data; it should appear in the Item Class table. 
         ;`) 
 
         cy.fixture('master-itemclass-data.json').then((data) => {
