@@ -19,11 +19,11 @@ import 'cypress-mochawesome-reporter/register';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-Cypress.on('uncaught:exception', (err, runnable) => {
-    // returning false here prevents Cypress from
-    // failing the test
-    return false
-})
+// Cypress.on('uncaught:exception', (err, runnable) => {
+//     // returning false here prevents Cypress from
+//     // failing the test
+//     return false
+// })
 
 /**
  * This uses CSS to prevent the XHR requests from being picked up in the DOM 
@@ -44,13 +44,6 @@ if (Cypress.config("hideXHRInCommandLog")) {
       app.document.head.appendChild(style);
   }
 }
-
-// Cypress.on('test:after:run', (test) => {
-//     if (test.state === 'failed') {
-//         addContext({ test }, 'TEST SCENARIO: FAILED');
-//     }
-//     else 
-//     if (test.state === 'passed'){
-//         addContext({ test }, 'TEST SCENARIO: PASSED');
-//     }
-// })
+Cypress.Screenshot.defaults({
+  overwrite: true,
+})
