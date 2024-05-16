@@ -21,7 +21,7 @@
   "scripts": {
     "cypress:run": "npx cypress run",
     "generate:reports": "node separate-reports.js",
-    "sheet-converter": "node xlsx_converter_to_json.js",
+    "sheet-converter": "node xlsx-converter-to-json.js",
     "post:cypress:run": "node list-of-activity.js",
     "cypress:full": "npm run cypress:run && npm run post:cypress:run"
   }

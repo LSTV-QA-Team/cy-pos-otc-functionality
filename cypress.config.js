@@ -7,6 +7,7 @@ const mysql = require("mysql");
 const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
+const { exec } = require('child_process');
 
 
 module.exports = defineConfig({
@@ -38,8 +39,6 @@ module.exports = defineConfig({
 
   video: false,
 
-  // screenshotsFolder: 'cypress/reports/screenshots',
-
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     reportDir: "cypress/reports",
@@ -57,7 +56,7 @@ module.exports = defineConfig({
     code: false,
     saveAllAttempts: false,
     screenshotOnRunFailure: false,
-    screenshotsFolder: "cypress/screenshots"
+    screenshotsFolder: "cypress/reports/screenshots"
   },
 
   e2e: {
@@ -126,7 +125,29 @@ module.exports = defineConfig({
           }
         },
       });
-
+      
+      // exec
+      on('task', {
+        async execute(command) {
+          return new Promise((resolve, reject) => {
+            try {
+              // Execute the command using exec with the shell option set to true
+              exec(command, { shell: 'bash' }, (error, stdout, stderr) => {
+                if (error) {
+                  // If there's an error, reject the promise with the error object
+                  reject(error);
+                } else {
+                  // If the command executed successfully, resolve the promise with the output
+                  resolve({ stdout, stderr });
+                }
+              });
+            } catch (e) {
+              // Catch any synchronous errors and reject the promise with the error
+              reject(e);
+            }
+          });
+        }
+      });
       
       return config; // Return the updated configuration
 

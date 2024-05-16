@@ -1,61 +1,61 @@
 [
   {
     "selectorName": "Print button",
-    "itemClassSelector": ":nth-child(2) > .sc-guDLey",
+    "sel": ":nth-child(2) > .sc-guDLey",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Print\" button  should be clickable"
   },
   {
     "selectorName": "Add button",
-    "itemClassSelector": ".sc-eDLKkx > .anticon > svg",
+    "sel": ".sc-eDLKkx > .anticon > svg",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Add\" button  should be clickable"
   },
   {
     "selectorName": "Show/Hide columns button",
-    "itemClassSelector": "[data-testid=\"ViewColumnIcon\"]",
+    "sel": "[data-testid=\"ViewColumnIcon\"]",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Show/Hide Columns\" button  should be clickable"
   },
   {
     "selectorName": "Show/Hide search button",
-    "itemClassSelector": "[data-testid=\"SearchIcon\"]",
+    "sel": "[data-testid=\"SearchIcon\"]",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Show/Hide Search\" button  should be clickable"
   },
   {
     "selectorName": "Show/Hide Filters button",
-    "itemClassSelector": "[data-testid=\"FilterListIcon\"]",
+    "sel": "[data-testid=\"FilterListIcon\"]",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Show/Hide Filters\" button  should be clickable"
   },
   {
     "selectorName": "Toggle Density button",
-    "itemClassSelector": "[data-testid=\"DensityMediumIcon\"]",
+    "sel": "[data-testid=\"DensityMediumIcon\"]",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Toggle Density\" button  should be clickable"
   },
   {
     "selectorName": "Fullscreen button",
-    "itemClassSelector": "[data-testid=\"FullscreenIcon\"]",
+    "sel": "[data-testid=\"FullscreenIcon\"]",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Fullscreen\" button  should be clickable"
   },
   {
     "selectorName": "Arrow Left button",
-    "itemClassSelector": "[data-testid=\"KeyboardArrowLeftIcon\"]",
-    "assertion": "be.disabled",
-    "customErrorMsg": "\"Arrow Left\" button  should be clickable"
+    "sel": "[data-testid=\"KeyboardArrowLeftIcon\"]",
+    "assertion": "not.be.enabled",
+    "customErrorMsg": "\"Arrow Left\" button  should be not be clickable when no data on the table"
   },
   {
     "selectorName": "Arrow Right button",
-    "itemClassSelector": "[data-testid=\"KeyboardArrowRightIcon\"]",
-    "assertion": "be.disabled",
-    "customErrorMsg": "\"Arrow Right\" button  should be clickable"
+    "sel": "[data-testid=\"KeyboardArrowRightIcon\"]",
+    "assertion": "not.be.enabled",
+    "customErrorMsg": "\"Arrow Left\" button  should be not be clickable when no data on the table"
   },
   {
     "selectorName": "Rows per page button",
-    "itemClassSelector": "[id=\":r9:\"]",
+    "sel": "[id=\":r9:\"]",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Rows per page\" button  should be clickable"
   }

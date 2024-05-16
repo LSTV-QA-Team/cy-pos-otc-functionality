@@ -9,19 +9,25 @@
     "itemClass": "BEVERAGES"
   },
   {
-    "itemClass": "KIDS' MEAL"
-  },
-  {
     "itemClass": "BREAKFAST"
   },
   {
     "itemClass": "APPETIZER",
-    "editItemClass": "SIDES"
+    "editItemClass": "SIDE DISH"
   },
   {
-    "itemClass": "&-_.'/"
+    "itemClass": "% & ( ) / - ."
   },
   {
-    "itemClass": " "
+    "itemClass": "null"
+  },
+  {
+    "itemClass": "BURGERS"
+  },
+  {
+    "itemClass": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap"
+  },
+  {
+    "itemClass": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :"
   }
 ]
