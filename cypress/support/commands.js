@@ -1,28 +1,4 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
 import "cypress-real-events";
 import "cypress-xpath";
 import "cypress-mochawesome-reporter/register";
@@ -30,6 +6,10 @@ import "cypress-mochawesome-reporter/register";
 const mysql = require('mysql');
 const addContext = require('mochawesome/addContext');
 const failedAssertions = new Set();
+
+const xlsx = require("xlsx");
+const fs = require('fs');
+const path = require('path');
 
 
 Cypress.Commands.add('queryDatabase', (query) => {
@@ -98,108 +78,116 @@ Cypress.Commands.add('addTestContext', (context) => {
   }
 });
 
-Cypress.Commands.add('checkHeaderTitle', (selector, expectedText, visibility, failureMessages) => {
+
+
+Cypress.Commands.add('checkTableColumnTitle', (expectedColTitle, referenceNumber, errorContext, assertionResults = [], failureMessages = []) => {
+  // Track failed assertions to avoid redundant errors
+  const failedAssertions = new Set();
+
+  cy.get('table.MuiTable-root thead tr').find('th.MuiTableCell-root').should('have.length', expectedColTitle.length).then($headers => {
+    const errorMessages = [];
+    const elementPromises = [];
+
+    $headers.each((index, element) => {
+      elementPromises.push(new Cypress.Promise((resolve) => {
+        const headerText = Cypress.$(element).find('.Mui-TableHeadCell-Content-Wrapper').text();
+        let assertionPassed = true;
+        let customErrorMessage = '';
+
+        if (headerText !== expectedColTitle[index]) {
+          assertionPassed = false;
+          customErrorMessage = `The column header should be "${expectedColTitle[index]}" instead of "${headerText}"`;
+        }
+
+        if (assertionPassed) {
+          cy.wrap(element).should('contain.text', expectedColTitle[index]);
+          cy.log('Assertion Passed');
+          assertionResults.push({ data: 'passed' });
+        } else {
+          if (!failedAssertions.has(customErrorMessage)) {
+            cy.log('Assertion Failed');
+            failedAssertions.add(customErrorMessage);
+            failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage });
+            cy.screenshot(`failure-${index}-${expectedColTitle[index].replace(/\W/g, '-')}`, { capture: 'fullPage' });
+          } else {
+            cy.log('Skipping screenshot, failure already captured.');
+          }
+          assertionResults.push({ data: 'failed' });
+          errorMessages.push(customErrorMessage);
+        }
+        resolve();
+      }));
+    });
+
+    return Cypress.Promise.all(elementPromises).then(() => {
+      if (errorMessages.length > 0) {
+        cy.log(`\n${errorMessages.join('\n')}`);
+      }
+    });
+  }).then(() => {
+    // Write assertionResults status to a file
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+  });
+});
+
+
+
+Cypress.Commands.add('checkHeaderTitle', (selector, referenceNumber, errorContext, expectedText, assertionResults = [], failureMessages = []) => {
   cy.get(selector).then($element => {
     const actualText = $element.text().trim(); // Get the actual text from the element
     const containsExpectedText = $element.text().includes(expectedText);
 
     if (containsExpectedText) {
-
       cy.wrap($element).should('be.visible');
       cy.log('Assertion Passed');
-      visibility.push({ data: 'passed' });
-
+      assertionResults.push({ data: 'passed' });
     } else {
-      
       const failureMessage = `The title header should be "${expectedText}" instead of "${actualText}"`;
 
       if (!failedAssertions.has(failureMessage)) {
         cy.log('Assertion Failed');
         failedAssertions.add(failureMessage);
-        failureMessages.push(failureMessage); // Record the failure message
-        cy.screenshot(`failure-${selector.replace(/\W/g, '-')}`, { capture: 'runner' });
-        
-      } 
-      
-      else {
-
+        failureMessages.push({ referenceNumber, errorContext, message: failureMessage });
+        cy.screenshot(`failure-${failureMessage}-${selector.replace(/\W/g, '-')}`, { capture: 'fullPage' });
+      } else {
         cy.log('Skipping screenshot, failure already captured.');
-
       }
-      
-      visibility.push({ data: 'failed' });
+      assertionResults.push({ data: 'failed' });
     }
-
   }).then(() => {
-
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
-    
-  });
-});
-
-Cypress.Commands.add('checkLabel', (selector, expectedText, visibility, failureMessages) => {
-  cy.get(selector).then($element => {
-    const actualText = $element.text().trim(); // Get the actual text from the element
-    const containsExpectedText = $element.text().includes(expectedText);
-
-    if (containsExpectedText) {
-
-      cy.wrap($element).should('be.visible');
-      cy.log('Assertion Passed');
-      visibility.push({ data: 'passed' });
-
-    } else {
-      
-      const failureMessage = `Expected text field label should be "${expectedText}" but the actual was "${actualText}" in selector "${selector}"`;
-
-      if (!failedAssertions.has(failureMessage)) {
-        cy.log('Assertion Failed');
-        failedAssertions.add(failureMessage);
-        failureMessages.push(failureMessage); // Record the failure message
-        cy.screenshot(`failure-${selector.replace(/\W/g, '-')}`, { capture: 'runner' });
-        
-      } 
-      
-      else {
-
-        cy.log('Skipping screenshot, failure already captured.');
-
-      }
-      
-      visibility.push({ data: 'failed' });
-    }
-
-  }).then(() => {
-
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
-    
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
   });
 });
 
 
 
-
-Cypress.Commands.add('checkForFailure', (assertions, failureMessages = []) => {
+Cypress.Commands.add('checkForFailure', (assertionResults, failureMessages = []) => {
   cy.fixture('message.json').then((data) => {
     // Check if there's a failure in either the assertions or the JSON data
-    const hasFailedAssertions = assertions.some(entry => entry.data === 'failed');
+    const hasFailedAssertions = assertionResults.some(entry => entry.data === 'failed');
     const hasFailedJson = data.some(entry => entry.data === 'failed');
 
-    // Get unique failure messages
-    const uniqueFailureMessages = Array.from(new Set(failureMessages));
+    if (hasFailedAssertions || hasFailedJson) {
+      // Consolidate and log all unique failure messages
+      const consolidatedErrors = failureMessages.reduce((acc, { referenceNumber, errorContext, message }) => {
+        if (!acc[referenceNumber]) {
+          acc[referenceNumber] = { context: errorContext, messages: [] };
+        }
+        acc[referenceNumber].messages.push(message);
+        return acc;
+      }, {});
 
-    if (hasFailedAssertions) {
-      // Check if there are any corresponding failures in the JSON data
-      expect(hasFailedJson).to.be.true;
+      const errorLog = Object.entries(consolidatedErrors).map(([reference, { context, messages }]) => {
+        const numberedMessages = messages.map((msg, idx) => `${idx + 1}. ${msg}`).join('\n\t');
+        return `Reference No.: ${reference}\n${context}\n\t${numberedMessages}`;
+      }).join('\n\n');
 
-      // Log all unique failure messages
-      uniqueFailureMessages.forEach(message => {
-        cy.log(`Failure: ${message}`);
-      });
+      // Log consolidated error messages
+      cy.log(errorLog);
 
-      // Ensure there are no failure messages; if there are, the test should fail
-      if (uniqueFailureMessages.length > 0) {
-        throw new Error(`Test failed with ${uniqueFailureMessages.length} unique failure(s): ${uniqueFailureMessages.join(', ')}`);
+      // Throw error if there are failure messages
+      if (Object.keys(consolidatedErrors).length > 0) {
+        throw new Error(`Test failed with the following errors:\n\n${errorLog}`);
       }
     } else {
       cy.log('No failures detected.');
@@ -208,39 +196,277 @@ Cypress.Commands.add('checkForFailure', (assertions, failureMessages = []) => {
 });
 
 
-Cypress.Commands.add('checkValidation', (selector, expectedText, visibility, failureMessages) => {
+
+Cypress.Commands.add('checkLabelCaption', (selector, referenceNumber, errorContext, expectedText, assertionResults = [], failureMessages = []) => {
   cy.get(selector).then($element => {
     const actualText = $element.text().trim(); // Get the actual text from the element
     const containsExpectedText = $element.text().includes(expectedText);
 
     if (containsExpectedText) {
-
       cy.wrap($element).should('be.visible');
       cy.log('Assertion Passed');
-      visibility.push({ data: 'passed' });
-
-
+      assertionResults.push({ data: 'passed' });
     } else {
-
-      const failureMessage = `Upon clicking of "Add" button on pager: Expected validation should be "${expectedText}" but the actual was "${actualText}" in selector "${selector}"`;
+      const failureMessage = `The title header should be "${expectedText}" instead of "${actualText}"`;
 
       if (!failedAssertions.has(failureMessage)) {
         cy.log('Assertion Failed');
         failedAssertions.add(failureMessage);
-        failureMessages.push(failureMessage); // Record the failure message
-        cy.screenshot(`failure-${selector.replace(/\W/g, '-')}`, { capture: 'runner' });
+        failureMessages.push({ referenceNumber, errorContext, message: failureMessage });
+        cy.screenshot(`failure-${failureMessage}-${selector.replace(/\W/g, '-')}`, { capture: 'fullPage' });
+      } else {
+        cy.log('Skipping screenshot, failure already captured.');
+      }
+      assertionResults.push({ data: 'failed' });
+    }
+  }).then(() => {
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+  });
+});
+
+
+
+Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, errorContext, assertionResults = [], failureMessages = []) => {
+  const failedAssertions = new Set(); // Track failed assertions to avoid redundant errors
+
+  cy.fixture(fixtureFileName).then((elements) => {
+    const elementPromises = elements.map((element) => {
+      return cy.get(element.sel).then(($el) => {
+        const actualAssertion = element.assertion;
+        let assertionPassed = true;
+        let customErrorMessage = '';
+
+        // Check different assertions
+        switch (actualAssertion) {
+          case 'not.be.enabled':
+            assertionPassed = !$el.is(':enabled');
+            break;
+          case 'be.enabled':
+            assertionPassed = $el.is(':enabled');
+            break;
+          case 'not.be.disabled':
+            assertionPassed = !$el.is(':disabled');
+            break;
+          case 'be.disabled':
+            assertionPassed = $el.is(':disabled');
+            break;
+          case 'exist':
+            assertionPassed = $el.length > 0;
+            break;
+          case 'not.exist':
+            assertionPassed = $el.length === 0;
+            break;
+          case 'be.visible':
+            assertionPassed = $el.is(':visible');
+            break;
+          case 'not.be.visible':
+            assertionPassed = !$el.is(':visible');
+            break;
+          case 'have.class':
+            assertionPassed = $el.hasClass(element.className);
+            break;
+          case 'not.have.class':
+            assertionPassed = !$el.hasClass(element.className);
+            break;
+          case 'have.text':
+            assertionPassed = $el.text() === element.expectedText;
+            break;
+          case 'not.have.text':
+            assertionPassed = $el.text() !== element.expectedText;
+            break;
+          case 'contain.text':
+            assertionPassed = $el.text().includes(element.expectedText);
+            break;
+          case 'not.contain.text':
+            assertionPassed = !$el.text().includes(element.expectedText);
+            break;
+          case 'have.value':
+            assertionPassed = $el.val() === element.expectedValue;
+            break;
+          case 'not.have.value':
+            assertionPassed = $el.val() !== element.expectedValue;
+            break;
+          case 'contain.value':
+            assertionPassed = $el.val().includes(element.expectedValue);
+            break;
+          case 'not.contain.value':
+            assertionPassed = !$el.val().includes(element.expectedValue);
+            break;
+          case 'be.checked':
+            assertionPassed = $el.is(':checked');
+            break;
+          case 'not.be.checked':
+            assertionPassed = !$el.is(':checked');
+            break;
+          case 'be.selected':
+            assertionPassed = $el.is(':selected');
+            break;
+          case 'not.be.selected':
+            assertionPassed = !$el.is(':selected');
+            break;
+          case 'be.empty':
+            assertionPassed = $el.is(':empty');
+            break;
+          case 'not.be.empty':
+            assertionPassed = !$el.is(':empty');
+            break;
+          default:
+            assertionPassed = false;
+            customErrorMessage = `Unknown assertion: ${actualAssertion}`;
+        }
+
+        if (!assertionPassed) {
+          customErrorMessage = element.customErrorMsg || customErrorMessage;
+        }
+
+        if (assertionPassed) {
+          if (['have.text', 'not.have.text', 'contain.text', 'not.contain.text'].includes(actualAssertion)) {
+            cy.wrap($el).should(actualAssertion, element.expectedText);
+          } else if (['have.value', 'not.have.value', 'contain.value', 'not.contain.value'].includes(actualAssertion)) {
+            cy.wrap($el).should(actualAssertion, element.expectedValue);
+          } else {
+            cy.wrap($el).should(actualAssertion);
+          }
+          cy.log('Assertion Passed');
+          assertionResults.push({ data: 'passed' });
+        } else {
+          if (!failedAssertions.has(customErrorMessage)) {
+            cy.log('Assertion Failed');
+            failedAssertions.add(customErrorMessage);
+            failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage });
+            cy.screenshot(`failure-${failureMessage}-${element.sel.replace(/\W/g, '-')}`, { capture: 'fullPage' });
+          } else {
+            cy.log('Skipping screenshot, failure already captured.');
+          }
+          assertionResults.push({ data: 'failed' });
+        }
+      });
+    });
+
+    return Cypress.Promise.all(elementPromises);
+  }).then(() => {
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+  });
+});
+
+
+// Check element shoulb be visible
+Cypress.Commands.add('checkElementVisibility', (selector, referenceNumber, errorContext, errorMsg, assertionResults = [], failureMessages = []) => {
+  cy.get('body').then(($body) => {
+
+    // Check if the element exists
+    if ($body.find(selector).length > 0) {
+
+      // If the element exists, get the element and check visibility
+      cy.get(selector).then($element => {
+
+        const isVisible = $element.is(':visible');
+
+        if (isVisible) {
+
+          cy.log('Assertion Passed');
+          assertionResults.push({ data: 'passed' });
+
+        } else {
+
+          const failureMessage = errorMsg;
+
+          if (!failedAssertions.has(failureMessage)) {
+
+            cy.log('Assertion Failed');
+            failedAssertions.add(failureMessage);
+            failureMessages.push({ referenceNumber, errorContext, message: failureMessage });
+            cy.screenshot(`failure-${failureMessage}-${selector.replace(/\W/g, '-')}`, { capture: 'fullPage' });
+
+          } else {
+
+            cy.log('Skipping screenshot, failure already captured.');
+
+          }
+
+          assertionResults.push({ data: 'failed' });
+        }
+      })
+
+    } else {
+
+      // Handle the case where the element is not found
+      const failureMessage = errorMsg;
+
+      if (!failedAssertions.has(failureMessage)) {
+
+        cy.log('Assertion Failed');
+        failedAssertions.add(failureMessage);
+        failureMessages.push({ referenceNumber, errorContext, message: failureMessage });
+        cy.screenshot(`failure-${selector.replace(/\W/g, '-')}`, { capture: 'fullPage' });
 
       } else {
 
         cy.log('Skipping screenshot, failure already captured.');
 
       }
-      
-      visibility.push({ data: 'failed' });
+      assertionResults.push({ data: 'failed' });
     }
   }).then(() => {
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(visibility));
+
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+
   });
 });
 
 
+// Check element should not be visible
+Cypress.Commands.add('checkElementInvisibility', (selector, referenceNumber, errorContext, errorMsg, assertionResults = [], failureMessages = []) => {
+  cy.get('body').then(($body) => {
+
+    // Check if the element exists
+    if ($body.find(selector).length > 0) {
+
+      // If the element exists, get the element and check visibility
+      cy.get(selector).then($element => {
+
+        const isVisible = $element.is(':visible');
+
+        if (!isVisible) {
+
+          cy.log('Assertion Passed');
+          assertionResults.push({ data: 'passed' });
+
+        } else {
+
+          const failureMessage = errorMsg;
+
+          if (!failedAssertions.has(failureMessage)) {
+
+            cy.log('Assertion Failed');
+            failedAssertions.add(failureMessage);
+            failureMessages.push({ referenceNumber, errorContext, message: failureMessage });
+            cy.screenshot(`failure-${failureMessage}-${selector.replace(/\W/g, '-')}`, { capture: 'fullPage' });
+
+          } else {
+
+            cy.log('Skipping screenshot, failure already captured.');
+
+          }
+
+          assertionResults.push({ data: 'failed' });
+        }
+      })
+
+    } else {
+
+      // Handle the case where the element is not found
+      cy.log('Assertion Passed');
+      assertionResults.push({ data: 'passed' });
+    }
+  }).then(() => {
+
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+    
+  });
+});
+
+
+Cypress.Commands.add('execute', (command) => {
+  return cy.task('execute', command);
+})
