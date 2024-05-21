@@ -1,0 +1,76 @@
+[
+  {
+    "itemSubclass": "Mashed Potatoes",
+    "itemClass": "SIDE DISH",
+    "editItemSubclass": "Snacks",
+    "editItemClass": "SIDE DISH"
+  },
+  {
+    "itemSubclass": "Breakfast Meal",
+    "itemClass": "MAIN COURSE"
+  },
+  {
+    "itemSubclass": "Milkshakes",
+    "itemClass": "SIDE DISH"
+  },
+  {
+    "itemSubclass": "Chicken",
+    "itemClass": "MAIN COURSE"
+  },
+  {
+    "itemSubclass": "Burgers",
+    "itemClass": "MAIN COURSE"
+  },
+  {
+    "itemSubclass": "Spaghetti",
+    "itemClass": "MAIN COURSE"
+  },
+  {
+    "itemSubclass": "Rice Meals",
+    "itemClass": "MAIN COURSE"
+  },
+  {
+    "itemSubclass": "Pies",
+    "itemClass": "DESSERTS"
+  },
+  {
+    "itemSubclass": "Ice Cream",
+    "itemClass": "DESSERTS"
+  },
+  {
+    "itemSubclass": "Soft Drinks",
+    "itemClass": "BEVERAGES"
+  },
+  {
+    "itemSubclass": "Coffee",
+    "itemClass": "BEVERAGES"
+  },
+  {
+    "itemSubclass": "Juices",
+    "itemClass": "BEVERAGES"
+  },
+  {
+    "itemSubclass": "Fries",
+    "itemClass": "SIDE DISH"
+  },
+  {
+    "itemSubclass": "Rice",
+    "itemClass": "SIDE DISH"
+  },
+  {
+    "itemSubclass": "% & ( ) / - .",
+    "itemClass": "SIDE DISH"
+  },
+  {
+    "itemSubclass": "null",
+    "itemClass": "SIDE DISH"
+  },
+  {
+    "itemSubclass": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
+    "itemClass": "SIDE DISH"
+  },
+  {
+    "itemSubclass": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
+    "itemClass": "SIDE DISH"
+  }
+]

@@ -207,7 +207,7 @@ Cypress.Commands.add('checkLabelCaption', (selector, referenceNumber, errorConte
       cy.log('Assertion Passed');
       assertionResults.push({ data: 'passed' });
     } else {
-      const failureMessage = `The title header should be "${expectedText}" instead of "${actualText}"`;
+      const failureMessage = `The label caption should be "${expectedText}" instead of "${actualText}"`;
 
       if (!failedAssertions.has(failureMessage)) {
         cy.log('Assertion Failed');
@@ -334,7 +334,7 @@ Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, erro
             cy.log('Assertion Failed');
             failedAssertions.add(customErrorMessage);
             failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage });
-            cy.screenshot(`failure-${failureMessage}-${element.sel.replace(/\W/g, '-')}`, { capture: 'fullPage' });
+            cy.screenshot(`failure-${customErrorMessage}-${element.sel.replace(/\W/g, '-')}`, { capture: 'fullPage' });
           } else {
             cy.log('Skipping screenshot, failure already captured.');
           }
