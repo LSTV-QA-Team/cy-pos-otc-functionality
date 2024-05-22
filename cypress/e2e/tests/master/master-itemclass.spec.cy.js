@@ -282,22 +282,24 @@ describe('Item Classification', () => {
 
             const specificItemClass = data[4];
 
-                cy.wait(2000);
+                cy.wait(2000)
 
                 // 21. Should have an existing data to edit 
                 cy.contains('tbody > tr', specificItemClass.itemClass).within(() => {
 
-                    cy.get('[data-icon="edit"][aria-hidden="true"]').click();
+                    cy.get('[data-icon="edit"][aria-hidden="true"]').click()
                 })
 
                 // 21.1 Check if modal window is visible.
-                cy.checkElementVisibility('.shadow-lg', '21.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
+                cy.checkElementVisibility('.shadow-lg', '54.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
                 // 21.1.1 Check correct modal title header.
-                cy.checkHeaderTitle('.px-8', '21.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Item Classification', assertionResults, failureMessages)
+                cy.checkHeaderTitle('.px-8', '54.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Item Subclassification', assertionResults, failureMessages)
 
                 // 21.1.2 Check correct label caption.
-                cy.checkLabelCaption('.mb-2', '21.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Description *', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="itemsubclassdsc"]', '54.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass Description *', assertionResults, failureMessages)
+
+                cy.checkLabelCaption('label[for="itmclacde"]', '54.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass Description *', assertionResults, failureMessages)
             
                 // 21.1.3 Check correct object (textbox) width
                 // Add when needed
@@ -441,7 +443,7 @@ describe('Item Classification', () => {
         cy.xpath('//span[@aria-label="printer"]')
           .click();
 
-        cy.wait(8000)
+        cy.wait(10000)
 
         cy.task('verifyDownloads', Cypress.config('downloadsFolder')).then((files) => {
             const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file));
