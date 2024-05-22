@@ -459,7 +459,7 @@ describe('Item Subclassification', () => {
 
     it('Search Functionality', () => {
         cy.fixture('master-itemsubclass-data.json').then((data) => {
-            const specificItemSubclass = data[0];
+            const specificItemSubclass = data[3];
 
                 cy.wait(2000);
 
@@ -518,6 +518,3 @@ describe('Item Subclassification', () => {
         });
     });
 });
-
-
-cy.addTestContext(`millan`)
