@@ -291,15 +291,15 @@ describe('Item Classification', () => {
                 })
 
                 // 21.1 Check if modal window is visible.
-                cy.checkElementVisibility('.shadow-lg', '54.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+                cy.checkElementVisibility('.shadow-lg', '21.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
                 // 21.1.1 Check correct modal title header.
-                cy.checkHeaderTitle('.px-8', '54.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Item Subclassification', assertionResults, failureMessages)
+                cy.checkHeaderTitle('.px-8', '21.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Item Subclassification', assertionResults, failureMessages)
 
                 // 21.1.2 Check correct label caption.
-                cy.checkLabelCaption('label[for="itemsubclassdsc"]', '54.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass Description *', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="itemsubclassdsc"]', '21.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass Description *', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('label[for="itmclacde"]', '54.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass Description *', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="itmclacde"]', '21.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass Description *', assertionResults, failureMessages)
             
                 // 21.1.3 Check correct object (textbox) width
                 // Add when needed
