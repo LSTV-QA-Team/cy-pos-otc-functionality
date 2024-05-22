@@ -226,7 +226,7 @@ describe('Item Classification', () => {
 
                             }
 
-                            else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \ ~ \" | \ ] [ ] ; :") {
+                            else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
 
                                 // 16. Click "Save" button.
                                 cy.get('.border-blue-500').click()
