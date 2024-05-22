@@ -1,0 +1,14 @@
+[
+  {
+    "sel": ".border-blue-500",
+    "assertion": "contain.text",
+    "expectedText": "No",
+    "customErrorMsg": "Should have button \"No\" instead of \"Cancel\""
+  },
+  {
+    "sel": ".border-red-500",
+    "assertion": "contain.text",
+    "expectedText": "Yes",
+    "customErrorMsg": "Should have button \"Yes\" instead of \"Confirm\""
+  }
+]

@@ -15,7 +15,7 @@ describe("Cash Fund", () => {
     cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
   });
 
-  it.only("Cash Fund ", () => {
+  it("Cash Fund ", () => {
     //1.1 Click the Cashiering Button After Logging in
 
 
