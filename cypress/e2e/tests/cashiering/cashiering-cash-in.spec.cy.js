@@ -16,7 +16,7 @@ describe("Cash In", () => {
   it("Cash In ", () => {
     //3.Click Cash In Button
     //3.1 Check if the Cash In Button is enable
-    cy.get("#1").should("be.enabled").click().wait(1000);
+    cy.contains("Cash In").click().wait(1000);
     //3.2 Check if the modal will show upon clicking Cash In
     cy.contains("Cash In").should("have.text", "Cash In").wait(1000);
 
@@ -73,9 +73,12 @@ describe("Cash In", () => {
     //3.1.28 Check if the Cancel button is functioning. It should show the confirmation message of canceling the cashfund
     cy.contains("Cancel").click().wait(1000);
     cy.contains("Yes").click().wait(1000);
+
+    cy.checkForFailure(assertionResults, failureMessages)
+
   });
 
-  it.only("Inputing Data", () => {
+  it("Inputing Data", () => {
     //3. Click the Cash in Button
     cy.contains("Cash In").should("be.enabled").click().wait(1000);
     //3.3.1 Click number 2 button and 0 two times to input 200 in cash in

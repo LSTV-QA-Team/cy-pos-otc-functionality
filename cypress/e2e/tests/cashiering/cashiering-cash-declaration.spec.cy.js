@@ -214,6 +214,9 @@ describe("Cash Declaration", () => {
       .wait(1000);
     //5.2.48 Check if the total is 0.00
     cy.get(".button").should("have.value", "₱0.00");
+
+    cy.checkForFailure(assertionResults, failureMessages)
+
   });
 
   it("Cash Declaration Type ", () => {
@@ -324,6 +327,8 @@ describe("Cash Declaration", () => {
     cy.contains("Cancel").click().wait(1000)
     cy.contains("Yes").click().wait(1000)
 
+    cy.checkForFailure(assertionResults, failureMessages)
+
   });
 
   it("Inputing of Data", () => {
@@ -337,6 +342,8 @@ describe("Cash Declaration", () => {
     cy.get(".button").should("have.value", "₱5,100.00").wait(2000)
     cy.contains("Save").click()
     cy.contains("Transaction Success").should("have.text" , "Transaction Success").wait(1000)
+
+    cy.checkForFailure(assertionResults, failureMessages)
   })
 
 });

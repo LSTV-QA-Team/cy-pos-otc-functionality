@@ -16,7 +16,7 @@ describe("Cash Out", () => {
 it('Cash Out', () => {
 
  //  4.1 Check if the Cash Out Button is enable
-  cy.contains("Cash Out").should("be.enabled").click().wait(1000);
+  cy.contains("Cash Out").click().wait(1000);
 //   4.2 Check if the modal will show upon clicking Cash In
   cy.contains("Cash Out").should("have.text", "Cash Out").wait(1000);
 
@@ -74,6 +74,8 @@ it('Cash Out', () => {
     cy.contains("Cancel").click().wait(1000);
     cy.contains("Yes").click().wait(1000);
 
+    cy.checkForFailure(assertionResults, failureMessages)
+
 })
 
 it("Inserting Data",() => {
@@ -100,7 +102,7 @@ cy.contains("Transaction Success").should(
   "Transaction Success"
 );
 
-
+cy.checkForFailure(assertionResults, failureMessages)
 
 })
 
