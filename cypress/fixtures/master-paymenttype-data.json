@@ -1,0 +1,45 @@
+[
+  {
+    "paymentType": "Cash"
+  },
+  {
+    "paymentType": "Check"
+  },
+  {
+    "paymentType": "E-wallet"
+  },
+  {
+    "paymentType": "Credit Card"
+  },
+  {
+    "paymentType": "Debit Card"
+  },
+  {
+    "paymentType": "Prepaid Card"
+  },
+  {
+    "paymentType": "Gift Card"
+  },
+  {
+    "paymentType": "Store Gift",
+    "editPaymentType": "Store Card"
+  },
+  {
+    "paymentType": "Loyalty Card"
+  },
+  {
+    "paymentType": "Electronic Card"
+  },
+  {
+    "paymentType": "null"
+  },
+  {
+    "paymentType": "% & ( ) / - ."
+  },
+  {
+    "paymentType": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :"
+  },
+  {
+    "paymentType": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap"
+  }
+]
