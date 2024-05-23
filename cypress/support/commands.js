@@ -1,3 +1,4 @@
+// commands that encapsulate repetitive tasks
 
 import "cypress-real-events";
 import "cypress-xpath";
@@ -42,23 +43,28 @@ Cypress.Commands.add('queryDatabase', (query) => {
 
 
 Cypress.Commands.add('login', (userCode, userPassword) => {
-  
-    cy.visit(Cypress.config('baseUrl'), 5000)
+  cy.session([userCode, userPassword], () => {
+
+    // cy.visit(Cypress.config('baseUrl'), 5000)
+    cy.visit('/login')
     cy.get('span[role="img"][aria-label="close"][tabindex="-1"].anticon.anticon-close').click();
     cy.wait(4000);
     cy.get('#usrcde').should('be.enabled')
     cy.get('#usrcde').clear();
-    cy.get('#usrcde').realType('lstv');
+    cy.get('#usrcde').realType(userCode);
     cy.get('#usrpwd').should('be.enabled')
     cy.get('#usrpwd').clear();
-    cy.get('#usrpwd').realType('lstventures');
+    cy.get('#usrpwd').realType(userPassword);
     cy.get('.sc-guDLey').should('be.enabled')
     cy.get('button.sc-guDLey.decbXQ[form="login"]').click();
     cy.wait(4000)
     cy.url({timeout: 10000}).should('contain', '/home')
     cy.get('.text-\\[2rem\\]').should('have.text', 'Welcome, lstv!');
     cy.wait(4000);
+
   })
+    
+})
 
 
 Cypress.Commands.add('navigateToModule', (menuSelector, submenuSelector) => {
@@ -162,24 +168,32 @@ Cypress.Commands.add('checkHeaderTitle', (selector, referenceNumber, errorContex
 
 
 Cypress.Commands.add('checkForFailure', (assertionResults, failureMessages = []) => {
+
   cy.fixture('message.json').then((data) => {
+
     // Check if there's a failure in either the assertions or the JSON data
     const hasFailedAssertions = assertionResults.some(entry => entry.data === 'failed');
     const hasFailedJson = data.some(entry => entry.data === 'failed');
 
     if (hasFailedAssertions || hasFailedJson) {
+      
       // Consolidate and log all unique failure messages
       const consolidatedErrors = failureMessages.reduce((acc, { referenceNumber, errorContext, message }) => {
+
         if (!acc[referenceNumber]) {
           acc[referenceNumber] = { context: errorContext, messages: [] };
         }
+
         acc[referenceNumber].messages.push(message);
         return acc;
+
       }, {});
 
       const errorLog = Object.entries(consolidatedErrors).map(([reference, { context, messages }]) => {
+
         const numberedMessages = messages.map((msg, idx) => `${idx + 1}. ${msg}`).join('\n\t');
         return `Reference No.: ${reference}\n${context}\n\t${numberedMessages}`;
+
       }).join('\n\n');
 
       // Log consolidated error messages
@@ -187,10 +201,14 @@ Cypress.Commands.add('checkForFailure', (assertionResults, failureMessages = [])
 
       // Throw error if there are failure messages
       if (Object.keys(consolidatedErrors).length > 0) {
+
         throw new Error(`Test failed with the following errors:\n\n${errorLog}`);
+
       }
     } else {
-      cy.log('No failures detected.');
+
+      cy.log('No failures detected.')
+
     }
   });
 });

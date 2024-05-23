@@ -61,8 +61,9 @@ module.exports = defineConfig({
 
   e2e: {
 
-    baseUrl: 'http://localhost:5173/#/pages/login',
+    baseUrl: 'http://localhost:5173/#/pages',
     experimentalStudio: true,
+    testIsolation: false,
 
     // implement node event listeners here
     setupNodeEvents(on, config) {
