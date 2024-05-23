@@ -1,0 +1,29 @@
+[
+  {
+    "sel": "button.border-blue-500",
+    "assertion": "contain.text",
+    "expectedText": "Save",
+    "customErrorMsg": "Save button should contain text \"Save\" instead of \"Update Data\""
+  },
+  {
+    "sel": "button.border-red-500",
+    "assertion": "contain.text",
+    "expectedText": "Cancel",
+    "customErrorMsg": "Cancel button should contain text \"Cancel\" instead of \"update Data\""
+  },
+  {
+    "sel": "#voidcde",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "button.border-blue-500",
+    "assertion": "be.enabled",
+    "customErrorMsg": "\"Update Data\" button Should be enabled and clickable"
+  },
+  {
+    "sel": "button.border-red-500",
+    "assertion": "be.enabled",
+    "customErrorMsg": "\"Cancel\" button Should be enabled and clickable"
+  }
+]
