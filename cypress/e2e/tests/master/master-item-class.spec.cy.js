@@ -31,10 +31,7 @@ describe('Item Classification', () => {
         failureMessages = [];
 
         // Login with valid credentials
-        cy.login()
-
-        // 1. Navigate to page
-        cy.navigateToModule('Master File', 'Item Classifications')
+        cy.login('lstv', 'lstventures')
 
     });
 
@@ -68,7 +65,10 @@ describe('Item Classification', () => {
         });
     })
 
-    it('Check Item Classification Page', () => {   
+    it.only('Check Item Classification Page', () => {   
+
+        // 1. Navigate to page
+        cy.navigateToModule('Master File', 'Item Classifications')
 
         // 1.1 Check if correct URL.
         cy.url({timeout: 10000})
@@ -106,33 +106,33 @@ describe('Item Classification', () => {
 
         cy.fixture('master-itemclass-data.json').then((data) => {
 
+            // 2. Click "Add" button from pager U/I
+            cy.get('.sc-eDLKkx > .anticon > svg').click()
+
+            cy.wait(4000) 
+            
+            // 2.1 Check if modal window is visible.
+            cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
+
+            // 2.1.1 Check correct modal title header.
+            cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Item Classification', assertionResults, failureMessages)
+
+            // 2.1.2 Check correct label caption.
+            cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Description *', assertionResults, failureMessages)
+            
+            // 2.1.3 Check correct object (textbox) width
+            // cy.get('#itmcladsc')
+            //     .invoke('outerWidth')
+            //     .should('eq', 420)
+
+            // 2.1.4 Check correct buttons(s) caption
+
+            // 2.1.5 Check correct all object position
+
+            // 2.1.6 Check enabled/disable of all object
+            cy.validateElements('itemclass-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+
             for (const key in data){
-
-                // 2. Click "Add" button from pager U/I
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
-
-                cy.wait(4000) 
-                
-                // 2.1 Check if modal window is visible.
-                cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
-
-                // 2.1.1 Check correct modal title header.
-                cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Item Classification', assertionResults, failureMessages)
-
-                // 2.1.2 Check correct label caption.
-                cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Description *', assertionResults, failureMessages)
-                
-                // 2.1.3 Check correct object (textbox) width
-                // cy.get('#itmcladsc')
-                //     .invoke('outerWidth')
-                //     .should('eq', 420)
-
-                // 2.1.4 Check correct buttons(s) caption
-
-                // 2.1.5 Check correct all object position
-
-                // 2.1.6 Check enabled/disable of all object
-                cy.validateElements('itemclass-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
                 
                 // 3. Encode on description textbox object
                 cy.get('#itmcladsc')
