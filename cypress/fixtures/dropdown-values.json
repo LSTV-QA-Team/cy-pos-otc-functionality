@@ -1,0 +1,26 @@
+{
+    "itemclass": [
+        "MAIN COURSE",
+        "DESSERTS",
+        "BEVERAGES",
+        "SIDE DISH"
+    ],
+    "itemSubclass": [
+        "Snacks",
+        "Chicken",
+        "Burgers",
+        "Soft Drinks",
+        "Fries",
+        "Ice Cream",
+        "Coffee",
+        "Pies",
+        "Spaghetti",
+        "Juices",
+        "Rice",
+        "Rice Meals"
+    ],
+    "orderType": [
+        "DINEIN",
+        "TAKEOUT"
+    ]
+}

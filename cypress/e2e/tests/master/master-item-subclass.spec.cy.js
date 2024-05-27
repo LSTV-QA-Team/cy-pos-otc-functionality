@@ -34,10 +34,8 @@ describe('Item Subclassification', () => {
         failureMessages = [];
 
         // Login with valid credentials
-        cy.login()
+        cy.login('lstv', 'lstventures')
 
-        // 1. Navigate to page
-        cy.navigateToModule('Master File', 'Item Subclassifications')
 
     });
 
@@ -72,6 +70,9 @@ describe('Item Subclassification', () => {
     })
 
     it('Check Item Subclassification Page', () => {   
+
+        // 1. Navigate to page
+        cy.navigateToModule('Master File', 'Item Subclassifications')
 
         // 1.1 Check if correct URL.
         cy.url({timeout: 10000})

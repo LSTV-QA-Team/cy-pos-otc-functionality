@@ -1,0 +1,58 @@
+[
+  {
+    "dineType": "Dine-In",
+    "orderType": "DINEIN",
+    "onlySearch": true,
+    "onlyDelete": false
+  },
+  {
+    "dineType": "Takeout",
+    "orderType": "TAKEOUT",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "dineType": "Delivery",
+    "orderType": "TAKEOUT",
+    "editDineType": "GRAB Delivery",
+    "editOrderType": "TAKEOUT",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "dineType": "Drive-Thru",
+    "orderType": "TAKEOUT",
+    "onlySearch": false,
+    "onlyDelete": true
+  },
+  {
+    "dineType": "Reservation",
+    "orderType": "DINEIN",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "dineType": "null",
+    "orderType": "DINEIN",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "dineType": "% & ( ) / - .",
+    "orderType": "DINEIN",
+    "onlySearch": false,
+    "onlyDelete": true
+  },
+  {
+    "dineType": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
+    "orderType": "DINEIN",
+    "onlySearch": false,
+    "onlyDelete": true
+  },
+  {
+    "dineType": "This is a very long string that exceeds the maximum allowed length.",
+    "orderType": "DINEIN",
+    "onlySearch": false,
+    "onlyDelete": true
+  }
+]

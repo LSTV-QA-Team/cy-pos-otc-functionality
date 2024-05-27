@@ -86,55 +86,55 @@ Cypress.Commands.add('addTestContext', (context) => {
 
 
 
-Cypress.Commands.add('checkTableColumnTitle', (expectedColTitle, referenceNumber, errorContext, assertionResults = [], failureMessages = []) => {
-  // Track failed assertions to avoid redundant errors
-  const failedAssertions = new Set();
+// Cypress.Commands.add('checkTableColumnTitle', (expectedColTitle, referenceNumber, errorContext, assertionResults = [], failureMessages = []) => {
+//   // Track failed assertions to avoid redundant errors
+//   const failedAssertions = new Set();
 
-  cy.get('table.MuiTable-root thead tr').find('th.MuiTableCell-root').should('have.length', expectedColTitle.length).then($headers => {
-    const errorMessages = [];
-    const elementPromises = [];
+//   cy.get('table.MuiTable-root thead tr').find('th.MuiTableCell-root').should('have.length', expectedColTitle.length).then($headers => {
+//     const errorMessages = [];
+//     const elementPromises = [];
 
-    $headers.each((index, element) => {
-      elementPromises.push(new Cypress.Promise((resolve) => {
-        const headerText = Cypress.$(element).find('.Mui-TableHeadCell-Content-Wrapper').text();
-        let assertionPassed = true;
-        let customErrorMessage = '';
+//     $headers.each((index, element) => {
+//       elementPromises.push(new Cypress.Promise((resolve) => {
+//         const headerText = Cypress.$(element).find('.Mui-TableHeadCell-Content-Wrapper').text();
+//         let assertionPassed = true;
+//         let customErrorMessage = '';
 
-        if (headerText !== expectedColTitle[index]) {
-          assertionPassed = false;
-          customErrorMessage = `The column header should be "${expectedColTitle[index]}" instead of "${headerText}"`;
-        }
+//         if (headerText !== expectedColTitle[index]) {
+//           assertionPassed = false;
+//           customErrorMessage = `The column header should be "${expectedColTitle[index]}" instead of "${headerText}"`;
+//         }
 
-        if (assertionPassed) {
-          cy.wrap(element).should('contain.text', expectedColTitle[index]);
-          cy.log('Assertion Passed');
-          assertionResults.push({ data: 'passed' });
-        } else {
-          if (!failedAssertions.has(customErrorMessage)) {
-            cy.log('Assertion Failed');
-            failedAssertions.add(customErrorMessage);
-            failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage });
-            cy.screenshot(`failure-${index}-${expectedColTitle[index].replace(/\W/g, '-')}`, { capture: 'fullPage' });
-          } else {
-            cy.log('Skipping screenshot, failure already captured.');
-          }
-          assertionResults.push({ data: 'failed' });
-          errorMessages.push(customErrorMessage);
-        }
-        resolve();
-      }));
-    });
+//         if (assertionPassed) {
+//           cy.wrap(element).should('contain.text', expectedColTitle[index]);
+//           cy.log('Assertion Passed');
+//           assertionResults.push({ data: 'passed' });
+//         } else {
+//           if (!failedAssertions.has(customErrorMessage)) {
+//             cy.log('Assertion Failed');
+//             failedAssertions.add(customErrorMessage);
+//             failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage });
+//             cy.screenshot(`failure-${index}-${expectedColTitle[index].replace(/\W/g, '-')}`, { capture: 'fullPage' });
+//           } else {
+//             cy.log('Skipping screenshot, failure already captured.');
+//           }
+//           assertionResults.push({ data: 'failed' });
+//           errorMessages.push(customErrorMessage);
+//         }
+//         resolve();
+//       }));
+//     });
 
-    return Cypress.Promise.all(elementPromises).then(() => {
-      if (errorMessages.length > 0) {
-        cy.log(`\n${errorMessages.join('\n')}`);
-      }
-    });
-  }).then(() => {
-    // Write assertionResults status to a file
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
-  });
-});
+//     return Cypress.Promise.all(elementPromises).then(() => {
+//       if (errorMessages.length > 0) {
+//         cy.log(`\n${errorMessages.join('\n')}`);
+//       }
+//     });
+//   }).then(() => {
+//     // Write assertionResults status to a file
+//     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+//   });
+// });
 
 
 
@@ -244,8 +244,135 @@ Cypress.Commands.add('checkLabelCaption', (selector, referenceNumber, errorConte
 
 
 
+// Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, errorContext, assertionResults = [], failureMessages = []) => {
+//   const failedAssertions = new Set(); // Track failed assertions to avoid redundant errors
+
+//   cy.fixture(fixtureFileName).then((elements) => {
+//     const elementPromises = elements.map((element) => {
+//       return cy.get(element.sel).then(($el) => {
+//         const actualAssertion = element.assertion;
+//         let assertionPassed = true;
+//         let customErrorMessage = '';
+
+//         // Check different assertions
+//         switch (actualAssertion) {
+//           case 'not.be.enabled':
+//             assertionPassed = !$el.is(':enabled');
+//             break;
+//           case 'be.enabled':
+//             assertionPassed = $el.is(':enabled');
+//             break;
+//           case 'not.be.disabled':
+//             assertionPassed = !$el.is(':disabled');
+//             break;
+//           case 'be.disabled':
+//             assertionPassed = $el.is(':disabled');
+//             break;
+//           case 'exist':
+//             assertionPassed = $el.length > 0;
+//             break;
+//           case 'not.exist':
+//             assertionPassed = $el.length === 0;
+//             break;
+//           case 'be.visible':
+//             assertionPassed = $el.is(':visible');
+//             break;
+//           case 'not.be.visible':
+//             assertionPassed = !$el.is(':visible');
+//             break;
+//           case 'have.class':
+//             assertionPassed = $el.hasClass(element.className);
+//             break;
+//           case 'not.have.class':
+//             assertionPassed = !$el.hasClass(element.className);
+//             break;
+//           case 'have.text':
+//             assertionPassed = $el.text() === element.expectedText;
+//             break;
+//           case 'not.have.text':
+//             assertionPassed = $el.text() !== element.expectedText;
+//             break;
+//           case 'contain.text':
+//             assertionPassed = $el.text().includes(element.expectedText);
+//             break;
+//           case 'not.contain.text':
+//             assertionPassed = !$el.text().includes(element.expectedText);
+//             break;
+//           case 'have.value':
+//             assertionPassed = $el.val() === element.expectedValue;
+//             break;
+//           case 'not.have.value':
+//             assertionPassed = $el.val() !== element.expectedValue;
+//             break;
+//           case 'contain.value':
+//             assertionPassed = $el.val().includes(element.expectedValue);
+//             break;
+//           case 'not.contain.value':
+//             assertionPassed = !$el.val().includes(element.expectedValue);
+//             break;
+//           case 'be.checked':
+//             assertionPassed = $el.is(':checked');
+//             break;
+//           case 'not.be.checked':
+//             assertionPassed = !$el.is(':checked');
+//             break;
+//           case 'be.selected':
+//             assertionPassed = $el.is(':selected');
+//             break;
+//           case 'not.be.selected':
+//             assertionPassed = !$el.is(':selected');
+//             break;
+//           case 'be.empty':
+//             assertionPassed = $el.is(':empty');
+//             break;
+//           case 'not.be.empty':
+//             assertionPassed = !$el.is(':empty');
+//             break;
+//           default:
+//             assertionPassed = false;
+//             customErrorMessage = `Unknown assertion: ${actualAssertion}`;
+//         }
+
+//         if (!assertionPassed) {
+//           customErrorMessage = element.customErrorMsg || customErrorMessage;
+//         }
+
+//         if (assertionPassed) {
+
+//           if (['have.text', 'not.have.text', 'contain.text', 'not.contain.text'].includes(actualAssertion)) {
+//             cy.wrap($el).should(actualAssertion, element.expectedText);
+            
+//           } else if (['have.value', 'not.have.value', 'contain.value', 'not.contain.value'].includes(actualAssertion)) {
+//             cy.wrap($el).should(actualAssertion, element.expectedValue);
+//           } else {
+//             cy.wrap($el).should(actualAssertion);
+//           }
+//           cy.log('Assertion Passed');
+//           assertionResults.push({ data: 'passed' });
+//         } else {
+//           if (!failedAssertions.has(customErrorMessage)) {
+//             cy.log('Assertion Failed');
+//             failedAssertions.add(customErrorMessage);
+//             failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage });
+//             cy.screenshot(`failure-${customErrorMessage}-${element.sel.replace(/\W/g, '-')}`, { capture: 'fullPage' });
+//           } else {
+//             cy.log('Skipping screenshot, failure already captured.');
+//           }
+//           assertionResults.push({ data: 'failed' });
+//         }
+//       });
+//     });
+
+//     return Cypress.Promise.all(elementPromises);
+//   }).then(() => {
+//     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+//   });
+// });
+
+
 Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, errorContext, assertionResults = [], failureMessages = []) => {
-  const failedAssertions = new Set(); // Track failed assertions to avoid redundant errors
+  // Track processed scenarios to avoid redundancy
+  const processedScenarios = new Set();
 
   cy.fixture(fixtureFileName).then((elements) => {
     const elementPromises = elements.map((element) => {
@@ -339,24 +466,28 @@ Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, erro
 
         if (assertionPassed) {
           if (['have.text', 'not.have.text', 'contain.text', 'not.contain.text'].includes(actualAssertion)) {
-            cy.wrap($el).should(actualAssertion, element.expectedText);
-          } else if (['have.value', 'not.have.value', 'contain.value', 'not.contain.value'].includes(actualAssertion)) {
-            cy.wrap($el).should(actualAssertion, element.expectedValue);
-          } else {
-            cy.wrap($el).should(actualAssertion);
-          }
-          cy.log('Assertion Passed');
-          assertionResults.push({ data: 'passed' });
+                        cy.wrap($el).should(actualAssertion, element.expectedText);
+                        
+                      } else if (['have.value', 'not.have.value', 'contain.value', 'not.contain.value'].includes(actualAssertion)) {
+                        cy.wrap($el).should(actualAssertion, element.expectedValue);
+                      } else {
+                        cy.wrap($el).should(actualAssertion);
+                      }
+                      cy.log('Assertion Passed');
+                      assertionResults.push({ data: 'passed' });
         } else {
           if (!failedAssertions.has(customErrorMessage)) {
-            cy.log('Assertion Failed');
             failedAssertions.add(customErrorMessage);
             failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage });
             cy.screenshot(`failure-${customErrorMessage}-${element.sel.replace(/\W/g, '-')}`, { capture: 'fullPage' });
-          } else {
-            cy.log('Skipping screenshot, failure already captured.');
           }
           assertionResults.push({ data: 'failed' });
+        }
+
+        // Check if the scenario has been processed before adding to results
+        if (!processedScenarios.has(referenceNumber)) {
+          processedScenarios.add(referenceNumber);
+          assertionResults.push({ data: assertionPassed ? 'passed' : 'failed' });
         }
       });
     });
@@ -366,6 +497,8 @@ Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, erro
     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
   });
 });
+
+
 
 
 // Check element shoulb be visible
@@ -488,3 +621,81 @@ Cypress.Commands.add('checkElementInvisibility', (selector, referenceNumber, err
 Cypress.Commands.add('execute', (command) => {
   return cy.task('execute', command);
 })
+
+
+Cypress.Commands.add('checkTableColumnTitle', (expectedColTitle, referenceNumber, errorContext, assertionResults = [], failureMessages = []) => {
+  // Track failed assertions to avoid redundant errors
+  const failedAssertions = new Set();
+
+  // Function to validate the header text
+  const validateHeaderText = ($headers) => {
+    const errorMessages = [];
+    const elementPromises = [];
+
+    $headers.each((index, element) => {
+      elementPromises.push(new Cypress.Promise((resolve) => {
+        const headerText = Cypress.$(element).find('.Mui-TableHeadCell-Content-Wrapper').text();
+        let assertionPassed = true;
+        let customErrorMessage = '';
+
+        if (headerText !== expectedColTitle[index]) {
+          assertionPassed = false;
+          customErrorMessage = `The column header should be "${expectedColTitle[index]}" instead of "${headerText}"`;
+        }
+
+        if (assertionPassed) {
+          cy.wrap(element).should('contain.text', expectedColTitle[index]);
+          cy.log(`Assertion Passed for header: ${expectedColTitle[index]}`);
+          assertionResults.push({ data: 'passed' });
+        } else {
+          if (!failedAssertions.has(customErrorMessage)) {
+            cy.log(`Assertion Failed for header: ${headerText}`);
+            failedAssertions.add(customErrorMessage);
+            failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage });
+            cy.screenshot(`failure-${index}-${expectedColTitle[index].replace(/\W/g, '-')}`, { capture: 'fullPage' });
+          } else {
+            cy.log('Skipping screenshot, failure already captured.');
+          }
+          assertionResults.push({ data: 'failed' });
+          errorMessages.push(customErrorMessage);
+        }
+        resolve();
+      }));
+    });
+
+    return Cypress.Promise.all(elementPromises).then(() => {
+      if (errorMessages.length > 0) {
+        cy.log(`\n${errorMessages.join('\n')}`);
+      }
+    });
+  };
+
+  // Main command logic
+  cy.get('table.MuiTable-root thead tr').find('th.MuiTableCell-root')
+    .then($headers => {
+      // Check if the number of headers matches the expected length
+      if ($headers.length === expectedColTitle.length) {
+        cy.log('Assertion Passed: Number of headers matches expected length');
+        assertionResults.push({ data: 'passed' });
+        
+        // Proceed to check each header's text
+        return validateHeaderText($headers);
+      } else {
+
+        const actualColTitles = [];
+        $headers.each((index, element) => {
+          actualColTitles.push(Cypress.$(element).find('.Mui-TableHeadCell-Content-Wrapper').text());
+        });
+
+        const customErrorMessage = `Expected ${expectedColTitle.length} columns "${expectedColTitle.join(', ')}" but found ${$headers.length} "${actualColTitles.join(', ')}"`;
+        cy.log('Assertion Failed: Number of headers does not match expected length');
+        failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage });
+        assertionResults.push({ data: 'failed', message: customErrorMessage });
+        cy.screenshot('failure-length-mismatch', { capture: 'fullPage' });
+      }
+    })
+    .then(() => {
+      // Write assertionResults status to a file
+      cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+    });
+});
