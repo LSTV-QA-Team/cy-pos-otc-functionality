@@ -65,7 +65,7 @@ describe('Item Classification', () => {
         });
     })
 
-    it.only('Check Item Classification Page', () => {   
+    it('Check Item Classification Page', () => {   
 
         // 1. Navigate to page
         cy.navigateToModule('Master File', 'Item Classifications')
@@ -132,7 +132,11 @@ describe('Item Classification', () => {
             // 2.1.6 Check enabled/disable of all object
             cy.validateElements('itemclass-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
+            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click();
+
             for (const key in data){
+
+                cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
                 // 3. Encode on description textbox object
                 cy.get('#itmcladsc')
