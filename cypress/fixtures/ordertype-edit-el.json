@@ -3,7 +3,7 @@
     "sel": "button.border-blue-500",
     "assertion": "contain.text",
     "expectedText": "Save",
-    "customErrorMsg": "Should contain text \"Save\""
+    "customErrorMsg": "Save button should contain text \"Save\" instead of \"Update Data\""
   },
   {
     "sel": "button.border-red-500",
@@ -12,14 +12,19 @@
     "customErrorMsg": "Should contain text \"Cancel\""
   },
   {
-    "sel": "#itmcladsc",
+    "sel": "#postypdsc",
     "assertion": "be.enabled",
     "customErrorMsg": "Should be enabled to allow user to input data."
   },
   {
+    "sel": "#ordertyp",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Should be enabled to allow user to select data."
+  },
+  {
     "sel": "button.border-blue-500",
     "assertion": "be.enabled",
-    "customErrorMsg": "\"Add Data\" button Should be enabled and clickable"
+    "customErrorMsg": "\"Save\" button Should be enabled and clickable"
   },
   {
     "sel": "button.border-red-500",

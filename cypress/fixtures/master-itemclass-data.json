@@ -1,28 +1,25 @@
 [
   {
-    "itemClass": "MAIN COURSE"
+    "itemClass": "Food"
   },
   {
-    "itemClass": "DESSERTS"
+    "itemClass": "Dessert"
   },
   {
-    "itemClass": "BEVERAGES"
+    "itemClass": "Beverages"
   },
   {
-    "itemClass": "BREAKFAST"
+    "itemClass": "Appetizer"
   },
   {
-    "itemClass": "APPETIZER",
-    "editItemClass": "SIDE DISH"
+    "itemClass": "Meal",
+    "editItemClass": "Sides"
   },
   {
     "itemClass": "% & ( ) / - ."
   },
   {
     "itemClass": "null"
-  },
-  {
-    "itemClass": "BURGERS"
   },
   {
     "itemClass": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap"

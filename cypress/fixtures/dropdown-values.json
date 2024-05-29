@@ -1,0 +1,29 @@
+{
+    "itemclass": [
+        "Food",
+        "Dessert",
+        "Beverages"
+    ],
+    "itemSubclass": [
+        "Snacks",
+        "Chicken",
+        "Burgers",
+        "Soft Drinks",
+        "Fries",
+        "Ice Cream",
+        "Coffee",
+        "Pies",
+        "Spaghetti",
+        "Juices",
+        "Rice",
+        "Rice Meals"
+    ],
+    "orderType": [
+        "DINEIN",
+        "TAKEOUT"
+    ],
+    "discountType": [
+        "Percentage",
+        "Amount"
+    ]
+}

@@ -1,0 +1,223 @@
+[
+  {
+    "selectorName": "Official Receipt",
+    "sel": "#officialreceipt",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Official Receipt\" textbox should be editable"
+  },
+  {
+    "selectorName": "Supplier Name",
+    "sel": "#supname",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Supplier Name\" textbox should be editable"
+  },
+  {
+    "selectorName": "Supplier Address",
+    "sel": "#supaddress",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Supplier Address\" textbox should be editable"
+  },
+  {
+    "selectorName": "Supplier VAT Registered TIN",
+    "sel": "#supvarregtin",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Supplier VAT Registered TIN\" textbox should be editable"
+  },
+  {
+    "selectorName": "Supplier Non-VAT Registered TIN",
+    "sel": "#supnonvatregtin",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Supplier Non-VAT Registered TIN\" textbox should be editable"
+  },
+  {
+    "selectorName": "Accredited No.",
+    "sel": "#accrenum",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Accredited No.\" textbox should be editable"
+  },
+  {
+    "selectorName": "Accredited Date",
+    "sel": "#accredate",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Accredited Date\" textbox should be editable"
+  },
+  {
+    "selectorName": "Permit No.",
+    "sel": "#permitnum",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Permit No.\" textbox should be editable"
+  },
+  {
+    "selectorName": "Years Validity",
+    "sel": "#validyr",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Years Validity\" textbox should be editable"
+  },
+  {
+    "selectorName": "Date Issued",
+    "sel": "#dateissued",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Date Issued\" textbox should be editable"
+  },
+  {
+    "selectorName": "Line Message 1",
+    "sel": "#footermsg1",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Line Message 1\" textbox should be editable"
+  },
+  {
+    "selectorName": "Line Message 2",
+    "sel": "#footermsg2",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Line Message 2\" textbox should be editable"
+  },
+  {
+    "selectorName": "Line Message 3",
+    "sel": "#footermsg3",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Line Message 3\" textbox should be editable"
+  },
+  {
+    "selectorName": "Line Message 4",
+    "sel": "#footermsg4",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Line Message 4\" textbox should be editable"
+  },
+  {
+    "selectorName": "Line Message 5",
+    "sel": "#footermsg5",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Line Message 5\" textbox should be editable"
+  },
+  {
+    "selectorName": "Cancel",
+    "sel": ".border-red-500",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Cancel\" button  should be clickable"
+  },
+  {
+    "selectorName": "Update",
+    "sel": ".border-blue-500",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Save\" button  should be clickable"
+  },
+  {
+    "selectorName": "Cancel",
+    "sel": ".border-red-500",
+    "assertion": "contain.text",
+    "expectedText": "Cancel",
+    "customErrorMsg": "Cancel button should contain text \"Cancel\" instead of \"Close\""
+  },
+  {
+    "selectorName": "Update",
+    "sel": ".border-blue-500",
+    "assertion": "contain.text",
+    "expectedText": "Update",
+    "customErrorMsg": "Update button should contain text \"Update\" instead of \"Save\""
+  },
+  {
+    "selectorName": "Official Receipt",
+    "sel": "label[for=\"officialreceipt\"]",
+    "assertion": "contain.text",
+    "expectedText": "Official Receipt",
+    "customErrorMsg": "Should contain text \"Official Receipt\""
+  },
+  {
+    "selectorName": "Supplier Name",
+    "sel": "label[for=\"supname\"]",
+    "assertion": "contain.text",
+    "expectedText": "Supplier Name",
+    "customErrorMsg": "Should contain text \"Supplier Name\""
+  },
+  {
+    "selectorName": "Supplier Address",
+    "sel": "label[for=\"supaddress\"]",
+    "assertion": "contain.text",
+    "expectedText": "Supplier Address",
+    "customErrorMsg": "Should contain text \"Supplier Address\""
+  },
+  {
+    "selectorName": "Supplier VAT Registered TIN",
+    "sel": "label[for=\"supvarregtin\"]",
+    "assertion": "contain.text",
+    "expectedText": "Supplier VAT Registered TIN",
+    "customErrorMsg": "Should contain text \"Supplier VAT Registered TIN\""
+  },
+  {
+    "selectorName": "Supplier Non-VAT Registered TIN",
+    "sel": "label[for=\"supnonvatregtin\"]",
+    "assertion": "contain.text",
+    "expectedText": "Supplier Non-VAT Registered TIN",
+    "customErrorMsg": "Should contain text \"Supplier Non-VAT Registered TIN\""
+  },
+  {
+    "selectorName": "Accredited No.",
+    "sel": "label[for=\"accrenum\"]",
+    "assertion": "contain.text",
+    "expectedText": "Accredited No.",
+    "customErrorMsg": "Should contain text \"Accredited No.\""
+  },
+  {
+    "selectorName": "Accredited Date",
+    "sel": "label[for=\"accredate\"]",
+    "assertion": "contain.text",
+    "expectedText": "Accredited Date",
+    "customErrorMsg": "Should contain text \"Accredited Date\""
+  },
+  {
+    "selectorName": "Permit No.",
+    "sel": "label[for=\"permitnum\"]",
+    "assertion": "contain.text",
+    "expectedText": "Permit No.",
+    "customErrorMsg": "Should contain text \"Permit No.\""
+  },
+  {
+    "selectorName": "Years Validity",
+    "sel": "label[for=\"itmdsc\"]",
+    "assertion": "contain.text",
+    "expectedText": "Years Validity",
+    "customErrorMsg": "Should contain text \"Years Validity\""
+  },
+  {
+    "selectorName": "Date Issued",
+    "sel": "label[for=\"dateissued\"]",
+    "assertion": "contain.text",
+    "expectedText": "Date Issued",
+    "customErrorMsg": "Should contain text \"Date Issued\""
+  },
+  {
+    "selectorName": "Line Message 1",
+    "sel": "label[for=\"footermsg1\"]",
+    "assertion": "contain.text",
+    "expectedText": "Line Message 1",
+    "customErrorMsg": "Should contain text \"Line Message 2\""
+  },
+  {
+    "selectorName": "Line Message 2",
+    "sel": "label[for=\"footermsg2\"]",
+    "assertion": "contain.text",
+    "expectedText": "Line Message 2",
+    "customErrorMsg": "Should contain text \"Line Message 3\""
+  },
+  {
+    "selectorName": "Line Message 3",
+    "sel": "label[for=\"footermsg3\"]",
+    "assertion": "contain.text",
+    "expectedText": "Line Message 3",
+    "customErrorMsg": "Should contain text \"Line Message 4\""
+  },
+  {
+    "selectorName": "Line Message 4",
+    "sel": "label[for=\"footermsg4\"]",
+    "assertion": "contain.text",
+    "expectedText": "Line Message 4",
+    "customErrorMsg": "Should contain text \"Line Message 5\""
+  },
+  {
+    "selectorName": "Line Message 5",
+    "sel": "label[for=\"footermsg5\"]",
+    "assertion": "contain.text",
+    "expectedText": "Line Message 5",
+    "customErrorMsg": "Should contain text \"Line Message 6\""
+  }
+]
