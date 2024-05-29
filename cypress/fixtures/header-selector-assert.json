@@ -1,0 +1,167 @@
+[
+  {
+    "sel": "#business1",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Business Name 1\" textbox should be editable"
+  },
+  {
+    "sel": "#business2",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Business Name 2\" textbox should be editable"
+  },
+  {
+    "sel": "#business3",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Business Name 3\" textbox should be editable"
+  },
+  {
+    "sel": "#taxpayer",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Tax Payer registered in BIR\" textbox should be editable"
+  },
+  {
+    "sel": "#tin",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"VAT\" textbox should be editable"
+  },
+  {
+    "sel": "#chknonvat",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Non-VAT\" textbox should be editable"
+  },
+  {
+    "sel": "#address1",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Address 1 *\" textbox should be editable"
+  },
+  {
+    "sel": "#address2",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Address 2 *\" textbox should be editable"
+  },
+  {
+    "sel": "#address3",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Address 3 *\" textbox should be editable"
+  },
+  {
+    "sel": "#serialno",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Serial Number\" textbox should be editable"
+  },
+  {
+    "sel": "#machineno",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Machine Number\" textbox should be editable"
+  },
+  {
+    "sel": "#brhcde",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Branch Code\" textbox should be editable"
+  },
+  {
+    "sel": "#postrmno",
+    "assertion": "not.be.enabled",
+    "customErrorMsg": "\"Terminal No.\" textbox should be editable"
+  },
+  {
+    "sel": ".border-red-500",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Cancel\" button  should be clickable"
+  },
+  {
+    "sel": ".border-blue-500",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Save\" button  should be clickable"
+  },
+  {
+    "sel": ".border-red-500",
+    "assertion": "contain.text",
+    "expectedText": "Cancel",
+    "customErrorMsg": "Cancel button should contain text \"Cancel\" instead of \"Close\""
+  },
+  {
+    "sel": ".border-blue-500",
+    "assertion": "contain.text",
+    "expectedText": "Update",
+    "customErrorMsg": "Update button should contain text \"Update\" instead of \"Save\""
+  },
+  {
+    "sel": "label[for=\"business1\"]",
+    "assertion": "contain.text",
+    "expectedText": "Business Name 1",
+    "customErrorMsg": "Should contain text \"Business Name 1\""
+  },
+  {
+    "sel": "label[for=\"business2\"]",
+    "assertion": "contain.text",
+    "expectedText": "Business Name 2",
+    "customErrorMsg": "Should contain text \"Business Name 2\""
+  },
+  {
+    "sel": "label[for=\"business3\"]",
+    "assertion": "contain.text",
+    "expectedText": "Business Name 3",
+    "customErrorMsg": "Should contain text \"Business Name 3\""
+  },
+  {
+    "sel": "label[for=\"taxpayer\"]",
+    "assertion": "contain.text",
+    "expectedText": "Tax Payer registered in BIR",
+    "customErrorMsg": "Should contain text \"Tax Payer registered in BIR\""
+  },
+  {
+    "sel": "label[for=\"tin\"]",
+    "assertion": "contain.text",
+    "expectedText": "VAT",
+    "customErrorMsg": "Should contain text \"VAT\""
+  },
+  {
+    "sel": "label[for=\"chknonvat\"]",
+    "assertion": "contain.text",
+    "expectedText": "Non-VAT",
+    "customErrorMsg": "Should contain text \"Non-VAT\""
+  },
+  {
+    "sel": "label[for=\"address1\"]",
+    "assertion": "contain.text",
+    "expectedText": "Address 1",
+    "customErrorMsg": "Should contain text \"Address 1\""
+  },
+  {
+    "sel": "label[for=\"address2\"]",
+    "assertion": "contain.text",
+    "expectedText": "Address 2",
+    "customErrorMsg": "Should contain text \"Address 2\""
+  },
+  {
+    "sel": "label[for=\"address3\"]",
+    "assertion": "contain.text",
+    "expectedText": "Address 3",
+    "customErrorMsg": "Should contain text \"Address 3\""
+  },
+  {
+    "sel": "label[for=\"serialno\"]",
+    "assertion": "contain.text",
+    "expectedText": "Serial Number",
+    "customErrorMsg": "Should contain text \"Serial Number\""
+  },
+  {
+    "sel": "label[for=\"machineno\"]",
+    "assertion": "contain.text",
+    "expectedText": "Machine Number",
+    "customErrorMsg": "Should contain text \"Machine Number\""
+  },
+  {
+    "sel": "label[for=\"brhcde\"]",
+    "assertion": "contain.text",
+    "expectedText": "Branch Code",
+    "customErrorMsg": "Should contain text \"Branch Code\""
+  },
+  {
+    "sel": "label[for=\"postrmno\"]",
+    "assertion": "contain.text",
+    "expectedText": "Terminal No.",
+    "customErrorMsg": "Should contain text \"Terminal No.\""
+  }
+]

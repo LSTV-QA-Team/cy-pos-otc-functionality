@@ -138,7 +138,7 @@ describe('Item Subclassification', () => {
             // 2.1.6 Check enabled/disable of all object
             cy.validateElements('itemsubclass-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-            cy.fixture('dropdown-itemclass.json').then((data) => { 
+            cy.fixture('dropdown-values.json').then((data) => { 
                 const expectedItems = data.itemclass;
     
                 cy.wait(2000);
@@ -192,7 +192,7 @@ describe('Item Subclassification', () => {
                                 //14. Select existing data (ex. Chicken) for duplicate data.
                                 cy.get('#itemsubclassdsc').type('Chicken')
 
-                                cy.get('#itmclacde').select('MAIN COURSE')
+                                cy.get('#itmclacde').select('Food')
 
                                 // 15. Click "Save" button.
                                 cy.get('.border-blue-500').click()
@@ -494,17 +494,6 @@ describe('Item Subclassification', () => {
                 cy.get('td > .MuiTypography-root').should('have.text', 'No records to display');
     });
 
-    
-    it('Back Button Functionality', () => {
-
-        cy.wait(2000);
-
-        cy.get(':nth-child(1) > .flex > .anticon > svg').click();
-
-        cy.get('.text-\\[3rem\\]').should('be.visible')
-            .should('have.text', 'Masterfile');
-    });
-
     it('Print functionality', () => {
 
         cy.wait(2000)
@@ -517,5 +506,15 @@ describe('Item Subclassification', () => {
             const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file));
             expect(fileName).to.exist;
         });
+    });
+
+    it('Back Button Functionality', () => {
+
+        cy.wait(2000);
+
+        cy.get(':nth-child(1) > .flex > .anticon > svg').click();
+
+        cy.get('.text-\\[3rem\\]').should('be.visible')
+            .should('have.text', 'Masterfile');
     });
 });
