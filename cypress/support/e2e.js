@@ -5,6 +5,11 @@ import "cypress-real-events";
 import "cypress-xpath";
 
 
+Cypress.Screenshot.defaults({
+    overwrite: true,
+})
+
+
 
 // Alternatively you can use CommonJS syntax:
 Cypress.on('uncaught:exception', (err, runnable) => {

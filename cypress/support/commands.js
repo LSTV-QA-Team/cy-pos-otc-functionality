@@ -466,15 +466,16 @@ Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, erro
 
         if (assertionPassed) {
           if (['have.text', 'not.have.text', 'contain.text', 'not.contain.text'].includes(actualAssertion)) {
-                        cy.wrap($el).should(actualAssertion, element.expectedText);
-                        
-                      } else if (['have.value', 'not.have.value', 'contain.value', 'not.contain.value'].includes(actualAssertion)) {
-                        cy.wrap($el).should(actualAssertion, element.expectedValue);
-                      } else {
-                        cy.wrap($el).should(actualAssertion);
-                      }
-                      cy.log('Assertion Passed');
-                      assertionResults.push({ data: 'passed' });
+
+              cy.wrap($el).should(actualAssertion, element.expectedText);
+              
+          } else if (['have.value', 'not.have.value', 'contain.value', 'not.contain.value'].includes(actualAssertion)) {
+              cy.wrap($el).should(actualAssertion, element.expectedValue);
+            } else {
+              cy.wrap($el).should(actualAssertion);
+            }
+            cy.log('Assertion Passed');
+            assertionResults.push({ data: 'passed' });
         } else {
           if (!failedAssertions.has(customErrorMessage)) {
             failedAssertions.add(customErrorMessage);
@@ -497,7 +498,6 @@ Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, erro
     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
   });
 });
-
 
 
 
@@ -699,3 +699,31 @@ Cypress.Commands.add('checkTableColumnTitle', (expectedColTitle, referenceNumber
       cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
     });
 });
+
+Cypress.Commands.add('checkInputMaxLength', (selector, maxLength, referenceNumber, errorContext, assertionResults = [], failureMessages = []) => {
+  cy.get(selector).then($input => {
+    const actualLength = $input.val().length;
+    
+    if (actualLength <= maxLength) {
+      cy.log('Assertion Passed');
+      assertionResults.push({data : 'passed'})
+    } else {
+
+      const failureMessage = `Encoded length exceeded ${actualLength}. Input length must not exceed ${maxLength} characters.`;
+
+      if(!failedAssertions.has(failureMessage)) {
+        cy.log('Assertion Failed');
+        failedAssertions.add(failureMessage)
+        failureMessages.push({ referenceNumber, errorContext, message: failureMessage})
+        cy.screenshot(`failure-${failureMessage}-${selector.replace(/\W/g, '-')}`, {capture: 'fullPage'})
+      } else {
+        cy.log('Skipping screenshot, failure already captured')
+      }
+      assertionResults.push({data: 'failed'})
+    }
+  }).then(() => {
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+  })
+});
+
+

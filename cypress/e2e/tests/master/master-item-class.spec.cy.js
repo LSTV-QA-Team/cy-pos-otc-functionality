@@ -156,7 +156,7 @@ describe('Item Classification', () => {
 
                                 
                                 //14. Encode existing data (ex. MAIN COURSE) for duplicate data.
-                                cy.get('#itmcladsc').type('MAIN COURSE')
+                                cy.get('#itmcladsc').type('Food')
 
                                 // 15. Click "Save" button.
                                 cy.get('.border-blue-500').click()
@@ -170,7 +170,7 @@ describe('Item Classification', () => {
 
                             } 
                             
-                            else if ($input.val() === "BURGERS") {
+                            else if ($input.val() === "Appetizer") {
 
                                 // 6. Click "Cancel button"
                                 cy.get('.border-red-500').click()
@@ -327,7 +327,7 @@ describe('Item Classification', () => {
                 // 24.1 Check if the notification message appear "Sucessfully saved."
                 cy.checkLabelCaption('.Toastify__toast-body', '24.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
-                // 24.2.1 Check if the modal windows is not visible.
+                // 24.2.1 Check if the modal windows is not visible
                 cy.checkElementInvisibility('.shadow-lg', '24.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Item Classification" modal window still visible', assertionResults, failureMessages)
 
                 // 24.2.3 Check that the edited data appears in the table. 
@@ -342,12 +342,12 @@ describe('Item Classification', () => {
     it('Delete Functionality', () => {
         cy.fixture('master-itemclass-data.json').then((data) => {
             
-            const specificItemClass = data[3];
+            const specificItemClass = data[4];
 
                 cy.wait(2000);
 
                 // 29. Should have an existing data to delete
-                cy.contains('tbody > tr',specificItemClass.itemClass).within(() => {
+                cy.contains('tbody > tr',specificItemClass.editItemClass).within(() => {
                     // 29. Click the delete button within this row
                     cy.get('[data-icon="delete"][aria-hidden="true"]').click();
                 });
@@ -369,7 +369,7 @@ describe('Item Classification', () => {
                 cy.checkElementInvisibility('.shadow-lg', '29.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
                 // Click "Delete" button
-                cy.contains('tbody > tr', specificItemClass.itemClass).within(() => {
+                cy.contains('tbody > tr', specificItemClass.editItemClass).within(() => {
                     // 29. Click the delete button within this row
                     cy.get('[data-icon="delete"][aria-hidden="true"]').click();
                 });
@@ -427,7 +427,21 @@ describe('Item Classification', () => {
                 cy.get('td > .MuiTypography-root').should('have.text', 'No records to display');
     });
 
-    
+    it('Print functionality', () => {
+
+        cy.wait(2000)
+
+        cy.xpath('//span[@aria-label="printer"]')
+          .click()
+
+        cy.wait(10000)
+
+        cy.task('verifyDownloads', Cypress.config('downloadsFolder')).then((files) => {
+            const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file));
+            expect(fileName).to.exist;
+        })
+    });
+
     it('Back Button Functionality', () => {
 
         cy.wait(2000);
@@ -436,21 +450,6 @@ describe('Item Classification', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
             .should('have.text', 'Masterfile');
-    });
-
-    it('Print functionality', () => {
-
-        cy.wait(2000)
-
-        cy.xpath('//span[@aria-label="printer"]')
-          .click();
-
-        cy.wait(10000)
-
-        cy.task('verifyDownloads', Cypress.config('downloadsFolder')).then((files) => {
-            const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file));
-            expect(fileName).to.exist;
-        });
     });
 });
 

@@ -1,9 +1,8 @@
 {
     "itemclass": [
-        "MAIN COURSE",
-        "DESSERTS",
-        "BEVERAGES",
-        "SIDE DISH"
+        "Food",
+        "Dessert",
+        "Beverages"
     ],
     "itemSubclass": [
         "Snacks",
@@ -22,5 +21,9 @@
     "orderType": [
         "DINEIN",
         "TAKEOUT"
+    ],
+    "discountType": [
+        "Percentage",
+        "Amount"
     ]
 }
