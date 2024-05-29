@@ -205,7 +205,7 @@ describe('Receipt Header Set Up', () => {
 
         cy.get('#tin').clear()
 
-        cy.get('#chknonvat').click()
+        cy.get('#chknonvat').realClick()
 
         cy.get('#address1').clear()
         
@@ -219,7 +219,7 @@ describe('Receipt Header Set Up', () => {
 
         cy.get('#brhcde').clear()
 
-        cy.get('#postrmno').clear()
+        // cy.get('#postrmno').clear()
 
         cy.get('.border-blue-500').click()
 
