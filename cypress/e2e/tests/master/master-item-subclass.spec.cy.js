@@ -249,7 +249,7 @@ describe('Item Subclassification', () => {
                                 cy.get('.border-blue-500').click()
 
                                 // 43.1 Check if the notification message appear "Sucessfully saved"
-                                cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
 
                                 // 43.2.1 Check if the modal active window is still active
                                 cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
@@ -308,7 +308,7 @@ describe('Item Subclassification', () => {
 
                                 
                                 // 4.1 Check if the notification message appear "Sucessfully saved."
-                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
 
                                 // 4.2 Click "OK" button
 

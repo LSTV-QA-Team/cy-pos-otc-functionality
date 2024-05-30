@@ -184,7 +184,7 @@ describe('Card Type', () => {
 
                                 cy.get('.border-blue-500').click()
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '20.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '20.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
 
                                 cy.checkElementInvisibility('.shadow-lg', '20.2.1', 'Upon clicking the "OK" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -233,7 +233,7 @@ describe('Card Type', () => {
 
                                 cy.wait(2000)
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
                                 
                                 cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
