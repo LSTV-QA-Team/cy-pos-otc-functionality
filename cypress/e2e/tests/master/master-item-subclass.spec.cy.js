@@ -178,14 +178,14 @@ describe('Item Subclassification', () => {
                                 cy.wait(4000)
 
                                 // 45.2 check if the validation message appear "Item Class * is required." 
-                                cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item Class * is required', assertionResults, failureMessages)
+                                cy.checkLabelCaption('.text-sm', '13.2', 'Upon clicking the "Save" button:', 'Item Class * is required', assertionResults, failureMessages)
 
                                 cy.get('#itemsubclassdsc').clear()
 
                                 cy.get('#itmclacde').select(data[key].itemClass)
 
                                 // 45.1 check if the validation message appear "Item Subclass Description * is required" 
-                                cy.checkLabelCaption('.text-sm', '45.1', 'Upon clicking the "Save" button:', 'Item Subclass Description * is required', assertionResults, failureMessages)
+                                cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Item Subclass Description * is required', assertionResults, failureMessages)
 
                                 cy.wait(4000)
 
@@ -198,7 +198,7 @@ describe('Item Subclassification', () => {
                                 cy.get('.border-blue-500').click()
 
                                 // 47.1 Check if the notification message appear "Duplicate entry! Kindly check your inputs"
-                                cy.checkLabelCaption('.Toastify__toast-body', '47.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
                                 // Click "x" close.
                                 cy.get('.px-8 > .flex > .anticon > svg').click()
@@ -214,7 +214,7 @@ describe('Item Subclassification', () => {
                                 cy.get('.border-red-500').click()
 
                                 // 40.1 check if the notification message appear "Are you sure you want to cancel?" with "Yes" and "No" button.
-                                cy.checkLabelCaption('.h-auto', '40.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                                cy.checkLabelCaption('.h-auto', '8.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
                                 // 40.2 Click "No" button
                                 cy.contains('button[class*="border-red-500"]', 'No').click()
@@ -222,7 +222,7 @@ describe('Item Subclassification', () => {
                                 cy.wait(3000)
 
                                 // 6.2.1 Check if the modal window still visible
-                                cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+                                cy.checkElementVisibility('.shadow-lg', '8.2.1', 'Upon Clicking the "No" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
                                 // 40 Click "Cancel" button.
                                 cy.get('.border-red-500').click()
@@ -233,7 +233,7 @@ describe('Item Subclassification', () => {
                                 cy.wait(3000)
 
                                 // 40.3.1 Check if the modal windows is not visible.
-                                cy.checkElementInvisibility('.shadow-lg', '40.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+                                cy.checkElementInvisibility('.shadow-lg', '48.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
                                 // 40.3.2 Check if the active windows back to Pager U/I.
                                 cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '40.3.2', 'Upon clicking the "Yes" button', 'Item Subclassification', assertionResults, failureMessages)
@@ -262,15 +262,15 @@ describe('Item Subclassification', () => {
 
                                 cy.wrap($input).should('have.value', data[key].itemSubclass);
 
-                                // 51.1 Check if the validation message appear "Maximum length exceeded, 50 characters only."
-                                cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Maximum length exceeded, 50 characters only." was not visible.', assertionResults, failureMessages)
+                                //Check if the validation message appear "Please limit your input to 50 characters."
+                                cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                                 cy.get('#itmclacde').select(data[key].itemClass)
 
                                 // Click "Save" button.
                                 cy.get('.border-blue-500').click()
 
-                                cy.checkElementVisibility('.text-sm', '52.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
+                                cy.checkElementVisibility('.text-sm', '20.1', 'Upon clicking the "Save" button:', '"Please input valid data." notificaation message is not visible', assertionResults, failureMessages)
 
                             }
 
@@ -284,13 +284,13 @@ describe('Item Subclassification', () => {
                                 cy.get('.border-blue-500').click()
                                 
                                 // 49.1 Check if the notification message appear "Sucessfully saved"
-                                cy.checkLabelCaption('.Toastify__toast-body', '49.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
                                 // 16.2 click "OK" button on notification message.
 
 
                                 // 16.2.1 Check if the modal active window is still active
-                                cy.checkElementInvisibility('.shadow-lg', '49.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+                                cy.checkElementInvisibility('.shadow-lg', '17.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
                                 // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -353,13 +353,13 @@ describe('Item Subclassification', () => {
                 })
 
                 // 54.1 Check if modal window is visible.
-                cy.checkElementVisibility('.shadow-lg', '54.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+                cy.checkElementVisibility('.shadow-lg', '22.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
                 // 54.1.1 Check correct modal title header.
-                cy.checkHeaderTitle('.px-8', '54.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Item Subclassification', assertionResults, failureMessages)
+                cy.checkHeaderTitle('.px-8', '22.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Item Subclassification', assertionResults, failureMessages)
 
                 // 54.1.2 Check correct label caption.
-                cy.checkLabelCaption('.mb-2', '54.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass', assertionResults, failureMessages)
+                cy.checkLabelCaption('.mb-2', '22.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass', assertionResults, failureMessages)
             
                 // 54.1.3 Check correct object (textbox) width
                 // Add when needed
@@ -369,7 +369,7 @@ describe('Item Subclassification', () => {
                 // 54.1.5 Check correct all object position
 
                 // 54.1.6 Check enabled/disable of all object
-                cy.validateElements('itemsubclass-edit-el.json', '54.1.4 & 54.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+                cy.validateElements('itemsubclass-edit-el.json', '22.1.4 & 22.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
                 // 55. Clear "Description" textbox object. 
                 cy.get('#itemsubclassdsc')
@@ -385,10 +385,10 @@ describe('Item Subclassification', () => {
                 cy.get('.border-blue-500').click()
 
                 // 57.1 Check if the notification message appear "Sucessfully saved."
-                cy.checkLabelCaption('.Toastify__toast-body', '57.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
+                cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
                 // 57.2.1 Check if the modal windows is not visible.
-                cy.checkElementInvisibility('.shadow-lg', '57.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Item Subclassification" modal window still visible', assertionResults, failureMessages)
+                cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Item Subclassification" modal window still visible', assertionResults, failureMessages)
 
                 // 57.2.3 Check that the edited data appears in the table. 
                 cy.get('.MuiTableBody-root').contains(specificItemSubclass.editItemSubclass).should('exist')
@@ -415,17 +415,17 @@ describe('Item Subclassification', () => {
                 });
 
 
-                cy.checkElementVisibility('.px-8', '62.1', 'Upon clicking the "Delete" button on pager UI:', 'The "Delete Confirmation" modal is not visible.')
+                cy.checkElementVisibility('.px-8', '30.1', 'Upon clicking the "Delete" button on pager UI:', 'The "Delete Confirmation" modal is not visible.')
 
 
                 // 62.2 Verify delete modal should have specific title " Delete Confirmation" and be visible.
-                cy.checkHeaderTitle('.px-8', '62.2.1', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
+                cy.checkHeaderTitle('.px-8', '30.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                 
 
                 // 62.3 Check if the notification message appear "Do you want to delete: Milkshakes?" with "Yes" and "No" button
                 cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + specificItemSubclass.editItemClass + ' ?', assertionResults, failureMessages);
 
-                cy.validateElements('delete-confirm-el.json', '62.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+                cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
                 // 62.4 Click "Cancel" button
                 cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
@@ -433,7 +433,7 @@ describe('Item Subclassification', () => {
                 cy.wait(3000)
 
                 // 62.4.1 Check if the modal window still visible
-                cy.checkElementInvisibility('.shadow-lg', '62.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                cy.checkElementInvisibility('.shadow-lg', '30.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
                 cy.wait(3000)
 
@@ -447,10 +447,10 @@ describe('Item Subclassification', () => {
                 cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
                 // 62.5.1 Verify it was deleted successfully
-                cy.checkLabelCaption('.Toastify__toast-body', '62.5.1', 'Upon Clicking the "Save" button:', 'Successfully Deleted', assertionResults, failureMessages) 
+                cy.checkLabelCaption('.Toastify__toast-body', '30.5.1', 'Upon Clicking the "Save" button:', 'Successfully Deleted', assertionResults, failureMessages) 
 
                 // 62.5.2 Check if the modal windows is not visible.
-                cy.checkElementInvisibility('.shadow-lg', '62.5.2 ', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                cy.checkElementInvisibility('.shadow-lg', '30.5.2 ', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
         })
 
