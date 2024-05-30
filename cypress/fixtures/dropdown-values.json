@@ -8,15 +8,13 @@
         "Snacks",
         "Chicken",
         "Burgers",
-        "Soft Drinks",
-        "Fries",
-        "Ice Cream",
-        "Coffee",
-        "Pies",
         "Spaghetti",
+        "Rice Meals",
+        "Soft Drinks",
+        "Coffee",
         "Juices",
-        "Rice",
-        "Rice Meals"
+        "Pies",
+        "Ice Cream"
     ],
     "orderType": [
         "DINEIN",

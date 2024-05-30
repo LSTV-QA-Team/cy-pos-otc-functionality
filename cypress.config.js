@@ -44,7 +44,7 @@ module.exports = defineConfig({
     reportDir: "cypress/reports",
     charts: true,
     reportPageTitle: 'Cypress POS-OTC Functionality Report',
-    reportFilename: `[status]-[name]-${moment().format('YYYY-MM-DD_HH-mm')}-report`,
+    reportFilename: `[status]-[name]-${moment().format('YYYY-MM-DD')}-report`,
     embeddedScreenshots: false,
     inlineAssets: true,
     overwrite: true,
