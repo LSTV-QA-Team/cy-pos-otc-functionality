@@ -190,7 +190,7 @@ describe('Void/Refund Reasons', () => {
                                 
                                 cy.wait(4000)
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
 
                                 cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon clicking the "OK" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -204,7 +204,7 @@ describe('Void/Refund Reasons', () => {
 
                                 cy.wrap($input).should('have.value', data[key].voidReasons);
 
-                                cy.checkElementVisibility('.text-sm', '33.1', 'Upon encoding data:', 'The validation message for "Maximum length exceeded, 50 characters only." was not visible.', assertionResults, failureMessages)
+                                cy.checkElementVisibility('.text-sm', '33.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                                 cy.get('.border-red-500').click()
 
@@ -242,7 +242,7 @@ describe('Void/Refund Reasons', () => {
 
                                 cy.wait(4000)
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
                                 
                                 cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -297,9 +297,9 @@ describe('Void/Refund Reasons', () => {
 
                 cy.wait(2000)
 
-                cy.checkLabelCaption('.Toastify__toast-body', '51.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
+                cy.checkLabelCaption('.Toastify__toast-body', '40.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
-                cy.checkElementInvisibility('.shadow-lg', '51.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Void/Refund Reasons" modal window still visible', assertionResults, failureMessages)
+                cy.checkElementInvisibility('.shadow-lg', '40.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Void/Refund Reasons" modal window still visible', assertionResults, failureMessages)
 
                 cy.get('.MuiTableBody-root').contains(specificVoidReasons.editVoidReasons).should('exist')
             })
@@ -321,7 +321,7 @@ describe('Void/Refund Reasons', () => {
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click();
                     });
 
-                    cy.checkHeaderTitle('.px-8', '51.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
+                    cy.checkHeaderTitle('.px-8', '41.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].voidReasons + ' ?', assertionResults, failureMessages);
 
@@ -329,7 +329,7 @@ describe('Void/Refund Reasons', () => {
 
                     cy.wait(3000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '52.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '41.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
                     cy.contains('tbody > tr', data[key].voidReasons).within(() => {
 
@@ -340,11 +340,11 @@ describe('Void/Refund Reasons', () => {
 
                     cy.wait(3000)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '52.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '41.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted', assertionResults, failureMessages) 
 
                     cy.wait(8000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '52.1.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '41.1.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
                 }
             }
         })
