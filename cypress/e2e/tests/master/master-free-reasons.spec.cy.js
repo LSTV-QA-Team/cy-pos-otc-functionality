@@ -173,7 +173,7 @@ describe('Free Reasons', () => {
 
                                 cy.checkElementInvisibility('.shadow-lg', '22.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
-                                cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '23.', 'Upon clicking the "Yes" button', 'Free Reasons', assertionResults, failureMessages)
+                                cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '22.3.2', 'Upon clicking the "Yes" button', 'Free Reasons', assertionResults, failureMessages)
 
                                 cy.wait(4000)
 
@@ -288,9 +288,9 @@ describe('Free Reasons', () => {
 
                 cy.wait(2000)
 
-                cy.checkLabelCaption('.Toastify__toast-body', '51.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
+                cy.checkLabelCaption('.Toastify__toast-body', '40.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
-                cy.checkElementInvisibility('.shadow-lg', '51.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Free Reasons" modal window still visible', assertionResults, failureMessages)
+                cy.checkElementInvisibility('.shadow-lg', '40.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Free Reasons" modal window still visible', assertionResults, failureMessages)
 
                 cy.get('.MuiTableBody-root').contains(specificFreeReasons.editFreeReasons).should('exist')
             })
@@ -312,7 +312,7 @@ describe('Free Reasons', () => {
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click();
                     });
 
-                    cy.checkHeaderTitle('.px-8', '51.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
+                    cy.checkHeaderTitle('.px-8', '41.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].freeReasons + ' ?', assertionResults, failureMessages);
 
@@ -320,7 +320,7 @@ describe('Free Reasons', () => {
 
                     cy.wait(3000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '52.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '41.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
                     cy.contains('tbody > tr', data[key].freeReasons).within(() => {
 
@@ -331,11 +331,11 @@ describe('Free Reasons', () => {
 
                     cy.wait(3000)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '52.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '41.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted', assertionResults, failureMessages) 
 
                     cy.wait(8000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '52.1.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '41.1.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
                 }
             }
         })

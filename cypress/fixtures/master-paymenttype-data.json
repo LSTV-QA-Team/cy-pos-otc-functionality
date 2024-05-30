@@ -40,6 +40,6 @@
     "paymentType": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :"
   },
   {
-    "paymentType": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap"
+    "paymentType": "This is a very long string that exceeds the maximum allowed length."
   }
 ]
