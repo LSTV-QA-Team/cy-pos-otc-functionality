@@ -198,7 +198,7 @@ describe('Card Type', () => {
 
                                 cy.wrap($input).should('have.value', data[key].cardType);
 
-                                cy.checkElementVisibility('.text-sm', '29.1', 'Upon encoding data:', 'The validation message for "Maximum length exceeded, 50 characters only." was not visible.', assertionResults, failureMessages)
+                                cy.checkElementVisibility('.text-sm', '29.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                                 cy.get('.border-red-500').click()
 
