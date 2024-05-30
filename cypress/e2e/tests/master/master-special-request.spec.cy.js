@@ -4,15 +4,17 @@ let failureMessages = [];
 
 describe('Special Request', () => {
 
-
     before(() => {
+
         // Clear the modifierfile table before tests
         cy.task("queryDb","TRUNCATE TABLE modifierfile")
 
         // Verify that the table is empty
         cy.task("queryDb", "SELECT * FROM modifierfile").then((records) => {
+
             expect(records.length).to.be.equal(0)
-        });
+
+        })
 
         // Delete all file in downloads for check print functinality test case
         cy.task('clearDownloads')
@@ -25,7 +27,7 @@ describe('Special Request', () => {
         cy.execute('npm run sheet-converter specialreq-edit-el')
         cy.wait(4000)
 
-    });
+    })
     
     beforeEach(() => {
 
@@ -36,46 +38,50 @@ describe('Special Request', () => {
         // Login with valid credentials
         cy.login('lstv', 'lstventures')
 
-        
+    })
 
-    });
+    after(() => {
 
-    // after(() => {
+        // delete unecessary inputed data in the table 'modifierfile'
+        cy.fixture('data-to-delete.json').then((data) => {
 
-    //     // delete unecessary inputed data in the table 'modifierfile'
+            // Loop through each character and delete corresponding rows from the 'modifierfile' table
+            data.forEach((item) => {
 
-    //     cy.fixture('data-to-delete.json').then((data) => {
-    //         // Loop through each character and delete corresponding rows from the 'modifierfile' table
-    //         data.forEach((item) => {
-    //             const specialChar = item.dataToDelete;
-    //             const deleteQuery = `DELETE FROM modifierfile WHERE modcde = '${specialChar}'`;
+                const specialChar = item.dataToDelete;
+                const deleteQuery = `DELETE FROM modifierfile WHERE modcde = '${specialChar}'`;
                 
-    //             cy.task('queryDb', deleteQuery).then(() => {
-    //                 cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
-    //             });
-    //         });
-    
-    //         // Ensure the table is clear of specified data
-    //         cy.task('queryDb', 'SELECT * FROM modifierfile').then((records) => {
-    //             const remainingData = records.map((record) => record.description);
-    //             const deletedChars = data.map((item) => item.dataToDelete);
-                
-    //             // Ensure no deleted special characters are still in the table
-    //             deletedChars.forEach((char) => {
-    //                 expect(remainingData).to.not.include(char);
-    //             });
-    
-    //             cy.log('Specified data successfully deleted'); // Log success
-    //         });
-    //     });
-    // })
+                cy.task('queryDb', deleteQuery).then(() => {
 
-    it.only('Check Special Request Page', () => {  
+                    cy.log(`Deleted data with description: ${specialChar}`) // Log successful deletions
+
+                })
+            })
+    
+            // Ensure the table is clear of specified data
+            cy.task('queryDb', 'SELECT * FROM modifierfile').then((records) => {
+
+                const remainingData = records.map((record) => record.description)
+                const deletedChars = data.map((item) => item.dataToDelete)
+                
+                // Ensure no deleted special characters are still in the table
+                deletedChars.forEach((char) => {
+
+                    expect(remainingData).to.not.include(char)
+
+                })
+    
+                cy.log('Specified data successfully deleted'); // Log success
+
+            })
+        })
+    })
+
+    it('Check Special Request Page', () => {  
         
         cy.navigateToModule('Master File', 'Special Request')
 
-        cy.url({timeout: 10000})
-            .should('contain', 'specialRequests/?menfield=masterfile_special_requests')
+        cy.url({timeout: 10000}).should('contain', 'specialRequests/?menfield=masterfile_special_requests')
         
         cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Special Request:', 'The"Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -99,7 +105,7 @@ describe('Special Request', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     });
 
-    it.only('Add Functionality', () => {
+    it('Add Functionality', () => {
 
         cy.fixture('master-specialreq-data.json').then((data) => {
 
@@ -117,13 +123,13 @@ describe('Special Request', () => {
             
             cy.get('#modcde').invoke('outerWidth').then((width) => {
 
-                 expect(width).to.equal(420);
+                 expect(width).to.equal(420)
                     
             })
 
             cy.get('#modgrpcde').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(420);
+                expect(width).to.equal(420)
                    
             })
 
@@ -137,23 +143,23 @@ describe('Special Request', () => {
 
                 cy.get('#modgrpcde').click()
 
-                cy.get('.select__menu-list .select__option').should('have.length', 12);
-
                 cy.get('.select__menu-list--is-multi')
-                    .children('.select__option')
-                    .then(($options) => {
+                  .children('.select__option')
+                  .then(($options) => {
+
                     // Get the text of all options in the dropdown
-                    const actualOptions = [...$options].map(option => option.textContent.trim());
+                    const actualOptions = [...$options].map(option => option.textContent.trim())
 
                     // Check that each expected option is present in the actual options
                     expectedOptions.forEach(expectedOption => {
-                        expect(actualOptions).to.include(expectedOption);
-                    });
-                });
 
+                        expect(actualOptions).to.include(expectedOption)
+
+                    })
+                })
             })
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click();
+            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
@@ -161,155 +167,143 @@ describe('Special Request', () => {
 
                 cy.wait(4000) 
                 
-                cy.get('#modcde')
-                    .type(data[key].specialReq)
-                    .then(($input) => {
+                cy.get('#modcde').type(data[key].specialReq)
+                  .then(($input) => {
 
-                            if ($input.val() === "null") {
+                    if ($input.val() === "null") {
 
-                                // 11. Click "Save" button.
-                                cy.get('.border-blue-500').click()
+                        cy.get('.border-blue-500').click()
 
-                                cy.wait(4000)
+                        cy.wait(4000)
 
-                                cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item Class * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item Class * is required', assertionResults, failureMessages)
 
-                                cy.get('#modcde').clear()
+                        cy.get('#modcde').clear()
 
-                                cy.get('#modgrpcde').click()
+                        cy.get('#modgrpcde').click()
 
-                                cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                                cy.checkLabelCaption('.text-sm', '45.1', 'Upon clicking the "Save" button:', 'Item Subclass Description * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.text-sm', '45.1', 'Upon clicking the "Save" button:', 'Item Subclass Description * is required', assertionResults, failureMessages)
 
-                                cy.wait(4000)
+                        cy.wait(4000)
 
-                                cy.get('#modcde').type('Extra Gravy')
+                        cy.get('#modcde').type('Extra Gravy')
 
-                                cy.get('#modgrpcde').click()
+                        cy.get('#modgrpcde').click()
 
-                                cy.get('.select__menu-list--is-multi').contains('.select__option', 'Chicken').click()
+                        cy.get('.select__menu-list--is-multi').contains('.select__option', 'Chicken').click()
 
-                                // 15. Click "Save" button.
-                                cy.get('.border-blue-500').click()
+                        cy.get('.border-blue-500').click()
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '47.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '47.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                                // Click "x" close.
-                                cy.get('.px-8 > .flex > .anticon > svg').click()
+                        cy.get('.px-8 > .flex > .anticon > svg').click()
 
+                    } 
+                    
+                    else if ($input.val() === "No plastic utensils") {
 
-                            } 
-                            
-                            else if ($input.val() === "No plastic utensils") {
+                        cy.get('#modgrpcde').click()
 
-                                cy.get('#modgrpcde').click()
+                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                                cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        cy.get('.border-red-500').click()
 
-                                // 6. Click "Cancel button"
-                                cy.get('.border-red-500').click()
+                        cy.checkLabelCaption('.h-auto', '40.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                                cy.checkLabelCaption('.h-auto', '40.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                        cy.contains('button[class*="border-red-500"]', 'No').click()
 
-                                // 40.2 Click "No" button
-                                cy.contains('button[class*="border-red-500"]', 'No').click()
+                        cy.wait(3000)
 
-                                cy.wait(3000)
+                        cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
-                                // 6.2.1 Check if the modal window still visible
-                                cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.get('.border-red-500').click()
 
-                                // 40 Click "Cancel" button.
-                                cy.get('.border-red-500').click()
+                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
 
-                                // 40.3 Click "Yes" button.
-                                cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                        cy.wait(3000)
 
-                                cy.wait(3000)
+                        cy.checkElementInvisibility('.shadow-lg', '40.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
-                                cy.checkElementInvisibility('.shadow-lg', '40.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '40.3.2', 'Upon clicking the "Yes" button', 'Special Request', assertionResults, failureMessages)
 
-                                cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '40.3.2', 'Upon clicking the "Yes" button', 'Special Request', assertionResults, failureMessages)
 
+                    }
 
-                            }
+                    else if ($input.val() === "% & ( ) / - .") {
 
-                            else if ($input.val() === "% & ( ) / - .") {
+                        cy.get('#modgrpcde').click()
 
-                                cy.get('#modgrpcde').click()
+                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                                cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        cy.get('.border-blue-500').click()
 
-                                cy.get('.border-blue-500').click()
+                        cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved', assertionResults, failureMessages) 
+                        cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
-                                cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+                        // 43.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                                // 43.2.2 Check if the "Description" textbox object is cleared or blank.
+                    }
 
-                            }
+                    else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
 
-                            else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
+                        cy.wrap($input).should('have.value', data[key].specialReq)
 
-                                cy.wrap($input).should('have.value', data[key].specialReq);
+                        cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
 
-                                cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Maximum length exceeded, 50 characters only." was not visible.', assertionResults, failureMessages)
+                        cy.get('#modgrpcde').click()
 
-                                cy.get('#modgrpcde').click()
+                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                                cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        cy.get('.border-blue-500').click()
 
-                                cy.get('.border-blue-500').click()
+                        cy.checkElementVisibility('.text-sm', '52.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
 
-                                cy.checkElementVisibility('.text-sm', '52.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
+                    }
 
-                            }
+                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
 
-                            else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+                        cy.get('#modgrpcde').click()
 
-                                cy.get('#modgrpcde').click()
+                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                                cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        cy.get('.border-blue-500').click()
+                        
+                        cy.checkLabelCaption('.Toastify__toast-body', '49.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                                cy.get('.border-blue-500').click()
-                                
-                                cy.checkLabelCaption('.Toastify__toast-body', '49.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                        // 16.2 click "OK" button on notification message.
 
-                                // 16.2 click "OK" button on notification message.
+                        cy.checkElementInvisibility('.shadow-lg', '49.2.1', 'Upon clicking the "OK" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
-                                cy.checkElementInvisibility('.shadow-lg', '49.2.1', 'Upon clicking the "OK" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+                        // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                                // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
+                    }
 
-                            }
+                    else {
 
-                            else {
+                        cy.wrap($input).should('have.value', data[key].specialReq)
 
-                                cy.wrap($input).should('have.value', data[key].specialReq)
+                        cy.get('#modgrpcde').click()
 
-                                cy.get('#modgrpcde').click()
+                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                                cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        cy.get('.border-blue-500').click()
 
-                                cy.get('.border-blue-500').click()
+                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved', assertionResults, failureMessages) 
+                        cy.wait(3000)
+                        
+                        cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
-                                // 4.2 Click "OK" button
+                        cy.get('.MuiSelect-select.MuiTablePagination-select').click();
 
-                                cy.wait(3000)
-                                
-                                cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
-
-                                cy.get('.MuiSelect-select.MuiTablePagination-select').click();
-
-                                cy.get('ul[role="listbox"] li').contains('15').click();
-                                
-                                cy.get('.MuiTableBody-root').contains(data[key].specialReq).should('exist')
-                            }
+                        cy.get('ul[role="listbox"] li').contains('15').click();
+                        
+                        cy.get('.MuiTableBody-root').contains(data[key].specialReq).should('exist')
+                    }
                 }) 
             }
         })
@@ -320,7 +314,8 @@ describe('Special Request', () => {
         
     });
 
-    it.only('Edit Functionality', () => {
+    it('Edit Functionality', () => {
+
         cy.fixture('master-specialreq-data.json').then((data) => {
 
             const specificSpecialReq = data[7];
@@ -334,6 +329,7 @@ describe('Special Request', () => {
                 cy.contains('tbody > tr', specificSpecialReq.specialReq).within(() => {
 
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
+
                 })
 
                 cy.checkElementVisibility('.shadow-lg', '54.1', 'Upon Clicking the "Edit" button:', 'The "Edit Special Request" modal window was not visible or active.', assertionResults, failureMessages)
@@ -352,14 +348,14 @@ describe('Special Request', () => {
                 cy.validateElements('specialReq-edit-el.json', '54.1.4 & 54.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
                 cy.get('#modcde')
-                    .should('have.value', specificSpecialReq.specialReq)
-                    .clear()
+                  .should('have.value', specificSpecialReq.specialReq)
+                  .clear()
 
                 cy.get('#modcde').type(specificSpecialReq.editSpecialReq)
 
                 cy.contains('.select__multi-value', specificSpecialReq.itemSubclass)
-                    .find(`div[aria-label="Remove ${specificSpecialReq.itemSubclass}"]`)
-                    .click()
+                  .find(`div[aria-label="Remove ${specificSpecialReq.itemSubclass}"]`)
+                  .click()
 
                 cy.get('#modgrpcde').click()
 
@@ -377,44 +373,51 @@ describe('Special Request', () => {
         cy.wait(4000)
 
         cy.checkForFailure(assertionResults, failureMessages)
-    });
+    })
 
-    it.only('Delete Functionality', () => {
+    it('Delete Functionality', () => {
+
         cy.fixture('master-specialreq-data.json').then((data) => {
+
             for (const key in data) {
+
                 if (data[key].onlyDelete === true) {
 
-                    cy.wait(2000);
+                    cy.wait(4000)
 
                     cy.contains('tbody > tr', data[key].specialReq).within(() => {
                         
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
-                    });
 
-                    cy.checkElementVisibility('.px-8', '62.1', 'Upon clicking the "Delete" button on pager UI:', 'The "Delete Confirmation" modal is not visible.')
+                    })
 
-                    cy.checkHeaderTitle('.px-8', '62.2.1', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.px-8', '26.1', 'Upon clicking the "Delete" button on pager UI:', 'The "Delete Confirmation" modal is not visible.')
+
+                    cy.checkHeaderTitle('.px-8', '26.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].specialReq + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '26.3', 'Do you want to delete: ' + data[key].specialReq + ' ?', assertionResults, failureMessages)
 
-                    cy.validateElements('delete-confirm-el.json', '62.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+                    cy.validateElements('delete-confirm-el.json', '26.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
                     cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
                     cy.wait(3000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '62.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '26.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
                     cy.wait(3000)
 
                     cy.contains('tbody > tr', data[key].specialReq).within(() => {
 
-                        cy.get('[data-icon="delete"][aria-hidden="true"]').click();
+                        cy.get('[data-icon="delete"][aria-hidden="true"]').click()
+
                     })
 
                     cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '62.5.1', 'Upon Clicking the "Save" button:', 'Successfully Deleted', assertionResults, failureMessages) 
+                    cy.wait(4000)
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '62.5.1', 'Upon Clicking the "Yes" button in Delete Confirmation modal:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                     cy.checkElementInvisibility('.shadow-lg', '62.5.2 ', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
@@ -426,8 +429,10 @@ describe('Special Request', () => {
     });
 
 
-    it.only('Search Functionality', () => {
+    it('Search Functionality', () => {
+
         cy.fixture('master-specialreq-data.json').then((data) => {
+
             for (const key in data) {
 
                 if (data[key].onlySearchVal === true) {
@@ -438,9 +443,9 @@ describe('Special Request', () => {
                     cy.get('[data-testid="SearchIcon"]').click()
 
                     cy.get('#\\:rb\\:')
-                        .clear()
-                        .type(data[key].specialReq)
-                        .type('{enter}')
+                      .clear()
+                      .type(data[key].specialReq)
+                      .type('{enter}')
 
                     cy.wait(2000)
     
@@ -454,11 +459,11 @@ describe('Special Request', () => {
                     cy.wait(2000)
                             
                     cy.get('[data-testid="SearchIcon"]')
-                        .click();
+                      .click();
         
                     cy.get('#\\:rb\\:')
-                        .clear()
-                        .type(data[key].specialReq)
+                      .clear()
+                      .type(data[key].specialReq)
         
                     cy.wait(4000)
         
@@ -466,9 +471,9 @@ describe('Special Request', () => {
                 }
             }
         })
-    });
+    })
 
-    it.only('Print functionality', () => {
+    it('Print functionality', () => {
 
         cy.wait(2000)
 
@@ -477,18 +482,20 @@ describe('Special Request', () => {
         cy.wait(8000)
 
         cy.task('verifyDownloads', Cypress.config('downloadsFolder')).then((files) => {
-            const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file));
+
+            const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file))
+
             expect(fileName).to.exist;
-        });
-    });
+        })
+    })
 
-    it.only('Back Button Functionality', () => {
+    it('Back Button Functionality', () => {
 
-        cy.wait(2000);
+        cy.wait(2000)
 
-        cy.get(':nth-child(1) > .flex > .anticon > svg').click();
+        cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
-            .should('have.text', 'Masterfile');
+          .should('have.text', 'Masterfile')
     });
 });

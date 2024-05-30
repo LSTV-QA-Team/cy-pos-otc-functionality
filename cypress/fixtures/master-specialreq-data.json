@@ -1,41 +1,41 @@
 [
   {
-    "specialReq": "Extra gravy",
+    "specialReq": "Extra Gravy",
     "itemSubclass": "Chicken",
     "onlySearchVal": true,
     "onlyDelete": false,
     "onlySearchInval": false
   },
   {
-    "specialReq": "No salt on fries",
-    "itemSubclass": "Fries",
+    "specialReq": "Extra Cheese",
+    "itemSubclass": "Spaghetti",
     "onlySearchVal": false,
     "onlyDelete": false,
     "onlySearchInval": false
   },
   {
-    "specialReq": "Extra crispy fries",
-    "itemSubclass": "Fries",
+    "specialReq": "Extra Crispy",
+    "itemSubclass": "Chicken",
     "onlySearchVal": false,
     "onlyDelete": false,
     "onlySearchInval": false
   },
   {
-    "specialReq": "Extra ketchup",
-    "itemSubclass": "Fries",
+    "specialReq": "Extra Lettuce",
+    "itemSubclass": "Burgers",
     "onlySearchVal": false,
     "onlyDelete": false,
     "onlySearchInval": false
   },
   {
-    "specialReq": "Extra rice",
+    "specialReq": "Extra Rice",
     "itemSubclass": "Rice Meals",
     "onlySearchVal": false,
     "onlyDelete": false,
     "onlySearchInval": false
   },
   {
-    "specialReq": "Extra ice",
+    "specialReq": "Extra Ice",
     "itemSubclass": "Soft Drinks",
     "onlySearchVal": false,
     "onlyDelete": false,
