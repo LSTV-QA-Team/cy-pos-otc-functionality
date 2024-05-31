@@ -1,4 +1,3 @@
-const { realClick } = require("cypress-real-events/commands/realClick");
 
 let assertionResults = [];
 let failureMessages = [];
@@ -106,7 +105,7 @@ describe('Item', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     });
 
-    it.only('Add Functionality', () => {
+    it('Add Functionality', () => {
 
         cy.fixture('master-item-data.json').then((data) => {
 
@@ -208,8 +207,6 @@ describe('Item', () => {
                 const expectedClass = data.itemclass;
                 const expectedItemType = data.itemType;
                 const expectedTaxCode = data.taxCode;
-
-                cy.get('#itmtyp').realClick()
 
                 cy.get('#itmtyp')
                   .should('exist')
