@@ -1,38 +1,167 @@
 [
   {
-    "item": "Coke"
+    "item": "Yumburger Solo",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Food",
+    "itemSubclass": "Burgers",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000001",
+    "sellingPrice": 40,
+    "goodXPerson": 1,
+    "taxCode": "VATABLE",
+    "onlySearchVal": true,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "item": "Coke Zero"
+    "item": "1-pc Chickenjoy",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Food",
+    "itemSubclass": "Chicken",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000002",
+    "sellingPrice": 76,
+    "goodXPerson": 1,
+    "taxCode": "VATABLE",
+    "onlySearchVal": false,
+    "onlyDelete": true,
+    "onlySearchInval": true
   },
   {
-    "item": "Royal"
+    "item": "Buko Pandan Sundae",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Dessert",
+    "itemSubclass": "Ice Cream",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000003",
+    "sellingPrice": 63,
+    "goodXPerson": 1,
+    "taxCode": "VATABLE",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "item": "Sprite"
+    "item": "Hot Fresh Brew",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Beverages",
+    "itemSubclass": "Coffee",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000004",
+    "sellingPrice": 48,
+    "goodXPerson": 1,
+    "taxCode": "VATABLE",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "item": "Soda Float"
+    "item": "6-pc. Chickenjoy Solo",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Food",
+    "itemSubclass": "Chicken",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000005",
+    "sellingPrice": 449,
+    "goodXPerson": 6,
+    "taxCode": "VATABLE",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "item": "Pineapple Juice"
+    "item": "Ube Cheese Pie",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Dessert",
+    "itemSubclass": "Pie",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000006",
+    "sellingPrice": 50,
+    "goodXPerson": 1,
+    "taxCode": "VATABLE",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "item": "Iced Tea"
+    "item": "Delicious and crispy Chickenjoy with a side of Jolly Spaghetti and garlic rice, perfect for a fulfilling meal",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Food",
+    "itemSubclass": "Chicken",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000007",
+    "sellingPrice": 50,
+    "goodXPerson": 1,
+    "taxCode": "VATABLE",
+    "onlySearchVal": false,
+    "onlyDelete": true,
+    "onlySearchInval": false
   },
   {
-    "item": "Iced Mocha"
+    "item": "% & ( ) / - .",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Food",
+    "itemSubclass": "Chicken",
+    "unitMeasure": "!@#$%^&*()",
+    "unitCost": 0,
+    "barcode": "!@#$%^&*()",
+    "sellingPrice": 51,
+    "goodXPerson": 2,
+    "taxCode": "VATABLE",
+    "onlySearchVal": false,
+    "onlyDelete": true,
+    "onlySearchInval": false
   },
   {
-    "item": "Iced Mocha Float"
+    "item": "©™®àáâñä¢£¥€!@#$^*_+=<>?`~\"|\\ [];:",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Food",
+    "itemSubclass": "Chicken",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000009",
+    "sellingPrice": 52,
+    "goodXPerson": 3,
+    "taxCode": "VATABLE",
+    "onlySearchVal": false,
+    "onlyDelete": true,
+    "onlySearchInval": false
   },
   {
-    "item": "Iced Latte"
+    "item": "null",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Food",
+    "itemSubclass": "Chicken",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000010",
+    "sellingPrice": 53,
+    "goodXPerson": 4,
+    "taxCode": "VATABLE",
+    "onlySearchVal": false,
+    "onlyDelete": true,
+    "onlySearchInval": false
   },
   {
-    "item": "Hot Fresh Brew"
-  },
-  {
-    "item": "Hot Chocolate"
+    "item": "This is a very long string that exceeds the maximum allowed length.",
+    "itemType": "NON-INVENTORY",
+    "ItemClass": "Food",
+    "itemSubclass": "Chicken",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000011",
+    "sellingPrice": 54,
+    "goodXPerson": 5,
+    "taxCode": "VATABLE",
+    "onlySearchVal": false,
+    "onlyDelete": true,
+    "onlySearchInval": false
   }
 ]
