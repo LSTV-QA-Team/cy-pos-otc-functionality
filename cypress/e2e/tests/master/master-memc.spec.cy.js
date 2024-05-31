@@ -22,7 +22,7 @@ describe('MEMC', () => {
         // Excel file to JSON Converter
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-memc-data')
-        // cy.execute('npm run sheet-converter module-typeor-assert')
+        cy.execute('npm run sheet-converter module-selector-assert')
         // cy.execute('npm run sheet-converter memc-add-el')
         // cy.execute('npm run sheet-converter memc-edit-el')
         cy.wait(4000)
@@ -92,7 +92,7 @@ describe('MEMC', () => {
 
         cy.wait(2000)
 
-        cy.checkTableColumnTitle(['Actions', 'MEMC', 'Velu (PHP)'], '1.2.2', 'Upon Navigating to MEMC pager U/I', assertionResults, failureMessages)
+        cy.checkTableColumnTitle(['Actions', 'MEMC', 'Value (PHP)'], '1.2.2', 'Upon Navigating to MEMC pager U/I', assertionResults, failureMessages)
 
         // 1.2.3 Check correct button(s) caption.
         // Not necessary since buttons in pager U/I does not have captions.
@@ -100,7 +100,7 @@ describe('MEMC', () => {
         // 1.2.4 Check correct objects position.
         // Add this when needed.  
 
-        cy.validateElements('memc-typeor-assert.json', '1.2.5', 'Upon Navigating to MEMC pager U/I', assertionResults, failureMessages)
+        cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to MEMC pager U/I', assertionResults, failureMessages)
 
         // Consolidate the results of various assertions across multiple custom commands into a single summary.
         cy.checkForFailure(assertionResults, failureMessages)
