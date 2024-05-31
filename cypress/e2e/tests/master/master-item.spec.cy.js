@@ -78,7 +78,7 @@ describe('Item', () => {
     //     })
     // })
 
-    it.only('Check Item Page', () => {  
+    it('Check Item Page', () => {  
 
         cy.navigateToModule('Master File', 'Items')
 
