@@ -71,7 +71,7 @@ describe('Special Request', () => {
 
                 })
     
-                cy.log('Specified data successfully deleted'); // Log success
+                cy.log('Specified data Successfully deleted.'); // Log success
 
             })
         })
@@ -239,7 +239,7 @@ describe('Special Request', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                         cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -292,7 +292,7 @@ describe('Special Request', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                         cy.wait(3000)
                         
@@ -383,7 +383,7 @@ describe('Special Request', () => {
 
                 if (data[key].onlyDelete === true) {
 
-                    cy.wait(4000)
+                    cy.wait(8000)
 
                     cy.contains('tbody > tr', data[key].specialReq).within(() => {
                         
@@ -412,6 +412,8 @@ describe('Special Request', () => {
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
                     })
+
+                    cy.wait(4000)
 
                     cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 

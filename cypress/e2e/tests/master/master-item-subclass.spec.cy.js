@@ -72,7 +72,7 @@ describe('Item Subclassification', () => {
 
                 })
     
-                cy.log('Specified data successfully deleted'); // Log success
+                cy.log('Specified data Successfully deleted.'); // Log success
             })
         })
     })
@@ -92,7 +92,7 @@ describe('Item Subclassification', () => {
 
         cy.wait(2000)
 
-        cy.checkTableColumnTitle(['Actions', 'Item Subclass Description', ' Item Class'], '1.2.2', 'Upon Navigating to Item Subclassification pager U/I', assertionResults, failureMessages)
+        cy.checkTableColumnTitle(['Actions', 'Item Subclassification', ' Item Classification'], '1.2.2', 'Upon Navigating to Item Subclassification pager U/I', assertionResults, failureMessages)
 
         // 1.2.3 Check correct button(s) caption.
         // Not necessary since buttons in pager U/I does not have captions.
@@ -250,7 +250,7 @@ describe('Item Subclassification', () => {
                                 cy.get('.border-blue-500').click()
 
                                 // 43.1 Check if the notification message appear "Sucessfully saved"
-                                cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                                 // 43.2.1 Check if the modal active window is still active
                                 cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
@@ -309,7 +309,7 @@ describe('Item Subclassification', () => {
 
                                 
                                 // 4.1 Check if the notification message appear "Sucessfully saved."
-                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                                 // 4.2 Click "OK" button
 
@@ -448,7 +448,7 @@ describe('Item Subclassification', () => {
                 cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
                 // 62.5.1 Verify it was deleted successfully
-                cy.checkLabelCaption('.Toastify__toast-body', '30.5.1', 'Upon Clicking the "Save" button:', 'Successfully Deleted', assertionResults, failureMessages) 
+                cy.checkLabelCaption('.Toastify__toast-body', '30.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                 // 62.5.2 Check if the modal windows is not visible.
                 cy.checkElementInvisibility('.shadow-lg', '30.5.2 ', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)

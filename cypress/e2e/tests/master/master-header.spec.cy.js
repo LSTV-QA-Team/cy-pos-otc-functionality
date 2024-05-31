@@ -107,7 +107,7 @@ describe('Receipt Header Set Up', () => {
 
                     cy.get('.border-blue-500').click()
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Update" button:', 'Successfully updated!', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Update" button:', 'Successfully updated.', assertionResults, failureMessages)
 
                     // 17.1 Check all encoded data should reflect to the receipt (Validate on Preview) 
 

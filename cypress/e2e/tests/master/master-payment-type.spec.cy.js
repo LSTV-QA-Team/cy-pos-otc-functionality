@@ -65,7 +65,7 @@ describe('Payment Type', () => {
 
                 });
     
-                cy.log('Specified data successfully deleted'); 
+                cy.log('Specified data Successfully deleted.'); 
             });
         });
     })
@@ -184,7 +184,7 @@ describe('Payment Type', () => {
 
                                 cy.get('.border-blue-500').click()
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                                 cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -233,7 +233,7 @@ describe('Payment Type', () => {
 
                                 cy.wait(2000)
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
                                 
                                 cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -329,7 +329,7 @@ describe('Payment Type', () => {
 
                 cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
-                cy.checkLabelCaption('.Toastify__toast-body', '52.5.1', 'Upon Clicking the "Save" button:', 'Successfully Deleted', assertionResults, failureMessages) 
+                cy.checkLabelCaption('.Toastify__toast-body', '52.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                 cy.checkElementInvisibility('.shadow-lg', '52.1.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 

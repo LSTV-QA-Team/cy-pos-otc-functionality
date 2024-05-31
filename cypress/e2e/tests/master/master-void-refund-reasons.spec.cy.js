@@ -65,7 +65,7 @@ describe('Void/Refund Reasons', () => {
 
                 });
     
-                cy.log('Specified data successfully deleted'); 
+                cy.log('Specified data Successfully deleted.'); 
             });
         });
     })
@@ -190,7 +190,7 @@ describe('Void/Refund Reasons', () => {
                                 
                                 cy.wait(4000)
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                                 cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon clicking the "OK" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -242,7 +242,7 @@ describe('Void/Refund Reasons', () => {
 
                                 cy.wait(4000)
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
                                 
                                 cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -340,7 +340,7 @@ describe('Void/Refund Reasons', () => {
 
                     cy.wait(3000)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '41.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '41.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                     cy.wait(8000)
 
