@@ -2,7 +2,7 @@
   {
     "item": "Yumburger Solo",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Food",
+    "itemClass": "Food",
     "itemSubclass": "Burgers",
     "unitMeasure": "PCS",
     "unitCost": 0,
@@ -17,7 +17,7 @@
   {
     "item": "1-pc Chickenjoy",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Food",
+    "itemClass": "Food",
     "itemSubclass": "Chicken",
     "unitMeasure": "PCS",
     "unitCost": 0,
@@ -32,7 +32,7 @@
   {
     "item": "Buko Pandan Sundae",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Dessert",
+    "itemClass": "Dessert",
     "itemSubclass": "Ice Cream",
     "unitMeasure": "PCS",
     "unitCost": 0,
@@ -47,7 +47,7 @@
   {
     "item": "Hot Fresh Brew",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Beverages",
+    "itemClass": "Beverages",
     "itemSubclass": "Coffee",
     "unitMeasure": "PCS",
     "unitCost": 0,
@@ -62,7 +62,7 @@
   {
     "item": "6-pc. Chickenjoy Solo",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Food",
+    "itemClass": "Food",
     "itemSubclass": "Chicken",
     "unitMeasure": "PCS",
     "unitCost": 0,
@@ -77,7 +77,7 @@
   {
     "item": "Ube Cheese Pie",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Dessert",
+    "itemClass": "Dessert",
     "itemSubclass": "Pie",
     "unitMeasure": "PCS",
     "unitCost": 0,
@@ -92,7 +92,7 @@
   {
     "item": "Delicious and crispy Chickenjoy with a side of Jolly Spaghetti and garlic rice, perfect for a fulfilling meal",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Food",
+    "itemClass": "Food",
     "itemSubclass": "Chicken",
     "unitMeasure": "PCS",
     "unitCost": 0,
@@ -107,7 +107,7 @@
   {
     "item": "% & ( ) / - .",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Food",
+    "itemClass": "Food",
     "itemSubclass": "Chicken",
     "unitMeasure": "!@#$%^&*()",
     "unitCost": 0,
@@ -122,7 +122,7 @@
   {
     "item": "©™®àáâñä¢£¥€!@#$^*_+=<>?`~\"|\\ [];:",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Food",
+    "itemClass": "Food",
     "itemSubclass": "Chicken",
     "unitMeasure": "PCS",
     "unitCost": 0,
@@ -137,7 +137,7 @@
   {
     "item": "null",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Food",
+    "itemClass": "Food",
     "itemSubclass": "Chicken",
     "unitMeasure": "PCS",
     "unitCost": 0,
@@ -152,7 +152,7 @@
   {
     "item": "This is a very long string that exceeds the maximum allowed length.",
     "itemType": "NON-INVENTORY",
-    "ItemClass": "Food",
+    "itemClass": "Food",
     "itemSubclass": "Chicken",
     "unitMeasure": "PCS",
     "unitCost": 0,
