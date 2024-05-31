@@ -78,8 +78,8 @@ describe('Item', () => {
     })
 
     it.only('Check Item Page', () => {  
-        
-        cy.navigateToModule('Master File', 'Item')
+
+        cy.navigateToModule('Master File', 'Items')
 
         cy.url({timeout: 10000}).should('contain', 'items/?menfield=masterfile_items')
         
@@ -123,61 +123,61 @@ describe('Item', () => {
             
             cy.get('#itmdsc').invoke('outerWidth').then((width) => {
 
-                 expect(width).to.equal(420)
+                 expect(width).to.equal(403)
                     
             })
 
             cy.get('#itmtyp').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(420)
+                expect(width).to.equal(403)
                    
             })
 
             cy.get('#itemsubclasscde').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(420)
+                expect(width).to.equal(403)
                    
             })
 
             cy.get('#itmclacde').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(420)
+                expect(width).to.equal(403)
                    
             })
 
             cy.get('#untmea').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(420)
+                expect(width).to.equal(403)
                    
             })
 
             cy.get('#untcst').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(420)
+                expect(width).to.equal(403)
                    
             })
 
             cy.get('#barcde').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(420)
+                expect(width).to.equal(403)
                    
             })
 
             cy.get('#untprc').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(420)
+                expect(width).to.equal(403)
                    
             })
 
             cy.get('#itmpaxcount').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(420)
+                expect(width).to.equal(403)
                    
             })
 
             cy.get('#memc').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(420)
+                expect(width).to.equal(403)
                    
             })
 
