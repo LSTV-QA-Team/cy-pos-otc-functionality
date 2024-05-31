@@ -308,11 +308,27 @@ describe('Item', () => {
 
                     } 
                     
-                    else if ($input.val() === "No plastic utensils") {
+                    else if ($input.val() === "Ube Cheese Pie") {
 
-                        cy.get('#modgrpcde').click()
+                        cy.get('#itmtyp').select(data[key].itemType)
 
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+
+                        cy.get('#itmclacde').select(data[key].itemClass)
+
+                        cy.get('#untmea').type(data[key].unitMeasure)
+
+                        cy.get('#untcst').type(data[key].unitCost)
+
+                        cy.get('#barcde').type(data[key].barcode)
+
+                        cy.get('#untprc').type(data[key].sellingPrice)
+
+                        cy.get('#itmpaxcount').type(data[key].goodXPerson)
+
+                        cy.get('#taxcde').select(data[key].taxCode)
+
+                        cy.get('#memc').select(data[key].memc)
 
                         cy.get('.border-red-500').click()
 
