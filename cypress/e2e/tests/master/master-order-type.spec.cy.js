@@ -64,7 +64,7 @@ describe('Order Type', () => {
     //                 expect(remainingData).to.not.include(char);
     //             });
     
-    //             cy.log('Specified data successfully deleted'); // Log success
+    //             cy.log('Specified data Successfully deleted.'); // Log success
     //         });
     //     });
     // })
@@ -213,7 +213,7 @@ describe('Order Type', () => {
 
                                 cy.get('.border-blue-500').click()
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfullt saved.', assertionResults, failureMessages) 
 
                                 cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -224,7 +224,7 @@ describe('Order Type', () => {
 
                                 cy.wrap($input).should('have.value', data[key].dineType);
 
-                                cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Maximum length exceeded, 50 characters only." was not visible.', assertionResults, failureMessages)
+                                cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                                 cy.get('#ordertyp').select(data[key].orderType)
 
@@ -257,7 +257,7 @@ describe('Order Type', () => {
 
                                 cy.get('.border-blue-500').click()
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved', assertionResults, failureMessages) 
+                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfullt saved.', assertionResults, failureMessages) 
 
                                 cy.wait(3000)
                                 
@@ -369,7 +369,7 @@ describe('Order Type', () => {
 
                     cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '62.5.1', 'Upon Clicking the "Save" button:', 'Successfully Deleted', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '62.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                     cy.checkElementInvisibility('.shadow-lg', '62.5.2 ', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 

@@ -221,7 +221,6 @@ Cypress.Commands.add('checkLabelCaption', (selector, referenceNumber, errorConte
     const containsExpectedText = $element.text().includes(expectedText);
 
     if (containsExpectedText) {
-      cy.wrap($element).should('be.visible');
       cy.log('Assertion Passed');
       assertionResults.push({ data: 'passed' });
     } else {

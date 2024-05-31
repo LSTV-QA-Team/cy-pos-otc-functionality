@@ -1,3 +1,4 @@
+const { realClick } = require("cypress-real-events/commands/realClick");
 
 let assertionResults = [];
 let failureMessages = [];
@@ -22,7 +23,7 @@ describe('Item', () => {
         // Excel file to JSON Converter
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-item-data')
-        cy.execute('npm run sheet-converter module-selector-assert')
+        cy.execute('npm run sheet-converter item-selector-assert')
         cy.execute('npm run sheet-converter item-add-el')
         cy.execute('npm run sheet-converter item-edit-el')
         cy.wait(4000)
@@ -40,42 +41,42 @@ describe('Item', () => {
 
     })
 
-    after(() => {
+    // after(() => {
 
-        // delete unecessary inputed data in the table 'itemfile'
-        cy.fixture('data-to-delete.json').then((data) => {
+    //     // delete unecessary inputed data in the table 'itemfile'
+    //     cy.fixture('data-to-delete.json').then((data) => {
 
-            // Loop through each character and delete corresponding rows from the 'itemfile' table
-            data.forEach((item) => {
+    //         // Loop through each character and delete corresponding rows from the 'itemfile' table
+    //         data.forEach((item) => {
 
-                const specialChar = item.dataToDelete;
-                const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
+    //             const specialChar = item.dataToDelete;
+    //             const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
                 
-                cy.task('queryDb', deleteQuery).then(() => {
+    //             cy.task('queryDb', deleteQuery).then(() => {
 
-                    cy.log(`Deleted data with description: ${specialChar}`) // Log successful deletions
+    //                 cy.log(`Deleted data with description: ${specialChar}`) // Log successful deletions
 
-                })
-            })
+    //             })
+    //         })
     
-            // Ensure the table is clear of specified data
-            cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
+    //         // Ensure the table is clear of specified data
+    //         cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
 
-                const remainingData = records.map((record) => record.description)
-                const deletedChars = data.map((item) => item.dataToDelete)
+    //             const remainingData = records.map((record) => record.description)
+    //             const deletedChars = data.map((item) => item.dataToDelete)
                 
-                // Ensure no deleted special characters are still in the table
-                deletedChars.forEach((char) => {
+    //             // Ensure no deleted special characters are still in the table
+    //             deletedChars.forEach((char) => {
 
-                    expect(remainingData).to.not.include(char)
+    //                 expect(remainingData).to.not.include(char)
 
-                })
+    //             })
     
-                cy.log('Specified data successfully deleted'); // Log success
+    //             cy.log('Specified data Successfully deleted.'); // Log success
 
-            })
-        })
-    })
+    //         })
+    //     })
+    // })
 
     it.only('Check Item Page', () => {  
 
@@ -91,7 +92,7 @@ describe('Item', () => {
 
         cy.wait(2000)
 
-        cy.checkTableColumnTitle(['Actions', 'Description'], '1.2.2', 'Upon Navigating to Item pager U/I', assertionResults, failureMessages)
+        cy.checkTableColumnTitle(['Actions', 'Item', 'Item Class', 'Item Subclass', 'Price (PHP)', 'Tax Code'], '1.2.2', 'Upon Navigating to "Item" pager U/I', assertionResults, failureMessages)
 
         // 1.2.3 Check correct button(s) caption.
         // Not necessary since buttons in pager U/I does not have captions.
@@ -99,7 +100,7 @@ describe('Item', () => {
         // 1.2.4 Check correct objects position.
         // Add this when needed.  
 
-        cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to Item pager U/I', assertionResults, failureMessages)
+        cy.validateElements('item-selector-assert.json', '1.2.5', 'Upon Navigating to "Item" pager U/I', assertionResults, failureMessages)
 
         // Consolidate the results of various assertions across multiple custom commands into a single summary.
         cy.checkForFailure(assertionResults, failureMessages)
@@ -117,9 +118,25 @@ describe('Item', () => {
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Item', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Description *', assertionResults,failureMessages)
+            cy.checkLabelCaption('label[for="itmdsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item *', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Subclassification *', assertionResults, failureMessages)
+            cy.checkLabelCaption('label[for="itmtyp"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Type *', assertionResults, failureMessages)
+            
+            cy.checkLabelCaption('label[for="itmclacde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Classification *', assertionResults, failureMessages)
+
+            cy.checkLabelCaption('label[for="itemsubclasscde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Subclassification *', assertionResults, failureMessages)
+
+            cy.checkLabelCaption('label[for="untmea"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Unit of Measure', assertionResults, failureMessages)
+
+            // cy.checkLabelCaption('label[for="untcst"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Unit of Cost', assertionResults, failureMessages)
+
+            cy.checkLabelCaption('label[for="barcde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Barcode', assertionResults, failureMessages)
+
+            // cy.checkLabelCaption('label[for="untprc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Selling Price *', assertionResults, failureMessages)
+
+            // cy.checkLabelCaption('label[for="itmpaxcount"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Good for X Person', assertionResults, failureMessages)
+
+            cy.checkLabelCaption('label[for="taxcde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'ax Code *', assertionResults, failureMessages)
             
             cy.get('#itmdsc').invoke('outerWidth').then((width) => {
 
@@ -192,10 +209,11 @@ describe('Item', () => {
                 const expectedItemType = data.itemType;
                 const expectedTaxCode = data.taxCode;
 
-                cy.get('#itmtyp').click()
+                cy.get('#itmtyp').realClick()
 
-                cy.get('.select__menu-list--is-multi')
-                  .children('.select__option')
+                cy.get('#itmtyp')
+                  .should('exist')
+                  .find('option')
                   .then(($options) => {
 
                     // Get the text of all options in the dropdown
@@ -209,10 +227,11 @@ describe('Item', () => {
                     })
                 })
 
-                cy.get('#itemsubclasscde').click()
+                cy.get('#itemsubclasscde').realClick()
 
-                cy.get('.select__menu-list--is-multi')
-                  .children('.select__option')
+                cy.get('#itemsubclasscde')
+                  .should('exist')
+                  .find('option')
                   .then(($options) => {
 
                     // Get the text of all options in the dropdown
@@ -226,10 +245,11 @@ describe('Item', () => {
                     })
                 })
 
-                cy.get('#itmclacde').click()
+                cy.get('#itmclacde').realClick()
 
-                cy.get('.select__menu-list--is-multi')
-                  .children('.select__option')
+                cy.get('#itmclacde')
+                  .should('exist')
+                  .find('option')
                   .then(($options) => {
 
                     // Get the text of all options in the dropdown
@@ -243,10 +263,11 @@ describe('Item', () => {
                     })
                 })
 
-                cy.get('#taxcde').click()
+                cy.get('#taxcde').realClick()
 
-                cy.get('.select__menu-list--is-multi')
-                  .children('.select__option')
+                cy.get('#taxcde')
+                  .should('exist')
+                  .find('option')
                   .then(($options) => {
 
                     // Get the text of all options in the dropdown
@@ -280,7 +301,9 @@ describe('Item', () => {
 
                         cy.wait(4000)
 
-                        cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item Description * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item * is required', assertionResults, failureMessages)
+
+                        cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item * is required', assertionResults, failureMessages)
 
                         cy.wait(4000)
 
@@ -502,15 +525,15 @@ describe('Item', () => {
 
         cy.fixture('master-item-data.json').then((data) => {
 
-            const specificitem = data[7];
+            const specificItem = data[2];
 
-                cy.get('.MuiSelect-select.MuiTablePagination-select').click();
+                cy.get('.MuiSelect-select.MuiTablePagination-select').click()
 
-                cy.get('ul[role="listbox"] li').contains('15').click();
+                cy.get('ul[role="listbox"] li').contains('15').click()
 
                 cy.wait(2000);
 
-                cy.contains('tbody > tr', specificitem.item).within(() => {
+                cy.contains('tbody > tr', specificItem.item).within(() => {
 
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
 
@@ -518,9 +541,20 @@ describe('Item', () => {
 
                 cy.checkElementVisibility('.shadow-lg', '54.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item" modal window was not visible or active.', assertionResults, failureMessages)
 
-                cy.checkHeaderTitle('.px-8', '54.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Item', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="itmdsc"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item *', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('.mb-2', '54.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="itmtyp"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Type *', assertionResults, failureMessages)
+                
+                cy.checkLabelCaption('label[for="itmclacde"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Classification *', assertionResults, failureMessages)
+
+                cy.checkLabelCaption('label[for="itemsubclasscde"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclassification *', assertionResults, failureMessages)
+
+                cy.checkLabelCaption('label[for="untmea"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Unit of Measure', assertionResults, failureMessages)
+
+                // cy.checkLabelCaption('label[for="untcst"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Unit of Cost', assertionResults, failureMessages)
+
+                cy.checkLabelCaption('label[for="barcde"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Barcode', assertionResults, failureMessages)
+
             
                 // 54.1.3 Check correct object (textbox) width
                 // Add when needed
@@ -529,29 +563,35 @@ describe('Item', () => {
 
                 // 54.1.5 Check correct all object position
 
-                cy.validateElements('item-edit-el.json', '54.1.4 & 54.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+                cy.validateElements('item-edit-el.json', '54.1.4 & 54.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
 
-                cy.get('#modcde')
-                  .should('have.value', specificitem.item)
-                  .clear()
+                cy.get('#itmdsc').clear().type(data[key].item)
 
-                cy.get('#modcde').type(specificitem.edititem)
+                cy.get('#itmtyp').select(data[key].itemType)
 
-                cy.contains('.select__multi-value', specificitem.itemSubclass)
-                  .find(`div[aria-label="Remove ${specificitem.itemSubclass}"]`)
-                  .click()
+                cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                cy.get('#modgrpcde').click()
+                cy.get('#itmclacde').select(data[key].itemClass)
 
-                cy.get('.select__menu-list--is-multi').contains('.select__option', specificitem.editItemSubclass).click()
+                cy.get('#untmea').clear().type(data[key].unitMeasure)
+
+                cy.get('#untcst').clear().type(data[key].unitCost)
+
+                cy.get('#barcde').clear().type(data[key].barcode)
+
+                cy.get('#untprc').clear().type(data[key].sellingPrice)
+
+                cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
+
+                cy.get('#taxcde').select(data[key].taxCode)
 
                 cy.get('.border-blue-500').click()
 
                 cy.checkLabelCaption('.Toastify__toast-body', '57.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
-                cy.checkElementInvisibility('.shadow-lg', '57.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Item" modal window still visible', assertionResults, failureMessages)
+                cy.checkElementInvisibility('.shadow-lg', '57.2.1', 'Upon Clicking the "Save" button:', 'The "Edit Item" modal window still visible', assertionResults, failureMessages)
 
-                cy.get('.MuiTableBody-root').contains(specificitem.edititem).should('exist')
+                cy.get('.MuiTableBody-root').contains(specificItem.editItem).should('exist')
             })
 
         cy.wait(4000)

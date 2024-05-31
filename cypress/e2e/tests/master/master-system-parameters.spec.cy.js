@@ -58,6 +58,6 @@ describe('System Parameters', () => {
 
         cy.get('.border-blue-500').click()
 
-        cy.checkLabelCaption('.Toastify__toast-body', '3.1', 'Upon Clicking the "Update" button:', 'Successfully updated', assertionResults, failureMessages) 
+        cy.checkLabelCaption('.Toastify__toast-body', '3.1', 'Upon Clicking the "Update" button:', 'Successfully updated.', assertionResults, failureMessages) 
     });
 })

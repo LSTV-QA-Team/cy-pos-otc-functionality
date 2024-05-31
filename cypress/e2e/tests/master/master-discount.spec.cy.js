@@ -203,7 +203,7 @@ describe('Discounts', () => {
     //                             cy.get('.border-blue-500').click()
 
     //                             // 43.1 Check if the notification message appear "Sucessfully saved"
-    //                             cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved', assertionResults, failureMessages) 
+    //                             cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfullt saved.', assertionResults, failureMessages) 
 
     //                             // 43.2.1 Check if the modal active window is still active
     //                             cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
@@ -216,8 +216,8 @@ describe('Discounts', () => {
 
     //                             cy.wrap($input).should('have.value', data[key].discount);
 
-    //                             // 51.1 Check if the validation message appear "Maximum length exceeded, 50 characters only."
-    //                             cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Maximum length exceeded, 50 characters only." was not visible.', assertionResults, failureMessages)
+    //                             // 51.1 Check if the validation message appear "Please limit your input to 50 characters."
+    //                             cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
     //                             cy.get('#itmclacde').select(data[key].itemClass)
 
@@ -262,7 +262,7 @@ describe('Discounts', () => {
 
                                 
     //                             // 4.1 Check if the notification message appear "Sucessfully saved."
-    //                             cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved', assertionResults, failureMessages) 
+    //                             cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfullt saved.', assertionResults, failureMessages) 
 
     //                             // 4.2 Click "OK" button
 
@@ -401,7 +401,7 @@ describe('Discounts', () => {
     //             cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
     //             // 62.5.1 Verify it was deleted successfully
-    //             cy.checkLabelCaption('.Toastify__toast-body', '62.5.1', 'Upon Clicking the "Save" button:', 'Successfully Deleted', assertionResults, failureMessages) 
+    //             cy.checkLabelCaption('.Toastify__toast-body', '62.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
     //             // 62.5.2 Check if the modal windows is not visible.
     //             cy.checkElementInvisibility('.shadow-lg', '62.5.2 ', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
