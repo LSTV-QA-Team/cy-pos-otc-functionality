@@ -84,7 +84,7 @@ describe('Item', () => {
 
         cy.url({timeout: 10000}).should('contain', 'items/?menfield=masterfile_items')
         
-        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item:', '"Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item:', '"Item" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.wait(2000)
 

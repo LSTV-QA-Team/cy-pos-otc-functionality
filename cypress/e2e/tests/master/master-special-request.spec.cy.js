@@ -83,7 +83,7 @@ describe('Special Request', () => {
 
         cy.url({timeout: 10000}).should('contain', 'specialRequests/?menfield=masterfile_special_requests')
         
-        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Special Request:', 'The"Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Special Request:', 'The "Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.wait(2000)
 
