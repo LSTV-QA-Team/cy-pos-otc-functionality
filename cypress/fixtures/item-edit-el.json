@@ -1,0 +1,89 @@
+[
+  {
+    "sel": "button.border-blue-500",
+    "assertion": "contain.text",
+    "expectedText": "Save",
+    "customErrorMsg": "Save button should contain text \"Save\" instead of \"Add Data\""
+  },
+  {
+    "sel": "button.border-red-500",
+    "assertion": "contain.text",
+    "expectedText": "Cancel",
+    "customErrorMsg": "Cancel button should contain text \"Cancel\""
+  },
+  {
+    "sel": "#itmdsc",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Item Description should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#itmtyp",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Item Type hould be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#itemsubclasscde",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Item Class should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#itmclacde",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Item Subclass should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#untmea",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Unit of Measure should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#untcst",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Unit of Costshould be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#barcde",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Barcode should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#untprc",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Selling Price should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#itmpaxcount",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Good for X Person should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#memc",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Tax Code should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#isaddon",
+    "assertion": "be.enabled",
+    "customErrorMsg": "MEMC should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#inactive",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Add-ons should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#chkcombo",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Inactive should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "button.border-blue-500",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Combo Mealshould be enabled to allow user to edit data."
+  },
+  {
+    "sel": "button.border-red-500",
+    "assertion": "be.enabled",
+    "customErrorMsg": "\"Cancel\" button Should be enabled and clickable"
+  }
+]

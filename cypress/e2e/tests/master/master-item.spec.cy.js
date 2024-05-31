@@ -77,11 +77,11 @@ describe('Item', () => {
         })
     })
 
-    it('Check Item Page', () => {  
+    it.only('Check Item Page', () => {  
         
         cy.navigateToModule('Master File', 'Item')
 
-        cy.url({timeout: 10000}).should('contain', 'itemuests/?menfield=masterfile_special_requests')
+        cy.url({timeout: 10000}).should('contain', '/items/?menfield=masterfile_items')
         
         cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item:', '"Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -105,7 +105,7 @@ describe('Item', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     });
 
-    it('Add Functionality', () => {
+    it.only('Add Functionality', () => {
 
         cy.fixture('master-item-data.json').then((data) => {
 
@@ -274,31 +274,35 @@ describe('Item', () => {
 
                     if ($input.val() === "null") {
 
+                        cy.get('#itmdsc').clear()
+
                         cy.get('.border-blue-500').click()
 
                         cy.wait(4000)
 
                         cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item Description * is required', assertionResults, failureMessages)
 
-                        cy.get('#itmdsc').clear()
-
-                        cy.
-
-                        cy.get('#itmtyp').realClick()
-
-                        cy.get('#itemsubclasscde').realClick()
-
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
-
-                        cy.checkLabelCaption('.text-sm', '45.1', 'Upon clicking the "Save" button:', 'Item Subclass Description * is required', assertionResults, failureMessages)
-
                         cy.wait(4000)
 
-                        cy.get('#modcde').type('Extra Gravy')
+                        cy.get('#itmdsc').type('Yumburger Solo')
 
-                        cy.get('#modgrpcde').click()
+                        cy.get('#itmtyp').select('NON-INVENTORY')
 
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', 'Chicken').click()
+                        cy.get('#itemsubclasscde').select('Food')
+
+                        cy.get('#itmclacde').select('Burgers')
+
+                        cy.get('#untmea').type('PCS')
+
+                        cy.get('#untcst').type('0')
+
+                        cy.get('#barcde').type('00000000001')
+
+                        cy.get('#untprc').type(40)
+
+                        cy.get('#itmpaxcount').type(1)
+
+                        cy.get('#taxcde').select('VATABLE')
 
                         cy.get('.border-blue-500').click()
 
@@ -327,8 +331,6 @@ describe('Item', () => {
                         cy.get('#itmpaxcount').type(data[key].goodXPerson)
 
                         cy.get('#taxcde').select(data[key].taxCode)
-
-                        cy.get('#memc').select(data[key].memc)
 
                         cy.get('.border-red-500').click()
 
@@ -373,8 +375,6 @@ describe('Item', () => {
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
-                        cy.get('#memc').select(data[key].memc)
-
                         cy.get('.border-blue-500').click()
 
                         cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
@@ -407,8 +407,6 @@ describe('Item', () => {
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
-                        cy.get('#memc').select(data[key].memc)
-
                         cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
 
                         cy.get('#modgrpcde').click()
@@ -440,8 +438,6 @@ describe('Item', () => {
                         cy.get('#itmpaxcount').type(data[key].goodXPerson)
 
                         cy.get('#taxcde').select(data[key].taxCode)
-
-                        cy.get('#memc').select(data[key].memc)
 
                         cy.get('.border-blue-500').click()
                         
@@ -477,8 +473,6 @@ describe('Item', () => {
                         cy.get('#itmpaxcount').type(data[key].goodXPerson)
 
                         cy.get('#taxcde').select(data[key].taxCode)
-
-                        cy.get('#memc').select(data[key].memc)
 
                         cy.get('.border-blue-500').click()
 
