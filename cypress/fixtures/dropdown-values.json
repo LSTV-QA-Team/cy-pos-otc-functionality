@@ -23,5 +23,15 @@
     "discountType": [
         "Percentage",
         "Amount"
+    ],
+    "itemType": [
+        "INVENTORY",
+        "NON-INVENTORY",
+        "CHARGES",
+        "SERVICES"
+    ],
+    "taxCode": [
+        "VATABLE",
+        "VAT EXEMPT"
     ]
 }

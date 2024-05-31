@@ -4,15 +4,17 @@ let failureMessages = [];
 
 describe('Item Subclassification', () => {
 
-
     before(() => {
+
         // Clear the itemsubclassfile table before tests
         cy.task("queryDb","TRUNCATE TABLE itemsubclassfile")
 
         // Verify that the table is empty
         cy.task("queryDb", "SELECT * FROM itemsubclassfile").then((records) => {
+
             expect(records.length).to.be.equal(0)
-        });
+            
+        })
 
         // Delete all file in downloads for check print functinality test case
         cy.task('clearDownloads')
@@ -25,7 +27,7 @@ describe('Item Subclassification', () => {
         cy.execute('npm run sheet-converter itemsubclass-edit-el')
         cy.wait(4000)
 
-    });
+    })
     
     beforeEach(() => {
 
@@ -36,62 +38,61 @@ describe('Item Subclassification', () => {
         // Login with valid credentials
         cy.login('lstv', 'lstventures')
 
-
-    });
+    })
 
     after(() => {
 
         // delete unecessary inputed data in the table 'itemsubclassfile'
 
         cy.fixture('data-to-delete.json').then((data) => {
+
             // Loop through each character and delete corresponding rows from the 'itemsubclassfile' table
             data.forEach((item) => {
+
                 const specialChar = item.dataToDelete;
                 const deleteQuery = `DELETE FROM itemsubclassfile WHERE itemsubclassdsc = '${specialChar}'`;
                 
                 cy.task('queryDb', deleteQuery).then(() => {
+
                     cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
-                });
-            });
+
+                })
+            })
     
             // Ensure the table is clear of specified data
             cy.task('queryDb', 'SELECT * FROM itemsubclassfile').then((records) => {
+
                 const remainingData = records.map((record) => record.description);
                 const deletedChars = data.map((item) => item.dataToDelete);
                 
                 // Ensure no deleted special characters are still in the table
                 deletedChars.forEach((char) => {
+
                     expect(remainingData).to.not.include(char);
-                });
+
+                })
     
                 cy.log('Specified data successfully deleted'); // Log success
-            });
-        });
+            })
+        })
     })
 
     it('Check Item Subclassification Page', () => {   
 
-        // 1. Navigate to page
         cy.navigateToModule('Master File', 'Item Subclassifications')
 
-        // 1.1 Check if correct URL.
-        cy.url({timeout: 10000})
-            .should('contain', '/itemSubclassifications/?menfield=masterfile_itemsub')
+        cy.url({timeout: 10000}).should('contain', '/itemSubclassifications/?menfield=masterfile_itemsub')
 
-           
-        // 1.2 Check if the pager U/I is displayed. 
-        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item Subclassification:', 'The"Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
+        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item Subclassification:', ' "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.wait(2000)
 
-        // 1.2.1 Check title header  
         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]','1.2.1', 'Upon Navigating to Item Subclassification pager U/I', 'Item Subclassification', assertionResults, failureMessages)
 
         cy.wait(2000)
 
-        // 1.2.2 Check correct table column(s) header caption. 
-        cy.checkTableColumnTitle(['Actions', 'Item Subclass', ' Item Class'], '1.2.2', 'Upon Navigating to Item Subclassification pager U/I', assertionResults, failureMessages)
+        cy.checkTableColumnTitle(['Actions', 'Item Subclass Description', ' Item Class'], '1.2.2', 'Upon Navigating to Item Subclassification pager U/I', assertionResults, failureMessages)
 
         // 1.2.3 Check correct button(s) caption.
         // Not necessary since buttons in pager U/I does not have captions.
@@ -99,46 +100,46 @@ describe('Item Subclassification', () => {
         // 1.2.4 Check correct objects position.
         // Add this when needed.  
 
-        // 1.2.5 Check enabled/disabled of all objects
         cy.validateElements('itemsubclass-selector-assert.json', '1.2.5', 'Upon Navigating to Item Subclassification pager U/I', assertionResults, failureMessages)
 
         // Consolidate the results of various assertions across multiple custom commands into a single summary.
         cy.checkForFailure(assertionResults, failureMessages)
-    });
+    })
 
     it('Add Functionality', () => {
 
         cy.fixture('master-itemsubclass-data.json').then((data) => {
 
-            // 2. Click "Add" button from pager U/I
             cy.get('.sc-eDLKkx > .anticon > svg').click()
 
             cy.wait(4000) 
             
-            // 2.1 Check if modal window is visible.
-            cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+            cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', '"Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
-            // 2.1.1 Check correct modal title header.
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Item Subclassification', assertionResults, failureMessages)
 
-            // 2.1.2 Check correct label caption.
             cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Subclass Description *', assertionResults,failureMessages)
 
             cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Class *', assertionResults, failureMessages)
+
+            cy.get('#itemsubclassdsc').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
+
+            cy.get('#itmclacde').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
             
-            // 2.1.3 Check correct object (textbox) width
-            // cy.get('#itemsubclassdsc')
-            //     .invoke('outerWidth')
-            //     .should('eq', 420)
-
-            // 2.1.4 Check correct buttons(s) caption
-
             // 2.1.5 Check correct all object position
 
-            // 2.1.6 Check enabled/disable of all object
             cy.validateElements('itemsubclass-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
             cy.fixture('dropdown-values.json').then((data) => { 
+
                 const expectedItems = data.itemclass;
     
                 cy.wait(2000);
@@ -150,14 +151,15 @@ describe('Item Subclassification', () => {
                   .should('have.length', expectedItems.length + 1)
                   .each((option, index) => {
     
-    
                     if (index > 0) {
-                        cy.wrap(option).should('have.text', expectedItems[index - 1]);
+
+                        cy.wrap(option).should('have.text', expectedItems[index - 1])
+
                     }
                 })
             })
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click();
+            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
@@ -165,10 +167,9 @@ describe('Item Subclassification', () => {
 
                 cy.wait(4000) 
                 
-                // 3. Encode on description textbox object
                 cy.get('#itemsubclassdsc')
-                    .type(data[key].itemSubclass)
-                    .then(($input) => {
+                  .type(data[key].itemSubclass)
+                  .then(($input) => {
 
                             if ($input.val() === "null") {
 
