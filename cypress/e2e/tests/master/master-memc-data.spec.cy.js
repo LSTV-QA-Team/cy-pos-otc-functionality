@@ -10,7 +10,7 @@ describe('MEMC', () => {
         cy.task("queryDb","TRUNCATE TABLE memcfile")
 
         // Verify that the table is empty
-        cy.task("queryDb", "type * FROM memcfile").then((records) => {
+        cy.task("queryDb", "SELECT * FROM memcfile").then((records) => {
 
             expect(records.length).to.be.equal(0)
             
@@ -60,7 +60,7 @@ describe('MEMC', () => {
             })
     
             // Ensure the table is clear of specified data
-            cy.task('queryDb', 'type * FROM memcfile').then((records) => {
+            cy.task('queryDb', 'SELECT * FROM memcfile').then((records) => {
 
                 const remainingData = records.map((record) => record.description);
                 const deletedChars = data.map((item) => item.dataToDelete);
