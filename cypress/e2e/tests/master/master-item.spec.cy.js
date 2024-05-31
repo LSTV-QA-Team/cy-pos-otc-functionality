@@ -339,13 +339,29 @@ describe('Item', () => {
 
                     else if ($input.val() === "% & ( ) / - .") {
 
-                        cy.get('#modgrpcde').click()
+                        cy.get('#itmtyp').select(data[key].itemType)
 
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+
+                        cy.get('#itmclacde').select(data[key].itemClass)
+
+                        cy.get('#untmea').type(data[key].unitMeasure)
+
+                        cy.get('#untcst').type(data[key].unitCost)
+
+                        cy.get('#barcde').type(data[key].barcode)
+
+                        cy.get('#untprc').type(data[key].sellingPrice)
+
+                        cy.get('#itmpaxcount').type(data[key].goodXPerson)
+
+                        cy.get('#taxcde').select(data[key].taxCode)
+
+                        cy.get('#memc').select(data[key].memc)
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                         cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -356,6 +372,26 @@ describe('Item', () => {
                     else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
 
                         cy.wrap($input).should('have.value', data[key].item)
+
+                        cy.get('#itmtyp').select(data[key].itemType)
+
+                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+
+                        cy.get('#itmclacde').select(data[key].itemClass)
+
+                        cy.get('#untmea').type(data[key].unitMeasure)
+
+                        cy.get('#untcst').type(data[key].unitCost)
+
+                        cy.get('#barcde').type(data[key].barcode)
+
+                        cy.get('#untprc').type(data[key].sellingPrice)
+
+                        cy.get('#itmpaxcount').type(data[key].goodXPerson)
+
+                        cy.get('#taxcde').select(data[key].taxCode)
+
+                        cy.get('#memc').select(data[key].memc)
 
                         cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
 
@@ -369,11 +405,27 @@ describe('Item', () => {
 
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+                    else if ($input.val() === "©™®àáâñä¢£¥€!@#$^*_+=<>?`~\"|\ [];:") {
 
-                        cy.get('#modgrpcde').click()
+                        cy.get('#itmtyp').select(data[key].itemType)
 
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+
+                        cy.get('#itmclacde').select(data[key].itemClass)
+
+                        cy.get('#untmea').type(data[key].unitMeasure)
+
+                        cy.get('#untcst').type(data[key].unitCost)
+
+                        cy.get('#barcde').type(data[key].barcode)
+
+                        cy.get('#untprc').type(data[key].sellingPrice)
+
+                        cy.get('#itmpaxcount').type(data[key].goodXPerson)
+
+                        cy.get('#taxcde').select(data[key].taxCode)
+
+                        cy.get('#memc').select(data[key].memc)
 
                         cy.get('.border-blue-500').click()
                         
@@ -392,31 +444,29 @@ describe('Item', () => {
 
                         cy.wrap($input).should('have.value', data[key].item)
 
-                        cy.get('#itmtyp').select(data[key].item)
+                        cy.get('#itmtyp').select(data[key].itemType)
 
-                        cy.get('#itemsubclasscde').select()
+                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                        cy.get('#itmclacde').select()
+                        cy.get('#itmclacde').select(data[key].itemClass)
 
-                        cy.get('#untmea').type()
+                        cy.get('#untmea').type(data[key].unitMeasure)
 
-                        cy.get('#untcst').type()
+                        cy.get('#untcst').type(data[key].unitCost)
 
-                        cy.get('#barcde').type()
+                        cy.get('#barcde').type(data[key].barcode)
 
-                        cy.get('#untprc').type()
+                        cy.get('#untprc').type(data[key].sellingPrice)
 
-                        cy.get('#itmpaxcount').type()
+                        cy.get('#itmpaxcount').type(data[key].goodXPerson)
 
-                        cy.get('#taxcde').select()
+                        cy.get('#taxcde').select(data[key].taxCode)
 
-                        cy.get('#memc').select()
-
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        cy.get('#memc').select(data[key].memc)
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved!', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                         cy.wait(3000)
                         
