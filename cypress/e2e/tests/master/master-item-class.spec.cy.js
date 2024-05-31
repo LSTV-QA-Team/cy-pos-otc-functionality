@@ -13,7 +13,7 @@ describe('Item Classification', () => {
         cy.task("queryDb", "SELECT * FROM itemclassfile").then((records) => {
 
             expect(records.length).to.be.equal(0)
-            
+
         })
 
         // Delete all file in downloads for check print functinality test case
@@ -82,7 +82,7 @@ describe('Item Classification', () => {
 
         cy.url({timeout: 10000}).should('contain', '/itemClassifications/?menfield=masterfile_itemclass')
            
-        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item Classification:', 'The"Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
+        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item Classification:', ' "Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.wait(2000)
 
@@ -90,7 +90,6 @@ describe('Item Classification', () => {
 
         cy.wait(2000)
 
-        // 1.2.2 Check correct table column(s) header caption. 
         cy.checkTableColumnTitle(['Actions', 'Description'], '1.2.2', 'Upon Navigating to Item Classification pager U/I', assertionResults, failureMessages)
 
         // 1.2.3 Check correct button(s) caption.
@@ -113,7 +112,7 @@ describe('Item Classification', () => {
 
             cy.wait(4000) 
             
-            cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
+            cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', '"Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Item Classification', assertionResults, failureMessages)
 
@@ -205,7 +204,7 @@ describe('Item Classification', () => {
 
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+                    else if ($input.val() === "©™®àáâñä¢£¥€!@#$^*_+=<>?`~\"|\ [];:") {
 
                         cy.get('.border-blue-500').click()
 
@@ -294,37 +293,41 @@ describe('Item Classification', () => {
 
         cy.fixture('master-itemclass-data.json').then((data) => {
             
-        const specificItemClass = data[4];
+            for (const key in data) {
 
-            cy.wait(2000)
+                if (data[key].onlyDelete === true) {
 
-            cy.contains('tbody > tr',specificItemClass.editItemClass).within(() => {
+                    cy.wait(2000)
 
-                cy.get('[data-icon="delete"][aria-hidden="true"]').click()
+                    cy.contains('tbody > tr', data[key].editItemClass).within(() => {
 
-            })
+                        cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
-            cy.checkHeaderTitle('.px-8', '28.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
-            
-            cy.checkLabelCaption('.h-\\[500px\\] > h1', '41.3', 'Do you want to delete: ' + specificItemClass.editItemClass + ' ?', assertionResults, failureMessages);
+                    })
 
-            cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.checkHeaderTitle('.px-8', '28.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
+                    
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '41.3', 'Do you want to delete: ' + data[key].editItemClass + ' ?', assertionResults, failureMessages);
 
-            cy.wait(3000)
+                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
-            cy.checkElementInvisibility('.shadow-lg', '28.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.wait(3000)
 
-            cy.contains('tbody > tr', specificItemClass.editItemClass).within(() => {
+                    cy.checkElementInvisibility('.shadow-lg', '28.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
-                cy.get('[data-icon="delete"][aria-hidden="true"]').click()
+                    cy.contains('tbody > tr', data[key].editItemClass).within(() => {
 
-            })
+                        cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
-            cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    })
 
-            cy.checkLabelCaption('.Toastify__toast-body', '28.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
+                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
-            cy.checkElementInvisibility('.shadow-lg', '28.5.2', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.Toastify__toast-body', '28.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
+
+                    cy.checkElementInvisibility('.shadow-lg', '28.5.2', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                }
+            }
 
         })
 
@@ -338,32 +341,43 @@ describe('Item Classification', () => {
 
             for (const key in data) {
 
-                cy.wait(2000)
+                if (data[key].onlySearchVal === true) {
 
-                cy.get('[data-testid="SearchIcon"]').click()
-  
-                cy.get('#\\:rb\\:')
-                  .should('be.enabled')
-                  .clear()
-                  .type(data[0].itemClass)
+                    // search valid data
+                    cy.wait(2000)
 
-                cy.wait(2000)
-   
-                cy.get('.MuiTableBody-root').contains(data[0].itemClass).should('exist')
+                    cy.get('[data-testid="SearchIcon"]').click()
+    
+                    cy.get('#\\:rb\\:')
+                    .should('be.enabled')
+                    .clear()
+                    .type(data[0].itemClass)
+
+                    cy.wait(2000)
+    
+                    cy.get('.MuiTableBody-root').contains(data[0].itemClass).should('exist')
+
+                }
+
+                if (data[key].onlySearchInval === true) {
+
+                    // search invalid or not existing data
+                    cy.wait(2000)
+                
+                    cy.get('[data-testid="SearchIcon"]').click()
+
+                    cy.get('#\\:rb\\:')
+                    .clear()
+                    .type('Appetizer')
+
+                    cy.wait(4000)
+
+                    cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
+
+                }
+
             }
         })
-
-        cy.wait(2000)
-                
-                cy.get('[data-testid="SearchIcon"]').click()
-
-                cy.get('#\\:rb\\:')
-                  .clear()
-                  .type('Appetizer')
-
-                cy.wait(4000)
-
-                cy.get('td > .MuiTypography-root').should('have.text', 'No records to display');
     })
 
     it('Print functionality', () => {

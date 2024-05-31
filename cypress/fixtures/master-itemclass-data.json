@@ -1,30 +1,57 @@
 [
   {
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": true,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "Dessert"
+    "itemClass": "Dessert",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "Beverages"
+    "itemClass": "Beverages",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "Appetizer"
+    "itemClass": "Appetizer",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemClass": "Meal",
-    "editItemClass": "Sides"
+    "editItemClass": "Sides",
+    "onlySearchVal": false,
+    "onlyDelete": true,
+    "onlySearchInval": true
   },
   {
-    "itemClass": "% & ( ) / - ."
+    "itemClass": "% & ( ) / - .",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "null"
+    "itemClass": "null",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap"
+    "itemClass": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :"
+    "itemClass": "©™®àáâñä¢£¥€!@#$^*_+=<>?`~\"|\\ [];:",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   }
 ]

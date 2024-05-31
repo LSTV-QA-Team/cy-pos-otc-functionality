@@ -6,11 +6,11 @@ describe('Item', () => {
 
     before(() => {
 
-        // Clear the modifierfile table before tests
-        cy.task("queryDb","TRUNCATE TABLE modifierfile")
+        // Clear the itemfile table before tests
+        cy.task("queryDb","TRUNCATE TABLE itemfile")
 
         // Verify that the table is empty
-        cy.task("queryDb", "SELECT * FROM modifierfile").then((records) => {
+        cy.task("queryDb", "SELECT * FROM itemfile").then((records) => {
 
             expect(records.length).to.be.equal(0)
 
@@ -42,14 +42,14 @@ describe('Item', () => {
 
     after(() => {
 
-        // delete unecessary inputed data in the table 'modifierfile'
+        // delete unecessary inputed data in the table 'itemfile'
         cy.fixture('data-to-delete.json').then((data) => {
 
-            // Loop through each character and delete corresponding rows from the 'modifierfile' table
+            // Loop through each character and delete corresponding rows from the 'itemfile' table
             data.forEach((item) => {
 
                 const specialChar = item.dataToDelete;
-                const deleteQuery = `DELETE FROM modifierfile WHERE modcde = '${specialChar}'`;
+                const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
                 
                 cy.task('queryDb', deleteQuery).then(() => {
 
@@ -59,7 +59,7 @@ describe('Item', () => {
             })
     
             // Ensure the table is clear of specified data
-            cy.task('queryDb', 'SELECT * FROM modifierfile').then((records) => {
+            cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
 
                 const remainingData = records.map((record) => record.description)
                 const deletedChars = data.map((item) => item.dataToDelete)
@@ -81,13 +81,13 @@ describe('Item', () => {
         
         cy.navigateToModule('Master File', 'Item')
 
-        cy.url({timeout: 10000}).should('contain', 'specialRequests/?menfield=masterfile_special_requests')
+        cy.url({timeout: 10000}).should('contain', 'itemuests/?menfield=masterfile_special_requests')
         
-        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item:', 'The"Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item:', '"Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.wait(2000)
 
-        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]','1.2.1', 'Upon Navigating to Item pager U/I', 'Item', assertionResults, failureMessages)
+        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]','1.2.1', 'Upon Navigating to Item pager U/I', 'Items', assertionResults, failureMessages)
 
         cy.wait(2000)
 
@@ -107,13 +107,13 @@ describe('Item', () => {
 
     it('Add Functionality', () => {
 
-        cy.fixture('master-specialreq-data.json').then((data) => {
+        cy.fixture('master-item-data.json').then((data) => {
 
             cy.get('.sc-eDLKkx > .anticon > svg').click()
 
             cy.wait(4000) 
             
-            cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+            cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', '"Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Item', assertionResults, failureMessages)
 
@@ -121,13 +121,61 @@ describe('Item', () => {
 
             cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Subclassification *', assertionResults, failureMessages)
             
-            cy.get('#modcde').invoke('outerWidth').then((width) => {
+            cy.get('#itmdsc').invoke('outerWidth').then((width) => {
 
                  expect(width).to.equal(420)
                     
             })
 
-            cy.get('#modgrpcde').invoke('outerWidth').then((width) => {
+            cy.get('#itmtyp').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
+
+            cy.get('#itemsubclasscde').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
+
+            cy.get('#itmclacde').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
+
+            cy.get('#untmea').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
+
+            cy.get('#untcst').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
+
+            cy.get('#barcde').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
+
+            cy.get('#untprc').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
+
+            cy.get('#itmpaxcount').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
+
+            cy.get('#memc').invoke('outerWidth').then((width) => {
 
                 expect(width).to.equal(420)
                    
@@ -135,13 +183,16 @@ describe('Item', () => {
 
             // 2.1.5 Check correct all object position
 
-            cy.validateElements('specialReq-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+            cy.validateElements('item-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
                             
             cy.fixture('dropdown-values.json').then((data) => { 
 
-                const expectedOptions = data.itemSubclass;
+                const expectedSubclass = data.itemSubclass;
+                const expectedClass = data.itemclass;
+                const expectedItemType = data.itemType;
+                const expectedTaxCode = data.taxCode;
 
-                cy.get('#modgrpcde').click()
+                cy.get('#itmtyp').click()
 
                 cy.get('.select__menu-list--is-multi')
                   .children('.select__option')
@@ -151,7 +202,58 @@ describe('Item', () => {
                     const actualOptions = [...$options].map(option => option.textContent.trim())
 
                     // Check that each expected option is present in the actual options
-                    expectedOptions.forEach(expectedOption => {
+                    expectedItemType.forEach(expectedOption => {
+
+                        expect(actualOptions).to.include(expectedOption)
+
+                    })
+                })
+
+                cy.get('#itemsubclasscde').click()
+
+                cy.get('.select__menu-list--is-multi')
+                  .children('.select__option')
+                  .then(($options) => {
+
+                    // Get the text of all options in the dropdown
+                    const actualOptions = [...$options].map(option => option.textContent.trim())
+
+                    // Check that each expected option is present in the actual options
+                    expectedSubclass.forEach(expectedOption => {
+
+                        expect(actualOptions).to.include(expectedOption)
+
+                    })
+                })
+
+                cy.get('#itmclacde').click()
+
+                cy.get('.select__menu-list--is-multi')
+                  .children('.select__option')
+                  .then(($options) => {
+
+                    // Get the text of all options in the dropdown
+                    const actualOptions = [...$options].map(option => option.textContent.trim())
+
+                    // Check that each expected option is present in the actual options
+                    expectedClass.forEach(expectedOption => {
+
+                        expect(actualOptions).to.include(expectedOption)
+
+                    })
+                })
+
+                cy.get('#taxcde').click()
+
+                cy.get('.select__menu-list--is-multi')
+                  .children('.select__option')
+                  .then(($options) => {
+
+                    // Get the text of all options in the dropdown
+                    const actualOptions = [...$options].map(option => option.textContent.trim())
+
+                    // Check that each expected option is present in the actual options
+                    expectedTaxCode.forEach(expectedOption => {
 
                         expect(actualOptions).to.include(expectedOption)
 
@@ -167,7 +269,7 @@ describe('Item', () => {
 
                 cy.wait(4000) 
                 
-                cy.get('#modcde').type(data[key].specialReq)
+                cy.get('#itmdsc').type(data[key].item)
                   .then(($input) => {
 
                     if ($input.val() === "null") {
@@ -176,11 +278,15 @@ describe('Item', () => {
 
                         cy.wait(4000)
 
-                        cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item Class * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item Description * is required', assertionResults, failureMessages)
 
-                        cy.get('#modcde').clear()
+                        cy.get('#itmdsc').clear()
 
-                        cy.get('#modgrpcde').click()
+                        cy.
+
+                        cy.get('#itmtyp').realClick()
+
+                        cy.get('#itemsubclasscde').realClick()
 
                         cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
@@ -249,7 +355,7 @@ describe('Item', () => {
 
                     else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
 
-                        cy.wrap($input).should('have.value', data[key].specialReq)
+                        cy.wrap($input).should('have.value', data[key].item)
 
                         cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
 
@@ -284,9 +390,27 @@ describe('Item', () => {
 
                     else {
 
-                        cy.wrap($input).should('have.value', data[key].specialReq)
+                        cy.wrap($input).should('have.value', data[key].item)
 
-                        cy.get('#modgrpcde').click()
+                        cy.get('#itmtyp').select(data[key].item)
+
+                        cy.get('#itemsubclasscde').select()
+
+                        cy.get('#itmclacde').select()
+
+                        cy.get('#untmea').type()
+
+                        cy.get('#untcst').type()
+
+                        cy.get('#barcde').type()
+
+                        cy.get('#untprc').type()
+
+                        cy.get('#itmpaxcount').type()
+
+                        cy.get('#taxcde').select()
+
+                        cy.get('#memc').select()
 
                         cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
@@ -302,7 +426,7 @@ describe('Item', () => {
 
                         cy.get('ul[role="listbox"] li').contains('15').click();
                         
-                        cy.get('.MuiTableBody-root').contains(data[key].specialReq).should('exist')
+                        cy.get('.MuiTableBody-root').contains(data[key].item).should('exist')
                     }
                 }) 
             }
@@ -316,9 +440,9 @@ describe('Item', () => {
 
     it('Edit Functionality', () => {
 
-        cy.fixture('master-specialreq-data.json').then((data) => {
+        cy.fixture('master-item-data.json').then((data) => {
 
-            const specificSpecialReq = data[7];
+            const specificitem = data[7];
 
                 cy.get('.MuiSelect-select.MuiTablePagination-select').click();
 
@@ -326,7 +450,7 @@ describe('Item', () => {
 
                 cy.wait(2000);
 
-                cy.contains('tbody > tr', specificSpecialReq.specialReq).within(() => {
+                cy.contains('tbody > tr', specificitem.item).within(() => {
 
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
 
@@ -345,21 +469,21 @@ describe('Item', () => {
 
                 // 54.1.5 Check correct all object position
 
-                cy.validateElements('specialReq-edit-el.json', '54.1.4 & 54.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+                cy.validateElements('item-edit-el.json', '54.1.4 & 54.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
                 cy.get('#modcde')
-                  .should('have.value', specificSpecialReq.specialReq)
+                  .should('have.value', specificitem.item)
                   .clear()
 
-                cy.get('#modcde').type(specificSpecialReq.editSpecialReq)
+                cy.get('#modcde').type(specificitem.edititem)
 
-                cy.contains('.select__multi-value', specificSpecialReq.itemSubclass)
-                  .find(`div[aria-label="Remove ${specificSpecialReq.itemSubclass}"]`)
+                cy.contains('.select__multi-value', specificitem.itemSubclass)
+                  .find(`div[aria-label="Remove ${specificitem.itemSubclass}"]`)
                   .click()
 
                 cy.get('#modgrpcde').click()
 
-                cy.get('.select__menu-list--is-multi').contains('.select__option', specificSpecialReq.editItemSubclass).click()
+                cy.get('.select__menu-list--is-multi').contains('.select__option', specificitem.editItemSubclass).click()
 
                 cy.get('.border-blue-500').click()
 
@@ -367,7 +491,7 @@ describe('Item', () => {
 
                 cy.checkElementInvisibility('.shadow-lg', '57.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Item" modal window still visible', assertionResults, failureMessages)
 
-                cy.get('.MuiTableBody-root').contains(specificSpecialReq.editSpecialReq).should('exist')
+                cy.get('.MuiTableBody-root').contains(specificitem.edititem).should('exist')
             })
 
         cy.wait(4000)
@@ -377,7 +501,7 @@ describe('Item', () => {
 
     it('Delete Functionality', () => {
 
-        cy.fixture('master-specialreq-data.json').then((data) => {
+        cy.fixture('master-item-data.json').then((data) => {
 
             for (const key in data) {
 
@@ -385,7 +509,7 @@ describe('Item', () => {
 
                     cy.wait(4000)
 
-                    cy.contains('tbody > tr', data[key].specialReq).within(() => {
+                    cy.contains('tbody > tr', data[key].item).within(() => {
                         
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
@@ -395,7 +519,7 @@ describe('Item', () => {
 
                     cy.checkHeaderTitle('.px-8', '26.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '26.3', 'Do you want to delete: ' + data[key].specialReq + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '26.3', 'Do you want to delete: ' + data[key].item + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '26.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
@@ -407,7 +531,7 @@ describe('Item', () => {
 
                     cy.wait(3000)
 
-                    cy.contains('tbody > tr', data[key].specialReq).within(() => {
+                    cy.contains('tbody > tr', data[key].item).within(() => {
 
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
@@ -431,7 +555,7 @@ describe('Item', () => {
 
     it('Search Functionality', () => {
 
-        cy.fixture('master-specialreq-data.json').then((data) => {
+        cy.fixture('master-item-data.json').then((data) => {
 
             for (const key in data) {
 
@@ -444,12 +568,12 @@ describe('Item', () => {
 
                     cy.get('#\\:rb\\:')
                       .clear()
-                      .type(data[key].specialReq)
+                      .type(data[key].item)
                       .type('{enter}')
 
                     cy.wait(2000)
     
-                    cy.get('.MuiTableBody-root').contains(data[key].specialReq).should('exist')
+                    cy.get('.MuiTableBody-root').contains(data[key].item).should('exist')
 
                 }
 
@@ -463,7 +587,7 @@ describe('Item', () => {
         
                     cy.get('#\\:rb\\:')
                       .clear()
-                      .type(data[key].specialReq)
+                      .type(data[key].item)
         
                     cy.wait(4000)
         
