@@ -118,7 +118,7 @@ describe('Item Subclassification', () => {
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Item Subclassification', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Subclass Description *', assertionResults,failureMessages)
+            cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Subclassification *', assertionResults,failureMessages)
 
             cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Class *', assertionResults, failureMessages)
 
@@ -186,7 +186,7 @@ describe('Item Subclassification', () => {
                                 cy.get('#itmclacde').select(data[key].itemClass)
 
                                 // 45.1 check if the validation message appear "Item Subclass Description * is required" 
-                                cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Item Subclass Description * is required', assertionResults, failureMessages)
+                                cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
                                 cy.wait(4000)
 

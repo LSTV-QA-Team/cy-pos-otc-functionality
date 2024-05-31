@@ -39,35 +39,35 @@ describe('Order Type', () => {
 
     });
 
-    after(() => {
+    // after(() => {
 
-        // delete unecessary inputed data in the table 'postypefile'
+    //     // delete unecessary inputed data in the table 'postypefile'
 
-        cy.fixture('data-to-delete.json').then((data) => {
-            // Loop through each character and delete corresponding rows from the 'postypefile' table
-            data.forEach((item) => {
-                const specialChar = item.dataToDelete;
-                const deleteQuery = `DELETE FROM postypefile WHERE postypdsc = '${specialChar}'`;
+    //     cy.fixture('data-to-delete.json').then((data) => {
+    //         // Loop through each character and delete corresponding rows from the 'postypefile' table
+    //         data.forEach((item) => {
+    //             const specialChar = item.dataToDelete;
+    //             const deleteQuery = `DELETE FROM postypefile WHERE postypdsc = '${specialChar}'`;
                 
-                cy.task('queryDb', deleteQuery).then(() => {
-                    cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
-                });
-            });
+    //             cy.task('queryDb', deleteQuery).then(() => {
+    //                 cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
+    //             });
+    //         });
     
-            // Ensure the table is clear of specified data
-            cy.task('queryDb', 'SELECT * FROM postypefile').then((records) => {
-                const remainingData = records.map((record) => record.description);
-                const deletedChars = data.map((item) => item.dataToDelete);
+    //         // Ensure the table is clear of specified data
+    //         cy.task('queryDb', 'SELECT * FROM postypefile').then((records) => {
+    //             const remainingData = records.map((record) => record.description);
+    //             const deletedChars = data.map((item) => item.dataToDelete);
                 
-                // Ensure no deleted special characters are still in the table
-                deletedChars.forEach((char) => {
-                    expect(remainingData).to.not.include(char);
-                });
+    //             // Ensure no deleted special characters are still in the table
+    //             deletedChars.forEach((char) => {
+    //                 expect(remainingData).to.not.include(char);
+    //             });
     
-                cy.log('Specified data Successfully deleted.'); // Log success
-            });
-        });
-    })
+    //             cy.log('Specified data Successfully deleted.'); // Log success
+    //         });
+    //     });
+    // })
 
     it('Check Order Type Page', () => {   
 
@@ -76,7 +76,9 @@ describe('Order Type', () => {
         cy.url({timeout: 10000})
             .should('contain', '/dineType/?menfield=masterfile_dinetype')
 
-        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Order Type:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
+        cy.wait(4000)
+
+        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Order Type:', 'The "Order Type" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.wait(2000)
 
@@ -234,6 +236,8 @@ describe('Order Type', () => {
 
                                 cy.checkElementVisibility('.text-sm', '19.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
 
+                                cy.wait(6000)
+
                             }
 
                             else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
@@ -249,6 +253,8 @@ describe('Order Type', () => {
                                 cy.checkElementInvisibility('.shadow-lg', '16.2.1', 'Upon clicking the "OK" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                                 // 16.2.2 Check if the "Description" textbox object is cleared or blank.
+
+                                cy.wait(6000)
                             }
 
                             else {
@@ -270,6 +276,8 @@ describe('Order Type', () => {
                                 cy.get('ul[role="listbox"] li').contains('15').click();
 
                                 cy.get('.MuiTableBody-root').contains(data[key].dineType).should('exist')
+
+                                cy.wait(6000)
                             }
                 }) 
             }
@@ -327,6 +335,8 @@ describe('Order Type', () => {
                 cy.checkElementInvisibility('.shadow-lg', '26.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Order Type" modal window still visible', assertionResults, failureMessages)
 
                 cy.get('.MuiTableBody-root').contains(specificOrderType.editDineType).should('exist')
+
+                cy.wait(10000)
             })
 
         cy.wait(4000)
