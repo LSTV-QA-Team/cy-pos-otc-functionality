@@ -3,7 +3,7 @@
     "sel": "button.border-blue-500",
     "assertion": "contain.text",
     "expectedText": "Save",
-    "customErrorMsg": "Save button should contain text \"Save\" instead of \"Add Data\""
+    "customErrorMsg": "Save button should contain text \"Save\" instead of \"Update\""
   },
   {
     "sel": "button.border-red-500",

@@ -81,7 +81,7 @@ describe('MEMC', () => {
 
         cy.navigateToModule('Master File', 'MEMC')
 
-        cy.url({timeout: 10000}).should('contain', '/memcifications/?menfield=masterfile_itemsub')
+        cy.url({timeout: 10000}).should('contain', '/memc/?menfield=masterfile_memc')
 
 
         cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to MEMC:', ' "MEMC" modal window was not visible or active.', assertionResults, failureMessages)
@@ -165,7 +165,7 @@ describe('MEMC', () => {
 
                                 cy.get('#value').type(data[key].value)
 
-                                // 45.1 check if the validation message appear "Item Subclass Description * is required" 
+                                // 45.1 check if the validation message appear "MEMC Description * is required" 
                                 cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'MEMC * is required', assertionResults, failureMessages)
 
                                 cy.wait(4000)
@@ -339,7 +339,7 @@ describe('MEMC', () => {
                 cy.checkHeaderTitle('.px-8', '22.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit MEMC', assertionResults, failureMessages)
 
                 // 54.1.2 Check correct label caption.
-                cy.checkLabelCaption('.mb-2', '22.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass', assertionResults, failureMessages)
+                cy.checkLabelCaption('.mb-2', '22.1.2', 'Upon clicking the "Edit" button on pager U/I', 'MEMC', assertionResults, failureMessages)
             
                 // 54.1.3 Check correct object (textbox) width
                 // Add when needed
@@ -464,7 +464,7 @@ describe('MEMC', () => {
                 cy.get('[data-testid="SearchIcon"]')
                     .click();
 
-                cy.get('#\\:re\\:')
+                cy.get('#\\:r5u\\:')
                     .clear()
                     .type('MEMC 500')
                     .type('{enter}')
