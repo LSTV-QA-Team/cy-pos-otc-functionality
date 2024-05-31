@@ -200,7 +200,7 @@ describe('Void/Refund Reasons', () => {
 
                             }
 
-                            else if ($input.val() === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+                            else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
 
                                 cy.wrap($input).should('have.value', data[key].voidReasons);
 
