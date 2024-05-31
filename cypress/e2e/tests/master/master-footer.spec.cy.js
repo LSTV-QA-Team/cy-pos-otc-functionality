@@ -9,7 +9,7 @@ describe('Receipt Footer Set Up', () => {
         // Excel file to JSON Converter
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-footer-data')
-        cy.execute('npm run sheet-converter footer-selector-assert')
+        // cy.execute('npm run sheet-converter footer-selector-assert')
         cy.wait(4000)
 
     })
