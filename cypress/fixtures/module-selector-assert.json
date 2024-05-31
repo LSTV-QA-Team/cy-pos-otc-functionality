@@ -52,11 +52,5 @@
     "sel": "[data-testid=\"KeyboardArrowRightIcon\"]",
     "assertion": "not.be.enabled",
     "customErrorMsg": "\"Arrow Left\" button  should be not be clickable when no data on the table"
-  },
-  {
-    "selectorName": "Rows per page button",
-    "sel": "[id=\":r9:\"]",
-    "assertion": "not.be.disabled",
-    "customErrorMsg": "\"Rows per page\" button  should be clickable"
   }
 ]

@@ -56,7 +56,7 @@ module.exports = defineConfig({
     code: false,
     saveAllAttempts: false,
     screenshotOnRunFailure: false,
-    // screenshotsFolder: "cypress/reports/screenshots"
+    screenshotsFolder: "cypress/reports/screenshots"
   },
 
   e2e: {

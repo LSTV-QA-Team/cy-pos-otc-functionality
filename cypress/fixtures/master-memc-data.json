@@ -1,0 +1,44 @@
+[
+  {
+    "memc": "MEMC 100",
+    "value": 100,
+    "editmemc": "MEMC 300",
+    "editvalue": 300
+  },
+  {
+    "memc": "MEMC 200",
+    "value": 200
+  },
+  {
+    "memc": "MEMC 100 (FSM A)",
+    "value": 100
+  },
+  {
+    "memc": "MEMC 200 (FSM A)",
+    "value": 200
+  },
+  {
+    "memc": "MEMC 100 (FSM B)",
+    "value": 100
+  },
+  {
+    "memc": "MEMC 200 (FSM B)",
+    "value": 200
+  },
+  {
+    "memc": "MEMC 500",
+    "value": 500
+  },
+  {
+    "memc": "% & ( ) / - .",
+    "value": 501
+  },
+  {
+    "memc": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
+    "value": 502
+  },
+  {
+    "memc": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\\\ ~ \\\\\\\" | \\\\ ] [ ] ; :",
+    "value": 503
+  }
+]

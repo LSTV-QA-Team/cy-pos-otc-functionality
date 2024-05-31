@@ -204,7 +204,7 @@ describe('Item Classification', () => {
 
                     }
 
-                    else if ($input.val() === "©™®àáâñä¢£¥€!@#$^*_+=<>?`~\"|\ [];:") {
+                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
                         cy.get('.border-blue-500').click()
 
