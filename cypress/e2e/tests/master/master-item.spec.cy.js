@@ -301,9 +301,17 @@ describe('Item', () => {
 
                         cy.wait(4000)
 
-                        cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.text-sm', '80.1.1', 'Upon clicking the "Save" button:', 'Item * is required', assertionResults, failureMessages)
 
-                        cy.checkLabelCaption('.text-sm', '45.2', 'Upon clicking the "Save" button:', 'Item * is required', assertionResults, failureMessages)
+                        // cy.checkLabelCaption('.text-sm', '80.1.2', 'Upon clicking the "Save" button:', 'Item Type * is required', assertionResults, failureMessages)
+
+                        // cy.checkLabelCaption('.text-sm', '80.1.3', 'Upon clicking the "Save" button:', 'Item Classification * is required', assertionResults, failureMessages)
+
+                        // cy.checkLabelCaption('.text-sm', '80.1.4', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
+
+                        // cy.checkLabelCaption('.text-sm', '80.1.5', 'Upon clicking the "Save" button:', 'Selling Price * is required', assertionResults, failureMessages)
+
+                        // cy.checkLabelCaption('.text-sm', '80.1.6', 'Upon clicking the "Save" button:', 'Tax Code  * is required', assertionResults, failureMessages)
 
                         cy.wait(4000)
 
@@ -329,7 +337,7 @@ describe('Item', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '47.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '63.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
                         cy.get('.px-8 > .flex > .anticon > svg').click()
 
@@ -357,13 +365,13 @@ describe('Item', () => {
 
                         cy.get('.border-red-500').click()
 
-                        cy.checkLabelCaption('.h-auto', '40.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.h-auto', '18.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
                         cy.contains('button[class*="border-red-500"]', 'No').click()
 
                         cy.wait(3000)
 
-                        cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '18.2.1', 'Upon Clicking the "No" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.get('.border-red-500').click()
 
@@ -371,9 +379,9 @@ describe('Item', () => {
 
                         cy.wait(3000)
 
-                        cy.checkElementInvisibility('.shadow-lg', '40.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '18.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '40.3.2', 'Upon clicking the "Yes" button', 'Item', assertionResults, failureMessages)
+                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '18.3.2', 'Upon clicking the "Yes" button', 'Item', assertionResults, failureMessages)
 
 
                     }
@@ -400,9 +408,9 @@ describe('Item', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '48.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '48.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 43.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -430,7 +438,7 @@ describe('Item', () => {
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
-                        cy.checkElementVisibility('.text-sm', '51.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.text-sm', ' ', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
 
                         cy.get('#modgrpcde').click()
 
@@ -438,7 +446,7 @@ describe('Item', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkElementVisibility('.text-sm', '52.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.text-sm', ' ', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
 
                     }
 
@@ -464,11 +472,11 @@ describe('Item', () => {
 
                         cy.get('.border-blue-500').click()
                         
-                        cy.checkLabelCaption('.Toastify__toast-body', '49.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '78.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
                         // 16.2 click "OK" button on notification message.
 
-                        cy.checkElementInvisibility('.shadow-lg', '49.2.1', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '78.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -499,11 +507,11 @@ describe('Item', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                         cy.wait(3000)
                         
-                        cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '17.2', 'Upon Clicking the "Save" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.get('.MuiSelect-select.MuiTablePagination-select').click();
 
@@ -539,21 +547,21 @@ describe('Item', () => {
 
                 })
 
-                cy.checkElementVisibility('.shadow-lg', '54.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item" modal window was not visible or active.', assertionResults, failureMessages)
+                cy.checkElementVisibility('.shadow-lg', '81.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item" modal window was not visible or active.', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('label[for="itmdsc"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item *', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="itmdsc"]', '81.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item *', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('label[for="itmtyp"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Type *', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="itmtyp"]', '81.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Type *', assertionResults, failureMessages)
                 
-                cy.checkLabelCaption('label[for="itmclacde"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Classification *', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="itmclacde"]', '81.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Classification *', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('label[for="itemsubclasscde"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclassification *', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="itemsubclasscde"]', '81.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclassification *', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('label[for="untmea"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Unit of Measure', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="untmea"]', '81.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Unit of Measure', assertionResults, failureMessages)
 
                 // cy.checkLabelCaption('label[for="untcst"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Unit of Cost', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('label[for="barcde"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Barcode', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="barcde"]', '81.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Barcode', assertionResults, failureMessages)
 
             
                 // 54.1.3 Check correct object (textbox) width
@@ -563,7 +571,7 @@ describe('Item', () => {
 
                 // 54.1.5 Check correct all object position
 
-                cy.validateElements('item-edit-el.json', '54.1.4 & 54.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
+                cy.validateElements('item-edit-el.json', '81.1.4 & 81.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
 
                 cy.get('#itmdsc').clear().type(data[key].item)
 
@@ -587,9 +595,9 @@ describe('Item', () => {
 
                 cy.get('.border-blue-500').click()
 
-                cy.checkLabelCaption('.Toastify__toast-body', '57.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
+                cy.checkLabelCaption('.Toastify__toast-body', '96.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
-                cy.checkElementInvisibility('.shadow-lg', '57.2.1', 'Upon Clicking the "Save" button:', 'The "Edit Item" modal window still visible', assertionResults, failureMessages)
+                cy.checkElementInvisibility('.shadow-lg', '96.2.1', 'Upon Clicking the "Save" button:', 'The "Edit Item" modal window still visible', assertionResults, failureMessages)
 
                 cy.get('.MuiTableBody-root').contains(specificItem.editItem).should('exist')
             })
@@ -615,19 +623,19 @@ describe('Item', () => {
 
                     })
 
-                    cy.checkElementVisibility('.px-8', '26.1', 'Upon clicking the "Delete" button on pager UI:', 'The "Delete Confirmation" modal is not visible.')
+                    cy.checkElementVisibility('.px-8', '97.1', 'Upon clicking the "Delete" button on pager UI:', 'The "Delete Confirmation" modal is not visible.')
 
-                    cy.checkHeaderTitle('.px-8', '26.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
+                    cy.checkHeaderTitle('.px-8', '97.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '26.3', 'Do you want to delete: ' + data[key].item + ' ?', assertionResults, failureMessages)
 
-                    cy.validateElements('delete-confirm-el.json', '26.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
+                    cy.validateElements('delete-confirm-el.json', '97.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
                     cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
                     cy.wait(3000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '26.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '97.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
                     cy.wait(3000)
 
@@ -641,9 +649,9 @@ describe('Item', () => {
 
                     cy.wait(4000)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '62.5.1', 'Upon Clicking the "Yes" button in Delete Confirmation modal:', 'Successfully deleted.', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '97.5.1', 'Upon Clicking the "Yes" button in Delete Confirmation modal:', 'Successfully deleted.', assertionResults, failureMessages) 
 
-                    cy.checkElementInvisibility('.shadow-lg', '62.5.2 ', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '97.5.2 ', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
                 }
             }
