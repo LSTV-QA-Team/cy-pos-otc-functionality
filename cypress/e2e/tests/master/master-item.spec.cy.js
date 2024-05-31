@@ -442,7 +442,7 @@ describe('Item', () => {
 
                     }
 
-                    else if ($input.val() === "©™®àáâñä¢£¥€!@#$^*_+=<>?`~\"|\ [];:") {
+                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
 
                         cy.get('#itmtyp').select(data[key].itemType)
 

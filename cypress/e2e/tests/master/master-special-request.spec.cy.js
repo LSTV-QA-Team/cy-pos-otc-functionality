@@ -200,6 +200,8 @@ describe('Special Request', () => {
 
                         cy.get('.px-8 > .flex > .anticon > svg').click()
 
+                        cy.wait(6000)
+
                     } 
                     
                     else if ($input.val() === "No plastic utensils") {
@@ -228,6 +230,8 @@ describe('Special Request', () => {
 
                         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '40.3.2', 'Upon clicking the "Yes" button', 'Special Request', assertionResults, failureMessages)
 
+                        cy.wait(10000)
+
 
                     }
 
@@ -245,6 +249,8 @@ describe('Special Request', () => {
 
                         // 43.2.2 Check if the "Description" textbox object is cleared or blank.
 
+                        cy.wait(10000)
+
                     }
 
                     else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
@@ -259,7 +265,11 @@ describe('Special Request', () => {
 
                         cy.get('.border-blue-500').click()
 
+                        cy.wait(3000)
+
                         cy.checkElementVisibility('.text-sm', '52.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
+
+                        cy.wait(10000)
 
                     }
 
@@ -279,7 +289,7 @@ describe('Special Request', () => {
 
                         // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
-
+                        cy.wait(6000)
                     }
 
                     else {
@@ -303,6 +313,8 @@ describe('Special Request', () => {
                         cy.get('ul[role="listbox"] li').contains('15').click();
                         
                         cy.get('.MuiTableBody-root').contains(data[key].specialReq).should('exist')
+
+                        cy.wait(6000)
                     }
                 }) 
             }
@@ -368,6 +380,8 @@ describe('Special Request', () => {
                 cy.checkElementInvisibility('.shadow-lg', '57.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Special Request" modal window still visible', assertionResults, failureMessages)
 
                 cy.get('.MuiTableBody-root').contains(specificSpecialReq.editSpecialReq).should('exist')
+
+                cy.wait(8000)
             })
 
         cy.wait(4000)
