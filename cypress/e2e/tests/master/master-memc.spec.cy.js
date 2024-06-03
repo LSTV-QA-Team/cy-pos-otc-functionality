@@ -147,7 +147,7 @@ describe('MEMC', () => {
 
                 cy.wait(4000) 
                 
-                cy.get('#memcdsc')
+                cy.get('#codedsc')
                   .type(data[key].memc)
                   .then(($input) => {
 
@@ -161,7 +161,7 @@ describe('MEMC', () => {
                                 // 45.2 check if the validation message appear "MEMC * is required." 
                                 cy.checkLabelCaption('.text-sm', '13.2', 'Upon clicking the "Save" button:', 'MEMC * is required', assertionResults, failureMessages)
 
-                                cy.get('#memcdsc').clear()
+                                cy.get('#codedsc').clear()
 
                                 cy.get('#value').type(data[key].value)
 
@@ -170,7 +170,7 @@ describe('MEMC', () => {
 
                                 cy.wait(4000)
 
-                                cy.get('#memcdsc').type('MEMC 100')
+                                cy.get('#codedsc').type('MEMC 100')
 
                                 cy.get('#value').type('100')
 
@@ -296,11 +296,6 @@ describe('MEMC', () => {
                                 
                                 // 4.2.1 Check if modal window is still visible.
                                 cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
-
-                                cy.get('.Muitype-type.MuiTablePagination-type').click();
-
-                                cy.get('ul[role="listbox"] li').contains('15').click();
-
                                 
                                 // 6.3.2.1 Check encoded data should exist on Pager U/I table.
                                 cy.get('.MuiTableBody-root').contains(data[key].memc).should('exist')
@@ -319,10 +314,6 @@ describe('MEMC', () => {
         cy.fixture('master-memc-data.json').then((data) => {
 
             const specificmemc = data[0];
-
-                cy.get('.Muitype-type.MuiTablePagination-type').click();
-
-                cy.get('ul[role="listbox"] li').contains('15').click();
 
                 cy.wait(2000);
 
@@ -352,12 +343,12 @@ describe('MEMC', () => {
                 // cy.validateElements('memc-edit-el.json', '22.1.4 & 22.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
                 // 55. Clear "Description" textbox object. 
-                cy.get('#memcdsc')
+                cy.get('#codedsc')
                     .should('have.value', specificmemc.memc)
                     .clear()
 
                 // 56. Edit the existing data. 
-                cy.get('#memcdsc').type(specificmemc.editmemc)
+                cy.get('#codedsc').type(specificmemc.editmemc)
 
                 cy.get('#value').type(specificmemc.editvalue)
 
@@ -449,7 +440,7 @@ describe('MEMC', () => {
                     .click();
 
   
-                cy.get('#\\:re\\:')
+                cy.get('#\\:r11\\:')
                     .clear()
                     .type(specificmemc.memc)
                     .type('{enter}');
@@ -464,7 +455,7 @@ describe('MEMC', () => {
                 cy.get('[data-testid="SearchIcon"]')
                     .click();
 
-                cy.get('#\\:r5u\\:')
+                cy.get('#\\:r11\\:')
                     .clear()
                     .type('MEMC 500')
                     .type('{enter}')
