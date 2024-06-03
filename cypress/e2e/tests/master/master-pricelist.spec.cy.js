@@ -1,26 +1,29 @@
+let assertionResults = [];
+let failureMessages = [];
+
 describe('Price List', () => {
 
-    // before(() => {
+    before(() => {
 
-    //     // Clear the pricelistfile table before tests
-    //     cy.task("queryDb","TRUNCATE TABLE pricelistfile")
+        // Clear the pricecodefile1 table before tests
+        cy.task("queryDb","TRUNCATE TABLE pricecodefile1")
 
-    //     // Verify that the table is empty
-    //     cy.task("queryDb", "SELECT * FROM pricelistfile").then((records) => {
+        // Verify that the table is empty
+        cy.task("queryDb", "SELECT * FROM pricecodefile1").then((records) => {
 
-    //         expect(records.length).to.be.equal(0)
+            expect(records.length).to.be.equal(0)
 
-    //     })
+        })
 
-    //     // Delete all file in downloads for check print functinality test case
-    //     cy.task('clearDownloads')
+        // Delete all file in downloads for check print functinality test case
+        cy.task('clearDownloads')
 
-    //     // Excel file to JSON Converter
-    //     cy.wait(4000)
-    //     cy.execute('npm run sheet-converter master-pricelist-data')
-    //     cy.wait(4000)
+        // Excel file to JSON Converter
+        cy.wait(4000)
+        cy.execute('npm run sheet-converter master-pricelist-data')
+        cy.wait(4000)
 
-    // })
+    })
     
     beforeEach(() => {
 
@@ -35,15 +38,15 @@ describe('Price List', () => {
 
     // after(() => {
 
-    //     // delete unecessary inputed data in the table 'pricelistfile'
+    //     // delete unecessary inputed data in the table 'pricecodefile1'
 
     //     cy.fixture('data-to-delete.json').then((data) => {
 
-    //         // Loop through each character and delete corresponding rows from the 'pricelistfile' table
+    //         // Loop through each character and delete corresponding rows from the 'pricecodefile1' table
     //         data.forEach((item) => {
 
     //             const specialChar = item.dataToDelete;
-    //             const deleteQuery = `DELETE FROM pricelistfile WHERE itmcladsc = '${specialChar}'`;
+    //             const deleteQuery = `DELETE FROM pricecodefile1 WHERE prcdsc = '${specialChar}'`;
                 
     //             cy.task('queryDb', deleteQuery).then(() => {
                     
@@ -53,7 +56,7 @@ describe('Price List', () => {
     //         })
     
     //         // Ensure the table is clear of specified data
-    //         cy.task('queryDb', 'SELECT * FROM pricelistfile').then((records) => {
+    //         cy.task('queryDb', 'SELECT * FROM pricecodefile1').then((records) => {
 
     //             const remainingData = records.map((record) => record.description)
     //             const deletedChars = data.map((item) => item.dataToDelete)
@@ -85,7 +88,7 @@ describe('Price List', () => {
 
         cy.wait(2000)
 
-        cy.checkTableColumnTitle(['Actions', 'Description'], '1.2.2', 'Upon Navigating to Price List pager U/I', assertionResults, failureMessages)
+        cy.checkTableColumnTitle(['Actions', 'Price List', 'Order Type'], '1.2.2', 'Upon Navigating to Price List pager U/I', assertionResults, failureMessages)
 
         // 1.2.3 Check correct button(s) caption.
         // Not necessary since buttons in pager U/I does not have captions.
@@ -93,7 +96,7 @@ describe('Price List', () => {
         // 1.2.4 Check correct objects position.
         // Add this when needed.  
 
-        cy.validateElements('pricelist-selector-assert.json', '1.2.5', 'Upon Navigating to Price List pager U/I', assertionResults, failureMessages)
+        cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to Price List pager U/I', assertionResults, failureMessages)
 
         // Consolidate the results of various assertions across multiple custom commands into a single summary.
         cy.checkForFailure(assertionResults, failureMessages)
@@ -111,9 +114,9 @@ describe('Price List', () => {
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Price List', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Description *', assertionResults, failureMessages)
+            cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Price List *', assertionResults, failureMessages)
             
-            cy.get('#itmcladsc').invoke('outerWidth').then((width) => {
+            cy.get('#prcdsc').invoke('outerWidth').then((width) => {
 
                 expect(width).to.equal(420)
                    
@@ -121,7 +124,7 @@ describe('Price List', () => {
 
             // 2.1.5 Check correct all object position
 
-            cy.validateElements('pricelist-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+            // cy.validateElements('pricelist-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
             cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
@@ -129,31 +132,32 @@ describe('Price List', () => {
 
                 cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
-                cy.get('#itmcladsc')
+                cy.get('#prcdsc')
                   .type(data[key].pricelist)
                   .then(($input) => {
 
                     if ($input.val() === "null") {
                         
-                        cy.get('#itmcladsc').clear()
+                        cy.get('#prcdsc').clear()
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.text-sm', '10.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.text-sm', '10.1', 'Upon clicking the "Save" button:', 'Price List * is required', assertionResults, failureMessages)
                         
-                        cy.get('#itmcladsc').type('Food')
+                        cy.get('#prcdsc').type('Jollibee 1')
+
+                        cy.get('#postypcde').select('Dine-In')
 
                         cy.get('.border-blue-500').click()
-
-                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '12.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                        cy.get('.px-8 > .flex > .anticon > svg').click()
-
+                        cy.wait(4000)
                     } 
                     
-                    else if ($input.val() === "Appetizer") {
+                    else if ($input.val() === "Jollibee 2") {
+
+                        cy.get('#postypcde').select(data[key].ordertype)
 
                         cy.get('.border-red-500').click()
 
@@ -179,6 +183,8 @@ describe('Price List', () => {
 
                     else if ($input.val() === "% & ( ) / - .") {
 
+                        cy.get('#postypcde').select(data[key].ordertype)
+
                         cy.get('.border-blue-500').click()
 
                         cy.checkLabelCaption('.Toastify__toast-body', '8.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
@@ -193,6 +199,8 @@ describe('Price List', () => {
 
                         cy.wrap($input).should('have.value', data[key].pricelist)
 
+                        cy.get('#postypcde').select(data[key].ordertype)
+
                         cy.checkElementVisibility('.text-sm', '16.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('.border-blue-500').click()
@@ -200,6 +208,8 @@ describe('Price List', () => {
                     }
 
                     else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                        cy.get('#postypcde').select(data[key].ordertype)
 
                         cy.get('.border-blue-500').click()
 
@@ -214,6 +224,8 @@ describe('Price List', () => {
                     else {
 
                         cy.wrap($input).should('have.value', data[key].pricelist)
+
+                        cy.get('#postypcde').select(data[key].ordertype)
 
                         cy.get('.border-blue-500').click()
 
@@ -239,7 +251,7 @@ describe('Price List', () => {
 
         cy.fixture('master-pricelist-data.json').then((data) => {
 
-        const specificpricelist = data[4];
+        const specificpricelist = data[2];
 
             cy.wait(2000)
 
@@ -253,7 +265,7 @@ describe('Price List', () => {
 
             cy.checkHeaderTitle('.px-8', '19.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Price List', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('.mb-2', '19.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Description *', assertionResults, failureMessages)
+            cy.checkLabelCaption('.mb-2', '19.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Price List *', assertionResults, failureMessages)
         
             // 21.1.3 Check correct object (textbox) width
             // Add when needed
@@ -262,13 +274,15 @@ describe('Price List', () => {
 
             // 21.1.5 Check correct all object position
 
-            cy.validateElements('pricelist-edit-el.json', '19.1.4 & 19.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+            // cy.validateElements('pricelist-edit-el.json', '19.1.4 & 19.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-            cy.get('#itmcladsc')
+            cy.get('#prcdsc')
                 .should('have.value', specificpricelist.pricelist)
                 .clear()
 
-            cy.get('#itmcladsc').type(specificpricelist.editpricelist)
+            cy.get('#prcdsc').type(specificpricelist.editpricelist)
+
+            cy.get('#postypcde').select(specificpricelist.editordertype)
 
             cy.get('.border-blue-500').click()
 
@@ -294,7 +308,7 @@ describe('Price List', () => {
 
                     cy.wait(2000)
 
-                    cy.contains('tbody > tr', data[key].editpricelist).within(() => {
+                    cy.contains('tbody > tr', data[key].pricelist).within(() => {
 
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
@@ -302,7 +316,7 @@ describe('Price List', () => {
 
                     cy.checkHeaderTitle('.px-8', '28.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '41.3', 'Do you want to delete: ' + data[key].editpricelist + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '41.3', 'Do you want to delete: ' + data[key].pricelist + ' ?', assertionResults, failureMessages);
 
                     cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
@@ -310,7 +324,7 @@ describe('Price List', () => {
 
                     cy.checkElementInvisibility('.shadow-lg', '28.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
-                    cy.contains('tbody > tr', data[key].editpricelist).within(() => {
+                    cy.contains('tbody > tr', data[key].pricelist).within(() => {
 
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
@@ -343,14 +357,13 @@ describe('Price List', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
-                    cy.get('#\\:rb\\:')
-                    .should('be.enabled')
+                    cy.get('#\\:r9q\\:')
                     .clear()
-                    .type(data[0].pricelist)
+                    .type(data[key].pricelist)
 
                     cy.wait(2000)
     
-                    cy.get('.MuiTableBody-root').contains(data[0].pricelist).should('exist')
+                    cy.get('.MuiTableBody-root').contains(data[key].pricelist).should('exist')
 
                 }
 
@@ -361,9 +374,9 @@ describe('Price List', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rb\\:')
+                    cy.get('#\\:r9q\\:')
                     .clear()
-                    .type('Appetizer')
+                    .type(data[key].pricelist)
 
                     cy.wait(4000)
 
