@@ -98,7 +98,7 @@
     "editDiscountType": "Percent",
     "editPercentAmount": 50,
     "editExemptVAT": "Yes",
-    "editLessVATDisc": "Yes",
+    "editLessVATDisc": "null",
     "editServiceChargeDisc": "Yes",
     "editGovDisc": "No",
     "onlineDeals_1": "No",
