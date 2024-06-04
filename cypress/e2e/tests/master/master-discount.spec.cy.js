@@ -39,7 +39,7 @@ describe('Discount', () => {
 
     })
 
-    it.only('Check Discounts Page', () => {   
+    it('Check Discounts Page', () => {   
         cy.navigateToModule('Master File', 'Discounts')
 
         cy.url({timeout: 10000}).should('contain', '/discount/?menfield=masterfile_discounts')
@@ -60,7 +60,7 @@ describe('Discount', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it.only('Add Functionality', () => {
+    it('Add Functionality', () => {
 
         cy.fixture('master-discount-data.json').then((data) => {
 
@@ -520,7 +520,7 @@ describe('Discount', () => {
         
     })
 
-    it.only('Edit Functionality', () => {
+    it('Edit Functionality', () => {
 
         cy.wait(8000)
 
@@ -641,7 +641,7 @@ describe('Discount', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it.only('Delete Functionality', () => {
+    it('Delete Functionality', () => {
 
         cy.fixture('master-discount-data.json').then((data) => {
             
