@@ -267,7 +267,7 @@ describe('Item Classification', () => {
 
             // 21.1.5 Check correct all object position
 
-            cy.validateElements('itemclass-edit-el.json', '19.1.4 & 19.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+            cy.validateElements('itemclass-edit-el.json', '19.1.4 & 19.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
 
             cy.get('#itmcladsc')
                 .should('have.value', specificItemClass.itemClass)
@@ -279,7 +279,7 @@ describe('Item Classification', () => {
 
             cy.checkLabelCaption('.Toastify__toast-body', '22.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
-            cy.checkElementInvisibility('.shadow-lg', '22.2.1', 'Upon Clicking the "Update" button:', 'The "Edit Item Classification" modal window still visible', assertionResults, failureMessages)
+            cy.checkElementInvisibility('.shadow-lg', '22.2.1', 'Upon Clicking the "Save" button:', 'The "Edit Item Classification" modal window still visible', assertionResults, failureMessages)
 
             cy.get('.MuiTableBody-root').contains(specificItemClass.editItemClass).should('exist')
         })

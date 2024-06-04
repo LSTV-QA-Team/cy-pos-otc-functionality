@@ -1,0 +1,60 @@
+[
+  {
+    "pricelist": "Jollibee 1",
+    "ordertype": "Dine-In",
+    "onlyDelete": false,
+    "onlySearchVal": true,
+    "onlySearchInval": false
+  },
+  {
+    "pricelist": "Jollibee 2",
+    "ordertype": "Takeout",
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
+  },
+  {
+    "pricelist": "Jollibee 4",
+    "ordertype": "Dine-In",
+    "editpricelist": "Jollibee 3",
+    "editordertype": "Dine-In",
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
+  },
+  {
+    "pricelist": "Jollibee 5",
+    "ordertype": "Takeout",
+    "onlyDelete": true,
+    "onlySearchVal": false,
+    "onlySearchInval": true
+  },
+  {
+    "pricelist": "% & ( ) / - .",
+    "ordertype": "Takeout",
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
+  },
+  {
+    "pricelist": "null",
+    "ordertype": "Takeout",
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
+  },
+  {
+    "pricelist": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
+    "ordertype": "Takeout",
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
+  },
+  {
+    "pricelist": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
+    "ordertype": "Takeout",
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
+  }
+]

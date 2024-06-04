@@ -1,0 +1,23 @@
+[
+  {
+    "takeoutsercharge": 30,
+    "dineinsercharge": 30,
+    "localtax": 1,
+    "forValid": true,
+    "forInvalid": false
+  },
+  {
+    "takeoutsercharge": 25,
+    "dineinsercharge": 25,
+    "localtax": 2,
+    "forValid": true,
+    "forInvalid": false
+  },
+  {
+    "takeoutsercharge": 5e+106,
+    "dineinsercharge": 5e+95,
+    "localtax": 5e+94,
+    "forValid": true,
+    "forInvalid": true
+  }
+]

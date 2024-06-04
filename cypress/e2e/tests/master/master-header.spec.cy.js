@@ -223,7 +223,7 @@ describe('Receipt Header Set Up', () => {
 
         cy.get('.border-blue-500').click()
 
-        cy.checkLabelCaption('.Toastify__toast-body', '36.1', 'Upon Clicking the "Update" button:', 'Please input valid data.', assertionResults, failureMessages)
+        cy.checkLabelCaption('.Toastify__toast-body', '28.1', 'Upon Clicking the "Update" button:', 'Please input valid data.', assertionResults, failureMessages)
 
         cy.wait(4000)
 
@@ -259,13 +259,13 @@ describe('Receipt Header Set Up', () => {
 
         cy.wait(4000)
 
-        cy.checkElementVisibility('.shadow-lg', '37.1', 'Upon Clicking the "Header Option" in Master File Menu', '"Receipt Header Set Up" modal window was not visible or active.', assertionResults, failureMessages)
+        cy.checkElementVisibility('.shadow-lg', '29.1', 'Upon Clicking the "Header Option" in Master File Menu', '"Receipt Header Set Up" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.get('.border-red-500').click()
 
-        cy.checkElementInvisibility('.shadow-lg', '38.1', 'Upon Clicking the "Cancel" button:', '"Receipt Header Set Up" modal window was still visible or active.', assertionResults, failureMessages)
+        cy.checkElementInvisibility('.shadow-lg', '30.1', 'Upon Clicking the "Cancel" button:', '"Receipt Header Set Up" modal window was still visible or active.', assertionResults, failureMessages)
 
-        cy.checkElementVisibility('.h-full', '38.2', 'Upon Clicking the "Cancel" button:', '"Master File Menu" modal window was not visible or active.', assertionResults, failureMessages)
+        cy.checkElementVisibility('.h-full', '30.2', 'Upon Clicking the "Cancel" button:', '"Master File Menu" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.wait(4000)
 
