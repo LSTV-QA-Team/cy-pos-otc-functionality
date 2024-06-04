@@ -2,7 +2,7 @@
   {
     "itemSubclass": "Mashed Potatoes",
     "itemClass": "Food",
-    "editItemSubclass": "Snacks",
+    "editItemSubclass": "Snack",
     "editItemClass": "Food"
   },
   {
@@ -18,7 +18,7 @@
     "itemClass": "Food"
   },
   {
-    "itemSubclass": "Burgers",
+    "itemSubclass": "Burger",
     "itemClass": "Food"
   },
   {
@@ -46,7 +46,7 @@
     "itemClass": "Food"
   },
   {
-    "itemSubclass": "Juices",
+    "itemSubclass": "Juice",
     "itemClass": "Food"
   },
   {

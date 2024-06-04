@@ -3,12 +3,18 @@
     "dataToDelete": "% & ( ) / - ."
   },
   {
-    "dataToDelete": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap"
+    "dataToDelete": "Jollibee Filipino Sweet Style"
   },
   {
     "dataToDelete": "This is a very long string that exceeds the maximum allowed length."
   },
   {
-    "dataToDelete": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :"
+    "dataToDelete": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # "
+  },
+  {
+    "dataToDelete": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? `"
+  },
+  {
+    "dataToDelete": "Jollibee Filipino Sweet Style Spaghetti Langhap Sa"
   }
 ]
