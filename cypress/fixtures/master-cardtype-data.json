@@ -1,36 +1,47 @@
 [
   {
-    "cardType": "Credit Card"
+    "cardType": "Credit Card",
+    "onlyDelete": false
   },
   {
-    "cardType": "Debit Card"
+    "cardType": "Debit Card",
+    "onlyDelete": false
   },
   {
-    "cardType": "Prepaid Card"
+    "cardType": "Prepaid Card",
+    "onlyDelete": false
   },
   {
-    "cardType": "Gift Card"
+    "cardType": "Gift Card",
+    "onlyDelete": false
   },
   {
     "cardType": "Store Gift",
-    "editCardType": "Store Card"
+    "editCardType": "Store Card",
+    "onlyDelete": false
   },
   {
-    "cardType": "Loyalty Card"
+    "cardType": "Loyalty Card",
+    "onlyDelete": true
   },
   {
-    "cardType": "Electronic Card"
+    "cardType": "Electronic Card",
+    "onlyDelete": false
   },
   {
-    "cardType": "null"
+    "cardType": "null",
+    "onlyDelete": false
   },
   {
-    "cardType": "% & ( ) / - ."
+    "cardType": "% & ( ) / - .",
+    "onlyDelete": false
   },
   {
-    "cardType": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :"
+    "cardType": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
+    "onlyDelete": false
   },
   {
-    "cardType": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap"
+    "cardType": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
+    "onlyDelete": false
   }
 ]
