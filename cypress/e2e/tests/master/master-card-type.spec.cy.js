@@ -139,13 +139,13 @@ describe('Card Type', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.text-sm', '22.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.text-sm', '12.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
                         cy.get('#cardtype').type('Credit Card')
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
                         cy.get('.px-8 > .flex > .anticon > svg').click()
 
@@ -157,13 +157,13 @@ describe('Card Type', () => {
 
                         cy.get('.border-red-500').click()
 
-                        cy.checkLabelCaption('.h-auto', '16.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
                         cy.contains('button[class*="border-red-500"]', 'No').click()
 
                         cy.wait(3000)
 
-                        cy.checkElementVisibility('.shadow-lg', '16.2.1', 'Upon Clicking the "No" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.get('.border-red-500').click()
 
@@ -171,9 +171,9 @@ describe('Card Type', () => {
 
                         cy.wait(3000)
 
-                        cy.checkElementInvisibility('.shadow-lg', '16.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '16.3.2', 'Upon clicking the "Yes" button', 'Card Type', assertionResults, failureMessages)
+                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Card Type', assertionResults, failureMessages)
 
                         cy.wait(6000)
 
@@ -183,9 +183,9 @@ describe('Card Type', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '20.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '10.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '20.2.1', 'Upon clicking the "OK" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '10.2.1', 'Upon clicking the "OK" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -197,11 +197,11 @@ describe('Card Type', () => {
 
                         cy.wrap($input).should('have.value', data[key].cardType);
 
-                        cy.checkElementVisibility('.text-sm', '29.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.text-sm', '18.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('.border-red-500').click()
 
-                        cy.checkLabelCaption('.h-auto', '16.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.h-auto', '19.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
                         cy.contains('button[class*="border-blue-500"]', 'Yes').click()
 
@@ -209,15 +209,15 @@ describe('Card Type', () => {
 
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '27.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
                         // 16.2 click "OK" button on notification message.
 
-                        cy.checkElementInvisibility('.shadow-lg', '27.2.1', 'Upon clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '16.2.1', 'Upon clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.wait(6000)
                         
@@ -303,42 +303,51 @@ describe('Card Type', () => {
     it('Delete Functionality', () => {
 
         cy.fixture('master-cardtype-data.json').then((data) => {
-            
-            const specificCardType = data[5];
 
-                cy.wait(2000)
+            for (const key in data) {
 
-                cy.contains('tbody > tr',specificCardType.cardType).within(() => {
+                if (data[key].onlyDelete === true) {
 
-                    cy.get('[data-icon="delete"][aria-hidden="true"]').click()
+                    cy.wait(2000)
 
-                })
+                    cy.contains('tbody > tr',data[key].cardType).within(() => {
 
-                cy.checkHeaderTitle('.px-8', '29.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
-                
-                cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + specificCardType.cardType + ' ?', assertionResults, failureMessages)
+                        cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
-                cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    })
 
-                cy.wait(3000)
+                    cy.checkHeaderTitle('.px-8', '25.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
+                    
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '25.3', 'Do you want to delete: ' + data[key].cardType + ' ?', assertionResults, failureMessages)
 
-                cy.checkElementInvisibility('.shadow-lg', '29.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
-                cy.contains('tbody > tr', specificCardType.cardType).within(() => {
+                    cy.wait(3000)
 
-                    cy.get('[data-icon="delete"][aria-hidden="true"]').click()
+                    cy.checkElementInvisibility('.shadow-lg', '25.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
-                })
+                    cy.contains('tbody > tr', data[key].cardType).within(() => {
 
-                cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                        cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
-                cy.wait(6000)
+                    })
 
-                cy.checkLabelCaption('.Toastify__toast-body', '29.5.1', 'Upon Clicking the "Yes" button:', 'Successfully deleted.', assertionResults, failureMessages) 
+                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
-                cy.checkElementInvisibility('.shadow-lg', '29.41.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.wait(4000)
 
-            })
+                    cy.checkLabelCaption('.Toastify__toast-body', '25.5.1', 'Upon Clicking the "Yes" button:', 'Successfully deleted.', assertionResults, failureMessages) 
+
+                    cy.checkElementInvisibility('.shadow-lg', '25.41.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+
+                }
+            }
+
+            cy.get(':nth-child(7) > .css-imq00f-MuiTableCell-root > .MuiBox-root > .MuiIconButton-colorError').click()
+
+            cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+
+        })
 
         cy.checkForFailure(assertionResults, failureMessages)
     })
@@ -387,7 +396,7 @@ describe('Card Type', () => {
 
         cy.xpath('//span[@aria-label="printer"]').click()
 
-        cy.wait(10000)
+        cy.wait(15000)
 
         cy.task('verifyDownloads', Cypress.config('downloadsFolder')).then((files) => {
 

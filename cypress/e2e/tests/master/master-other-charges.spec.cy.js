@@ -9,7 +9,7 @@ describe('Other Charges', () => {
         // Excel file to JSON Converter
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-othercharge-data')
-        // cy.execute('npm run sheet-converter Other Charges-selector-assert')
+        // cy.execute('npm run sheet-converter othercharges-selector-assert')
         cy.wait(4000)
 
     })
@@ -51,6 +51,7 @@ describe('Other Charges', () => {
     it('Valid Update Functionality', () => {
 
         cy.fixture('master-othercharge-data.json').then((data) => {
+            
             for (const key in data){
                 if (data[key].forValid === true) {
 
