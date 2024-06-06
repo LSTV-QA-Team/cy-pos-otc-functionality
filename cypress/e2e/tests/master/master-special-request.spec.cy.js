@@ -163,8 +163,6 @@ describe('Special Request', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.wait(3000)
-
                         cy.checkLabelCaption('.text-sm', '11.2', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
                         cy.get('#modcde').clear()
@@ -177,7 +175,6 @@ describe('Special Request', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.wait(3000)
 
                         cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Special Request * is required', assertionResults, failureMessages)
 
@@ -190,8 +187,6 @@ describe('Special Request', () => {
                         cy.get('.select__menu-list--is-multi').contains('.select__option', 'Chicken').click()
 
                         cy.get('.border-blue-500').click()
-
-                        cy.wait(3000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
@@ -221,8 +216,6 @@ describe('Special Request', () => {
 
                         cy.contains('button[class*="border-blue-500"]', 'Yes').click()
 
-                        cy.wait(3000)
-
                         cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Special Request" modal window was visible or active.', assertionResults, failureMessages)
 
                         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Special Request', assertionResults, failureMessages)
@@ -240,7 +233,6 @@ describe('Special Request', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.wait(3000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '5.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -265,8 +257,6 @@ describe('Special Request', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.wait(3000)
-
                         cy.checkElementVisibility('.text-sm', '19.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
 
                         cy.wait(3000)
@@ -281,7 +271,6 @@ describe('Special Request', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.wait(3000)
                         
                         cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
@@ -304,7 +293,6 @@ describe('Special Request', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.wait(3000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -379,7 +367,6 @@ describe('Special Request', () => {
 
                 cy.get('.border-blue-500').click()
 
-                cy.wait(3000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
@@ -420,8 +407,6 @@ describe('Special Request', () => {
                     cy.validateElements('delete-confirm-el.json', '26.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
                     cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
-
-                    cy.wait(3000)
 
                     cy.checkElementInvisibility('.shadow-lg', '26.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 

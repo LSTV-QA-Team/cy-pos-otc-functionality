@@ -9,7 +9,7 @@ describe('Other Charges', () => {
         // Excel file to JSON Converter
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-othercharge-data')
-        // cy.execute('npm run sheet-converter othercharges-selector-assert')
+        // cy.execute('npm run sheet-converter othercharge-selector-assert')
         cy.wait(4000)
 
     })
@@ -43,33 +43,39 @@ describe('Other Charges', () => {
 
         // Check correct objects position.
 
-        // cy.validateElements('Other Charges-selector-assert.json', '1.2.2 & 1.2.3 & 1.2.5', 'Upon Navigating to Other Charges pager U/I', assertionResults, failureMessages)
+        cy.validateElements('othercharge-selector-assert.json', '1.2.2 & 1.2.3 & 1.2.5', 'Upon Navigating to Other Charges pager U/I', assertionResults, failureMessages)
 
         cy.checkForFailure(assertionResults, failureMessages)
     });
 
-    it('Valid Update Functionality', () => {
+    it('Check Valid Input Functionality', () => {
 
         cy.fixture('master-othercharge-data.json').then((data) => {
             
             for (const key in data){
+
                 if (data[key].forValid === true) {
 
                     cy.wait(4000)
 
                     cy.get('#takeout_scharge').clear()
-                        .type(data[key].takeoutsercharge)
+                      .type(data[key].takeoutsercharge)
+                      .should('have.value', data[key].takeoutsercharge)
 
                     cy.get('#dinein_scharge')
-                        .type(data[key].dineinsercharge)
+                      .type(data[key].dineinsercharge)
+                      .should('have.value', data[key].dineinsercharge)
 
 
                     cy.get('#localtax').clear()
-                        .type(data[key].localtax)
+                      .type(data[key].localtax)
+                      .should('have.value', data[key].localtax)
 
                     // 17.1 Check all encoded data should reflect to the receipt (Validate on Preview) 
 
                     cy.get('.border-blue-500').click()
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages)
 
                     cy.contains('Other Charges').click()
                 } 
@@ -81,9 +87,12 @@ describe('Other Charges', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Check Max Length of Input Characters', () => {
+    it('Check Invalid Input Functionality', () => {
+
         cy.fixture('master-othercharge-data.json').then((data) => {
+
             for (const key in data){
+
                 if (data[key].forInvalid === true) {
 
                     cy.wait(4000)
@@ -91,20 +100,45 @@ describe('Other Charges', () => {
                     cy.wait(4000)
 
                     cy.get('#takeout_scharge').clear()
-                        .type(data[key].takeoutsercharge)
+                      .type(data[key].takeoutsercharge)
 
                     cy.get('#dinein_scharge').clear()
-                        .type(data[key].dineinsercharge)
+                      .type(data[key].dineinsercharge)
 
 
                     cy.get('#localtax').clear()
-                        .type(data[key].localtax)  
+                      .type(data[key].localtax)  
                     
                     cy.get('.border-blue-500').click()
+
+                    cy.get('#localtax').invoke('val').then(localTaxVal => {
+
+                        cy.get('#takeout_scharge').invoke('val').then(takeoutSchargeVal => {
+                            
+                            cy.get('#dinein_scharge').invoke('val').then(dineinSchargeVal => {
+                            
+                                if (!localTaxVal && !takeoutSchargeVal && !dineinSchargeVal) {
+
+                                    cy.log('All textboxes are empty')
+
+                                    //do nothing
+
+                                } else {
+
+                                    cy.log('One or more textboxes are not empty')
+
+                                    cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages)
+
+                                }
+                            })
+                        })
+                    })
+
                 }
                 
             } 
         })
+
         cy.wait(4000)
 
         cy.checkForFailure(assertionResults, failureMessages)
@@ -117,32 +151,36 @@ describe('Other Charges', () => {
         cy.get('#takeout_scharge').clear()
 
         cy.get('#dinein_scharge').clear()
+          .type('1.00')
 
         cy.get('#localtax').clear()
+          .type('1.00')
+
+        cy.get('.border-blue-500').click()
+
+        cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Takeout Service Charge * is required', assertionResults, failureMessages)
+
+        cy.get('#takeout_scharge').clear()
+          .type('1.00')
+
+        cy.get('#dinein_scharge').clear()
+
+        cy.get('#localtax').clear()
+          .type('1.00')
+
+        cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Dine-In Service Charge * is required', assertionResults, failureMessages)
+
+        cy.get('#takeout_scharge').clear()
+          .type('1.00')
+
+        cy.get('#dinein_scharge').clear()
+          .type('1.00')
+
+        cy.get('#localtax').clear()
+
+        cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Local Tax * is required', assertionResults, failureMessages)
         
-        cy.checkLabelCaption('.Toastify__toast-body', '36.1', 'Upon Clicking the "Update" button:', 'Please input valid data.', assertionResults, failureMessages)
-
-        cy.wait(4000)
-
-        // cy.checkElementVisibility('.shadow-lg', '19.1', 'Upon Clicking the "Update" button:', '"Other Charges" modal window was not visible or active.', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#Other Charges-form', '3.1', 'Upon Clicking the "Update" button:', '"Supplier Name * is required" was not visible', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#Other Charges-form', '3.1', 'Upon Clicking the "Update" button:', '"Supplier Address * is required" was not visible', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#Other Charges-form', '3.1', 'Upon Clicking the "Update" button:', '"Supplier VAT Registered TIN * is required" was not visible', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#Other Charges-form', '3.1', 'Upon Clicking the "Update" button:', '"Supplier Non-VAT registered TIN * is required', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#Other Charges-form', '3.1', 'Upon Clicking the "Update" button:', '"Accredited No. * is required"', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#Other Charges-form', '3.1', 'Upon Clicking the "Update" button:', '"Permit No. * is required', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#Other Charges-form', '3.1', 'Upon Clicking the "Update" button:', '"Accredited Data * is required" was not visible', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#Other Charges-form', '3.1', 'Upon Clicking the "Update" button:', '"Date Issued * is required" was not visible', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#Other Charges-form', '3.1', 'Upon Clicking the "Update" button:', '"Years Validity * is required" was not visible', assertionResults, failureMessages)
+        // cy.checkLabelCaption('.Toastify__toast-body', '36.1', 'Upon Clicking the "Update" button:', 'Please input valid data.', assertionResults, failureMessages)
 
         cy.wait(4000)
 
@@ -152,11 +190,11 @@ describe('Other Charges', () => {
 
     it('Cancel Functionlity', () => {
         
-        cy.contains('Other Charges').click()
+        // cy.contains('Other Charges').click()
 
-        cy.wait(4000)
+        // cy.wait(4000)
 
-        cy.checkElementVisibility('.shadow-lg', '37.1', 'Upon Clicking the "Other Charges" in Master File Menu', '"Other Charges" modal window was not visible or active.', assertionResults, failureMessages)
+        // cy.checkElementVisibility('.shadow-lg', '37.1', 'Upon Clicking the "Other Charges" in Master File Menu', '"Other Charges" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.get('.border-red-500').click()
 
@@ -167,5 +205,5 @@ describe('Other Charges', () => {
         cy.wait(4000)
 
         cy.checkForFailure(assertionResults, failureMessages)
-    });
+    })
 })

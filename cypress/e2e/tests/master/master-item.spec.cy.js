@@ -6,20 +6,16 @@ describe('Item', () => {
 
     before(() => {
 
-        // Clear the itemfile table before tests
         cy.task("queryDb","TRUNCATE TABLE itemfile")
 
-        // Verify that the table is empty
         cy.task("queryDb", "SELECT * FROM itemfile").then((records) => {
 
             expect(records.length).to.be.equal(0)
 
         })
 
-        // Delete all file in downloads for check print functinality test case
         cy.task('clearDownloads')
 
-        // Excel file to JSON Converter
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-item-data')
         cy.execute('npm run sheet-converter item-selector-assert')
@@ -31,51 +27,45 @@ describe('Item', () => {
     
     beforeEach(() => {
 
-        // reset for each test case
         assertionResults = [];
         failureMessages = [];
 
-        // Login with valid credentials
         cy.login('lstv', 'lstventures')
 
     })
 
-    // after(() => {
+    after(() => {
 
-    //     // delete unecessary inputed data in the table 'itemfile'
-    //     cy.fixture('data-to-delete.json').then((data) => {
+        cy.fixture('data-to-delete.json').then((data) => {
 
-    //         // Loop through each character and delete corresponding rows from the 'itemfile' table
-    //         data.forEach((item) => {
+            data.forEach((item) => {
 
-    //             const specialChar = item.dataToDelete;
-    //             const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
+                const specialChar = item.dataToDelete;
+                const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
                 
-    //             cy.task('queryDb', deleteQuery).then(() => {
+                cy.task('queryDb', deleteQuery).then(() => {
 
-    //                 cy.log(`Deleted data with description: ${specialChar}`) // Log successful deletions
+                    cy.log(`Deleted data with description: ${specialChar}`) 
 
-    //             })
-    //         })
+                })
+            })
     
-    //         // Ensure the table is clear of specified data
-    //         cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
+            cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
 
-    //             const remainingData = records.map((record) => record.description)
-    //             const deletedChars = data.map((item) => item.dataToDelete)
+                const remainingData = records.map((record) => record.description)
+                const deletedChars = data.map((item) => item.dataToDelete)
                 
-    //             // Ensure no deleted special characters are still in the table
-    //             deletedChars.forEach((char) => {
+                deletedChars.forEach((char) => {
 
-    //                 expect(remainingData).to.not.include(char)
+                    expect(remainingData).to.not.include(char)
 
-    //             })
+                })
     
-    //             cy.log('Specified data Successfully deleted.'); // Log success
+                cy.log('Specified data Successfully deleted.'); // Log success
 
-    //         })
-    //     })
-    // })
+            })
+        })
+    })
 
     it('Check Item Page', () => {  
 
@@ -106,6 +96,10 @@ describe('Item', () => {
     });
 
     it('Add Functionality', () => {
+
+        cy.addTestContext(`Upon Clicking "Add" button:
+                            1. Some data encoded in Item Subclassification does not reflect on Item Subclassification dropdown object.
+            `)  
 
         cy.fixture('master-item-data.json').then((data) => {
 
@@ -447,7 +441,7 @@ describe('Item', () => {
 
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
                         cy.get('#itmtyp').select(data[key].itemType)
 
@@ -570,25 +564,25 @@ describe('Item', () => {
 
                 cy.validateElements('item-edit-el.json', '81.1.4 & 81.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
 
-                cy.get('#itmdsc').clear().type(data[key].item)
+                cy.get('#itmdsc').clear().type(specificItem.item)
 
-                cy.get('#itmtyp').select(data[key].itemType)
+                cy.get('#itmtyp').select(specificItem.itemType)
 
-                cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+                cy.get('#itemsubclasscde').select(specificItem.itemSubclass)
 
-                cy.get('#itmclacde').select(data[key].itemClass)
+                cy.get('#itmclacde').select(specificItem.itemClass)
 
-                cy.get('#untmea').clear().type(data[key].unitMeasure)
+                cy.get('#untmea').clear().type(specificItem.unitMeasure)
 
-                cy.get('#untcst').clear().type(data[key].unitCost)
+                cy.get('#untcst').clear().type(specificItem.unitCost)
 
-                cy.get('#barcde').clear().type(data[key].barcode)
+                cy.get('#barcde').clear().type(specificItem.barcode)
 
-                cy.get('#untprc').clear().type(data[key].sellingPrice)
+                cy.get('#untprc').clear().type(specificItem.sellingPrice)
 
-                cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
+                cy.get('#itmpaxcount').clear().type(specificItem.goodXPerson)
 
-                cy.get('#taxcde').select(data[key].taxCode)
+                cy.get('#taxcde').select(specificItem.taxCode)
 
                 cy.get('.border-blue-500').click()
 
@@ -671,7 +665,7 @@ describe('Item', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rb\\:')
+                    cy.get('input[placeholder="Search Item Description"]')
                       .clear()
                       .type(data[key].item)
                       .type('{enter}')
@@ -690,7 +684,7 @@ describe('Item', () => {
                     cy.get('[data-testid="SearchIcon"]')
                       .click();
         
-                    cy.get('#\\:rb\\:')
+                    cy.get('input[placeholder="Search Item Description"]')
                       .clear()
                       .type(data[key].item)
         

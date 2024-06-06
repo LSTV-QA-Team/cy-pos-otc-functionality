@@ -145,7 +145,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\\\ ~ \\\\\\\" | \\\\ ] [ ] ; :",
+    "item": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Chicken",
@@ -171,7 +171,7 @@
     "goodXPerson": 5,
     "taxCode": "VATABLE",
     "onlySearchVal": false,
-    "onlyDelete": true,
+    "onlyDelete": false,
     "onlySearchInval": false
   }
 ]

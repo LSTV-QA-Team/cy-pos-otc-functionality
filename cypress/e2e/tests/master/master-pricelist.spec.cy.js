@@ -36,44 +36,44 @@ describe('Price List', () => {
 
     })
 
-    // after(() => {
+    after(() => {
 
-    //     // delete unecessary inputed data in the table 'pricecodefile1'
+        // delete unecessary inputed data in the table 'pricecodefile1'
 
-    //     cy.fixture('data-to-delete.json').then((data) => {
+        cy.fixture('data-to-delete.json').then((data) => {
 
-    //         // Loop through each character and delete corresponding rows from the 'pricecodefile1' table
-    //         data.forEach((item) => {
+            // Loop through each character and delete corresponding rows from the 'pricecodefile1' table
+            data.forEach((item) => {
 
-    //             const specialChar = item.dataToDelete;
-    //             const deleteQuery = `DELETE FROM pricecodefile1 WHERE prcdsc = '${specialChar}'`;
+                const specialChar = item.dataToDelete;
+                const deleteQuery = `DELETE FROM pricecodefile1 WHERE prcdsc = '${specialChar}'`;
                 
-    //             cy.task('queryDb', deleteQuery).then(() => {
+                cy.task('queryDb', deleteQuery).then(() => {
                     
-    //                 cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
+                    cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
 
-    //             })
-    //         })
+                })
+            })
     
-    //         // Ensure the table is clear of specified data
-    //         cy.task('queryDb', 'SELECT * FROM pricecodefile1').then((records) => {
+            // Ensure the table is clear of specified data
+            cy.task('queryDb', 'SELECT * FROM pricecodefile1').then((records) => {
 
-    //             const remainingData = records.map((record) => record.description)
-    //             const deletedChars = data.map((item) => item.dataToDelete)
+                const remainingData = records.map((record) => record.description)
+                const deletedChars = data.map((item) => item.dataToDelete)
 
                 
-    //             // Ensure no deleted special characters are still in the table
-    //             deletedChars.forEach((char) => {
+                // Ensure no deleted special characters are still in the table
+                deletedChars.forEach((char) => {
 
-    //                 expect(remainingData).to.not.include(char)
+                    expect(remainingData).to.not.include(char)
 
-    //             })
+                })
     
-    //             cy.log('Specified data Successfully deleted.')// Log success
+                cy.log('Specified data Successfully deleted.')// Log success
 
-    //         })
-    //     })
-    // })
+            })
+        })
+    })
     it('Check Price List Page', () => {   
 
         cy.navigateToModule('Master File', 'Price List')
@@ -155,7 +155,7 @@ describe('Price List', () => {
                         cy.wait(4000)
                     } 
                     
-                    else if ($input.val() === "Jollibee 2") {
+                    else if ($input.val() === "Jollibee 6") {
 
                         cy.get('#postypcde').select(data[key].ordertype)
 
@@ -251,7 +251,7 @@ describe('Price List', () => {
 
         cy.fixture('master-pricelist-data.json').then((data) => {
 
-        const specificpricelist = data[2];
+        const specificpricelist = data[3];
 
             cy.wait(2000)
 
@@ -316,7 +316,7 @@ describe('Price List', () => {
 
                     cy.checkHeaderTitle('.px-8', '30.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '30.3', 'Do you want to delete: ' + data[key].pricelist + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '30.3', 'Upon clicking the "Delete" button on pager UI','Do you want to delete: ' + data[key].pricelist + ' ?', assertionResults, failureMessages);
 
                     cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
@@ -357,9 +357,9 @@ describe('Price List', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
-                    cy.get('#\\:ru\\:')
-                    .clear()
-                    .type(data[key].pricelist)
+                    cy.get('input[placeholder="Search Pricelist"]')
+                      .clear()
+                      .type(data[key].pricelist)
 
                     cy.wait(2000)
     
@@ -374,9 +374,9 @@ describe('Price List', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:ru\\:')
-                    .clear()
-                    .type(data[key].pricelist)
+                    cy.get('input[placeholder="Search Pricelist"]')
+                      .clear()
+                      .type(data[key].pricelist)
 
                     cy.wait(4000)
 

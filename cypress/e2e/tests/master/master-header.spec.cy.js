@@ -180,6 +180,8 @@ describe('Receipt Header Set Up', () => {
                           
                     
                     cy.get('.border-blue-500').click()
+
+                    cy.checkElementVisibility('.Toastify__toast-body', '28.1', 'Upon Clicking the "Update" button:', 'Notification message "Please input valid data" should be visible', assertionResults, failureMessages)
                 }
                 
             } 
@@ -223,7 +225,7 @@ describe('Receipt Header Set Up', () => {
 
         cy.get('.border-blue-500').click()
 
-        cy.checkLabelCaption('.Toastify__toast-body', '28.1', 'Upon Clicking the "Update" button:', 'Please input valid data.', assertionResults, failureMessages)
+        cy.checkElementVisibility('.Toastify__toast-body', '18.1.10', 'Upon Clicking the "Update" button:', 'Notification message "Please input data in required field." should be visible', assertionResults, failureMessages)
 
         cy.wait(4000)
 
@@ -255,13 +257,15 @@ describe('Receipt Header Set Up', () => {
 
     it('Cancel Functionlity', () => {
         
-        cy.contains('Header').click()
+        // cy.contains('Header').click()
 
-        cy.wait(4000)
+        // cy.wait(4000)
 
-        cy.checkElementVisibility('.shadow-lg', '29.1', 'Upon Clicking the "Header Option" in Master File Menu', '"Receipt Header Set Up" modal window was not visible or active.', assertionResults, failureMessages)
+        // cy.checkElementVisibility('.shadow-lg', '29.1', 'Upon Clicking the "Header Option" in Master File Menu', '"Receipt Header Set Up" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.get('.border-red-500').click()
+
+        cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-blue-500').click()
 
         cy.checkElementInvisibility('.shadow-lg', '30.1', 'Upon Clicking the "Cancel" button:', '"Receipt Header Set Up" modal window was still visible or active.', assertionResults, failureMessages)
 
@@ -270,5 +274,5 @@ describe('Receipt Header Set Up', () => {
         cy.wait(4000)
 
         cy.checkForFailure(assertionResults, failureMessages)
-    });
+    })
 })

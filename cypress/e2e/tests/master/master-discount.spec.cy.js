@@ -6,40 +6,35 @@ describe('Discount', () => {
 
 
     before(() => {
-        // Clear the discountfile table before tests
+
         cy.task("queryDb","TRUNCATE TABLE discountfile")
 
-        // Verify that the table is empty
         cy.task("queryDb", "SELECT * FROM discountfile").then((records) => {
             expect(records.length).to.be.equal(0)
-        });
+        })
 
-        // Delete all file in downloads for check print functinality test case
         cy.task('clearDownloads')
 
-        // Excel file to JSON Converter
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-discount-data')
-        // cy.execute('npm run sheet-converter module-selector-assert')
-        // cy.execute('npm run sheet-converter discount-add-el')
-        // cy.execute('npm run sheet-converter discount-edit-el')
+        cy.execute('npm run sheet-converter module-selector-assert')
+        cy.execute('npm run sheet-converter discount-add-el')
+        cy.execute('npm run sheet-converter discount-edit-el')
         cy.wait(4000)
 
     })
     
     beforeEach(() => {
 
-        // reset for each test case
         assertionResults = [];
         failureMessages = [];
 
-        // Login with valid credentials
         cy.login('lstv', 'lstventures')
-
 
     })
 
     it('Check Discounts Page', () => {   
+
         cy.navigateToModule('Master File', 'Discounts')
 
         cy.url({timeout: 10000}).should('contain', '/discount/?menfield=masterfile_discounts')
@@ -56,7 +51,6 @@ describe('Discount', () => {
 
         cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to Discount pager U/I:', assertionResults, failureMessages)
 
-        // Consolidate the results of various assertions across multiple custom commands into a single summary.
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
@@ -75,7 +69,6 @@ describe('Discount', () => {
             cy.checkLabelCaption('label[for="discde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Code *', assertionResults, failureMessages)
 
             cy.checkLabelCaption('label[for="disdsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Description *', assertionResults, failureMessages)
-
 
             cy.checkLabelCaption('label[for="distyp"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Type *', assertionResults, failureMessages)
             
@@ -99,7 +92,7 @@ describe('Discount', () => {
 
             // 2.1.5 Check correct all object position
 
-            // cy.validateElements('discount-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+            cy.validateElements('discount-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
             cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
@@ -107,9 +100,9 @@ describe('Discount', () => {
 
                 cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
-               cy.get('#discde')
-                  .type(data[key].discountCode)
-                  .then(($input) => {
+                cy.get('#discde')
+                .type(data[key].discountCode)
+                .then(($input) => {
 
                     if ($input.val() === "null") {
                         
@@ -119,12 +112,12 @@ describe('Discount', () => {
 
                         cy.get('.border-blue-500').click()
 
-                
-                        cy.checkLabelCaption('div:contains("Code *")', '13.1', 'Upon clicking the "Save" button:', 'Code * is required', assertionResults, failureMessages)
 
-                        cy.checkLabelCaption('div:contains("Discount Description *")', '13.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('div:contains("Code *")', '33.2', 'Upon clicking the "Save" button:', 'Code * is required', assertionResults, failureMessages)
 
-                        cy.checkLabelCaption('div:contains("Type *")', '13.1', 'Upon clicking the "Save" button:', 'Type * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('div:contains("Discount Description *")', '33.3', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
+
+                        cy.checkLabelCaption('div:contains("Type *")', '13.4', 'Upon clicking the "Save" button:', 'Type * is required', assertionResults, failureMessages)
 
                         cy.get('#discde').type('PWD')
 
@@ -144,7 +137,7 @@ describe('Discount', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.Toastify__toast-body', '42.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages)
 
                         cy.wait(6000)
 
@@ -156,13 +149,13 @@ describe('Discount', () => {
 
                         cy.get('.border-red-500').click()
 
-                        cy.checkLabelCaption('.h-auto', '8.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.h-auto', '13.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
                         cy.contains('button[class*="border-red-500"]', 'No').click()
 
                         cy.wait(3000)
 
-                        cy.checkElementVisibility('.shadow-lg', '8.2.1', 'Upon Clicking the "No" button in "Cancel" modal:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '13.2.1', 'Upon Clicking the "No" button in "Cancel" modal:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.get('.border-red-500').click()
 
@@ -170,9 +163,9 @@ describe('Discount', () => {
 
                         cy.wait(3000)
 
-                        cy.checkElementInvisibility('.shadow-lg', '8.3.1', 'Upon Clicking the "Yes" button in "Cancel" modal:', 'The "Add Discount" modal window was visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '13.3.1', 'Upon Clicking the "Yes" button in "Cancel" modal:', 'The "Add Discount" modal window was visible or active.', assertionResults, failureMessages)
 
-                        cy.checkElementVisibility('.h-screen', '8.3.2', 'Upon clicking the "Yes" button, should back in Discount Pager U/I', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.h-screen', '13.3.2', 'Upon clicking the "Yes" button, should back in Discount Pager U/I', assertionResults, failureMessages)
 
                         cy.wait(6000)
 
@@ -188,12 +181,12 @@ describe('Discount', () => {
 
                             if (selectedValue === 'Percent') {
                             
-                                cy.get('#disper').type(data[key].percentAmount)
-    
+                                cy.get('#disper').clear().type(data[key].percentAmount)
+
                             } else {
-    
-                                cy.get('#disamt').type(data[key].percentAmount)
-    
+
+                                cy.get('#disamt').clear().type(data[key].percentAmount)
+
                             }
 
                         })
@@ -251,9 +244,9 @@ describe('Discount', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved........', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '33.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '33.2.1', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -261,7 +254,7 @@ describe('Discount', () => {
 
                     }
 
-                    else if ($input.val() === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+                    else if ($input.val() === "WINTERHOLIDAY50PERCENTDISCOUNTFORALLITEMSOVER1000PHP") {
 
                         cy.wrap($input).should('have.value', data[key].discountCode)
 
@@ -273,12 +266,12 @@ describe('Discount', () => {
 
                             if (selectedValue === 'Percent') {
                             
-                                cy.get('#disper').type(data[key].percentAmount)
-    
+                                cy.get('#disper').clear().type(data[key].percentAmount)
+
                             } else {
-    
-                                cy.get('#disamt').type(data[key].percentAmount)
-    
+
+                                cy.get('#disamt').clear().type(data[key].percentAmount)
+
                             }
 
                         })
@@ -309,7 +302,7 @@ describe('Discount', () => {
 
                         if (data[key].serviceChargeDisc === 'Yes') {
 
-                            cy.get('#SCNoYes').click()
+                            cy.get('#SCYes').click()
                         
                         } else {
 
@@ -334,7 +327,7 @@ describe('Discount', () => {
                             cy.get('#ODNo').click()
                         }
 
-                        cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.text-sm', '14.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('.border-blue-500').click()
 
@@ -352,12 +345,12 @@ describe('Discount', () => {
 
                             if (selectedValue === 'Percent') {
                             
-                                cy.get('#disper').type(data[key].percentAmount)
-    
+                                cy.get('#disper').clear().type(data[key].percentAmount)
+
                             } else {
-    
-                                cy.get('#disamt').type(data[key].percentAmount)
-    
+
+                                cy.get('#disamt').clear().type(data[key].percentAmount)
+
                             }
 
                         })
@@ -388,7 +381,7 @@ describe('Discount', () => {
 
                         if (data[key].serviceChargeDisc === 'Yes') {
 
-                            cy.get('#SCNoYes').click()
+                            cy.get('#SCYes').click()
                         
                         } else {
 
@@ -415,9 +408,9 @@ describe('Discount', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', '"Please use only the following approved special characters: % & ( ) / - ."', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '51.1', 'Upon Clicking the "Save" button:', '"Please use only the following approved special characters: % & ( ) / - ."', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '17.2.1', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '51.2', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // Check if the "Description" textbox object is cleared or blank. 
 
@@ -437,12 +430,12 @@ describe('Discount', () => {
 
                             if (selectedValue === 'Percent') {
                             
-                                cy.get('#disper').type(data[key].percentAmount)
-    
+                                cy.get('#disper').clear().type(data[key].percentAmount)
+
                             } else {
-    
-                                cy.get('#disamt').type(data[key].percentAmount)
-    
+
+                                cy.get('#disamt').clear().type(data[key].percentAmount)
+
                             }
 
                         })
@@ -500,11 +493,11 @@ describe('Discount', () => {
                         cy.get('.border-blue-500').click()
 
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '5.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                         cy.wait(6000)
                         
-                        cy.checkElementVisibility('.shadow-lg', '5.2.1', 'Upon Clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '11.2', 'Upon Clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.get('.MuiTableBody-root').contains(data[key].discountCode).should('exist')
 
@@ -549,7 +542,7 @@ describe('Discount', () => {
 
             // 21.1.5 Check correct all object position
 
-            // cy.validateElements('discount-edit-el.json', '19.1.4 & 19.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+            cy.validateElements('discount-edit-el.json', '19.1.4 & 19.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
 
             cy.get('#discde')
                 .should('have.value', specificdiscount.discountCode)
@@ -567,11 +560,11 @@ describe('Discount', () => {
 
                 if (selectedValue === 'Percent') {
                 
-                    cy.get('#disper').type(specificdiscount.editPercentAmount)
+                    cy.get('#disper').clear().type(specificdiscount.editPercentAmount)
 
                 } else {
 
-                    cy.get('#disamt').type(specificdiscount.editPercentAmount)
+                    cy.get('#disamt').clear().type(specificdiscount.editPercentAmount)
 
                 }
 
@@ -629,11 +622,11 @@ describe('Discount', () => {
 
             cy.get('.border-blue-500').click()
 
-            cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
+            cy.checkLabelCaption('.Toastify__toast-body', '62.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
-            cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon Clicking the "Update" button:', 'The "Edit Discount" modal window still visible', assertionResults, failureMessages)
+            cy.checkElementInvisibility('.shadow-lg', '62.2.1', 'Upon Clicking the "Update" button:', 'The "Edit Discount" modal window still visible', assertionResults, failureMessages)
 
-            cy.get('.MuiTableBody-root').contains(specificdiscount.editdiscount).should('exist')
+            cy.get('.MuiTableBody-root').contains(specificdiscount.editDiscountDesc).should('exist')
         })
 
         cy.wait(4000)
@@ -651,23 +644,23 @@ describe('Discount', () => {
 
                     cy.wait(2000)
 
-                    cy.contains('tbody > tr', data[key].discount).within(() => {
+                    cy.contains('tbody > tr', data[key].discountDesc).within(() => {
 
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
                     })
 
-                    cy.checkHeaderTitle('.px-8', '30.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
+                    cy.checkHeaderTitle('.px-8', '63.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '30.3', 'Do you want to delete: ' + data[key].discount + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '63.3', 'Do you want to delete: ' + data[key].discountDesc + ' ?', assertionResults, failureMessages);
 
                     cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
                     cy.wait(3000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '30.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '36.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
-                    cy.contains('tbody > tr', data[key].discount).within(() => {
+                    cy.contains('tbody > tr', data[key].discountDesc).within(() => {
 
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
@@ -675,9 +668,9 @@ describe('Discount', () => {
 
                     cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '30.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '63.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
-                    cy.checkElementInvisibility('.shadow-lg', '30.5.2', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '63.5.2', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
                 }
             }
 
@@ -699,13 +692,13 @@ describe('Discount', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
-                    cy.get('#\\:ru\\:')
+                    cy.get('input[placeholder="Search Discount"]')
                     .clear()
-                    .type(data[key].discount)
+                    .type(data[key].discountDesc)
 
                     cy.wait(2000)
     
-                    cy.get('.MuiTableBody-root').contains(data[key].discount).should('exist')
+                    cy.get('.MuiTableBody-root').contains(data[key].discountDesc).should('exist')
 
                 }
 
@@ -716,9 +709,9 @@ describe('Discount', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:ru\\:')
+                    cy.get('input[placeholder="Search Discount"]')
                     .clear()
-                    .type(data[key].discount)
+                    .type(data[key].discountDesc)
 
                     cy.wait(4000)
 
