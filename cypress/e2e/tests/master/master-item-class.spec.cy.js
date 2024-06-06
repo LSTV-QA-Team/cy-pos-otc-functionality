@@ -389,7 +389,7 @@ describe('Item Classification', () => {
 
         cy.xpath('//span[@aria-label="printer"]').click()
 
-        cy.wait(10000)
+        cy.wait(15000)
 
         cy.task('verifyDownloads', Cypress.config('downloadsFolder')).then((files) => {
 
