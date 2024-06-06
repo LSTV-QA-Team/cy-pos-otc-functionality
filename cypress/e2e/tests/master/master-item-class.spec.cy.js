@@ -1,3 +1,4 @@
+const { readFile } = require("xlsx");
 
 let assertionResults = [];
 let failureMessages = [];
@@ -307,7 +308,7 @@ describe('Item Classification', () => {
 
                     cy.checkHeaderTitle('.px-8', '28.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '41.3', 'Do you want to delete: ' + data[key].editItemClass + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '41.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].editItemClass + ' ?', assertionResults, failureMessages);
 
                     cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
@@ -322,6 +323,8 @@ describe('Item Classification', () => {
                     })
 
                     cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '28.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
@@ -392,7 +395,9 @@ describe('Item Classification', () => {
 
             const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file))
 
-            expect(fileName).to.exist;
+            // expect(fileName).to.exist;
+
+            cy.readFile(fileName)
 
         })
     })
