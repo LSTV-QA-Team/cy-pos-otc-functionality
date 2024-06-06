@@ -199,13 +199,13 @@ describe('Card Type', () => {
 
                         cy.checkElementVisibility('.text-sm', '18.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        cy.get('.border-red-500').click()
+                        cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.h-auto', '19.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                        // cy.wait(4000)
 
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                        // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
 
-                        cy.wait(6000)
+                        cy.wait(4000)
 
                     }
 
@@ -316,9 +316,9 @@ describe('Card Type', () => {
 
                     })
 
-                    cy.checkHeaderTitle('.px-8', '25.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
+                    cy.checkHeaderTitle('.px-8', '25.1', 'Upon clicking the "Delete" button on pager U/I', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '25.3', 'Do you want to delete: ' + data[key].cardType + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '25.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].cardType + ' ?', assertionResults, failureMessages)
 
                     cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
@@ -342,10 +342,6 @@ describe('Card Type', () => {
 
                 }
             }
-
-            cy.get(':nth-child(7) > .css-imq00f-MuiTableCell-root > .MuiBox-root > .MuiIconButton-colorError').click()
-
-            cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
         })
 

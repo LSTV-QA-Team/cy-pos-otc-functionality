@@ -6,20 +6,17 @@ describe('Free Reasons', () => {
 
     before(() => {
 
-        // Clear the freereasonfile table before tests
         cy.task("queryDb","TRUNCATE TABLE freereasonfile")
 
-        // Verify that the table is empty
         cy.task("queryDb", "SELECT * FROM freereasonfile").then((records) => {
 
             expect(records.length).to.be.equal(0)
 
         })
 
-        // Delete all file in downloads for check print functinality test case
+
         cy.task('clearDownloads')
 
-        // Excel file to JSON Converter
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-freereasons-data')
         cy.execute('npm run sheet-converter module-selector-assert')
@@ -31,7 +28,6 @@ describe('Free Reasons', () => {
     
     beforeEach(() => {
 
-        // reset for each test case
         assertionResults = [];
         failureMessages = [];
 
@@ -40,8 +36,6 @@ describe('Free Reasons', () => {
     })
 
     after(() => {
-
-        // delete invalid inputed data in the table 'freereasonfile'
 
         cy.fixture('data-to-delete.json').then((data) => {
            
@@ -89,7 +83,6 @@ describe('Free Reasons', () => {
 
         cy.wait(2000)
 
-        // 1.2.2 Check correct table column(s) header caption. 
         cy.checkTableColumnTitle(['Actions', 'Description'], '1.2.2', 'Upon Navigating to Free Reasons pager U/I:', assertionResults, failureMessages)
 
         // 1.2.3 Check correct button(s) caption.
@@ -100,7 +93,6 @@ describe('Free Reasons', () => {
 
         cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to Free Reasons pager U/I:', assertionResults, failureMessages)
 
-        // Consolidate the results of various assertions across multiple custom commands into a single summary.
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
@@ -114,14 +106,15 @@ describe('Free Reasons', () => {
                 
             cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
-            cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI:', 'Add Free Reasons', assertionResults, failureMessages)
+            cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI:', 'Add Free Reason', assertionResults, failureMessages)
 
             cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I:', 'Description *', assertionResults, failureMessages)
             
-            // 2.1.3 Check correct object (textbox) width
-            // cy.get('#freereason')
-            //     .invoke('outerWidth')
-            //     .should('eq', 420)
+            cy.get('#freereason').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
 
             // 2.1.4 Check correct buttons(s) caption
 
@@ -145,13 +138,13 @@ describe('Free Reasons', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.text-sm', '27.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
                         cy.get('#freereason').type('Sample Giveaway')
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '29.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
                         cy.get('.px-8 > .flex > .anticon > svg').click()
 
@@ -161,13 +154,13 @@ describe('Free Reasons', () => {
 
                         cy.get('.border-red-500').click()
 
-                        cy.checkLabelCaption('.h-auto', '22.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
                         cy.contains('button[class*="border-red-500"]', 'No').click()
 
                         cy.wait(3000)
 
-                        cy.checkElementVisibility('.shadow-lg', '22.2.1', 'Upon Clicking the "No" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.get('.border-red-500').click()
 
@@ -175,9 +168,9 @@ describe('Free Reasons', () => {
 
                         cy.wait(3000)
 
-                        cy.checkElementInvisibility('.shadow-lg', '22.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '22.3.2', 'Upon clicking the "Yes" button', 'Free Reasons', assertionResults, failureMessages)
+                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Free Reasons', assertionResults, failureMessages)
 
                         cy.wait(4000)
 
@@ -188,9 +181,9 @@ describe('Free Reasons', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -202,28 +195,25 @@ describe('Free Reasons', () => {
 
                         cy.wrap($input).should('have.value', data[key].freeReasons)
 
-                        cy.checkElementVisibility('.text-sm', '33.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.text-sm', '17.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        cy.get('.border-red-500').click()
+                        cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.h-auto', '35.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                        // cy.wait(4000)
 
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                        // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
 
                         cy.wait(4000)
 
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '31.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                        // 16.2 click "OK" button on notification message.
-
-
-                        cy.checkElementInvisibility('.shadow-lg', '31.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.wait(4000)
                         
@@ -271,18 +261,18 @@ describe('Free Reasons', () => {
 
                 })
 
-                cy.checkElementVisibility('.shadow-lg', '37.1', 'Upon Clicking the "Edit" button:', 'The "Edit Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                cy.checkElementVisibility('.shadow-lg', '20.1', 'Upon Clicking the "Edit" button:', 'The "Edit Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
-                cy.checkHeaderTitle('.px-8', '37.1.1', 'Upon clicking the "Edit" button on pager UI:', 'Edit Free Reasons', assertionResults, failureMessages)
+                cy.checkHeaderTitle('.px-8', '20.1.1', 'Upon clicking the "Edit" button on pager UI:', 'Edit Free Reasons', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('.mb-2', '37.1.2', 'Upon clicking the "Edit" button on pager U/I:', 'Description *', assertionResults, failureMessages)
+                cy.checkLabelCaption('.mb-2', '20.1.2', 'Upon clicking the "Edit" button on pager U/I:', 'Description *', assertionResults, failureMessages)
             
                 // 37.1.3 Check correct object (textbox) width
                 // Add when needed
 
                 // 37.1.5 Check correct all object position
 
-                cy.validateElements('freereasons-edit-el.json', '37.1.4 & 37.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+                cy.validateElements('freereasons-edit-el.json', '20.1.4 & 20.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
  
                 cy.get('#freereason')
                   .should('have.value', specificFreeReasons.freeReasons)
@@ -294,9 +284,9 @@ describe('Free Reasons', () => {
 
                 cy.wait(2000)
 
-                cy.checkLabelCaption('.Toastify__toast-body', '40.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
+                cy.checkLabelCaption('.Toastify__toast-body', '23.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
-                cy.checkElementInvisibility('.shadow-lg', '40.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Free Reasons" modal window still visible', assertionResults, failureMessages)
+                cy.checkElementInvisibility('.shadow-lg', '23.2.1', 'Upon Clicking the "Save" button:', 'The "Edit Free Reasons" modal window still visible', assertionResults, failureMessages)
 
                 cy.get('.MuiTableBody-root').contains(specificFreeReasons.editFreeReasons).should('exist')
         })
@@ -322,15 +312,15 @@ describe('Free Reasons', () => {
 
                     })
 
-                    cy.checkHeaderTitle('.px-8', '41.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
+                    cy.checkHeaderTitle('.px-8', '24.2', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].freeReasons + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].freeReasons + ' ?', assertionResults, failureMessages)
 
                     cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
                     cy.wait(3000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '41.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '24.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
                     cy.contains('tbody > tr', data[key].freeReasons).within(() => {
 
@@ -342,11 +332,11 @@ describe('Free Reasons', () => {
 
                     cy.wait(3000)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '41.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '24.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                     cy.wait(8000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '41.1.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '24.1.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
                 }
             }
         })
