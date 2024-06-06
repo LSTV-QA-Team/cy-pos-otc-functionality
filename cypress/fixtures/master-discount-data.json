@@ -94,7 +94,7 @@
     "govDisc": "No",
     "onlineDeals": "Yes",
     "editDiscountCode": "BLACKFRIDAY",
-    "editDiscountDesc": "Blackfriday Sale 50% off",
+    "editDiscountDesc": "BLACKFRIDAY",
     "editDiscountType": "Percent",
     "editPercentAmount": 50,
     "editExemptVAT": "Yes",
@@ -177,7 +177,7 @@
     "onlySearchInval": false
   },
   {
-    "discountCode": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
+    "discountCode": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
     "discountDesc": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
     "discountType": "Amount",
     "percentAmount": 20,
@@ -186,7 +186,7 @@
     "serviceChargeDisc": "Yes",
     "govDisc": "No",
     "onlineDeals": "No",
-    "onlyDelete": false,
+    "onlyDelete": true,
     "onlySearchVal": false,
     "onlySearchInval": false
   }

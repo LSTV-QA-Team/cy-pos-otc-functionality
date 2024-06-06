@@ -89,7 +89,7 @@
     "specialReq": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
     "itemSubclass": "Rice Meals",
     "onlySearchVal": false,
-    "onlyDelete": false,
+    "onlyDelete": true,
     "onlySearchInval": false
   },
   {

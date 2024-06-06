@@ -1,0 +1,57 @@
+[
+  {
+    "sel": "button.border-blue-500",
+    "assertion": "contain.text",
+    "expectedText": "Update",
+    "customErrorMsg": "Update button should contain text \"Update\" instead of \"Update Data\""
+  },
+  {
+    "sel": "button.border-red-500",
+    "assertion": "contain.text",
+    "expectedText": "Cancel",
+    "customErrorMsg": "Cancel should contain text \"Cancel\""
+  },
+  {
+    "sel": "#discde",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Takeout Service Charge textbox should be enabled to allow user to input data."
+  },
+  {
+    "sel": "#disdsc",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Dine-In Service Charge textbox should be enabled to allow user to input data."
+  },
+  {
+    "sel": "#distyp",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Local Tax textbox should be enabled to allow user to input data."
+  },
+  {
+    "sel": "button.border-blue-500",
+    "assertion": "be.enabled",
+    "customErrorMsg": "\"Update\" button should be enabled and clickable"
+  },
+  {
+    "sel": "button.border-red-500",
+    "assertion": "be.enabled",
+    "customErrorMsg": "\"Cancel\" button should be enabled and clickable"
+  },
+  {
+    "sel": "label[for=\"discde\"]",
+    "assertion": "contain.text",
+    "expectedText": "Code *",
+    "customErrorMsg": "Code * should be the label caption"
+  },
+  {
+    "sel": "label[for=\"disdsc\"]",
+    "assertion": "contain.text",
+    "expectedText": "Description *",
+    "customErrorMsg": "Description * should be the label caption"
+  },
+  {
+    "sel": "label[for=\"distyp\"]",
+    "assertion": "contain.text",
+    "expectedText": "Type *",
+    "customErrorMsg": "Type * should be the label caption"
+  }
+]

@@ -1,23 +1,51 @@
 [
   {
-    "takeoutsercharge": 30,
-    "dineinsercharge": 30,
-    "localtax": 1,
+    "takeoutsercharge": 0,
+    "dineinsercharge": 0,
+    "localtax": 0,
     "forValid": true,
     "forInvalid": false
   },
   {
-    "takeoutsercharge": 25,
-    "dineinsercharge": 25,
-    "localtax": 2,
+    "takeoutsercharge": 50,
+    "dineinsercharge": 50,
+    "localtax": 50,
     "forValid": true,
     "forInvalid": false
   },
   {
-    "takeoutsercharge": 5e+106,
-    "dineinsercharge": 5e+95,
-    "localtax": 5e+94,
+    "takeoutsercharge": 100,
+    "dineinsercharge": 100,
+    "localtax": 100,
     "forValid": true,
+    "forInvalid": false
+  },
+  {
+    "takeoutsercharge": -10,
+    "dineinsercharge": -10,
+    "localtax": -10,
+    "forValid": false,
+    "forInvalid": true
+  },
+  {
+    "takeoutsercharge": 150,
+    "dineinsercharge": 150,
+    "localtax": 150,
+    "forValid": false,
+    "forInvalid": true
+  },
+  {
+    "takeoutsercharge": "abcdefghij",
+    "dineinsercharge": "abcdefghij",
+    "localtax": "abcdefghij",
+    "forValid": false,
+    "forInvalid": true
+  },
+  {
+    "takeoutsercharge": 1000,
+    "dineinsercharge": 1000,
+    "localtax": 1000,
+    "forValid": false,
     "forInvalid": true
   }
 ]

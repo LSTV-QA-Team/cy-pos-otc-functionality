@@ -7,6 +7,13 @@
     "onlySearchInval": false
   },
   {
+    "pricelist": "Jollibee 6",
+    "ordertype": "Dine-In",
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
+  },
+  {
     "pricelist": "Jollibee 2",
     "ordertype": "Takeout",
     "onlyDelete": false,

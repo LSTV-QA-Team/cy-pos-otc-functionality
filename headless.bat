@@ -2,7 +2,7 @@
 setlocal
 
 REM Base path for Cypress test files
-set basePath="cypress/e2e/tests/"
+set basePath="cypress/e2e/tests/master/"
 
 REM Prompt for the spec file to run
 set /p "specFile=Enter the spec file name (or type 'ALL' to run all tests): "
