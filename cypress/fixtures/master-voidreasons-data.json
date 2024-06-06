@@ -61,7 +61,7 @@
     "onlyDelete": false
   },
   {
-    "voidReasons": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
+    "voidReasons": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
     "onlySearch": false,
     "onlyDelete": true
   },

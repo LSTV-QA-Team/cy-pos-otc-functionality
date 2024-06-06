@@ -1,45 +1,59 @@
 [
   {
-    "paymentType": "Cash"
+    "paymentType": "Cash",
+    "onlyDelete": false
   },
   {
-    "paymentType": "Check"
+    "paymentType": "Check",
+    "onlyDelete": false
   },
   {
-    "paymentType": "E-wallet"
+    "paymentType": "E-wallet",
+    "onlyDelete": false
   },
   {
-    "paymentType": "Credit Card"
+    "paymentType": "Credit Card",
+    "onlyDelete": false
   },
   {
-    "paymentType": "Debit Card"
+    "paymentType": "Debit Card",
+    "onlyDelete": false
   },
   {
-    "paymentType": "Prepaid Card"
+    "paymentType": "Prepaid Card",
+    "onlyDelete": false
   },
   {
-    "paymentType": "Gift Card"
+    "paymentType": "Gift Card",
+    "onlyDelete": false
   },
   {
     "paymentType": "Store Gift",
-    "editPaymentType": "Store Card"
+    "editPaymentType": "Store Card",
+    "onlyDelete": false
   },
   {
-    "paymentType": "Loyalty Card"
+    "paymentType": "Loyalty Card",
+    "onlyDelete": true
   },
   {
-    "paymentType": "Electronic Card"
+    "paymentType": "Electronic Card",
+    "onlyDelete": false
   },
   {
-    "paymentType": "null"
+    "paymentType": "null",
+    "onlyDelete": false
   },
   {
-    "paymentType": "% & ( ) / - ."
+    "paymentType": "% & ( ) / - .",
+    "onlyDelete": false
   },
   {
-    "paymentType": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :"
+    "paymentType": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
+    "onlyDelete": true
   },
   {
-    "paymentType": "This is a very long string that exceeds the maximum allowed length."
+    "paymentType": "This is a very long string that exceeds the maximum allowed length.",
+    "onlyDelete": false
   }
 ]

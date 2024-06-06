@@ -6,18 +6,17 @@ describe('Void/Refund Reasons', () => {
 
 
     before(() => {
-        // Clear the voidreasonfile table before tests
+
         cy.task("queryDb","TRUNCATE TABLE voidreasonfile")
 
-        // Verify that the table is empty
         cy.task("queryDb", "SELECT * FROM voidreasonfile").then((records) => {
-            expect(records.length).to.be.equal(0)
-        });
 
-        // Delete all file in downloads for check print functinality test case
+            expect(records.length).to.be.equal(0)
+
+        })
+
         cy.task('clearDownloads')
 
-        // Excel file to JSON Converter
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-voidreasons-data')
         cy.execute('npm run sheet-converter module-selector-assert')
@@ -25,32 +24,32 @@ describe('Void/Refund Reasons', () => {
         cy.execute('npm run sheet-converter voidreasons-edit-el')
         cy.wait(4000)
 
-    });
+    })
     
     beforeEach(() => {
 
-        // reset for each test case
         assertionResults = [];
         failureMessages = [];
 
         cy.login('lstv', 'lstventures')
 
-    });
+    })
 
     after(() => {
-
-        // delete unecessary inputed data in the table 'voidreasonfile'
 
         cy.fixture('data-to-delete.json').then((data) => {
            
             data.forEach((item) => {
+
                 const specialChar = item.dataToDelete;
                 const deleteQuery = `DELETE FROM voidreasonfile WHERE voidcde = '${specialChar}'`;
                 
                 cy.task('queryDb', deleteQuery).then(() => {
-                    cy.log(`Deleted data with description: ${specialChar}`); 
-                });
-            });
+
+                    cy.log(`Deleted data with description: ${specialChar}`)
+
+                })
+            })
     
            
             cy.task('queryDb', 'SELECT * FROM voidreasonfile').then((records) => {
@@ -61,13 +60,13 @@ describe('Void/Refund Reasons', () => {
 
                 deletedChars.forEach((char) => {
 
-                    expect(remainingData).to.not.include(char);
+                    expect(remainingData).to.not.include(char)
 
-                });
+                })
     
-                cy.log('Specified data Successfully deleted.'); 
-            });
-        });
+                cy.log('Specified data Successfully deleted.')
+            })
+        })
     })
 
     it('Check Void/Refund Reasons Page', () => { 
@@ -77,7 +76,7 @@ describe('Void/Refund Reasons', () => {
         cy.url({timeout: 10000})
             .should('contain', 'reasons/?menfield=masterfile_void_reasons')
 
-        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Void/Refund Reasons:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+        cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Void/Refund Reasons:', '"Void/Refund Reasons" pager U/I window was not visible or active.', assertionResults, failureMessages)
 
         cy.wait(2000)
 
@@ -108,16 +107,17 @@ describe('Void/Refund Reasons', () => {
 
             cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
-            cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+            cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', '"Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI:', 'Add Void/Refund Reason', assertionResults, failureMessages)
 
             cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I:', 'Description *', assertionResults, failureMessages)
             
-            // 2.1.3 Check correct object (textbox) width
-            // cy.get('#voidcde')
-            //     .invoke('outerWidth')
-            //     .should('eq', 420)
+            cy.get('#voidcde').invoke('outerWidth').then((width) => {
+
+                expect(width).to.equal(420)
+                   
+            })
 
             // 2.1.4 Check correct buttons(s) caption
 
@@ -132,126 +132,122 @@ describe('Void/Refund Reasons', () => {
                 cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
                 cy.get('#voidcde')
-                    .type(data[key].voidReasons)
-                    .then(($input) => {
+                  .type(data[key].voidReasons)
+                  .then(($input) => {
 
-                            if ($input.val() === "null") {
-                                
-                                cy.get('#voidcde').clear()
+                    if ($input.val() === "null") {
+                        
+                        cy.get('#voidcde').clear()
 
-                                cy.get('.border-blue-500').click()
+                        cy.get('.border-blue-500').click()
 
-                                cy.wait(4000)
+                        cy.wait(4000)
 
-                                cy.checkLabelCaption('.text-sm', '27.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
-                                cy.get('#voidcde').type('Incorrect Order Entry')
+                        cy.get('#voidcde').type('Incorrect Order Entry')
 
-                                cy.get('.border-blue-500').click()
+                        cy.get('.border-blue-500').click()
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '29.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                                cy.get('.px-8 > .flex > .anticon > svg').click()
+                        cy.get('.px-8 > .flex > .anticon > svg').click()
 
-                            } 
-                            
-                            else if ($input.val() === "Item Out of Stock") {
+                    } 
+                    
+                    else if ($input.val() === "Item Out of Stock") {
 
-                                cy.get('.border-red-500').click()
+                        cy.get('.border-red-500').click()
 
-                                cy.checkLabelCaption('.h-auto', '22.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                                cy.contains('button[class*="border-red-500"]', 'No').click()
+                        cy.contains('button[class*="border-red-500"]', 'No').click()
 
-                                cy.wait(3000)
+                        cy.wait(3000)
 
-                                cy.checkElementVisibility('.shadow-lg', '22.2.1', 'Upon Clicking the "No" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
-                                cy.get('.border-red-500').click()
+                        cy.get('.border-red-500').click()
 
-                                cy.wait(4000)
+                        cy.wait(4000)
 
-                                cy.contains('button[class*="border-blue-500"]', 'Yes').realClick()
+                        cy.contains('button[class*="border-blue-500"]', 'Yes').realClick()
 
-                                cy.wait(3000)
+                        cy.wait(3000)
 
-                                cy.checkElementInvisibility('.shadow-lg', '22.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Void/Refund Reasons" modal window was visible or active.', assertionResults, failureMessages)
 
-                                cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '23.', 'Upon clicking the "Yes" button', 'Void/Refund Reason', assertionResults, failureMessages)
+                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '23.', 'Upon clicking the "Yes" button', 'Void/Refund Reason', assertionResults, failureMessages)
 
-                                cy.wait(4000)
+                        cy.wait(4000)
 
 
-                            }
+                    }
 
-                            else if ($input.val() === "% & ( ) / - .") {
+                    else if ($input.val() === "% & ( ) / - .") {
 
-                                cy.get('.border-blue-500').click()
-                                
-                                cy.wait(4000)
+                        cy.get('.border-blue-500').click()
+                        
+                        cy.wait(4000)
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                        cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                                cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon clicking the "OK" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
-                                // 11.2.2 Check if the "Description" textbox object is cleared or blank.
+                        // 11.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                                cy.wait(4000)
+                        cy.wait(4000)
 
-                            }
+                    }
 
-                            else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
+                    else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
 
-                                cy.wrap($input).should('have.value', data[key].voidReasons);
+                        cy.wrap($input).should('have.value', data[key].voidReasons)
 
-                                cy.checkElementVisibility('.text-sm', '33.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.text-sm', '17.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                                cy.get('.border-red-500').click()
+                        cy.get('.border-blue-500').click()
 
-                                cy.wait(4000)
+                        // cy.wait(4000)
 
-                                cy.checkLabelCaption('.h-auto', '35.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                        // cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
+                        
+                        cy.wait(4000)
 
-                                cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                    }
 
-                                cy.wait(4000)
+                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                            }
+                        cy.get('.border-blue-500').click()
 
-                            else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+                        cy.wait(4000)
 
-                                cy.get('.border-blue-500').click()
+                        cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                                cy.wait(4000)
+                        cy.checkElementInvisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Void/Refund Reasons" modal window was visible or active.', assertionResults, failureMessages)
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '31.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                        cy.wait(4000)
+                        
+                    }
 
-                                // 16.2 click "OK" button on notification message.
+                    else {
 
-                                cy.checkElementInvisibility('.shadow-lg', '31.2.1', 'Upon clicking the "OK" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.wrap($input).should('have.value', data[key].voidReasons)
 
-                                cy.wait(4000)
-                                
-                            }
+                        cy.get('.border-blue-500').click()
 
-                            else {
+                        cy.wait(4000)
 
-                                cy.wrap($input).should('have.value', data[key].voidReasons);
+                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                        
+                        cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
-                                cy.get('.border-blue-500').click()
+                        // 4.2.2 Check if the "Description" textbox object is cleared or blank.
+                        
+                        cy.get('.MuiTableBody-root').contains(data[key].voidReasons).should('exist')
 
-                                cy.wait(4000)
-
-                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
-                                
-                                cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
-
-                                // 4.2.2 Check if the "Description" textbox object is cleared or blank.
-                                
-                                cy.get('.MuiTableBody-root').contains(data[key].voidReasons).should('exist')
-
-                                cy.wait(8000)
-                            }
+                        cy.wait(8000)
+                    }
                 })
             }
         })
@@ -263,6 +259,7 @@ describe('Void/Refund Reasons', () => {
     });
 
     it('Edit Functionality', () => {
+
         cy.fixture('master-voidreasons-data.json').then((data) => {
 
             const specificVoidReasons = data[7];
@@ -272,24 +269,25 @@ describe('Void/Refund Reasons', () => {
                 cy.contains('tbody > tr', specificVoidReasons.voidReasons).within(() => {
 
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
+
                 })
 
-                cy.checkElementVisibility('.shadow-lg', '37.1', 'Upon Clicking the "Edit" button:', 'The "Edit Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                cy.checkElementVisibility('.shadow-lg', '20.1', 'Upon Clicking the "Edit" button:', 'The "Edit Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
-                cy.checkHeaderTitle('.px-8', '37.1.1', 'Upon clicking the "Edit" button on pager UI:', 'Edit Void/Refund Reasons', assertionResults, failureMessages)
+                cy.checkHeaderTitle('.px-8', '20.1.1', 'Upon clicking the "Edit" button on pager UI:', 'Edit Void/Refund Reasons', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('.mb-2', '37.1.2', 'Upon clicking the "Edit" button on pager U/I:', 'Description *', assertionResults, failureMessages)
+                cy.checkLabelCaption('.mb-2', '20.1.2', 'Upon clicking the "Edit" button on pager U/I:', 'Description *', assertionResults, failureMessages)
             
-                // 37.1.3 Check correct object (textbox) width
+                // Check correct object (textbox) width
                 // Add when needed
 
-                // 37.1.5 Check correct all object position
+                // Check correct all object position
 
-                cy.validateElements('voidreasons-edit-el.json', '37.1.4 & 37.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
+                cy.validateElements('voidreasons-edit-el.json', '20.1.4 & 20.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
  
                 cy.get('#voidcde')
-                    .should('have.value', specificVoidReasons.voidReasons)
-                    .clear()
+                  .should('have.value', specificVoidReasons.voidReasons)
+                  .clear()
 
                 cy.get('#voidcde').type(specificVoidReasons.editVoidReasons)
 
@@ -297,79 +295,82 @@ describe('Void/Refund Reasons', () => {
 
                 cy.wait(2000)
 
-                cy.checkLabelCaption('.Toastify__toast-body', '40.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
+                cy.checkLabelCaption('.Toastify__toast-body', '23.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
-                cy.checkElementInvisibility('.shadow-lg', '40.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Void/Refund Reasons" modal window still visible', assertionResults, failureMessages)
+                cy.checkElementInvisibility('.shadow-lg', '23.2.1', 'Upon Clicking the "Save" button:', 'The "Edit Void/Refund Reasons" modal window still visible', assertionResults, failureMessages)
 
                 cy.get('.MuiTableBody-root').contains(specificVoidReasons.editVoidReasons).should('exist')
-            })
+        })
 
         cy.wait(4000)
 
         cy.checkForFailure(assertionResults, failureMessages)
-    });
+    })
 
     it('Delete Functionality', () => {
+
         cy.fixture('master-voidreasons-data.json').then((data) => {
+
             for (const key in data) {
+
                 if (data[key].onlyDelete === true) {
 
                     cy.wait(2000);
 
                     cy.contains('tbody > tr', data[key].voidReasons).within(() => {
 
-                        cy.get('[data-icon="delete"][aria-hidden="true"]').click();
-                    });
+                        cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
-                    cy.checkHeaderTitle('.px-8', '41.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
+                    })
+
+                    cy.checkHeaderTitle('.px-8', '24.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].voidReasons + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].voidReasons + ' ?', assertionResults, failureMessages);
 
                     cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
 
                     cy.wait(3000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '41.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '24.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
                     cy.contains('tbody > tr', data[key].voidReasons).within(() => {
 
-                        cy.get('[data-icon="delete"][aria-hidden="true"]').click();
-                    });
+                        cy.get('[data-icon="delete"][aria-hidden="true"]').click()
+
+                    })
 
                     cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
                     cy.wait(3000)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '41.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '24.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                     cy.wait(8000)
 
-                    cy.checkElementInvisibility('.shadow-lg', '41.1.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+                    cy.checkElementInvisibility('.shadow-lg', '24.1.3.1', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
                 }
             }
         })
 
         cy.checkForFailure(assertionResults, failureMessages)
-    });
-
+    })
 
     it('Search Functionality', () => {
+
         cy.fixture('master-voidreasons-data.json').then((data) => {
+
             for (const key in data) {
 
                 if (data[key].onlySearch === true) {
 
                     cy.wait(2000)
 
-
                     cy.get('[data-testid="SearchIcon"]').click()
 
-    
                     cy.get('#\\:rb\\:')
-                        .should('be.enabled')
-                        .clear()
-                        .type(data[key].voidReasons)
-                        .type('{enter}')
+                      .clear()
+                      .type(data[key].voidReasons)
+                      .type('{enter}')
 
                     cy.wait(2000)
     
@@ -381,18 +382,17 @@ describe('Void/Refund Reasons', () => {
 
         cy.wait(2000)
                 
-                cy.get('[data-testid="SearchIcon"]')
-                    .click();
+        cy.get('[data-testid="SearchIcon"]').click()
 
-                cy.get('#\\:rb\\:')
-                    .clear()
-                    .type('Payment Error')
-                    .type('{enter}')
+        cy.get('#\\:rb\\:')
+            .clear()
+            .type('Payment Error')
+            .type('{enter}')
 
-                cy.wait(4000)
+        cy.wait(4000)
 
-                cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
-    });
+        cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
+    })
 
     it('Print functionality', () => {
 
@@ -406,12 +406,13 @@ describe('Void/Refund Reasons', () => {
 
             const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file));
             expect(fileName).to.exist;
+
         })
-    });
+    })
 
     it('Back Button Functionality', () => {
 
-        cy.wait(2000);
+        cy.wait(2000)
 
         cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 
