@@ -117,9 +117,9 @@ describe('MEMC', () => {
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add MEMC', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('laberl[for="codedsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'MEMC *', assertionResults,failureMessages)
+            cy.checkLabelCaption('label[for="codedsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'MEMC *', assertionResults,failureMessages)
 
-            cy.checkLabelCaption('laberl[for="itmdsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'MEMC *', assertionResults,failureMessages)
+            cy.checkLabelCaption('label[for="itmdsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'MEMC *', assertionResults,failureMessages)
 
             cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'MEMC *', assertionResults, failureMessages)
 
