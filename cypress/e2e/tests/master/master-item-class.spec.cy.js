@@ -1,4 +1,3 @@
-const { readFile } = require("xlsx");
 
 let assertionResults = [];
 let failureMessages = [];
