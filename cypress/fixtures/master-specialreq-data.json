@@ -22,7 +22,7 @@
   },
   {
     "specialReq": "Extra Lettuce",
-    "itemSubclass": "Burgers",
+    "itemSubclass": "Burger",
     "onlySearchVal": false,
     "onlyDelete": false,
     "onlySearchInval": false
@@ -59,7 +59,7 @@
   },
   {
     "specialReq": "Double patty",
-    "itemSubclass": "Burgers",
+    "itemSubclass": "Burger",
     "onlySearchVal": false,
     "onlyDelete": true,
     "onlySearchInval": true
