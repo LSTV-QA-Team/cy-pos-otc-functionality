@@ -1,0 +1,57 @@
+[
+  {
+    "sel": "button.border-blue-500",
+    "assertion": "contain.text",
+    "expectedText": "Update",
+    "customErrorMsg": "Update button should contain text \"Update\""
+  },
+  {
+    "sel": "button.border-red-500",
+    "assertion": "contain.text",
+    "expectedText": "Cancel",
+    "customErrorMsg": "Cancel should contain text \"Cancel\""
+  },
+  {
+    "sel": "#takeout_scharge",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Takeout Service Charge textbox should be enabled to allow user to input data."
+  },
+  {
+    "sel": "#dinein_scharge",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Dine-In Service Charge textbox should be enabled to allow user to input data."
+  },
+  {
+    "sel": "#localtax",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Local Tax textbox should be enabled to allow user to input data."
+  },
+  {
+    "sel": "button.border-blue-500",
+    "assertion": "be.enabled",
+    "customErrorMsg": "\"Update\" button should be enabled and clickable"
+  },
+  {
+    "sel": "button.border-red-500",
+    "assertion": "be.enabled",
+    "customErrorMsg": "\"Cancel\" button should be enabled and clickable"
+  },
+  {
+    "sel": "label[for=\"takeout_scharge\"]",
+    "assertion": "contain.text",
+    "expectedText": "Takeout Service Charge *",
+    "customErrorMsg": "Takeout Service Charge * should be the label caption"
+  },
+  {
+    "sel": "label[for=\"dinein_scharge\"]",
+    "assertion": "contain.text",
+    "expectedText": "Dine-In Service Charge *",
+    "customErrorMsg": "Dine-In Service Charge * should be the label caption"
+  },
+  {
+    "sel": "label[for=\"dinein_scharge\"]",
+    "assertion": "contain.text",
+    "expectedText": "Local Tax *",
+    "customErrorMsg": "Local Tax * should be the label caption"
+  }
+]
