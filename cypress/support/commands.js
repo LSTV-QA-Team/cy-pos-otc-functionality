@@ -2,10 +2,11 @@
 
 import "cypress-real-events";
 import "cypress-xpath";
-import "cypress-mochawesome-reporter/register";
+// import "cypress-mochawesome-reporter/register";
+import addContext from 'mochawesome/addContext';
 
 const mysql = require('mysql');
-const addContext = require('mochawesome/addContext');
+// const addContext = require('mochawesome/addContext');
 const failedAssertions = new Set();
 
 const xlsx = require('xlsx');
@@ -75,19 +76,19 @@ Cypress.Commands.add('navigateToModule', (menuSelector, submenuSelector) => {
 })
 
 
-Cypress.Commands.add('addTestContext', (context) => {
-  const test = cy.state('test')
+// Cypress.Commands.add('addTestContext', (context) => {
+//   const test = cy.state('test')
 
-  if (test) {
+//   if (test) {
 
-    addContext({ test }, context)
+//     addContext({ test }, context)
 
-  } else {
+//   } else {
 
-    throw new Error('Test context is unavailable.')
+//     throw new Error('Test context is unavailable.')
 
-  }
-})
+//   }
+// })
 
 
 
@@ -802,5 +803,14 @@ Cypress.Commands.add('checkInputMaxLength', (selector, maxLength, referenceNumbe
     }
   }).then(() => {
     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+  })
+})
+
+
+
+
+Cypress.Commands.add('addTestContext', (context) => {
+  cy.once('test:after:run', (test, runnable) => {
+    addContext({ test }, context);
   })
 })
