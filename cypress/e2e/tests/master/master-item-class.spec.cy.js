@@ -324,8 +324,6 @@ describe('Item Classification', () => {
 
                     cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
-                    cy.wait(2000)
-
                     cy.checkLabelCaption('.Toastify__toast-body', '28.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                     cy.checkElementInvisibility('.shadow-lg', '28.5.2', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
@@ -387,7 +385,7 @@ describe('Item Classification', () => {
 
         cy.wait(2000)
 
-        cy.xpath('//span[@aria-label="printer"]').click()
+        cy.get('span[role="img"][aria-label="printer"].anticon.anticon-printer.text-center').click()
 
         cy.wait(15000)
 
@@ -395,10 +393,7 @@ describe('Item Classification', () => {
 
             const fileName = files.find(file => /^[0-9a-fA-F\-]+\.pdf$/.test(file))
 
-            // expect(fileName).to.exist;
-
-            cy.readFile(fileName)
-
+            expect(fileName).to.exist;
         })
     })
 
