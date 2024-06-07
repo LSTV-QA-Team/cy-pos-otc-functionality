@@ -117,11 +117,9 @@ describe('MEMC', () => {
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add MEMC', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('label[for="codedsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'MEMC *', assertionResults,failureMessages)
+            cy.checkLabelCaption('label[for="codedsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Description *', assertionResults,failureMessages)
 
-            cy.checkLabelCaption('label[for="itmdsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'MEMC *', assertionResults,failureMessages)
-
-            cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'MEMC *', assertionResults, failureMessages)
+            cy.checkLabelCaption('label[for="itmdsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Value *', assertionResults,failureMessages)
 
             cy.get('#codedsc').invoke('outerWidth').then((width) => {
 
@@ -180,7 +178,7 @@ describe('MEMC', () => {
 
                     } 
                     
-                    else if ($input.val() === "MEMC 500") {
+                    else if ($input.val() === "MEMC 600") {
 
                         cy.get('#value').realClick()
 
@@ -339,7 +337,7 @@ describe('MEMC', () => {
 
                     cy.wait(2000)
 
-                    cy.contains('tbody > tr', specificmemc.memc).within(() => {
+                    cy.contains('tbody > tr', data[key].memc).within(() => {
 
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
@@ -349,7 +347,7 @@ describe('MEMC', () => {
 
                     cy.checkHeaderTitle('.px-8', '30.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + specificmemc.editvalue + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].memc + ' ?', assertionResults, failureMessages);
 
                     cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
@@ -361,7 +359,7 @@ describe('MEMC', () => {
 
                     cy.wait(3000)
 
-                    cy.contains('tbody > tr', specificmemc.memc).within(() => {
+                    cy.contains('tbody > tr', data[key].memc).within(() => {
 
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
 
