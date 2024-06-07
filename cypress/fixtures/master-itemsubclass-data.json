@@ -2,7 +2,7 @@
   {
     "itemSubclass": "Mashed Potatoes",
     "itemClass": "Food",
-    "editItemSubclass": "Snack",
+    "editItemSubclass": "Snacks",
     "editItemClass": "Food"
   },
   {
@@ -39,19 +39,19 @@
   },
   {
     "itemSubclass": "Soft Drinks",
-    "itemClass": "Food"
+    "itemClass": "Beverages"
   },
   {
     "itemSubclass": "Coffee",
-    "itemClass": "Food"
+    "itemClass": "Beverages"
   },
   {
-    "itemSubclass": "Juice",
-    "itemClass": "Food"
+    "itemSubclass": "Juices",
+    "itemClass": "Beverages"
   },
   {
     "itemSubclass": "% & ( ) / - .",
-    "itemClass": "Food"
+    "itemClass": "Beverages"
   },
   {
     "itemSubclass": "null",
