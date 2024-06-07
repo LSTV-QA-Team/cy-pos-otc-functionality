@@ -2,6 +2,7 @@
 
 import "cypress-real-events";
 import "cypress-xpath";
+
 // import "cypress-mochawesome-reporter/register";
 import addContext from 'mochawesome/addContext';
 
@@ -274,7 +275,6 @@ Cypress.Commands.add('checkLabelCaption', (selector, referenceNumber, errorConte
 })
 
 
-
 // Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, errorContext, assertionResults = [], failureMessages = []) => {
 //   const failedAssertions = new Set(); // Track failed assertions to avoid redundant errors
 
@@ -399,7 +399,6 @@ Cypress.Commands.add('checkLabelCaption', (selector, referenceNumber, errorConte
 //     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
 //   });
 // });
-
 
 Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, errorContext, assertionResults = [], failureMessages = []) => {
   // Track processed scenarios to avoid redundancy
@@ -577,8 +576,6 @@ Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, erro
   })
 })
 
-
-
 // Check element shoulb be visible
 Cypress.Commands.add('checkElementVisibility', (selector, referenceNumber, errorContext, errorMsg, assertionResults = [], failureMessages = []) => {
   
@@ -645,7 +642,6 @@ Cypress.Commands.add('checkElementVisibility', (selector, referenceNumber, error
   });
 });
 
-
 // Check element should not be visible
 Cypress.Commands.add('checkElementInvisibility', (selector, referenceNumber, errorContext, errorMsg, assertionResults = [], failureMessages = []) => {
   cy.get('body').then(($body) => {
@@ -696,7 +692,6 @@ Cypress.Commands.add('checkElementInvisibility', (selector, referenceNumber, err
     
   });
 });
-
 
 Cypress.Commands.add('execute', (command) => {
   return cy.task('execute', command);
@@ -805,9 +800,6 @@ Cypress.Commands.add('checkInputMaxLength', (selector, maxLength, referenceNumbe
     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
   })
 })
-
-
-
 
 Cypress.Commands.add('addTestContext', (context) => {
   cy.once('test:after:run', (test, runnable) => {

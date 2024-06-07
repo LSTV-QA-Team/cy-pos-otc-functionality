@@ -97,7 +97,7 @@ describe('Item', () => {
 
     it('Add Functionality', () => {
 
-        cy.addContext(`Upon Clicking "Add" button:
+        cy.addTestContext(`Upon Clicking "Add" button:
                             1. The Item Subclassification dropdown in the "Add Item" modal does not display all the encoded data.
 
                 Note: The entire Item Test Script might fail because the required data is not available in the dropdown object.
