@@ -275,7 +275,7 @@ describe('Item', () => {
                 })
             })
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
+            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]').click()
 
             for (const key in data){
 

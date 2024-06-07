@@ -3,6 +3,8 @@ import './commands'
 import 'cypress-mochawesome-reporter/register';
 import "cypress-real-events";
 import "cypress-xpath";
+import addContext from 'mochawesome/addContext'
+
 
 
 Cypress.Screenshot.defaults({

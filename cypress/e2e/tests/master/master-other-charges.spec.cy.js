@@ -9,7 +9,7 @@ describe('Other Charges', () => {
         // Excel file to JSON Converter
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-othercharge-data')
-        // cy.execute('npm run sheet-converter othercharge-selector-assert')
+        cy.execute('npm run sheet-converter othercharge-el')
         cy.wait(4000)
 
     })
@@ -43,7 +43,7 @@ describe('Other Charges', () => {
 
         // Check correct objects position.
 
-        cy.validateElements('othercharge-selector-assert.json', '1.2.2 & 1.2.3 & 1.2.5', 'Upon Navigating to Other Charges pager U/I', assertionResults, failureMessages)
+        cy.validateElements('othercharge-el.json', '1.2.2 & 1.2.3 & 1.2.5', 'Upon Navigating to Other Charges pager U/I', assertionResults, failureMessages)
 
         cy.checkForFailure(assertionResults, failureMessages)
     });
@@ -56,20 +56,18 @@ describe('Other Charges', () => {
 
                 if (data[key].forValid === true) {
 
-                    cy.wait(4000)
-
                     cy.get('#takeout_scharge').clear()
                       .type(data[key].takeoutsercharge)
-                      .should('have.value', data[key].takeoutsercharge)
+                      .should('have.value', data[key].takeoutsercharge + '%')
 
-                    cy.get('#dinein_scharge')
+                    cy.get('#dinein_scharge').clear()
                       .type(data[key].dineinsercharge)
-                      .should('have.value', data[key].dineinsercharge)
+                      .should('have.value', data[key].dineinsercharge + '%')
 
 
                     cy.get('#localtax').clear()
                       .type(data[key].localtax)
-                      .should('have.value', data[key].localtax)
+                      .should('have.value', data[key].localtax + '%')
 
                     // 17.1 Check all encoded data should reflect to the receipt (Validate on Preview) 
 
@@ -97,8 +95,6 @@ describe('Other Charges', () => {
 
                     cy.wait(4000)
 
-                    cy.wait(4000)
-
                     cy.get('#takeout_scharge').clear()
                       .type(data[key].takeoutsercharge)
 
@@ -121,7 +117,7 @@ describe('Other Charges', () => {
 
                                     cy.log('All textboxes are empty')
 
-                                    //do nothing
+                                    cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]').click()
 
                                 } else {
 
@@ -133,6 +129,18 @@ describe('Other Charges', () => {
                             })
                         })
                     })
+                  
+                    if (data[key].takeoutsercharge === '1000.00') {
+
+                      cy.wait(4000)
+
+                      cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]').click()
+
+                    } else {
+
+                      cy.contains('Other Charges').click()  
+
+                    }
 
                 }
                 
@@ -145,8 +153,6 @@ describe('Other Charges', () => {
     })
 
     it('Check Required Field Functionality', () => {
-
-        cy.contains('Other Charges').click()
 
         cy.get('#takeout_scharge').clear()
 
