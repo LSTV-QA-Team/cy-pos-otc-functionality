@@ -806,3 +806,71 @@ Cypress.Commands.add('addTestContext', (context) => {
     addContext({ test }, context);
   })
 })
+
+
+Cypress.Commands.add("ClickingNumber1button", (number) => {
+  cy.get(".my-4 > :nth-child(1) > :nth-child(1) > .font-montserrat").click();
+  cy.get('.overflow-hidden').eq(0).should("have.text", "₱1.00");
+});
+
+Cypress.Commands.add("ClickingNumber2button", (number) => {
+  cy.get(".my-4 > :nth-child(1) > :nth-child(2) > .font-montserrat").click();
+  cy.get(".overflow-hidden").should("have.text", "₱12.00");
+});
+
+Cypress.Commands.add("ClickingNumber3button", (number) => {
+  cy.get(".my-4 > :nth-child(1) > :nth-child(3) > .font-montserrat").click();
+  cy.get(".overflow-hidden").should("have.text", "₱123.00");
+});
+
+Cypress.Commands.add("ClickingNumber4button", (number) => {
+  cy.get(":nth-child(2) > :nth-child(1) > .font-montserrat").click();
+  cy.get(".overflow-hidden").should("have.text", "₱1,234.00");
+});
+
+Cypress.Commands.add("ClickingNumber5button", (number) => {
+  cy.get(".my-4 > :nth-child(2) > :nth-child(2) > .font-montserrat").click();
+  cy.get(".overflow-hidden").should("have.text", "₱12,345.00");
+});
+
+Cypress.Commands.add("ClickingNumber6button", (number) => {
+  cy.get(":nth-child(2) > :nth-child(3) > .font-montserrat").click();
+  cy.get(".overflow-hidden").should("have.text", "₱123,456.00");
+});
+
+Cypress.Commands.add("ClickingNumber7button", (number) => {
+  cy.get(":nth-child(3) > :nth-child(1) > .font-montserrat").click();
+  cy.get(".overflow-hidden").should("have.text", "₱1,234,567.00");
+});
+
+Cypress.Commands.add("ClickingNumber8button", (number) => {
+  cy.get(":nth-child(3) > :nth-child(2) > .font-montserrat").click();
+  cy.get(".overflow-hidden").should("have.text", "₱12,345,678.00");
+});
+
+Cypress.Commands.add("ClickingNumber9button", (number) => {
+  cy.get(":nth-child(3) > :nth-child(3) > .font-montserrat").click();
+  cy.get(".overflow-hidden").should("have.text", "₱123,456,789.00");
+});
+
+Cypress.Commands.add("ClickingNumber0button", (number) => {
+  cy.get(":nth-child(4) > :nth-child(2) > .font-montserrat").click();
+  cy.get(".overflow-hidden").should("have.text", "₱1,234,567,890.00");
+});
+
+Cypress.Commands.add("ClickingCbutton", (variable) => {
+  cy.get(":nth-child(4) > :nth-child(1) > .font-montserrat").click();
+  cy.get(".overflow-hidden").should("have.text", "₱123,456,789.00");
+});
+
+Cypress.Commands.add("ClickingDotbutton", (variable) => {
+  cy.get(":nth-child(4) > :nth-child(3) > .font-montserrat").click(); // DECIMAL
+  cy.get(".my-4 > :nth-child(1) > :nth-child(1) > .font-montserrat").click(); // +0.1
+  cy.get(".my-4 > :nth-child(1) > :nth-child(1) > .font-montserrat").click(); // +0.01
+  cy.get(".overflow-hidden").should("have.text", "₱123,456,789.11"); //VALIDATION
+});
+
+Cypress.Commands.add("ClickingClearbutton", (number) => {
+  cy.contains("Clear").click();
+  cy.get(".overflow-hidden").should("have.text", "₱0.00");
+});
