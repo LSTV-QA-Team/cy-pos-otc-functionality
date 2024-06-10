@@ -13,7 +13,7 @@ describe("Ordering ", () => {
     cy.login("lstv", "lstventures");
   });
 
-  it.only("Select Pricelist Modal ", () => {
+  it("Select Pricelist Modal ", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
@@ -177,7 +177,7 @@ describe("Ordering ", () => {
 
   it("Add On Item", () => {
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(3)").click();
-    cy.get(".grid > :nth-child(8)").click();
+    cy.get(".grid > :nth-child(8)").click().wait(2000);
     cy.get(".px-8").should("have.text", "Add on");
     cy.get("#isaddon").click();
     cy.get(".border-blue-500").click();
@@ -217,21 +217,58 @@ describe("Ordering ", () => {
     cy.get(".px-8 > .flex > .anticon > svg").click();
   });
 
-  it.only("Payment" , () => { 
+  it("Payment" , () => { 
 
-    // cy.contains("FOOD").click().wait(2000);
-    // cy.contains("Chicken").click().wait(2000);
-    // cy.contains("1-pc Chickenjoy").click().wait(2000);aaaaaaa
+    cy.contains("FOOD").click().wait(2000);
+    cy.contains("Chicken").click().wait(2000);
+    cy.contains("1-pc Chickenjoy").click().wait(2000);
 
     cy.get(':nth-child(13) > .bg-green-100').click()
     cy.get('.px-8').should("have.text", "Payment")
     cy.contains("CASH").click()
-    cy.get('.bg-black\/75 > .shadow-lg > .px-8').should("have.text", "CASH Payment")
+    cy.get('.shadow-lg > .px-8 > .flex > h1').should("have.text", "PaymentCASH Payment")
     cy.get('.border-blue-500').click()
     cy.get('.my-5 > .grid > :nth-child(1)').click()
-
-
-
+    cy.contains("Transaction Complete.").should("have.text" , "Transaction Complete.")
   })
+
+ it("Void Transaction" , () => { 
+
+    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#warcde").select("BRANCH 1").wait(2000);
+    cy.contains("Proceed").click();
+
+    cy.get('.bg-orange-100').click()
+    cy.get('.px-8').should("have.text" , "Void Transaction")
+    cy.contains("OR-0000000000000001").should("have.text" , "OR-0000000000000001")
+
+ })
+
+ it("Other Transaction - HOLD " , () => { 
+
+  cy.get(".px-8 > .flex > .anticon > svg").click();
+  cy.get(':nth-child(15) > .bg-green-100').click()
+
+  cy.get('.px-8').should("have.text" , "Other Transaction")
+  cy.contains("Hold Transaction").click()
+
+  cy.get('.px-8').should("have.text" , "Select Pricelist");
+
+ })
+ it("Other Transaction - RECALL" , () => {
+
+  cy.get("#postypcde").select("DINE IN").wait(2000);
+  cy.get("#warcde").select("BRANCH 1").wait(2000);
+  cy.contains("Proceed").click();
+
+  cy.get(':nth-child(15) > .bg-green-100').click()
+  cy.get('.px-8').should("have.text" , "Other Transaction")
+  cy.contains("Recall Transaction").click()
+  cy.contains("SEQ-00000000").click()
+
+
+
+ })
+
 
 });
