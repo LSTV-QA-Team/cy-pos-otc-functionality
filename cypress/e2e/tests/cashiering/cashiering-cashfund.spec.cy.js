@@ -10,7 +10,7 @@ describe("Cash Fund", () => {
     cy.task("queryDb", "TRUNCATE TABLE posfile")
 
     // Login with valid credentials
-    cy.login();
+    cy.login('lstv', 'lstventures');
 
     cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
   });

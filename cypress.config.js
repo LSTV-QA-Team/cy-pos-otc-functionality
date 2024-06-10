@@ -64,6 +64,9 @@ module.exports = defineConfig({
     experimentalStudio: true,
     testIsolation: false,
 
+    viewportWidth: 1920,
+    viewportHeight: 1080,
+
     // implement node event listeners here
     setupNodeEvents(on, config) {
 
