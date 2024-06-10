@@ -1,0 +1,73 @@
+[
+  {
+    "voidReasons": "Incorrect Order Entry",
+    "onlySearch": true,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "Customer Changed Mind",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "Customer Cancelled Order",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "Employee Mistake",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "Order Duplication",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "Customer Complaint",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "Food Quality Issue",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "Price Adjustment",
+    "editVoidReasons": "Incorrect Charge",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "Payment Error",
+    "onlySearch": false,
+    "onlyDelete": true
+  },
+  {
+    "voidReasons": "Item Out of Stock",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "null",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "% & ( ) / - .",
+    "onlySearch": false,
+    "onlyDelete": false
+  },
+  {
+    "voidReasons": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
+    "onlySearch": false,
+    "onlyDelete": true
+  },
+  {
+    "voidReasons": "This is a very long string that exceeds the maximum allowed length.",
+    "onlySearch": false,
+    "onlyDelete": false
+  }
+]

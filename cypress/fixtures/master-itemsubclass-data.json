@@ -1,0 +1,68 @@
+[
+  {
+    "itemSubclass": "Mashed Potatoes",
+    "itemClass": "Food",
+    "editItemSubclass": "Snacks",
+    "editItemClass": "Food"
+  },
+  {
+    "itemSubclass": "Breakfast Meal",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Milkshakes",
+    "itemClass": "Beverages"
+  },
+  {
+    "itemSubclass": "Chicken",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Burgers",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Spaghetti",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Rice Meals",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Pies",
+    "itemClass": "Dessert"
+  },
+  {
+    "itemSubclass": "Ice Cream",
+    "itemClass": "Dessert"
+  },
+  {
+    "itemSubclass": "Soft Drinks",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Coffee",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Juices",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "% & ( ) / - .",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "null",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
+    "itemClass": "Food"
+  }
+]

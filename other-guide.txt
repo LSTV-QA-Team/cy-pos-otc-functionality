@@ -1,0 +1,10 @@
+[To Generate Report or Run Cypress in Headless Mode]
+1. Run this command to terminal './headless.bat'
+2. Enter the name of desire test script you want to execute and generate report
+3. Finish the execution to see the output
+
+
+
+[To conver xlsx file to JSON]
+1. To run all sheet in xlsx file enter this command 'npm run sheet-converter' 
+2. To run specific sheet in xlsx file enter this command 'npm run sheet-converter NameOfSheet'

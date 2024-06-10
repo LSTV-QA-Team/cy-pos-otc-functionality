@@ -1,0 +1,102 @@
+[
+  {
+    "specialReq": "Extra Gravy",
+    "itemSubclass": "Chicken",
+    "onlySearchVal": true,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "Extra Cheese",
+    "itemSubclass": "Spaghetti",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "Extra Crispy",
+    "itemSubclass": "Chicken",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "Extra Lettuce",
+    "itemSubclass": "Burgers",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "Extra Rice",
+    "itemSubclass": "Rice Meals",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "Extra Ice",
+    "itemSubclass": "Soft Drinks",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "No ice",
+    "itemSubclass": "Soft Drinks",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "Separate packaging",
+    "itemSubclass": "Rice Meals",
+    "editSpecialReq": "No straw",
+    "editItemSubclass": "Soft Drinks",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "Double patty",
+    "itemSubclass": "Burgers",
+    "onlySearchVal": false,
+    "onlyDelete": true,
+    "onlySearchInval": true
+  },
+  {
+    "specialReq": "No plastic utensils",
+    "itemSubclass": "Rice Meals",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "null",
+    "itemSubclass": "Rice Meals",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "% & ( ) / - .",
+    "itemSubclass": "Rice Meals",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
+    "itemSubclass": "Rice Meals",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "specialReq": "This is a very long string that exceeds the maximum allowed length.",
+    "itemSubclass": "Rice Meals",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  }
+]

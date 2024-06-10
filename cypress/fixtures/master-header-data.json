@@ -1,0 +1,34 @@
+[
+  {
+    "bus1": "Freemont Foods Corp",
+    "bus2": "Jollibee Bacolod Mandalagan DT",
+    "bus3": "  ",
+    "taxPayer": "Sample Company",
+    "vat": "010-243-138-000",
+    "nonVAT": "Yes",
+    "add1": "lacson St. Mandalagan",
+    "add2": "Bcolod City",
+    "add3": "  ",
+    "serialNo": "RTM70550",
+    "machineNo": "22032219002997823",
+    "branchCode": "BRH-00000000013",
+    "forValid": true,
+    "forInvalid": false
+  },
+  {
+    "bus1": "Sweda Systems Philippines, Inc. with an extended name to exceed limit",
+    "bus2": "Sweda Systems Philippines, Inc. with an extended name to exceed limit",
+    "bus3": "Sweda Systems Philippines, Inc. with an extended name to exceed limit",
+    "taxPayer": "Sweda Systems Philippines, Inc. with an extended name to exceed limit",
+    "vat": "123-456-789-00001234",
+    "nonVAT": "Yes",
+    "add1": "Dahlia Ave. Cor. Regalado Ave West Fairview, Brgy. Fairview Park, Quezon City, Metro Manila, Philippines",
+    "add2": "Dahlia Ave. Cor. Regalado Ave West Fairview, Brgy. Fairview Park, Quezon City, Metro Manila, Philippines",
+    "add3": "Dahlia Ave. Cor. Regalado Ave West Fairview, Brgy. Fairview Park, Quezon City, Metro Manila, Philippines",
+    "serialNo": "FP112022-125-0358572-00126EXTRAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "machineNo": "5000000000000000000000000000000000000000000000000000000000000000",
+    "branchCode": "BRH-00000000012432423423454958749587298357935739573519849584759837598347594759358",
+    "forValid": false,
+    "forInvalid": true
+  }
+]

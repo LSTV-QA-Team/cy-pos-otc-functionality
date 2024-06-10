@@ -1,33 +1,57 @@
 [
   {
-    "itemClass": "MAIN COURSE"
+    "itemClass": "Food",
+    "onlySearchVal": true,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "DESSERTS"
+    "itemClass": "Dessert",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "BEVERAGES"
+    "itemClass": "Beverages",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "BREAKFAST"
+    "itemClass": "Appetizer",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "APPETIZER",
-    "editItemClass": "SIDE DISH"
+    "itemClass": "Meal",
+    "editItemClass": "Sides",
+    "onlySearchVal": false,
+    "onlyDelete": true,
+    "onlySearchInval": true
   },
   {
-    "itemClass": "% & ( ) / - ."
+    "itemClass": "% & ( ) / - .",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "null"
+    "itemClass": "null",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "BURGERS"
+    "itemClass": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
-    "itemClass": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap"
-  },
-  {
-    "itemClass": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :"
+    "itemClass": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   }
 ]

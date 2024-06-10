@@ -1,0 +1,37 @@
+{
+    "itemclass": [
+        "Food",
+        "Dessert",
+        "Beverages"
+    ],
+    "itemSubclass": [
+        "Snacks",
+        "Chicken",
+        "Burgers",
+        "Spaghetti",
+        "Rice Meals",
+        "Soft Drinks",
+        "Coffee",
+        "Juices",
+        "Pies",
+        "Ice Cream"
+    ],
+    "orderType": [
+        "DINEIN",
+        "TAKEOUT"
+    ],
+    "discountType": [
+        "Percentage",
+        "Amount"
+    ],
+    "itemType": [
+        "INVENTORY",
+        "NON-INVENTORY",
+        "CHARGES",
+        "SERVICES"
+    ],
+    "taxCode": [
+        "VATABLE",
+        "VAT EXEMPT"
+    ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "sel": "button.border-blue-500",
+    "assertion": "contain.text",
+    "expectedText": "Save",
+    "customErrorMsg": "Save button should contain text \"Save\""
+  },
+  {
+    "sel": "button.border-red-500",
+    "assertion": "contain.text",
+    "expectedText": "Cancel",
+    "customErrorMsg": "Save button should contain text \"Cancel\""
+  },
+  {
+    "sel": "#itemsubclassdsc",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Should be enabled to allow user to input data."
+  },
+  {
+    "sel": "#itmclacde",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Should be enabled to allow user to select data."
+  },
+  {
+    "sel": "button.border-blue-500",
+    "assertion": "be.enabled",
+    "customErrorMsg": "\"Add Data\" button Should be enabled and clickable"
+  },
+  {
+    "sel": "button.border-red-500",
+    "assertion": "be.enabled",
+    "customErrorMsg": "\"Cancel\" button Should be enabled and clickable"
+  }
+]

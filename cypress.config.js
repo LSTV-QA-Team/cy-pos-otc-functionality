@@ -44,10 +44,10 @@ module.exports = defineConfig({
     reportDir: "cypress/reports",
     charts: true,
     reportPageTitle: 'Cypress POS-OTC Functionality Report',
-    reportFilename: `[status]-[name]-${moment().format('YYYY-MM-DD_HH-mm-ss')}-report`,
+    reportFilename: `[status]-[name]-${moment().format('YYYY-MM-DD')}-report`,
     embeddedScreenshots: false,
     inlineAssets: true,
-    overwrite: false,
+    overwrite: true,
     json: true,
     html: true,
     debug: false,
@@ -61,8 +61,9 @@ module.exports = defineConfig({
 
   e2e: {
 
-    baseUrl: 'http://localhost:5173/#/pages/login',
+    baseUrl: 'http://localhost:5173/#/pages',
     experimentalStudio: true,
+    testIsolation: false,
 
     // implement node event listeners here
     setupNodeEvents(on, config) {
