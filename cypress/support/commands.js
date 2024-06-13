@@ -256,7 +256,7 @@ Cypress.Commands.add('checkLabelCaption', (selector, referenceNumber, errorConte
         cy.log('Assertion Failed')
         failedAssertions.add(failureMessage)
         failureMessages.push({ referenceNumber, errorContext, message: failureMessage })
-        cy.screenshot(`failure-${failureMessage}-${selector.replace(/\W/g, '-')}`, { capture: 'fullPage' })
+        cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' })
 
       } else {
 
