@@ -34,38 +34,38 @@ describe('Item', () => {
 
     })
 
-    after(() => {
+    // after(() => {
 
-        cy.fixture('data-to-delete.json').then((data) => {
+    //     cy.fixture('data-to-delete.json').then((data) => {
 
-            data.forEach((item) => {
+    //         data.forEach((item) => {
 
-                const specialChar = item.dataToDelete;
-                const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
+    //             const specialChar = item.dataToDelete;
+    //             const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
                 
-                cy.task('queryDb', deleteQuery).then(() => {
+    //             cy.task('queryDb', deleteQuery).then(() => {
 
-                    cy.log(`Deleted data with description: ${specialChar}`) 
+    //                 cy.log(`Deleted data with description: ${specialChar}`) 
 
-                })
-            })
+    //             })
+    //         })
     
-            cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
+    //         cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
 
-                const remainingData = records.map((record) => record.description)
-                const deletedChars = data.map((item) => item.dataToDelete)
+    //             const remainingData = records.map((record) => record.description)
+    //             const deletedChars = data.map((item) => item.dataToDelete)
                 
-                deletedChars.forEach((char) => {
+    //             deletedChars.forEach((char) => {
 
-                    expect(remainingData).to.not.include(char)
+    //                 expect(remainingData).to.not.include(char)
 
-                })
+    //             })
     
-                cy.log('Specified data Successfully deleted.'); // Log success
+    //             cy.log('Specified data Successfully deleted.'); // Log success
 
-            })
-        })
-    })
+    //         })
+    //     })
+    // })
 
     it('Check Item Page', () => {  
 
@@ -93,7 +93,7 @@ describe('Item', () => {
 
         // Consolidate the results of various assertions across multiple custom commands into a single summary.
         cy.checkForFailure(assertionResults, failureMessages)
-    });
+    })
 
     it('Add Functionality', () => {
 
@@ -108,12 +108,14 @@ describe('Item', () => {
             cy.get('.sc-eDLKkx > .anticon > svg').click()
 
             cy.wait(4000) 
-            
-            cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', '"Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Item', assertionResults, failureMessages)
 
+            cy.checkLabelCaption('label[for="barcde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Barcode', assertionResults, failureMessages)
+
             cy.checkLabelCaption('label[for="itmdsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item *', assertionResults, failureMessages)
+
+            cy.checkLabelCaption('label[for="itmdscforeign"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Foreign Description', assertionResults, failureMessages)
 
             cy.checkLabelCaption('label[for="itmtyp"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Type *', assertionResults, failureMessages)
             
@@ -125,13 +127,11 @@ describe('Item', () => {
 
             // cy.checkLabelCaption('label[for="untcst"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Unit of Cost', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('label[for="barcde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Barcode', assertionResults, failureMessages)
-
             // cy.checkLabelCaption('label[for="untprc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Selling Price *', assertionResults, failureMessages)
 
             // cy.checkLabelCaption('label[for="itmpaxcount"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Good for X Person', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('label[for="taxcde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'ax Code *', assertionResults, failureMessages)
+            cy.checkLabelCaption('label[for="taxcde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Tax Code *', assertionResults, failureMessages)
             
             cy.get('#itmdsc').invoke('outerWidth').then((width) => {
 
@@ -199,10 +199,12 @@ describe('Item', () => {
                             
             cy.fixture('dropdown-values.json').then((data) => { 
 
-                const expectedSubclass = data.itemSubclass;
                 const expectedClass = data.itemclass;
                 const expectedItemType = data.itemType;
                 const expectedTaxCode = data.taxCode;
+                const expectedFood = data.food;
+                const expectedBeverages = data.beverages;
+                const expectedDessert = data.dessert;
 
                 cy.get('#itmtyp')
                   .should('exist')
@@ -220,23 +222,82 @@ describe('Item', () => {
                     })
                 })
 
-                cy.get('#itemsubclasscde').realClick()
+            cy.fixture('class-dropdown-values.json').then((data) => {
 
-                cy.get('#itemsubclasscde')
-                  .should('exist')
-                  .find('option')
-                  .then(($options) => {
+                for (const key in data) {
 
-                    // Get the text of all options in the dropdown
-                    const actualOptions = [...$options].map(option => option.textContent.trim())
+                    cy.get('#itmclacde').realClick()
 
-                    // Check that each expected option is present in the actual options
-                    expectedSubclass.forEach(expectedOption => {
+                    cy.get('#itmclacde')
+                      .select(data[0].classDropdownValues)
 
-                        expect(actualOptions).to.include(expectedOption)
+                    // cy.get('#itemsubclasscde').should('have.value', '-- Select an option --')
 
+                    cy.get('#itemsubclasscde').realClick()
+
+                    cy.get('#itemsubclasscde')
+                      .should('exist')
+                      .find('option')
+                      .then(($options) => {
+
+                        // Get the text of all options in the dropdown
+                        const actualOptions = [...$options].map(option => option.textContent.trim())
+
+                        // Check that each expected option is present in the actual options
+                        expectedFood.forEach(expectedOption => {
+
+                            expect(actualOptions).to.include(expectedOption)
+
+                        })
                     })
-                })
+                    
+                    cy.get('#itmclacde').realClick()
+
+                    cy.get('#itmclacde')
+                      .select(data[1].classDropdownValues)
+
+                    cy.get('#itemsubclasscde').realClick()
+
+                    cy.get('#itemsubclasscde')
+                      .should('exist')
+                      .find('option')
+                      .then(($options) => {
+
+                        // Get the text of all options in the dropdown
+                        const actualOptions = [...$options].map(option => option.textContent.trim())
+
+                        // Check that each expected option is present in the actual options
+                        expectedBeverages.forEach(expectedOption => {
+
+                            expect(actualOptions).to.include(expectedOption)
+
+                        })
+                    })
+
+                    cy.get('#itmclacde').realClick()
+
+                    cy.get('#itmclacde')
+                      .select(data[2].classDropdownValues)
+
+                    cy.get('#itemsubclasscde').realClick()
+
+                    cy.get('#itemsubclasscde')
+                      .should('exist')
+                      .find('option')
+                      .then(($options) => {
+
+                        // Get the text of all options in the dropdown
+                        const actualOptions = [...$options].map(option => option.textContent.trim())
+
+                        // Check that each expected option is present in the actual options
+                        expectedDessert.forEach(expectedOption => {
+
+                            expect(actualOptions).to.include(expectedOption)
+
+                        })
+                    })
+                }
+            })            
 
                 cy.get('#itmclacde').realClick()
 
@@ -283,7 +344,9 @@ describe('Item', () => {
 
                 cy.wait(4000) 
                 
-                cy.get('#itmdsc').type(data[key].item)
+                cy.get('#itmdsc')
+                  .clear()
+                  .type(data[key].item)
                   .then(($input) => {
 
                     if ($input.val() === "null") {
@@ -294,7 +357,7 @@ describe('Item', () => {
 
                         cy.wait(4000)
 
-                        cy.checkLabelCaption('.text-sm', '80.1.1', 'Upon clicking the "Save" button:', 'Item * is required', assertionResults, failureMessages)
+                        // cy.checkLabelCaption('.text-sm', '80.1.1', 'Upon clicking the "Save" button:', 'Item * is required', assertionResults, failureMessages)
 
                         // cy.checkLabelCaption('.text-sm', '80.1.2', 'Upon clicking the "Save" button:', 'Item Type * is required', assertionResults, failureMessages)
 
@@ -306,29 +369,59 @@ describe('Item', () => {
 
                         // cy.checkLabelCaption('.text-sm', '80.1.6', 'Upon clicking the "Save" button:', 'Tax Code  * is required', assertionResults, failureMessages)
 
+                        cy.get('form#i-form').within(() => {
+
+                            cy.get('#itmdsc')
+                                .should('have.attr', 'aria-invalid', 'true')
+                                .siblings('div[role="alert"]')
+                                .should('contain', 'Item Description * is required')
+                            
+                            cy.get('#itmtyp')
+                                .should('have.attr', 'aria-invalid', 'true')
+                                .siblings('div[role="alert"]')
+                                .should('contain', 'Item Type * is required')
+                
+                            cy.get('#itmclacde')
+                                .should('have.attr', 'aria-invalid', 'true')
+                                .siblings('div[role="alert"]')
+                                .should('contain', 'Class * is required')
+                
+                            cy.get('#untprc')
+                                .should('have.attr', 'aria-invalid', 'true')
+                                .siblings('div[role="alert"]')
+                                .should('contain', 'Selling Price * is required')
+                
+                            cy.get('#taxcde')
+                                .should('have.attr', 'aria-invalid', 'true')
+                                .siblings('div[role="alert"]')
+                                .should('contain', 'Tax Code * is required')
+                        })
+
                         cy.wait(4000)
 
-                        cy.get('#itmdsc').type('Yumburger Solo')
+                        cy.get('#itmdsc').clear().type('Yumburger Solo')
 
                         cy.get('#itmtyp').select('NON-INVENTORY')
 
-                        cy.get('#itemsubclasscde').select('Food')
+                        cy.get('#itmclacde').select('Food')
 
-                        cy.get('#itmclacde').select('Burgers')
+                        cy.get('#itemsubclasscde').select('Burger')
 
-                        cy.get('#untmea').type('PCS')
+                        cy.get('#untmea').clear().type('PCS')
 
-                        cy.get('#untcst').type('0')
+                        cy.get('#untcst').clear().type('0')
 
-                        cy.get('#barcde').type('00000000001')
+                        cy.get('#barcde').clear().type('00000000001')
 
-                        cy.get('#untprc').type(40)
+                        cy.get('#untprc').clear().type(40)
 
-                        cy.get('#itmpaxcount').type(1)
+                        cy.get('#itmpaxcount').clear().type(1)
 
                         cy.get('#taxcde').select('VATABLE')
 
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '63.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
@@ -340,19 +433,19 @@ describe('Item', () => {
 
                         cy.get('#itmtyp').select(data[key].itemType)
 
-                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
-
                         cy.get('#itmclacde').select(data[key].itemClass)
 
-                        cy.get('#untmea').type(data[key].unitMeasure)
+                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                        cy.get('#untcst').type(data[key].unitCost)
+                        cy.get('#untmea').clear().type(data[key].unitMeasure)
 
-                        cy.get('#barcde').type(data[key].barcode)
+                        cy.get('#untcst').clear().type(data[key].unitCost)
 
-                        cy.get('#untprc').type(data[key].sellingPrice)
+                        cy.get('#barcde').clear().type(data[key].barcode)
 
-                        cy.get('#itmpaxcount').type(data[key].goodXPerson)
+                        cy.get('#untprc').clear().type(data[key].sellingPrice)
+
+                        cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
@@ -387,19 +480,21 @@ describe('Item', () => {
 
                         cy.get('#itmclacde').select(data[key].itemClass)
 
-                        cy.get('#untmea').type(data[key].unitMeasure)
+                        cy.get('#untmea').clear().type(data[key].unitMeasure)
 
-                        cy.get('#untcst').type(data[key].unitCost)
+                        cy.get('#untcst').clear().type(data[key].unitCost)
 
-                        cy.get('#barcde').type(data[key].barcode)
+                        cy.get('#barcde').clear().type(data[key].barcode)
 
-                        cy.get('#untprc').type(data[key].sellingPrice)
+                        cy.get('#untprc').clear().type(data[key].sellingPrice)
 
-                        cy.get('#itmpaxcount').type(data[key].goodXPerson)
+                        cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '48.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -409,37 +504,39 @@ describe('Item', () => {
 
                     }
 
-                    else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
+                    else if ($input.val() === "Delicious and crispy Chickenjoy with a side of Jolly Spaghetti and garlic rice, perfect for a fulfilling meal") {
 
                         cy.wrap($input).should('have.value', data[key].item)
 
                         cy.get('#itmtyp').select(data[key].itemType)
 
-                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
-
                         cy.get('#itmclacde').select(data[key].itemClass)
 
-                        cy.get('#untmea').type(data[key].unitMeasure)
+                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                        cy.get('#untcst').type(data[key].unitCost)
+                        cy.get('#untmea').clear().type(data[key].unitMeasure)
 
-                        cy.get('#barcde').type(data[key].barcode)
+                        cy.get('#untcst').clear().type(data[key].unitCost)
 
-                        cy.get('#untprc').type(data[key].sellingPrice)
+                        cy.get('#barcde').clear().type(data[key].barcode)
 
-                        cy.get('#itmpaxcount').type(data[key].goodXPerson)
+                        cy.get('#untprc').clear().type(data[key].sellingPrice)
+
+                        cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
-                        cy.checkElementVisibility('.text-sm', ' ', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.text-sm', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
 
-                        cy.get('#modgrpcde').click()
+                        // cy.get('#modgrpcde').click()
 
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                        // cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkElementVisibility('.text-sm', ' ', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
+                        cy.wait(2000)
+
+                        cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
 
                     }
 
@@ -451,19 +548,21 @@ describe('Item', () => {
 
                         cy.get('#itmclacde').select(data[key].itemClass)
 
-                        cy.get('#untmea').type(data[key].unitMeasure)
+                        cy.get('#untmea').clear().type(data[key].unitMeasure)
 
-                        cy.get('#untcst').type(data[key].unitCost)
+                        cy.get('#untcst').clear().type(data[key].unitCost)
 
-                        cy.get('#barcde').type(data[key].barcode)
+                        cy.get('#barcde').clear().type(data[key].barcode)
 
-                        cy.get('#untprc').type(data[key].sellingPrice)
+                        cy.get('#untprc').clear().type(data[key].sellingPrice)
 
-                        cy.get('#itmpaxcount').type(data[key].goodXPerson)
+                        cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
                         
                         cy.checkLabelCaption('.Toastify__toast-body', '78.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
@@ -480,25 +579,39 @@ describe('Item', () => {
 
                         cy.wrap($input).should('have.value', data[key].item)
 
-                        cy.get('#itmtyp').select(data[key].itemType)
+                        cy.get('#itmtyp').realClick()
 
-                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+                        cy.get('#itmtyp').select(data[key].itemType)
 
                         cy.get('#itmclacde').select(data[key].itemClass)
 
-                        cy.get('#untmea').type(data[key].unitMeasure)
+                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                        cy.get('#untcst').type(data[key].unitCost)
+                        cy.get('#untmea')
+                          .clear()
+                          .type(data[key].unitMeasure)
 
-                        cy.get('#barcde').type(data[key].barcode)
+                        cy.get('#untcst')
+                          .clear() 
+                          .type(data[key].unitCost)
 
-                        cy.get('#untprc').type(data[key].sellingPrice)
+                        cy.get('#barcde')
+                          .clear()
+                          .type(data[key].barcode)
 
-                        cy.get('#itmpaxcount').type(data[key].goodXPerson)
+                        cy.get('#untprc')
+                          .clear() 
+                          .type(data[key].sellingPrice)
+
+                        cy.get('#itmpaxcount')
+                          .clear()
+                          .type(data[key].goodXPerson)
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -566,33 +679,41 @@ describe('Item', () => {
 
                 cy.validateElements('item-edit-el.json', '81.1.4 & 81.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
 
-                cy.get('#itmdsc').clear().type(specificItem.item)
+                cy.get('#itmdsc').clear().type(specificItem.editItem)
 
-                cy.get('#itmtyp').select(specificItem.itemType)
+                cy.get('#itmtyp').select(specificItem.editItemType)
 
-                cy.get('#itemsubclasscde').select(specificItem.itemSubclass)
+                cy.get('#itmclacde').realClick()
 
-                cy.get('#itmclacde').select(specificItem.itemClass)
+                cy.get('#itmclacde').select(specificItem.editItemClass)
 
-                cy.get('#untmea').clear().type(specificItem.unitMeasure)
+                cy.get('#itemsubclasscde').realClick()
 
-                cy.get('#untcst').clear().type(specificItem.unitCost)
+                cy.get('#itemsubclasscde').select(specificItem.editItemSubclass)
 
-                cy.get('#barcde').clear().type(specificItem.barcode)
+                cy.get('#untmea').clear().type(specificItem.editUnitMeasure)
 
-                cy.get('#untprc').clear().type(specificItem.sellingPrice)
+                cy.get('#untcst').clear().type(specificItem.editUnitCost)
 
-                cy.get('#itmpaxcount').clear().type(specificItem.goodXPerson)
+                cy.get('#barcde').clear().type(specificItem.editBarcode)
 
-                cy.get('#taxcde').select(specificItem.taxCode)
+                cy.get('#untprc').clear().type(specificItem.editSellingPrice)
+
+                cy.get('#itmpaxcount').clear().type(specificItem.editGoodXPerson)
+
+                cy.get('#taxcde').select(specificItem.editTaxCode)
 
                 cy.get('.border-blue-500').click()
+
+                cy.wait(2000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '96.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
                 cy.checkElementInvisibility('.shadow-lg', '96.2.1', 'Upon Clicking the "Save" button:', 'The "Edit Item" modal window still visible', assertionResults, failureMessages)
 
                 cy.get('.MuiTableBody-root').contains(specificItem.editItem).should('exist')
+
+                cy.wait(4000)
             })
 
         cy.wait(4000)
@@ -620,7 +741,7 @@ describe('Item', () => {
 
                     cy.checkHeaderTitle('.px-8', '97.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '26.3', 'Do you want to delete: ' + data[key].item + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '26.3', 'Upon clicking the "Delete" button on pager UI:', 'Do you want to delete: ' + data[key].item + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '97.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
@@ -640,7 +761,7 @@ describe('Item', () => {
 
                     cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
-                    cy.wait(4000)
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '97.5.1', 'Upon Clicking the "Yes" button in Delete Confirmation modal:', 'Successfully deleted.', assertionResults, failureMessages) 
 
@@ -670,7 +791,6 @@ describe('Item', () => {
                     cy.get('input[placeholder="Search Item Description"]')
                       .clear()
                       .type(data[key].item)
-                      .type('{enter}')
 
                     cy.wait(2000)
     

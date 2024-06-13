@@ -16,6 +16,22 @@
         "Pies",
         "Ice Cream"
     ],
+    "food": [
+        "Snacks",
+        "Chicken",
+        "Burger",
+        "Spaghetti",
+        "Rice Meals"
+    ],
+    "beverages":[
+        "Soft Drinks",
+        "Coffee",
+        "Juices"
+    ],
+    "dessert":[
+        "Pies",
+        "Ice Cream"
+    ],
     "orderType": [
         "DINEIN",
         "TAKEOUT"
