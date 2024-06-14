@@ -17,7 +17,7 @@ describe("Ordering ", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("BRANCH 1").wait(2000);
+    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
     cy.contains("FOOD").click().wait(2000);
@@ -193,7 +193,7 @@ describe("Ordering ", () => {
 
   it("Reprint Transaction", () => {
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("BRANCH 1").wait(2000);
+    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
 
@@ -235,19 +235,19 @@ describe("Ordering ", () => {
  it("Void Transaction" , () => { 
 
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("BRANCH 1").wait(2000);
+    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.get('.bg-orange-100').click()
+    cy.get(':nth-child(14) > .bg-orange-100').click()
     cy.get('.px-8').should("have.text" , "Void Transaction")
-    cy.contains("OR-0000000000000001").should("have.text" , "OR-0000000000000001")
+    cy.contains("INV-0000000000000001").should("have.text" , "INV-0000000000000001")
 
  })
 
  it("Other Transaction - HOLD " , () => { 
 
   cy.get(".px-8 > .flex > .anticon > svg").click();
-  cy.get(':nth-child(15) > .bg-green-100').click()
+  cy.get(':nth-child(16) > .bg-green-100').click()
 
   cy.get('.px-8').should("have.text" , "Other Transaction")
   cy.contains("Hold Transaction").click()
@@ -258,15 +258,13 @@ describe("Ordering ", () => {
  it("Other Transaction - RECALL" , () => {
 
   cy.get("#postypcde").select("DINE IN").wait(2000);
-  cy.get("#warcde").select("BRANCH 1").wait(2000);
+  cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
   cy.contains("Proceed").click();
 
-  cy.get(':nth-child(15) > .bg-green-100').click()
+  cy.get(':nth-child(16) > .bg-green-100').click()
   cy.get('.px-8').should("have.text" , "Other Transaction")
   cy.contains("Recall Transaction").click()
   cy.contains("SEQ-00000000").click()
-
-
 
  })
 
