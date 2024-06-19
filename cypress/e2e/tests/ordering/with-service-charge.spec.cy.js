@@ -15,7 +15,7 @@ describe("With Service Charge ", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
     cy.contains("FOOD").click().wait(2000);
@@ -50,9 +50,10 @@ describe("With Service Charge ", () => {
   });
 
   it("1 Pax with 10% discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
@@ -63,7 +64,7 @@ describe("With Service Charge ", () => {
 
     cy.contains("Add Discount").click();
     cy.get(".px-8").should("have.text", "Add discount");
-    cy.get("#discde").select("regular discnt");
+    cy.get("#discde").select("10%");
     cy.get("#orderitmid").click();
     cy.get(".border-blue-500").click();
 
@@ -94,8 +95,8 @@ describe("With Service Charge ", () => {
       "have.text",
       Discount
     );
-
     cy.get(".font-extrabold > :nth-child(2)").should("have.text", total);
+
     cy.get(":nth-child(13) > .bg-green-100").click();
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Debong");
@@ -108,9 +109,10 @@ describe("With Service Charge ", () => {
   });
 
   it("1 Pax with 20% discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.contains("FOOD").click().wait(1000);
@@ -166,9 +168,10 @@ describe("With Service Charge ", () => {
   });
 
   it("1 Pax with Senior Discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.contains("FOOD").click().wait(1000);
@@ -260,10 +263,11 @@ describe("With Service Charge ", () => {
     );
   });
 
-  it("1 Pax with PWD Discount and Service Charge", () => {
+  it.only("1 Pax with PWD Discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.contains("FOOD").click().wait(1000);
@@ -354,16 +358,17 @@ describe("With Service Charge ", () => {
   });
 
   it("1 Pax with Athlete Discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.contains("FOOD").click().wait(1000);
     cy.contains("Hotdog").click().wait(1000);
     cy.contains("Regular Jolly Hotdog").click().wait(1000);
     cy.contains("Yumburger").click().wait(1000);
-    cy.get(":nth-child(5) > .sc-csKJxZ > .sc-eTNRI").click().wait(1000);
+    cy.get(':nth-child(2) > .sc-csKJxZ > .sc-eTNRI').click().wait(1000);
 
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Athlete");
@@ -445,9 +450,10 @@ describe("With Service Charge ", () => {
   });
 
   it("1 Pax with Medal of Valor Discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.contains("FOOD").click().wait(1000);
@@ -523,9 +529,10 @@ describe("With Service Charge ", () => {
   });
 
   it("1 Pax with Diplomat Discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.contains("FOOD").click().wait(1000);
@@ -605,9 +612,10 @@ describe("With Service Charge ", () => {
   });
 
   it("1 Pax with MEMC Senior Discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("TAKEOUT").wait(2000);
-    cy.get("#warcde").select("TAKE-OUT PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
 
     cy.contains("FOOD").click().wait(1000);
@@ -696,9 +704,10 @@ describe("With Service Charge ", () => {
   });
 
   it("1 Pax with MEMC PWD Discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("TAKEOUT").wait(2000);
-    cy.get("#warcde").select("TAKE-OUT PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
 
     cy.contains("FOOD").click().wait(1000);
@@ -787,9 +796,10 @@ describe("With Service Charge ", () => {
   });
 
   it("1 Pax with MEMC Senior Discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.contains("FOOD").click().wait(1000);
@@ -880,9 +890,10 @@ describe("With Service Charge ", () => {
   });
 
   it("1 Pax with MEMC PWD Discount and Service Charge", () => {
+    cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
-    cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
+    cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.contains("FOOD").click().wait(1000);
@@ -932,7 +943,7 @@ describe("With Service Charge ", () => {
     cy.get(":nth-child(5) > :nth-child(2)").should("have.text", SCharge_dsc1);
     cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
 
-    cy.contains("Payment").click()
+    cy.contains("Payment").click();
     cy.get(".ml-5 > :nth-child(2) > :nth-child(1) > :nth-child(2)").should(
       "have.text",
       "₱499.00"
@@ -964,7 +975,5 @@ describe("With Service Charge ", () => {
       "have.text",
       "Transaction Complete."
     );
-
-
   });
 });

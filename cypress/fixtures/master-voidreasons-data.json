@@ -68,6 +68,6 @@
   {
     "voidReasons": "This is a very long string that exceeds the maximum allowed length.",
     "onlySearch": false,
-    "onlyDelete": false
+    "onlyDelete": true
   }
 ]
