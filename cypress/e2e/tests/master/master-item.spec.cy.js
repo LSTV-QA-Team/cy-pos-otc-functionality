@@ -34,38 +34,38 @@ describe('Item', () => {
 
     })
 
-    // after(() => {
+    after(() => {
 
-    //     cy.fixture('data-to-delete.json').then((data) => {
+        cy.fixture('data-to-delete.json').then((data) => {
 
-    //         data.forEach((item) => {
+            data.forEach((item) => {
 
-    //             const specialChar = item.dataToDelete;
-    //             const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
+                const specialChar = item.dataToDelete;
+                const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
                 
-    //             cy.task('queryDb', deleteQuery).then(() => {
+                cy.task('queryDb', deleteQuery).then(() => {
 
-    //                 cy.log(`Deleted data with description: ${specialChar}`) 
+                    cy.log(`Deleted data with description: ${specialChar}`) 
 
-    //             })
-    //         })
+                })
+            })
     
-    //         cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
+            cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
 
-    //             const remainingData = records.map((record) => record.description)
-    //             const deletedChars = data.map((item) => item.dataToDelete)
+                const remainingData = records.map((record) => record.description)
+                const deletedChars = data.map((item) => item.dataToDelete)
                 
-    //             deletedChars.forEach((char) => {
+                deletedChars.forEach((char) => {
 
-    //                 expect(remainingData).to.not.include(char)
+                    expect(remainingData).to.not.include(char)
 
-    //             })
+                })
     
-    //             cy.log('Specified data Successfully deleted.'); // Log success
+                cy.log('Specified data Successfully deleted.'); // Log success
 
-    //         })
-    //     })
-    // })
+            })
+        })
+    })
 
     it('Check Item Page', () => {  
 
@@ -449,6 +449,80 @@ describe('Item', () => {
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
+                        if (data[key].addOn === true) {
+
+                            cy.get('#isaddon').click()
+    
+                        } else {
+    
+                            cy.get('#isaddon').should('not.be.checked')
+                        }
+    
+                        if (data[key].inactive === true) {
+    
+                            cy.get('#inactive').click()
+    
+                        } else {
+    
+                            cy.get('#inactive').should('not.be.checked')
+                        }
+    
+                        if (data[key].comboMeal === true) {
+    
+                            cy.get('#chkcombo').click()
+
+                            cy.get('.ant-tabs-tab-active').click()
+
+                            cy.fixture('item-combomeal-data.json').then((data) => {
+
+                                if (data.FSMA6) {
+                                    
+                                    data.FSMA6.forEach((fsma6) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
+
+                                        cy.get('.select__menu-list').contains('div', fsma6).click()
+
+                                    })
+
+                                } else if (data.FSMA8) {
+
+                                    data.FSMA8.forEach((fsma8) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
+
+                                        cy.get('.select__menu-list').contains('div', fsma8).click()
+
+                                    })
+
+                                } else if (data.FSMB6) {
+
+                                    data.FSMB6.forEach((fsmb6) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
+
+                                        cy.get('.select__menu-list').contains('div', fsmb6).click()
+
+                                    })
+                                    
+                                } else {
+
+                                    data.FSMB8.forEach((fsmb8) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+
+                                        cy.get('.select__menu-list').contains('div', fsmb8).click()
+
+                                    })
+                                }
+                            })
+                            
+    
+                        } else {
+    
+                            cy.get('#chkcombo').should('not.be.checked')
+                        }
+
                         cy.get('.border-red-500').click()
 
                         cy.checkLabelCaption('.h-auto', '18.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
@@ -492,6 +566,77 @@ describe('Item', () => {
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
+                        if (data[key].addOn === true) {
+
+                            cy.get('#isaddon').click()
+    
+                        } else {
+    
+                            cy.get('#isaddon').should('not.be.checked')
+                        }
+    
+                        if (data[key].inactive === true) {
+    
+                            cy.get('#inactive').click()
+    
+                        } else {
+    
+                            cy.get('#inactive').should('not.be.checked')
+                        }
+    
+                        if (data[key].comboMeal === true) {
+    
+                            cy.get('#chkcombo').click()
+
+                            cy.get('.ant-tabs-tab-active').click()
+
+                            cy.fixture('item-combomeal-data.json').then((data) => {
+
+                                if (data.FSMA6) {
+
+                                    data.FSMA6.forEach((fsma6) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
+
+                                        cy.get('.select__menu-list').contains('div', fsma6).click()
+
+                                    })
+                                } else if (data.FSMA8) {
+
+                                    data.FSMA8.forEach((fsma8) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
+
+                                        cy.get('.select__menu-list').contains('div', fsma8).click()
+
+                                    })
+
+                                } else if (data.FSMB6) {
+                                    data.FSMB6.forEach((fsmb6) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
+
+                                        cy.get('.select__menu-list').contains('div', fsmb6).click()
+
+                                    })
+                                    
+                                } else {
+
+                                    data.FSMB8.forEach((fsmb8) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+
+                                        cy.get('.select__menu-list').contains('div', fsmb8).click()
+
+                                    })
+                                }
+                            })
+    
+                        } else {
+    
+                            cy.get('#chkcombo').should('not.be.checked')
+                        }
+
                         cy.get('.border-blue-500').click()
 
                         cy.wait(2000)
@@ -525,6 +670,75 @@ describe('Item', () => {
                         cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
 
                         cy.get('#taxcde').select(data[key].taxCode)
+
+                        if (data[key].addOn === true) {
+
+                            cy.get('#isaddon').click()
+
+                        } else {
+
+                            cy.get('#isaddon').should('not.be.checked')
+                        }
+
+                        if (data[key].inactive === true) {
+
+                            cy.get('#inactive').click()
+
+                        } else {
+
+                            cy.get('#inactive').should('not.be.checked')
+                        }
+
+                        if (data[key].comboMeal === true) {
+
+                            cy.get('#chkcombo').click()
+
+                            cy.get('.ant-tabs-tab-active').click()
+
+                            cy.fixture('item-combomeal-data.json').then((data) => {
+
+                                if (data.FSMA6) {
+                                    data.FSMA6.forEach((fsma6) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
+
+                                        cy.get('.select__menu-list').contains('div', fsma6).click()
+
+                                    })
+                                } else if (data.FSMA8) {
+                                    data.FSMA8.forEach((fsma8) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
+
+                                        cy.get('.select__menu-list').contains('div', fsma8).click()
+
+                                    })
+
+                                } else if (data.FSMB6) {
+                                    data.FSMB6.forEach((fsmb6) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
+
+                                        cy.get('.select__menu-list').contains('div', fsmb6).click()
+
+                                    })
+                                    
+                                } else {
+
+                                    data.FSMB8.forEach((fsmb8) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+
+                                        cy.get('.select__menu-list').contains('div', fsmb8).click()
+
+                                    })
+                                }
+                            })
+
+                        } else {
+
+                            cy.get('#chkcombo').should('not.be.checked')
+                        }
 
                         cy.checkElementVisibility('.text-sm', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
 
@@ -560,6 +774,76 @@ describe('Item', () => {
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
+                        if (data[key].addOn === true) {
+
+                            cy.get('#isaddon').click()
+
+                        } else {
+
+                            cy.get('#isaddon').should('not.be.checked')
+                        }
+
+                        if (data[key].inactive === true) {
+
+                            cy.get('#inactive').click()
+
+                        } else {
+
+                            cy.get('#inactive').should('not.be.checked')
+                        }
+
+                        if (data[key].comboMeal === true) {
+
+                            cy.get('#chkcombo').click()
+
+                            cy.get('.ant-tabs-tab-active').click()
+
+                            cy.fixture('item-combomeal-data.json').then((data) => {
+
+                                if (data.FSMA6) {
+                                    data.FSMA6.forEach((fsma6) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
+
+                                        cy.get('.select__menu-list').contains('div', fsma6).click()
+
+                                    })
+
+                                } else if (data.FSMA8) {
+                                    data.FSMA8.forEach((fsma8) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
+
+                                        cy.get('.select__menu-list').contains('div', fsma8).click()
+
+                                    })
+
+                                } else if (data.FSMB6) {
+                                    data.FSMB6.forEach((fsmb6) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
+
+                                        cy.get('.select__menu-list').contains('div', fsmb6).click()
+
+                                    })
+
+                                } else {
+
+                                    data.FSMB8.forEach((fsmb8) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+
+                                        cy.get('.select__menu-list').contains('div', fsmb8).click()
+
+                                    })
+                                }
+                            })
+
+                        } else {
+
+                            cy.get('#chkcombo').should('not.be.checked')
+                        }
+
                         cy.get('.border-blue-500').click()
 
                         cy.wait(2000)
@@ -571,7 +855,6 @@ describe('Item', () => {
                         cy.checkElementInvisibility('.shadow-lg', '78.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 16.2.2 Check if the "Description" textbox object is cleared or blank.
-
 
                     }
 
@@ -609,6 +892,79 @@ describe('Item', () => {
 
                         cy.get('#taxcde').select(data[key].taxCode)
 
+                        if (data[key].addOn === true) {
+
+                            cy.get('#isaddon').click()
+
+                        } else {
+
+                            cy.get('#isaddon').should('not.be.checked')
+                        }
+
+                        if (data[key].inactive === true) {
+
+                            cy.get('#inactive').click()
+
+                        } else {
+
+                            cy.get('#inactive').should('not.be.checked')
+                        }
+
+                        if (data[key].comboMeal === true) {
+
+                            cy.get('#chkcombo').click()
+
+                            cy.get('.ant-tabs-tab-active').click()
+
+                            cy.fixture('item-combomeal-data.json').then((data) => {
+
+                                if (data.FSMA6) {
+                                    
+                                    data.FSMA6.forEach((fsma6) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
+
+                                        cy.get('.select__menu-list').contains('div', fsma6).click()
+
+                                    })
+
+                                } else if (data.FSMA8) {
+
+                                    data.FSMA8.forEach((fsma8) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
+
+                                        cy.get('.select__menu-list').contains('div', fsma8).click()
+
+                                    })
+
+                                } else if (data.FSMB6) {
+
+                                    data.FSMB6.forEach((fsmb6) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
+
+                                        cy.get('.select__menu-list').contains('div', fsmb6).click()
+
+                                    })
+                                    
+                                } else {
+
+                                    data.FSMB8.forEach((fsmb8) => {
+
+                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+
+                                        cy.get('.select__menu-list').contains('div', fsmb8).click()
+
+                                    })
+                                }
+                            })
+
+                        } else {
+
+                            cy.get('#chkcombo').should('not.be.checked')
+                        }
+
                         cy.get('.border-blue-500').click()
 
                         cy.wait(2000)
@@ -629,7 +985,7 @@ describe('Item', () => {
             }
         })
 
-        cy.wait(4000)
+        cy.wait(8000)
 
         cy.checkForFailure(assertionResults, failureMessages)
         
@@ -704,6 +1060,48 @@ describe('Item', () => {
                 cy.get('#taxcde').select(specificItem.editTaxCode)
 
                 cy.get('.border-blue-500').click()
+
+                for (const key in data) {
+
+                    if (data[key].editAddOn === true) {
+
+                        cy.get('#isaddon').click()
+
+                    } else {
+
+                        cy.get('#isaddon').should('not.be.checked')
+                    }
+
+                    if (data[key].editInactive === true) {
+
+                        cy.get('#inactive').click()
+
+                    } else {
+
+                        cy.get('#inactive').should('not.be.checked')
+                    }
+
+                    if (data[key].editComboMeal === true) {
+
+                        cy.get('#chkcombo').click()
+
+                        // cy.get('#react-select-24-input').select()
+
+                        // cy.get('#react-select-25-input').select()
+
+                        // cy.get('.ant-tabs-tab-active').click()
+
+                        // cy.get('#selectedItemDefault > .select__control > .select__value-container').realClick()
+
+                        // cy.get('#selectedItemDefault > .select__control > .select__value-container').select()
+
+
+
+                    } else {
+
+                        cy.get('#chkcombo').should('not.be.checked')
+                    }
+                }
 
                 cy.wait(2000)
 

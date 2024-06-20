@@ -50,6 +50,14 @@
     "itemClass": "Beverages"
   },
   {
+    "itemSubclass": "Sides",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Family Super Meals",
+    "itemClass": "Food"
+  },
+  {
     "itemSubclass": "% & ( ) / - .",
     "itemClass": "Beverages"
   },

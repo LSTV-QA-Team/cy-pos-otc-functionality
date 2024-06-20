@@ -14,14 +14,18 @@
         "Coffee",
         "Juices",
         "Pies",
-        "Ice Cream"
+        "Ice Cream",
+        "Sides",
+        "Family Super Meals"
     ],
     "food": [
         "Snacks",
         "Chicken",
         "Burger",
         "Spaghetti",
-        "Rice Meals"
+        "Rice Meals",
+        "Sides",
+        "Family Super Meals"
     ],
     "beverages":[
         "Soft Drinks",
