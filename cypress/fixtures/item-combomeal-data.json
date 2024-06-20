@@ -1,0 +1,41 @@
+{
+    "FSMA6": [
+        "Extra Rice",
+        "Buttered Corn",
+        "Creamy Macaroni Soup",
+        "Mini Sundaes",
+        "Royal",
+        "Coke",
+        "Pineapple Juice",
+        "Iced Tea"
+    ],
+
+    "FSMA8": [
+        "Extra Rice",
+        "Buttered Corn",
+        "Creamy Macaroni Soup",
+        "Mini Sundaes",
+        "Royal",
+        "Coke",
+        "Pineapple Juice",
+        "Iced Tea"
+    ],
+
+    "FSMB6": [
+        "Jolly Spaghetti",
+        "Rice",
+        "Royal",
+        "Coke",
+        "Pineapple Juice",
+        "Iced Tea"
+    ],
+
+    "FSMB8": [
+        "Jolly Spaghetti",
+        "Rice",
+        "Royal",
+        "Coke",
+        "Pineapple Juice",
+        "Iced Tea"
+    ]
+}
