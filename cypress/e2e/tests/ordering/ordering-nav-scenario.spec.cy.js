@@ -11,10 +11,17 @@ describe('Ordering', () => {
 
         cy.wait(2000)
 
+<<<<<<< HEAD
+        cy.get('.Toastify__toast-body').then(($notif) => {
+
+            if ($notif.is(':visible')) {
+
+=======
         cy.get('body').then(($body) => {
 
             if ($body.find('.Toastify__toast-body').is(':visible')) {
             
+>>>>>>> new-script
                 cy.contains('Cashiering').click()
 
                 cy.contains('Cash Fund').click()
@@ -46,7 +53,11 @@ describe('Ordering', () => {
                 cy.get('body').then(($body) => {
 
                     // if "select pricelist" is visible will do this actions
+<<<<<<< HEAD
+                    if ($body.find('.Toastify__toast-body').is(':visible')) {
+=======
                     if ($body.find('.px-8').is(':visible')) {
+>>>>>>> new-script
                         
                         cy.get('.px-8').should('have.text', 'Select Pricelist')
 
@@ -63,6 +74,8 @@ describe('Ordering', () => {
                     }
 
                 })
+<<<<<<< HEAD
+=======
                 
             } else if ($body.find('.px-8').is(':visible')) {
 
@@ -77,14 +90,18 @@ describe('Ordering', () => {
                 // just to assert if successfully navigated to ordering module
                 cy.get('.bg-black > .font-extrabold > :nth-child(1)').should('have.text', 'Grand Total')
 
+>>>>>>> new-script
 
             } else {
 
                 cy.url({timeout: 10000}).should('contain', '/ordering')
 
             }
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> new-script
         })
     })
 })
