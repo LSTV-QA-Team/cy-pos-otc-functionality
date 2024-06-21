@@ -977,7 +977,7 @@ describe('Item', () => {
 
                         cy.get('.MuiSelect-select.MuiTablePagination-select').click();
 
-                        cy.get('ul[role="listbox"] li').contains('15').click();
+                        cy.get('ul[role="listbox"] li').contains('100').click();
                         
                         cy.get('.MuiTableBody-root').contains(data[key].item).should('exist')
                     }
@@ -999,7 +999,7 @@ describe('Item', () => {
 
                 cy.get('.MuiSelect-select.MuiTablePagination-select').click()
 
-                cy.get('ul[role="listbox"] li').contains('15').click()
+                cy.get('ul[role="listbox"] li').contains('100').click()
 
                 cy.wait(2000);
 
@@ -1053,7 +1053,7 @@ describe('Item', () => {
 
                 cy.get('#barcde').clear().type(specificItem.editBarcode)
 
-                cy.get('#untprc').clear().type(specificItem.editSellingPrice)
+                cy.get('#untprc').clear().type('{rightarrow}{rightarrow}').type(specificItem.editSellingPrice)
 
                 cy.get('#itmpaxcount').clear().type(specificItem.editGoodXPerson)
 

@@ -311,7 +311,7 @@ describe('MEMC', () => {
 
                 cy.get('#codedsc').clear().type(specificmemc.editmemc)
 
-                cy.get('#value').clear().type(specificmemc.editvalue)
+                cy.get('#value').clear().type('{rightarrow}{rightarrow}').type(specificmemc.editvalue)
 
                 cy.get('.border-blue-500').click()
 
