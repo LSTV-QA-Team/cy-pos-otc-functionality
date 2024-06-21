@@ -158,7 +158,7 @@
     "serviceChargeDisc": "Yes",
     "govDisc": "Yes",
     "onlineDeals": "No",
-    "onlyDelete": false,
+    "onlyDelete": true,
     "onlySearchVal": false,
     "onlySearchInval": false
   },
@@ -187,6 +187,34 @@
     "govDisc": "No",
     "onlineDeals": "No",
     "onlyDelete": true,
+    "onlySearchVal": false,
+    "onlySearchInval": false
+  },
+  {
+    "discountCode": 0.1,
+    "discountDesc": 0.1,
+    "discountType": "Percent",
+    "percentAmount": 10,
+    "exemptVAT": "No",
+    "lessVATDisc": "No",
+    "serviceChargeDisc": "No",
+    "govDisc": "No",
+    "onlineDeals": "No",
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
+  },
+  {
+    "discountCode": 0.2,
+    "discountDesc": 0.2,
+    "discountType": "Percent",
+    "percentAmount": 20,
+    "exemptVAT": "No",
+    "lessVATDisc": "No",
+    "serviceChargeDisc": "No",
+    "govDisc": "No",
+    "onlineDeals": "No",
+    "onlyDelete": false,
     "onlySearchVal": false,
     "onlySearchInval": false
   }

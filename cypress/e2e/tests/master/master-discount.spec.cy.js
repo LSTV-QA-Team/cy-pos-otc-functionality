@@ -101,8 +101,8 @@ describe('Discount', () => {
                 cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
                 cy.get('#discde')
-                .type(data[key].discountCode)
-                .then(($input) => {
+                  .clear().type(data[key].discountCode)
+                  .then(($input) => {
 
                     if ($input.val() === "null") {
                         
@@ -119,13 +119,13 @@ describe('Discount', () => {
 
                         cy.checkLabelCaption('div:contains("Type *")', '13.4', 'Upon clicking the "Save" button:', 'Type * is required', assertionResults, failureMessages)
 
-                        cy.get('#discde').type('PWD')
+                        cy.get('#discde').clear().type('PWD')
 
-                        cy.get('#disdsc').type('PWD')
+                        cy.get('#disdsc').clear().type('PWD')
 
                         cy.get('#distyp').select('Percent')
 
-                        cy.get('#disper').type('20')
+                        cy.get('#disper').clear().type('20')
 
                         cy.get('#ExemptYes').click()
 
@@ -173,7 +173,7 @@ describe('Discount', () => {
 
                     else if ($input.val() === "% & ( ) / - .") {
 
-                        cy.get('#disdsc').type(data[key].discountDesc)
+                        cy.get('#disdsc').clear().type(data[key].discountDesc)
 
                         cy.get('#distyp').select(data[key].discountType).then((selected) => {
 
@@ -258,7 +258,7 @@ describe('Discount', () => {
 
                         cy.wrap($input).should('have.value', data[key].discountCode)
 
-                        cy.get('#disdsc').type(data[key].discountDesc)
+                        cy.get('#disdsc').clear().type(data[key].discountDesc)
 
                         cy.get('#distyp').select(data[key].discountType).then((selected) => {
 
@@ -337,7 +337,7 @@ describe('Discount', () => {
 
                     else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                        cy.get('#disdsc').type(data[key].discountDesc)
+                        cy.get('#disdsc').clear().type(data[key].discountDesc)
 
                         cy.get('#distyp').select(data[key].discountType).then((selected) => {
 
@@ -422,7 +422,7 @@ describe('Discount', () => {
 
                         cy.wrap($input).should('have.value', data[key].discountCode)
 
-                        cy.get('#disdsc').type(data[key].discountDesc)
+                        cy.get('#disdsc').clear().type(data[key].discountDesc)
 
                         cy.get('#distyp').select(data[key].discountType).then((selected) => {
 
@@ -548,11 +548,11 @@ describe('Discount', () => {
                 .should('have.value', specificdiscount.discountCode)
                 .clear()
 
-            cy.get('#discde').type(specificdiscount.editDiscountCode)
+            cy.get('#discde').clear().type(specificdiscount.editDiscountCode)
 
             cy.get('#disdsc')
               .clear()
-              .type(specificdiscount.editDiscountDesc)
+              .clear().type(specificdiscount.editDiscountDesc)
 
             cy.get('#distyp').select(specificdiscount.editDiscountType).then((selected) => {
 
@@ -694,7 +694,7 @@ describe('Discount', () => {
     
                     cy.get('input[placeholder="Search Discount"]')
                     .clear()
-                    .type(data[key].discountDesc)
+                    .clear().type(data[key].discountDesc)
 
                     cy.wait(2000)
     
@@ -711,7 +711,7 @@ describe('Discount', () => {
 
                     cy.get('input[placeholder="Search Discount"]')
                     .clear()
-                    .type(data[key].discountDesc)
+                    .clear().type(data[key].discountDesc)
 
                     cy.wait(4000)
 
