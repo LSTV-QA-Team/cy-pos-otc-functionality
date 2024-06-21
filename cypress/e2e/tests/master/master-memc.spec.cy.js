@@ -309,9 +309,9 @@ describe('MEMC', () => {
                   .should('have.value', specificmemc.memc)
                   .clear()
 
-                cy.get('#codedsc').type(specificmemc.editmemc)
+                cy.get('#codedsc').clear().type(specificmemc.editmemc)
 
-                cy.get('#value').type(specificmemc.editvalue)
+                cy.get('#value').clear().type(specificmemc.editvalue)
 
                 cy.get('.border-blue-500').click()
 
