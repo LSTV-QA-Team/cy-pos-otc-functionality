@@ -64,12 +64,6 @@ describe("Void Transactions ", () => {
     cy.get("#orderitmid").click().wait(2000);
     cy.get(".border-blue-500").click().wait(2000);
 
-    cy.get("#cardholder").click().type("Karina").wait(2000);
-    cy.get("#cardno").click().type("12342345235").wait(2000);
-    cy.get("#tin").click().type("48956");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500")
-      .click()
-      .wait(2000);
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -144,11 +138,6 @@ describe("Void Transactions ", () => {
     cy.get("#orderitmid0").click().wait(2000);
     cy.get(".border-blue-500").click().wait(2000);
 
-    cy.get("#cardholder").click().type("Karina").wait(2000);
-    cy.get("#cardno").click().type("12342345235").wait(2000);
-    cy.get("#tin").click().type("48956").wait(2000);
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
-
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
       .should("have.text", "Discount : 20%")
       .wait(2000);
@@ -221,7 +210,6 @@ describe("Void Transactions ", () => {
 
     cy.get("#cardholder").click().type("Winter").wait(2000);
     cy.get("#cardno").click().type("4569084").wait(2000);
-    cy.get("#tin").click().type("56735").wait(2000);
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
@@ -301,7 +289,6 @@ describe("Void Transactions ", () => {
 
     cy.get("#cardholder").click().type("Tanya").wait(2000);
     cy.get("#cardno").click().type("12342345235").wait(2000);
-    cy.get("#tin").click().type("48956").wait(2000);
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
@@ -369,7 +356,6 @@ describe("Void Transactions ", () => {
 
     cy.get("#cardholder").click().type("Tony");
     cy.get("#cardno").click().type("645734");
-    cy.get("#tin").click().type("123890");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
@@ -446,7 +432,6 @@ describe("Void Transactions ", () => {
 
     cy.get("#cardholder").click().type("Mingmangmeng").wait(2000);
     cy.get("#cardno").click().type("563566").wait(2000);
-    cy.get("#tin").click().type("2343").wait(2000);
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
@@ -521,7 +506,6 @@ describe("Void Transactions ", () => {
 
     cy.get("#cardholder").click().type("Diploooo");
     cy.get("#cardno").click().type("345345");
-    cy.get("#tin").click().type("1234234");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
@@ -605,7 +589,6 @@ describe("Void Transactions ", () => {
 
     cy.get("#cardholder").click().type("Seniorrrritoo");
     cy.get("#cardno").click().type("234");
-    cy.get("#tin").click().type("3546");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
@@ -687,7 +670,6 @@ describe("Void Transactions ", () => {
 
     cy.get("#cardholder").click().type("PIDABALYUDI");
     cy.get("#cardno").click().type("234");
-    cy.get("#tin").click().type("3546");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(

@@ -70,7 +70,6 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Erning");
     cy.get("#cardno").click().type("7899564553");
-    cy.get("#tin").click().type("234897");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex").should(
@@ -129,7 +128,6 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Tonyang");
     cy.get("#cardno").click().type("667534342");
-    cy.get("#tin").click().type("12345");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
@@ -189,7 +187,6 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Karding");
     cy.get("#cardno").click().type("523634");
-    cy.get("#tin").click().type("0987867");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
@@ -283,7 +280,6 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Tessa");
     cy.get("#cardno").click().type("87964");
-    cy.get("#tin").click().type("234456");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
@@ -377,7 +373,6 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Mary");
     cy.get("#cardno").click().type("997675");
-    cy.get("#tin").click().type("34566334");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
@@ -467,7 +462,7 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Winter");
     cy.get("#cardno").click().type("89745467");
-    cy.get("#tin").click().type("34356726");
+
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
@@ -550,7 +545,7 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Karina");
     cy.get("#cardno").click().type("678656");
-    cy.get("#tin").click().type("341345");
+    
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
@@ -633,7 +628,7 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Giselle");
     cy.get("#cardno").click().type("3423456");
-    cy.get("#tin").click().type("678238");
+
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -725,7 +720,7 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Ariana Grande");
     cy.get("#cardno").click().type("464345");
-    cy.get("#tin").click().type("7734625");
+   
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -813,7 +808,7 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Jessie J");
     cy.get("#cardno").click().type("3452435");
-    cy.get("#tin").click().type("32556236");
+
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -907,7 +902,7 @@ describe("With Service Charge ", () => {
 
     cy.get("#cardholder").click().type("Nicky Minaj");
     cy.get("#cardno").click().type("98756790");
-    cy.get("#tin").click().type("90834");
+
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
