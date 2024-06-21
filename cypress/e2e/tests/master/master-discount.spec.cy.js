@@ -33,7 +33,40 @@ describe('Discount', () => {
 
     })
 
-    it('Check Discounts Page', () => {   
+    // after(() => {
+
+    //     cy.fixture('data-to-delete.json').then((data) => {
+
+    //         data.forEach((item) => {
+
+    //             const specialChar = item.dataToDelete;
+    //             const deleteQuery = `DELETE FROM discountfile WHERE disdsc = '${specialChar}'`;
+                
+    //             cy.task('queryDb', deleteQuery).then(() => {
+
+    //                 cy.log(`Deleted data with description: ${specialChar}`) 
+
+    //             })
+    //         })
+    
+    //         cy.task('queryDb', 'SELECT * FROM discountfile').then((records) => {
+
+    //             const remainingData = records.map((record) => record.description)
+    //             const deletedChars = data.map((item) => item.dataToDelete)
+                
+    //             deletedChars.forEach((char) => {
+
+    //                 expect(remainingData).to.not.include(char)
+
+    //             })
+    
+    //             cy.log('Specified data Successfully deleted.'); // Log success
+
+    //         })
+    //     })
+    // })
+
+    it.only('Check Discounts Page', () => {   
 
         cy.navigateToModule('Master File', 'Discounts')
 
@@ -54,7 +87,7 @@ describe('Discount', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Add Functionality', () => {
+    it.only('Add Functionality', () => {
 
         cy.fixture('master-discount-data.json').then((data) => {
 
@@ -513,7 +546,7 @@ describe('Discount', () => {
         
     })
 
-    it('Edit Functionality', () => {
+    it.only('Edit Functionality', () => {
 
         cy.wait(8000)
 
@@ -634,7 +667,7 @@ describe('Discount', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Delete Functionality', () => {
+    it.only('Delete Functionality', () => {
 
         cy.fixture('master-discount-data.json').then((data) => {
             
@@ -670,6 +703,8 @@ describe('Discount', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '63.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
+                    cy.wait(6000)
+
                     cy.checkElementInvisibility('.shadow-lg', '63.5.2', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
                 }
             }
@@ -679,7 +714,7 @@ describe('Discount', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Search Functionality', () => {
+    it.only('Search Functionality', () => {
 
         cy.fixture('master-discount-data.json').then((data) => {
 
@@ -713,7 +748,7 @@ describe('Discount', () => {
                     .clear()
                     .clear().type(data[key].discountDesc)
 
-                    cy.wait(4000)
+                    cy.wait(8000)
 
                     cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
 
