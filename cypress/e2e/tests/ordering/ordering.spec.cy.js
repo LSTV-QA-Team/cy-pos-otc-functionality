@@ -268,5 +268,47 @@ describe("Ordering ", () => {
 
  })
 
+   // Change Quantiy (Negative Testing)
+   it.only("Change Qty Negative", () => {
+    cy.get(':nth-child(2) > .bg-green-100').click().wait(2000) 
+    cy.get('.Toastify__toast-body')
+    .should("have.text", "Error : Select item first.").wait(2000).click()
+    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
+    .should("have.text", "1-pc Chickenjoy").wait(2000)
+    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
+    .click().wait(2000)
+    cy.contains('Change Quantity').click().wait(2000)
+
+    //Validation of Change Quantity Modal
+    cy.get('.px-8').should('exist').wait(4000)
+    cy.get('.px-8').should('have.text', 'Change Quantity')
+    cy.get('.py-3 > .mb-2').should('have.text', 'Set Quantity')
+    cy.get('#itmqty').should('have.value', '1')
+
+    //Input Data
+    cy.get('#itmqty').click().type("ABCDE").wait(2000)
+    cy.get('#itmqty').should('have.value', '1').wait(2000)
+    cy.get('#itmqty').click().type("-+=/.,<>!@#$%^&*():[]'") .wait(2000)
+    cy.get('#itmqty').should('have.value', '1').wait(2000)
+    cy.get('#itmqty').click().type('{downArrow}').wait(2000) 
+    //ERROR: NAGING 0 YUNG TEXT LABEL
+    //cy.get('#itmqty').should('have.value', '1')
+    cy.get('#itmqty').click().type('{upArrow}'.repeat(9)).wait(2000)
+    cy.get('#itmqty').should('have.value', '10').wait(2000)
+    cy.get('.border-blue-500').click()
+    cy.get('.Toastify__toast-body')
+    .should("have.text", "Item Quantity Changed.").wait(1000)
+    cy.get('.Toastify__toast-body').click()
+
+    //Validation
+    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(2)')
+    .should('have.value', '10')
+    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
+    .should('have.text', '1-pc Chickenjoy')
+    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(5)')
+    .should('have.value', '760.00')
+
+  });
+
 
 });

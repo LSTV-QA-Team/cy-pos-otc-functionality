@@ -68,10 +68,6 @@ describe("With Service Charge ", () => {
     cy.get("#orderitmid").click();
     cy.get(".border-blue-500").click();
 
-    cy.get("#cardholder").click().type("Erning");
-    cy.get("#cardno").click().type("7899564553");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
-
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex").should(
       "have.text",
       "Discount : 10%"
@@ -125,10 +121,6 @@ describe("With Service Charge ", () => {
     cy.get("#discde").select("20%");
     cy.get("#orderitmid").click();
     cy.get(".border-blue-500").click();
-
-    cy.get("#cardholder").click().type("Tonyang");
-    cy.get("#cardno").click().type("667534342");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -260,7 +252,7 @@ describe("With Service Charge ", () => {
     );
   });
 
-  it.only("1 Pax with PWD Discount and Service Charge", () => {
+  it("1 Pax with PWD Discount and Service Charge", () => {
     cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);

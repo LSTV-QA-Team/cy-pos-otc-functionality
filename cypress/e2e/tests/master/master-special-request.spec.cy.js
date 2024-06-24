@@ -422,9 +422,9 @@ describe('Special Request', () => {
 
                     cy.contains('button[class*="border-red-500"]', 'Confirm').click()
 
-                    cy.wait(4000)
-
                     cy.checkLabelCaption('.Toastify__toast-body', '26.5.1', 'Upon Clicking the "Yes" button in Delete Confirmation modal:', 'Successfully deleted.', assertionResults, failureMessages) 
+
+                    cy.wait(6000)
 
                     cy.checkElementInvisibility('.shadow-lg', '26.5.2 ', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
