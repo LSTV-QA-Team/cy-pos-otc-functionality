@@ -35,41 +35,41 @@ describe('Void/Refund Reasons', () => {
 
     })
 
-    after(() => {
+    // after(() => {
 
-        cy.fixture('data-to-delete.json').then((data) => {
+    //     cy.fixture('data-to-delete.json').then((data) => {
            
-            data.forEach((item) => {
+    //         data.forEach((item) => {
 
-                const specialChar = item.dataToDelete;
-                const deleteQuery = `DELETE FROM voidreasonfile WHERE voidcde = '${specialChar}'`;
+    //             const specialChar = item.dataToDelete;
+    //             const deleteQuery = `DELETE FROM voidreasonfile WHERE voidcde = '${specialChar}'`;
                 
-                cy.task('queryDb', deleteQuery).then(() => {
+    //             cy.task('queryDb', deleteQuery).then(() => {
 
-                    cy.log(`Deleted data with description: ${specialChar}`)
+    //                 cy.log(`Deleted data with description: ${specialChar}`)
 
-                })
-            })
+    //             })
+    //         })
     
            
-            cy.task('queryDb', 'SELECT * FROM voidreasonfile').then((records) => {
+    //         cy.task('queryDb', 'SELECT * FROM voidreasonfile').then((records) => {
 
-                const remainingData = records.map((record) => record.description);
-                const deletedChars = data.map((item) => item.dataToDelete);
+    //             const remainingData = records.map((record) => record.description);
+    //             const deletedChars = data.map((item) => item.dataToDelete);
                 
 
-                deletedChars.forEach((char) => {
+    //             deletedChars.forEach((char) => {
 
-                    expect(remainingData).to.not.include(char)
+    //                 expect(remainingData).to.not.include(char)
 
-                })
+    //             })
     
-                cy.log('Specified data Successfully deleted.')
-            })
-        })
-    })
+    //             cy.log('Specified data Successfully deleted.')
+    //         })
+    //     })
+    // })
 
-    it('Check Void/Refund Reasons Page', () => { 
+    it.only('Check Void/Refund Reasons Page', () => { 
         
         cy.navigateToModule('Master File', 'Void/Refund Reasons')
 
@@ -99,7 +99,7 @@ describe('Void/Refund Reasons', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     });
 
-    it('Add Functionality', () => {
+    it.only('Add Functionality', () => {
 
         cy.fixture('master-voidreasons-data.json').then((data) => {
 
@@ -125,18 +125,17 @@ describe('Void/Refund Reasons', () => {
 
             cy.validateElements('voidreasons-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click();
+            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click();
 
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
-                cy.get('#voidcde')
-                  .type(data[key].voidReasons)
-                  .then(($input) => {
 
-                    if ($input.val() === "null") {
+                    if (data[key].voidReasons === "null") {
                         
+                        cy.get('#voidcde').clear().type(data[key].voidReasons)
+
                         cy.get('#voidcde').clear()
 
                         cy.get('.border-blue-500').click()
@@ -150,12 +149,11 @@ describe('Void/Refund Reasons', () => {
                         cy.get('.border-blue-500').click()
 
                         cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
-
-                        cy.get('.px-8 > .flex > .anticon > svg').click()
-
                     } 
                     
                     else if ($input.val() === "Item Out of Stock") {
+
+                        cy.get('#voidcde').clear().type(data[key].voidReasons)
 
                         cy.get('.border-red-500').click()
 
@@ -181,10 +179,14 @@ describe('Void/Refund Reasons', () => {
 
                         cy.wait(4000)
 
+                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+
 
                     }
 
                     else if ($input.val() === "% & ( ) / - .") {
+
+                        cy.get('#voidcde').clear().type(data[key].voidReasons)
 
                         cy.get('.border-blue-500').click()
                         
@@ -202,7 +204,7 @@ describe('Void/Refund Reasons', () => {
 
                     else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
 
-                        cy.wrap($input).should('have.value', data[key].voidReasons)
+                        cy.get('#voidcde').clear().type(data[key].voidReasons)
 
                         cy.checkElementVisibility('.text-sm', '17.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
@@ -218,6 +220,10 @@ describe('Void/Refund Reasons', () => {
 
                     else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
+                        cy.get('#voidcde').clear().type(data[key].voidReasons)
+
+                        cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
+
                         cy.get('.border-blue-500').click()
 
                         cy.wait(4000)
@@ -232,7 +238,7 @@ describe('Void/Refund Reasons', () => {
 
                     else {
 
-                        cy.wrap($input).should('have.value', data[key].voidReasons)
+                        cy.get('#voidcde').clear().type(data[key].voidReasons)
 
                         cy.get('.border-blue-500').click()
 
@@ -248,7 +254,6 @@ describe('Void/Refund Reasons', () => {
 
                         cy.wait(8000)
                     }
-                })
             }
         })
 

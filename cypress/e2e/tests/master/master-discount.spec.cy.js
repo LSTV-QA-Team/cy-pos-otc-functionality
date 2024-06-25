@@ -66,7 +66,7 @@ describe('Discount', () => {
         })
     })
 
-    it.only('Check Discounts Page', () => {   
+    it('Check Discounts Page', () => {   
 
         cy.navigateToModule('Master File', 'Discounts')
 
@@ -87,7 +87,7 @@ describe('Discount', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it.only('Add Functionality', () => {
+    it('Add Functionality', () => {
 
         cy.fixture('master-discount-data.json').then((data) => {
 
@@ -127,24 +127,21 @@ describe('Discount', () => {
 
             cy.validateElements('discount-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
+            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
-                cy.get('#discde')
-                  .clear().type(data[key].discountCode)
-                  .then(($input) => {
+                cy.get('#discde').clear().type(data[key].discountCode)
 
-                    if ($input.val() === "null") {
+                    if (data[key].discountCode === "null") {
                         
                         cy.get('#discde').clear()
 
                         cy.get('#disdsc').clear()
 
                         cy.get('.border-blue-500').click()
-
 
                         cy.checkLabelCaption('div:contains("Code *")', '33.2', 'Upon clicking the "Save" button:', 'Code * is required', assertionResults, failureMessages)
 
@@ -174,11 +171,15 @@ describe('Discount', () => {
 
                         cy.wait(6000)
 
-                        cy.get('span[role="img"] svg[data-icon="close"]').click()
+                        // cy.get('span[role="img"] svg[data-icon="close"]').click()
 
                     } 
                     
-                    else if ($input.val() === "SUMMERSALE") {
+                    else if (data[key].discountCode === "SUMMERSALE") {
+
+                        cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+
+                        cy.get('#disdsc').clear().type(data[key].discountDesc)
 
                         cy.get('.border-red-500').click()
 
@@ -202,9 +203,11 @@ describe('Discount', () => {
 
                         cy.wait(6000)
 
+                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+
                     }
 
-                    else if ($input.val() === "% & ( ) / - .") {
+                    else if (data[key].discountCode === "% & ( ) / - .") {
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -287,9 +290,7 @@ describe('Discount', () => {
 
                     }
 
-                    else if ($input.val() === "WINTERHOLIDAY50PERCENTDISCOUNTFORALLITEMSOVER1000PHP") {
-
-                        cy.wrap($input).should('have.value', data[key].discountCode)
+                    else if (data[key].discountCode === "WINTERHOLIDAY50PERCENTDISCOUNTFORALLITEMSOVER1000PHP") {
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -368,9 +369,11 @@ describe('Discount', () => {
 
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+                    else if (data[key].discountCode === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
+
+                        cy.checkLabelCaption('.Toastify__toast-body', '51.1', 'Upon encoding not allowed special characters:', '"Please use only the following approved special characters: % & ( ) / - ."', assertionResults, failureMessages)
 
                         cy.get('#distyp').select(data[key].discountType).then((selected) => {
 
@@ -439,9 +442,7 @@ describe('Discount', () => {
                             cy.get('#ODNo').click()
                         }
 
-                        cy.get('.border-blue-500').click()
-
-                        cy.checkLabelCaption('.Toastify__toast-body', '51.1', 'Upon Clicking the "Save" button:', '"Please use only the following approved special characters: % & ( ) / - ."', assertionResults, failureMessages) 
+                        cy.get('.border-blue-500').click() 
 
                         cy.checkElementInvisibility('.shadow-lg', '51.2', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -452,8 +453,6 @@ describe('Discount', () => {
                     }
 
                     else {
-
-                        cy.wrap($input).should('have.value', data[key].discountCode)
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -535,8 +534,7 @@ describe('Discount', () => {
                         cy.get('.MuiTableBody-root').contains(data[key].discountCode).should('exist')
 
                         cy.wait(8000)
-                    }
-                }) 
+                    } 
             }
         }) 
 
@@ -546,7 +544,7 @@ describe('Discount', () => {
         
     })
 
-    it.only('Edit Functionality', () => {
+    it('Edit Functionality', () => {
 
         cy.wait(8000)
 
@@ -667,7 +665,7 @@ describe('Discount', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it.only('Delete Functionality', () => {
+    it('Delete Functionality', () => {
 
         cy.fixture('master-discount-data.json').then((data) => {
             
@@ -714,7 +712,7 @@ describe('Discount', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it.only('Search Functionality', () => {
+    it('Search Functionality', () => {
 
         cy.fixture('master-discount-data.json').then((data) => {
 

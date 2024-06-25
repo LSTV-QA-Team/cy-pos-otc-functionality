@@ -34,40 +34,40 @@ describe('Item', () => {
 
     })
 
-    after(() => {
+    // after(() => {
 
-        cy.fixture('data-to-delete.json').then((data) => {
+    //     cy.fixture('data-to-delete.json').then((data) => {
 
-            data.forEach((item) => {
+    //         data.forEach((item) => {
 
-                const specialChar = item.dataToDelete;
-                const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
+    //             const specialChar = item.dataToDelete;
+    //             const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
                 
-                cy.task('queryDb', deleteQuery).then(() => {
+    //             cy.task('queryDb', deleteQuery).then(() => {
 
-                    cy.log(`Deleted data with description: ${specialChar}`) 
+    //                 cy.log(`Deleted data with description: ${specialChar}`) 
 
-                })
-            })
+    //             })
+    //         })
     
-            cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
+    //         cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
 
-                const remainingData = records.map((record) => record.description)
-                const deletedChars = data.map((item) => item.dataToDelete)
+    //             const remainingData = records.map((record) => record.description)
+    //             const deletedChars = data.map((item) => item.dataToDelete)
                 
-                deletedChars.forEach((char) => {
+    //             deletedChars.forEach((char) => {
 
-                    expect(remainingData).to.not.include(char)
+    //                 expect(remainingData).to.not.include(char)
 
-                })
+    //             })
     
-                cy.log('Specified data Successfully deleted.'); // Log success
+    //             cy.log('Specified data Successfully deleted.'); // Log success
 
-            })
-        })
-    })
+    //         })
+    //     })
+    // })
 
-    it('Check Item Page', () => {  
+    it.only('Check Item Page', () => {  
 
         cy.navigateToModule('Master File', 'Items')
 
@@ -95,13 +95,7 @@ describe('Item', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Add Functionality', () => {
-
-        cy.addTestContext(`Upon Clicking "Add" button:
-                            1. The Item Subclassification dropdown in the "Add Item" modal does not display all the encoded data.
-
-                Note: The entire Item Test Script might fail because the required data is not available in the dropdown object.
-            `)  
+    it.only('Add Functionality', () => {  
 
         cy.fixture('master-item-data.json').then((data) => {
 

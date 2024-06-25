@@ -18,7 +18,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "1-pc Chickenjoy",
+    "item": "1-pc. Chickenjoy",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Chicken",
@@ -85,7 +85,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "6-pc. Chickenjoy Solo",
+    "item": "6-pcs. Chickenjoy Solo",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Chicken",
@@ -283,7 +283,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM A 6-pc: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)",
+    "item": "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -301,7 +301,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM A 8-pc: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)",
+    "item": "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -319,7 +319,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM B 6-pc: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)",
+    "item": "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -337,7 +337,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM B 8-pc: Chickenjoy Bucket (4 Jolly Spaghetti, 4 Rice, and 4 Regular Drinks)",
+    "item": "FSM B 8-pcs: Chickenjoy Bucket (4 Jolly Spaghetti, 4 Rice, and 4 Regular Drinks)",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -423,11 +423,11 @@
     "inactive": false,
     "comboMeal": false,
     "onlySearchVal": false,
-    "onlyDelete": true,
+    "onlyDelete": false,
     "onlySearchInval": false
   },
   {
-    "item": "jolly Spaghetti",
+    "item": "Jolly Spaghetti",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Spaghetti",

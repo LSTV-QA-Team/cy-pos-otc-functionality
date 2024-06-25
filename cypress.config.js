@@ -63,6 +63,7 @@ module.exports = defineConfig({
     baseUrl: 'http://localhost:5173/#/pages',
     experimentalStudio: true,
     testIsolation: false,
+    experimentalRunAllSpecs: true,
 
     // implement node event listeners here
     setupNodeEvents(on, config) {
