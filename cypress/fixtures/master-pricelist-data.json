@@ -58,7 +58,7 @@
     "onlySearchInval": false
   },
   {
-    "pricelist": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
+    "pricelist": "This is a test string that exceeds fifty characters in length.",
     "ordertype": "Takeout",
     "onlyDelete": false,
     "onlySearchVal": false,

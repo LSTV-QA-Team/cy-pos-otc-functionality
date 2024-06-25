@@ -128,17 +128,15 @@ describe('Item Classification', () => {
 
             cy.validateElements('itemclass-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
+            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
-                cy.get('#itmcladsc')
-                  .type(data[key].itemClass)
-                  .then(($input) => {
+                    if (data[key].itemClass === "null") {
 
-                    if ($input.val() === "null") {
+                        cy.get('#itmcladsc').clear().type(data[key].itemClass)
                         
                         cy.get('#itmcladsc').clear()
 
@@ -154,11 +152,15 @@ describe('Item Classification', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '12.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                        cy.get('.px-8 > .flex > .anticon > svg').click()
+                        // cy.get('.px-8 > .flex > .anticon > svg').click()
 
                     } 
                     
-                    else if ($input.val() === "Appetizer") {
+                    else if (data[key].itemClass === "Appetizer") {
+
+                        cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+
+                        cy.get('#itmcladsc').clear().type(data[key].itemClass)
 
                         cy.get('.border-red-500').click()
 
@@ -180,11 +182,19 @@ describe('Item Classification', () => {
 
                         cy.checkElementVisibility('.h-screen', '5.3.2', 'Upon clicking the "Yes" button, should back in Item Classification Pager U/I', assertionResults, failureMessages)
 
+                        cy.wait(4000)
+
+                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+
                     }
 
-                    else if ($input.val() === "% & ( ) / - .") {
+                    else if (data[key].itemClass === "% & ( ) / - .") {
+
+                        cy.get('#itmcladsc').clear().type(data[key].itemClass)
 
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '8.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -194,17 +204,23 @@ describe('Item Classification', () => {
 
                     }
 
-                    else if ($input.val() === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+                    else if (data[key].itemClass === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
 
-                        cy.wrap($input).should('have.value', data[key].itemClass)
+                        cy.get('#itmcladsc').clear().type(data[key].itemClass)
 
                         cy.checkElementVisibility('.text-sm', '16.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('.border-blue-500').click()
 
+                        cy.wait(4000)
+
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+                    else if (data[key].itemClass === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                        cy.get('#itmcladsc').clear().type(data[key].itemClass)
+
+                        cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
                         cy.get('.border-blue-500').click()
 
@@ -218,7 +234,9 @@ describe('Item Classification', () => {
 
                     else {
 
-                        cy.wrap($input).should('have.value', data[key].itemClass)
+                        cy.wait(4000)
+
+                        cy.get('#itmcladsc').clear().type(data[key].itemClass)
 
                         cy.get('.border-blue-500').click()
 
@@ -229,8 +247,7 @@ describe('Item Classification', () => {
                         cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.get('.MuiTableBody-root').contains(data[key].itemClass).should('exist')
-                    }
-                }) 
+                    } 
             }
         })
 

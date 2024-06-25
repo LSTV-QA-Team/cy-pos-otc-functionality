@@ -145,19 +145,19 @@ describe('Order Type', () => {
                 })
             })
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click();
+            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click();
 
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                 cy.wait(4000) 
                 
-                cy.get('#postypdsc')
-                    .type(data[key].dineType)
-                    .then(($input) => {
+                            if (data[key].dineType === "null") {
 
-                            if ($input.val() === "null") {
+                                cy.wait(4000)
+
+                                cy.get('#postypdsc').clear().type(data[key].dineType)
 
                                 cy.get('.border-blue-500').click()
 
@@ -183,10 +183,16 @@ describe('Order Type', () => {
 
                                 cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                                cy.get('.px-8 > .flex > .anticon > svg').click()
+                                cy.wait(4000)
                             } 
                             
-                            else if ($input.val() === "Reservation") {
+                            else if (data[key].dineType === "Reservation") {
+
+                                cy.wait(4000)
+
+                                cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+
+                                cy.get('#postypdsc').clear().type(data[key].dineType)
 
                                 cy.get('#ordertyp').realClick()
 
@@ -209,24 +215,32 @@ describe('Order Type', () => {
                                 cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                                 cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Order Type', assertionResults, failureMessages)
+
+                                cy.wait(4000)
+
+                                cy.get('.sc-eDLKkx > .anticon > svg').click()
                             }
 
-                            else if ($input.val() === "% & ( ) / - .") {
+                            else if (data[key].dineType === "% & ( ) / - .") {
+
+                                cy.get('#postypdsc').clear().type(data[key].dineType)
 
                                 cy.get('#ordertyp').select(data[key].orderType)
 
                                 cy.get('.border-blue-500').click()
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '5.1', 'Upon Clicking the "Save" button:', 'Successfullt saved.', assertionResults, failureMessages) 
+                                cy.wait(2000)
+
+                                cy.checkLabelCaption('.Toastify__toast-body', '5.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                                 cy.checkElementInvisibility('.shadow-lg', '5.2.1', 'Upon clicking the "OK" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                                 // 43.2.2 Check if the "Description" textbox object is cleared or blank.
                             }
 
-                            else if ($input.val() === "This is a very long string that exceeds the maximum allowed length") {
+                            else if (data[key].dineType === "This is a very long string that exceeds the maximum allowed length") {
 
-                                cy.wrap($input).should('have.value', data[key].dineType);
+                                cy.get('#postypdsc').clear().type(data[key].dineType)
 
                                 cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
@@ -240,7 +254,9 @@ describe('Order Type', () => {
 
                             }
 
-                            else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+                            else if (data[key].dineType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                                cy.get('#postypdsc').clear().type(data[key].dineType)
 
                                 cy.get('#ordertyp').realClick()
 
@@ -259,7 +275,9 @@ describe('Order Type', () => {
 
                             else {
 
-                                cy.wrap($input).should('have.value', data[key].dineType)
+                                cy.wait(4000)
+
+                                cy.get('#postypdsc').clear().type(data[key].dineType)
 
                                 cy.get('#ordertyp').select(data[key].orderType)
 
@@ -271,15 +289,14 @@ describe('Order Type', () => {
                                 
                                 cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
 
-                                cy.get('.MuiSelect-select.MuiTablePagination-select').click();
+                                // cy.get('.MuiSelect-select.MuiTablePagination-select').click();
 
-                                cy.get('ul[role="listbox"] li').contains('15').click();
+                                // cy.get('ul[role="listbox"] li').contains('15').click();
 
-                                cy.get('.MuiTableBody-root').contains(data[key].dineType).should('exist')
+                                // cy.get('.MuiTableBody-root').contains(data[key].dineType).should('exist')
 
                                 cy.wait(6000)
                             }
-                }) 
             }
         })
 

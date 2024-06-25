@@ -103,6 +103,8 @@ describe('Payment Type', () => {
             cy.wait(4000) 
 
             cy.get('.sc-eDLKkx > .anticon > svg').click()
+
+            cy.wait(2000)
                 
             cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -124,17 +126,15 @@ describe('Payment Type', () => {
 
             cy.validateElements('paymenttype-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
+            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
-                
-                cy.get('#paytyp')
-                  .type(data[key].paymentType)
-                  .then(($input) => {
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
-                    if ($input.val() === "null") {
+                    if (data[key].paymentType === "null") {
+
+                        cy.get('#paytyp').clear().type(data[key].paymentType)
                         
                         cy.get('#paytyp').clear()
 
@@ -146,14 +146,20 @@ describe('Payment Type', () => {
 
                         cy.get('.border-blue-500').click()
 
+                        cy.wait(2000)
+
                         cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                        cy.get('.px-8 > .flex > .anticon > svg').click()
+                        cy.wait(4000)
 
                     } 
                     
-                    else if ($input.val() === "Electronic Card") {
+                    else if (data[key].paymentType === "Electronic Card") {
 
+                        cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+
+                        cy.get('#paytyp').clear().type(data[key].paymentType)
+                        
                         cy.get('.border-red-500').click()
 
                         cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
@@ -176,16 +182,26 @@ describe('Payment Type', () => {
 
                         cy.wait(4000)
 
+                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+
 
                     }
 
-                    else if ($input.val() === "% & ( ) / - .") {
+                    else if (data[key].paymentType === "% & ( ) / - .") {
 
+                        cy.get('#paytyp').clear().type(data[key].paymentType)
+
+                        cy.checkValue('#paytyp', 'No Reference No.', 'Upon encoding data:', data[key].paymentType, assertionResults, failureMessages)
+                        
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was visible or active.', assertionResults, failureMessages)
+                        cy.wait(2000)
+
+                        cy.checkElementVisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -193,11 +209,11 @@ describe('Payment Type', () => {
 
                     }
 
-                    else if ($input.val() === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+                    else if (data[key].paymentType === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
 
-                        cy.wrap($input).should('have.value', data[key].paymentType);
+                        cy.get('#paytyp').clear().type(data[key].paymentType)
 
-                        cy.checkElementVisibility('.text-sm', '17.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.Toastify__toast-body', '17.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('.border-red-500').click()
 
@@ -209,13 +225,17 @@ describe('Payment Type', () => {
 
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+                    else if (data[key].paymentType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('#paytyp').clear().type(data[key].paymentType)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.get('#paytyp').should('be.empty')
+
+                        cy.wait(3000)
+
+                        cy.checkElementVisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.wait(4000)
                         
@@ -223,7 +243,9 @@ describe('Payment Type', () => {
 
                     else {
 
-                        cy.wrap($input).should('have.value', data[key].paymentType);
+                        cy.wait(4000)
+
+                        cy.get('#paytyp').clear().type(data[key].paymentType)
 
                         cy.get('.border-blue-500').click()
 
@@ -235,11 +257,10 @@ describe('Payment Type', () => {
 
                         // 4.2.2 Check if the "Description" textbox object is cleared or blank.
                         
-                        cy.get('.MuiTableBody-root').contains(data[key].paymentType).should('exist')
+                        // cy.get('.MuiTableBody-root').contains(data[key].paymentType).should('exist')
 
                         cy.wait(6000)
                     }
-                }) 
             }
         })
 

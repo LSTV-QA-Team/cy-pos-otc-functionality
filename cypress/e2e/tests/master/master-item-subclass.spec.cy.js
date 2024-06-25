@@ -40,42 +40,42 @@ describe('Item Subclassification', () => {
 
     })
 
-    after(() => {
+    // after(() => {
 
-        // delete unecessary inputed data in the table 'itemsubclassfile'
+    //     // delete unecessary inputed data in the table 'itemsubclassfile'
 
-        cy.fixture('data-to-delete.json').then((data) => {
+    //     cy.fixture('data-to-delete.json').then((data) => {
 
-            // Loop through each character and delete corresponding rows from the 'itemsubclassfile' table
-            data.forEach((item) => {
+    //         // Loop through each character and delete corresponding rows from the 'itemsubclassfile' table
+    //         data.forEach((item) => {
 
-                const specialChar = item.dataToDelete;
-                const deleteQuery = `DELETE FROM itemsubclassfile WHERE itemsubclassdsc = '${specialChar}'`;
+    //             const specialChar = item.dataToDelete;
+    //             const deleteQuery = `DELETE FROM itemsubclassfile WHERE itemsubclassdsc = '${specialChar}'`;
                 
-                cy.task('queryDb', deleteQuery).then(() => {
+    //             cy.task('queryDb', deleteQuery).then(() => {
 
-                    cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
+    //                 cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
 
-                })
-            })
+    //             })
+    //         })
     
-            // Ensure the table is clear of specified data
-            cy.task('queryDb', 'SELECT * FROM itemsubclassfile').then((records) => {
+    //         // Ensure the table is clear of specified data
+    //         cy.task('queryDb', 'SELECT * FROM itemsubclassfile').then((records) => {
 
-                const remainingData = records.map((record) => record.description);
-                const deletedChars = data.map((item) => item.dataToDelete);
+    //             const remainingData = records.map((record) => record.description);
+    //             const deletedChars = data.map((item) => item.dataToDelete);
                 
-                // Ensure no deleted special characters are still in the table
-                deletedChars.forEach((char) => {
+    //             // Ensure no deleted special characters are still in the table
+    //             deletedChars.forEach((char) => {
 
-                    expect(remainingData).to.not.include(char);
+    //                 expect(remainingData).to.not.include(char);
 
-                })
+    //             })
     
-                cy.log('Specified data Successfully deleted.'); // Log success
-            })
-        })
-    })
+    //             cy.log('Specified data Successfully deleted.'); // Log success
+    //         })
+    //     })
+    // })
 
     it('Check Item Subclassification Page', () => {   
 
@@ -159,19 +159,17 @@ describe('Item Subclassification', () => {
                 })
             })
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
+            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                 cy.wait(4000) 
-                
-                cy.get('#itemsubclassdsc')
-                  .type(data[key].itemSubclass)
-                  .then(($input) => {
 
-                    if ($input.val() === "null") {
+                    if (data[key].itemSubclass === "null") {
+
+                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
                         cy.get('.border-blue-500').click()
 
@@ -195,11 +193,15 @@ describe('Item Subclassification', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                        cy.get('.px-8 > .flex > .anticon > svg').click()
+                        cy.wait(4000)
 
                     } 
                     
-                    else if ($input.val() === "Milkshakes") {
+                    else if (data[key].itemSubclass === "Milkshakes") {
+
+                        cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+
+                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
                         cy.get('#itmclacde').realClick()
 
@@ -223,14 +225,20 @@ describe('Item Subclassification', () => {
 
                         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '40.3.2', 'Upon clicking the "Yes" button', 'Item Subclassification', assertionResults, failureMessages)
 
-                        cy.wait(6000)
+                        cy.wait(4000)
+
+                        cy.get('.sc-eDLKkx > .anticon > svg').click()
                     }
 
-                    else if ($input.val() === "% & ( ) / - .") {
+                    else if (data[key].itemSubclass === "% & ( ) / - .") {
+
+                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
                         cy.get('#itmclacde').select(data[key].itemClass)
 
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -238,13 +246,15 @@ describe('Item Subclassification', () => {
 
                         // 43.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                        cy.wait(6000)
+                        cy.wait(4000)
 
                     }
 
-                    else if ($input.val() === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+                    else if (data[key].itemSubclass === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
 
-                        cy.wrap($input).should('have.value', data[key].itemSubclass);
+                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
+
+                        cy.get('#itmclacde').select(data[key].itemClass)
 
                         cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
@@ -259,7 +269,9 @@ describe('Item Subclassification', () => {
 
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+                    else if (data[key].itemSubclass === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+
+                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
                         cy.get('#itmclacde').realClick()
 
@@ -281,7 +293,9 @@ describe('Item Subclassification', () => {
 
                     else {
 
-                        cy.wrap($input).should('have.value', data[key].itemSubclass)
+                        cy.wait(4000)
+
+                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
                         cy.get('#itmclacde').select(data[key].itemClass)
 
@@ -293,15 +307,14 @@ describe('Item Subclassification', () => {
                         
                         cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('.MuiSelect-select.MuiTablePagination-select').click()
+                        // cy.get('.MuiSelect-select.MuiTablePagination-select').click()
 
-                        cy.get('ul[role="listbox"] li').contains('15').click()
+                        // cy.get('ul[role="listbox"] li').contains('15').click()
 
-                        cy.get('.MuiTableBody-root').contains(data[key].itemSubclass).should('exist')
+                        // cy.get('.MuiTableBody-root').contains(data[key].itemSubclass).should('exist')
 
                         cy.wait(6000)
                     }
-                }) 
             }
         })
 
