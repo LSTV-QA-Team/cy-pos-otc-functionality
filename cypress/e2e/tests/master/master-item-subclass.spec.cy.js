@@ -165,161 +165,159 @@ describe('Item Subclassification', () => {
 
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
-                cy.wait(4000) 
+                cy.wait(8000)
 
-                    if (data[key].itemSubclass === "null") {
+                if (data[key].itemSubclass === "null") {
 
-                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
+                    cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
-                        cy.get('.border-blue-500').click()
+                    cy.get('.border-blue-500').click()
 
-                        cy.wait(4000)
+                    cy.wait(4000)
 
-                        cy.checkLabelCaption('.text-sm', '13.2', 'Upon clicking the "Save" button:', 'Item Classification * is required', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.text-sm', '13.2', 'Upon clicking the "Save" button:', 'Item Classification * is required', assertionResults, failureMessages)
 
-                        cy.get('#itemsubclassdsc').clear()
+                    cy.get('#itemsubclassdsc').clear()
 
-                        cy.get('#itmclacde').select(data[key].itemClass)
+                    cy.get('#itmclacde').select(data[key].itemClass)
 
-                        cy.get('.border-blue-500').click()
+                    cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
-                        cy.wait(4000)
+                    cy.wait(4000)
 
-                        cy.get('#itemsubclassdsc').type('Chicken')
+                    cy.get('#itemsubclassdsc').type('Chicken')
 
-                        cy.get('#itmclacde').select('Food')
+                    cy.get('#itmclacde').select('Food')
 
-                        cy.get('.border-blue-500').click()
+                    cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                        cy.wait(4000)
+                } 
+                
+                else if (data[key].itemSubclass === "Milkshakes") {
 
-                    } 
+                    cy.wait(8000)
+
+                    cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+
+                    cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
+
+                    cy.get('#itmclacde').realClick()
+
+                    cy.get('.border-red-500').click()
+
+                    cy.checkLabelCaption('.h-auto', '8.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+
+                    cy.contains('button[class*="border-red-500"]', 'No').click()
+
+                    cy.wait(3000)
+
+                    cy.checkElementVisibility('.shadow-lg', '8.2.1', 'Upon Clicking the "No" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    cy.get('.border-red-500').click()
+
+                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+
+                    cy.wait(3000)
+
+                    cy.checkElementInvisibility('.shadow-lg', '48.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '40.3.2', 'Upon clicking the "Yes" button', 'Item Subclassification', assertionResults, failureMessages)
+
+                    cy.wait(4000)
+
+                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                }
+
+                else if (data[key].itemSubclass === "% & ( ) / - .") {
+
+                    cy.wait(8000)
+
+                    cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
+
+                    cy.get('#itmclacde').select(data[key].itemClass)
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.wait(2000)
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+
+                    cy.checkElementVisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    // 43.2.2 Check if the "Description" textbox object is cleared or blank.
+
+                }
+
+                else if (data[key].itemSubclass === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+
+                    cy.wait(8000)
+
+                    cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
+
+                    cy.checkInputMaxLength('#itmcladsc', 50, '19.1', 'Upon Encoding in "Item Classification" Textbox:', assertionResults, failureMessages)
+
+                    // cy.checkElementVisibility('.Toastify__toast-body', '19.2', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+
+                    cy.checkInputMaxLength('#itemsubclassdsc', 50, '16.1', 'Upon Encoding in "Item Subclassification" Textbox:', assertionResults, failureMessages)
+
+                    cy.get('#itmclacde').select(data[key].itemClass)
+
+                    cy.get('#itmclacde').select(data[key].itemClass)
+
+                    // Click "Save" button.
+                    cy.get('.border-blue-500').click()
+                }
+
+                else if (data[key].itemSubclass === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+
+                    cy.wait(8000)
+
+                    cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+
+                    cy.get('#itmclacde').realClick()
+
+                    cy.get('#itmclacde').select(data[key].itemClass)
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.wait(4000)
+
+                    // 16.2 click "OK" button on notification message.
+
+                    cy.checkElementVisibility('.shadow-lg', '17.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    // 16.2.2 Check if the "Description" textbox object is cleared or blank.
+
+                }
+
+                else {
+
+                    cy.wait(8000)
+
+                    cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
+
+                    cy.get('#itmclacde').select(data[key].itemClass)
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+
+                    cy.wait(3000)
                     
-                    else if (data[key].itemSubclass === "Milkshakes") {
+                    cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+                    // cy.get('.MuiSelect-select.MuiTablePagination-select').click()
 
-                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
+                    // cy.get('ul[role="listbox"] li').contains('15').click()
 
-                        cy.get('#itmclacde').realClick()
-
-                        cy.get('.border-red-500').click()
-
-                        cy.checkLabelCaption('.h-auto', '8.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
-
-                        cy.contains('button[class*="border-red-500"]', 'No').click()
-
-                        cy.wait(3000)
-
-                        cy.checkElementVisibility('.shadow-lg', '8.2.1', 'Upon Clicking the "No" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        cy.get('.border-red-500').click()
-
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
-
-                        cy.wait(3000)
-
-                        cy.checkElementInvisibility('.shadow-lg', '48.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '40.3.2', 'Upon clicking the "Yes" button', 'Item Subclassification', assertionResults, failureMessages)
-
-                        cy.wait(4000)
-
-                        cy.get('.sc-eDLKkx > .anticon > svg').click()
-                    }
-
-                    else if (data[key].itemSubclass === "% & ( ) / - .") {
-
-                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
-
-                        cy.get('#itmclacde').select(data[key].itemClass)
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.wait(2000)
-
-                        cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
-
-                        cy.checkElementVisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        // 43.2.2 Check if the "Description" textbox object is cleared or blank.
-
-                        cy.wait(4000)
-
-                    }
-
-                    else if (data[key].itemSubclass === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
-
-                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
-
-                        cy.checkElementVisibility('.Toastify__toast-body', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
-
-                        cy.checkInputMaxLength('#itemsubclassdsc', 50, '16.1', 'Upon Encoding in "Item Subclassification" Textbox:', assertionResults, failureMessages)
-
-                        cy.get('#itmclacde').select(data[key].itemClass)
-
-                        cy.get('#itmclacde').select(data[key].itemClass)
-
-                        // Click "Save" button.
-                        cy.get('.border-blue-500').click()
-
-                        cy.wait(6000)
-
-                    }
-
-                    else if (data[key].itemSubclass === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
-
-                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
-
-                        cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
-
-                        cy.get('#itmclacde').realClick()
-
-                        cy.get('#itmclacde').select(data[key].itemClass)
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.wait(4000)
-                    
-
-                        // 16.2 click "OK" button on notification message.
-
-                        cy.checkElementVisibility('.shadow-lg', '17.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        // 16.2.2 Check if the "Description" textbox object is cleared or blank.
-
-                        cy.wait(6000)
-
-                    }
-
-                    else {
-
-                        cy.wait(4000)
-
-                        cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
-
-                        cy.get('#itmclacde').select(data[key].itemClass)
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
-
-                        cy.wait(3000)
-                        
-                        cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        // cy.get('.MuiSelect-select.MuiTablePagination-select').click()
-
-                        // cy.get('ul[role="listbox"] li').contains('15').click()
-
-                        // cy.get('.MuiTableBody-root').contains(data[key].itemSubclass).should('exist')
-
-                        cy.wait(6000)
-                    }
+                    // cy.get('.MuiTableBody-root').contains(data[key].itemSubclass).should('exist')
+                }
             }
         })
 
