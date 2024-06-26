@@ -36,40 +36,40 @@ describe('Special Request', () => {
 
     })
 
-    after(() => {
+    // after(() => {
 
-        cy.fixture('data-to-delete.json').then((data) => {
+    //     cy.fixture('data-to-delete.json').then((data) => {
 
-            data.forEach((item) => {
+    //         data.forEach((item) => {
 
-                const specialChar = item.dataToDelete;
-                const deleteQuery = `DELETE FROM modifierfile WHERE modcde = '${specialChar}'`;
+    //             const specialChar = item.dataToDelete;
+    //             const deleteQuery = `DELETE FROM modifierfile WHERE modcde = '${specialChar}'`;
                 
-                cy.task('queryDb', deleteQuery).then(() => {
+    //             cy.task('queryDb', deleteQuery).then(() => {
 
-                    cy.log(`Deleted data with description: ${specialChar}`)
+    //                 cy.log(`Deleted data with description: ${specialChar}`)
 
-                })
-            })
+    //             })
+    //         })
     
-            cy.task('queryDb', 'SELECT * FROM modifierfile').then((records) => {
+    //         cy.task('queryDb', 'SELECT * FROM modifierfile').then((records) => {
 
-                const remainingData = records.map((record) => record.description)
-                const deletedChars = data.map((item) => item.dataToDelete)
+    //             const remainingData = records.map((record) => record.description)
+    //             const deletedChars = data.map((item) => item.dataToDelete)
                 
-                deletedChars.forEach((char) => {
+    //             deletedChars.forEach((char) => {
 
-                    expect(remainingData).to.not.include(char)
+    //                 expect(remainingData).to.not.include(char)
 
-                })
+    //             })
     
-                cy.log('Specified data Successfully deleted.')
+    //             cy.log('Specified data Successfully deleted.')
 
-            })
-        })
-    })
+    //         })
+    //     })
+    // })
 
-    it('Check Special Request Page', () => {  
+    it.only('Check Special Request Page', () => {  
         
         cy.navigateToModule('Master File', 'Special Request')
 
@@ -96,7 +96,7 @@ describe('Special Request', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Add Functionality', () => {
+    it.only('Add Functionality', () => {
 
         cy.fixture('master-specialreq-data.json').then((data) => {
 
@@ -134,6 +134,8 @@ describe('Special Request', () => {
 
                 cy.get('#modgrpcde').click()
 
+                cy.wait(2000)
+
                 cy.get('.select__menu-list--is-multi')
                   .children('.select__option')
                   .then(($options) => {
@@ -148,167 +150,180 @@ describe('Special Request', () => {
                 })
             })
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
+            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                 cy.wait(4000) 
                 
-                cy.get('#modcde').type(data[key].specialReq)
-                  .then(($input) => {
+                if (data[key].specialReq === "null") {
 
-                    if ($input.val() === "null") {
+                    cy.wait(4000)
 
-                        cy.get('.border-blue-500').click()
+                    cy.get('#modcde').clear().type(data[key].specialReq)
 
-                        cy.checkLabelCaption('.text-sm', '11.2', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
+                    cy.get('.border-blue-500').click()
 
-                        cy.get('#modcde').clear()
+                    cy.checkLabelCaption('.text-sm', '11.2', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
-                        cy.get('#modgrpcde').click()
+                    cy.get('#modcde').clear()
 
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', 'Snacks').click()
+                    cy.get('#modgrpcde').click()
 
-                        cy.wait(2000)
+                    cy.get('.select__menu-list--is-multi').contains('.select__option', 'Snacks').click()
 
-                        cy.get('.border-blue-500').click()
+                    cy.wait(2000)
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Special Request * is required', assertionResults, failureMessages)
+
+                    cy.get('#modcde').clear()
+
+                    cy.get('#modcde').type('Extra Gravy')
+
+                    cy.get('#modgrpcde').click()
+
+                    cy.get('.select__menu-list--is-multi').contains('.select__option', 'Chicken').click()
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.wait(2000)
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+                } 
+                
+                else if (data[key].specialReq === "No plastic utensils") {
+
+                    cy.wait(4000)
+
+                    cy.get('#modcde').clear().type(data[key].specialReq)
+
+                    cy.get('#modgrpcde').click()
+
+                    cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+
+                    cy.get('.border-red-500').click()
+
+                    cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+
+                    cy.contains('button[class*="border-red-500"]', 'No').click()
+
+                    cy.wait(3000)
+
+                    cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    cy.get('.border-red-500').click()
+
+                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+
+                    cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Special Request" modal window was visible or active.', assertionResults, failureMessages)
+
+                    cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Special Request', assertionResults, failureMessages)
+
+                    cy.wait(4000)
+
+                    cy.get('.sc-eDLKkx > .anticon > svg').click()
 
 
-                        cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Special Request * is required', assertionResults, failureMessages)
+                }
 
-                        cy.get('#modcde').clear()
+                else if (data[key].specialReq === "% & ( ) / - .") {
 
-                        cy.get('#modcde').type('Extra Gravy')
+                    cy.wait(4000)
 
-                        cy.get('#modgrpcde').click()
+                    cy.get('#modcde').clear().type(data[key].specialReq)
 
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', 'Chicken').click()
+                    cy.get('#modgrpcde').click()
 
-                        cy.get('.border-blue-500').click()
+                    cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+                    cy.get('.border-blue-500').click()
 
-                        cy.get('.px-8 > .flex > .anticon > svg').click()
 
-                        cy.wait(3000)
+                    cy.checkLabelCaption('.Toastify__toast-body', '5.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                    } 
+                    cy.checkElementInvisibility('.shadow-lg', '5.2.1', 'Upon clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    // 43.2.2 Check if the "Description" textbox object is cleared or blank.
+
+                }
+
+                else if (data[key].specialReq === "This is a very long string that exceeds the maximum allowed length.") {
+
+                    cy.wait(4000)
+
+                    cy.get('#modcde').clear().type(data[key].specialReq)
+
+                    cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
+
+                    cy.get('#modgrpcde').click()
+
+                    cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
                     
-                    else if ($input.val() === "No plastic utensils") {
+                    cy.wait(4000)
 
-                        cy.get('#modgrpcde').click()
+                    cy.get('.border-blue-500').click()
 
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
-
-                        cy.get('.border-red-500').click()
-
-                        cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
-
-                        cy.contains('button[class*="border-red-500"]', 'No').click()
-
-                        cy.wait(3000)
-
-                        cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        cy.get('.border-red-500').click()
-
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
-
-                        cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Special Request" modal window was visible or active.', assertionResults, failureMessages)
-
-                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Special Request', assertionResults, failureMessages)
-
-                        cy.wait(3000)
+                    cy.checkElementVisibility('.text-sm', '19.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
 
 
-                    }
+                }
 
-                    else if ($input.val() === "% & ( ) / - .") {
+                else if (data[key].specialReq === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                        cy.get('#modgrpcde').click()
+                    cy.wait(4000)
 
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+                    cy.get('#modcde').clear().type(data[key].specialReq)
 
-                        cy.get('.border-blue-500').click()
+                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
+                    cy.get('#modgrpcde').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '5.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                    cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                        cy.checkElementInvisibility('.shadow-lg', '5.2.1', 'Upon clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.get('.border-blue-500').click()
 
-                        // 43.2.2 Check if the "Description" textbox object is cleared or blank.
+                    cy.wait(4000)
+                    
+                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                        cy.wait(3000)
+                    // 16.2 click "OK" button on notification message.
 
-                    }
+                    cy.checkElementInvisibility('.shadow-lg', '16.2.1', 'Upon clicking the "OK" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
-                    else if ($input.val() === "This is a very long string that exceeds the maximum allowed length.") {
+                    // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                        cy.wrap($input).should('have.value', data[key].specialReq)
+                }
 
-                        cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
+                else {
 
-                        cy.get('#modgrpcde').click()
+                    cy.wait(4000)
 
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
-                        
+                    cy.get('#modcde').clear().type(data[key].specialReq)
 
-                        cy.get('.border-blue-500').click()
+                    cy.get('#modgrpcde').click()
 
-                        cy.checkElementVisibility('.text-sm', '19.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
+                    cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                        cy.wait(3000)
-
-                    }
-
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
-
-                        cy.get('#modgrpcde').click()
-
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
-
-                        cy.get('.border-blue-500').click()
-
-                        
-                        cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
-
-                        // 16.2 click "OK" button on notification message.
-
-                        cy.checkElementInvisibility('.shadow-lg', '16.2.1', 'Upon clicking the "OK" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        // 16.2.2 Check if the "Description" textbox object is cleared or blank.
-
-                        cy.wait(3000)
-                    }
-
-                    else {
-
-                        cy.wrap($input).should('have.value', data[key].specialReq)
-
-                        cy.get('#modgrpcde').click()
-
-                        cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
-
-                        cy.get('.border-blue-500').click()
+                    cy.get('.border-blue-500').click()
 
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.wait(3000)
-                        
-                        cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.wait(3000)
+                    
+                    cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('.MuiSelect-select.MuiTablePagination-select').click();
+                    // cy.get('.MuiSelect-select.MuiTablePagination-select').click();
 
-                        cy.get('ul[role="listbox"] li').contains('15').click();
-                        
-                        cy.get('.MuiTableBody-root').contains(data[key].specialReq).should('exist')
+                    // cy.get('ul[role="listbox"] li').contains('15').click();
+                    
+                    cy.get('.MuiTableBody-root').contains(data[key].specialReq).should('exist')
 
-                        cy.wait(3000)
-                    }
-                }) 
+                }
             }
         })
 

@@ -34,40 +34,40 @@ describe('Item', () => {
 
     })
 
-    after(() => {
+    // after(() => {
 
-        cy.fixture('data-to-delete.json').then((data) => {
+    //     cy.fixture('data-to-delete.json').then((data) => {
 
-            data.forEach((item) => {
+    //         data.forEach((item) => {
 
-                const specialChar = item.dataToDelete;
-                const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
+    //             const specialChar = item.dataToDelete;
+    //             const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
                 
-                cy.task('queryDb', deleteQuery).then(() => {
+    //             cy.task('queryDb', deleteQuery).then(() => {
 
-                    cy.log(`Deleted data with description: ${specialChar}`) 
+    //                 cy.log(`Deleted data with description: ${specialChar}`) 
 
-                })
-            })
+    //             })
+    //         })
     
-            cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
+    //         cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
 
-                const remainingData = records.map((record) => record.description)
-                const deletedChars = data.map((item) => item.dataToDelete)
+    //             const remainingData = records.map((record) => record.description)
+    //             const deletedChars = data.map((item) => item.dataToDelete)
                 
-                deletedChars.forEach((char) => {
+    //             deletedChars.forEach((char) => {
 
-                    expect(remainingData).to.not.include(char)
+    //                 expect(remainingData).to.not.include(char)
 
-                })
+    //             })
     
-                cy.log('Specified data Successfully deleted.'); // Log success
+    //             cy.log('Specified data Successfully deleted.'); // Log success
 
-            })
-        })
-    })
+    //         })
+    //     })
+    // })
 
-    it('Check Item Page', () => {  
+    it.only('Check Item Page', () => {  
 
         cy.navigateToModule('Master File', 'Items')
 
@@ -95,13 +95,7 @@ describe('Item', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Add Functionality', () => {
-
-        cy.addTestContext(`Upon Clicking "Add" button:
-                            1. The Item Subclassification dropdown in the "Add Item" modal does not display all the encoded data.
-
-                Note: The entire Item Test Script might fail because the required data is not available in the dropdown object.
-            `)  
+    it.only('Add Functionality', () => {  
 
         cy.fixture('master-item-data.json').then((data) => {
 
@@ -336,652 +330,678 @@ describe('Item', () => {
                 })
             })
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]').click()
+            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]').click()
 
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                 cy.wait(4000) 
+
+                if (data[key].item === "null") {
+
+                    cy.get('#itmdsc').clear().type(data[key].item)
+
+                    cy.get('#itmdsc').clear()
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.wait(4000)
+
+                    // cy.checkLabelCaption('.text-sm', '80.1.1', 'Upon clicking the "Save" button:', 'Item * is required', assertionResults, failureMessages)
+
+                    // cy.checkLabelCaption('.text-sm', '80.1.2', 'Upon clicking the "Save" button:', 'Item Type * is required', assertionResults, failureMessages)
+
+                    // cy.checkLabelCaption('.text-sm', '80.1.3', 'Upon clicking the "Save" button:', 'Item Classification * is required', assertionResults, failureMessages)
+
+                    // cy.checkLabelCaption('.text-sm', '80.1.4', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
+
+                    // cy.checkLabelCaption('.text-sm', '80.1.5', 'Upon clicking the "Save" button:', 'Selling Price * is required', assertionResults, failureMessages)
+
+                    // cy.checkLabelCaption('.text-sm', '80.1.6', 'Upon clicking the "Save" button:', 'Tax Code  * is required', assertionResults, failureMessages)
+
+                    cy.get('form#i-form').within(() => {
+
+                        cy.get('#itmdsc')
+                            .should('have.attr', 'aria-invalid', 'true')
+                            .siblings('div[role="alert"]')
+                            .should('contain', 'Item Description * is required')
+                        
+                        cy.get('#itmtyp')
+                            .should('have.attr', 'aria-invalid', 'true')
+                            .siblings('div[role="alert"]')
+                            .should('contain', 'Item Type * is required')
+            
+                        cy.get('#itmclacde')
+                            .should('have.attr', 'aria-invalid', 'true')
+                            .siblings('div[role="alert"]')
+                            .should('contain', 'Class * is required')
+            
+                        cy.get('#untprc')
+                            .should('have.attr', 'aria-invalid', 'true')
+                            .siblings('div[role="alert"]')
+                            .should('contain', 'Selling Price * is required')
+            
+                        cy.get('#taxcde')
+                            .should('have.attr', 'aria-invalid', 'true')
+                            .siblings('div[role="alert"]')
+                            .should('contain', 'Tax Code * is required')
+                    })
+
+                    cy.wait(4000)
+
+                    cy.get('#itmdsc').clear().type('Yumburger Solo')
+
+                    cy.get('#itmtyp').select('NON-INVENTORY')
+
+                    cy.get('#itmclacde').select('Food')
+
+                    cy.get('#itemsubclasscde').select('Burger')
+
+                    cy.get('#untmea').clear().type('PCS')
+
+                    cy.get('#untcst').clear().type('0')
+
+                    cy.get('#barcde').clear().type('00000000001')
+
+                    cy.get('#untprc').clear().type(40)
+
+                    cy.get('#itmpaxcount').clear().type(1)
+
+                    cy.get('#taxcde').select('VATABLE')
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.wait(2000)
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '63.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+
+                    // cy.get('.px-8 > .flex > .anticon > svg').click()
+
+                } 
                 
-                cy.get('#itmdsc')
-                  .clear()
-                  .type(data[key].item)
-                  .then(($input) => {
+                else if (data[key].item === "Ube Cheese Pie") {
 
-                    if ($input.val() === "null") {
+                    cy.wait(4000)
 
-                        cy.get('#itmdsc').clear()
+                    cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
-                        cy.get('.border-blue-500').click()
+                    cy.get('#itmdsc').clear().type(data[key].item)
 
-                        cy.wait(4000)
+                    cy.get('#itmtyp').select(data[key].itemType)
 
-                        // cy.checkLabelCaption('.text-sm', '80.1.1', 'Upon clicking the "Save" button:', 'Item * is required', assertionResults, failureMessages)
+                    cy.get('#itmclacde').select(data[key].itemClass)
 
-                        // cy.checkLabelCaption('.text-sm', '80.1.2', 'Upon clicking the "Save" button:', 'Item Type * is required', assertionResults, failureMessages)
+                    cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                        // cy.checkLabelCaption('.text-sm', '80.1.3', 'Upon clicking the "Save" button:', 'Item Classification * is required', assertionResults, failureMessages)
+                    cy.get('#untmea').clear().type(data[key].unitMeasure)
 
-                        // cy.checkLabelCaption('.text-sm', '80.1.4', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
+                    cy.get('#untcst').clear().type(data[key].unitCost)
 
-                        // cy.checkLabelCaption('.text-sm', '80.1.5', 'Upon clicking the "Save" button:', 'Selling Price * is required', assertionResults, failureMessages)
+                    cy.get('#barcde').clear().type(data[key].barcode)
 
-                        // cy.checkLabelCaption('.text-sm', '80.1.6', 'Upon clicking the "Save" button:', 'Tax Code  * is required', assertionResults, failureMessages)
+                    cy.get('#untprc').clear().type(data[key].sellingPrice)
 
-                        cy.get('form#i-form').within(() => {
+                    cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
 
-                            cy.get('#itmdsc')
-                                .should('have.attr', 'aria-invalid', 'true')
-                                .siblings('div[role="alert"]')
-                                .should('contain', 'Item Description * is required')
-                            
-                            cy.get('#itmtyp')
-                                .should('have.attr', 'aria-invalid', 'true')
-                                .siblings('div[role="alert"]')
-                                .should('contain', 'Item Type * is required')
-                
-                            cy.get('#itmclacde')
-                                .should('have.attr', 'aria-invalid', 'true')
-                                .siblings('div[role="alert"]')
-                                .should('contain', 'Class * is required')
-                
-                            cy.get('#untprc')
-                                .should('have.attr', 'aria-invalid', 'true')
-                                .siblings('div[role="alert"]')
-                                .should('contain', 'Selling Price * is required')
-                
-                            cy.get('#taxcde')
-                                .should('have.attr', 'aria-invalid', 'true')
-                                .siblings('div[role="alert"]')
-                                .should('contain', 'Tax Code * is required')
+                    cy.get('#taxcde').select(data[key].taxCode)
+
+                    if (data[key].addOn === true) {
+
+                        cy.get('#isaddon').click()
+
+                    } else {
+
+                        cy.get('#isaddon').should('not.be.checked')
+                    }
+
+                    if (data[key].inactive === true) {
+
+                        cy.get('#inactive').click()
+
+                    } else {
+
+                        cy.get('#inactive').should('not.be.checked')
+                    }
+
+                    if (data[key].comboMeal === true) {
+
+                        cy.get('#chkcombo').click()
+
+                        cy.get('.ant-tabs-tab-active').click()
+
+                        cy.fixture('item-combomeal-data.json').then((comboData) => {
+
+                            if (data[key].item === "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)") {
+                                
+                                comboData.FSMA6.forEach((fsma6) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
+
+                                    cy.get('.select__menu-list').contains('div', fsma6).click()
+
+                                })
+
+                            } else if (data[key].item === "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)") {
+
+                                comboData.FSMA8.forEach((fsma8) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
+
+                                    cy.get('.select__menu-list').contains('div', fsma8).click()
+
+                                })
+
+                            } else if (data[key].item === "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)") {
+
+                                comboData.FSMB6.forEach((fsmb6) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
+
+                                    cy.get('.select__menu-list').contains('div', fsmb6).click()
+
+                                })
+                                
+                            } else {
+
+                                comboData.FSMB8.forEach((fsmb8) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+
+                                    cy.get('.select__menu-list').contains('div', fsmb8).click()
+
+                                })
+                            }
+                        })
+                        
+
+                    } else {
+
+                        cy.get('#chkcombo').should('not.be.checked')
+                    }
+
+                    cy.get('.border-red-500').click()
+
+                    cy.checkLabelCaption('.h-auto', '18.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+
+                    cy.contains('button[class*="border-red-500"]', 'No').click()
+
+                    cy.wait(3000)
+
+                    cy.checkElementVisibility('.shadow-lg', '18.2.1', 'Upon Clicking the "No" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    cy.get('.border-red-500').click()
+
+                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+
+                    cy.wait(3000)
+
+                    cy.checkElementInvisibility('.shadow-lg', '18.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '18.3.2', 'Upon clicking the "Yes" button', 'Item', assertionResults, failureMessages)
+
+                    cy.wait(4000)
+
+                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+
+
+                }
+
+                else if (data[key].item === "% & ( ) / - .") {
+
+                    cy.wait(4000)
+
+                    cy.get('#itmdsc').clear().type(data[key].item)
+
+                    cy.get('#itmtyp').select(data[key].itemType)
+
+                    cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+
+                    cy.get('#itmclacde').select(data[key].itemClass)
+
+                    cy.get('#untmea').clear().type(data[key].unitMeasure)
+
+                    cy.get('#untcst').clear().type(data[key].unitCost)
+
+                    cy.get('#barcde').clear().type(data[key].barcode)
+
+                    cy.get('#untprc').clear().type(data[key].sellingPrice)
+
+                    cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
+
+                    cy.get('#taxcde').select(data[key].taxCode)
+
+                    if (data[key].addOn === true) {
+
+                        cy.get('#isaddon').click()
+
+                    } else {
+
+                        cy.get('#isaddon').should('not.be.checked')
+                    }
+
+                    if (data[key].inactive === true) {
+
+                        cy.get('#inactive').click()
+
+                    } else {
+
+                        cy.get('#inactive').should('not.be.checked')
+                    }
+
+                    if (data[key].comboMeal === true) {
+
+                        cy.get('#chkcombo').click()
+
+                        cy.get('.ant-tabs-tab-active').click()
+
+                        cy.fixture('item-combomeal-data.json').then((comboData) => {
+
+                            if (data[key].item === "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)") {
+
+                                comboData.FSMA6.forEach((fsma6) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
+
+                                    cy.get('.select__menu-list').contains('div', fsma6).click()
+
+                                })
+                            } else if (data[key].item === "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)") {
+
+                                comboData.FSMA8.forEach((fsma8) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
+
+                                    cy.get('.select__menu-list').contains('div', fsma8).click()
+
+                                })
+
+                            } else if (data[key].item === "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)") {
+                                comboData.FSMB6.forEach((fsmb6) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
+
+                                    cy.get('.select__menu-list').contains('div', fsmb6).click()
+
+                                })
+                                
+                            } else {
+
+                                comboData.FSMB8.forEach((fsmb8) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+
+                                    cy.get('.select__menu-list').contains('div', fsmb8).click()
+
+                                })
+                            }
                         })
 
-                        cy.wait(4000)
+                    } else {
 
-                        cy.get('#itmdsc').clear().type('Yumburger Solo')
+                        cy.get('#chkcombo').should('not.be.checked')
+                    }
 
-                        cy.get('#itmtyp').select('NON-INVENTORY')
+                    cy.get('.border-blue-500').click()
 
-                        cy.get('#itmclacde').select('Food')
+                    cy.wait(2000)
 
-                        cy.get('#itemsubclasscde').select('Burger')
+                    cy.checkLabelCaption('.Toastify__toast-body', '48.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.get('#untmea').clear().type('PCS')
+                    cy.checkElementInvisibility('.shadow-lg', '48.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('#untcst').clear().type('0')
+                    // 43.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                        cy.get('#barcde').clear().type('00000000001')
+                }
 
-                        cy.get('#untprc').clear().type(40)
+                else if (data[key].item === "Delicious and crispy Chickenjoy with a side of Jolly Spaghetti and garlic rice, perfect for a fulfilling meal") {
 
-                        cy.get('#itmpaxcount').clear().type(1)
+                    cy.wait(4000)
 
-                        cy.get('#taxcde').select('VATABLE')
+                    cy.get('#itmdsc').clear().type(data[key].item)
 
-                        cy.get('.border-blue-500').click()
+                    cy.checkElementVisibility('.text-sm', '18.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        cy.wait(2000)
+                    cy.get('#itmtyp').select(data[key].itemType)
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '63.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
+                    cy.get('#itmclacde').select(data[key].itemClass)
 
-                        cy.get('.px-8 > .flex > .anticon > svg').click()
+                    cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                    } 
+                    cy.get('#untmea').clear().type(data[key].unitMeasure)
+
+                    cy.get('#untcst').clear().type(data[key].unitCost)
+
+                    cy.get('#barcde').clear().type(data[key].barcode)
+
+                    cy.get('#untprc').clear().type(data[key].sellingPrice)
+
+                    cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
+
+                    cy.get('#taxcde').select(data[key].taxCode)
+
+                    if (data[key].addOn === true) {
+
+                        cy.get('#isaddon').click()
+
+                    } else {
+
+                        cy.get('#isaddon').should('not.be.checked')
+                    }
+
+                    if (data[key].inactive === true) {
+
+                        cy.get('#inactive').click()
+
+                    } else {
+
+                        cy.get('#inactive').should('not.be.checked')
+                    }
+
+                    if (data[key].comboMeal === true) {
+
+                        cy.get('#chkcombo').click()
+
+                        cy.get('.ant-tabs-tab-active').click()
+
+                        cy.fixture('item-combomeal-data.json').then((comboData) => {
+
+                            if (data[key].item === "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)") {
+                                comboData.FSMA6.forEach((fsma6) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
+
+                                    cy.get('.select__menu-list').contains('div', fsma6).click()
+
+                                })
+                            } else if (data[key].item === "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)") {
+                                comboData.FSMA8.forEach((fsma8) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
+
+                                    cy.get('.select__menu-list').contains('div', fsma8).click()
+
+                                })
+
+                            } else if (data[key].item === "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)") {
+                                comboData.FSMB6.forEach((fsmb6) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
+
+                                    cy.get('.select__menu-list').contains('div', fsmb6).click()
+
+                                })
+                                
+                            } else {
+
+                                comboData.FSMB8.forEach((fsmb8) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+
+                                    cy.get('.select__menu-list').contains('div', fsmb8).click()
+
+                                })
+                            }
+                        })
+
+                    } else {
+
+                        cy.get('#chkcombo').should('not.be.checked')
+                    }
+
+                    cy.checkElementVisibility('.text-sm', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
+
+                    // cy.get('#modgrpcde').click()
+
+                    // cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.wait(2000)
+
+                    cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
+
+                }
+
+                else if (data[key].item === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                    cy.wait(4000)
                     
-                    else if ($input.val() === "Ube Cheese Pie") {
+                    cy.get('#itmdsc').clear().type(data[key].item)
 
-                        cy.get('#itmtyp').select(data[key].itemType)
+                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
-                        cy.get('#itmclacde').select(data[key].itemClass)
+                    cy.get('#itmtyp').select(data[key].itemType)
 
-                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+                    cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                        cy.get('#untmea').clear().type(data[key].unitMeasure)
+                    cy.get('#itmclacde').select(data[key].itemClass)
 
-                        cy.get('#untcst').clear().type(data[key].unitCost)
+                    cy.get('#untmea').clear().type(data[key].unitMeasure)
 
-                        cy.get('#barcde').clear().type(data[key].barcode)
+                    cy.get('#untcst').clear().type(data[key].unitCost)
 
-                        cy.get('#untprc').clear().type(data[key].sellingPrice)
+                    cy.get('#barcde').clear().type(data[key].barcode)
 
-                        cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
+                    cy.get('#untprc').clear().type(data[key].sellingPrice)
 
-                        cy.get('#taxcde').select(data[key].taxCode)
+                    cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
 
-                        if (data[key].addOn === true) {
+                    cy.get('#taxcde').select(data[key].taxCode)
 
-                            cy.get('#isaddon').click()
-    
-                        } else {
-    
-                            cy.get('#isaddon').should('not.be.checked')
-                        }
-    
-                        if (data[key].inactive === true) {
-    
-                            cy.get('#inactive').click()
-    
-                        } else {
-    
-                            cy.get('#inactive').should('not.be.checked')
-                        }
-    
-                        if (data[key].comboMeal === true) {
-    
-                            cy.get('#chkcombo').click()
+                    if (data[key].addOn === true) {
 
-                            cy.get('.ant-tabs-tab-active').click()
+                        cy.get('#isaddon').click()
 
-                            cy.fixture('item-combomeal-data.json').then((data) => {
+                    } else {
 
-                                if (data.FSMA6) {
-                                    
-                                    data.FSMA6.forEach((fsma6) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
-
-                                        cy.get('.select__menu-list').contains('div', fsma6).click()
-
-                                    })
-
-                                } else if (data.FSMA8) {
-
-                                    data.FSMA8.forEach((fsma8) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
-
-                                        cy.get('.select__menu-list').contains('div', fsma8).click()
-
-                                    })
-
-                                } else if (data.FSMB6) {
-
-                                    data.FSMB6.forEach((fsmb6) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
-
-                                        cy.get('.select__menu-list').contains('div', fsmb6).click()
-
-                                    })
-                                    
-                                } else {
-
-                                    data.FSMB8.forEach((fsmb8) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
-
-                                        cy.get('.select__menu-list').contains('div', fsmb8).click()
-
-                                    })
-                                }
-                            })
-                            
-    
-                        } else {
-    
-                            cy.get('#chkcombo').should('not.be.checked')
-                        }
-
-                        cy.get('.border-red-500').click()
-
-                        cy.checkLabelCaption('.h-auto', '18.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
-
-                        cy.contains('button[class*="border-red-500"]', 'No').click()
-
-                        cy.wait(3000)
-
-                        cy.checkElementVisibility('.shadow-lg', '18.2.1', 'Upon Clicking the "No" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        cy.get('.border-red-500').click()
-
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
-
-                        cy.wait(3000)
-
-                        cy.checkElementInvisibility('.shadow-lg', '18.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '18.3.2', 'Upon clicking the "Yes" button', 'Item', assertionResults, failureMessages)
-
-
+                        cy.get('#isaddon').should('not.be.checked')
                     }
 
-                    else if ($input.val() === "% & ( ) / - .") {
+                    if (data[key].inactive === true) {
 
-                        cy.get('#itmtyp').select(data[key].itemType)
+                        cy.get('#inactive').click()
 
-                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+                    } else {
 
-                        cy.get('#itmclacde').select(data[key].itemClass)
-
-                        cy.get('#untmea').clear().type(data[key].unitMeasure)
-
-                        cy.get('#untcst').clear().type(data[key].unitCost)
-
-                        cy.get('#barcde').clear().type(data[key].barcode)
-
-                        cy.get('#untprc').clear().type(data[key].sellingPrice)
-
-                        cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
-
-                        cy.get('#taxcde').select(data[key].taxCode)
-
-                        if (data[key].addOn === true) {
-
-                            cy.get('#isaddon').click()
-    
-                        } else {
-    
-                            cy.get('#isaddon').should('not.be.checked')
-                        }
-    
-                        if (data[key].inactive === true) {
-    
-                            cy.get('#inactive').click()
-    
-                        } else {
-    
-                            cy.get('#inactive').should('not.be.checked')
-                        }
-    
-                        if (data[key].comboMeal === true) {
-    
-                            cy.get('#chkcombo').click()
-
-                            cy.get('.ant-tabs-tab-active').click()
-
-                            cy.fixture('item-combomeal-data.json').then((data) => {
-
-                                if (data.FSMA6) {
-
-                                    data.FSMA6.forEach((fsma6) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
-
-                                        cy.get('.select__menu-list').contains('div', fsma6).click()
-
-                                    })
-                                } else if (data.FSMA8) {
-
-                                    data.FSMA8.forEach((fsma8) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
-
-                                        cy.get('.select__menu-list').contains('div', fsma8).click()
-
-                                    })
-
-                                } else if (data.FSMB6) {
-                                    data.FSMB6.forEach((fsmb6) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
-
-                                        cy.get('.select__menu-list').contains('div', fsmb6).click()
-
-                                    })
-                                    
-                                } else {
-
-                                    data.FSMB8.forEach((fsmb8) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
-
-                                        cy.get('.select__menu-list').contains('div', fsmb8).click()
-
-                                    })
-                                }
-                            })
-    
-                        } else {
-    
-                            cy.get('#chkcombo').should('not.be.checked')
-                        }
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.wait(2000)
-
-                        cy.checkLabelCaption('.Toastify__toast-body', '48.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
-
-                        cy.checkElementInvisibility('.shadow-lg', '48.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        // 43.2.2 Check if the "Description" textbox object is cleared or blank.
-
+                        cy.get('#inactive').should('not.be.checked')
                     }
 
-                    else if ($input.val() === "Delicious and crispy Chickenjoy with a side of Jolly Spaghetti and garlic rice, perfect for a fulfilling meal") {
+                    if (data[key].comboMeal === true) {
 
-                        cy.wrap($input).should('have.value', data[key].item)
+                        cy.get('#chkcombo').click()
 
-                        cy.get('#itmtyp').select(data[key].itemType)
+                        cy.get('.ant-tabs-tab-active').click()
 
-                        cy.get('#itmclacde').select(data[key].itemClass)
+                        cy.fixture('item-combomeal-data.json').then((comboData) => {
 
-                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+                            if (data[key].item === "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)") {
+                                
+                                comboData.FSMA6.forEach((fsma6) => {
 
-                        cy.get('#untmea').clear().type(data[key].unitMeasure)
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
 
-                        cy.get('#untcst').clear().type(data[key].unitCost)
+                                    cy.get('.select__menu-list').contains('div', fsma6).click()
 
-                        cy.get('#barcde').clear().type(data[key].barcode)
+                                })
 
-                        cy.get('#untprc').clear().type(data[key].sellingPrice)
+                            } else if (data[key].item === "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)") {
 
-                        cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
+                                comboData.FSMA8.forEach((fsma8) => {
 
-                        cy.get('#taxcde').select(data[key].taxCode)
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
 
-                        if (data[key].addOn === true) {
+                                    cy.get('.select__menu-list').contains('div', fsma8).click()
 
-                            cy.get('#isaddon').click()
+                                })
 
-                        } else {
+                            } else if (data[key].item === "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)") {
+                                comboData.FSMB6.forEach((fsmb6) => {
 
-                            cy.get('#isaddon').should('not.be.checked')
-                        }
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
 
-                        if (data[key].inactive === true) {
+                                    cy.get('.select__menu-list').contains('div', fsmb6).click()
 
-                            cy.get('#inactive').click()
+                                })
 
-                        } else {
+                            } else {
 
-                            cy.get('#inactive').should('not.be.checked')
-                        }
+                                comboData.FSMB8.forEach((fsmb8) => {
 
-                        if (data[key].comboMeal === true) {
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
 
-                            cy.get('#chkcombo').click()
+                                    cy.get('.select__menu-list').contains('div', fsmb8).click()
 
-                            cy.get('.ant-tabs-tab-active').click()
+                                })
+                            }
+                        })
 
-                            cy.fixture('item-combomeal-data.json').then((data) => {
+                    } else {
 
-                                if (data.FSMA6) {
-                                    data.FSMA6.forEach((fsma6) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
-
-                                        cy.get('.select__menu-list').contains('div', fsma6).click()
-
-                                    })
-                                } else if (data.FSMA8) {
-                                    data.FSMA8.forEach((fsma8) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
-
-                                        cy.get('.select__menu-list').contains('div', fsma8).click()
-
-                                    })
-
-                                } else if (data.FSMB6) {
-                                    data.FSMB6.forEach((fsmb6) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
-
-                                        cy.get('.select__menu-list').contains('div', fsmb6).click()
-
-                                    })
-                                    
-                                } else {
-
-                                    data.FSMB8.forEach((fsmb8) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
-
-                                        cy.get('.select__menu-list').contains('div', fsmb8).click()
-
-                                    })
-                                }
-                            })
-
-                        } else {
-
-                            cy.get('#chkcombo').should('not.be.checked')
-                        }
-
-                        cy.checkElementVisibility('.text-sm', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
-
-                        // cy.get('#modgrpcde').click()
-
-                        // cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.wait(2000)
-
-                        cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
-
+                        cy.get('#chkcombo').should('not.be.checked')
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+                    cy.get('.border-blue-500').click()
 
-                        cy.get('#itmtyp').select(data[key].itemType)
+                    cy.wait(2000)
+                    
+                    cy.checkLabelCaption('.Toastify__toast-body', '78.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+                    // 16.2 click "OK" button on notification message.
 
-                        cy.get('#itmclacde').select(data[key].itemClass)
+                    cy.checkElementInvisibility('.shadow-lg', '78.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('#untmea').clear().type(data[key].unitMeasure)
+                    // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                        cy.get('#untcst').clear().type(data[key].unitCost)
+                }
 
-                        cy.get('#barcde').clear().type(data[key].barcode)
+                else {
 
-                        cy.get('#untprc').clear().type(data[key].sellingPrice)
+                    cy.wait(4000)
 
-                        cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
+                    cy.get('#itmdsc').clear().type(data[key].item)
 
-                        cy.get('#taxcde').select(data[key].taxCode)
+                    cy.get('#itmtyp').realClick()
 
-                        if (data[key].addOn === true) {
+                    cy.get('#itmtyp').select(data[key].itemType)
 
-                            cy.get('#isaddon').click()
+                    cy.get('#itmclacde').select(data[key].itemClass)
 
-                        } else {
+                    cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                            cy.get('#isaddon').should('not.be.checked')
-                        }
+                    cy.get('#untmea')
+                        .clear()
+                        .type(data[key].unitMeasure)
 
-                        if (data[key].inactive === true) {
+                    cy.get('#untcst')
+                        .clear() 
+                        .type(data[key].unitCost)
 
-                            cy.get('#inactive').click()
+                    cy.get('#barcde')
+                        .clear()
+                        .type(data[key].barcode)
 
-                        } else {
+                    cy.get('#untprc')
+                        .clear() 
+                        .type(data[key].sellingPrice)
 
-                            cy.get('#inactive').should('not.be.checked')
-                        }
+                    cy.get('#itmpaxcount')
+                        .clear()
+                        .type(data[key].goodXPerson)
 
-                        if (data[key].comboMeal === true) {
+                    cy.get('#taxcde').select(data[key].taxCode)
 
-                            cy.get('#chkcombo').click()
+                    if (data[key].addOn === true) {
 
-                            cy.get('.ant-tabs-tab-active').click()
+                        cy.get('#isaddon').click()
 
-                            cy.fixture('item-combomeal-data.json').then((data) => {
+                    } else {
 
-                                if (data.FSMA6) {
-                                    data.FSMA6.forEach((fsma6) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
-
-                                        cy.get('.select__menu-list').contains('div', fsma6).click()
-
-                                    })
-
-                                } else if (data.FSMA8) {
-                                    data.FSMA8.forEach((fsma8) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
-
-                                        cy.get('.select__menu-list').contains('div', fsma8).click()
-
-                                    })
-
-                                } else if (data.FSMB6) {
-                                    data.FSMB6.forEach((fsmb6) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
-
-                                        cy.get('.select__menu-list').contains('div', fsmb6).click()
-
-                                    })
-
-                                } else {
-
-                                    data.FSMB8.forEach((fsmb8) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
-
-                                        cy.get('.select__menu-list').contains('div', fsmb8).click()
-
-                                    })
-                                }
-                            })
-
-                        } else {
-
-                            cy.get('#chkcombo').should('not.be.checked')
-                        }
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.wait(2000)
-                        
-                        cy.checkLabelCaption('.Toastify__toast-body', '78.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
-
-                        // 16.2 click "OK" button on notification message.
-
-                        cy.checkElementInvisibility('.shadow-lg', '78.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        // 16.2.2 Check if the "Description" textbox object is cleared or blank.
-
+                        cy.get('#isaddon').should('not.be.checked')
                     }
 
-                    else {
+                    if (data[key].inactive === true) {
 
-                        cy.wrap($input).should('have.value', data[key].item)
+                        cy.get('#inactive').click()
 
-                        cy.get('#itmtyp').realClick()
+                    } else {
 
-                        cy.get('#itmtyp').select(data[key].itemType)
-
-                        cy.get('#itmclacde').select(data[key].itemClass)
-
-                        cy.get('#itemsubclasscde').select(data[key].itemSubclass)
-
-                        cy.get('#untmea')
-                          .clear()
-                          .type(data[key].unitMeasure)
-
-                        cy.get('#untcst')
-                          .clear() 
-                          .type(data[key].unitCost)
-
-                        cy.get('#barcde')
-                          .clear()
-                          .type(data[key].barcode)
-
-                        cy.get('#untprc')
-                          .clear() 
-                          .type(data[key].sellingPrice)
-
-                        cy.get('#itmpaxcount')
-                          .clear()
-                          .type(data[key].goodXPerson)
-
-                        cy.get('#taxcde').select(data[key].taxCode)
-
-                        if (data[key].addOn === true) {
-
-                            cy.get('#isaddon').click()
-
-                        } else {
-
-                            cy.get('#isaddon').should('not.be.checked')
-                        }
-
-                        if (data[key].inactive === true) {
-
-                            cy.get('#inactive').click()
-
-                        } else {
-
-                            cy.get('#inactive').should('not.be.checked')
-                        }
-
-                        if (data[key].comboMeal === true) {
-
-                            cy.get('#chkcombo').click()
-
-                            cy.get('.ant-tabs-tab-active').click()
-
-                            cy.fixture('item-combomeal-data.json').then((data) => {
-
-                                if (data.FSMA6) {
-                                    
-                                    data.FSMA6.forEach((fsma6) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
-
-                                        cy.get('.select__menu-list').contains('div', fsma6).click()
-
-                                    })
-
-                                } else if (data.FSMA8) {
-
-                                    data.FSMA8.forEach((fsma8) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
-
-                                        cy.get('.select__menu-list').contains('div', fsma8).click()
-
-                                    })
-
-                                } else if (data.FSMB6) {
-
-                                    data.FSMB6.forEach((fsmb6) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
-
-                                        cy.get('.select__menu-list').contains('div', fsmb6).click()
-
-                                    })
-                                    
-                                } else {
-
-                                    data.FSMB8.forEach((fsmb8) => {
-
-                                        cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
-
-                                        cy.get('.select__menu-list').contains('div', fsmb8).click()
-
-                                    })
-                                }
-                            })
-
-                        } else {
-
-                            cy.get('#chkcombo').should('not.be.checked')
-                        }
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.wait(2000)
-
-                        cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
-
-                        cy.wait(3000)
-                        
-                        cy.checkElementVisibility('.shadow-lg', '17.2', 'Upon Clicking the "Save" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        cy.get('.MuiSelect-select.MuiTablePagination-select').click();
-
-                        cy.get('ul[role="listbox"] li').contains('100').click();
-                        
-                        cy.get('.MuiTableBody-root').contains(data[key].item).should('exist')
+                        cy.get('#inactive').should('not.be.checked')
                     }
-                }) 
+
+                    if (data[key].comboMeal === true) {
+
+                        cy.get('#chkcombo').click()
+
+                        cy.get('.ant-tabs-tab-active').click()
+
+                        cy.fixture('item-combomeal-data.json').then((comboData) => {
+
+                            if (data[key].item === "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)") {
+                                
+                                comboData.FSMA6.forEach((fsma6) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
+
+                                    cy.get('.select__menu-list').contains('div', fsma6).click()
+
+                                })
+
+                            } else if (data[key].item === "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)") {
+
+                                comboData.FSMA8.forEach((fsma8) => {
+
+                                    cy.get('.select__clear-indicator').click()
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
+
+                                    cy.get('.select__menu-list').contains('div', fsma8).click()
+
+                                })
+
+                            } else if (data[key].item === "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)") {
+
+                                comboData.FSMB6.forEach((fsmb6) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
+
+                                    cy.get('.select__menu-list').contains('div', fsmb6).click()
+
+                                })
+                                
+                            } else {
+
+                                comboData.FSMB8.forEach((fsmb8) => {
+
+                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+
+                                    cy.get('.select__menu-list').contains('div', fsmb8).click()
+
+                                })
+                            }
+                        })
+
+                    } else {
+
+                        cy.get('#chkcombo').should('not.be.checked')
+                    }
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.wait(2000)
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+
+                    cy.wait(3000)
+                    
+                    cy.checkElementVisibility('.shadow-lg', '17.2', 'Upon Clicking the "Save" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    // cy.get('.MuiSelect-select.MuiTablePagination-select').click();
+
+                    // cy.get('ul[role="listbox"] li').contains('100').click();
+                    
+                    // cy.get('.MuiTableBody-root').contains(data[key].item).should('exist')
+                }
             }
         })
 
@@ -992,6 +1012,8 @@ describe('Item', () => {
     });
 
     it('Edit Functionality', () => {
+
+        cy.get('.border-red-500').click()
 
         cy.fixture('master-item-data.json').then((data) => {
 

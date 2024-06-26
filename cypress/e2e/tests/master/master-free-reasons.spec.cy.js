@@ -122,18 +122,18 @@ describe('Free Reasons', () => {
 
             cy.validateElements('freereasons-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
+            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
-                
-                cy.get('#freereason')
-                  .type(data[key].freeReasons)
-                  .then(($input) => {
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
-                    if ($input.val() === "null") {
+                    if (data[key].freeReasons === "null") {
+
+                        cy.wait(4000)
                         
+                        cy.get('#freereason').clear().type(data[key].freeReasons)
+
                         cy.get('#freereason').clear()
 
                         cy.get('.border-blue-500').click()
@@ -146,11 +146,17 @@ describe('Free Reasons', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                        cy.get('.px-8 > .flex > .anticon > svg').click()
+                        cy.wait(4000)
 
                     } 
                     
-                    else if ($input.val() === "Customer Appreciation") {
+                    else if (data[key].freeReasons === "Customer Appreciation") {
+
+                        cy.wait(4000)
+
+                        cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+
+                        cy.get('#freereason').clear().type(data[key].freeReasons)
 
                         cy.get('.border-red-500').click()
 
@@ -172,12 +178,17 @@ describe('Free Reasons', () => {
 
                         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Free Reasons', assertionResults, failureMessages)
 
-                        cy.wait(4000)
+                        cy.wait(6000)
 
+                        cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                     }
 
-                    else if ($input.val() === "% & ( ) / - .") {
+                    else if (data[key].freeReasons === "% & ( ) / - .") {
+
+                        cy.wait(4000)
+
+                        cy.get('#freereason').clear().type(data[key].freeReasons)
 
                         cy.get('.border-blue-500').click()
 
@@ -191,9 +202,9 @@ describe('Free Reasons', () => {
 
                     }
 
-                    else if ($input.val() === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+                    else if (data[key].freeReasons === "This is a very long string that exceeds the maximum allowed length.") {
 
-                        cy.wrap($input).should('have.value', data[key].freeReasons)
+                        cy.wait(4000)
 
                         cy.checkElementVisibility('.text-sm', '17.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
@@ -207,11 +218,15 @@ describe('Free Reasons', () => {
 
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+                    else if (data[key].freeReasons === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                        cy.wait(4000)
+                        
+                        cy.get('#freereason').clear().type(data[key].freeReasons)
+
+                        cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
                         cy.get('.border-blue-500').click()
-
-                        cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
                         cy.checkElementInvisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -221,7 +236,11 @@ describe('Free Reasons', () => {
 
                     else {
 
-                        cy.wrap($input).should('have.value', data[key].freeReasons)
+                        cy.wait(4000)
+
+                        cy.get('#freereason').clear().type(data[key].freeReasons)
+
+                        cy.get('#freereason').should('have.value', data[key].freeReasons)
 
                         cy.get('.border-blue-500').click()
 
@@ -236,8 +255,7 @@ describe('Free Reasons', () => {
                         cy.get('.MuiTableBody-root').contains(data[key].freeReasons).should('exist')
 
                         cy.wait(8000)
-                    }
-                }) 
+                    } 
             }
         })
 

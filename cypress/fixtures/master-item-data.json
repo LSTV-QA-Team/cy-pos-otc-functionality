@@ -18,7 +18,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "1-pc Chickenjoy",
+    "item": "1-pc. Chickenjoy",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Chicken",
@@ -85,7 +85,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "6-pc. Chickenjoy Solo",
+    "item": "6-pcs. Chickenjoy Solo",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Chicken",
@@ -283,7 +283,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM A 6-pc: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)",
+    "item": "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -301,7 +301,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM A 8-pc: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)",
+    "item": "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -319,7 +319,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM B 6-pc: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)",
+    "item": "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -337,7 +337,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM B 8-pc: Chickenjoy Bucket (4 Jolly Spaghetti, 4 Rice, and 4 Regular Drinks)",
+    "item": "FSM B 8-pcs: Chickenjoy Bucket (4 Jolly Spaghetti, 4 Rice, and 4 Regular Drinks)",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -355,13 +355,31 @@
     "onlySearchInval": false
   },
   {
+    "item": "Jolly Spaghetti",
+    "itemType": "NON-INVENTORY",
+    "itemClass": "Food",
+    "itemSubclass": "Spaghetti",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000020",
+    "sellingPrice": 50,
+    "goodXPerson": 1,
+    "taxCode": "VATABLE",
+    "addOn": false,
+    "inactive": false,
+    "comboMeal": false,
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
     "item": "Delicious and crispy Chickenjoy with a side of Jolly Spaghetti and garlic rice, perfect for a fulfilling meal",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Chicken",
     "unitMeasure": "PCS",
     "unitCost": 0,
-    "barcode": "00000000020",
+    "barcode": "00000000021",
     "sellingPrice": 50,
     "goodXPerson": 1,
     "taxCode": "VATABLE",
@@ -379,7 +397,7 @@
     "itemSubclass": "Chicken",
     "unitMeasure": "PCS",
     "unitCost": 0,
-    "barcode": "00000000021",
+    "barcode": "00000000022",
     "sellingPrice": 51,
     "goodXPerson": 2,
     "taxCode": "VATABLE",
@@ -397,7 +415,7 @@
     "itemSubclass": "Chicken",
     "unitMeasure": "PCS",
     "unitCost": 0,
-    "barcode": "00000000022",
+    "barcode": "00000000023",
     "sellingPrice": 53,
     "goodXPerson": 4,
     "taxCode": "VATABLE",
@@ -418,24 +436,6 @@
     "barcode": "!@#$%^&*()",
     "sellingPrice": 52,
     "goodXPerson": 3,
-    "taxCode": "VATABLE",
-    "addOn": false,
-    "inactive": false,
-    "comboMeal": false,
-    "onlySearchVal": false,
-    "onlyDelete": true,
-    "onlySearchInval": false
-  },
-  {
-    "item": "jolly Spaghetti",
-    "itemType": "NON-INVENTORY",
-    "itemClass": "Food",
-    "itemSubclass": "Spaghetti",
-    "unitMeasure": "PCS",
-    "unitCost": 0,
-    "barcode": "00000000023",
-    "sellingPrice": 50,
-    "goodXPerson": 1,
     "taxCode": "VATABLE",
     "addOn": false,
     "inactive": false,

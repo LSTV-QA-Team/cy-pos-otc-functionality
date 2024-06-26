@@ -167,7 +167,7 @@ Cypress.Commands.add('checkHeaderTitle', (selector, referenceNumber, errorContex
         cy.log('Assertion Failed')
         failedAssertions.add(failureMessage);
         failureMessages.push({ referenceNumber, errorContext, message: failureMessage })
-        cy.screenshot(`failure-${failureMessage}-${selector.replace(/\W/g, '-')}`, { capture: 'fullPage' })
+        cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' })
 
       } else {
 
@@ -549,7 +549,7 @@ Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, erro
 
             failedAssertions.add(customErrorMessage)
             failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage })
-            cy.screenshot(`failure-${customErrorMessage}-${element.sel.replace(/\W/g, '-')}`, { capture: 'fullPage' })
+            cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' })
 
           }
 
@@ -573,6 +573,33 @@ Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, erro
 
     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults))
 
+  })
+})
+
+
+// check value
+Cypress.Commands.add('checkValue', (selector, referenceNumber, errorContext, expectedVal, assertionResults = [], failureMessages = [] ) => {
+  cy.get(selector).then($input => {
+    const actualVal = $input.val();
+
+    if (actualVal === expectedVal) {
+      cy.log('Assertion Passed');
+      assertionResults.push({data : 'passed'})
+    } else {
+      const failureMessage = `The textbox value should be "${expectedVal}" instead of "${actualVal}"`;
+
+      if(!failedAssertions.has(failureMessage)) {
+        cy.log('Assertion Failed');
+        failedAssertions.add(failureMessage)
+        failureMessages.push({ referenceNumber, errorContext, message: failureMessage})
+        cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' })
+      } else {
+        cy.log('Skipping screenshot, failure already captured')
+      }
+      assertionResults.push({data: 'failed'})
+    }
+  }).then(() => {
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
   })
 })
 
@@ -603,7 +630,7 @@ Cypress.Commands.add('checkElementVisibility', (selector, referenceNumber, error
             cy.log('Assertion Failed')
             failedAssertions.add(failureMessage)
             failureMessages.push({ referenceNumber, errorContext, message: failureMessage });
-            cy.screenshot(`failure-${failureMessage}-${selector.replace(/\W/g, '-')}`, { capture: 'fullPage' })
+            cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' })
 
           } else {
 
@@ -626,7 +653,7 @@ Cypress.Commands.add('checkElementVisibility', (selector, referenceNumber, error
         cy.log('Assertion Failed');
         failedAssertions.add(failureMessage);
         failureMessages.push({ referenceNumber, errorContext, message: failureMessage });
-        cy.screenshot(`failure-${selector.replace(/\W/g, '-')}`, { capture: 'fullPage' });
+        cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' })
 
       } else {
 
@@ -668,7 +695,7 @@ Cypress.Commands.add('checkElementInvisibility', (selector, referenceNumber, err
             cy.log('Assertion Failed');
             failedAssertions.add(failureMessage);
             failureMessages.push({ referenceNumber, errorContext, message: failureMessage });
-            cy.screenshot(`failure-${failureMessage}-${selector.replace(/\W/g, '-')}`, { capture: 'fullPage' });
+            cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' })
 
           } else {
 
@@ -727,7 +754,7 @@ Cypress.Commands.add('checkTableColumnTitle', (expectedColTitle, referenceNumber
             cy.log(`Assertion Failed for header: ${headerText}`);
             failedAssertions.add(customErrorMessage);
             failureMessages.push({ referenceNumber, errorContext, message: customErrorMessage });
-            cy.screenshot(`failure-${index}-${expectedColTitle[index].replace(/\W/g, '-')}`, { capture: 'fullPage' });
+            cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' })
           } else {
             cy.log('Skipping screenshot, failure already captured.');
           }
@@ -790,7 +817,7 @@ Cypress.Commands.add('checkInputMaxLength', (selector, maxLength, referenceNumbe
         cy.log('Assertion Failed');
         failedAssertions.add(failureMessage)
         failureMessages.push({ referenceNumber, errorContext, message: failureMessage})
-        cy.screenshot(`failure-${failureMessage}-${selector.replace(/\W/g, '-')}`, {capture: 'fullPage'})
+        cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' })
       } else {
         cy.log('Skipping screenshot, failure already captured')
       }

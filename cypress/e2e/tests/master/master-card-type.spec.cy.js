@@ -103,6 +103,8 @@ describe('Card Type', () => {
             cy.wait(4000) 
 
             cy.get('.sc-eDLKkx > .anticon > svg').click()
+
+            cy.wait(4000)
                 
             cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -123,125 +125,144 @@ describe('Card Type', () => {
 
             cy.validateElements('cardtype-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]').click()
-
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
-                cy.get('#cardtype')
-                  .type(data[key].cardType)
-                  .then(($input) => {
+                if (data[key].cardType === "null") {
 
-                    if ($input.val() === "null") {
-                        
-                        cy.get('#cardtype').clear()
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.checkLabelCaption('.text-sm', '12.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
-
-                        cy.get('#cardtype').type('Credit Card')
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
-
-                        cy.get('.px-8 > .flex > .anticon > svg').click()
-
-                        cy.wait(6000)
-
-                    } 
+                    cy.get('#cardtype').clear().type(data[key].cardType)
                     
-                    else if ($input.val() === "Electronic Card") {
+                    cy.get('#cardtype').clear()
 
-                        cy.get('.border-red-500').click()
+                    cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.text-sm', '12.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
-                        cy.contains('button[class*="border-red-500"]', 'No').click()
+                    cy.get('#cardtype').clear().type('Credit Card')
 
-                        cy.wait(3000)
+                    cy.get('.border-blue-500').click()
 
-                        cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                        cy.get('.border-red-500').click()
+                    cy.wait(4000)
 
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                } 
+                
+                else if (data[key].cardType === "Electronic Card") {
 
-                        cy.wait(3000)
+                    cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
-                        cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.get('#cardtype').clear().type(data[key].cardType)
 
-                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Card Type', assertionResults, failureMessages)
+                    cy.get('.border-red-500').click()
 
-                        cy.wait(6000)
+                    cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                    }
+                    cy.contains('button[class*="border-red-500"]', 'No').click()
 
-                    else if ($input.val() === "% & ( ) / - .") {
+                    cy.wait(3000)
 
-                        cy.get('.border-blue-500').click()
+                    cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '10.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                    cy.get('.border-red-500').click()
 
-                        cy.checkElementInvisibility('.shadow-lg', '10.2.1', 'Upon clicking the "OK" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
 
-                        // 11.2.2 Check if the "Description" textbox object is cleared or blank.
+                    cy.wait(3000)
 
-                        cy.wait(6000)
+                    cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
-                    }
+                    cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Card Type', assertionResults, failureMessages)
 
-                    else if ($input.val() === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+                    cy.wait(4000)
 
-                        cy.wrap($input).should('have.value', data[key].cardType);
+                    cy.get('.sc-eDLKkx > .anticon > svg').click()
 
-                        cy.checkElementVisibility('.text-sm', '18.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                }
 
-                        cy.get('.border-blue-500').click()
+                else if (data[key].cardType === "% & ( ) / - .") {
 
-                        // cy.wait(4000)
+                    cy.get('#cardtype')
+                      .clear()
+                      .type(data[key].cardType)
 
-                        // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
+                    cy.get('.border-blue-500').click()
 
-                        cy.wait(4000)
+                    cy.wait(2000)
 
-                    }
+                    cy.checkLabelCaption('.Toastify__toast-body', '10.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+                    cy.checkElementInvisibility('.shadow-lg', '10.2.1', 'Upon clicking the "OK" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('.border-blue-500').click()
+                    // 11.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                    cy.wait(4000)
 
-                        // 16.2 click "OK" button on notification message.
+                }
 
-                        cy.checkElementInvisibility('.shadow-lg', '16.2.1', 'Upon clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+                else if (data[key].cardType === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
 
-                        cy.wait(6000)
-                        
-                    }
+                    cy.get('#cardtype')
+                      .clear()
+                      .type(data[key].cardType)
 
-                    else {
+                    cy.checkElementVisibility('.text-sm', '18.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        cy.wrap($input).should('have.value', data[key].cardType);
+                    cy.get('.border-blue-500').click()
 
-                        cy.get('.border-blue-500').click()
+                    // cy.wait(4000)
 
-                        cy.wait(2000)
+                    // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
-                        
-                        cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.wait(4000)
 
-                        // 4.2.2 Check if the "Description" textbox object is cleared or blank.
-                        
-                        cy.get('.MuiTableBody-root').contains(data[key].cardType).should('exist')
+                }
 
-                        cy.wait(6000)
-                    }
-                }) 
+                else if (data[key].cardType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                    cy.get('#cardtype').clear().type(data[key].cardType)
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+
+                    // 16.2 click "OK" button on notification message.
+
+                    cy.checkElementInvisibility('.shadow-lg', '16.2.1', 'Upon clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    cy.wait(4000)
+                    
+                }
+
+                else {
+
+                    cy.get('#cardtype')
+                      .clear()
+                      .type(data[key].cardType)
+
+                    cy.get('#cardtype').should('have.value', data[key].cardType)
+
+                    cy.get('.border-blue-500').click()
+
+                    cy.wait(2000)
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+
+                    cy.wait(2000)
+
+                    cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+                    
+                    cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    // 4.2.2 Check if the "Description" textbox object is cleared or blank.
+                    
+                    cy.get('.MuiTableBody-root').contains(data[key].cardType).should('exist')
+
+                    cy.wait(4000)
+                }
             }
         })
 
@@ -251,7 +272,10 @@ describe('Card Type', () => {
         
     })
 
-    it('Edit Functionality', () => {
+    it.only('Edit Functionality', () => {
+
+        cy.get('.border-red-500').click()
+        
         cy.fixture('master-cardtype-data.json').then((data) => {
 
             const specificCardType = data[4];
@@ -262,6 +286,8 @@ describe('Card Type', () => {
 
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
                 })
+
+                cy.wait(2000)
 
                 cy.checkElementVisibility('.shadow-lg', '21.1', 'Upon Clicking the "Edit" button:', 'The "Edit Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -282,11 +308,11 @@ describe('Card Type', () => {
                     .should('have.value', specificCardType.cardType)
                     .clear()
 
-                cy.get('#cardtype').type(specificCardType.editCardType)
+                cy.get('#cardtype').clear().type(specificCardType.editCardType)
 
                 cy.get('.border-blue-500').click()
 
-                cy.wait(6000)
+                cy.wait(4000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '24.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 

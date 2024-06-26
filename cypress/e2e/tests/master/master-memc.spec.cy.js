@@ -138,19 +138,17 @@ describe('MEMC', () => {
             // cy.validateElements('memc-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
 
-            cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
+            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
-                cy.get('.sc-eDLKkx > .anticon > svg').click()
+                // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                 cy.wait(4000) 
                 
-                cy.get('#codedsc')
-                  .type(data[key].memc)
-                  .then(($input) => {
+                    if (data[key].memc === "null") {
 
-                    if ($input.val() === "null") {
+                        cy.get('#codedsc').clear().type(data[key].memc)
 
                         cy.get('.border-blue-500').click()
 
@@ -178,7 +176,11 @@ describe('MEMC', () => {
 
                     } 
                     
-                    else if ($input.val() === "MEMC 600") {
+                    else if (data[key].memc === "MEMC 600") {
+
+                        cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+
+                        cy.get('#codedsc').clear().type(data[key].memc)
 
                         cy.get('#value').realClick()
 
@@ -202,13 +204,21 @@ describe('MEMC', () => {
 
                         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '40.3.2', 'Upon clicking the "Yes" button', 'MEMC', assertionResults, failureMessages)
 
+                        cy.wait(4000)
+
+                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+
                     }
 
-                    else if ($input.val() === "% & ( ) / - .") {
+                    else if (data[key].memc === "% & ( ) / - .") {
+
+                        cy.get('#codedsc').clear().type(data[key].memc)
 
                         cy.get('#value').type(data[key].value)
 
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -218,9 +228,9 @@ describe('MEMC', () => {
 
                     }
 
-                    else if ($input.val() === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+                    else if (data[key].memc === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
 
-                        cy.wrap($input).should('have.value', data[key].memc);
+                        cy.get('#codedsc').clear().type(data[key].memc);
 
                         cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
@@ -232,7 +242,11 @@ describe('MEMC', () => {
 
                     }
 
-                    else if ($input.val() === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+                    else if (data[key].memc === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                        cy.get('#codedsc').clear().type(data[key].memc)
+
+                        cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
                         cy.get('#value').realClick()
 
@@ -246,24 +260,30 @@ describe('MEMC', () => {
 
                         // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
+                        cy.wait(4000)
                     }
 
                     else {
 
-                        cy.wrap($input).should('have.value', data[key].memc)
+                        cy.wait(4000)
+
+                        cy.get('#codedsc').clear().type(data[key].memc)
 
                         cy.get('#value').type(data[key].value)
 
-                        cy.get('.border-blue-500').click()                    
+                        cy.get('.border-blue-500').click()  
+                        
+                        cy. wait(2000)
+
                         cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.wait(3000)
+                        cy.wait(2000)
                         
                         cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
                         
                         cy.get('.MuiTableBody-root').contains(data[key].memc).should('exist')
+
                     }
-                }) 
             }
         })
 
@@ -271,7 +291,7 @@ describe('MEMC', () => {
 
         cy.checkForFailure(assertionResults, failureMessages)
         
-    });
+    })
 
     it('Edit Functionality', () => {
 
