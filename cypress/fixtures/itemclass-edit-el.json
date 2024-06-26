@@ -2,8 +2,8 @@
   {
     "sel": "button.border-blue-500",
     "assertion": "contain.text",
-    "expectedText": "Update Data",
-    "customErrorMsg": "Should contain text \"Update Data\""
+    "expectedText": "Save",
+    "customErrorMsg": "Should contain text \"Save\""
   },
   {
     "sel": "button.border-red-500",

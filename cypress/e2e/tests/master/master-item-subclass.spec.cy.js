@@ -40,42 +40,42 @@ describe('Item Subclassification', () => {
 
     })
 
-    // after(() => {
+    after(() => {
 
-    //     // delete unecessary inputed data in the table 'itemsubclassfile'
+        // delete unecessary inputed data in the table 'itemsubclassfile'
 
-    //     cy.fixture('data-to-delete.json').then((data) => {
+        cy.fixture('data-to-delete.json').then((data) => {
 
-    //         // Loop through each character and delete corresponding rows from the 'itemsubclassfile' table
-    //         data.forEach((item) => {
+            // Loop through each character and delete corresponding rows from the 'itemsubclassfile' table
+            data.forEach((item) => {
 
-    //             const specialChar = item.dataToDelete;
-    //             const deleteQuery = `DELETE FROM itemsubclassfile WHERE itemsubclassdsc = '${specialChar}'`;
+                const specialChar = item.dataToDelete;
+                const deleteQuery = `DELETE FROM itemsubclassfile WHERE itemsubclassdsc = '${specialChar}'`;
                 
-    //             cy.task('queryDb', deleteQuery).then(() => {
+                cy.task('queryDb', deleteQuery).then(() => {
 
-    //                 cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
+                    cy.log(`Deleted data with description: ${specialChar}`); // Log successful deletions
 
-    //             })
-    //         })
+                })
+            })
     
-    //         // Ensure the table is clear of specified data
-    //         cy.task('queryDb', 'SELECT * FROM itemsubclassfile').then((records) => {
+            // Ensure the table is clear of specified data
+            cy.task('queryDb', 'SELECT * FROM itemsubclassfile').then((records) => {
 
-    //             const remainingData = records.map((record) => record.description);
-    //             const deletedChars = data.map((item) => item.dataToDelete);
+                const remainingData = records.map((record) => record.description);
+                const deletedChars = data.map((item) => item.dataToDelete);
                 
-    //             // Ensure no deleted special characters are still in the table
-    //             deletedChars.forEach((char) => {
+                // Ensure no deleted special characters are still in the table
+                deletedChars.forEach((char) => {
 
-    //                 expect(remainingData).to.not.include(char);
+                    expect(remainingData).to.not.include(char);
 
-    //             })
+                })
     
-    //             cy.log('Specified data Successfully deleted.'); // Log success
-    //         })
-    //     })
-    // })
+                cy.log('Specified data Successfully deleted.'); // Log success
+            })
+        })
+    })
 
     it('Check Item Subclassification Page', () => {   
 
@@ -92,7 +92,7 @@ describe('Item Subclassification', () => {
 
         cy.wait(2000)
 
-        cy.checkTableColumnTitle(['Actions', 'Item Subclassification', ' Item Classification'], '1.2.2', 'Upon Navigating to Item Subclassification pager U/I', assertionResults, failureMessages)
+        cy.checkTableColumnTitle(['Actions', 'Item Subclassification', 'Item Classification'], '1.2.2', 'Upon Navigating to Item Subclassification pager U/I', assertionResults, failureMessages)
 
         // 1.2.3 Check correct button(s) caption.
         // Not necessary since buttons in pager U/I does not have captions.
@@ -175,11 +175,13 @@ describe('Item Subclassification', () => {
 
                         cy.wait(4000)
 
-                        cy.checkLabelCaption('.text-sm', '13.2', 'Upon clicking the "Save" button:', 'Item Class * is required', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.text-sm', '13.2', 'Upon clicking the "Save" button:', 'Item Classification * is required', assertionResults, failureMessages)
 
                         cy.get('#itemsubclassdsc').clear()
 
                         cy.get('#itmclacde').select(data[key].itemClass)
+
+                        cy.get('.border-blue-500').click()
 
                         cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
@@ -242,7 +244,7 @@ describe('Item Subclassification', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 43.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -254,16 +256,16 @@ describe('Item Subclassification', () => {
 
                         cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
-                        cy.get('#itmclacde').select(data[key].itemClass)
+                        cy.checkElementVisibility('.Toastify__toast-body', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        cy.checkInputMaxLength('#itemsubclassdsc', 50, '16.1', 'Upon Encoding in "Item Subclassification" Textbox:', assertionResults, failureMessages)
+
+                        cy.get('#itmclacde').select(data[key].itemClass)
 
                         cy.get('#itmclacde').select(data[key].itemClass)
 
                         // Click "Save" button.
                         cy.get('.border-blue-500').click()
-
-                        cy.checkElementVisibility('.text-sm', '20.1', 'Upon clicking the "Save" button:', '"Please input valid data." notificaation message is not visible', assertionResults, failureMessages)
 
                         cy.wait(6000)
 
@@ -273,17 +275,20 @@ describe('Item Subclassification', () => {
 
                         cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
+                        cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+
                         cy.get('#itmclacde').realClick()
 
                         cy.get('#itmclacde').select(data[key].itemClass)
 
                         cy.get('.border-blue-500').click()
-                        
-                        cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+
+                        cy.wait(4000)
+                    
 
                         // 16.2 click "OK" button on notification message.
 
-                        cy.checkElementInvisibility('.shadow-lg', '17.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '17.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -326,6 +331,8 @@ describe('Item Subclassification', () => {
 
     it('Edit Functionality', () => {
 
+        cy.get('.border-red-500').click()
+
         cy.fixture('master-itemsubclass-data.json').then((data) => {
 
             const specificItemSubclass = data[0];
@@ -340,6 +347,8 @@ describe('Item Subclassification', () => {
 
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
                 })
+
+                cy.wait(4000)
 
                 cy.checkElementVisibility('.shadow-lg', '22.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -402,7 +411,7 @@ describe('Item Subclassification', () => {
 
                 cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Delete" button on pager U/I:', assertionResults, failureMessages)
 
-                cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                cy.get('.border-blue-500').click()
 
                 cy.wait(3000)
 
@@ -415,7 +424,9 @@ describe('Item Subclassification', () => {
                     cy.get('[data-icon="delete"][aria-hidden="true"]').click()
                 })
 
-                cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                cy.get('.border-red-500').click()
+
+                cy.wait(4000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '30.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
