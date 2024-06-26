@@ -58,7 +58,7 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.get('#usrpwd').clear()
     cy.get('#usrpwd').realType(userPassword)
     cy.get('.sc-guDLey').should('be.enabled')
-    cy.get('button.sc-guDLey.decbXQ[form="login"]').click()
+    cy.get('.mt-8 > .sc-guDLey').click()
     cy.wait(4000)
     cy.url({timeout: 10000}).should('contain', '/home')
     cy.get('.text-\\[2rem\\]').should('have.text', 'Welcome, lstv!')
