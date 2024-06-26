@@ -51,8 +51,8 @@ describe("With Service Charge ", () => {
 
     })
 
-
   })
+  
 
   it("1 Pax with Regular Transaction and Service Charge", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
