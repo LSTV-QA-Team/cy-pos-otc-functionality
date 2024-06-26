@@ -7,9 +7,52 @@ describe("With Service Charge ", () => {
     assertionResults = [];
     failureMessages = [];
 
+
     // Login with valid credentials
     cy.login("lstv", "lstventures");
   });
+
+  before("Clear Transaction" , () => { 
+
+    cy.task("queryDb","TRUNCATE TABLE posfile")
+    cy.task("queryDb","TRUNCATE TABLE orderfile")
+    cy.task("queryDb","TRUNCATE TABLE orderfile2")
+    cy.task("queryDb","TRUNCATE TABLE tabletranfile")
+    cy.task("queryDb","TRUNCATE TABLE tabletranfile2")
+    cy.task("queryDb","TRUNCATE TABLE takeouttranfile")
+    cy.task("queryDb","TRUNCATE TABLE billingfile")
+    cy.task("queryDb","TRUNCATE TABLE voidrequestfile")
+    cy.task("queryDb","TRUNCATE TABLE orderitemdiscountfile")
+    cy.task("queryDb","TRUNCATE TABLE orderdiscountfile")
+    cy.task("queryDb","TRUNCATE TABLE orderitemmodifierfile")
+    cy.task("queryDb","TRUNCATE TABLE zreadingfile")
+
+
+    cy.task('queryDb', `
+      UPDATE syspar 
+      SET ordocnum = 'INV-0000000000000001', 
+          posdocnum = 'POS-0000000000000001', 
+          seqnum = 'SEQ-0000000000000000', 
+          billnum = 'BILL-0000000000000001', 
+          voidnum = 'VOID-0000000000000001', 
+          billdocnum = 'BLN-0000000000001', 
+          ordercde = 'ORD-0000000000001', 
+          rddocnum = 'RD-0000000000000', 
+          rsdocnum = 'RS-0000000000000', 
+          tidocnum = 'TI-0000000000000', 
+          todocnum = 'TO-0000000000000', 
+          wsdocnum = 'WS-0000000000000', 
+          pcdocnum = 'PC-0000000000000', 
+          refnum = 'REF-0000000000000001';
+
+    `).then((result) => {
+
+      cy.log('Update successful:', result)
+
+    })
+
+
+  })
 
   it("1 Pax with Regular Transaction and Service Charge", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
