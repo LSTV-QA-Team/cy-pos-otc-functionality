@@ -77,7 +77,7 @@ describe('Item Classification', () => {
         })
     })
 
-    it.only('Check Item Classification Page', () => {   
+    it('Check Item Classification Page', () => {   
 
         cy.navigateToModule('Master File', 'Item Classifications')
 
