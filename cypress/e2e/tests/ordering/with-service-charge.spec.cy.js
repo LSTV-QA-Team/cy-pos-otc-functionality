@@ -53,6 +53,21 @@ describe("With Service Charge ", () => {
 
   })
   
+it("Cash In" , () => {
+
+  cy.get(':nth-child(2) > .sc-beySPh').click()
+  cy.contains("Cash Fund").should('be.enabled').click()
+    cy.get('.my-4 > :nth-child(2) > :nth-child(2) > .font-montserrat').click().wait(500)
+    for (let i = 0; i < 3; i++){
+      cy.get(':nth-child(4) > :nth-child(2) > .font-montserrat').click()
+    }
+    cy.contains('Save').click()
+    cy.contains('Transaction Success').should('have.text',"Transaction Success").wait(1000)
+
+    cy.get('.ps-10 > .flex').click()
+
+})
+
 
   it("1 Pax with Regular Transaction and Service Charge", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
