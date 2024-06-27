@@ -130,6 +130,8 @@ describe('Payment Type', () => {
 
             for (const key in data){
 
+                cy.wait(8000)
+
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                     if (data[key].paymentType === "null") {
@@ -150,11 +152,11 @@ describe('Payment Type', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                        cy.wait(4000)
-
                     } 
                     
                     else if (data[key].paymentType === "Electronic Card") {
+
+                        cy.wait(8000)
 
                         cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
@@ -189,6 +191,8 @@ describe('Payment Type', () => {
 
                     else if (data[key].paymentType === "% & ( ) / - .") {
 
+                        cy.wait(8000)
+
                         cy.get('#paytyp').clear().type(data[key].paymentType)
 
                         cy.checkValue('#paytyp', 'No Reference No.', 'Upon encoding data:', data[key].paymentType, assertionResults, failureMessages)
@@ -204,12 +208,11 @@ describe('Payment Type', () => {
                         cy.checkElementVisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
-
-                        cy.wait(4000)
-
                     }
 
                     else if (data[key].paymentType === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+
+                        cy.wait(8000)
 
                         cy.get('#paytyp').clear().type(data[key].paymentType)
 
@@ -221,11 +224,11 @@ describe('Payment Type', () => {
 
                         // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
 
-                        cy.wait(4000)
-
                     }
 
                     else if (data[key].paymentType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                        cy.wait(8000)
 
                         cy.get('#paytyp').clear().type(data[key].paymentType)
 
@@ -236,14 +239,12 @@ describe('Payment Type', () => {
                         cy.wait(3000)
 
                         cy.checkElementVisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        cy.wait(4000)
                         
                     }
 
                     else {
 
-                        cy.wait(4000)
+                        cy.wait(8000)
 
                         cy.get('#paytyp').clear().type(data[key].paymentType)
 
@@ -271,6 +272,8 @@ describe('Payment Type', () => {
     })
 
     it('Edit Functionality', () => {
+
+        cy.get('.border-red-500').click()
 
         cy.fixture('master-paymenttype-data.json').then((data) => {
 
@@ -339,7 +342,7 @@ describe('Payment Type', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].paymentType + ' ?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
@@ -351,7 +354,7 @@ describe('Payment Type', () => {
 
                     })
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
