@@ -283,7 +283,25 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)",
+    "item": "Jolly Spaghetti",
+    "itemType": "NON-INVENTORY",
+    "itemClass": "Food",
+    "itemSubclass": "Spaghetti",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000020",
+    "sellingPrice": 50,
+    "goodXPerson": 1,
+    "taxCode": "VATABLE",
+    "addOn": false,
+    "inactive": false,
+    "comboMeal": false,
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
+    "item": "FSM A 6-pcs. Chickenjoy Bucket",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -301,7 +319,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)",
+    "item": "FSM A 8-pcs. Chickenjoy Bucket",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -319,7 +337,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)",
+    "item": "FSM B 6-pcs. Chickenjoy Bucket",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -337,7 +355,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "FSM B 8-pcs: Chickenjoy Bucket (4 Jolly Spaghetti, 4 Rice, and 4 Regular Drinks)",
+    "item": "FSM B 8-pcs. Chickenjoy Bucket",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Family Super Meals",
@@ -350,24 +368,6 @@
     "addOn": false,
     "inactive": false,
     "comboMeal": true,
-    "onlySearchVal": false,
-    "onlyDelete": false,
-    "onlySearchInval": false
-  },
-  {
-    "item": "Jolly Spaghetti",
-    "itemType": "NON-INVENTORY",
-    "itemClass": "Food",
-    "itemSubclass": "Spaghetti",
-    "unitMeasure": "PCS",
-    "unitCost": 0,
-    "barcode": "00000000020",
-    "sellingPrice": 50,
-    "goodXPerson": 1,
-    "taxCode": "VATABLE",
-    "addOn": false,
-    "inactive": false,
-    "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
     "onlySearchInval": false

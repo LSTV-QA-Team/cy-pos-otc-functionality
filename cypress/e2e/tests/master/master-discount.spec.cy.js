@@ -131,6 +131,8 @@ describe('Discount', () => {
 
             for (const key in data){
 
+                cy.wait(8000)
+
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
                 cy.get('#discde').clear().type(data[key].discountCode)
@@ -169,13 +171,13 @@ describe('Discount', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '42.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages)
 
-                        cy.wait(6000)
-
                         // cy.get('span[role="img"] svg[data-icon="close"]').click()
 
                     } 
                     
                     else if (data[key].discountCode === "SUMMERSALE") {
+
+                        cy.wait(8000)
 
                         cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
@@ -201,13 +203,15 @@ describe('Discount', () => {
 
                         cy.checkElementVisibility('.h-screen', '13.3.2', 'Upon clicking the "Yes" button, should back in Discount Pager U/I', assertionResults, failureMessages)
 
-                        cy.wait(6000)
+                        cy.wait(2000)
 
                         cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                     }
 
                     else if (data[key].discountCode === "% & ( ) / - .") {
+
+                        cy.wait(8000)
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -285,12 +289,11 @@ describe('Discount', () => {
                         cy.checkElementInvisibility('.shadow-lg', '33.2.1', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
-
-                        cy.wait(6000)
-
                     }
 
                     else if (data[key].discountCode === "WINTERHOLIDAY50PERCENTDISCOUNTFORALLITEMSOVER1000PHP") {
+
+                        cy.wait(8000)
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -365,11 +368,11 @@ describe('Discount', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.wait(6000)
-
                     }
 
                     else if (data[key].discountCode === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                        cy.wait(8000)
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -448,11 +451,11 @@ describe('Discount', () => {
 
                         // Check if the "Description" textbox object is cleared or blank. 
 
-                        cy.wait(6000)
-
                     }
 
                     else {
+
+                        cy.wait(8000)
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -532,8 +535,6 @@ describe('Discount', () => {
                         cy.checkElementVisibility('.shadow-lg', '11.2', 'Upon Clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.get('.MuiTableBody-root').contains(data[key].discountCode).should('exist')
-
-                        cy.wait(8000)
                     } 
             }
         }) 

@@ -126,6 +126,8 @@ describe('Free Reasons', () => {
 
             for (const key in data){
 
+                cy.wait(8000)
+
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                     if (data[key].freeReasons === "null") {
@@ -186,7 +188,7 @@ describe('Free Reasons', () => {
 
                     else if (data[key].freeReasons === "% & ( ) / - .") {
 
-                        cy.wait(4000)
+                        cy.wait(8000)
 
                         cy.get('#freereason').clear().type(data[key].freeReasons)
 
@@ -198,13 +200,11 @@ describe('Free Reasons', () => {
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                        cy.wait(4000)
-
                     }
 
                     else if (data[key].freeReasons === "This is a very long string that exceeds the maximum allowed length.") {
 
-                        cy.wait(4000)
+                        cy.wait(8000)
 
                         cy.checkElementVisibility('.text-sm', '17.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
@@ -214,14 +214,12 @@ describe('Free Reasons', () => {
 
                         // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
 
-                        cy.wait(4000)
-
                     }
 
                     else if (data[key].freeReasons === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                        cy.wait(4000)
-                        
+                        cy.wait(8000)
+
                         cy.get('#freereason').clear().type(data[key].freeReasons)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
@@ -229,15 +227,13 @@ describe('Free Reasons', () => {
                         cy.get('.border-blue-500').click()
 
                         cy.checkElementInvisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        cy.wait(4000)
                         
                     }
 
                     else {
 
-                        cy.wait(4000)
-
+                        cy.wait(8000)
+                        
                         cy.get('#freereason').clear().type(data[key].freeReasons)
 
                         cy.get('#freereason').should('have.value', data[key].freeReasons)
@@ -254,7 +250,6 @@ describe('Free Reasons', () => {
                         
                         cy.get('.MuiTableBody-root').contains(data[key].freeReasons).should('exist')
 
-                        cy.wait(8000)
                     } 
             }
         })

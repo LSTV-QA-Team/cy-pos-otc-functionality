@@ -127,6 +127,8 @@ describe('Card Type', () => {
 
             for (const key in data){
 
+                cy.wait(4000)
+
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
                 if (data[key].cardType === "null") {
@@ -145,11 +147,11 @@ describe('Card Type', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                    cy.wait(4000)
-
                 } 
                 
                 else if (data[key].cardType === "Electronic Card") {
+
+                    cy.wait(4000)
 
                     cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
@@ -175,13 +177,13 @@ describe('Card Type', () => {
 
                     cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Card Type', assertionResults, failureMessages)
 
-                    cy.wait(4000)
-
                     cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                 }
 
                 else if (data[key].cardType === "% & ( ) / - .") {
+
+                    cy.wait(4000)
 
                     cy.get('#cardtype')
                       .clear()
@@ -197,11 +199,11 @@ describe('Card Type', () => {
 
                     // 11.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                    cy.wait(4000)
-
                 }
 
                 else if (data[key].cardType === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+
+                    cy.wait(4000)
 
                     cy.get('#cardtype')
                       .clear()
@@ -215,11 +217,11 @@ describe('Card Type', () => {
 
                     // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
 
-                    cy.wait(4000)
-
                 }
 
                 else if (data[key].cardType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                    cy.wait(4000)
 
                     cy.get('#cardtype').clear().type(data[key].cardType)
 
@@ -232,12 +234,12 @@ describe('Card Type', () => {
                     // 16.2 click "OK" button on notification message.
 
                     cy.checkElementInvisibility('.shadow-lg', '16.2.1', 'Upon clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
-
-                    cy.wait(4000)
                     
                 }
 
                 else {
+
+                    cy.wait(4000)
 
                     cy.get('#cardtype')
                       .clear()
@@ -261,7 +263,6 @@ describe('Card Type', () => {
                     
                     cy.get('.MuiTableBody-root').contains(data[key].cardType).should('exist')
 
-                    cy.wait(4000)
                 }
             }
         })
