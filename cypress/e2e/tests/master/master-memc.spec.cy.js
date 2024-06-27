@@ -238,6 +238,8 @@ describe('MEMC', () => {
 
                         cy.get('.border-blue-500').click()
 
+                        cy. wait(2000)
+
                         cy.checkElementVisibility('.text-sm', '20.1', 'Upon clicking the "Save" button:', '"Please input valid data." notificaation message is not visible', assertionResults, failureMessages)
 
                     }
@@ -253,6 +255,8 @@ describe('MEMC', () => {
                         cy.get('#value').type(data[key].value)
 
                         cy.get('.border-blue-500').click()
+
+                        cy. wait(2000)
                         
                         cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
@@ -295,6 +299,8 @@ describe('MEMC', () => {
 
     it('Edit Functionality', () => {
 
+        cy.get('.border-red-500').click()
+
         cy.fixture('master-memc-data.json').then((data) => {
 
             const specificmemc = data[0];
@@ -332,6 +338,8 @@ describe('MEMC', () => {
                 cy.get('#codedsc').clear().type(specificmemc.editmemc)
 
                 cy.get('#value').clear().type('{rightarrow}{rightarrow}').type(specificmemc.editvalue)
+
+                cy.wait(4000)
 
                 cy.get('.border-blue-500').click()
 
@@ -371,7 +379,7 @@ describe('MEMC', () => {
 
                     cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
@@ -385,7 +393,7 @@ describe('MEMC', () => {
 
                     })
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click()
 
                     cy.checkLabelCaption('.Toastify__toast-body', '30.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
