@@ -103,6 +103,8 @@ describe('Free Reasons', () => {
             cy.wait(4000) 
 
             cy.get('.sc-eDLKkx > .anticon > svg').click()
+
+            cy.wait(2000)
                 
             cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -145,6 +147,8 @@ describe('Free Reasons', () => {
                         cy.get('#freereason').type('Sample Giveaway')
 
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
@@ -196,7 +200,7 @@ describe('Free Reasons', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -206,7 +210,11 @@ describe('Free Reasons', () => {
 
                         cy.wait(8000)
 
-                        cy.checkElementVisibility('.text-sm', '17.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        cy.get('#freereason').clear().type(data[key].freeReasons)
+
+                        cy.checkInputMaxLength('#freereason', 50, '17.1', 'Upon Encoding in "Free Reasons" Textbox:', assertionResults, failureMessages)
+
+                        // cy.checkElementVisibility('.text-sm', '17.2', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('.border-blue-500').click()
 
@@ -262,6 +270,8 @@ describe('Free Reasons', () => {
 
     it('Edit Functionality', () => {
 
+        cy.get('.border-red-500').click()
+
         cy.fixture('master-freereasons-data.json').then((data) => {
 
             const specificFreeReasons = data[7];
@@ -273,6 +283,8 @@ describe('Free Reasons', () => {
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
 
                 })
+
+                cy.wait(2000)
 
                 cy.checkElementVisibility('.shadow-lg', '20.1', 'Upon Clicking the "Edit" button:', 'The "Edit Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -329,7 +341,7 @@ describe('Free Reasons', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].freeReasons + ' ?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
@@ -341,7 +353,7 @@ describe('Free Reasons', () => {
 
                     })
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click()
 
                     cy.wait(3000)
 
