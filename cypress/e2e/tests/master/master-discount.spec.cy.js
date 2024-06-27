@@ -547,6 +547,8 @@ describe('Discount', () => {
 
     it('Edit Functionality', () => {
 
+        cy.get('.border-red-500').click()
+
         cy.wait(8000)
 
         cy.fixture('master-discount-data.json').then((data) => {
