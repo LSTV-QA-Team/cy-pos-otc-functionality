@@ -229,6 +229,8 @@ describe('Card Type', () => {
 
                     cy.get('.border-blue-500').click()
 
+                    cy.wait(2000)
+
                     cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
                     // 16.2 click "OK" button on notification message.
@@ -273,7 +275,7 @@ describe('Card Type', () => {
         
     })
 
-    it.only('Edit Functionality', () => {
+    it('Edit Functionality', () => {
 
         cy.get('.border-red-500').click()
         
@@ -347,7 +349,7 @@ describe('Card Type', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '25.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].cardType + ' ?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click().click()
 
                     cy.wait(3000)
 
@@ -359,7 +361,7 @@ describe('Card Type', () => {
 
                     })
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click().click()
 
                     cy.wait(4000)
 
