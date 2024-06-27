@@ -9,7 +9,7 @@
     "dataToDelete": "This is a very long string that exceeds the maximum allowed length."
   },
   {
-    "dataToDelete": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # "
+    "dataToDelete": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ #"
   },
   {
     "dataToDelete": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? `"
@@ -33,9 +33,9 @@
     "dataToDelete": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap"
   },
   {
-    "dataToDelete": "                              "
+    "dataToDelete": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :"
   },
   {
-    "dataToDelete": "% & ( ) / -"
+    "dataToDelete": "©™®àáâñä¢£¥€!@#$^*_+=<>?`\\~\\\"|\\][];:"
   }
 ]

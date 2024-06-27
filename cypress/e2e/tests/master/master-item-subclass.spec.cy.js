@@ -258,11 +258,9 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
-                    cy.checkInputMaxLength('#itmcladsc', 50, '19.1', 'Upon Encoding in "Item Classification" Textbox:', assertionResults, failureMessages)
-
                     // cy.checkElementVisibility('.Toastify__toast-body', '19.2', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                    cy.checkInputMaxLength('#itemsubclassdsc', 50, '16.1', 'Upon Encoding in "Item Subclassification" Textbox:', assertionResults, failureMessages)
+                    cy.checkInputMaxLength('#itemsubclassdsc', 50, '16.2', 'Upon Encoding in "Item Subclassification" Textbox:', assertionResults, failureMessages)
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
@@ -272,19 +270,25 @@ describe('Item Subclassification', () => {
                     cy.get('.border-blue-500').click()
                 }
 
-                else if (data[key].itemSubclass === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+                else if (data[key].itemSubclass === "©™®àáâñä¢£¥€!@#$^*_+=<>?`\\~\\\"|\\][];:") {
 
                     cy.wait(8000)
 
-                    cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
+                    const disallowedCharacters = data[key].itemSubclass;
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                    for (let char of disallowedCharacters) {
 
-                    cy.get('#itmclacde').realClick()
+                        cy.get('#itemsubclassdsc').clear().type(char)
 
-                    cy.get('#itmclacde').select(data[key].itemClass)
+                        cy.checkLabelCaption('.Toastify__toast-body', '17.2', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    }
+
+                    // cy.get('#itmclacde').realClick()
+
+                    // cy.get('#itmclacde').select(data[key].itemClass)
+
+                    // cy.get('.border-blue-500').click()
 
                     cy.wait(4000)
 
@@ -333,7 +337,7 @@ describe('Item Subclassification', () => {
 
         cy.fixture('master-itemsubclass-data.json').then((data) => {
 
-            const specificItemSubclass = data[0];
+            const specificItemSubclass = data[1];
 
                 cy.get('.MuiSelect-select.MuiTablePagination-select').click();
 
@@ -388,7 +392,7 @@ describe('Item Subclassification', () => {
 
         cy.fixture('master-itemsubclass-data.json').then((data) => {
             
-            const specificItemSubclass = data[1];
+            const specificItemSubclass = data[2];
 
                 cy.wait(2000)
 
@@ -442,7 +446,7 @@ describe('Item Subclassification', () => {
 
         cy.fixture('master-itemsubclass-data.json').then((data) => {
 
-            const specificItemSubclass = data[3];
+            const specificItemSubclass = data[4];
 
                 cy.wait(2000);
 

@@ -336,7 +336,7 @@ describe('Item', () => {
 
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
-                cy.wait(4000) 
+                cy.wait(8000) 
 
                 if (data[key].item === "null") {
 
@@ -365,7 +365,7 @@ describe('Item', () => {
                         cy.get('#itmdsc')
                             .should('have.attr', 'aria-invalid', 'true')
                             .siblings('div[role="alert"]')
-                            .should('contain', 'Item Description * is required')
+                            .should('contain', 'Item * is required')
                         
                         cy.get('#itmtyp')
                             .should('have.attr', 'aria-invalid', 'true')
@@ -375,7 +375,12 @@ describe('Item', () => {
                         cy.get('#itmclacde')
                             .should('have.attr', 'aria-invalid', 'true')
                             .siblings('div[role="alert"]')
-                            .should('contain', 'Class * is required')
+                            .should('contain', 'Item Classification * is required')
+
+                        cy.get('#itemsubclasscde')
+                            .should('have.attr', 'aria-invalid', 'true')
+                            .siblings('div[role="alert"]')
+                            .should('contain', 'Item Subclassification * is required')
             
                         cy.get('#untprc')
                             .should('have.attr', 'aria-invalid', 'true')
@@ -412,7 +417,7 @@ describe('Item', () => {
 
                     cy.get('.border-blue-500').click()
 
-                    cy.wait(2000)
+                    cy.wait(8000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '63.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
@@ -422,7 +427,7 @@ describe('Item', () => {
                 
                 else if (data[key].item === "Ube Cheese Pie") {
 
-                    cy.wait(4000)
+                    cy.wait(8000)
 
                     cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
@@ -433,6 +438,8 @@ describe('Item', () => {
                     cy.get('#itmclacde').select(data[key].itemClass)
 
                     cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+
+                    cy.wait(2000)
 
                     cy.get('#untmea').clear().type(data[key].unitMeasure)
 
@@ -472,7 +479,9 @@ describe('Item', () => {
 
                         cy.fixture('item-combomeal-data.json').then((comboData) => {
 
-                            if (data[key].item === "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)") {
+                            cy.wait(8000)
+
+                            if (data[key].item === "FSM A 6-pcs. Chickenjoy Bucket") {
                                 
                                 comboData.FSMA6.forEach((fsma6) => {
 
@@ -482,7 +491,9 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)") {
+                            } else if (data[key].item === "FSM A 8-pcs. Chickenjoy Bucket") {
+
+                                cy.get('.select__clear-indicator').click()
 
                                 comboData.FSMA8.forEach((fsma8) => {
 
@@ -492,7 +503,9 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)") {
+                            } else if (data[key].item === "FSM B 6-pcs. Chickenjoy Bucket") {
+
+                                cy.get('.select__clear-indicator').click()
 
                                 comboData.FSMB6.forEach((fsmb6) => {
 
@@ -503,6 +516,8 @@ describe('Item', () => {
                                 })
                                 
                             } else {
+
+                                cy.get('.select__clear-indicator').click()
 
                                 comboData.FSMB8.forEach((fsmb8) => {
 
@@ -549,7 +564,7 @@ describe('Item', () => {
 
                 else if (data[key].item === "% & ( ) / - .") {
 
-                    cy.wait(4000)
+                    cy.wait(8000)
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
@@ -558,6 +573,8 @@ describe('Item', () => {
                     cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
                     cy.get('#itmclacde').select(data[key].itemClass)
+
+                    cy.wait(2000)
 
                     cy.get('#untmea').clear().type(data[key].unitMeasure)
 
@@ -597,7 +614,9 @@ describe('Item', () => {
 
                         cy.fixture('item-combomeal-data.json').then((comboData) => {
 
-                            if (data[key].item === "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)") {
+                            cy.wait(8000)
+
+                            if (data[key].item === "FSM A 6-pcs. Chickenjoy Bucket") {
 
                                 comboData.FSMA6.forEach((fsma6) => {
 
@@ -606,7 +625,10 @@ describe('Item', () => {
                                     cy.get('.select__menu-list').contains('div', fsma6).click()
 
                                 })
-                            } else if (data[key].item === "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)") {
+
+                            } else if (data[key].item === "FSM A 8-pcs. Chickenjoy Bucket") {
+
+                                cy.get('.select__clear-indicator').click()
 
                                 comboData.FSMA8.forEach((fsma8) => {
 
@@ -616,7 +638,10 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)") {
+                            } else if (data[key].item === "FSM B 6-pcs. Chickenjoy Bucket") {
+
+                                cy.get('.select__clear-indicator').click()
+
                                 comboData.FSMB6.forEach((fsmb6) => {
 
                                     cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
@@ -628,6 +653,8 @@ describe('Item', () => {
                             } else {
 
                                 comboData.FSMB8.forEach((fsmb8) => {
+
+                                    cy.get('.select__clear-indicator').click()
 
                                     cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
 
@@ -644,7 +671,7 @@ describe('Item', () => {
 
                     cy.get('.border-blue-500').click()
 
-                    cy.wait(2000)
+                    cy.wait(8000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '48.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -656,7 +683,7 @@ describe('Item', () => {
 
                 else if (data[key].item === "Delicious and crispy Chickenjoy with a side of Jolly Spaghetti and garlic rice, perfect for a fulfilling meal") {
 
-                    cy.wait(4000)
+                    cy.wait(8000)
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
@@ -667,6 +694,8 @@ describe('Item', () => {
                     cy.get('#itmclacde').select(data[key].itemClass)
 
                     cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+
+                    cy.wait(2000)
 
                     cy.get('#untmea').clear().type(data[key].unitMeasure)
 
@@ -706,7 +735,10 @@ describe('Item', () => {
 
                         cy.fixture('item-combomeal-data.json').then((comboData) => {
 
-                            if (data[key].item === "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)") {
+                            cy.wait(8000)
+
+                            if (data[key].item === "FSM A 6-pcs. Chickenjoy Bucket") {
+
                                 comboData.FSMA6.forEach((fsma6) => {
 
                                     cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma6)
@@ -714,7 +746,10 @@ describe('Item', () => {
                                     cy.get('.select__menu-list').contains('div', fsma6).click()
 
                                 })
-                            } else if (data[key].item === "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)") {
+                            } else if (data[key].item === "FSM A 8-pcs. Chickenjoy Bucket") {
+
+                                cy.get('.select__clear-indicator').click()
+
                                 comboData.FSMA8.forEach((fsma8) => {
 
                                     cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
@@ -723,7 +758,10 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)") {
+                            } else if (data[key].item === "FSM B 6-pcs. Chickenjoy Bucket") {
+
+                                cy.get('.select__clear-indicator').click()
+
                                 comboData.FSMB6.forEach((fsmb6) => {
 
                                     cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
@@ -733,6 +771,8 @@ describe('Item', () => {
                                 })
                                 
                             } else {
+
+                                cy.get('.select__clear-indicator').click()
 
                                 comboData.FSMB8.forEach((fsmb8) => {
 
@@ -757,7 +797,7 @@ describe('Item', () => {
 
                     cy.get('.border-blue-500').click()
 
-                    cy.wait(2000)
+                    cy.wait(8000)
 
                     cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
 
@@ -765,9 +805,11 @@ describe('Item', () => {
 
                 else if (data[key].item === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                    cy.wait(4000)
+                    cy.wait(8000)
                     
                     cy.get('#itmdsc').clear().type(data[key].item)
+
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
@@ -776,6 +818,8 @@ describe('Item', () => {
                     cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
                     cy.get('#itmclacde').select(data[key].itemClass)
+
+                    cy.wait(2000)
 
                     cy.get('#untmea').clear().type(data[key].unitMeasure)
 
@@ -815,7 +859,9 @@ describe('Item', () => {
 
                         cy.fixture('item-combomeal-data.json').then((comboData) => {
 
-                            if (data[key].item === "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)") {
+                            cy.wait(8000)
+
+                            if (data[key].item === "FSM A 6-pcs. Chickenjoy Bucket") {
                                 
                                 comboData.FSMA6.forEach((fsma6) => {
 
@@ -825,7 +871,9 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)") {
+                            } else if (data[key].item === "FSM A 8-pcs. Chickenjoy Bucket") {
+
+                                cy.get('.select__clear-indicator').click()
 
                                 comboData.FSMA8.forEach((fsma8) => {
 
@@ -835,7 +883,10 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)") {
+                            } else if (data[key].item === "FSM B 6-pcs. Chickenjoy Bucket") {
+
+                                cy.get('.select__clear-indicator').click()
+
                                 comboData.FSMB6.forEach((fsmb6) => {
 
                                     cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb6)
@@ -845,6 +896,8 @@ describe('Item', () => {
                                 })
 
                             } else {
+
+                                cy.get('.select__clear-indicator').click()
 
                                 comboData.FSMB8.forEach((fsmb8) => {
 
@@ -877,7 +930,7 @@ describe('Item', () => {
 
                 else {
 
-                    cy.wait(4000)
+                    cy.wait(8000)
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
@@ -937,7 +990,9 @@ describe('Item', () => {
 
                         cy.fixture('item-combomeal-data.json').then((comboData) => {
 
-                            if (data[key].item === "FSM A 6-pcs: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)") {
+                            cy.wait(8000)
+
+                            if (data[key].item === "FSM A 6-pcs. Chickenjoy Bucket") {
                                 
                                 comboData.FSMA6.forEach((fsma6) => {
 
@@ -947,11 +1002,12 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM A 8-pcs: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)") {
+                            } else if (data[key].item === "FSM A 8-pcs. Chickenjoy Bucket") {
+
+                                cy.get('.select__clear-indicator').click()
 
                                 comboData.FSMA8.forEach((fsma8) => {
 
-                                    cy.get('.select__clear-indicator').click()
 
                                     cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsma8)
 
@@ -959,7 +1015,9 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM B 6-pcs: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)") {
+                            } else if (data[key].item === "FSM B 6-pcs. Chickenjoy Bucket") {
+
+                                cy.get('.select__clear-indicator').click()
 
                                 comboData.FSMB6.forEach((fsmb6) => {
 
@@ -970,6 +1028,8 @@ describe('Item', () => {
                                 })
                                 
                             } else {
+
+                                cy.get('.select__clear-indicator').click()
 
                                 comboData.FSMB8.forEach((fsmb8) => {
 
@@ -992,7 +1052,7 @@ describe('Item', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                    cy.wait(3000)
+                    cy.wait(8000)
                     
                     cy.checkElementVisibility('.shadow-lg', '17.2', 'Upon Clicking the "Save" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
