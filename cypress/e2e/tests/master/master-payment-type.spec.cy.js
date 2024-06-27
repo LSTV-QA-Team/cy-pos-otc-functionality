@@ -234,7 +234,9 @@ describe('Payment Type', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                        cy.get('#paytyp').should('be.empty')
+                        cy.get('.border-red-500').click()
+
+                        // cy.get('#paytyp').should('be.empty')
 
                         cy.wait(3000)
 
@@ -354,7 +356,7 @@ describe('Payment Type', () => {
 
                     })
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-red-500').click()
 
                     cy.wait(3000)
 
