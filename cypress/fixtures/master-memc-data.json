@@ -54,6 +54,6 @@
   {
     "memc": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
     "value": 503,
-    "onlyDelete": true
+    "onlyDelete": false
   }
 ]
