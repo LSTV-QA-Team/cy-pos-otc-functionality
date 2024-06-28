@@ -35,7 +35,7 @@ describe("Void Transactions ", () => {
       "Transaction Complete."
     );
 
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist");
     cy.get("#postypcde").select("DINE IN");
     cy.get("#warcde").select("Jollibee 1");
@@ -198,6 +198,7 @@ describe("Void Transactions ", () => {
   });
 
   it("1 Pax with Senior Discount", () => {
+    cy.wait(5000);
     cy.contains("FOOD").click().wait(2000);
     cy.contains("TakeOut Favorites").click().wait(2000);
     cy.contains("TF Palabok Family Pan").click().wait(2000);
@@ -278,6 +279,7 @@ describe("Void Transactions ", () => {
   });
 
   it("1 Pax with PWD Discount", () => {
+    cy.wait(5000);
     cy.contains("DESSERT").click().wait(2000);
     cy.contains("Desserts and Pies").click().wait(2000);
     cy.contains("Buko Pie").click().wait(2000);
@@ -345,6 +347,7 @@ describe("Void Transactions ", () => {
   });
 
   it("1 Pax with Athlete Discount", () => {
+    cy.wait(5000);
     cy.contains("FOOD").click().wait(2000);
     cy.contains("Breakfast").click().wait(2000);
     cy.contains("BF Hotdog").click().wait(2000);
@@ -421,6 +424,7 @@ describe("Void Transactions ", () => {
   });
 
   it("1 Pax with Medal of Valor Discount", () => {
+    cy.wait(5000);
     cy.contains("FOOD").click().wait(2000);
     cy.contains("Breakfast").click().wait(2000);
     cy.contains("BF 2pc Pancake").click().wait(2000);
@@ -495,6 +499,7 @@ describe("Void Transactions ", () => {
   });
 
   it("1 Pax with Diplomat Discount", () => {
+    cy.wait(5000);
     cy.contains("BEVERAGES").click().wait(2000);
     cy.contains("Beverages").click().wait(2000);
     cy.contains("Brown Sugar Milk Tea").click().wait(2000);
@@ -572,6 +577,7 @@ describe("Void Transactions ", () => {
   });
 
   it("1 Pax with MEMC Senior Discount", () => {
+    cy.wait(5000);
     cy.get("#postypcde").select("TAKEOUT").wait(2000);
     cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
@@ -657,6 +663,7 @@ describe("Void Transactions ", () => {
   });
 
   it("1 Pax with MEMC PWD Discount", () => {
+    cy.wait(5000);
     cy.contains("FOOD").click();
     cy.contains("Family Super Meals").click();
     cy.contains(
