@@ -65,6 +65,7 @@ describe("Transaction 3", () => {
     cy.get("#customerName").click().type("Edith ulit");
     cy.get(".border-blue-500").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
+    cy.waot(5000)
   });
 
 

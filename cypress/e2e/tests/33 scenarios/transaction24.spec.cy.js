@@ -74,5 +74,6 @@ describe("Transaction 24", () => {
       "have.text",
       "Transaction Refunded."
     );
+    cy.wait(5000)
   });
 })

@@ -77,6 +77,7 @@ describe("Transaction 17", () => {
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Order Duplication");
     cy.get(".border-blue-500").click().wait(2000);
+    cy.wait(5000)
   });
 
 })

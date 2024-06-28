@@ -102,6 +102,7 @@ describe("Transaction 9", () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.wait(5000)
   });
 
 })

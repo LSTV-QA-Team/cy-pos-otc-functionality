@@ -79,6 +79,7 @@ describe("Transaction 15", () => {
     //   "have.text",
     //   "Transaction Void Successfull"
     // );
+    cy.wait(5000)
   });
 
 })
