@@ -106,7 +106,7 @@ describe("Transaction 1", () => {
         "Transaction Complete."
       );
 
-      cy.wait("5000")
+      cy.wait(5000)
     });
 
 
