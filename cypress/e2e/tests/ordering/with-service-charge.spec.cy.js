@@ -7,9 +7,67 @@ describe("With Service Charge ", () => {
     assertionResults = [];
     failureMessages = [];
 
+
     // Login with valid credentials
     cy.login("lstv", "lstventures");
   });
+
+  before("Clear Transaction" , () => { 
+
+    cy.task("queryDb","TRUNCATE TABLE posfile")
+    cy.task("queryDb","TRUNCATE TABLE orderfile")
+    cy.task("queryDb","TRUNCATE TABLE orderfile2")
+    cy.task("queryDb","TRUNCATE TABLE tabletranfile")
+    cy.task("queryDb","TRUNCATE TABLE tabletranfile2")
+    cy.task("queryDb","TRUNCATE TABLE takeouttranfile")
+    cy.task("queryDb","TRUNCATE TABLE billingfile")
+    cy.task("queryDb","TRUNCATE TABLE voidrequestfile")
+    cy.task("queryDb","TRUNCATE TABLE orderitemdiscountfile")
+    cy.task("queryDb","TRUNCATE TABLE orderdiscountfile")
+    cy.task("queryDb","TRUNCATE TABLE orderitemmodifierfile")
+    cy.task("queryDb","TRUNCATE TABLE zreadingfile")
+
+
+    cy.task('queryDb', `
+      UPDATE syspar 
+      SET ordocnum = 'INV-0000000000000001', 
+          posdocnum = 'POS-0000000000000001', 
+          seqnum = 'SEQ-0000000000000000', 
+          billnum = 'BILL-0000000000000001', 
+          voidnum = 'VOID-0000000000000001', 
+          billdocnum = 'BLN-0000000000001', 
+          ordercde = 'ORD-0000000000001', 
+          rddocnum = 'RD-0000000000000', 
+          rsdocnum = 'RS-0000000000000', 
+          tidocnum = 'TI-0000000000000', 
+          todocnum = 'TO-0000000000000', 
+          wsdocnum = 'WS-0000000000000', 
+          pcdocnum = 'PC-0000000000000', 
+          refnum = 'REF-0000000000000001';
+
+    `).then((result) => {
+
+      cy.log('Update successful:', result)
+
+    })
+
+  })
+  
+it("Cash In" , () => {
+
+  cy.get(':nth-child(2) > .sc-beySPh').click()
+  cy.contains("Cash Fund").should('be.enabled').click()
+    cy.get('.my-4 > :nth-child(2) > :nth-child(2) > .font-montserrat').click().wait(500)
+    for (let i = 0; i < 3; i++){
+      cy.get(':nth-child(4) > :nth-child(2) > .font-montserrat').click()
+    }
+    cy.contains('Save').click()
+    cy.contains('Transaction Success').should('have.text',"Transaction Success").wait(1000)
+
+    cy.get('.ps-10 > .flex').click()
+
+})
+
 
   it("1 Pax with Regular Transaction and Service Charge", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
@@ -68,10 +126,6 @@ describe("With Service Charge ", () => {
     cy.get("#orderitmid").click();
     cy.get(".border-blue-500").click();
 
-    cy.get("#cardholder").click().type("Erning");
-    cy.get("#cardno").click().type("7899564553");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
-
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex").should(
       "have.text",
       "Discount : 10%"
@@ -125,10 +179,6 @@ describe("With Service Charge ", () => {
     cy.get("#discde").select("20%");
     cy.get("#orderitmid").click();
     cy.get(".border-blue-500").click();
-
-    cy.get("#cardholder").click().type("Tonyang");
-    cy.get("#cardno").click().type("667534342");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -260,7 +310,7 @@ describe("With Service Charge ", () => {
     );
   });
 
-  it.only("1 Pax with PWD Discount and Service Charge", () => {
+  it("1 Pax with PWD Discount and Service Charge", () => {
     cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);

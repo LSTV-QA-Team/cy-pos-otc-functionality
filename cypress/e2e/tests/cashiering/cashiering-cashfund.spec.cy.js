@@ -101,6 +101,8 @@ describe("Cash Fund", () => {
 
     cy.checkForFailure(assertionResults, failureMessages)
 
+    cy.get('.ps-10 > .flex').click()
+
   }) 
 
   it('Inputing Data', () => {

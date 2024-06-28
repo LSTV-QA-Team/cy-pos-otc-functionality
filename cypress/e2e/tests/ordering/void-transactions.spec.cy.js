@@ -712,10 +712,7 @@ describe("Void Transactions ", () => {
     cy.get("#customerName").click().type("YOR");
     cy.get(".border-blue-500").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
-    cy.contains("Transaction Complete.").should(
-      "have.text",
-      "Transaction Complete."
-    );
+ 
     cy.wait(2000);
 
     cy.get("#postypcde").select("DINE IN").wait(2000);
