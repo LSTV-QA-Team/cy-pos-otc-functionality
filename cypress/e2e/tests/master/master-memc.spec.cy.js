@@ -305,7 +305,7 @@ describe('MEMC', () => {
 
         cy.fixture('master-memc-data.json').then((data) => {
 
-            const specificmemc = data[0];
+            const specificmemc = data[8];
 
                 cy.wait(2000)
 

@@ -562,7 +562,7 @@ describe('Item', () => {
 
                 }
 
-                else if (data[key].item === "% & ( ) / - .") {
+                else if (data[key].item === "% & ( ) / - . ,") {
 
                     cy.wait(8000)
 
@@ -811,7 +811,7 @@ describe('Item', () => {
 
                     cy.wait(2000)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - . ,', assertionResults, failureMessages)
 
                     cy.get('#itmtyp').select(data[key].itemType)
 
