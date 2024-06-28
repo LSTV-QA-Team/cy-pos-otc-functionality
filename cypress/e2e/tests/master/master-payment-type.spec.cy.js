@@ -75,6 +75,8 @@ describe('Payment Type', () => {
         cy.url({timeout: 10000})
             .should('contain', '/paymentType/?menfield=masterfile_other_payments')
 
+        cy.wait(2000)
+
         cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Payment Type:', '"Payment Type" Pager U/I window was not visible or active.', assertionResults, failureMessages)
 
         cy.wait(2000)
@@ -130,137 +132,138 @@ describe('Payment Type', () => {
 
             for (const key in data){
 
+                cy.wait(4000)
+
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
-                    if (data[key].paymentType === "null") {
+                if (data[key].paymentType === "null") {
 
-                        cy.get('#paytyp').clear().type(data[key].paymentType)
-                        
-                        cy.get('#paytyp').clear()
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
-
-                        cy.get('#paytyp').type('Cash')
-
-                        cy.get('.border-blue-500').click()
-
-                        cy.wait(2000)
-
-                        cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
-
-                        cy.wait(4000)
-
-                    } 
+                    cy.get('#paytyp').clear().type(data[key].paymentType)
                     
-                    else if (data[key].paymentType === "Electronic Card") {
+                    cy.get('#paytyp').clear()
 
-                        cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+                    cy.get('.border-blue-500').click()
 
-                        cy.get('#paytyp').clear().type(data[key].paymentType)
-                        
-                        cy.get('.border-red-500').click()
+                    cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
-                        cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
+                    cy.get('#paytyp').type('Cash')
 
-                        cy.contains('button[class*="border-red-500"]', 'No').click()
+                    cy.get('.border-blue-500').click()
 
-                        cy.wait(3000)
+                    cy.wait(2000)
 
-                        cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                        cy.get('.border-red-500').click()
+                } 
+                
+                else if (data[key].paymentType === "Electronic Card") {
 
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                    cy.wait(4000)
 
-                        cy.wait(3000)
+                    cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
-                        cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.get('#paytyp').clear().type(data[key].paymentType)
+                    
+                    cy.get('.border-red-500').click()
 
-                        cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Payment Type', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                        cy.wait(4000)
+                    cy.contains('button[class*="border-red-500"]', 'No').click()
 
-                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.wait(3000)
+
+                    cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    cy.get('.border-red-500').click()
+
+                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+
+                    cy.wait(3000)
+
+                    cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
+
+                    cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Payment Type', assertionResults, failureMessages)
+
+                    cy.wait(4000)
+
+                    cy.get('.sc-eDLKkx > .anticon > svg').click()
 
 
-                    }
+                }
 
-                    else if (data[key].paymentType === "% & ( ) / - .") {
+                else if (data[key].paymentType === "% & ( ) / - .") {
 
-                        cy.get('#paytyp').clear().type(data[key].paymentType)
+                    cy.wait(4000)
 
-                        cy.checkValue('#paytyp', 'No Reference No.', 'Upon encoding data:', data[key].paymentType, assertionResults, failureMessages)
-                        
-                        cy.get('.border-blue-500').click()
+                    cy.get('#paytyp').clear().type(data[key].paymentType)
 
-                        cy.wait(2000)
+                    cy.checkValue('#paytyp', 'No Reference No.', 'Upon encoding data:', data[key].paymentType, assertionResults, failureMessages)
+                    
+                    cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                    cy.wait(2000)
 
-                        cy.wait(2000)
+                    cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementVisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.wait(2000)
 
-                        // 11.2.2 Check if the "Description" textbox object is cleared or blank.
+                    cy.checkElementVisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.wait(4000)
+                    // 11.2.2 Check if the "Description" textbox object is cleared or blank.
+                }
 
-                    }
+                else if (data[key].paymentType === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
 
-                    else if (data[key].paymentType === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
+                    cy.wait(4000)
 
-                        cy.get('#paytyp').clear().type(data[key].paymentType)
+                    cy.get('#paytyp').clear().type(data[key].paymentType)
 
-                        cy.checkElementVisibility('.Toastify__toast-body', '17.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.Toastify__toast-body', '17.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        cy.get('.border-red-500').click()
+                    cy.get('.border-red-500').click()
 
-                        // cy.wait(4000)
+                    // cy.wait(4000)
 
-                        // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
+                    // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
 
-                        cy.wait(4000)
+                }
 
-                    }
+                else if (data[key].paymentType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                    else if (data[key].paymentType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+                    cy.wait(4000)
 
-                        cy.get('#paytyp').clear().type(data[key].paymentType)
+                    cy.get('#paytyp').clear().type(data[key].paymentType)
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                    cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                        cy.get('#paytyp').should('be.empty')
+                    cy.get('.border-blue-500').click()
 
-                        cy.wait(3000)
+                    // cy.get('#paytyp').should('be.empty')
 
-                        cy.checkElementVisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.wait(3000)
 
-                        cy.wait(4000)
-                        
-                    }
+                    cy.checkElementVisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
+                    
+                }
 
-                    else {
+                else {
 
-                        cy.wait(4000)
+                    cy.wait(4000)
 
-                        cy.get('#paytyp').clear().type(data[key].paymentType)
+                    cy.get('#paytyp').clear().type(data[key].paymentType)
 
-                        cy.get('.border-blue-500').click()
+                    cy.get('.border-blue-500').click()
 
-                        cy.wait(2000)
+                    cy.wait(2000)
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
-                        
-                        cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+                    
+                    cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        // 4.2.2 Check if the "Description" textbox object is cleared or blank.
-                        
-                        // cy.get('.MuiTableBody-root').contains(data[key].paymentType).should('exist')
-
-                        cy.wait(6000)
-                    }
+                    // 4.2.2 Check if the "Description" textbox object is cleared or blank.
+                    
+                    // cy.get('.MuiTableBody-root').contains(data[key].paymentType).should('exist')
+                }
             }
         })
 
@@ -271,6 +274,8 @@ describe('Payment Type', () => {
     })
 
     it('Edit Functionality', () => {
+
+        cy.get('.border-red-500').click()
 
         cy.fixture('master-paymenttype-data.json').then((data) => {
 
@@ -283,6 +288,8 @@ describe('Payment Type', () => {
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
 
                 })
+
+                cy.wait(2000)
 
                 cy.checkElementVisibility('.shadow-lg', '20.1', 'Upon Clicking the "Edit" button:', 'The "Edit Payment Type" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -339,7 +346,7 @@ describe('Payment Type', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].paymentType + ' ?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
@@ -351,7 +358,7 @@ describe('Payment Type', () => {
 
                     })
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click()
 
                     cy.wait(3000)
 

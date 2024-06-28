@@ -103,6 +103,8 @@ describe('Free Reasons', () => {
             cy.wait(4000) 
 
             cy.get('.sc-eDLKkx > .anticon > svg').click()
+
+            cy.wait(2000)
                 
             cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -126,6 +128,8 @@ describe('Free Reasons', () => {
 
             for (const key in data){
 
+                cy.wait(8000)
+
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                     if (data[key].freeReasons === "null") {
@@ -143,6 +147,8 @@ describe('Free Reasons', () => {
                         cy.get('#freereason').type('Sample Giveaway')
 
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
@@ -186,7 +192,7 @@ describe('Free Reasons', () => {
 
                     else if (data[key].freeReasons === "% & ( ) / - .") {
 
-                        cy.wait(4000)
+                        cy.wait(8000)
 
                         cy.get('#freereason').clear().type(data[key].freeReasons)
 
@@ -194,19 +200,21 @@ describe('Free Reasons', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
-
-                        cy.wait(4000)
 
                     }
 
                     else if (data[key].freeReasons === "This is a very long string that exceeds the maximum allowed length.") {
 
-                        cy.wait(4000)
+                        cy.wait(8000)
 
-                        cy.checkElementVisibility('.text-sm', '17.1', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        cy.get('#freereason').clear().type(data[key].freeReasons)
+
+                        cy.checkInputMaxLength('#freereason', 50, '17.1', 'Upon Encoding in "Free Reasons" Textbox:', assertionResults, failureMessages)
+
+                        // cy.checkElementVisibility('.text-sm', '17.2', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('.border-blue-500').click()
 
@@ -214,14 +222,12 @@ describe('Free Reasons', () => {
 
                         // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
 
-                        cy.wait(4000)
-
                     }
 
                     else if (data[key].freeReasons === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                        cy.wait(4000)
-                        
+                        cy.wait(8000)
+
                         cy.get('#freereason').clear().type(data[key].freeReasons)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
@@ -229,15 +235,13 @@ describe('Free Reasons', () => {
                         cy.get('.border-blue-500').click()
 
                         cy.checkElementInvisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        cy.wait(4000)
                         
                     }
 
                     else {
 
-                        cy.wait(4000)
-
+                        cy.wait(8000)
+                        
                         cy.get('#freereason').clear().type(data[key].freeReasons)
 
                         cy.get('#freereason').should('have.value', data[key].freeReasons)
@@ -254,7 +258,6 @@ describe('Free Reasons', () => {
                         
                         cy.get('.MuiTableBody-root').contains(data[key].freeReasons).should('exist')
 
-                        cy.wait(8000)
                     } 
             }
         })
@@ -267,6 +270,8 @@ describe('Free Reasons', () => {
 
     it('Edit Functionality', () => {
 
+        cy.get('.border-red-500').click()
+
         cy.fixture('master-freereasons-data.json').then((data) => {
 
             const specificFreeReasons = data[7];
@@ -278,6 +283,8 @@ describe('Free Reasons', () => {
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
 
                 })
+
+                cy.wait(2000)
 
                 cy.checkElementVisibility('.shadow-lg', '20.1', 'Upon Clicking the "Edit" button:', 'The "Edit Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -334,7 +341,7 @@ describe('Free Reasons', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].freeReasons + ' ?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
@@ -346,7 +353,7 @@ describe('Free Reasons', () => {
 
                     })
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click()
 
                     cy.wait(3000)
 

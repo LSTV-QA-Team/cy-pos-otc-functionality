@@ -599,6 +599,9 @@ Cypress.Commands.add('checkValue', (selector, referenceNumber, errorContext, exp
       assertionResults.push({data: 'failed'})
     }
   }).then(() => {
+
+    cy.wait(4000)
+    
     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
   })
 })
@@ -664,6 +667,8 @@ Cypress.Commands.add('checkElementVisibility', (selector, referenceNumber, error
     }
   }).then(() => {
 
+    cy.wait(4000)
+
     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
 
   });
@@ -714,6 +719,8 @@ Cypress.Commands.add('checkElementInvisibility', (selector, referenceNumber, err
       assertionResults.push({ data: 'passed' });
     }
   }).then(() => {
+
+    cy.wait(4000)
 
     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
     
@@ -797,6 +804,8 @@ Cypress.Commands.add('checkTableColumnTitle', (expectedColTitle, referenceNumber
       }
     })
     .then(() => {
+
+      cy.wait(4000)
       // Write assertionResults status to a file
       cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
     });
@@ -824,6 +833,8 @@ Cypress.Commands.add('checkInputMaxLength', (selector, maxLength, referenceNumbe
       assertionResults.push({data: 'failed'})
     }
   }).then(() => {
+
+    cy.wait(4000)
     cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
   })
 })

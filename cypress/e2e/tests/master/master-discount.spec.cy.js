@@ -131,6 +131,8 @@ describe('Discount', () => {
 
             for (const key in data){
 
+                cy.wait(8000)
+
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
                 cy.get('#discde').clear().type(data[key].discountCode)
@@ -167,15 +169,17 @@ describe('Discount', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '42.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages)
+                        cy.wait(2000)
 
-                        cy.wait(6000)
+                        cy.checkLabelCaption('.Toastify__toast-body', '42.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages)
 
                         // cy.get('span[role="img"] svg[data-icon="close"]').click()
 
                     } 
                     
                     else if (data[key].discountCode === "SUMMERSALE") {
+
+                        cy.wait(8000)
 
                         cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
@@ -201,13 +205,15 @@ describe('Discount', () => {
 
                         cy.checkElementVisibility('.h-screen', '13.3.2', 'Upon clicking the "Yes" button, should back in Discount Pager U/I', assertionResults, failureMessages)
 
-                        cy.wait(6000)
+                        cy.wait(2000)
 
                         cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                     }
 
                     else if (data[key].discountCode === "% & ( ) / - .") {
+
+                        cy.wait(8000)
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -280,17 +286,18 @@ describe('Discount', () => {
 
                         cy.get('.border-blue-500').click()
 
+                        cy.wait(2000)
+
                         cy.checkLabelCaption('.Toastify__toast-body', '33.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                         cy.checkElementInvisibility('.shadow-lg', '33.2.1', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
-
-                        cy.wait(6000)
-
                     }
 
                     else if (data[key].discountCode === "WINTERHOLIDAY50PERCENTDISCOUNTFORALLITEMSOVER1000PHP") {
+
+                        cy.wait(8000)
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -365,11 +372,11 @@ describe('Discount', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.wait(6000)
-
                     }
 
                     else if (data[key].discountCode === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
+
+                        cy.wait(8000)
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -444,15 +451,17 @@ describe('Discount', () => {
 
                         cy.get('.border-blue-500').click() 
 
+                        cy.wait(2000)
+
                         cy.checkElementInvisibility('.shadow-lg', '51.2', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // Check if the "Description" textbox object is cleared or blank. 
 
-                        cy.wait(6000)
-
                     }
 
                     else {
+
+                        cy.wait(8000)
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
@@ -524,6 +533,7 @@ describe('Discount', () => {
 
                         cy.get('.border-blue-500').click()
 
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -532,8 +542,6 @@ describe('Discount', () => {
                         cy.checkElementVisibility('.shadow-lg', '11.2', 'Upon Clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.get('.MuiTableBody-root').contains(data[key].discountCode).should('exist')
-
-                        cy.wait(8000)
                     } 
             }
         }) 
@@ -545,6 +553,8 @@ describe('Discount', () => {
     })
 
     it('Edit Functionality', () => {
+
+        cy.get('.border-red-500').click()
 
         cy.wait(8000)
 
@@ -653,6 +663,8 @@ describe('Discount', () => {
 
             cy.get('.border-blue-500').click()
 
+            cy.wait(2000)
+
             cy.checkLabelCaption('.Toastify__toast-body', '62.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
             cy.checkElementInvisibility('.shadow-lg', '62.2.1', 'Upon Clicking the "Update" button:', 'The "Edit Discount" modal window still visible', assertionResults, failureMessages)
@@ -685,7 +697,7 @@ describe('Discount', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '63.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].discountDesc + ' ?', assertionResults, failureMessages);
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-red-500').click()
 
                     cy.wait(3000)
 
@@ -697,9 +709,11 @@ describe('Discount', () => {
 
                     })
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click()
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '63.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
+                    cy.wait(2000)
+
+                    cy.checkLabelCaption('.Toastify__toast-body', '63.5.1', 'Upon Clicking the "Confirm" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                     cy.wait(6000)
 

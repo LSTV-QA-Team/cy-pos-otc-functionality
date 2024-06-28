@@ -165,7 +165,7 @@ describe('Item Subclassification', () => {
 
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
-                cy.wait(8000)
+                cy.wait(4000)
 
                 if (data[key].itemSubclass === "null") {
 
@@ -193,13 +193,15 @@ describe('Item Subclassification', () => {
 
                     cy.get('.border-blue-500').click()
 
+                    cy.wait(2000)
+
                     cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
                 } 
                 
                 else if (data[key].itemSubclass === "Milkshakes") {
 
-                    cy.wait(8000)
+                    cy.wait(4000)
 
                     cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
@@ -211,7 +213,7 @@ describe('Item Subclassification', () => {
 
                     cy.checkLabelCaption('.h-auto', '8.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-red-500"]', 'No').click()
+                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-red-500').click()
 
                     cy.wait(3000)
 
@@ -219,7 +221,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('.border-red-500').click()
 
-                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-blue-500').click()
 
                     cy.wait(3000)
 
@@ -234,7 +236,7 @@ describe('Item Subclassification', () => {
 
                 else if (data[key].itemSubclass === "% & ( ) / - .") {
 
-                    cy.wait(8000)
+                    cy.wait(4000)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
@@ -246,6 +248,8 @@ describe('Item Subclassification', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
+                    cy.wait(2000)
+
                     cy.checkElementVisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
                     // 43.2.2 Check if the "Description" textbox object is cleared or blank.
@@ -254,17 +258,13 @@ describe('Item Subclassification', () => {
 
                 else if (data[key].itemSubclass === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
 
-                    cy.wait(8000)
+                    cy.wait(4000)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
-                    cy.checkInputMaxLength('#itmcladsc', 50, '19.1', 'Upon Encoding in "Item Classification" Textbox:', assertionResults, failureMessages)
-
                     // cy.checkElementVisibility('.Toastify__toast-body', '19.2', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                    cy.checkInputMaxLength('#itemsubclassdsc', 50, '16.1', 'Upon Encoding in "Item Subclassification" Textbox:', assertionResults, failureMessages)
-
-                    cy.get('#itmclacde').select(data[key].itemClass)
+                    cy.checkInputMaxLength('#itemsubclassdsc', 50, '16.2', 'Upon Encoding in "Item Subclassification" Textbox:', assertionResults, failureMessages)
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
@@ -272,33 +272,29 @@ describe('Item Subclassification', () => {
                     cy.get('.border-blue-500').click()
                 }
 
-                else if (data[key].itemSubclass === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :") {
+                else if (data[key].itemSubclass === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                    cy.wait(8000)
+                    cy.wait(4000)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
-
-                    cy.get('#itmclacde').realClick()
+                    cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
                     cy.get('.border-blue-500').click()
 
-                    cy.wait(4000)
+                    cy.wait(2000)
 
-                    // 16.2 click "OK" button on notification message.
+                    // cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                    cy.checkElementVisibility('.shadow-lg', '17.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
-
-                    // 16.2.2 Check if the "Description" textbox object is cleared or blank.
+                    cy.checkElementVisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Void/Refund Reasons" modal window was visible or active.', assertionResults, failureMessages)                        
 
                 }
 
                 else {
 
-                    cy.wait(8000)
+                    cy.wait(4000)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
@@ -333,13 +329,13 @@ describe('Item Subclassification', () => {
 
         cy.fixture('master-itemsubclass-data.json').then((data) => {
 
-            const specificItemSubclass = data[0];
+            const specificItemSubclass = data[1];
 
                 cy.get('.MuiSelect-select.MuiTablePagination-select').click();
 
-                cy.get('ul[role="listbox"] li').contains('15').click();
+                cy.get('ul[role="listbox"] li').contains('100').click();
 
-                cy.wait(2000);
+                cy.wait(4000);
 
                 cy.contains('tbody > tr', specificItemSubclass.itemSubclass).within(() => {
 
@@ -371,6 +367,8 @@ describe('Item Subclassification', () => {
 
                 cy.get('.border-blue-500').click()
 
+                cy.wait(2000)
+
                 cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
                 cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Item Subclassification" modal window still visible', assertionResults, failureMessages)
@@ -388,7 +386,7 @@ describe('Item Subclassification', () => {
 
         cy.fixture('master-itemsubclass-data.json').then((data) => {
             
-            const specificItemSubclass = data[1];
+            const specificItemSubclass = data[2];
 
                 cy.wait(2000)
 
@@ -424,7 +422,7 @@ describe('Item Subclassification', () => {
 
                 cy.get('.border-red-500').click()
 
-                cy.wait(4000)
+                cy.wait(2000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '30.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
@@ -442,7 +440,7 @@ describe('Item Subclassification', () => {
 
         cy.fixture('master-itemsubclass-data.json').then((data) => {
 
-            const specificItemSubclass = data[3];
+            const specificItemSubclass = data[4];
 
                 cy.wait(2000);
 

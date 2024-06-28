@@ -36,40 +36,40 @@ describe('Special Request', () => {
 
     })
 
-    // after(() => {
+    after(() => {
 
-    //     cy.fixture('data-to-delete.json').then((data) => {
+        cy.fixture('data-to-delete.json').then((data) => {
 
-    //         data.forEach((item) => {
+            data.forEach((item) => {
 
-    //             const specialChar = item.dataToDelete;
-    //             const deleteQuery = `DELETE FROM modifierfile WHERE modcde = '${specialChar}'`;
+                const specialChar = item.dataToDelete;
+                const deleteQuery = `DELETE FROM modifierfile WHERE modcde = '${specialChar}'`;
                 
-    //             cy.task('queryDb', deleteQuery).then(() => {
+                cy.task('queryDb', deleteQuery).then(() => {
 
-    //                 cy.log(`Deleted data with description: ${specialChar}`)
+                    cy.log(`Deleted data with description: ${specialChar}`)
 
-    //             })
-    //         })
+                })
+            })
     
-    //         cy.task('queryDb', 'SELECT * FROM modifierfile').then((records) => {
+            cy.task('queryDb', 'SELECT * FROM modifierfile').then((records) => {
 
-    //             const remainingData = records.map((record) => record.description)
-    //             const deletedChars = data.map((item) => item.dataToDelete)
+                const remainingData = records.map((record) => record.description)
+                const deletedChars = data.map((item) => item.dataToDelete)
                 
-    //             deletedChars.forEach((char) => {
+                deletedChars.forEach((char) => {
 
-    //                 expect(remainingData).to.not.include(char)
+                    expect(remainingData).to.not.include(char)
 
-    //             })
+                })
     
-    //             cy.log('Specified data Successfully deleted.')
+                cy.log('Specified data Successfully deleted.')
 
-    //         })
-    //     })
-    // })
+            })
+        })
+    })
 
-    it.only('Check Special Request Page', () => {  
+    it('Check Special Request Page', () => {  
         
         cy.navigateToModule('Master File', 'Special Request')
 
@@ -96,7 +96,7 @@ describe('Special Request', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it.only('Add Functionality', () => {
+    it('Add Functionality', () => {
 
         cy.fixture('master-specialreq-data.json').then((data) => {
 
@@ -178,6 +178,8 @@ describe('Special Request', () => {
 
                     cy.get('.border-blue-500').click()
 
+                    cy.wait(2000)
+
                     cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Special Request * is required', assertionResults, failureMessages)
 
                     cy.get('#modcde').clear()
@@ -206,6 +208,8 @@ describe('Special Request', () => {
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
                     cy.get('.border-red-500').click()
+
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
@@ -242,6 +246,7 @@ describe('Special Request', () => {
 
                     cy.get('.border-blue-500').click()
 
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '5.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -266,6 +271,8 @@ describe('Special Request', () => {
                     cy.wait(4000)
 
                     cy.get('.border-blue-500').click()
+
+                    cy.wait(2000)
 
                     cy.checkElementVisibility('.text-sm', '19.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
 
@@ -310,6 +317,7 @@ describe('Special Request', () => {
 
                     cy.get('.border-blue-500').click()
 
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -334,6 +342,8 @@ describe('Special Request', () => {
     });
 
     it('Edit Functionality', () => {
+
+        cy.get('.border-blue-500').click()
 
         cy.fixture('master-specialreq-data.json').then((data) => {
 

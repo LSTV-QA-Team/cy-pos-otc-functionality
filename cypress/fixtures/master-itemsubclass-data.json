@@ -1,5 +1,9 @@
 [
   {
+    "itemSubclass": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
+    "itemClass": "Food"
+  },
+  {
     "itemSubclass": "Mashed Potatoes",
     "itemClass": "Food",
     "editItemSubclass": "Snacks",
@@ -63,10 +67,6 @@
   },
   {
     "itemSubclass": "null",
-    "itemClass": "Food"
-  },
-  {
-    "itemSubclass": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
     "itemClass": "Food"
   },
   {

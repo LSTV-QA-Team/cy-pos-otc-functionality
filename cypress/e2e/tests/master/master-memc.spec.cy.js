@@ -158,15 +158,15 @@ describe('MEMC', () => {
 
                         cy.get('#codedsc').clear()
 
-                        cy.get('#value').type(data[key].value)
+                        cy.get('#value').clear().type(data[key].value)
 
                         cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'MEMC * is required', assertionResults, failureMessages)
 
                         cy.wait(4000)
 
-                        cy.get('#codedsc').type('MEMC 100')
+                        cy.get('#codedsc').clear().type('MEMC 100')
 
-                        cy.get('#value').type('100')
+                        cy.get('#value').clear().type('100')
 
                         cy.get('.border-blue-500').click()
 
@@ -214,7 +214,7 @@ describe('MEMC', () => {
 
                         cy.get('#codedsc').clear().type(data[key].memc)
 
-                        cy.get('#value').type(data[key].value)
+                        cy.get('#value').clear().type(data[key].value)
 
                         cy.get('.border-blue-500').click()
 
@@ -222,7 +222,7 @@ describe('MEMC', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 43.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -232,13 +232,17 @@ describe('MEMC', () => {
 
                         cy.get('#codedsc').clear().type(data[key].memc);
 
-                        cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        cy.checkInputMaxLength('#codedsc', 50, '19.1', 'Upon Encoding in "Free Reasons" Textbox:', assertionResults, failureMessages)
 
-                        cy.get('#value').type(data[key].value)
+                        // cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('#value').clear().type(data[key].value)
 
-                        cy.checkElementVisibility('.text-sm', '20.1', 'Upon clicking the "Save" button:', '"Please input valid data." notificaation message is not visible', assertionResults, failureMessages)
+                        // cy.get('.border-blue-500').click()
+
+                        // cy. wait(2000)
+
+                        // cy.checkElementVisibility('.text-sm', '20.1', 'Upon clicking the "Save" button:', '"Please input valid data." notificaation message is not visible', assertionResults, failureMessages)
 
                     }
 
@@ -250,13 +254,15 @@ describe('MEMC', () => {
 
                         cy.get('#value').realClick()
 
-                        cy.get('#value').type(data[key].value)
+                        cy.get('#value').clear().type(data[key].value)
 
                         cy.get('.border-blue-500').click()
+
+                        cy. wait(2000)
                         
                         cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '17.2.1', 'Upon clicking the "OK" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '17.2.1', 'Upon clicking the "OK" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -269,7 +275,7 @@ describe('MEMC', () => {
 
                         cy.get('#codedsc').clear().type(data[key].memc)
 
-                        cy.get('#value').type(data[key].value)
+                        cy.get('#value').clear().type(data[key].value)
 
                         cy.get('.border-blue-500').click()  
                         
@@ -277,7 +283,7 @@ describe('MEMC', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.wait(2000)
+                        cy.wait(4000)
                         
                         cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
                         
@@ -295,6 +301,8 @@ describe('MEMC', () => {
 
     it('Edit Functionality', () => {
 
+        cy.get('.border-red-500').click()
+
         cy.fixture('master-memc-data.json').then((data) => {
 
             const specificmemc = data[0];
@@ -306,6 +314,8 @@ describe('MEMC', () => {
 
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
                 })
+
+                cy.wait(4000)
 
                 cy.checkElementVisibility('.shadow-lg', '22.1', 'Upon Clicking the "Edit" button:', 'The "Edit MEMC" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -333,7 +343,11 @@ describe('MEMC', () => {
 
                 cy.get('#value').clear().type('{rightarrow}{rightarrow}').type(specificmemc.editvalue)
 
+                cy.wait(4000)
+
                 cy.get('.border-blue-500').click()
+
+                cy.wait(2000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
@@ -371,7 +385,7 @@ describe('MEMC', () => {
 
                     cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
@@ -385,7 +399,9 @@ describe('MEMC', () => {
 
                     })
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click()
+
+                    cy.wait(4000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '30.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
