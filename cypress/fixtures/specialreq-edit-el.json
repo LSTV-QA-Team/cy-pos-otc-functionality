@@ -17,9 +17,9 @@
     "customErrorMsg": "Should be enabled to allow user to input data."
   },
   {
-    "sel": "#modgrpcde",
-    "assertion": "be.enabled",
-    "customErrorMsg": "Should be enabled to allow user to select data."
+    "sel": ".select__value-container",
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "Item Subclassification dropdown object should be enabled to allow user to select data."
   },
   {
     "sel": "button.border-blue-500",
