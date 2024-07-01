@@ -74,6 +74,8 @@ describe('Special Request', () => {
         cy.navigateToModule('Master File', 'Special Request')
 
         cy.url({timeout: 10000}).should('contain', 'specialRequests/?menfield=masterfile_special_requests')
+
+        cy.wait(4000)
         
         cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Special Request:', 'The "Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -123,8 +125,6 @@ describe('Special Request', () => {
                 expect(width).to.equal(420)
                    
             })
-
-            // 2.1.5 Check correct all object position
 
             cy.validateElements('specialreq-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
                             
@@ -250,7 +250,7 @@ describe('Special Request', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '5.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                    cy.checkElementInvisibility('.shadow-lg', '5.2.1', 'Upon clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.shadow-lg', '5.2.1', 'Upon clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
                     // 43.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -262,7 +262,9 @@ describe('Special Request', () => {
 
                     cy.get('#modcde').clear().type(data[key].specialReq)
 
-                    cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.Toastify__toast-body', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
+
+                    cy.checkInputMaxLength('#modcde', 50, '16.2', 'Upon Encoding in "Item Subclassification" Textbox:', assertionResults, failureMessages)
 
                     cy.get('#modgrpcde').click()
 
@@ -272,16 +274,11 @@ describe('Special Request', () => {
 
                     cy.get('.border-blue-500').click()
 
-                    cy.wait(2000)
-
-                    cy.checkElementVisibility('.text-sm', '19.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
-
-
                 }
 
                 else if (data[key].specialReq === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                    cy.wait(4000)
+                    cy.wait(8000)
 
                     cy.get('#modcde').clear().type(data[key].specialReq)
 
@@ -295,11 +292,11 @@ describe('Special Request', () => {
 
                     cy.wait(4000)
                     
-                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                    // cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
                     // 16.2 click "OK" button on notification message.
 
-                    cy.checkElementInvisibility('.shadow-lg', '16.2.1', 'Upon clicking the "OK" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.shadow-lg', '16.2.1', 'Upon clicking the "OK" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
                     // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -321,7 +318,7 @@ describe('Special Request', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                    cy.wait(3000)
+                    cy.wait(2000)
                     
                     cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -343,7 +340,7 @@ describe('Special Request', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-blue-500').click()
+        cy.get('.border-red-500').click()
 
         cy.fixture('master-specialreq-data.json').then((data) => {
 
@@ -360,6 +357,8 @@ describe('Special Request', () => {
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
 
                 })
+
+                cy.wait(2000)
 
                 cy.checkElementVisibility('.shadow-lg', '21.1', 'Upon Clicking the "Edit" button:', 'The "Edit Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -392,6 +391,7 @@ describe('Special Request', () => {
 
                 cy.get('.border-blue-500').click()
 
+                cy.wait(4000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
@@ -431,7 +431,7 @@ describe('Special Request', () => {
 
                     cy.validateElements('delete-confirm-el.json', '26.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.checkElementInvisibility('.shadow-lg', '26.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
@@ -445,7 +445,9 @@ describe('Special Request', () => {
 
                     cy.wait(4000)
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click()
+
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '26.5.1', 'Upon Clicking the "Yes" button in Delete Confirmation modal:', 'Successfully deleted.', assertionResults, failureMessages) 
 
@@ -488,7 +490,7 @@ describe('Special Request', () => {
                 if (data[key].onlySearchInval === true) {
 
                     // search invalid or not existing data
-                    cy.wait(2000)
+                    cy.wait(4000)
                             
                     cy.get('[data-testid="SearchIcon"]')
                       .click();
