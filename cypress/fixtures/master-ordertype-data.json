@@ -55,7 +55,7 @@
     "orderType": "DINEIN",
     "onlySearchVal": false,
     "onlySearchInval": false,
-    "onlyDelete": true
+    "onlyDelete": false
   },
   {
     "dineType": "This is a very long string that exceeds the maximum allowed length.",
