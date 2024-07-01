@@ -417,7 +417,7 @@ describe('Item', () => {
 
                     cy.get('.border-blue-500').click()
 
-                    cy.wait(8000)
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '63.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
@@ -671,7 +671,7 @@ describe('Item', () => {
 
                     cy.get('.border-blue-500').click()
 
-                    cy.wait(8000)
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '48.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -797,7 +797,7 @@ describe('Item', () => {
 
                     cy.get('.border-blue-500').click()
 
-                    cy.wait(8000)
+                    cy.wait(2000)
 
                     cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
 
@@ -808,8 +808,6 @@ describe('Item', () => {
                     cy.wait(8000)
                     
                     cy.get('#itmdsc').clear().type(data[key].item)
-
-                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - . ,', assertionResults, failureMessages)
 
@@ -1029,14 +1027,22 @@ describe('Item', () => {
                                 
                             } else {
 
-                                cy.get('.select__clear-indicator').click()
+                                cy.get('.select__value-container').then($container => {
+                                    if ($container.find('.select__multi-value').length > 0) {
 
-                                comboData.FSMB8.forEach((fsmb8) => {
+                                        cy.get('.select__clear-indicator').click()
 
-                                    cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+                                    } else {
 
-                                    cy.get('.select__menu-list').contains('div', fsmb8).click()
+                                        comboData.FSMB8.forEach((fsmb8) => {
 
+                                            cy.get('#selectedItemDefault > .select__control > .select__value-container').click().type(fsmb8)
+        
+                                            cy.get('.select__menu-list').contains('div', fsmb8).click()
+        
+                                        })
+
+                                    }
                                 })
                             }
                         })
@@ -1069,7 +1075,7 @@ describe('Item', () => {
 
         cy.checkForFailure(assertionResults, failureMessages)
         
-    });
+    })
 
     it('Edit Functionality', () => {
 
@@ -1251,8 +1257,8 @@ describe('Item', () => {
             }
         })
 
-        cy.checkForFailure(assertionResults, failureMessages);
-    });
+        cy.checkForFailure(assertionResults, failureMessages)
+    })
 
 
     it('Search Functionality', () => {
@@ -1322,5 +1328,5 @@ describe('Item', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .should('have.text', 'Masterfile')
-    });
-});
+    })
+})

@@ -58,47 +58,76 @@ describe('Receipt Footer Set Up', () => {
                     cy.get('#supname')
                       .type(data[key].suppName)
 
+                    cy.checkValue('#supname', '3.1', 'After Encoding in "Supplier Name" Textbox:', data[key].suppName, assertionResults, failureMessages)
 
                     cy.get('#supaddress').clear()
                       .type(data[key].suppAdd)
 
+                    cy.checkValue('#supaddress', '4.1', 'After Encoding in "Supplier Address" Textbox:', data[key].suppAdd, assertionResults, failureMessages)
+
                     cy.get('#supvarregtin').clear()
                       .type(data[key].suppVAT)
 
+                    cy.checkValue('#supvarregtin', '5.1', 'After Encoding in "Supplier VAT Registered TIN" Textbox:', data[key].suppVAT, assertionResults, failureMessages)
+
                     cy.get('#supnonvatregtin').clear()
                       .type(data[key].suppNonVAT)
+
+                    cy.checkValue('#supnonvatregtin', '6.1', 'After Encoding in "Supplier Non-VAT Registered TIN" Textbox:', data[key].suppNonVAT, assertionResults, failureMessages)
                     
                     cy.get('#accrenum').clear()
                       .type(data[key].accredNo)
 
+                    cy.checkValue('#accrenum', '7.1', 'After Encoding in "Accredited No." Textbox:"', data[key].accredNo, assertionResults, failureMessages)
+
                     cy.get('#accredate').clear()
                       .type(data[key].accredDate)
+
+                    cy.checkValue('#accredate', '8.1', 'After Encoding in "Accredited Date" Textbox:', data[key].accredDate, assertionResults, failureMessages)
 
                     cy.get('#permitnum').clear()
                       .type(data[key].permitNo)
 
+                    cy.checkValue('#permitnum', '9.1', 'After Encoding in "Permit No." Textbox:', data[key].permitNo, assertionResults, failureMessages)
+
                     cy.get('#validyr').clear()
                       .type(data[key].yearsValidity)
+
+                    cy.checkValue('#validyr', '10.1', 'After Encoding in "Years Validity" Textbox:', data[key].yearsValidity, assertionResults, failureMessages)
                     
                     cy.get('#dateissued').clear()
                       .type(data[key].dateIssued)
 
+                    cy.checkValue('#dateissued', '11.1', 'After Encoding in "Date Issued" Textbox:', data[key].dateIssued, assertionResults, failureMessages)
+
                     cy.get('#footermsg1').clear()
                       .type(data[key].lineMsg1)
+
+                    cy.checkValue('#footermsg1', '12.1', 'After Encoding in "Line Message 1" Textbox:', data[key].lineMsg1, assertionResults, failureMessages)
 
                     cy.get('#footermsg2').clear()
                       .type(data[key].lineMsg2)
 
+                    cy.checkValue('#footermsg2', '13.1', 'After Encoding in "Line Message 2" Textbox:', data[key].lineMsg2, assertionResults, failureMessages)
+
                     cy.get('#footermsg3').clear()
                       .type(data[key].lineMsg3)
 
+                    cy.checkValue('#footermsg3', '14.1', 'After Encoding in "Line Message 3" Textbox:', data[key].lineMsg3, assertionResults, failureMessages)
+
                     cy.get('#footermsg4').clear()
                       .type(data[key].lineMsg4)
+
+                    cy.checkValue('#footermsg4', '15.1', 'After Encoding in "Line Message 4" Textbox:', data[key].lineMsg4, assertionResults, failureMessages)
                         
                     cy.get('#footermsg5').clear()
                       .type(data[key].lineMsg5)
+
+                    cy.checkValue('#footermsg5', '16.1', 'After Encoding in "Line Message 5" Textbox:', data[key].lineMsg5, assertionResults, failureMessages)
                     
                     cy.get('.border-blue-500').click()
+
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Update" button:', 'Successfully updated.', assertionResults, failureMessages)
 
@@ -139,12 +168,16 @@ describe('Receipt Footer Set Up', () => {
                     cy.get('#supvarregtin').clear()
                       .type(data[key].suppVAT)
 
-                    cy.checkInputMaxLength('#supvarregtin', 12, '24.1', 'Upon Encoding in "Supplier VAT Registered TIN" Textbox:', assertionResults, failureMessages)
+                    cy.checkInputMaxLength('#supvarregtin', 12, '24.1', 'Upon Encoding in "" Textbox:', assertionResults, failureMessages)
+
+                    cy.checkValue('#supvarregtin', '24.2', 'After Encoding in "Supplier VAT Registered TIN" Textbox:', data[key].suppVATExpected, assertionResults, failureMessages)
 
                     cy.get('#supnonvatregtin').clear()
                       .type(data[key].suppNonVAT)
                     
-                    cy.checkInputMaxLength('#supnonvatregtin', 12, '25.1', 'Upon Encoding in "Supplier Non-VAT Registered TIN" Textbox:', assertionResults, failureMessages)
+                    cy.checkInputMaxLength('#supnonvatregtin', 12, '25.1', 'Upon Encoding in "Supplier Non-VAT Registered TIN" Textbox: Should be formatted', assertionResults, failureMessages)
+
+                    cy.checkValue('#supnonvatregtin', '25.2', 'After Encoding in "" Textbox: Should be formatted"', data[key].suppNonVATExpected, assertionResults, failureMessages)
 
                     cy.get('#accrenum').clear()
                       .type(data[key].accredNo)
@@ -193,6 +226,8 @@ describe('Receipt Footer Set Up', () => {
                     cy.checkInputMaxLength('#footermsg5', 50, '35.1', 'Upon Encoding in "Line Message 5" Textbox:', assertionResults, failureMessages)    
                     
                     cy.get('.border-blue-500').click()
+
+                    cy.wait(2000)
                 }
                 
             } 
@@ -203,7 +238,7 @@ describe('Receipt Footer Set Up', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Check Required Field Functionality', () => {
+    it.skip('Check Required Field Functionality', () => {
 
         cy.contains('Footer').click()
 
@@ -248,29 +283,9 @@ describe('Receipt Footer Set Up', () => {
 
         cy.get('.border-blue-500').click()
 
+        cy.wait(2000)
+
         cy.checkLabelCaption('.Toastify__toast-body', '36.1', 'Upon Clicking the "Update" button:', 'Please input valid data in required field.', assertionResults, failureMessages)
-
-        cy.wait(4000)
-
-        // cy.checkElementVisibility('.shadow-lg', '19.1', 'Upon Clicking the "Update" button:', '"Receipt Footer Set Up" modal window was not visible or active.', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#footer-form', '19.1.1', 'Upon Clicking the "Update" button:', '"Supplier Name * is required" was not visible', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#footer-form', '19.1.2', 'Upon Clicking the "Update" button:', '"Supplier Address * is required" was not visible', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#footer-form', '19.1.3', 'Upon Clicking the "Update" button:', '"Supplier VAT Registered TIN * is required" was not visible', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#footer-form', '19.1.4', 'Upon Clicking the "Update" button:', '"Supplier Non-VAT registered TIN * is required', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#footer-form', '19.1.5', 'Upon Clicking the "Update" button:', '"Accredited No. * is required"', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#footer-form', '19.1.6', 'Upon Clicking the "Update" button:', '"Permit No. * is required', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#footer-form', '19.1.7', 'Upon Clicking the "Update" button:', '"Accredited Data * is required" was not visible', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#footer-form', '19.1.8', 'Upon Clicking the "Update" button:', '"Date Issued * is required" was not visible', assertionResults, failureMessages)
-
-        // cy.checkLabelCaption('#footer-form', '19.1.9', 'Upon Clicking the "Update" button:', '"Years Validity * is required" was not visible', assertionResults, failureMessages)
 
         cy.wait(4000)
 

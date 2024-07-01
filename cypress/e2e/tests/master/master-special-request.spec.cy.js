@@ -126,8 +126,6 @@ describe('Special Request', () => {
                    
             })
 
-            // 2.1.5 Check correct all object position
-
             cy.validateElements('specialreq-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
                             
             cy.fixture('dropdown-values.json').then((data) => { 
@@ -320,7 +318,7 @@ describe('Special Request', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                    cy.wait(3000)
+                    cy.wait(2000)
                     
                     cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 

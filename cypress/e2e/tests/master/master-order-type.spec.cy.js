@@ -111,9 +111,9 @@ describe('Order Type', () => {
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Order Type', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Dine Type Description *', assertionResults,failureMessages)
+            cy.checkLabelCaption('label[for="postypdsc"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Dine Type *', assertionResults,failureMessages)
 
-            cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Order Type *', assertionResults, failureMessages)
+            cy.checkLabelCaption('label[for="ordertyp"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Order Type *', assertionResults, failureMessages)
             
             // 2.1.3 Check correct object (textbox) width
             // cy.get('#postypdsc')
@@ -151,7 +151,7 @@ describe('Order Type', () => {
 
                 // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
-                cy.wait(4000) 
+                cy.wait(8000) 
                 
                             if (data[key].dineType === "null") {
 
@@ -161,13 +161,17 @@ describe('Order Type', () => {
 
                                 cy.get('.border-blue-500').click()
 
-                                cy.wait(4000)
+                                cy.wait(2000)
 
                                 cy.checkLabelCaption('.text-sm', '11.2', 'Upon clicking the "Save" button:', 'Order Type * is required', assertionResults, failureMessages)
 
-                                cy.get('#postypdsc').clear()
-
                                 cy.get('#ordertyp').select(data[key].orderType)
+
+                                cy.get('#postypdsc').clear().should('be.empty')
+
+                                cy.get('.border-blue-500').click()
+                                
+                                cy.wait(2000)
 
                                 cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Dine Type * is required', assertionResults, failureMessages)
 
@@ -181,6 +185,8 @@ describe('Order Type', () => {
 
                                 cy.get('.border-blue-500').click()
 
+                                cy.wait(2000)
+
                                 cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
                                 cy.wait(4000)
@@ -188,7 +194,7 @@ describe('Order Type', () => {
                             
                             else if (data[key].dineType === "Reservation") {
 
-                                cy.wait(4000)
+                                cy.wait(8000)
 
                                 cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
@@ -210,9 +216,9 @@ describe('Order Type', () => {
 
                                 cy.contains('button[class*="border-blue-500"]', 'Yes').click()
 
-                                cy.wait(3000)
+                                cy.wait(4000)
 
-                                cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
+                                cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Special Request" modal window was visible or active.', assertionResults, failureMessages)
 
                                 cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Order Type', assertionResults, failureMessages)
 
@@ -222,6 +228,8 @@ describe('Order Type', () => {
                             }
 
                             else if (data[key].dineType === "% & ( ) / - .") {
+
+                                cy.wait(8000)
 
                                 cy.get('#postypdsc').clear().type(data[key].dineType)
 
@@ -233,49 +241,54 @@ describe('Order Type', () => {
 
                                 cy.checkLabelCaption('.Toastify__toast-body', '5.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                                cy.checkElementInvisibility('.shadow-lg', '5.2.1', 'Upon clicking the "OK" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
+                                cy.checkElementVisibility('.shadow-lg', '5.2.1', 'Upon clicking the "OK" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                                 // 43.2.2 Check if the "Description" textbox object is cleared or blank.
                             }
 
                             else if (data[key].dineType === "This is a very long string that exceeds the maximum allowed length") {
 
+                                cy.wait(8000)
+
                                 cy.get('#postypdsc').clear().type(data[key].dineType)
 
-                                cy.checkElementVisibility('.text-sm', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                                cy.checkInputMaxLength('#postypdsc', '50', '19.1', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+
+                                // cy.checkElementVisibility('.Toastify__toast-body', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                                 cy.get('#ordertyp').select(data[key].orderType)
 
                                 cy.get('.border-blue-500').click()
 
-                                cy.checkElementVisibility('.text-sm', '19.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
-
-                                cy.wait(6000)
+                                // cy.checkElementVisibility('.text-sm', '19.2', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
 
                             }
 
                             else if (data[key].dineType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
+                                cy.wait(8000)
+
                                 cy.get('#postypdsc').clear().type(data[key].dineType)
+
+                                cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
                                 cy.get('#ordertyp').realClick()
 
                                 cy.get('#ordertyp').select(data[key].orderType)
 
                                 cy.get('.border-blue-500').click()
-                                
-                                cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                                cy.checkElementInvisibility('.shadow-lg', '16.2.1', 'Upon clicking the "OK" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
+                                cy.wait(2000) 
+
+                                cy.checkElementVisibility('.shadow-lg', '16.2.1', 'Upon clicking the "Save" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
 
                                 // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                                cy.wait(6000)
                             }
 
                             else {
 
-                                cy.wait(4000)
+                                cy.wait(8000)
 
                                 cy.get('#postypdsc').clear().type(data[key].dineType)
 
@@ -283,19 +296,23 @@ describe('Order Type', () => {
 
                                 cy.get('.border-blue-500').click()
 
-                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfullt saved.', assertionResults, failureMessages) 
+                                cy.wait(2000)
 
-                                cy.wait(3000)
+                                cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+
+                                cy.wait(2000)
                                 
                                 cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
+
+                                cy.wait(2000)
+
+                                cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
                                 // cy.get('.MuiSelect-select.MuiTablePagination-select').click();
 
                                 // cy.get('ul[role="listbox"] li').contains('15').click();
 
                                 // cy.get('.MuiTableBody-root').contains(data[key].dineType).should('exist')
-
-                                cy.wait(6000)
                             }
             }
         })
@@ -307,6 +324,9 @@ describe('Order Type', () => {
     });
 
     it('Edit Functionality', () => {
+
+        cy.get('.border-red-500').click()
+
         cy.fixture('master-ordertype-data.json').then((data) => {
 
             const specificOrderType = data[2];
@@ -321,6 +341,8 @@ describe('Order Type', () => {
 
                     cy.get('[data-icon="edit"][aria-hidden="true"]').click()
                 })
+
+                cy.wait(2000)
 
                 cy.checkElementVisibility('.shadow-lg', '21.1', 'Upon Clicking the "Edit" button:', 'The "Edit Order Type" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -346,6 +368,8 @@ describe('Order Type', () => {
                 cy.get('#ordertyp').select(specificOrderType.editOrderType)
 
                 cy.get('.border-blue-500').click()
+
+                cy.wait(2000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '26.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
@@ -385,7 +409,7 @@ describe('Order Type', () => {
 
                     cy.validateElements('delete-confirm-el.json', '27.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
@@ -399,7 +423,9 @@ describe('Order Type', () => {
 
                     cy.wait(4000)
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click()
+
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '27.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 

@@ -72,5 +72,45 @@
   {
     "itemSubclass": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
     "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Yumburger",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Burger Steak",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Hotdog",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Super Meals",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Chicken Joy Perfect Pairs",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Take-Out Favorites",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Kiddie Meal",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Breakfast",
+    "itemClass": "Food"
+  },
+  {
+    "itemSubclass": "Floats",
+    "itemClass": "Beverages"
+  },
+  {
+    "itemSubclass": "Desserts and Pies",
+    "itemClass": "Dessert"
   }
 ]
