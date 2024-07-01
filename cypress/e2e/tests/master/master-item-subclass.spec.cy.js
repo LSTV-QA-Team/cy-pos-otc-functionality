@@ -294,7 +294,7 @@ describe('Item Subclassification', () => {
 
                 else {
 
-                    cy.wait(4000)
+                    cy.wait(8000)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 

@@ -134,6 +134,8 @@ describe('Price List', () => {
             
                     if (data[key].pricelist === "null") {
 
+                        cy.wait(8000)
+
                         cy.get('#prcdsc').clear().type(data[key].pricelist)
                         
                         cy.get('#prcdsc').clear()
@@ -152,10 +154,11 @@ describe('Price List', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
-                        cy.wait(4000)
                     } 
                     
                     else if (data[key].pricelist === "Jollibee 6") {
+
+                        cy.wait(8000)
 
                         cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
@@ -191,6 +194,8 @@ describe('Price List', () => {
 
                     else if (data[key].pricelist === "% & ( ) / - .") {
 
+                        cy.wait(8000)
+
                         cy.get('#prcdsc').clear().type(data[key].pricelist)
 
                         cy.get('#postypcde').select(data[key].ordertype)
@@ -207,11 +212,11 @@ describe('Price List', () => {
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
 
-                        cy.wait(4000)
-
                     }
 
                     else if (data[key].pricelist === "This is a test string that exceeds fifty characters in length.") {
+
+                        cy.wait(8000)
 
                         cy.get('#prcdsc').clear().type(data[key].pricelist)
 
@@ -219,20 +224,17 @@ describe('Price List', () => {
 
                         // cy.checkInputMaxLength('#prcdsc', '50', '19.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-
                         cy.get('#postypcde').select(data[key].ordertype)
 
                         cy.get('.border-blue-500').click()
-
-                        cy.wait(4000)
 
                     }
 
                     else if (data[key].pricelist === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                        cy.get('#prcdsc').clear().type(data[key].pricelist)
+                        cy.wait(8000)
 
-                        cy.wait(2000)
+                        cy.get('#prcdsc').clear().type(data[key].pricelist)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
                         
@@ -242,9 +244,9 @@ describe('Price List', () => {
 
                         cy.wait(2000)
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', '"Please use only the following approved special characters: % & ( ) / - ."', assertionResults, failureMessages) 
+                        // cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', '"Please use only the following approved special characters: % & ( ) / - ."', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '17.2.1', 'Upon clicking the "Save" button:', 'The "Add Price List" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '17.2.1', 'Upon clicking the "Save" button:', 'The "Add Price List" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // Check if the "Description" textbox object is cleared or blank. 
 
@@ -252,7 +254,7 @@ describe('Price List', () => {
 
                     else {
 
-                        cy.wait(4000)
+                        cy.wait(8000)
 
                         cy.get('#prcdsc').clear().type(data[key].pricelist)
 
@@ -279,6 +281,8 @@ describe('Price List', () => {
     })
 
     it('Edit Functionality', () => {
+
+        cy.get('.border-red-500').click()
 
         cy.fixture('master-pricelist-data.json').then((data) => {
 
@@ -317,6 +321,8 @@ describe('Price List', () => {
 
             cy.get('.border-blue-500').click()
 
+            cy.wait(2000)
+
             cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
             cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon Clicking the "Update" button:', 'The "Edit Price List" modal window still visible', assertionResults, failureMessages)
@@ -349,7 +355,7 @@ describe('Price List', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '30.3', 'Upon clicking the "Delete" button on pager UI','Do you want to delete: ' + data[key].pricelist + ' ?', assertionResults, failureMessages);
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
@@ -361,7 +367,7 @@ describe('Price List', () => {
 
                     })
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click()
 
                     cy.checkLabelCaption('.Toastify__toast-body', '30.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 

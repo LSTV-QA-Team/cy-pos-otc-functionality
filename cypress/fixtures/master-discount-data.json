@@ -144,7 +144,7 @@
     "serviceChargeDisc": "Yes",
     "govDisc": "No",
     "onlineDeals": "Yes",
-    "onlyDelete": true,
+    "onlyDelete": false,
     "onlySearchVal": false,
     "onlySearchInval": false
   },
