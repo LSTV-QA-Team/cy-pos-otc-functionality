@@ -126,8 +126,6 @@ describe('Special Request', () => {
                    
             })
 
-            // 2.1.5 Check correct all object position
-
             cy.validateElements('specialreq-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
                             
             cy.fixture('dropdown-values.json').then((data) => { 

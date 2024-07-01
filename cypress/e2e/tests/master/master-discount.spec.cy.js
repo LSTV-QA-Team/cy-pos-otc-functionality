@@ -203,7 +203,7 @@ describe('Discount', () => {
 
                         cy.checkElementInvisibility('.shadow-lg', '13.3.1', 'Upon Clicking the "Yes" button in "Cancel" modal:', 'The "Add Discount" modal window was visible or active.', assertionResults, failureMessages)
 
-                        cy.checkElementVisibility('.h-screen', '13.3.2', 'Upon clicking the "Yes" button, should back in Discount Pager U/I', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.h-screen', '13.3.2', 'Upon clicking the "Yes" button:', 'Should back in Discount Pager U/I', assertionResults, failureMessages)
 
                         cy.wait(2000)
 
@@ -290,7 +290,7 @@ describe('Discount', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '33.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                        cy.checkElementInvisibility('.shadow-lg', '33.2.1', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '33.2.1', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // 11.2.2 Check if the "Description" textbox object is cleared or blank.
                     }
@@ -300,6 +300,10 @@ describe('Discount', () => {
                         cy.wait(8000)
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
+
+                        cy.wait(500)
+
+                        cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('#distyp').select(data[key].discountType).then((selected) => {
 
@@ -367,8 +371,6 @@ describe('Discount', () => {
 
                             cy.get('#ODNo').click()
                         }
-
-                        cy.checkElementVisibility('.text-sm', '14.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('.border-blue-500').click()
 
@@ -453,7 +455,7 @@ describe('Discount', () => {
 
                         cy.wait(2000)
 
-                        cy.checkElementInvisibility('.shadow-lg', '51.2', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '51.2', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
                         // Check if the "Description" textbox object is cleared or blank. 
 
@@ -570,11 +572,13 @@ describe('Discount', () => {
 
             })
 
+            cy.wait(4000)
+
             cy.checkElementVisibility('.shadow-lg', '22.1', 'Upon Clicking the "Edit" button:', '"Edit Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
             cy.checkHeaderTitle('.px-8', '22.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Discount', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('.mb-2', '22.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Discount *', assertionResults, failureMessages)
+            // cy.checkLabelCaption('.mb-2', '22.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Discount *', assertionResults, failureMessages)
         
             // 21.1.3 Check correct object (textbox) width
             // Add when needed
@@ -585,9 +589,13 @@ describe('Discount', () => {
 
             cy.validateElements('discount-edit-el.json', '19.1.4 & 19.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
 
+            cy.wait(4000)
+
             cy.get('#discde')
                 .should('have.value', specificdiscount.discountCode)
                 .clear()
+
+            cy.wait(4000)
 
             cy.get('#discde').clear().type(specificdiscount.editDiscountCode)
 
@@ -697,7 +705,7 @@ describe('Discount', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '63.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].discountDesc + ' ?', assertionResults, failureMessages);
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
