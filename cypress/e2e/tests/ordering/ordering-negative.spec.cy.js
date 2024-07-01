@@ -14,6 +14,7 @@ describe("Ordering ", () => {
   });
 
   it("Select Pricelist Modal ", () => {
+    cy.wait(4000)
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("DINE IN").wait(2000);
@@ -204,7 +205,7 @@ describe("Ordering ", () => {
   });
 
   // PRICE OVERRIDE (Negative Testing)
-  it("Price Override", () => {
+  it.only("Price Override", () => {
     cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
     .click().wait(500)
     cy.get(':nth-child(7) > .bg-green-100').click().wait(500)
@@ -220,46 +221,51 @@ describe("Ordering ", () => {
     cy.get('.px-8').should('be.visible').wait(500)
     cy.get('.px-8').should('have.text', 'Price Override').wait(500)
     cy.get('.py-3 > .mb-2').should('have.text', 'Override Price').wait(500)
-    // // 0 VALUE IN PRICE OVERRIDE VALIDATION
-    // cy.get('.py-3 > .undefined').should('have.value', '0').wait(500)
-    // cy.get('.border-blue-500').click().wait(500)
-    // cy.get('.Toastify__toast-body').should('have.text', 'Invalid Price')
-    // .wait(500)
-    // cy.get('.Toastify__toast-body').click()
-    // // BLANK OVERRIDE VALIDATION
-    // cy.get('.py-3 > .undefined').click().clear()
-    // cy.get('.py-3 > .undefined').should('have.value', '').wait(500)
-    // cy.get('.border-blue-500').click().wait(500)
-    // cy.get('.Toastify__toast-body').should('have.text', 'Please input Price')
-    // cy.get('.Toastify__toast-body').click()
+    // 0 VALUE IN PRICE OVERRIDE VALIDATION
+    cy.get('.py-3 > .undefined').should('have.value', '0').wait(500)
+    cy.get('.border-blue-500').click().wait(500)
+    cy.get('.Toastify__toast-body').should('have.text', 'Invalid Price')
+    .wait(500)
+    cy.get('.Toastify__toast-body').click()
+    // BLANK OVERRIDE VALIDATION
+    cy.get('.py-3 > .undefined').click().clear()
+    cy.get('.py-3 > .undefined').should('have.value', '').wait(500)
+    cy.get('.border-blue-500').click().wait(500)
+    cy.get('.Toastify__toast-body').should('have.text', 'Please input Price')
+    cy.get('.Toastify__toast-body').click()
 
     // POSITIVE VALUE INPUT
-    cy.get('.py-3 > .undefined').click().type('1000')
-    cy.get('.border-blue-500').click()
+    cy.get('.py-3 > .undefined')
+    .realClick({force:true}).clear().realType('1000',{force:true})
+    cy.get('.border-blue-500').realClick({force:true})
     cy.get('.Toastify__toast-body')
     .should('have.text', 'Price Overridden Successfully.').wait(500)
-    cy.get('.Toastify__toast-body').click()
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(5)')
+    cy.get('.Toastify__toast-body').realClick({force:true})
+    cy.get('.MuiTableBody-root > :nth-child(1) > :nth-child(5)')
     .should('have.text', '10000.00')
-    cy.get(':nth-child(7) > .bg-green-100').click().wait(500)
+    cy.get(':nth-child(7) > .bg-green-100').realClick({force:true}).wait(500)
     cy.get('.Toastify__toast-body')
     .should('have.text', 'Item price is already overridden.').wait(500)
-
+    cy.get('.Toastify__toast-body').realClick({force:true}).wait(2000)
 
     //CLICK FREE ITEM
-    cy.get('.Toastify__toast-body').click()
-        //DEVELOPER STILL ONGOING TO ENHANCE THIS
-    //cy.get('.Toastify__toast-body').should('have.text', 'Error : Remove price override first.')
-    //cy.get('.Toastify__toast-body').click().wait(500)
-    cy.get('.MuiButtonBase-root').click().wait(500)
-    
-    //WALANG NIRERETURN NA ALERT MESSAGE NA DAPAT MERON
-    //cy.get('.Toastify__toast-body')
-    //.should('have.text', 'Item Price override removed')
+    cy.get(':nth-child(6) > .bg-green-100').click().wait(500)
+    cy.get('.Toastify__toast-body').should('have.text', 'Error : Remove price override first.').wait(1000)
+    cy.get('.Toastify__toast-body').click().wait(1000)
+    //CLICK ADD-ONS
+    cy.get(':nth-child(8) > .bg-green-100').click().wait(500)
+    cy.get('.Toastify__toast-body').should('have.text', 'Error : Remove price override first.').wait(1000)
+    cy.get('.Toastify__toast-body').click().wait(1000)
+    //REMOVE PRICE OVERRIDE PRICE
+    cy.get('.MuiButtonBase-root').click({force:true}).wait(1000)
+    cy.get('.Toastify__toast-body')
+    .should('have.text', 'Item price override removed')
+    cy.get('.Toastify__toast-body').click({force:true}).wait(4000)
   })
   
   // ADD-ONS (Negative Testing)
   it("Add-ons", () => {
+    cy.wait(4000)
     cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
     .click().wait(500)
     cy.get(':nth-child(8) > .bg-green-100').click()
@@ -272,6 +278,7 @@ describe("Ordering ", () => {
   })
 
   it("Discount", () => {
+    cy.wait(4000)
     cy.contains("BEVERAGES").click().wait(500)
     cy.contains("Coffee").click().wait(500)
     cy.contains("Hot Fresh Brew").click().wait(500)
@@ -506,7 +513,6 @@ describe("Ordering ", () => {
    cy.get('.px-8 > .flex > .anticon > svg').click()
 })
   
-
   //PAYMENT TRANASCTION FOR VOID AND REFUND
   it("Payment transaction for void and refund", () => {
     cy.wait(2000)
