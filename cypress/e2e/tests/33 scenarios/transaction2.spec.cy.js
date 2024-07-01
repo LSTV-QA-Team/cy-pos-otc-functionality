@@ -41,20 +41,26 @@ describe("Transaction 2", () => {
       "Discount : 10%"
     );
 
-    const ST = 204;
-    const SC_Formula = (ST / 1.12) * 0.1;
-    const T2_SCharge = Number(SC_Formula.toFixed(2)); //18.21
-    const Disc_Formula = ST * 0.1;
-    const Discount = Disc_Formula.toFixed(2); //20.40
-    const GT = Number(ST - Discount);
-    const total = Number(GT + T2_SCharge);
+    cy.fixture('ordering-scenarios.json').then((data) => {
+    
+      const ST = data[1].subtotal;
+      const T2_SCharge = data[1].serviceCharge
+      const ServiceCharge1 = T2_SCharge.toFixed(2)
+      const Discount = data[1].discount
+      const Discount1 = Discount.toFixed(2)
+      const GT = data[1].total
+      const total1 = GT.toFixed(2)
 
-    cy.get(":nth-child(4) > :nth-child(2)").should("have.text", T2_SCharge);
-    cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
-      "have.text",
-      Discount
-    );
-    cy.get(".font-extrabold > :nth-child(2)").should("have.text", total);
+      cy.get('.bg-black > :nth-child(1) > :nth-child(2)').should("have.text", ST + ".00");
+      cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
+      cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
+        "have.text",
+        Discount1
+      );
+      cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
+
+})
+
 
     cy.get(":nth-child(13) > .bg-green-100").click();
     cy.contains("CASH").click();

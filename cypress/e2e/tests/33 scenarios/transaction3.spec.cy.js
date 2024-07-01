@@ -45,20 +45,25 @@ describe("Transaction 3", () => {
       "Discount : 20%"
     );
 
-    const ST = 210;
-    const SC_Formula = (ST / 1.12) * 0.1;
-    const T3_SCharge = Number(SC_Formula.toFixed(2)); //18.75
-    const Disc_Formula = ST * 0.2;
-    const Discount = Disc_Formula.toFixed(2); //42.00
-    const GT = Number(ST - Discount);
-    const total = Number(GT + T3_SCharge);
+    cy.fixture('ordering-scenarios.json').then((data) => {
+    
+      const ST = data[2].subtotal;
+      const T3_SCharge = data[2].serviceCharge
+      const ServiceCharge1 = T3_SCharge.toFixed(2)
+      const Discount = data[2].discount
+      const Discount1 = Discount.toFixed(2)
+      const GT = data[2].total
+      const total1 = GT.toFixed(2)
 
-    cy.get(":nth-child(4) > :nth-child(2)").should("have.text", T3_SCharge);
-    cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
-      "have.text",
-      Discount
-    );
-    cy.get(".font-extrabold > :nth-child(2)").should("have.text", total);
+      cy.get('.bg-black > :nth-child(1) > :nth-child(2)').should("have.text", ST + ".00");
+      cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
+      cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
+        "have.text",
+        Discount1
+      );
+      cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
+
+})
 
     cy.contains("Payment").click();
     cy.contains("CASH").click();

@@ -40,59 +40,61 @@ describe("Transaction 9", () => {
       "have.text",
       "Discount : Senior"
     );
+    cy.fixture('ordering-scenarios.json').then((data) => {
+    
+      const ST = data[8].subtotal;
+      const Discount = data[8].discount
+      const Discount1 = Discount.toFixed(2)
+      const LVA = data[8].lessVatAdj
+      const LVA1 = LVA.toFixed(2)
+      const T9_SCharge = data[8].serviceCharge
+      const ServiceCharge1 = T9_SCharge.toFixed(2)
+      const SCharge_dsc = data[8].serviceChargeDiscount
+      const SCharge_dsc1 = SCharge_dsc.toFixed(2)
+      const GT = data[8].total
+      const total1 = GT.toFixed(2)
 
-    const ST = 599;
-    const Disc_Formula = Number(100 / 1.12) * 0.2;
-    const Discount = Disc_Formula.toFixed(2); //17.86
-    const LVA = (100 / 1.12) * 0.12;
-    const LVA1 = Number(LVA.toFixed(2));
-    const SC_Formula = (ST / 1.12) * 0.1;
-    const T9_SCharge = Number(SC_Formula.toFixed(2)); //53.48
-    const SCharge_dsc = T9_SCharge * 0.2;
-    const SCharge_dsc1 = SCharge_dsc.toFixed(2);
-    const GT = Number(ST - Discount - LVA1);
-    const total = Number(GT + T9_SCharge - SCharge_dsc1);
-    const total1 = Number(total.toFixed(2));
+      cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
+        "have.text",
+        ST +".00"
+      );
+      cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
+        "have.text",
+        Discount1
+      );
+      cy.get(".bg-black > :nth-child(3) > :nth-child(2)").should(
+        "have.text",
+        LVA1
+      );
 
-    cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
-      "have.text",
-      "599.00"
-    );
-    cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
-      "have.text",
-      Discount
-    );
-    cy.get(".bg-black > :nth-child(3) > :nth-child(2)").should(
-      "have.text",
-      LVA1
-    );
-    cy.get(":nth-child(4) > :nth-child(2)").should("have.text", T9_SCharge);
-    cy.get(":nth-child(5) > :nth-child(2)").should("have.text", SCharge_dsc1);
-    cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
+      cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
+      cy.get(":nth-child(5) > :nth-child(2)").should("have.text", SCharge_dsc1);
+      cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
+  
+      cy.contains("Payment").click();
+      cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
+        "have.text",
+        ST +".00"
+      );
+      cy.get(".ml-5 > :nth-child(2) > :nth-child(2) > :nth-child(2)").should(
+        "have.text",
+        "-" + Discount
+      );
+      cy.get(".ml-5 > :nth-child(2) > :nth-child(3) > :nth-child(2)").should(
+        "have.text",
+        "-" + LVA1
+      );
+      cy.get(".ml-5 > :nth-child(2) > :nth-child(4)").should(
+        "have.text",
+        "Service Charge " + ServiceCharge1
+      );
+      cy.get(".ml-5 > :nth-child(2) > :nth-child(5)").should(
+        "have.text",
+        "SCharge Discount -" + SCharge_dsc1
+      );
+      cy.get(".text-red > :nth-child(2)").should("have.text", "₱" + total1);
 
-    cy.contains("Payment").click();
-    cy.get(".ml-5 > :nth-child(2) > :nth-child(1) > :nth-child(2)").should(
-      "have.text",
-      "₱599.00"
-    );
-    cy.get(".ml-5 > :nth-child(2) > :nth-child(2) > :nth-child(2)").should(
-      "have.text",
-      "-" + Discount
-    );
-    cy.get(".ml-5 > :nth-child(2) > :nth-child(3) > :nth-child(2)").should(
-      "have.text",
-      "-" + LVA1
-    );
-    cy.get(".ml-5 > :nth-child(2) > :nth-child(4)").should(
-      "have.text",
-      "Service Charge " + T9_SCharge
-    );
-
-    cy.get(".ml-5 > :nth-child(2) > :nth-child(5)").should(
-      "have.text",
-      "SCharge Discount -" + SCharge_dsc1
-    );
-    cy.get(".text-red > :nth-child(2)").should("have.text", "₱" + total1);
+    })
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ediiithhhhhhhhh");

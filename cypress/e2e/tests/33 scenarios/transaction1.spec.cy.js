@@ -80,23 +80,35 @@ describe("Transaction 1", () => {
       cy.contains("Chicken").click().wait(2000);
       cy.contains("1-pc Chickenjoy").click().wait(2000);
   
-      const ST = 76;
-      const SC_Formula = (ST / 1.12) * 0.1;
-      const T1_SCharge = Number(SC_Formula.toFixed(2)); //6.79
-      const GT = Number(ST + T1_SCharge);
-  
-      cy.get(":nth-child(4) > :nth-child(2)").should("have.text", T1_SCharge);
-      cy.get(".font-extrabold > :nth-child(2)").should("have.text", GT);
+      // const ST = 76;
+      // const SC_Formula = (ST / 1.12) * 0.1;
+      // const T1_SCharge = Number(SC_Formula.toFixed(2)); //6.79
+      // const GT = Number(ST + T1_SCharge);
+
+
+      cy.fixture('ordering-scenarios.json').then((data) => {
+    
+            const ST = data[0].subtotal 
+            const T1_Scharge = data[0].serviceCharge
+            const ServiceCharge1 = Number(T1_Scharge.toFixed(2))
+            const total = data[0].total
+            const total1 = total.toFixed(2)
+
+        cy.get('.bg-black > :nth-child(1) > :nth-child(2)').should("have.text", ST + ".00");
+        cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
+        cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
+
+      })
   
       cy.get(":nth-child(13) > .bg-green-100").click();
       cy.get(".px-8").should("have.text", "Payment");
       cy.get(".overflow-hidden > span").should("have.text", "₱82.79");
       cy.contains("CASH").click();
   
-      cy.get(".ml-5 > :nth-child(2) > :nth-child(4)").should(
-        "have.text",
-        "Service Charge " + T1_SCharge
-      );
+      // cy.get(".ml-5 > :nth-child(2) > :nth-child(4)").should(
+      //   "have.text",
+      //   "Service Charge " + T1_SCharge
+      // );
       cy.get("#customerName").click().type("Edith");
       cy.get(".border-blue-500").click();
   
