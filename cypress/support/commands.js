@@ -112,7 +112,7 @@ Cypress.Commands.add('checkHeaderTitle', (selector, referenceNumber, errorContex
 
   }).then(() => {
 
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults))
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults), { timeout: 10000 })
 
   })
 })
@@ -202,7 +202,7 @@ Cypress.Commands.add('checkLabelCaption', (selector, referenceNumber, errorConte
     }
   }).then(() => {
     
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults))
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults), { timeout: 10000 })
 
   })
 })
@@ -380,7 +380,7 @@ Cypress.Commands.add('validateElements', (fixtureFileName, referenceNumber, erro
 
   }).then(() => {
 
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults))
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults), { timeout: 10000 })
 
   })
 })
@@ -411,7 +411,7 @@ Cypress.Commands.add('checkValue', (selector, referenceNumber, errorContext, exp
 
     cy.wait(4000)
     
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults), { timeout: 10000 })
   })
 })
 
@@ -478,7 +478,7 @@ Cypress.Commands.add('checkElementVisibility', (selector, referenceNumber, error
 
     cy.wait(4000)
 
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults), { timeout: 10000 })
 
   });
 });
@@ -531,7 +531,7 @@ Cypress.Commands.add('checkElementInvisibility', (selector, referenceNumber, err
 
     cy.wait(4000)
 
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults), { timeout: 10000 })
     
   });
 });
@@ -616,7 +616,7 @@ Cypress.Commands.add('checkTableColumnTitle', (expectedColTitle, referenceNumber
 
       cy.wait(4000)
       // Write assertionResults status to a file
-      cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+      cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults), { timeout: 10000 })
     });
 });
 
@@ -644,7 +644,7 @@ Cypress.Commands.add('checkInputMaxLength', (selector, maxLength, referenceNumbe
   }).then(() => {
 
     cy.wait(4000)
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults));
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults), { timeout: 10000 })
   })
 })
 
