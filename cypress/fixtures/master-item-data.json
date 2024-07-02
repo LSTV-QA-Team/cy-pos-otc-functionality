@@ -391,7 +391,7 @@
     "inactive": false,
     "comboMeal": false,
     "onlySearchVal": false,
-    "onlyDelete": true,
+    "onlyDelete": false,
     "onlySearchInval": false
   },
   {
@@ -759,7 +759,7 @@
   {
     "item": "Jolly Crispy Fries",
     "itemType": "NON-INVENTORY",
-    "itemClass": "Food",
+    "itemClass": "Dessert",
     "itemSubclass": "Desserts and Pies",
     "unitMeasure": "PCS",
     "unitCost": 0,
