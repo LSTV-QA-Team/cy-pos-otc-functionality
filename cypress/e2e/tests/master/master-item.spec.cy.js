@@ -34,40 +34,40 @@ describe('Item', () => {
 
     })
 
-    // after(() => {
+    after(() => {
 
-    //     cy.fixture('data-to-delete.json').then((data) => {
+        cy.fixture('data-to-delete.json').then((data) => {
 
-    //         data.forEach((item) => {
+            data.forEach((item) => {
 
-    //             const specialChar = item.dataToDelete;
-    //             const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
+                const specialChar = item.dataToDelete;
+                const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
                 
-    //             cy.task('queryDb', deleteQuery).then(() => {
+                cy.task('queryDb', deleteQuery).then(() => {
 
-    //                 cy.log(`Deleted data with description: ${specialChar}`) 
+                    cy.log(`Deleted data with description: ${specialChar}`) 
 
-    //             })
-    //         })
+                })
+            })
     
-    //         cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
+            cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
 
-    //             const remainingData = records.map((record) => record.description)
-    //             const deletedChars = data.map((item) => item.dataToDelete)
+                const remainingData = records.map((record) => record.description)
+                const deletedChars = data.map((item) => item.dataToDelete)
                 
-    //             deletedChars.forEach((char) => {
+                deletedChars.forEach((char) => {
 
-    //                 expect(remainingData).to.not.include(char)
+                    expect(remainingData).to.not.include(char)
 
-    //             })
+                })
     
-    //             cy.log('Specified data Successfully deleted.'); // Log success
+                cy.log('Specified data Successfully deleted.'); // Log success
 
-    //         })
-    //     })
-    // })
+            })
+        })
+    })
 
-    it.only('Check Item Page', () => {  
+    it('Check Item Page', () => {  
 
         cy.navigateToModule('Master File', 'Items')
 
@@ -95,7 +95,7 @@ describe('Item', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it.only('Add Functionality', () => {  
+    it('Add Functionality', () => {  
 
         cy.fixture('master-item-data.json').then((data) => {
 
@@ -348,18 +348,6 @@ describe('Item', () => {
 
                     cy.wait(4000)
 
-                    // cy.checkLabelCaption('.text-sm', '80.1.1', 'Upon clicking the "Save" button:', 'Item * is required', assertionResults, failureMessages)
-
-                    // cy.checkLabelCaption('.text-sm', '80.1.2', 'Upon clicking the "Save" button:', 'Item Type * is required', assertionResults, failureMessages)
-
-                    // cy.checkLabelCaption('.text-sm', '80.1.3', 'Upon clicking the "Save" button:', 'Item Classification * is required', assertionResults, failureMessages)
-
-                    // cy.checkLabelCaption('.text-sm', '80.1.4', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
-
-                    // cy.checkLabelCaption('.text-sm', '80.1.5', 'Upon clicking the "Save" button:', 'Selling Price * is required', assertionResults, failureMessages)
-
-                    // cy.checkLabelCaption('.text-sm', '80.1.6', 'Upon clicking the "Save" button:', 'Tax Code  * is required', assertionResults, failureMessages)
-
                     cy.get('form#i-form').within(() => {
 
                         cy.get('#itmdsc')
@@ -568,25 +556,45 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
+                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
+
                     cy.get('#itmtyp').select(data[key].itemType)
+
+                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
 
                     cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
+                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
+
                     cy.get('#itmclacde').select(data[key].itemClass)
+
+                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
 
                     cy.wait(2000)
 
                     cy.get('#untmea').clear().type(data[key].unitMeasure)
 
+                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
+
                     cy.get('#untcst').clear().type(data[key].unitCost)
+
+                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
 
                     cy.get('#barcde').clear().type(data[key].barcode)
 
+                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
+
                     cy.get('#untprc').clear().type(data[key].sellingPrice)
+
+                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
 
                     cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
 
+                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
+
                     cy.get('#taxcde').select(data[key].taxCode)
+
+                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
 
                     if (data[key].addOn === true) {
 
@@ -1097,6 +1105,8 @@ describe('Item', () => {
 
                 })
 
+                cy.wait(2000)
+
                 cy.checkElementVisibility('.shadow-lg', '81.1', 'Upon Clicking the "Edit" button:', 'The "Edit Item" modal window was not visible or active.', assertionResults, failureMessages)
 
                 cy.checkLabelCaption('label[for="itmdsc"]', '81.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item *', assertionResults, failureMessages)
@@ -1147,8 +1157,6 @@ describe('Item', () => {
 
                 cy.get('#taxcde').select(specificItem.editTaxCode)
 
-                cy.get('.border-blue-500').click()
-
                 for (const key in data) {
 
                     if (data[key].editAddOn === true) {
@@ -1191,6 +1199,8 @@ describe('Item', () => {
                     }
                 }
 
+                cy.get('.border-blue-500').click()
+
                 cy.wait(2000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '96.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
@@ -1231,7 +1241,7 @@ describe('Item', () => {
 
                     cy.validateElements('delete-confirm-el.json', '97.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-blue-500"]', 'Cancel').click()
+                    cy.get('.border-blue-500').click()
 
                     cy.wait(3000)
 
@@ -1245,7 +1255,7 @@ describe('Item', () => {
 
                     })
 
-                    cy.contains('button[class*="border-red-500"]', 'Confirm').click()
+                    cy.get('.border-red-500').click()
 
                     cy.wait(2000)
 
