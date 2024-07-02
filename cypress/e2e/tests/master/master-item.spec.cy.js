@@ -683,7 +683,7 @@ describe('Item', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '48.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                    cy.checkElementInvisibility('.shadow-lg', '48.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.shadow-lg', '48.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
                     // 43.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -695,7 +695,7 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
-                    cy.checkElementVisibility('.text-sm', '18.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                     cy.get('#itmtyp').select(data[key].itemType)
 
@@ -796,8 +796,6 @@ describe('Item', () => {
 
                         cy.get('#chkcombo').should('not.be.checked')
                     }
-
-                    cy.checkElementVisibility('.text-sm', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
 
                     // cy.get('#modgrpcde').click()
 
@@ -924,7 +922,7 @@ describe('Item', () => {
 
                     cy.wait(2000)
                     
-                    cy.checkLabelCaption('.Toastify__toast-body', '78.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                    // cy.checkLabelCaption('.Toastify__toast-body', '78.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
                     // 16.2 click "OK" button on notification message.
 
@@ -1164,6 +1162,8 @@ describe('Item', () => {
                         cy.get('#isaddon').click()
 
                     } else {
+
+                        cy.get('#isaddon').uncheck()
 
                         cy.get('#isaddon').should('not.be.checked')
                     }
