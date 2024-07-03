@@ -89,11 +89,11 @@ module.exports = defineConfig({
         'cypress/e2e/tests/cashiering/cashiering-cash-in.spec.cy.js',
         'cypress/e2e/tests/cashiering/cashiering-cash-out.spec.cy.js',
         'cypress/e2e/tests/ordering/ordering.spec.cy.js',
-        'cypress/e2e/tests/ordering/free-transaction.spec.cy.js',
+        'cypress/e2e/tests/ordering/ordering-negative.spec.cy.js',
+        'cypress/e2e/tests/ordering/with-service-charge.spec.cy.js',
         'cypress/e2e/tests/ordering/void-transactions.spec.cy.js',
         'cypress/e2e/tests/ordering/refund-transaction.spec.cy.js',
-        'cypress/e2e/tests/ordering/with-service-charge.spec.cy.js',
-        'cypress/e2e/tests/ordering/ordering-negative.spec.cy.js',
+        'cypress/e2e/tests/ordering/free-transaction.spec.cy.js',
         'cypress/e2e/tests/cashiering/cashiering-cash-declaration.spec.cy.js',
       ]
 

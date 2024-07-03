@@ -76,7 +76,7 @@ describe("Transaction 19", () => {
       "Transaction Complete."
     );
     cy.wait(3000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click().wait(2000);
 

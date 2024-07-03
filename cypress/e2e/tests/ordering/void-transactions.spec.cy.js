@@ -14,7 +14,7 @@ describe("Void Transactions ", () => {
   it("1 Pax with Regular Transaction", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
@@ -37,7 +37,7 @@ describe("Void Transactions ", () => {
 
     cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist");
-    cy.get("#postypcde").select("Dine-in");
+    cy.get("#postypcde").select("Dine-In");
     cy.get("#warcde").select("Jollibee 1");
     cy.contains("Proceed").click();
 
@@ -108,7 +108,7 @@ describe("Void Transactions ", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -179,7 +179,7 @@ describe("Void Transactions ", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -260,7 +260,7 @@ describe("Void Transactions ", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -333,7 +333,7 @@ describe("Void Transactions ", () => {
     cy.get(".border-blue-500").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -405,7 +405,7 @@ describe("Void Transactions ", () => {
 
     cy.wait(2000);
 
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -480,7 +480,7 @@ describe("Void Transactions ", () => {
       "Transaction Complete."
     );
     cy.wait(3000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click().wait(2000);
 
@@ -555,7 +555,7 @@ describe("Void Transactions ", () => {
     );
     cy.wait(2000);
 
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -722,7 +722,7 @@ describe("Void Transactions ", () => {
  
     cy.wait(2000);
 
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 

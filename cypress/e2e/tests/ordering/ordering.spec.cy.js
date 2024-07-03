@@ -55,11 +55,24 @@ describe("Ordering ", () => {
 
   })
 
+  it("Cash In" , () => {
+
+    cy.get(':nth-child(2) > .sc-beySPh').click()
+    cy.contains("Cash Fund").should('be.enabled').click()
+      cy.get('.my-4 > :nth-child(2) > :nth-child(2) > .font-montserrat').click().wait(500)
+      for (let i = 0; i < 3; i++){
+        cy.get(':nth-child(4) > :nth-child(2) > .font-montserrat').click()
+      }
+      cy.contains('Save').click()
+      cy.contains('Transaction Success').should('have.text',"Transaction Success").wait(1000)
+  
+      cy.get('.ps-10 > .flex').click()
+  })
 
   it("Select Pricelist Modal ", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
@@ -235,7 +248,7 @@ describe("Ordering ", () => {
   });
 
   it("Reprint Transaction", () => {
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
@@ -277,7 +290,7 @@ describe("Ordering ", () => {
 
  it("Void Transaction" , () => { 
 
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
     cy.contains("Proceed").click();
 
@@ -300,7 +313,7 @@ describe("Ordering ", () => {
  })
  it("Other Transaction - RECALL" , () => {
 
-  cy.get("#postypcde").select("Dine-in").wait(2000);
+  cy.get("#postypcde").select("Dine-In").wait(2000);
   cy.get("#warcde").select("DINE-IN PRICE").wait(2000);
   cy.contains("Proceed").click();
 
@@ -312,7 +325,7 @@ describe("Ordering ", () => {
  })
 
    // Change Quantiy (Negative Testing)
-   it.only("Change Qty Negative", () => {
+   it("Change Qty Negative", () => {
     cy.get(':nth-child(2) > .bg-green-100').click().wait(2000) 
     cy.get('.Toastify__toast-body')
     .should("have.text", "Error : Select item first.").wait(2000).click()

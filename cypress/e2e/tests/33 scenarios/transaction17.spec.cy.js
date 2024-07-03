@@ -70,7 +70,7 @@ describe("Transaction 17", () => {
     cy.get(".border-blue-500").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
