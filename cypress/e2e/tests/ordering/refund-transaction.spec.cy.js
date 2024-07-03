@@ -14,7 +14,7 @@ describe("Refund Transaction", () => {
   it("1 Pax with Regular Transaction", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
 
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Chicken").click();
     cy.contains("1pc Chickenjoy w Fries").click();
 
@@ -32,7 +32,7 @@ describe("Refund Transaction", () => {
 
     cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist");
-    cy.get("#postypcde").select("DINE IN");
+    cy.get("#postypcde").select("Dine-in");
     cy.get("#warcde").select("Jollibee 1");
     cy.contains("Proceed").click();
 
@@ -71,7 +71,7 @@ describe("Refund Transaction", () => {
   });
 
   it("1 Pax with 10% discount", () => {
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Chicken").click();
     cy.contains("1pc Chickenjoy w Jolly Spaghetti").click();
 
@@ -96,7 +96,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click()
 
@@ -135,7 +135,7 @@ describe("Refund Transaction", () => {
   });
 
   it("1 Pax with 20% discount", () => {
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Chicken Joy Perfect Pairs").click();
     cy.contains("1pc Chicken Joy w Soup").click();
 
@@ -160,7 +160,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -200,7 +200,7 @@ describe("Refund Transaction", () => {
   });
 
   it("1 Pax with Senior Discount", () => {
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Chicken").click();
     cy.contains("1pc Chickenjoy w Burger Steak").click();
 
@@ -231,7 +231,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -270,7 +270,7 @@ describe("Refund Transaction", () => {
   });
 
   it("1 Pax with PWD Discount", () => {
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Chicken").click();
     cy.contains("2pc Chickenjoy").click();
 
@@ -301,7 +301,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -341,7 +341,7 @@ describe("Refund Transaction", () => {
   });
 
   it("1 Pax with Athlete Discount", () => {
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Chicken").click();
     cy.contains("1pc Chickenjoy w Fries Meal").click();
 
@@ -372,7 +372,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -411,7 +411,7 @@ describe("Refund Transaction", () => {
   });
 
   it("1 Pax with Medal of Valor Discount", () => {
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Chicken").click();
     cy.contains("1pc Chickenjoy w Sides").click();
 
@@ -442,7 +442,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -481,7 +481,7 @@ describe("Refund Transaction", () => {
   });
 
   it("1 Pax with Diplomat Discount", () => {
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Kiddie Meal").click();
     cy.contains("KM Burger Steak").click();
 
@@ -512,7 +512,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("TAKEOUT").wait(2000);
+    cy.get("#postypcde").select("Takeout").wait(2000);
     cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
 
@@ -551,10 +551,10 @@ describe("Refund Transaction", () => {
   });
 
   it("1 Pax with MEMC Senior Discount", () => {
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Family Super Meals").click();
     cy.contains(
-      "FSM B 6pc: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)"
+      "FSM B 6-pcs Chickenjoy Bucket"
     ).click();
 
     cy.contains("Add Discount").click().wait(2000);
@@ -584,7 +584,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("TAKEOUT").wait(2000);
+    cy.get("#postypcde").select("Takeout").wait(2000);
     cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
 
@@ -604,7 +604,7 @@ describe("Refund Transaction", () => {
     cy.get(".css-1ex1afd-MuiTableCell-root")
       .should(
         "have.text",
-        "FSM B 6pc: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)"
+        "FSM B 6-pcs Chickenjoy Bucket"
       )
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
@@ -626,10 +626,10 @@ describe("Refund Transaction", () => {
   });
 
    it("1 Pax with MEMC PWD Discount", () => {
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Family Super Meals").click();
     cy.contains(
-      "FSM B 8pc: Chickenjoy Bucket (4 Jolly Spaghetti, 4 Rice, and 4 Regular Drinks)"
+      "FSM B 8-pcs Chickenjoy Bucket"
     ).click();
 
     cy.contains("Add Discount").click().wait(2000);
@@ -659,7 +659,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
     cy.contains("Refund Transaction").click().wait(2000);
@@ -678,7 +678,7 @@ describe("Refund Transaction", () => {
     cy.get(".css-1ex1afd-MuiTableCell-root")
       .should(
         "have.text",
-        "FSM B 8pc: Chickenjoy Bucket (4 Jolly Spaghetti, 4 Rice, and 4 Regular Drinks)"
+        "FSM B 8-pcs Chickenjoy Bucket"
       )
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);

@@ -15,14 +15,14 @@ describe("Transaction 4", () => {
     cy.wait(2000);
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Hotdog").click().wait(1000);
     cy.contains("Cheesy Classic Jolly Hotdog").click().wait(1000);
-    cy.contains("BEVERAGES").click().wait(1000);
+    cy.contains("Beverages").click().wait(1000);
     cy.contains("Floats").click().wait(1000);
     cy.contains("Coke").click().wait(1000);
 
@@ -82,7 +82,7 @@ describe("Transaction 4", () => {
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(2) > :nth-child(2)").should(
         "have.text",
-        "-" + Discount
+        "-" + Discount1
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(3) > :nth-child(2)").should(
         "have.text",

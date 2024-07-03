@@ -5,7 +5,7 @@ describe("Transaction 9", () => {
   beforeEach(() => {
     // reset for each test case
     assertionResults = [];
-    failureMessages = [];www
+    failureMessages = [];
 
     // Login with valid credentials
     cy.login("lstv", "lstventures");
@@ -15,14 +15,14 @@ describe("Transaction 9", () => {
     cy.wait(2000);
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("TAKEOUT").wait(2000);
+    cy.get("#postypcde").select("Takeout").wait(2000);
     cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Family Super Meals").click().wait(1000);
     cy.contains(
-      "FSM A 6pc: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)"
+      "FSM A 6-pcs Chickenjoy Bucket"
     )
       .click()
       .wait(1000);
@@ -78,7 +78,7 @@ describe("Transaction 9", () => {
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(2) > :nth-child(2)").should(
         "have.text",
-        "-" + Discount
+        "-" + Discount1
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(3) > :nth-child(2)").should(
         "have.text",

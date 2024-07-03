@@ -16,11 +16,11 @@ describe("Transaction 5", () => {
     cy.wait(2000);
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Burger Steak").click().wait(1000);
     cy.contains("2pc Burger Steak").click().wait(1000);
     cy.contains("Yumburger").click().wait(1000);
@@ -78,11 +78,11 @@ describe("Transaction 5", () => {
       cy.contains("Payment").click();
       cy.get(".ml-5 > :nth-child(2) > :nth-child(1) > :nth-child(2)").should(
         "have.text",
-        "₱87.00"
+        "₱" + ST + ".00"
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(2) > :nth-child(2)").should(
         "have.text",
-        "-" + Discount
+        "-" + Discount1
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(3) > :nth-child(2)").should(
         "have.text",

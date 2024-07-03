@@ -13,7 +13,7 @@ describe("Transaction 24", () => {
 
   it("1 Pax with 10% discount", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Chicken").click();
     cy.contains("1pc Chickenjoy w Jolly Spaghetti").click();
 
@@ -38,7 +38,7 @@ describe("Transaction 24", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click()
 

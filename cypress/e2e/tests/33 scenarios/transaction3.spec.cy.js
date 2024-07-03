@@ -16,11 +16,11 @@ describe("Transaction 3", () => {
     cy.wait(2000);
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Breakfast").click().wait(1000);
     cy.contains("BF Hotdog").click().wait(1000);
     cy.contains("BF Breakfast Steak").click().wait(1000);

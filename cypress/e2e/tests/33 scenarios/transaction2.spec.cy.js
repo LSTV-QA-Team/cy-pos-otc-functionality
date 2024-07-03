@@ -16,12 +16,12 @@ describe("Transaction 2", () => {
     cy.wait(2000);
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
-    cy.contains("FOOD").click().wait(2000);
+    cy.contains("Food").click().wait(2000);
     cy.contains("Chicken").click().wait(2000);
     cy.contains("1pc Chickenjoy w Fries Meal").click().wait(2000);
     cy.contains("1pc Chickenjoy w Jolly Spaghetti").click().wait(2000);

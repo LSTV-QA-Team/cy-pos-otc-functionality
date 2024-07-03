@@ -15,7 +15,7 @@ describe("Transaction 23", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
 
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Chicken").click();
     cy.contains("1pc Chickenjoy w Fries").click();
 
@@ -33,7 +33,7 @@ describe("Transaction 23", () => {
 
     cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist");
-    cy.get("#postypcde").select("DINE IN");
+    cy.get("#postypcde").select("Dine-in");
     cy.get("#warcde").select("Jollibee 1");
     cy.contains("Proceed").click();
 

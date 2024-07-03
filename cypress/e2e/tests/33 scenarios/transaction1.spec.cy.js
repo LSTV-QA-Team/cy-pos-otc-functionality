@@ -72,19 +72,13 @@ describe("Transaction 1", () => {
     it("1 Pax with Regular Transaction and Service Charge", () => {
       cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
       cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-      cy.get("#postypcde").select("DINE IN").wait(2000);
+      cy.get("#postypcde").select("Dine-in").wait(2000);
       cy.get("#warcde").select("Jollibee 1").wait(2000);
       cy.contains("Proceed").click();
       cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
-      cy.contains("FOOD").click().wait(2000);
+      cy.contains("Food").click().wait(2000);
       cy.contains("Chicken").click().wait(2000);
       cy.contains("1-pc Chickenjoy").click().wait(2000);
-  
-      // const ST = 76;
-      // const SC_Formula = (ST / 1.12) * 0.1;
-      // const T1_SCharge = Number(SC_Formula.toFixed(2)); //6.79
-      // const GT = Number(ST + T1_SCharge);
-
 
       cy.fixture('ordering-scenarios.json').then((data) => {
     
@@ -104,11 +98,7 @@ describe("Transaction 1", () => {
       cy.get(".px-8").should("have.text", "Payment");
       cy.get(".overflow-hidden > span").should("have.text", "₱82.79");
       cy.contains("CASH").click();
-  
-      // cy.get(".ml-5 > :nth-child(2) > :nth-child(4)").should(
-      //   "have.text",
-      //   "Service Charge " + T1_SCharge
-      // );
+
       cy.get("#customerName").click().type("Edith");
       cy.get(".border-blue-500").click();
   

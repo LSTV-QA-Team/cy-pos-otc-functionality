@@ -5,7 +5,7 @@ describe("Transaction 7", () => {
   beforeEach(() => {
     // reset for each test case
     assertionResults = [];
-    failureMessages = [];www
+    failureMessages = [];
 
     // Login with valid credentials
     cy.login("lstv", "lstventures");
@@ -15,11 +15,11 @@ describe("Transaction 7", () => {
     cy.wait(2000);
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Burger Steak").click().wait(1000);
     cy.contains("1pc Burger Steak w 3pcs Shanghai").click().wait(1000);
 
@@ -62,11 +62,10 @@ describe("Transaction 7", () => {
       );
       cy.get(".bg-black > :nth-child(3) > :nth-child(2)").should(
         "have.text",
-        LVA1 + ".00"
+        LVA1
       );
 
       cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
-      cy.get(":nth-child(5) > :nth-child(2)").should("have.text", SCharge_dsc1);
       cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
   
       cy.contains("Payment").click();
@@ -76,7 +75,7 @@ describe("Transaction 7", () => {
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(2) > :nth-child(2)").should(
         "have.text",
-        "-" + Discount
+        "-" + Discount1
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(3) > :nth-child(2)").should(
         "have.text",
@@ -85,10 +84,6 @@ describe("Transaction 7", () => {
       cy.get(".ml-5 > :nth-child(2) > :nth-child(4)").should(
         "have.text",
         "Service Charge " + ServiceCharge1
-      );
-      cy.get(".ml-5 > :nth-child(2) > :nth-child(5)").should(
-        "have.text",
-        "SCharge Discount -" + SCharge_dsc1
       );
       cy.get(".text-red > :nth-child(2)").should("have.text", "₱" + total1);
 

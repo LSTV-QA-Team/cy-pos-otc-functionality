@@ -5,7 +5,7 @@ describe("Transaction 10", () => {
   beforeEach(() => {
     // reset for each test case
     assertionResults = [];
-    failureMessages = [];www
+    failureMessages = [];
 
     // Login with valid credentials
     cy.login("lstv", "lstventures");
@@ -15,11 +15,11 @@ describe("Transaction 10", () => {
     cy.wait(2000);
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Chicken").click().wait(1000);
     cy.contains("Chickenjoy Bucket 6pcs").click();
 
@@ -37,23 +37,22 @@ describe("Transaction 10", () => {
       "Discount : Senior"
     );
 
-    cy.fixture('ordering-scenarios.json').then((data) => {
-    
+    cy.fixture("ordering-scenarios.json").then((data) => {
       const ST = data[10].subtotal;
-      const Discount = data[10].discount
-      const Discount1 = Discount.toFixed(2)
-      const LVA = data[10].lessVatAdj
-      const LVA1 = LVA.toFixed(2)
-      const T11_SCharge = data[10].serviceCharge
-      const ServiceCharge1 = T11_SCharge.toFixed(2)
-      const SCharge_dsc = data[10].serviceChargeDiscount
-      const SCharge_dsc1 = SCharge_dsc.toFixed(2)
-      const GT = data[10].total
-      const total1 = GT.toFixed(2)
+      const Discount = data[10].discount;
+      const Discount1 = Discount.toFixed(2);
+      const LVA = data[10].lessVatAdj;
+      const LVA1 = LVA.toFixed(2);
+      const T11_SCharge = Number(data[10].serviceCharge);
+      const SCharge = T11_SCharge.toFixed(3);
+      const SCharge_dsc = data[10].serviceChargeDiscount;
+      const SCharge_dsc1 = SCharge_dsc.toFixed(3);
+      const GT = data[10].total;
+      const total1 = GT.toFixed(2);
 
       cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
         "have.text",
-        ST +".00"
+        ST + ".00"
       );
       cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
         "have.text",
@@ -64,18 +63,24 @@ describe("Transaction 10", () => {
         LVA1
       );
 
-      cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
-      cy.get(":nth-child(5) > :nth-child(2)").should("have.text", SCharge_dsc1);
+      cy.get(":nth-child(4) > :nth-child(2)").should(
+        "have.text",
+        Math.round(SCharge * 100) / 100
+      );
+      cy.get(":nth-child(5) > :nth-child(2)").should(
+        "have.text",
+        Math.round(SCharge_dsc1 * 100) / 100
+      );
       cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
-  
+
       cy.contains("Payment").click();
       cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
         "have.text",
-        ST +".00"
+        ST + ".00"
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(2) > :nth-child(2)").should(
         "have.text",
-        "-" + Discount
+        "-" + Discount1
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(3) > :nth-child(2)").should(
         "have.text",
@@ -83,16 +88,14 @@ describe("Transaction 10", () => {
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(4)").should(
         "have.text",
-        "Service Charge " + ServiceCharge1
+        "Service Charge " + Math.round(SCharge * 100) / 100
       );
       cy.get(".ml-5 > :nth-child(2) > :nth-child(5)").should(
         "have.text",
-        "SCharge Discount -" + SCharge_dsc1
+        "SCharge Discount -" + Math.round(SCharge_dsc1 * 100) / 100
       );
       cy.get(".text-red > :nth-child(2)").should("have.text", "₱" + total1);
-
-    })
-
+    });
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ariana G");
@@ -102,7 +105,6 @@ describe("Transaction 10", () => {
       "have.text",
       "Transaction Complete."
     );
-    cy.wait(5000)
+    cy.wait(5000);
   });
-
-})
+});
