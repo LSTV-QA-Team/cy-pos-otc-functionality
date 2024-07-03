@@ -28,7 +28,6 @@ describe("Ordering ", () => {
     cy.get('.Toastify__toast-body').click().wait(1000)
     //OPEN NEW TRANASCTION
     cy.wait(4000)
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
