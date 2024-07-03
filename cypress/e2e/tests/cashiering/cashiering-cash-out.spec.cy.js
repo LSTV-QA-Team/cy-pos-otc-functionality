@@ -8,12 +8,13 @@ describe("Cash Out", () => {
     failureMessages = [];
 
     // Login with valid credentials
-    cy.login();
+    cy.login('lstv', 'lstventures');
 
-    cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
   });
 
 it('Cash Out', () => {
+
+  cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
 
  //  4.1 Check if the Cash Out Button is enable
   cy.contains("Cash Out").click().wait(1000);

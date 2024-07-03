@@ -8,12 +8,12 @@ describe("Cash In", () => {
     failureMessages = [];
 
     // Login with valid credentials
-    cy.login();
-
-    cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
+    cy.login('lstv', 'lstventures');
   });
 
   it("Cash In ", () => {
+
+    cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
     //3.Click Cash In Button
     //3.1 Check if the Cash In Button is enable
     cy.contains("Cash In").click().wait(1000);
