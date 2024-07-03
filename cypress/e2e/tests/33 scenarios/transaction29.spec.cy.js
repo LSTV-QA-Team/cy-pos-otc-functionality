@@ -31,6 +31,38 @@ describe("Transaction 29", () => {
       .should("have.text", "Discount : MOV")
       .wait(2000);
 
+      cy.fixture('ordering-scenarios.json').then((data) => {
+    
+        const ST = data[28].subtotal;
+        const Discount = data[28].discount
+        const Discount1 = Discount.toFixed(2)
+        const LVA = data[28].lessVatAdj
+        const LVA1 = LVA.toFixed(2)
+        const T29_SCharge = data[28].serviceCharge
+        const ServiceCharge1 = T29_SCharge.toFixed(2)
+        const SCharge_dsc = data[28].serviceChargeDiscount
+        const SCharge_dsc1 = SCharge_dsc.toFixed(2)
+        const GT = data[28].total
+        const total1 = GT.toFixed(2)
+  
+        cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
+          "have.text",
+          ST +".00"
+        );
+        cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
+          "have.text",
+          Discount1
+        );
+        cy.get(".bg-black > :nth-child(3) > :nth-child(2)").should(
+          "have.text",
+          LVA1
+        );
+  
+        cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
+        cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
+      
+      })
+
     cy.contains("Payment").click();
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Yizuo").wait(2000);
