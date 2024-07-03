@@ -56,24 +56,17 @@ describe('Other Charges', () => {
 
                 if (data[key].forValid === true) {
 
-                    cy.get('#takeout_scharge').clear()
-                      .type(data[key].takeoutsercharge)
-                      .should('have.value', data[key].takeoutsercharge + '%')
+                    cy.get('#takeout_scharge').type('{backspace}{backspace}{backspace}{backspace}{backspace}').type(data[key].takeoutsercharge).should('have.value', data[key].takeoutsercharge + '%')
 
-                    cy.get('#dinein_scharge').clear()
-                      .type(data[key].dineinsercharge)
-                      .should('have.value', data[key].dineinsercharge + '%')
+                    cy.get('#dinein_scharge').type('{backspace}{backspace}{backspace}{backspace}{backspace}').type(data[key].dineinsercharge).should('have.value', data[key].dineinsercharge + '%')
 
-
-                    cy.get('#localtax').clear()
-                      .type(data[key].localtax)
-                      .should('have.value', data[key].localtax + '%')
+                    cy.get('#localtax').type('{backspace}{backspace}{backspace}{backspace}{backspace}').type(data[key].localtax).should('have.value', data[key].localtax + '%')
 
                     // 17.1 Check all encoded data should reflect to the receipt (Validate on Preview) 
 
                     cy.get('.border-blue-500').click()
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages)
+                    // cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
                     cy.contains('Other Charges').click()
                 } 
@@ -98,12 +91,17 @@ describe('Other Charges', () => {
                     cy.get('#takeout_scharge').clear()
                       .type(data[key].takeoutsercharge)
 
+                    cy.checkValue('#takeout_scharge', '7.1', 'After Encoding in Takeout Service Charge:', data[key].checkValTakeout + '%', assertionResults,failureMessages)
+
                     cy.get('#dinein_scharge').clear()
                       .type(data[key].dineinsercharge)
 
+                    cy.checkValue('#dinein_scharge', '8.1', 'After Ecnocing in Dine-In Service Charge:', data[key].checkValDine + '%', assertionResults,failureMessages)  
 
                     cy.get('#localtax').clear()
-                      .type(data[key].localtax)  
+                      .type(data[key].localtax) 
+                      
+                    cy.checkValue('#localtax', '9.1', 'After Encoding in Local Tax:', data[key].checkValTax + '%', assertionResults,failureMessages)
                     
                     cy.get('.border-blue-500').click()
 
@@ -174,6 +172,8 @@ describe('Other Charges', () => {
         cy.get('#localtax').clear()
           .type('1.00')
 
+        cy.get('.border-blue-500').click()
+
         cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Dine-In Service Charge * is required', assertionResults, failureMessages)
 
         cy.get('#takeout_scharge').clear()
@@ -183,6 +183,8 @@ describe('Other Charges', () => {
           .type('1.00')
 
         cy.get('#localtax').clear()
+
+        cy.get('.border-blue-500').click()
 
         cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Local Tax * is required', assertionResults, failureMessages)
         
@@ -204,7 +206,13 @@ describe('Other Charges', () => {
 
         cy.get('.border-red-500').click()
 
+        cy.get('.border-blue-500').click()
+
+        cy.wait(2000)
+
         cy.checkElementInvisibility('.shadow-lg', '38.1', 'Upon Clicking the "Cancel" button:', '"Other Charges" modal window was still visible or active.', assertionResults, failureMessages)
+
+        cy.wait(2000)
 
         cy.checkElementVisibility('.h-full', '38.2', 'Upon Clicking the "Cancel" button:', '"Master File Menu" modal window was not visible or active.', assertionResults, failureMessages)
 

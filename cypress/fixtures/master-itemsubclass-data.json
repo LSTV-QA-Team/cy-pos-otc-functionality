@@ -94,6 +94,10 @@
     "itemClass": "Food"
   },
   {
+    "itemSubclass": "Beverages",
+    "itemClass": "Beverages"
+  },
+  {
     "itemSubclass": "Take-Out Favorites",
     "itemClass": "Food"
   },

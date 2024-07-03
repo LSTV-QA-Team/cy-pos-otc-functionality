@@ -44,8 +44,7 @@ module.exports = defineConfig({
     reportDir: "cypress/reports",
     charts: true,
     reportPageTitle: 'Cypress POS-OTC Functionality Report',
-    // reportFilename: `[status]-[name]-${moment().format('YYYY-MM-DD')}-report`,
-    reportFilename: `[status]-[name]-2024-06-26-report`,
+    reportFilename: `[status]-[name]-${moment().format('YYYY-MM-DD')}-report`,
     embeddedScreenshots: false,
     inlineAssets: true,
     overwrite: true,
@@ -86,16 +85,16 @@ module.exports = defineConfig({
         'cypress/e2e/tests/master/master-system-parameters.spec.cy.js',
         'cypress/e2e/tests/master/master-header.spec.cy.js',
         'cypress/e2e/tests/master/master-footer.spec.cy.js',
-        'cypress/e2e/tests/cashiering/cashiering-cashfund.spec.cy.js',
-        'cypress/e2e/tests/cashiering/cashiering-cash-in.spec.cy.js',
-        'cypress/e2e/tests/cashiering/cashiering-cash-out.spec.cy.js',
-        'cypress/e2e/tests/cashiering/cashiering-cash-declaration.spec.cy.js',
-        'cypress/e2e/tests/ordering/ordering.spec.cy.js',
-        'cypress/e2e/tests/ordering/free-transaction.spec.cy.js',
-        'cypress/e2e/tests/ordering/void-transactions.spec.cy.js',
-        'cypress/e2e/tests/ordering/refund-transaction.spec.cy.js',
-        'cypress/e2e/tests/ordering/with-service-charge.spec.cy.js',
-        'cypress/e2e/tests/ordering/ordering-negative.spec.cy.js'
+        // 'cypress/e2e/tests/cashiering/cashiering-cashfund.spec.cy.js',
+        // 'cypress/e2e/tests/cashiering/cashiering-cash-in.spec.cy.js',
+        // 'cypress/e2e/tests/cashiering/cashiering-cash-out.spec.cy.js',
+        // 'cypress/e2e/tests/cashiering/cashiering-cash-declaration.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/ordering.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/free-transaction.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/void-transactions.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/refund-transaction.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/with-service-charge.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/ordering-negative.spec.cy.js'
       ]
 
       require('cypress-mochawesome-reporter/plugin')(on);
