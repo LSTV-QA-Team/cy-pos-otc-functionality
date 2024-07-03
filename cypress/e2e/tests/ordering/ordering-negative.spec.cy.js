@@ -14,8 +14,20 @@ describe("Ordering ", () => {
   });
 
   it("Select Pricelist Modal ", () => {
+    //CLEAR TRANSACTION
     cy.wait(4000)
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+    cy.get(':nth-child(9) > .bg-red-100').click().wait(500)
+    cy.get('.px-8').should('have.text', 'Confirmation').wait(500)
+    cy.get('section > h1')
+    .should('have.text', 'Are you sure you want to cancel this transaction?')
+    .wait(500)
+    cy.get('.border-blue-500').click().wait(1000)
+    cy.get('.Toastify__toast-body')
+    .should('have.text', 'Transaction Successfully Cancelled.')
+    .wait(1000)
+    cy.get('.Toastify__toast-body').click().wait(1000)
+    //OPEN NEW TRANASCTION
+    cy.wait(4000)
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
@@ -367,6 +379,7 @@ describe("Ordering ", () => {
 
   // CALNCEL TRANSACTION BEFORE MAKING PAYMENT OR TRANSACTION
   it("Clear Transaction", () => {
+   cy.wait(4000)
    cy.get(':nth-child(9) > .bg-red-100').click().wait(500)
    cy.get('.px-8').should('have.text', 'Confirmation').wait(500)
    cy.get('section > h1')
