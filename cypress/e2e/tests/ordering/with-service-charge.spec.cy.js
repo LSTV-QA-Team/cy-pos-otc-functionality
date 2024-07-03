@@ -72,11 +72,11 @@ it("Cash In" , () => {
   it("1 Pax with Regular Transaction and Service Charge", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
-    cy.contains("FOOD").click().wait(2000);
+    cy.contains("Food").click().wait(2000);
     cy.contains("Chicken").click().wait(2000);
     cy.contains("1-pc Chickenjoy").click().wait(2000);
 
@@ -108,14 +108,14 @@ it("Cash In" , () => {
   });
 
   it("1 Pax with 10% discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
-    cy.contains("FOOD").click().wait(2000);
+    cy.contains("Food").click().wait(2000);
     cy.contains("Chicken").click().wait(2000);
     cy.contains("1pc Chickenjoy w Fries Meal").click().wait(2000);
     cy.contains("1pc Chickenjoy w Jolly Spaghetti").click().wait(2000);
@@ -162,13 +162,13 @@ it("Cash In" , () => {
   });
 
   it("1 Pax with 20% discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Breakfast").click().wait(1000);
     cy.contains("BF Hotdog").click().wait(1000);
     cy.contains("BF Breakfast Steak").click().wait(1000);
@@ -216,16 +216,16 @@ it("Cash In" , () => {
   });
 
   it("1 Pax with Senior Discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Hotdog").click().wait(1000);
     cy.contains("Cheesy Classic Jolly Hotdog").click().wait(1000);
-    cy.contains("BEVERAGES").click().wait(1000);
+    cy.contains("Beverages").click().wait(1000);
     cy.contains("Floats").click().wait(1000);
     cy.contains("Coke").click().wait(1000);
 
@@ -311,13 +311,13 @@ it("Cash In" , () => {
   });
 
   it("1 Pax with PWD Discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Burger Steak").click().wait(1000);
     cy.contains("2pc Burger Steak").click().wait(1000);
     cy.contains("Yumburger").click().wait(1000);
@@ -401,16 +401,17 @@ it("Cash In" , () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.wait(5000);
   });
 
   it("1 Pax with Athlete Discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Hotdog").click().wait(1000);
     cy.contains("Regular Jolly Hotdog").click().wait(1000);
     cy.contains("Yumburger").click().wait(1000);
@@ -492,16 +493,17 @@ it("Cash In" , () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.wait(5000);
   });
 
   it("1 Pax with Medal of Valor Discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Burger Steak").click().wait(1000);
     cy.contains("1pc Burger Steak w 3pcs Shanghai").click().wait(1000);
 
@@ -571,16 +573,17 @@ it("Cash In" , () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.wait(5000);
   });
 
   it("1 Pax with Diplomat Discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Super Meals").click().wait(1000);
     cy.contains(
       "Chickenjoy, Burger Steak, Half Jolly Spaghetti, Rice and Drink"
@@ -657,16 +660,16 @@ it("Cash In" , () => {
   });
 
   it("1 Pax with MEMC Senior Discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("TAKEOUT").wait(2000);
+    cy.get("#postypcde").select("Takeout").wait(2000);
     cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Family Super Meals").click().wait(1000);
     cy.contains(
-      "FSM A 6pc: Chickenjoy Bucket (3 Rice, 3 Sides, 3 Mini Sundaes, and 3 Regular Drinks)"
+      "FSM A 6-pcs Chickenjoy Bucket"
     )
       .click()
       .wait(1000);
@@ -746,19 +749,20 @@ it("Cash In" , () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.wait(5000);
   });
 
   it("1 Pax with MEMC PWD Discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("TAKEOUT").wait(2000);
+    cy.get("#postypcde").select("Takeout").wait(2000);
     cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Family Super Meals").click().wait(1000);
     cy.contains(
-      "FSM A 8pc: Chickenjoy Bucket (4 Rice, 4 Sides, 4 Mini Sundaes, and 4 Regular Drinks)"
+      "FSM A 8-pcs Chickenjoy Bucket"
     )
       .click()
       .wait(1000);
@@ -841,13 +845,13 @@ it("Cash In" , () => {
   });
 
   it("1 Pax with MEMC Senior Discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Chicken").click().wait(1000);
     cy.contains("Chickenjoy Bucket 6pcs").click();
 
@@ -932,16 +936,17 @@ it("Cash In" , () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.wait(5000);
   });
 
   it("1 Pax with MEMC PWD Discount and Service Charge", () => {
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-in").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click().wait(1000);
+    cy.contains("Food").click().wait(1000);
     cy.contains("Chicken").click().wait(1000);
     cy.contains("Chickenjoy Bucket 8pcs").click();
 
@@ -1020,5 +1025,6 @@ it("Cash In" , () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.wait(5000);
   });
 });

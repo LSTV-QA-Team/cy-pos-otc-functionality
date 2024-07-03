@@ -13,14 +13,14 @@ describe("Transaction 21", () => {
 
   it("1 Pax with MEMC Senior Discount", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
-    cy.get("#postypcde").select("TAKEOUT").wait(2000);
+    cy.get("#postypcde").select("Takeout").wait(2000);
     cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
 
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Family Super Meals").click();
     cy.contains(
-      "FSM B 6pc: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)"
+      "FSM B 6-pcs Chickenjoy Bucket"
     ).click();
 
     cy.contains("Add Discount").click().wait(2000);
@@ -37,34 +37,38 @@ describe("Transaction 21", () => {
       "Discount : Senior"
     );
 
-    const ST = 599;
-    const Disc_Formula = Number(100 / 1.12) * 0.2;
-    const Discount = Disc_Formula.toFixed(2);
-    const LVA = (100 / 1.12) * 0.12;
-    const LVA1 = Number(LVA.toFixed(2));
-    const SC_Formula = (ST / 1.12) * 0.1;
-    const T21_SCharge = Number(SC_Formula.toFixed(2));
-    const SCharge_dsc = T21_SCharge * 0.2;
-    const SCharge_dsc1 = SCharge_dsc.toFixed(2);
-    const GT = Number(ST - Discount - LVA1);
-    const total = Number(GT + T21_SCharge - SCharge_dsc1);
-    const total1 = Number(total.toFixed(2));
+    cy.fixture('ordering-scenarios.json').then((data) => {
+    
+      const ST = data[20].subtotal;
+      const Discount = data[20].discount
+      const Discount1 = Discount.toFixed(2)
+      const LVA = data[20].lessVatAdj
+      const LVA1 = LVA.toFixed(2)
+      const T21_SCharge = data[20].serviceCharge
+      const ServiceCharge1 = T21_SCharge.toFixed(2)
+      const SCharge_dsc = data[20].serviceChargeDiscount
+      const SCharge_dsc1 = SCharge_dsc.toFixed(2)
+      const GT = data[20].total
+      const total1 = GT.toFixed(2)
 
-    cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
-      "have.text",
-      "599.00"
-    );
-    cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
-      "have.text",
-      Discount
-    );
-    cy.get(".bg-black > :nth-child(3) > :nth-child(2)").should(
-      "have.text",
-      LVA1
-    );
-    cy.get(":nth-child(4) > :nth-child(2)").should("have.text", T21_SCharge);
-    cy.get(":nth-child(5) > :nth-child(2)").should("have.text", SCharge_dsc1);
-    cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
+      cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
+        "have.text",
+        ST +".00"
+      );
+      cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
+        "have.text",
+        Discount1
+      );
+      cy.get(".bg-black > :nth-child(3) > :nth-child(2)").should(
+        "have.text",
+        LVA1
+      );
+
+      cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
+      cy.get(":nth-child(5) > :nth-child(2)").should("have.text", SCharge_dsc1);
+      cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
+    
+    })
 
     cy.contains("Payment").click();
 
@@ -79,7 +83,7 @@ describe("Transaction 21", () => {
 
     cy.wait(2000);
 
-    cy.get("#postypcde").select("TAKEOUT").wait(2000);
+    cy.get("#postypcde").select("Takeout").wait(2000);
     cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
 

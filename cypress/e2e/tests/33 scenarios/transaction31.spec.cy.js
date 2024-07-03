@@ -13,10 +13,10 @@ describe("Transaction 31", () => {
 
   it("1 Pax with MEMC Senior Discount", () => {
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
-    cy.contains("FOOD").click();
+    cy.contains("Food").click();
     cy.contains("Family Super Meals").click();
     cy.contains(
-      "FSM B 6pc: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)"
+      "FSM B 6-pcs Chickenjoy Bucket"
     ).click();
 
     cy.contains("Add Discount").click().wait(2000);
@@ -46,7 +46,7 @@ describe("Transaction 31", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("TAKEOUT").wait(2000);
+    cy.get("#postypcde").select("Takeout").wait(2000);
     cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();
 
@@ -66,7 +66,7 @@ describe("Transaction 31", () => {
     cy.get(".css-1ex1afd-MuiTableCell-root")
       .should(
         "have.text",
-        "FSM B 6pc: Chickenjoy Bucket (3 Jolly Spaghetti, 3 Rice, and 3 Regular Drinks)"
+        "FSM B 6-pcs Chickenjoy Bucket"
       )
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
