@@ -206,7 +206,7 @@ describe("Refund Transaction", () => {
 
     cy.contains("Add Discount").click().wait(2000);
 
-    cy.get("#discde").select("Senior Citizen").wait(2000);
+    cy.get("#discde").select("Senior").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
     cy.get(".border-blue-500").click().wait(2000);
 
@@ -559,7 +559,7 @@ describe("Refund Transaction", () => {
 
     cy.contains("Add Discount").click().wait(2000);
 
-    cy.get("#discde").select("Senior Citizen").wait(2000);
+    cy.get("#discde").select("Senior").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
     cy.get(".border-blue-500").click().wait(2000);
 

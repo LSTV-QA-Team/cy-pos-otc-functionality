@@ -51,6 +51,8 @@ describe("Ordering ", () => {
 
       cy.log('Update successful:', result)
 
+      cy.wait(4000)
+
     })
 
   })
@@ -130,7 +132,7 @@ describe("Ordering ", () => {
     cy.contains("1-pc Chickenjoy").click().wait(2000);
     cy.get(":nth-child(5) > .bg-green-100").click().wait(2000);
     cy.get(".px-8").should("have.text", "Add discount");
-    cy.get("#discde").select("Senior Citizen").wait(2000);
+    cy.get("#discde").select("Senior").wait(2000);
     cy.get("#orderitmid0").click();
     cy.contains("Update").click().wait(2000);
 
@@ -214,7 +216,7 @@ describe("Ordering ", () => {
   it("Discount with price override", () => {
     cy.get(".MuiButtonBase-root").click();
     cy.get(":nth-child(5) > .bg-green-100").click();
-    cy.get("#discde").select("Senior Citizen");
+    cy.get("#discde").select("Senior");
     cy.get("#orderitmid0").click();
     cy.contains("Update").click();
 
