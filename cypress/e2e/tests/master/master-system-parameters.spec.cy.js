@@ -39,14 +39,6 @@ describe('System Parameters', () => {
 
         cy.wait(2000)
 
-        // 1.2.3 Check correct button(s) caption.
-        // Not necessary since buttons in pager U/I does not have captions.
-
-        // 1.2.4 Check correct objects position.
-        // Add this when needed.  
-
-        // cy.validateElements('systemparam-selector-assert.json', '1.2.5', 'Upon Navigating to System Parameters pager U/I', assertionResults, failureMessages)
-
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
@@ -59,5 +51,5 @@ describe('System Parameters', () => {
         cy.get('.border-blue-500').click()
 
         cy.checkLabelCaption('.Toastify__toast-body', '3.1', 'Upon Clicking the "Update" button:', 'Successfully updated.', assertionResults, failureMessages) 
-    });
+    })
 })

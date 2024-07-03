@@ -7,9 +7,7 @@ describe('Receipt Footer Set Up', () => {
 
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-footer-data')
-        // cy.execute('npm run sheet-converter footer-selector-assert')
         cy.wait(4000)
-
     })
     
     beforeEach(() => {
@@ -18,7 +16,6 @@ describe('Receipt Footer Set Up', () => {
         failureMessages = [];
 
         cy.login('lstv', 'lstventures')
-
     })
 
     it('Check Receipt Footer Set Up Page', () => {   
@@ -35,12 +32,9 @@ describe('Receipt Footer Set Up', () => {
 
         cy.wait(2000)
 
-        // Check correct objects position.
-
         cy.validateElements('footer-selector-assert.json', '1.2.2 & 1.2.3 & 1.2.5', 'Upon Navigating to Receipt Footer Set Up pager U/I', assertionResults, failureMessages)
 
         cy.checkForFailure(assertionResults, failureMessages)
-
     })
 
     it('Valid Update Functionality', () => {
@@ -177,7 +171,7 @@ describe('Receipt Footer Set Up', () => {
                     
                     cy.checkInputMaxLength('#supnonvatregtin', 12, '25.1', 'Upon Encoding in "Supplier Non-VAT Registered TIN" Textbox: Should be formatted', assertionResults, failureMessages)
 
-                    cy.checkValue('#supnonvatregtin', '25.2', 'After Encoding in "" Textbox: Should be formatted"', data[key].suppNonVATExpected, assertionResults, failureMessages)
+                    cy.checkValue('#supnonvatregtin', '25.2', 'After Encoding in "Supplier Non-VAT Registered TIN" Textbox: Should be formatted"', data[key].suppNonVATExpected, assertionResults, failureMessages)
 
                     cy.get('#accrenum').clear()
                       .type(data[key].accredNo)
@@ -244,7 +238,7 @@ describe('Receipt Footer Set Up', () => {
 
         cy.wait(4000)
 
-         // Force enable the first option
+        // Force enable the first option
         cy.get('#officialreceipt')
           .find('option')
           .first()
@@ -290,7 +284,6 @@ describe('Receipt Footer Set Up', () => {
         cy.wait(4000)
 
         cy.checkForFailure(assertionResults, failureMessages)
-
     })
 
     it('Cancel Functionlity', () => {

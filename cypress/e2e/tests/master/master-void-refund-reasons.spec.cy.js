@@ -1,4 +1,3 @@
-
 let assertionResults = [];
 let failureMessages = [];
 
@@ -54,8 +53,8 @@ describe('Void/Refund Reasons', () => {
            
             cy.task('queryDb', 'SELECT * FROM voidreasonfile').then((records) => {
 
-                const remainingData = records.map((record) => record.description);
-                const deletedChars = data.map((item) => item.dataToDelete);
+                const remainingData = records.map((record) => record.description)
+                const deletedChars = data.map((item) => item.dataToDelete)
                 
 
                 deletedChars.forEach((char) => {
@@ -84,20 +83,12 @@ describe('Void/Refund Reasons', () => {
 
         cy.wait(2000)
 
-        // 1.2.2 Check correct table column(s) header caption. 
         cy.checkTableColumnTitle(['Actions', 'Description'], '1.2.2', 'Upon Navigating to Void/Refund Reasons pager U/I:', assertionResults, failureMessages)
-
-        // 1.2.3 Check correct button(s) caption.
-        // Not necessary since buttons in pager U/I does not have captions.
-
-        // 1.2.4 Check correct objects position.
-        // Add this when needed.  
 
         cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to Void/Refund Reasons pager U/I:', assertionResults, failureMessages)
 
-        // Consolidate the results of various assertions across multiple custom commands into a single summary.
         cy.checkForFailure(assertionResults, failureMessages)
-    });
+    })
 
     it('Add Functionality', () => {
 
@@ -121,20 +112,14 @@ describe('Void/Refund Reasons', () => {
                    
             })
 
-            // 2.1.4 Check correct buttons(s) caption
-
-            // 2.1.5 Check correct all object position
-
             cy.validateElements('voidreasons-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click();
 
-            for (const key in data){
-
-                // cy.get('.sc-eDLKkx > .anticon > svg').click()
-                
+            for (const key in data){                
 
                     if (data[key].voidReasons === "null") {
+
+                        cy.wait(4000)
                         
                         cy.get('#voidcde').clear().type(data[key].voidReasons)
 
@@ -156,6 +141,8 @@ describe('Void/Refund Reasons', () => {
                     } 
                     
                     else if (data[key].voidReasons === "Item Out of Stock") {
+
+                        cy.wait(4000)
 
                         cy.get('#voidcde').clear().type(data[key].voidReasons)
 

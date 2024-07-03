@@ -1,73 +1,87 @@
 [
   {
     "freeReasons": "Sample Giveaway",
-    "onlySearch": true,
+    "onlySearchVal": true,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "Customer Complaint Resolution",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "Complimentary Item",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "Birthday Freebie",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "Employee Perk",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "Sampling",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "Coupon Redemption",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "Membership Perk",
     "editFreeReasons": "Survey Participation",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "Inventory Clearance",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": true,
     "onlyDelete": true
   },
   {
     "freeReasons": "Customer Appreciation",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "null",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "% & ( ) / - .",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   },
   {
     "freeReasons": "This is a very long string that exceeds the maximum allowed length.",
-    "onlySearch": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false,
     "onlyDelete": false
   }
 ]

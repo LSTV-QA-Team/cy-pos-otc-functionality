@@ -11,7 +11,6 @@ describe('Special Request', () => {
         cy.task("queryDb", "SELECT * FROM modifierfile").then((records) => {
 
             expect(records.length).to.be.equal(0)
-
         })
 
         cy.task('clearDownloads')
@@ -22,16 +21,13 @@ describe('Special Request', () => {
         cy.execute('npm run sheet-converter specialreq-add-el')
         cy.execute('npm run sheet-converter specialreq-edit-el')
         cy.wait(4000)
-
     })
     
     beforeEach(() => {
 
-        // reset for each test case
         assertionResults = [];
         failureMessages = [];
 
-        // Login with valid credentials
         cy.login('lstv', 'lstventures')
 
     })
@@ -86,12 +82,6 @@ describe('Special Request', () => {
         cy.wait(2000)
 
         cy.checkTableColumnTitle(['Actions', 'Description'], '1.2.2', 'Upon Navigating to Special Request pager U/I', assertionResults, failureMessages)
-
-        // 1.2.3 Check correct button(s) caption.
-        // Not necessary since buttons in pager U/I does not have captions.
-
-        // 1.2.4 Check correct objects position.
-        // Add this when needed.  
 
         cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to Special Request pager U/I', assertionResults, failureMessages)
 
@@ -150,11 +140,7 @@ describe('Special Request', () => {
                 })
             })
 
-            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
-
             for (const key in data){
-
-                // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                 cy.wait(4000) 
                 
@@ -184,11 +170,11 @@ describe('Special Request', () => {
 
                     cy.get('#modcde').clear()
 
-                    cy.get('#modcde').type('Extra Gravy')
+                    cy.get('#modcde').type(data[0].specialReq)
 
                     cy.get('#modgrpcde').click()
 
-                    cy.get('.select__menu-list--is-multi').contains('.select__option', 'Chicken').click()
+                    cy.get('.select__menu-list--is-multi').contains('.select__option', data[0].itemSubclass).click()
 
                     cy.get('.border-blue-500').click()
 
@@ -230,8 +216,6 @@ describe('Special Request', () => {
                     cy.wait(4000)
 
                     cy.get('.sc-eDLKkx > .anticon > svg').click()
-
-
                 }
 
                 else if (data[key].specialReq === "% & ( ) / - .") {
@@ -251,9 +235,6 @@ describe('Special Request', () => {
                     cy.checkLabelCaption('.Toastify__toast-body', '5.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                     cy.checkElementVisibility('.shadow-lg', '5.2.1', 'Upon clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
-
-                    // 43.2.2 Check if the "Description" textbox object is cleared or blank.
-
                 }
 
                 else if (data[key].specialReq === "This is a very long string that exceeds the maximum allowed length.") {
@@ -273,7 +254,6 @@ describe('Special Request', () => {
                     cy.wait(4000)
 
                     cy.get('.border-blue-500').click()
-
                 }
 
                 else if (data[key].specialReq === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -291,15 +271,8 @@ describe('Special Request', () => {
                     cy.get('.border-blue-500').click()
 
                     cy.wait(4000)
-                    
-                    // cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
-
-                    // 16.2 click "OK" button on notification message.
 
                     cy.checkElementVisibility('.shadow-lg', '16.2.1', 'Upon clicking the "OK" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
-
-                    // 16.2.2 Check if the "Description" textbox object is cleared or blank.
-
                 }
 
                 else {
@@ -321,10 +294,6 @@ describe('Special Request', () => {
                     cy.wait(2000)
                     
                     cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
-
-                    // cy.get('.MuiSelect-select.MuiTablePagination-select').click();
-
-                    // cy.get('ul[role="listbox"] li').contains('15').click();
                     
                     cy.get('.MuiTableBody-root').contains(data[key].specialReq).should('exist')
 
@@ -336,7 +305,7 @@ describe('Special Request', () => {
 
         cy.checkForFailure(assertionResults, failureMessages)
         
-    });
+    })
 
     it('Edit Functionality', () => {
 
@@ -346,11 +315,11 @@ describe('Special Request', () => {
 
             const specificSpecialReq = data[7];
 
-                cy.get('.MuiSelect-select.MuiTablePagination-select').click();
+                cy.get('.MuiSelect-select.MuiTablePagination-select').click()
 
-                cy.get('ul[role="listbox"] li').contains('15').click();
+                cy.get('ul[role="listbox"] li').contains('15').click()
 
-                cy.wait(2000);
+                cy.wait(2000)
 
                 cy.contains('tbody > tr', specificSpecialReq.specialReq).within(() => {
 
@@ -365,13 +334,6 @@ describe('Special Request', () => {
                 cy.checkHeaderTitle('.px-8', '21.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Special Request', assertionResults, failureMessages)
 
                 cy.checkLabelCaption('.mb-2', '21.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Item Subclass', assertionResults, failureMessages)
-            
-                // 54.1.3 Check correct object (textbox) width
-                // Add when needed
-
-                // 54.1.4 Check correct buttons(s) caption
-
-                // 54.1.5 Check correct all object position
 
                 cy.validateElements('specialreq-edit-el.json', '21.1.4 & 21.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
 
@@ -423,6 +385,8 @@ describe('Special Request', () => {
 
                     })
 
+                    cy.wait(2000)
+
                     cy.checkElementVisibility('.px-8', '26.1', 'Upon clicking the "Delete" button on pager UI:', 'The "Delete Confirmation" modal is not visible.')
 
                     cy.checkHeaderTitle('.px-8', '26.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
@@ -459,8 +423,8 @@ describe('Special Request', () => {
             }
         })
 
-        cy.checkForFailure(assertionResults, failureMessages);
-    });
+        cy.checkForFailure(assertionResults, failureMessages)
+    })
 
 
     it('Search Functionality', () => {
@@ -492,8 +456,7 @@ describe('Special Request', () => {
                     // search invalid or not existing data
                     cy.wait(4000)
                             
-                    cy.get('[data-testid="SearchIcon"]')
-                      .click();
+                    cy.get('[data-testid="SearchIcon"]').click()
         
                     cy.get('#\\:rb\\:')
                       .clear()
@@ -531,5 +494,5 @@ describe('Special Request', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .should('have.text', 'Masterfile')
-    });
-});
+    })
+})

@@ -51,55 +51,80 @@ describe('Receipt Header Set Up', () => {
     it('Valid Update Functionality', () => {
 
         cy.fixture('master-Header-data.json').then((data) => {
+
             for (const key in data){
+
                 if (data[key].forValid === true) {
 
                     cy.wait(4000)
 
-                    cy.get('#business1')
+                    cy.get('#business1').clear()
                         .type(data[key].bus1)
+
+                    cy.checkValue('#business1', '2.1', 'After Encoding in "Business Name 1" Textbox:', data[key].bus1, assertionResults, failureMessages)
 
 
                     cy.get('#business2').clear()
                         .type(data[key].bus2)
 
+                    cy.checkValue('#business2', '3.1', 'After Encoding in "Business Name 2" Textbox:', data[key].bus2, assertionResults, failureMessages)
 
                     cy.get('#business3').clear()
                         .type(data[key].bus3)
 
+                    cy.checkValue('#business3', '4.1', 'After Encoding in "Business Name 3" Textbox:', data[key].bus3, assertionResults, failureMessages)
+
 
                     cy.get('#taxpayer').clear()
                         .type(data[key].taxPayer)
+
+                    cy.checkValue('#taxpayer', '5.1', 'After Encoding in "Tax Payer registered in BIR" Textbox:', data[key].taxPayer, assertionResults, failureMessages)
                     
 
                     cy.get('#tin').clear()
                         .type(data[key].vat)
 
+                    cy.checkValue('#tin', '6.1', 'After Encoding in "VAT" Textbox:', data[key].vat, assertionResults, failureMessages)
+
 
                     cy.get('#chknonvat')
                         .select(data[key].nonVAT)
 
+                    cy.checkValue('#chknonvat', '7.1', 'After Encoding in "Non-VAT" Textbox:', data[key].nonVAT, assertionResults, failureMessages)
+
                     cy.get('#address1').clear()
                         .type(data[key].add1)
+
+                    cy.checkValue('#address1', '8.1', 'After Encoding in "Address 1" Textbox:', data[key].add1, assertionResults, failureMessages)
 
                     
                     cy.get('#address2').clear()
                         .type(data[key].add2)
+
+                    cy.checkValue('#address2', '9.1', 'After Encoding in "Address 2" Textbox:', data[key].add2, assertionResults, failureMessages)
                     
                     cy.get('#address3').clear()
                         .type(data[key].add3)
+
+                    cy.checkValue('#address3', '10.1', 'After Encoding in "Address 3" Textbox:', data[key].add3, assertionResults, failureMessages)
 
 
                     cy.get('#serialno').clear()
                         .type(data[key].serialNo)
 
+                    cy.checkValue('#serialno', '11.1', 'After Encoding in "Serial Number" Textbox:', data[key].serialNo, assertionResults, failureMessages)
+
 
                     cy.get('#machineno').clear()
                         .type(data[key].machineNo)
 
+                    cy.checkValue('#machineno', '12.1', 'After Encoding in "Machine Number" Textbox:', data[key].machineNo, assertionResults, failureMessages)
+
 
                     cy.get('#brhcde').clear()
                         .type(data[key].branchCode)
+
+                    cy.checkValue('#brhcde', '13.1', 'After Encoding in "Branch Code" Textbox:', data[key].branchCode, assertionResults, failureMessages)
                         
                     // cy.get('#postrmno').clear()
                     //     .type(data[key].terminalNo)
@@ -141,7 +166,7 @@ describe('Receipt Header Set Up', () => {
                     cy.get('#taxpayer').clear()
                         .type(data[key].taxPayer)
                     
-                    cy.checkInputMaxLength('#taxpayer', 12, '22.1', 'Upon Encoding in "Tax Payer registered in BIR" Textbox:', assertionResults, failureMessages)
+                    cy.checkInputMaxLength('#taxpayer', 50, '22.1', 'Upon Encoding in "Tax Payer registered in BIR" Textbox:', assertionResults, failureMessages)
 
                     cy.get('#tin').clear()
                         .type(data[key].vat)
@@ -156,7 +181,7 @@ describe('Receipt Header Set Up', () => {
                     cy.get('#address2').clear()
                         .type(data[key].add2)
 
-                    cy.checkInputMaxLength('#address2', 5, '25.1', 'Upon Encoding in "Address 2" Textbox:', assertionResults, failureMessages)
+                    cy.checkInputMaxLength('#address2', 50, '25.1', 'Upon Encoding in "Address 2" Textbox:', assertionResults, failureMessages)
 
                     cy.get('#serialno').clear()
                         .type(data[key].serialNo)
@@ -180,6 +205,8 @@ describe('Receipt Header Set Up', () => {
                           
                     
                     cy.get('.border-blue-500').click()
+
+                    cy.wait(2000)
 
                     cy.checkElementVisibility('.Toastify__toast-body', '28.1', 'Upon Clicking the "Update" button:', 'Notification message "Please input valid data" should be visible', assertionResults, failureMessages)
                 }
@@ -225,6 +252,8 @@ describe('Receipt Header Set Up', () => {
 
         cy.get('.border-blue-500').click()
 
+        cy.wait(2000)
+
         cy.checkElementVisibility('.Toastify__toast-body', '18.1.10', 'Upon Clicking the "Update" button:', 'Notification message "Please input data in required field." should be visible', assertionResults, failureMessages)
 
         cy.wait(4000)
@@ -248,8 +277,6 @@ describe('Receipt Header Set Up', () => {
         // cy.checkLabelCaption('#Header-form', '3.1', 'Upon Clicking the "Update" button:', '"Date Issued * is required" was not visible', assertionResults, failureMessages)
 
         // cy.checkLabelCaption('#Header-form', '3.1', 'Upon Clicking the "Update" button:', '"Years Validity * is required" was not visible', assertionResults, failureMessages)
-
-        cy.wait(4000)
 
         cy.checkForFailure(assertionResults, failureMessages)
 

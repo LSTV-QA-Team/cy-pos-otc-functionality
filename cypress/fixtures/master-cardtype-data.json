@@ -1,47 +1,69 @@
 [
   {
     "cardType": "Credit Card",
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": true,
+    "onlySearchInval": false
   },
   {
     "cardType": "Debit Card",
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "cardType": "Prepaid Card",
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "cardType": "Gift Card",
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "cardType": "Store Gift",
     "editCardType": "Store Card",
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "cardType": "Loyalty Card",
-    "onlyDelete": true
+    "onlyDelete": true,
+    "onlySearchVal": false,
+    "onlySearchInval": true
   },
   {
     "cardType": "Electronic Card",
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "cardType": "null",
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "cardType": "% & ( ) / - .",
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "cardType": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "cardType": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   }
 ]
