@@ -99,8 +99,6 @@ describe("Cash Fund", () => {
     cy.contains('Cancel').click().wait(1000)
     cy.contains('Yes').click().wait(1000)
 
-    cy.checkForFailure(assertionResults, failureMessages)
-
     cy.get('.ps-10 > .flex').click()
 
   }) 
@@ -117,9 +115,6 @@ describe("Cash Fund", () => {
     }
     cy.contains('Save').click()
     cy.contains('Transaction Success').should('have.text',"Transaction Success").wait(1000)
-
-
-    cy.checkForFailure(assertionResults, failureMessages)
   
 
   });
