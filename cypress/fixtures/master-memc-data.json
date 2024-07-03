@@ -2,8 +2,6 @@
   {
     "memc": "MEMC 100",
     "value": 100,
-    "editmemc": "MEMC 300",
-    "editvalue": 300,
     "onlyDelete": false
   },
   {
@@ -39,6 +37,13 @@
   {
     "memc": "MEMC 600",
     "value": 600,
+    "onlyDelete": false
+  },
+  {
+    "memc": "MEMC 1000",
+    "value": 1000,
+    "editmemc": "MEMC 300",
+    "editvalue": 300,
     "onlyDelete": false
   },
   {

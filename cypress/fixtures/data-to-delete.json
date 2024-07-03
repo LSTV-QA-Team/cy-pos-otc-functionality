@@ -43,5 +43,11 @@
   },
   {
     "dataToDelete": "% & ( ) / - "
+  },
+  {
+    "dataToDelete": "This is a very long string that exceeds the maximu"
+  },
+  {
+    "dataToDelete": "% & ( ) / -"
   }
 ]

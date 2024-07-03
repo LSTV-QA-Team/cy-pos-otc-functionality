@@ -25,27 +25,29 @@
     "dineinsercharge": -10,
     "localtax": -10,
     "forValid": false,
-    "forInvalid": true
+    "forInvalid": true,
+    "checkValTakeout": 10,
+    "checkValDine": 10,
+    "checkValTax": 10
   },
   {
     "takeoutsercharge": 150,
     "dineinsercharge": 150,
     "localtax": 150,
     "forValid": false,
-    "forInvalid": true
-  },
-  {
-    "takeoutsercharge": "abcdefghij",
-    "dineinsercharge": "abcdefghij",
-    "localtax": "abcdefghij",
-    "forValid": false,
-    "forInvalid": true
+    "forInvalid": true,
+    "checkValTakeout": 15,
+    "checkValDine": 15,
+    "checkValTax": 15
   },
   {
     "takeoutsercharge": 1000,
     "dineinsercharge": 1000,
     "localtax": 1000,
     "forValid": false,
-    "forInvalid": true
+    "forInvalid": true,
+    "checkValTakeout": 100,
+    "checkValDine": 100,
+    "checkValTax": 100
   }
 ]

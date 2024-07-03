@@ -163,5 +163,10 @@
     "assertion": "contain.text",
     "expectedText": "Terminal No.",
     "customErrorMsg": "Should contain text \"Terminal No.\""
+  },
+  {
+    "sel": "label[for=\"postrmno\"]",
+    "assertion": "be.visible",
+    "expectedText": "Terminal No. (max char. length: 2)"
   }
 ]
