@@ -49,5 +49,8 @@
   },
   {
     "dataToDelete": "% & ( ) / -"
+  },
+  {
+    "dataToDelete": "% & ( ) / - . ,"
   }
 ]
