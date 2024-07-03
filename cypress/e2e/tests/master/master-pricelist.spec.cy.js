@@ -280,6 +280,63 @@ describe('Price List', () => {
         
     })
 
+    it('Add Data in Table Price List', () => {
+
+        cy.get('.border-red-500').click()
+
+        cy.fixture('master-pricelist-data.json').then((data) => {
+
+            const specificpricelist = data[0];
+    
+            cy.wait(2000)
+
+            cy.contains('tbody > tr', specificpricelist.pricelist).within(() => {
+
+                cy.get('[data-icon="table"][aria-hidden="true"]').click()
+
+            })
+
+            cy.wait(2000)
+
+            cy.contains('div', specificpricelist.pricelist).should('be.visible')
+
+            cy.contains('p', 'Load data from items').click()
+
+            cy.wait(2000)
+
+            cy.get('.rounded.bg-white.shadow-lg.flex.flex-col')
+              .find('.max-w-[600px].font-montserrat.px-8.py-5.border-b.border-[#adacac].font-bold')
+              .find('.flex.items-center.justify-between')
+              .contains('h1', 'Load data')
+              .should('be.visible')
+
+            cy.get('.border-red-500').click()
+
+            cy.wait(4000)
+
+            cy.get('.rounded.bg-white.shadow-lg.flex.flex-col')
+              .find('.max-w-[600px].font-montserrat.px-8.py-5.border-b.border-[#adacac].font-bold')
+              .find('.flex.items-center.justify-between')
+              .contains('h1', 'Load data')
+              .should('not.be.visible')
+
+            cy.contains('p', 'Load data from items').click()
+
+            cy.wait(2000)
+
+            cy.get('.rounded.bg-white.shadow-lg.flex.flex-col')
+              .find('.max-w-[600px].font-montserrat.px-8.py-5.border-b.border-[#adacac].font-bold')
+              .find('.flex.items-center.justify-between')
+              .contains('h1', 'Load data')
+              .should('be.visible')
+            
+            cy.get('#selectAll').click()
+
+            cy.get('.border-blue-500').click()
+
+        }) 
+    })
+
     it('Edit Functionality', () => {
 
         cy.get('.border-red-500').click()
@@ -295,6 +352,8 @@ describe('Price List', () => {
                 cy.get('[data-icon="edit"][aria-hidden="true"]').click()
 
             })
+
+            cy.wait(2000)
 
             cy.checkElementVisibility('.shadow-lg', '22.1', 'Upon Clicking the "Edit" button:', '"Edit Price List" modal window was not visible or active.', assertionResults, failureMessages)
 
