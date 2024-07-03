@@ -72,11 +72,7 @@ describe('Item Subclassification', () => {
 
         cy.url({timeout: 10000}).should('contain', '/itemSubclassifications/?menfield=masterfile_itemsub')
 
-        cy.wait(2000)
-
         cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item Subclassification:', ' "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
-
-        cy.wait(2000)
 
         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]','1.2.1', 'Upon Navigating to Item Subclassification pager U/I', 'Item Subclassification', assertionResults, failureMessages)
 

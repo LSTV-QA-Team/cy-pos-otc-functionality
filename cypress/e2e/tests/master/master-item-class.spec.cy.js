@@ -82,12 +82,8 @@ describe('Item Classification', () => {
         cy.navigateToModule('Master File', 'Item Classifications')
 
         cy.url({timeout: 10000}).should('contain', '/itemClassifications/?menfield=masterfile_itemclass')
-
-        cy.wait(2000)
            
         cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Item Classification:', ' "Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
-
-        cy.wait(2000)
 
         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]','1.2.1', 'Upon Navigating to Item Classification pager U/I', 'Item Classification', assertionResults, failureMessages)
 
