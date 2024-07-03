@@ -66,6 +66,8 @@ it("Cash In" , () => {
 
     cy.get('.ps-10 > .flex').click()
 
+    cy.wait(4000)
+
 })
 
 
@@ -231,7 +233,7 @@ it("Cash In" , () => {
 
     cy.get(":nth-child(5) > .bg-green-100").click();
     cy.get(".px-8").should("have.text", "Add discount");
-    cy.get("#discde").select("Senior Citizen");
+    cy.get("#discde").select("Senior");
     cy.get("#orderitmid").click();
     cy.get(".border-blue-500").click();
 

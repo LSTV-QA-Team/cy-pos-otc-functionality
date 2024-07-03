@@ -24,7 +24,7 @@ describe("Transaction 21", () => {
     ).click();
 
     cy.contains("Add Discount").click().wait(2000);
-    cy.get("#discde").select("Senior Citizen");
+    cy.get("#discde").select("Senior");
     cy.get("#orderitmid0").click();
     cy.get(".border-blue-500").click();
 

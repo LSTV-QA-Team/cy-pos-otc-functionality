@@ -303,7 +303,7 @@ describe("Ordering ", () => {
     cy.get('.border-blue-500').click().wait(1000)
     cy.get('.text-sm')
     .should('have.text', 'Type of Discount * is required')
-    cy.get('#discde').select('Senior Citizen').wait(1000)
+    cy.get('#discde').select('Senior').wait(1000)
     cy.get('.border-blue-500').click().wait(500)
     cy.get('.Toastify__toast-body')
     .should('have.text', 'No item selected. Unable to proceed.')

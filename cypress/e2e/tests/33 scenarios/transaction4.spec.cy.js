@@ -28,7 +28,7 @@ describe("Transaction 4", () => {
 
     cy.get(":nth-child(5) > .bg-green-100").click();
     cy.get(".px-8").should("have.text", "Add discount");
-    cy.get("#discde").select("Senior Citizen");
+    cy.get("#discde").select("Senior");
     cy.get("#orderitmid").click();
     cy.get(".border-blue-500").click();
 
