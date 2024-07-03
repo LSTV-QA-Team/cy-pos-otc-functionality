@@ -88,13 +88,7 @@ describe('Price List', () => {
 
         cy.wait(2000)
 
-        cy.checkTableColumnTitle(['Actions', 'Price List', 'Order Type'], '1.2.2', 'Upon Navigating to Price List pager U/I', assertionResults, failureMessages)
-
-        // 1.2.3 Check correct button(s) caption.
-        // Not necessary since buttons in pager U/I does not have captions.
-
-        // 1.2.4 Check correct objects position.
-        // Add this when needed.  
+        cy.checkTableColumnTitle(['Actions', 'Price List', 'Order Type'], '1.2.2', 'Upon Navigating to Price List pager U/I', assertionResults, failureMessages) 
 
         cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to Price List pager U/I', assertionResults, failureMessages)
 
@@ -129,8 +123,6 @@ describe('Price List', () => {
             // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
-
-                // cy.get('.sc-eDLKkx > .anticon > svg').click()
             
                     if (data[key].pricelist === "null") {
 
@@ -139,6 +131,8 @@ describe('Price List', () => {
                         cy.get('#prcdsc').clear().type(data[key].pricelist)
                         
                         cy.get('#prcdsc').clear()
+
+                        cy.checkValue('#prcdsc', '0', 'After encoding data', data[key].pricelist, assertionResults, failureMessages)
 
                         cy.get('.border-blue-500').click()
 
@@ -200,7 +194,7 @@ describe('Price List', () => {
 
                         cy.get('#postypcde').select(data[key].ordertype)
 
-                        cy.checkValue('#prcdsc', 'No Reference No.', 'Upon encoding data:', data[key].pricelist, assertionResults, failureMessages)
+                        cy.checkValue('#prcdsc', '0', 'After encoding data', data[key].pricelist, assertionResults, failureMessages)
 
                         cy.get('.border-blue-500').click()
 
@@ -222,7 +216,7 @@ describe('Price List', () => {
 
                         cy.checkInputMaxLength('#prcdsc', 50, '19.1', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        // cy.checkInputMaxLength('#prcdsc', '50', '19.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        // cy.checkInputMaxLength('#prcdsc', '50', '19.1', 'After encoding data, 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('#postypcde').select(data[key].ordertype)
 
@@ -283,7 +277,7 @@ describe('Price List', () => {
         
     })
 
-    it('Add Data in Table Price List', () => {
+    it('Add Data in Table Functionality', () => {
 
         cy.wait(2000)
 
@@ -293,89 +287,45 @@ describe('Price List', () => {
 
         cy.fixture('master-pricelist-data.json').then((data) => {
 
-            const specificpricelist = data[0];
+            for (const key in data) {
+
+                if (data[key].tableData === true) {
     
-            cy.wait(2000)
+                    cy.wait(2000)
 
-            cy.contains('tbody > tr', specificpricelist.pricelist).within(() => {
+                    cy.contains('tbody > tr', specificpricelist.pricelist).within(() => {
 
-                cy.get('svg[data-icon="table"]').click()
+                        cy.get('svg[data-icon="table"]').click()
 
-            })
+                    })
 
-            cy.wait(2000)
+                    cy.wait(2000)
 
-            cy.contains('div', specificpricelist.pricelist).should('be.visible')
+                    cy.contains('div', specificpricelist.pricelist).should('be.visible')
 
-            cy.contains('p', 'Load data from items').click()
+                    cy.contains('p', 'Load data from items').click()
 
-            cy.wait(2000)
+                    cy.wait(2000)
 
-            cy.get('.shadow-lg').should('be.visible')
+                    cy.get('.shadow-lg').should('be.visible')
 
-            cy.get('.px-8').should('be.visible').and('have.text', 'Load data')
+                    cy.get('.px-8').should('be.visible').and('have.text', 'Load data')
 
-            cy.get('.border-red-500').click()
+                    cy.get('.border-red-500').click()
 
-            cy.wait(4000)
+                    cy.wait(4000)
 
-            cy.contains('p', 'Load data from items').click()
+                    cy.contains('p', 'Load data from items').click()
 
-            cy.wait(2000)
+                    cy.wait(2000)
 
-            cy.get('.shadow-lg').should('be.visible')
-            
-            cy.get('#selectAll').click()
+                    cy.get('.shadow-lg').should('be.visible')
+                    
+                    cy.get('#selectAll').click()
 
-            cy.get('.border-blue-500').click()
-
-        }) 
-    })
-
-    it('Add Data in Table Price List', () => {
-
-        cy.wait(2000)
-
-        cy.get('.pl-10 > .flex').click()
-
-        cy.fixture('master-pricelist-data.json').then((data) => {
-
-            const specificpricelist = data[2];
-    
-            cy.wait(2000)
-
-            cy.contains('tbody > tr', specificpricelist.pricelist).within(() => {
-
-                cy.get('svg[data-icon="table"]').click()
-
-            })
-
-            cy.wait(2000)
-
-            cy.contains('div', specificpricelist.pricelist).should('be.visible')
-
-            cy.contains('p', 'Load data from items').click()
-
-            cy.wait(2000)
-
-            cy.get('.shadow-lg').should('be.visible')
-
-            cy.get('.px-8').should('be.visible').and('have.text', 'Load data')
-
-            cy.get('.border-red-500').click()
-
-            cy.wait(4000)
-
-            cy.contains('p', 'Load data from items').click()
-
-            cy.wait(2000)
-
-            cy.get('.shadow-lg').should('be.visible')
-            
-            cy.get('#selectAll').click()
-
-            cy.get('.border-blue-500').click()
-
+                    cy.get('.border-blue-500').click()
+                }
+            }
         }) 
     })
 

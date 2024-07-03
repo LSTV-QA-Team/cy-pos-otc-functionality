@@ -1,4 +1,3 @@
-
 let assertionResults = [];
 let failureMessages = [];
 
@@ -21,7 +20,6 @@ describe('Discount', () => {
         cy.execute('npm run sheet-converter discount-add-el')
         cy.execute('npm run sheet-converter discount-edit-el')
         cy.wait(4000)
-
     })
     
     beforeEach(() => {
@@ -30,7 +28,6 @@ describe('Discount', () => {
         failureMessages = [];
 
         cy.login('lstv', 'lstventures')
-
     })
 
     after(() => {
@@ -123,17 +120,11 @@ describe('Discount', () => {
                    
             })
 
-            // 2.1.5 Check correct all object position
-
             cy.validateElements('discount-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
-
-            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
                 cy.wait(8000)
-
-                // cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
                 cy.get('#discde').clear().type(data[key].discountCode)
 
@@ -151,13 +142,13 @@ describe('Discount', () => {
 
                         cy.checkLabelCaption('div:contains("Type *")', '13.4', 'Upon clicking the "Save" button:', 'Type * is required', assertionResults, failureMessages)
 
-                        cy.get('#discde').clear().type('PWD')
+                        cy.get('#discde').clear().type(data[4].discountCode)
 
-                        cy.get('#disdsc').clear().type('PWD')
+                        cy.get('#disdsc').clear().type(data[4].discountDesc)
 
-                        cy.get('#distyp').select('Percent')
+                        cy.get('#distyp').select(data[4].discountType)
 
-                        cy.get('#disper').clear().type('20')
+                        cy.get('#disper').clear().type(data[4].percentAmount)
 
                         cy.get('#ExemptYes').click()
 
@@ -172,9 +163,6 @@ describe('Discount', () => {
                         cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '42.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages)
-
-                        // cy.get('span[role="img"] svg[data-icon="close"]').click()
-
                     } 
                     
                     else if (data[key].discountCode === "SUMMERSALE") {
@@ -291,8 +279,6 @@ describe('Discount', () => {
                         cy.checkLabelCaption('.Toastify__toast-body', '33.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                         cy.checkElementVisibility('.shadow-lg', '33.2.1', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        // 11.2.2 Check if the "Description" textbox object is cleared or blank.
                     }
 
                     else if (data[key].discountCode === "WINTERHOLIDAY50PERCENTDISCOUNTFORALLITEMSOVER1000PHP") {
@@ -320,7 +306,6 @@ describe('Discount', () => {
                             }
 
                         })
-
 
                         if (data[key].exemptVat === 'Yes') {
 
@@ -456,9 +441,6 @@ describe('Discount', () => {
                         cy.wait(2000)
 
                         cy.checkElementVisibility('.shadow-lg', '51.2', 'Upon clicking the "Save" button:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        // Check if the "Description" textbox object is cleared or blank. 
-
                     }
 
                     else {
@@ -577,15 +559,6 @@ describe('Discount', () => {
             cy.checkElementVisibility('.shadow-lg', '22.1', 'Upon Clicking the "Edit" button:', '"Edit Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
             cy.checkHeaderTitle('.px-8', '22.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Discount', assertionResults, failureMessages)
-
-            // cy.checkLabelCaption('.mb-2', '22.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Discount *', assertionResults, failureMessages)
-        
-            // 21.1.3 Check correct object (textbox) width
-            // Add when needed
-
-            // 21.1.4 Check correct buttons(s) caption
-
-            // 21.1.5 Check correct all object position
 
             cy.validateElements('discount-edit-el.json', '19.1.4 & 19.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
 
@@ -771,7 +744,7 @@ describe('Discount', () => {
                     cy.wait(8000)
 
                     // cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
-                    cy.get('td > .MuiTypography-root').should('not.conatain', data[key].discountDesc)
+                    cy.get('td > .MuiTypography-root').should('not.contain', data[key].discountDesc)
 
                 }
 
@@ -798,11 +771,11 @@ describe('Discount', () => {
 
     it('Back Button Functionality', () => {
 
-        cy.wait(2000);
+        cy.wait(2000)
 
-        cy.get(':nth-child(1) > .flex > .anticon > svg').click();
+        cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
-          .and('have.text', 'Masterfile');
+          .and('have.text', 'Masterfile')
     })
 })

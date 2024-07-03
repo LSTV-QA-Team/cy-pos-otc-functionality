@@ -22,7 +22,6 @@ describe('Card Type', () => {
         cy.execute('npm run sheet-converter cardtype-add-el')
         cy.execute('npm run sheet-converter cardtype-edit-el')
         cy.wait(4000)
-
     })
     
     beforeEach(() => {
@@ -31,7 +30,6 @@ describe('Card Type', () => {
         failureMessages = [];
 
         cy.login('lstv', 'lstventures')
-
     })
 
     after(() => {
@@ -85,12 +83,6 @@ describe('Card Type', () => {
 
         cy.checkTableColumnTitle(['Actions', 'Description'], '1.2.2', 'Upon Navigating to Card Type pager U/I:', assertionResults, failureMessages)
 
-        // 1.2.3 Check correct button(s) caption.
-        // Not necessary since buttons in pager U/I does not have captions.
-
-        // 1.2.4 Check correct objects position.
-        // Add this when needed.  
-
         cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to Card Type pager U/I:', assertionResults, failureMessages)
 
         cy.checkForFailure(assertionResults, failureMessages)
@@ -118,18 +110,11 @@ describe('Card Type', () => {
                    
             })
 
-            // Check correct buttons(s) caption
-            // Add if needed
-
-            // Check correct all object position
-
             cy.validateElements('cardtype-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
             for (const key in data){
 
                 cy.wait(4000)
-
-                // cy.get('.sc-eDLKkx > .anticon > svg').click()
                 
                 if (data[key].cardType === "null") {
 
@@ -141,14 +126,13 @@ describe('Card Type', () => {
 
                     cy.checkLabelCaption('.text-sm', '12.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
-                    cy.get('#cardtype').clear().type('Credit Card')
+                    cy.get('#cardtype').clear().type(data[0].cardType)
 
                     cy.get('.border-blue-500').click()
 
                     cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
-
                 } 
                 
                 else if (data[key].cardType === "Electronic Card") {
@@ -180,7 +164,6 @@ describe('Card Type', () => {
                     cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Card Type', assertionResults, failureMessages)
 
                     cy.get('.sc-eDLKkx > .anticon > svg').click()
-
                 }
 
                 else if (data[key].cardType === "% & ( ) / - .") {
@@ -198,9 +181,6 @@ describe('Card Type', () => {
                     cy.checkLabelCaption('.Toastify__toast-body', '10.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                     cy.checkElementVisibility('.shadow-lg', '10.2.1', 'Upon clicking the "OK" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
-
-                    // 11.2.2 Check if the "Description" textbox object is cleared or blank.
-
                 }
 
                 else if (data[key].cardType === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
@@ -213,14 +193,7 @@ describe('Card Type', () => {
 
                     cy.checkInputMaxLength('#cardtype', 50, '17.1', 'Upon Encoding in "Card Type" Textbox:', assertionResults, failureMessages)
 
-                    // cy.checkElementVisibility('.text-sm', '18.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
-
                     cy.get('.border-blue-500').click()
-
-                    // cy.wait(4000)
-
-                    // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
-
                 }
 
                 else if (data[key].cardType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -235,12 +208,7 @@ describe('Card Type', () => {
 
                     cy.wait(2000)
 
-                    // cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
-
-                    // 16.2 click "OK" button on notification message.
-
                     cy.checkElementVisibility('.shadow-lg', '16.2.1', 'Upon clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
-                    
                 }
 
                 else {
@@ -264,8 +232,6 @@ describe('Card Type', () => {
                     cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
                     
                     cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
-
-                    // 4.2.2 Check if the "Description" textbox object is cleared or blank.
                     
                     cy.get('.MuiTableBody-root').contains(data[key].cardType).should('exist')
 
@@ -302,13 +268,6 @@ describe('Card Type', () => {
 
                 cy.checkLabelCaption('.mb-2', '21.1.2', 'Upon clicking the "Edit" button on pager U/I:', 'Description *', assertionResults, failureMessages)
             
-                // 21.1.3 Check correct object (textbox) width
-                // Add when needed
-
-                // 21.1.4 Check correct buttons(s) caption
-
-                // 21.1.5 Check correct all object position
-
                 cy.validateElements('cardtype-edit-el.json', '21.1.4 & 21.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
  
                 cy.get('#cardtype')
@@ -388,35 +347,41 @@ describe('Card Type', () => {
 
             for (const key in data) {
 
-                cy.wait(2000)
+                if (data[key].onlySearchVal === true) {
 
+                    cy.wait(2000);
 
-                cy.get('[data-testid="SearchIcon"]').click()
+                    cy.get('[data-testid="SearchIcon"]')
+                      .click();
 
-  
-                cy.get('#\\:rb\\:')
-                  .clear()
-                  .type(data[0].cardType)
+                    cy.get('#\\:rb\\:')
+                      .clear()
+                      .type(data[key].cardType)
+                      .type('{enter}')
 
-                cy.wait(2000)
-   
-                cy.get('.MuiTableBody-root').contains(data[0].cardType).should('exist')
+                    cy.wait(2000)
+
+                    cy.get('.MuiTableBody-root').contains(data[key].cardType).should('exist')
+                }
+
+                if (data[key].onlySearchInval === true) {
+
+                    cy.wait(2000)
+                
+                    cy.get('[data-testid="SearchIcon"]').click()
+
+                    cy.get('#\\:rb\\:')
+                      .clear()
+                      .type(data[key].cardType)
+
+                    cy.wait(4000)
+
+                    // cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
+
+                    cy.get('td > .MuiTypography-root').should('not.contain', data[key].cardType)
+                }
             }
         })
-
-        cy.wait(2000)
-                
-                cy.get('[data-testid="SearchIcon"]')
-                    .click();
-
-                cy.get('#\\:rb\\:')
-                    .clear()
-                    .type('Electronic Card')
-                    .type('{enter}')
-
-                cy.wait(4000)
-
-                cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
     })
 
     it('Print functionality', () => {
@@ -437,7 +402,7 @@ describe('Card Type', () => {
 
     it('Back Button Functionality', () => {
 
-        cy.wait(2000);
+        cy.wait(2000)
 
         cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 

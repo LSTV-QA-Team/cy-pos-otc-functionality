@@ -66,7 +66,7 @@ describe('Other Charges', () => {
 
                     cy.get('.border-blue-500').click()
 
-                    // cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
                     cy.contains('Other Charges').click()
                 } 
@@ -187,8 +187,6 @@ describe('Other Charges', () => {
         cy.get('.border-blue-500').click()
 
         cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Local Tax * is required', assertionResults, failureMessages)
-        
-        // cy.checkLabelCaption('.Toastify__toast-body', '36.1', 'Upon Clicking the "Update" button:', 'Please input valid data.', assertionResults, failureMessages)
 
         cy.wait(4000)
 
@@ -197,12 +195,6 @@ describe('Other Charges', () => {
     })
 
     it('Cancel Functionlity', () => {
-        
-        // cy.contains('Other Charges').click()
-
-        // cy.wait(4000)
-
-        // cy.checkElementVisibility('.shadow-lg', '37.1', 'Upon Clicking the "Other Charges" in Master File Menu', '"Other Charges" modal window was not visible or active.', assertionResults, failureMessages)
 
         cy.get('.border-red-500').click()
 

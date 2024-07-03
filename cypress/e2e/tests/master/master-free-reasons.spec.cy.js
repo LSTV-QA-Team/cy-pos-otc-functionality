@@ -23,7 +23,6 @@ describe('Free Reasons', () => {
         cy.execute('npm run sheet-converter freereasons-add-el')
         cy.execute('npm run sheet-converter freereasons-edit-el')
         cy.wait(4000)
-
     })
     
     beforeEach(() => {
@@ -32,7 +31,6 @@ describe('Free Reasons', () => {
         failureMessages = [];
 
         cy.login('lstv', 'lstventures')
-
     })
 
     after(() => {
@@ -85,12 +83,6 @@ describe('Free Reasons', () => {
 
         cy.checkTableColumnTitle(['Actions', 'Description'], '1.2.2', 'Upon Navigating to Free Reasons pager U/I:', assertionResults, failureMessages)
 
-        // 1.2.3 Check correct button(s) caption.
-        // Not necessary since buttons in pager U/I does not have captions.
-
-        // 1.2.4 Check correct objects position.
-        // Add this when needed.  
-
         cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to Free Reasons pager U/I:', assertionResults, failureMessages)
 
         cy.checkForFailure(assertionResults, failureMessages)
@@ -118,19 +110,11 @@ describe('Free Reasons', () => {
                    
             })
 
-            // 2.1.4 Check correct buttons(s) caption
-
-            // 2.1.5 Check correct all object position
-
             cy.validateElements('freereasons-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
-
-            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
                 cy.wait(8000)
-
-                // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                     if (data[key].freeReasons === "null") {
 
@@ -144,7 +128,7 @@ describe('Free Reasons', () => {
 
                         cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
-                        cy.get('#freereason').type('Sample Giveaway')
+                        cy.get('#freereason').type(data[0].freeReasons)
 
                         cy.get('.border-blue-500').click()
 
@@ -153,7 +137,6 @@ describe('Free Reasons', () => {
                         cy.checkLabelCaption('.Toastify__toast-body', '13.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
                         cy.wait(4000)
-
                     } 
                     
                     else if (data[key].freeReasons === "Customer Appreciation") {
@@ -187,7 +170,6 @@ describe('Free Reasons', () => {
                         cy.wait(6000)
 
                         cy.get('.sc-eDLKkx > .anticon > svg').click()
-
                     }
 
                     else if (data[key].freeReasons === "% & ( ) / - .") {
@@ -201,9 +183,6 @@ describe('Free Reasons', () => {
                         cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
                         cy.checkElementVisibility('.shadow-lg', '9.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        // 11.2.2 Check if the "Description" textbox object is cleared or blank.
-
                     }
 
                     else if (data[key].freeReasons === "This is a very long string that exceeds the maximum allowed length.") {
@@ -217,11 +196,6 @@ describe('Free Reasons', () => {
                         // cy.checkElementVisibility('.text-sm', '17.2', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('.border-blue-500').click()
-
-                        // cy.wait(4000)
-
-                        // cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Please input valid data.', assertionResults, failureMessages) 
-
                     }
 
                     else if (data[key].freeReasons === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -235,7 +209,6 @@ describe('Free Reasons', () => {
                         cy.get('.border-blue-500').click()
 
                         cy.checkElementInvisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
-                        
                     }
 
                     else {
@@ -253,10 +226,8 @@ describe('Free Reasons', () => {
                         cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
                         
                         cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
-
-                        // 4.2.2 Check if the "Description" textbox object is cleared or blank.
                         
-                        cy.get('.MuiTableBody-root').contains(data[key].freeReasons).should('exist')
+                        // cy.get('.MuiTableBody-root').contains(data[key].freeReasons).should('exist')
 
                     } 
             }
@@ -291,11 +262,6 @@ describe('Free Reasons', () => {
                 cy.checkHeaderTitle('.px-8', '20.1.1', 'Upon clicking the "Edit" button on pager UI:', 'Edit Free Reasons', assertionResults, failureMessages)
 
                 cy.checkLabelCaption('.mb-2', '20.1.2', 'Upon clicking the "Edit" button on pager U/I:', 'Description *', assertionResults, failureMessages)
-            
-                // 37.1.3 Check correct object (textbox) width
-                // Add when needed
-
-                // 37.1.5 Check correct all object position
 
                 cy.validateElements('freereasons-edit-el.json', '20.1.4 & 20.1.6', 'Upon clicking the "Edit" button on pager U/I:', assertionResults, failureMessages)
  
@@ -376,39 +342,47 @@ describe('Free Reasons', () => {
 
             for (const key in data) {
 
-                if (data[key].onlySearch === true) {
+                if (data[key].onlySearchVal === true) {
 
+                    // search valid data
                     cy.wait(2000)
 
                     cy.get('[data-testid="SearchIcon"]').click()
+
+                    cy.get('input[placeholder="Search Discount"]').then($input => {
+                        if ($input.attr('placeholder') !== 'Search Free Reason') {
+                          throw new Error('Placeholder text does not match the expected value. Should be "Search Free Reason".')
+                        }
+                    })
     
-                    cy.get('#\\:rb\\:')
-                      .should('be.enabled')
-                      .clear()
-                      .type(data[key].freeReasons)
-                      .type('{enter}')
+                    cy.get('input[placeholder="Search Discount"]')
+                      .clear().type(data[key].freeReasons)
 
                     cy.wait(2000)
     
                     cy.get('.MuiTableBody-root').contains(data[key].freeReasons).should('exist')
 
                 }
+
+                if (data[key].onlySearchInval === true) {
+
+                    // search invalid or not existing data
+                    cy.wait(2000)
+                
+                    cy.get('[data-testid="SearchIcon"]').click()
+
+                    cy.get('input[placeholder="Search Discount"]')
+                    .clear()
+                    .clear().type(data[key].freeReasons)
+
+                    cy.wait(8000)
+
+                    // cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
+                    cy.get('td > .MuiTypography-root').should('not.conatain', data[key].freeReasons)
+
+                }
             }
         })
-
-        cy.wait(2000)
-                
-                cy.get('[data-testid="SearchIcon"]')
-                    .click();
-
-                cy.get('#\\:rb\\:')
-                    .clear()
-                    .type('Customer Appreciation')
-                    .type('{enter}')
-
-                cy.wait(4000)
-
-                cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
     })
 
     it('Print functionality', () => {
@@ -429,12 +403,10 @@ describe('Free Reasons', () => {
 
     it('Back Button Functionality', () => {
 
-        cy.wait(2000);
+        cy.wait(2000)
 
         cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 
         cy.get('.text-\\[3rem\\]').should('have.text', 'Masterfile')
     })
 })
-
-

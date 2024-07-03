@@ -1,120 +1,207 @@
 [
   {
     "itemSubclass": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Mashed Potatoes",
     "itemClass": "Food",
     "editItemSubclass": "Snacks",
-    "editItemClass": "Food"
+    "editItemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Breakfast Meal",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": true,
+    "onlySearchInval": true
   },
   {
     "itemSubclass": "Milkshakes",
-    "itemClass": "Beverages"
+    "itemClass": "Beverages",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Chicken",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": true,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Burger",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Spaghetti",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Rice Meals",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Pies",
-    "itemClass": "Dessert"
+    "itemClass": "Dessert",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Ice Cream",
-    "itemClass": "Dessert"
+    "itemClass": "Dessert",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Soft Drinks",
-    "itemClass": "Beverages"
+    "itemClass": "Beverages",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Coffee",
-    "itemClass": "Beverages"
+    "itemClass": "Beverages",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Juices",
-    "itemClass": "Beverages"
+    "itemClass": "Beverages",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Sides",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Family Super Meals",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "% & ( ) / - .",
-    "itemClass": "Beverages"
+    "itemClass": "Beverages",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "null",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Yumburger",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Burger Steak",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Hotdog",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Super Meals",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Chicken Joy Perfect Pairs",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Beverages",
-    "itemClass": "Beverages"
+    "itemClass": "Beverages",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Take-Out Favorites",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Kiddie Meal",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Breakfast",
-    "itemClass": "Food"
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Floats",
-    "itemClass": "Beverages"
+    "itemClass": "Beverages",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   },
   {
     "itemSubclass": "Desserts and Pies",
-    "itemClass": "Dessert"
+    "itemClass": "Dessert",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
   }
 ]

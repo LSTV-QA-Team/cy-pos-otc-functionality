@@ -14,6 +14,7 @@ describe("Ordering ", () => {
   });
 
   it("Select Pricelist Modal ", () => {
+    cy.contains('Ordering').click()
     //CLEAR TRANSACTION
     cy.wait(4000)
     cy.get(':nth-child(9) > .bg-red-100').click().wait(500)

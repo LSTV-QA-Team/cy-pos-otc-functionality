@@ -83,15 +83,8 @@ describe('Item', () => {
 
         cy.checkTableColumnTitle(['Actions', 'Item', 'Item Class', 'Item Subclass', 'Price (PHP)', 'Tax Code'], '1.2.2', 'Upon Navigating to "Item" pager U/I', assertionResults, failureMessages)
 
-        // 1.2.3 Check correct button(s) caption.
-        // Not necessary since buttons in pager U/I does not have captions.
-
-        // 1.2.4 Check correct objects position.
-        // Add this when needed.  
-
         cy.validateElements('item-selector-assert.json', '1.2.5', 'Upon Navigating to "Item" pager U/I', assertionResults, failureMessages)
 
-        // Consolidate the results of various assertions across multiple custom commands into a single summary.
         cy.checkForFailure(assertionResults, failureMessages)
     })
 

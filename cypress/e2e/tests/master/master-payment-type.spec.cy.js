@@ -87,16 +87,10 @@ describe('Payment Type', () => {
 
         cy.checkTableColumnTitle(['Actions', 'Description'], '1.2.2', 'Upon Navigating to Payment Type pager U/I:', assertionResults, failureMessages)
 
-        // 1.2.3 Check correct button(s) caption.
-        // Not necessary since buttons in pager U/I does not have captions.
-
-        // 1.2.4 Check correct objects position.
-        // Add this when needed.  
-
         cy.validateElements('module-selector-assert.json', '1.2.5', 'Upon Navigating to Payment Type pager U/I:', assertionResults, failureMessages)
 
         cy.checkForFailure(assertionResults, failureMessages)
-    });
+    })
 
     it('Add Functionality', () => {
 
@@ -120,21 +114,11 @@ describe('Payment Type', () => {
                    
             })
 
-            // 2.1.4 Check correct buttons(s) caption
-            // Add if needed
-
-            // 2.1.5 Check correct all object position
-            // Add if needed
-
             cy.validateElements('paymenttype-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
-
-            // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
             for (const key in data){
 
                 cy.wait(4000)
-
-                // cy.get('.sc-eDLKkx > .anticon > svg').click()
 
                 if (data[key].paymentType === "null") {
 

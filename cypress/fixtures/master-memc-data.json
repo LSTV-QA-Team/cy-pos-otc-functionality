@@ -2,63 +2,87 @@
   {
     "memc": "MEMC 100",
     "value": 100,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": true,
+    "onlySearchInval": false
   },
   {
     "memc": "MEMC 200",
     "value": 200,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "memc": "MEMC 100 (FSM A)",
     "value": 100,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "memc": "MEMC 200 (FSM A)",
     "value": 200,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "memc": "MEMC 100 (FSM B)",
     "value": 100,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "memc": "MEMC 200 (FSM B)",
     "value": 200,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "memc": "MEMC 500",
     "value": 500,
-    "onlyDelete": true
+    "onlyDelete": true,
+    "onlySearchVal": false,
+    "onlySearchInval": true
   },
   {
     "memc": "MEMC 600",
     "value": 600,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "memc": "MEMC 1000",
     "value": 1000,
     "editmemc": "MEMC 300",
     "editvalue": 300,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": true
   },
   {
     "memc": "% & ( ) / - .",
     "value": 501,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "memc": "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap",
     "value": 502,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   },
   {
     "memc": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
     "value": 503,
-    "onlyDelete": false
+    "onlyDelete": false,
+    "onlySearchVal": false,
+    "onlySearchInval": false
   }
 ]
