@@ -72,7 +72,7 @@ describe("Transaction 1", () => {
     it("1 Pax with Regular Transaction and Service Charge", () => {
       cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
       cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-      cy.get("#postypcde").select("Dine-in").wait(2000);
+      cy.get("#postypcde").select("Dine-In").wait(2000);
       cy.get("#warcde").select("Jollibee 1").wait(2000);
       cy.contains("Proceed").click();
       cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);

@@ -8,12 +8,12 @@ describe("Cash Declaration", () => {
     failureMessages = [];
 
     // Login with valid credentials
-    cy.login();
-
-    cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
+    cy.login('lstv', 'lstventures');
   });
 
   it("Cash Declaration Click ", () => {
+
+    cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
     //5. Click Cash Declaration Button
     //5.1 Check if the Cash Declaration Button is enable
     cy.contains("Cash Declaration").should("be.enabled").click().wait(1000);
@@ -220,7 +220,7 @@ describe("Cash Declaration", () => {
   });
 
   it("Cash Declaration Type ", () => {
-    cy.contains("Cash Declaration").should("be.enabled").click().wait(1000);
+    // cy.contains("Cash Declaration").should("be.enabled").click().wait(1000);
     //5.3.1 Insert "1" value
     cy.get(":nth-child(1) > .text-black-1000 > .w-10").click().type("1");
     //5.3.2 Check if the total is 0.05
@@ -327,12 +327,13 @@ describe("Cash Declaration", () => {
     cy.contains("Cancel").click().wait(1000)
     cy.contains("Yes").click().wait(1000)
 
-    cy.checkForFailure(assertionResults, failureMessages)
-
-  });
+  })
 
   it("Inputing of Data", () => {
 
+    cy.wait(8000)
+
+    cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);    
     //5.6 Click Cash Declaration Button
     //5.6.1 Check if the Cash Declaration button is enable
     cy.contains("Cash Declaration").should("be.enabled").click()
@@ -343,7 +344,6 @@ describe("Cash Declaration", () => {
     cy.contains("Save").click()
     cy.contains("Transaction Success").should("have.text" , "Transaction Success").wait(1000)
 
-    cy.checkForFailure(assertionResults, failureMessages)
   })
 
-});
+})

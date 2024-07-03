@@ -64,7 +64,7 @@ describe("Transaction 23", () => {
 
     cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist");
-    cy.get("#postypcde").select("Dine-in");
+    cy.get("#postypcde").select("Dine-In");
     cy.get("#warcde").select("Jollibee 1");
     cy.contains("Proceed").click();
 
