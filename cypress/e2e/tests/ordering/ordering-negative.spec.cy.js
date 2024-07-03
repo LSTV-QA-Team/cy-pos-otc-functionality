@@ -217,7 +217,7 @@ describe("Ordering ", () => {
   });
 
   // PRICE OVERRIDE (Negative Testing)
-  it.only("Price Override", () => {
+  it("Price Override", () => {
     cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
     .click().wait(500)
     cy.get(':nth-child(7) > .bg-green-100').click().wait(500)
