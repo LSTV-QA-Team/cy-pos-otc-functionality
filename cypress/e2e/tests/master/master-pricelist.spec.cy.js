@@ -220,13 +220,16 @@ describe('Price List', () => {
 
                         cy.get('#prcdsc').clear().type(data[key].pricelist)
 
-                        cy.checkInputMaxLength('#prcdsc', '50', '19.1', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        cy.checkInputMaxLength('#prcdsc', 50, '19.1', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         // cy.checkInputMaxLength('#prcdsc', '50', '19.1', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
                         cy.get('#postypcde').select(data[key].ordertype)
 
-                        cy.get('.border-blue-500').click()
+                        // cy.get('.border-blue-500').click()
+
+                        // cy.wait(2000)
+
 
                     }
 
@@ -282,7 +285,11 @@ describe('Price List', () => {
 
     it('Add Data in Table Price List', () => {
 
+        cy.wait(2000)
+
         cy.get('.border-red-500').click()
+
+        cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-blue-500').click()
 
         cy.fixture('master-pricelist-data.json').then((data) => {
 
@@ -292,7 +299,7 @@ describe('Price List', () => {
 
             cy.contains('tbody > tr', specificpricelist.pricelist).within(() => {
 
-                cy.get('[data-icon="table"][aria-hidden="true"]').click()
+                cy.get('svg[data-icon="table"]').click()
 
             })
 
@@ -304,31 +311,66 @@ describe('Price List', () => {
 
             cy.wait(2000)
 
-            cy.get('.rounded.bg-white.shadow-lg.flex.flex-col')
-              .find('.max-w-[600px].font-montserrat.px-8.py-5.border-b.border-[#adacac].font-bold')
-              .find('.flex.items-center.justify-between')
-              .contains('h1', 'Load data')
-              .should('be.visible')
+            cy.get('.shadow-lg').should('be.visible')
+
+            cy.get('.px-8').should('be.visible').and('have.text', 'Load data')
 
             cy.get('.border-red-500').click()
 
             cy.wait(4000)
 
-            cy.get('.rounded.bg-white.shadow-lg.flex.flex-col')
-              .find('.max-w-[600px].font-montserrat.px-8.py-5.border-b.border-[#adacac].font-bold')
-              .find('.flex.items-center.justify-between')
-              .contains('h1', 'Load data')
-              .should('not.be.visible')
+            cy.contains('p', 'Load data from items').click()
+
+            cy.wait(2000)
+
+            cy.get('.shadow-lg').should('be.visible')
+            
+            cy.get('#selectAll').click()
+
+            cy.get('.border-blue-500').click()
+
+        }) 
+    })
+
+    it('Add Data in Table Price List', () => {
+
+        cy.wait(2000)
+
+        cy.get('.pl-10 > .flex').click()
+
+        cy.fixture('master-pricelist-data.json').then((data) => {
+
+            const specificpricelist = data[2];
+    
+            cy.wait(2000)
+
+            cy.contains('tbody > tr', specificpricelist.pricelist).within(() => {
+
+                cy.get('svg[data-icon="table"]').click()
+
+            })
+
+            cy.wait(2000)
+
+            cy.contains('div', specificpricelist.pricelist).should('be.visible')
 
             cy.contains('p', 'Load data from items').click()
 
             cy.wait(2000)
 
-            cy.get('.rounded.bg-white.shadow-lg.flex.flex-col')
-              .find('.max-w-[600px].font-montserrat.px-8.py-5.border-b.border-[#adacac].font-bold')
-              .find('.flex.items-center.justify-between')
-              .contains('h1', 'Load data')
-              .should('be.visible')
+            cy.get('.shadow-lg').should('be.visible')
+
+            cy.get('.px-8').should('be.visible').and('have.text', 'Load data')
+
+            cy.get('.border-red-500').click()
+
+            cy.wait(4000)
+
+            cy.contains('p', 'Load data from items').click()
+
+            cy.wait(2000)
+
+            cy.get('.shadow-lg').should('be.visible')
             
             cy.get('#selectAll').click()
 
@@ -339,7 +381,7 @@ describe('Price List', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.pl-10 > .flex').click()
 
         cy.fixture('master-pricelist-data.json').then((data) => {
 
@@ -427,6 +469,8 @@ describe('Price List', () => {
                     })
 
                     cy.get('.border-red-500').click()
+
+                    cy.wait(2000)
 
                     cy.checkLabelCaption('.Toastify__toast-body', '30.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 

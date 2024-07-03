@@ -29,11 +29,7 @@ describe("Ordering ", () => {
     //OPEN NEW TRANASCTION
     cy.wait(4000)
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-<<<<<<< Updated upstream
     cy.get("#postypcde").select("Dine-In").wait(2000);
-=======
-    cy.get("#postypcde").select("Dine-in").wait(2000);
->>>>>>> Stashed changes
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
@@ -293,12 +289,7 @@ describe("Ordering ", () => {
   })
 
   it("Discount", () => {
-<<<<<<< Updated upstream
-    cy.wait(4000)
-    cy.contains("BEVERAGES").click().wait(500)
-=======
     cy.contains("Beverages").click().wait(500)
->>>>>>> Stashed changes
     cy.contains("Coffee").click().wait(500)
     cy.contains("Hot Fresh Brew").click().wait(500)
     cy.get('.Toastify__toast-body')
@@ -401,7 +392,7 @@ describe("Ordering ", () => {
 
    //PAYMENT TRANASCTION
    cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-   cy.get("#postypcde").select("Dine-in");
+   cy.get("#postypcde").select("Dine-In");
    cy.get("#warcde").select("Jollibee 1");
    cy.contains("Proceed").click();
    cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
@@ -556,11 +547,7 @@ describe("Ordering ", () => {
   it("Open new transaction", () => {
     cy.wait(1000)
     cy.get(".px-8").should("have.text", "Select Pricelist");
-<<<<<<< Updated upstream
     cy.get("#postypcde").select("Dine-In");
-=======
-    cy.get("#postypcde").select("Dine-in");
->>>>>>> Stashed changes
     cy.get("#warcde").select("Jollibee 1");
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);

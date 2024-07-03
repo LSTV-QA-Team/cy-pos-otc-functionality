@@ -32,7 +32,7 @@ describe("Refund Transaction", () => {
 
     cy.wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist");
-    cy.get("#postypcde").select("Dine-in");
+    cy.get("#postypcde").select("Dine-In");
     cy.get("#warcde").select("Jollibee 1");
     cy.contains("Proceed").click();
 
@@ -96,7 +96,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click()
 
@@ -160,7 +160,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -231,7 +231,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -301,7 +301,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -372,7 +372,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -442,7 +442,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
 
@@ -659,7 +659,7 @@ describe("Refund Transaction", () => {
     );
 
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-in").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
     cy.contains("Refund Transaction").click().wait(2000);
