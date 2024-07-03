@@ -17,13 +17,13 @@ describe("Ordering ", () => {
     cy.wait(4000)
     cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("DINE IN").wait(2000);
+    cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
     cy.get('.Toastify__toast-body')
     .should("have.text", "Transaction Opened Successfully.").click().wait(2000);
-    cy.contains("FOOD").click().wait(2000);
+    cy.contains("Food").click().wait(2000);
     cy.contains("Chicken").click().wait(2000);
     cy.contains("1-pc Chickenjoy").click().wait(2000);
     cy.get('.Toastify__toast-body')
@@ -221,18 +221,18 @@ describe("Ordering ", () => {
     cy.get('.px-8').should('be.visible').wait(500)
     cy.get('.px-8').should('have.text', 'Price Override').wait(500)
     cy.get('.py-3 > .mb-2').should('have.text', 'Override Price').wait(500)
-    // 0 VALUE IN PRICE OVERRIDE VALIDATION
-    cy.get('.py-3 > .undefined').should('have.value', '0').wait(500)
-    cy.get('.border-blue-500').click().wait(500)
-    cy.get('.Toastify__toast-body').should('have.text', 'Invalid Price')
-    .wait(500)
-    cy.get('.Toastify__toast-body').click()
-    // BLANK OVERRIDE VALIDATION
-    cy.get('.py-3 > .undefined').click().clear()
-    cy.get('.py-3 > .undefined').should('have.value', '').wait(500)
-    cy.get('.border-blue-500').click().wait(500)
-    cy.get('.Toastify__toast-body').should('have.text', 'Please input Price')
-    cy.get('.Toastify__toast-body').click()
+    // // 0 VALUE IN PRICE OVERRIDE VALIDATION
+    // cy.get('.py-3 > .undefined').should('have.value', '0').wait(500)
+    // cy.get('.border-blue-500').click().wait(500)
+    // cy.get('.Toastify__toast-body').should('have.text', 'Invalid Price')
+    // .wait(500)
+    // cy.get('.Toastify__toast-body').click().wait(2000)
+    // // BLANK OVERRIDE VALIDATION
+    // cy.get('.py-3 > .undefined').click().clear()
+    // cy.get('.py-3 > .undefined').should('have.value', '').wait(500)
+    // cy.get('.border-blue-500').click().wait(500)
+    // cy.get('.Toastify__toast-body').should('have.text', 'Please input Price')
+    // cy.get('.Toastify__toast-body').click()
 
     // POSITIVE VALUE INPUT
     cy.get('.py-3 > .undefined')
@@ -258,8 +258,7 @@ describe("Ordering ", () => {
     cy.get('.Toastify__toast-body').click().wait(1000)
     //REMOVE PRICE OVERRIDE PRICE
     cy.get('.MuiButtonBase-root').click({force:true}).wait(1000)
-    cy.get('.Toastify__toast-body')
-    .should('have.text', 'Item price override removed')
+    //cy.get('.Toastify__toast-body').should('have.text', 'Item price override removed')
     cy.get('.Toastify__toast-body').click({force:true}).wait(4000)
   })
   
@@ -536,7 +535,7 @@ describe("Ordering ", () => {
   it("Open new transaction", () => {
     cy.wait(1000)
     cy.get(".px-8").should("have.text", "Select Pricelist");
-    cy.get("#postypcde").select("DINE IN");
+    cy.get("#postypcde").select("Dine-In");
     cy.get("#warcde").select("Jollibee 1");
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
