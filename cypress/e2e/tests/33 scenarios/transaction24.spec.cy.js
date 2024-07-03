@@ -27,6 +27,38 @@ describe("Transaction 24", () => {
       "Discount : 10%"
     );
 
+    cy.fixture('ordering-scenarios.json').then((data) => {
+    
+      const ST = data[23].subtotal;
+      const Discount = data[23].discount
+      const Discount1 = Discount.toFixed(2)
+      const LVA = data[23].lessVatAdj
+      const LVA1 = LVA.toFixed(2)
+      const T24_SCharge = data[23].serviceCharge
+      const ServiceCharge1 = T24_SCharge.toFixed(2)
+      const SCharge_dsc = data[23].serviceChargeDiscount
+      const SCharge_dsc1 = SCharge_dsc.toFixed(2)
+      const GT = data[23].total
+      const total1 = GT.toFixed(2)
+
+      cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
+        "have.text",
+        ST +".00"
+      );
+      cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
+        "have.text",
+        Discount1
+      );
+      cy.get(".bg-black > :nth-child(3) > :nth-child(2)").should(
+        "have.text",
+        LVA1
+      );
+
+      cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
+      cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
+    
+    })
+
     cy.contains("Payment").click();
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("qweasrf").wait(2000);

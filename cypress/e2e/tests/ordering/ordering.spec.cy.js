@@ -138,7 +138,6 @@ describe("Ordering ", () => {
 
     cy.get("#cardholder").click().type("Nova");
     cy.get("#cardno").click().type("543219876");
-    cy.get("#tin").click().type("2978892748465");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
     cy.get(".ml-10").should("have.text", "Discount : Senior").wait(2000);
     cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
@@ -222,7 +221,6 @@ describe("Ordering ", () => {
 
     cy.get("#cardholder").click().type("Nova2");
     cy.get("#cardno").click().type("543219876");
-    cy.get("#tin").click().type("2978892748465");
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(".css-1clo5mp-MuiTableRow-root > :nth-child(3)").click();
