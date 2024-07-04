@@ -163,7 +163,7 @@ describe('Free Reasons', () => {
 
                         cy.wait(3000)
 
-                        cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Free Reasons', assertionResults, failureMessages)
 
@@ -179,6 +179,8 @@ describe('Free Reasons', () => {
                         cy.get('#freereason').clear().type(data[key].freeReasons)
 
                         cy.get('.border-blue-500').click()
+
+                        cy.wait(2000)
 
                         cy.checkLabelCaption('.Toastify__toast-body', '9.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -208,7 +210,7 @@ describe('Free Reasons', () => {
 
                         cy.get('.border-blue-500').click()
 
-                        cy.checkElementInvisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementVisibility('.shadow-lg', '15.2.1', 'Upon clicking the "Save" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
                     }
 
                     else {

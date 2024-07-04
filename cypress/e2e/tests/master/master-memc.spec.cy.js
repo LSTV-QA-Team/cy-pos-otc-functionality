@@ -402,7 +402,7 @@ describe('MEMC', () => {
                     cy.wait(8000)
 
                     // cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
-                    cy.get('td > .MuiTypography-root').should('not.conatain', data[key].memc)
+                    cy.get('td > .MuiTypography-root').should('not.contain', data[key].memc)
             
                 }    
             }
