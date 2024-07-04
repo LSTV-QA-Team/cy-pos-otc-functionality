@@ -2,6 +2,7 @@
   {
     "pricelist": "Jollibee 1",
     "ordertype": "Dine-In",
+    "tableData": true,
     "onlyDelete": false,
     "onlySearchVal": true,
     "onlySearchInval": false
@@ -9,6 +10,7 @@
   {
     "pricelist": "Jollibee 6",
     "ordertype": "Dine-In",
+    "tableData": false,
     "onlyDelete": false,
     "onlySearchVal": false,
     "onlySearchInval": false
@@ -16,6 +18,7 @@
   {
     "pricelist": "Jollibee 2",
     "ordertype": "Takeout",
+    "tableData": true,
     "onlyDelete": false,
     "onlySearchVal": false,
     "onlySearchInval": false
@@ -25,6 +28,7 @@
     "ordertype": "Dine-In",
     "editpricelist": "Jollibee 3",
     "editordertype": "Dine-In",
+    "tableData": false,
     "onlyDelete": false,
     "onlySearchVal": false,
     "onlySearchInval": false
@@ -32,6 +36,7 @@
   {
     "pricelist": "Jollibee 5",
     "ordertype": "Takeout",
+    "tableData": false,
     "onlyDelete": true,
     "onlySearchVal": false,
     "onlySearchInval": true
@@ -39,6 +44,7 @@
   {
     "pricelist": "% & ( ) / - .",
     "ordertype": "Takeout",
+    "tableData": false,
     "onlyDelete": false,
     "onlySearchVal": false,
     "onlySearchInval": false
@@ -46,6 +52,7 @@
   {
     "pricelist": "null",
     "ordertype": "Takeout",
+    "tableData": false,
     "onlyDelete": false,
     "onlySearchVal": false,
     "onlySearchInval": false
@@ -53,6 +60,7 @@
   {
     "pricelist": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` \\ ~ \\\" | \\ ] [ ] ; :",
     "ordertype": "Takeout",
+    "tableData": false,
     "onlyDelete": false,
     "onlySearchVal": false,
     "onlySearchInval": false
@@ -60,6 +68,7 @@
   {
     "pricelist": "This is a test string that exceeds fifty characters in length.",
     "ordertype": "Takeout",
+    "tableData": false,
     "onlyDelete": false,
     "onlySearchVal": false,
     "onlySearchInval": false
