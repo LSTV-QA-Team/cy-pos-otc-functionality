@@ -2,7 +2,6 @@ let assertionResults = []
 let failureMessages = []
 
 describe("Ordering ", () => {
-  cy.wait(6000)
   beforeEach(() => {
     cy.wait(6000)
     // reset for each test case
@@ -17,8 +16,6 @@ describe("Ordering ", () => {
   })
 
   before("Clear Transaction" , () => {
-    cy.wait(6000) 
-
     cy.task("queryDb","TRUNCATE TABLE posfile")
     cy.task("queryDb","TRUNCATE TABLE orderfile")
     cy.task("queryDb","TRUNCATE TABLE orderfile2")
@@ -51,11 +48,9 @@ describe("Ordering ", () => {
           refnum = 'REF-0000000000000001'
 
     `).then((result) => {
-      cy.wait(6000)
 
       cy.log('Update successful:', result)
 
-      cy.wait(4000)
 
     })
 
@@ -241,6 +236,8 @@ describe("Ordering ", () => {
     cy.get("#cardno").click().type("543219876")
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click()
 
+    cy.wait(6000)
+
     cy.get(".css-1clo5mp-MuiTableRow-root > :nth-child(3)").click()
     cy.get(":nth-child(7) > .bg-green-100").click()
     cy.get(".Toastify__toast-body")
@@ -319,6 +316,8 @@ describe("Ordering ", () => {
     cy.get("#warcde").select("Jollibee 1").wait(2000)
     cy.contains("Proceed").click()
 
+    cy.wait(6000)
+
     cy.get(':nth-child(14) > .bg-orange-100').click()
     cy.get('.px-8').should("have.text" , "Void Transaction")
     cy.contains("INV-0000000000000001").should("have.text" , "INV-0000000000000001")
@@ -329,12 +328,17 @@ describe("Ordering ", () => {
   cy.wait(6000) 
 
   cy.get(".px-8 > .flex > .anticon > svg").click()
-  cy.get(':nth-child(16) > .bg-green-100').click()
+  cy.get('.mb-5 > .grid').scrollTo('right')
+  cy.contains('Other Transaction').click()
 
   cy.get('.px-8').should("have.text" , "Other Transaction")
   cy.contains("Hold Transaction").click()
 
-  cy.get('.px-8').should("have.text" , "Select Pricelist")
+  cy.get('.px-8').then($h1 => {
+    if ($h1.text().trim() !== 'Select Pricelist') {
+      throw new Error('Text does not match the expected value. Should be "Select Pricelist".');
+    }
+  })
 
  })
  it("Other Transaction - RECALL" , () => {
@@ -344,7 +348,9 @@ describe("Ordering ", () => {
   cy.get("#warcde").select("Jollibee 1").wait(2000)
   cy.contains("Proceed").click()
 
-  cy.get(':nth-child(16) > .bg-green-100').click()
+  cy.wait(6000)
+
+  cy.contains("Other Transaction").click()
   cy.get('.px-8').should("have.text" , "Other Transaction")
   cy.contains("Recall Transaction").click()
   cy.contains("SEQ-00000000").click()
@@ -357,8 +363,9 @@ describe("Ordering ", () => {
     cy.get(':nth-child(2) > .bg-green-100').click().wait(2000) 
     cy.get('.Toastify__toast-body')
     .should("have.text", "Error : Select item first.").wait(2000).click()
+    cy.wait(6000)
     cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
-    .should("have.text", "1-pc Chickenjoy").wait(2000)
+      .should("have.text", "1-pc Chickenjoy").wait(2000)
     cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
     .click().wait(2000)
     cy.contains('Change Quantity').click().wait(2000)
@@ -372,7 +379,7 @@ describe("Ordering ", () => {
     //Input Data
     cy.get('#itmqty').click().type("ABCDE").wait(2000)
     cy.get('#itmqty').should('have.value', '1').wait(2000)
-    cy.get('#itmqty').click().type("-+=/.,<>!@#$%^&*():[]'") .wait(2000)
+    cy.get('#itmqty').click().type("-+=/.,<>!@#$%^&*():[]'").wait(2000)
     cy.get('#itmqty').should('have.value', '1').wait(2000)
     cy.get('#itmqty').click().type('{downArrow}').wait(2000) 
     //ERROR: NAGING 0 YUNG TEXT LABEL
