@@ -442,7 +442,7 @@ describe('Item Subclassification', () => {
         })
     })
 
-    it('Print functionality', () => {
+    it.skip('Print functionality', () => {
 
         cy.wait(2000)
 

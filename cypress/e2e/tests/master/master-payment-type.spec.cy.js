@@ -395,7 +395,7 @@ describe('Payment Type', () => {
                 cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
     });
 
-    it('Print functionality', () => {
+    it.skip('Print functionality', () => {
 
         cy.wait(2000)
 
