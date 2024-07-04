@@ -380,7 +380,7 @@ describe('MEMC', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
-                    cy.get('input[placeholder="Search Discount"]')
+                    cy.get('input[placeholder="Search MEMC"]')
                       .clear().type(data[key].memc)
 
                     cy.wait(2000)
@@ -396,9 +396,8 @@ describe('MEMC', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('input[placeholder="Search MEMC"]')
-                    .clear()
-                    .clear().type(data[key].memc)
+                    cy.get('input[placeholder="Search MEMC"]').clear()
+                      .type(data[key].memc)
 
                     cy.wait(8000)
 

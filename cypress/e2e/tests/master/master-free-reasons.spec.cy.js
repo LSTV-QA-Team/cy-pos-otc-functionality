@@ -348,12 +348,6 @@ describe('Free Reasons', () => {
                     cy.wait(2000)
 
                     cy.get('[data-testid="SearchIcon"]').click()
-
-                    cy.get('input[placeholder="Search Discount"]').then($input => {
-                        if ($input.attr('placeholder') !== 'Search Free Reason') {
-                          throw new Error('Placeholder text does not match the expected value. Should be "Search Free Reason".')
-                        }
-                    })
     
                     cy.get('input[placeholder="Search Discount"]')
                       .clear().type(data[key].freeReasons)
@@ -371,9 +365,14 @@ describe('Free Reasons', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('input[placeholder="Search Discount"]')
-                    .clear()
-                    .clear().type(data[key].freeReasons)
+                    cy.get('input[placeholder="Search Discount"]').then($input => {
+                        if ($input.attr('placeholder') !== 'Search Free Reason') {
+                          throw new Error('Placeholder text does not match the expected value. Should be "Search Free Reason".')
+                        }
+                    })
+
+                    cy.get('input[placeholder="Search Discount"]').clear()
+                      .type(data[key].freeReasons)
 
                     cy.wait(8000)
 
