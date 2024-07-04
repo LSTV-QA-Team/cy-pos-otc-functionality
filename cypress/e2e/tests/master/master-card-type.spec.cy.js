@@ -75,8 +75,6 @@ describe('Card Type', () => {
 
         cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to Card Type:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
-        cy.wait(2000)
-
         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]','1.2.1', 'Upon Navigating to Card Type pager U/I:', 'Card Type', assertionResults, failureMessages)
 
         cy.wait(2000)
