@@ -293,7 +293,7 @@ describe('Price List', () => {
     
                     cy.wait(2000)
 
-                    cy.contains('tbody > tr', specificpricelist.pricelist).within(() => {
+                    cy.contains('tbody > tr', data[key].pricelist).within(() => {
 
                         cy.get('svg[data-icon="table"]').click()
 
@@ -301,7 +301,7 @@ describe('Price List', () => {
 
                     cy.wait(2000)
 
-                    cy.contains('div', specificpricelist.pricelist).should('be.visible')
+                    cy.contains('div', data[key].pricelist).should('be.visible')
 
                     cy.contains('p', 'Load data from items').click()
 
