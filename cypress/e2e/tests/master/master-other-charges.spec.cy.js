@@ -198,7 +198,7 @@ describe('Other Charges', () => {
 
         cy.get('.border-red-500').click()
 
-        cy.get('.border-blue-500').click()
+        cy.get('.border-blue-500').click({ multiple: true })
 
         cy.wait(2000)
 
