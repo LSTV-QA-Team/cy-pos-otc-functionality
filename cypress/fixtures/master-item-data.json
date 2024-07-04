@@ -1,13 +1,13 @@
 [
   {
-    "item": "Yumburger Solo",
+    "item": "Yumburger",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Burger",
     "unitMeasure": "PCS",
     "unitCost": 0,
     "barcode": "00000000001",
-    "sellingPrice": 40,
+    "sellingPrice": 35,
     "goodXPerson": 1,
     "taxCode": "VATABLE",
     "addOn": false,
@@ -18,7 +18,7 @@
     "onlySearchInval": false
   },
   {
-    "item": "1-pc Chickenjoy",
+    "item": "3-pc Chickenjoy",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
     "itemSubclass": "Chicken",
@@ -409,7 +409,7 @@
     "inactive": false,
     "comboMeal": false,
     "onlySearchVal": false,
-    "onlyDelete": true,
+    "onlyDelete": false,
     "onlySearchInval": false
   },
   {
@@ -953,5 +953,20 @@
     "onlySearchVal": false,
     "onlyDelete": false,
     "onlySearchInval": false
+  },
+  {
+    "item": "1-pc Chickenjoy",
+    "itemType": "NON-INVENTORY",
+    "itemClass": "Food",
+    "itemSubclass": "Chicken",
+    "unitMeasure": "PCS",
+    "unitCost": 0,
+    "barcode": "00000000052",
+    "sellingPrice": 76,
+    "goodXPerson": 1,
+    "taxCode": "VATABLE",
+    "addOn": false,
+    "inactive": false,
+    "comboMeal": false
   }
 ]

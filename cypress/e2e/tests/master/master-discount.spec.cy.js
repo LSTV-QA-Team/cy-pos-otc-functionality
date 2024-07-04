@@ -720,9 +720,8 @@ describe('Discount', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
-                    cy.get('input[placeholder="Search Discount"]')
-                    .clear()
-                    .clear().type(data[key].discountDesc)
+                    cy.get('input[placeholder="Search Discount"]').clear()
+                      .type(data[key].discountDesc)
 
                     cy.wait(2000)
     
@@ -737,9 +736,8 @@ describe('Discount', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('input[placeholder="Search Discount"]')
-                    .clear()
-                    .clear().type(data[key].discountDesc)
+                    cy.get('input[placeholder="Search Discount"]').clear()
+                      .type(data[key].discountDesc)
 
                     cy.wait(8000)
 

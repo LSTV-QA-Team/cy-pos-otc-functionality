@@ -122,6 +122,8 @@ describe('Price List', () => {
 
             // cy.get('svg[data-icon="close"][viewBox="64 64 896 896"]') .click()
 
+            cy.wait(4000)
+
             for (const key in data){
             
                     if (data[key].pricelist === "null") {
@@ -324,14 +326,14 @@ describe('Price List', () => {
                     cy.get('#selectAll').click()
 
                     cy.get('.border-blue-500').click()
+
+                    cy.get('.pl-10 > .flex').click()
                 }
             }
         }) 
     })
 
     it('Edit Functionality', () => {
-
-        cy.get('.pl-10 > .flex').click()
 
         cy.fixture('master-pricelist-data.json').then((data) => {
 
