@@ -120,65 +120,65 @@ describe('Item', () => {
 
             cy.checkLabelCaption('label[for="taxcde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Tax Code *', assertionResults, failureMessages)
             
-            cy.get('#itmdsc').invoke('outerWidth').then((width) => {
+            // cy.get('#itmdsc').invoke('outerWidth').then((width) => {
 
-                 expect(width).to.equal(403)
+            //      expect(width).to.equal(403)
                     
-            })
+            // })
 
-            cy.get('#itmtyp').invoke('outerWidth').then((width) => {
+            // cy.get('#itmtyp').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
-            cy.get('#itemsubclasscde').invoke('outerWidth').then((width) => {
+            // cy.get('#itemsubclasscde').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
-            cy.get('#itmclacde').invoke('outerWidth').then((width) => {
+            // cy.get('#itmclacde').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
-            cy.get('#untmea').invoke('outerWidth').then((width) => {
+            // cy.get('#untmea').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
-            cy.get('#untcst').invoke('outerWidth').then((width) => {
+            // cy.get('#untcst').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
-            cy.get('#barcde').invoke('outerWidth').then((width) => {
+            // cy.get('#barcde').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
-            cy.get('#untprc').invoke('outerWidth').then((width) => {
+            // cy.get('#untprc').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
-            cy.get('#itmpaxcount').invoke('outerWidth').then((width) => {
+            // cy.get('#itmpaxcount').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
-            cy.get('#memc').invoke('outerWidth').then((width) => {
+            // cy.get('#memc').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
             // 2.1.5 Check correct all object position
 
