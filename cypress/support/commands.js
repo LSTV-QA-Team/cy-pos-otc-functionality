@@ -415,33 +415,6 @@ Cypress.Commands.add('checkValue', (selector, referenceNumber, errorContext, exp
   })
 })
 
-Cypress.Commands.add('checkText', (selector, referenceNumber, errorContext, expectedText, assertionResults = [], failureMessages = [] ) => {
-  cy.get(selector).then($element => {
-    const actualText = $element.text().trim(); // Get the text content and trim any whitespace
-
-    if (actualText === expectedText) {
-      cy.log('Assertion Passed');
-      assertionResults.push({ data: 'passed' });
-    } else {
-      const failureMessage = `The element text should be "${expectedText}" instead of "${actualText}"`;
-
-      if (!failedAssertions.has(failureMessage)) {
-        cy.log('Assertion Failed');
-        failedAssertions.add(failureMessage);
-        failureMessages.push({ referenceNumber, errorContext, message: failureMessage });
-        cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' });
-      } else {
-        cy.log('Skipping screenshot, failure already captured');
-      }
-      assertionResults.push({ data: 'failed' });
-    }
-  }).then(() => {
-    cy.wait(4000);
-    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults), { timeout: 10000 });
-  });
-});
-
-
 // Check element shoulb be visible
 Cypress.Commands.add('checkElementVisibility', (selector, referenceNumber, errorContext, errorMsg, assertionResults = [], failureMessages = []) => {
   
