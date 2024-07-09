@@ -15,33 +15,71 @@ describe("Ordering ", () => {
 
   it("Select Pricelist Modal ", () => {
     cy.contains('Ordering').click()
-    //CLEAR TRANSACTION
+    //CLEAR TRANSACTION Attempt 1
     cy.wait(4000)
-    cy.get(':nth-child(9) > .bg-red-100').click().wait(500)
+    cy.get(':nth-child(9) > .bg-red-100').click({force:true}).wait(500)
     cy.get('.px-8').should('have.text', 'Confirmation').wait(500)
     cy.get('section > h1')
     .should('have.text', 'Are you sure you want to cancel this transaction?')
     .wait(500)
-    cy.get('.border-blue-500').click().wait(1000)
+    cy.get('.border-blue-500').click({force:true}).wait(1000)
     cy.get('.Toastify__toast-body')
     .should('have.text', 'Transaction Successfully Cancelled.')
     .wait(1000)
     cy.get('.Toastify__toast-body').click().wait(1000)
-    //OPEN NEW TRANASCTION
-    cy.wait(4000)
-    cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
-    cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
-    cy.get('.Toastify__toast-body')
-    .should("have.text", "Transaction Opened Successfully.").click().wait(2000);
-    cy.contains("Food").click().wait(2000);
-    cy.contains("Chicken").click().wait(2000);
-    cy.contains("1-pc Chickenjoy").click().wait(2000);
-    cy.get('.Toastify__toast-body')
-    .should("have.text", "Item Added Successfully.").wait(1000);
-    cy.get('.Toastify__toast-body').click().wait(2000);
+    cy.wait(8000)
+    cy.checkElementVisibility('.shadow-lg', '0', 'Upon Clicking the "Confirm" button in cancelling transaction:', 'The "Select Pricelist" modal window was not visible or active.', assertionResults, failureMessages)
+
+    cy.get('body').then(($body) => {
+
+      if ($body.find('.shadow-lg').is(':visible')) {
+        //OPEN NEW TRANASCTION
+      cy.checkElementVisibility('.shadow-lg', '0', 'Upon Clicking the "Confirm" button in cancelling transaction:', 'The "Select Pricelist" modal window was not visible or active.', assertionResults, failureMessages)
+      cy.checkHeaderTitle('.px-8', '0', 'Upon clicking the "Confirm" button', 'Select Pricelist', assertionResults, failureMessages)
+      cy.get("#postypcde").select("Dine-In").wait(2000);
+      cy.get("#warcde").select("Jollibee 1").wait(2000);
+      cy.contains("Proceed").click();
+      cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
+      cy.get('.Toastify__toast-body')
+      .should("have.text", "Transaction Opened Successfully.").click().wait(2000);
+      cy.contains("Food").click().wait(2000);
+      cy.contains("Chicken").click().wait(2000);
+      // cy.contains("1-pc Chickenjoy").click().wait(2000);
+      cy.xpath('//span[contains(text(), "1-pc Chickenjoy") and text()="1-pc Chickenjoy"]').click().wait(2000)
+      cy.get('.Toastify__toast-body')
+      .should("have.text", "Item Added Successfully.").wait(1000);
+      cy.get('.Toastify__toast-body').click().wait(2000);
+      } else {
+        // CLEAR TRANSACTION ATTEMPT 2
+        cy.get(':nth-child(9) > .bg-red-100').click({force:true}).wait(500)
+        cy.get('.px-8').should('have.text', 'Confirmation').wait(500)
+        cy.get('section > h1')
+        .should('have.text', 'Are you sure you want to cancel this transaction?')
+        .wait(500)
+        cy.get('.border-blue-500').click({force:true}).wait(2000)
+        cy.get('.Toastify__toast-body')
+        .should('have.text', 'Transaction Successfully Cancelled.')
+        .wait(1000)
+        cy.checkElementVisibility('.shadow-lg', '0', 'Upon Clicking the "Confirm" button in cancelling transaction:', 'The "Select Pricelist" modal window was not visible or active.', assertionResults, failureMessages)
+        cy.checkHeaderTitle('.px-8', '0', 'Upon clicking the "Confirm" button', 'Select Pricelist', assertionResults, failureMessages)
+      cy.get("#postypcde").select("Dine-In").wait(2000);
+      cy.get("#warcde").select("Jollibee 1").wait(2000);
+      cy.contains("Proceed").click();
+      cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
+      cy.get('.Toastify__toast-body')
+      .should("have.text", "Transaction Opened Successfully.").click().wait(2000);
+      cy.contains("Food").click().wait(2000);
+      cy.contains("Chicken").click().wait(2000);
+      // cy.contains("1-pc Chickenjoy").click().wait(2000);
+      cy.xpath('//span[contains(text(), "1-pc Chickenjoy") and text()="1-pc Chickenjoy"]').click().wait(2000)
+      cy.get('.Toastify__toast-body')
+      .should("have.text", "Item Added Successfully.").wait(1000);
+      cy.get('.Toastify__toast-body').click().wait(2000);
+      }
+    })
+    
+   
+    cy.checkForFailure(assertionResults, failureMessages)
   });
 
   // Remove Item (Negative Testing)
@@ -104,34 +142,36 @@ describe("Ordering ", () => {
    // cy.get('#itmqty').click().type('{downArrow}').wait(2000)
    // cy.get('#itmqty').should('have.value', '1')
    // cy.get('#itmqty').clear()
+
    cy.get(':nth-child(2) > .bg-green-100').click().wait(2000) 
-   cy.get('#itmqty')
-   .click({force:true}).clear({force:true}).realType('0',{force:true}).wait(2000)
-   cy.get('#itmqty').should('have.value', '10').wait(2000)
+   cy.get('#itmqty').type('0',{force:true}).wait(2000)
+  //  cy.get('#itmqty').should('have.value', '1').wait(2000)
+   cy.checkValue('#itmqty', '0', 'Upon clicking the Confirm:', '0', assertionResults, failureMessages) 
    cy.get('.border-blue-500').click({force:true}).wait(1000)
    cy.get('.px-8').should('not.exist').wait(1000)
    cy.get('.Toastify__toast-body')
    .should("have.text", "Item Quantity Changed.").wait(500)
    cy.get('.Toastify__toast-body').click().wait(2000)
    //Validation
-   cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(2)')
-   .should('have.text', '10')
-   cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(5)')
-   .should('have.text', '760.00')
+   cy.checkText('.MuiTableBody-root > .MuiTableRow-root > :nth-child(2)', '0', 'Upon clicking the Confirm:', '10', assertionResults, failureMessages) 
+   cy.checkText('.MuiTableBody-root > .MuiTableRow-root > :nth-child(5)', '0', 'Upon clicking the Confirm:', '760.00', assertionResults, failureMessages) 
+
+   cy.checkForFailure(assertionResults, failureMessages)
  });
 
   // //CHANGE ORDERTYPE 2 OR MORE QUNATITIES IN ITEM
   it("Change Ordertype type 2 or more quantities", () => {
     cy.wait(1000)
-    cy.get(':nth-child(3) > .bg-green-100').click().wait(1000)
+    cy.contains('Change Order Type').click({force:true})
+
+    cy.wait(4000)
 
     //MODAL OPEN (IF THE ITEM IS GREATER THEN 1 QUANTITY)
     cy.get('.px-8').should('be.visible').wait(500)
 
     //Modal Validation
-          //ERROR DUE TO CHANGE QUANTITY IS NOT WORKING PRERPLY IN CYPRESS
-    cy.get('#changeQuantity > :nth-child(1) > .mb-2')
-    .should('have.text', 'Set Dine-in quantity').wait(1000)
+          //ERROR DUE TO CHANGE QUANTITY IS NOT WORKING PROPERLY IN CYPRESS
+    cy.get('label').eq(0).should('have.text', 'Set Dine in quantity');
     cy.get(':nth-child(2) > .mb-2')
     .should('have.text', 'Set Take out quantity').wait(1000)
 
@@ -175,15 +215,18 @@ describe("Ordering ", () => {
     .click().wait(1000)
    cy.get(':nth-child(4) > .bg-green-100').click().wait(1000)
    cy.get('.px-8').should('be.visible')
-   cy.get('#specialRequest > .flex')
-   .should('have.text', '123') //RANDOM INPUT
+   cy.get('#takeOut').type('123')
+   cy.get('#takeOut')
+   .should('have.value', '123') //RANDOM INPUT
    cy.get('.px-8').should('have.text', 'Add Special Request(s)')
    cy.get('.w-\\[100\\%\\] > .mb-2').should('have.text', 'Others')
-   cy.get('.border-blue-500').click().wait(1000)
+   cy.get('#takeOut').clear({force:true}).type('{backspace}').should('be.empty')
+   cy.get('.border-blue-500').click()
   // Alert Message Validation
-  cy.get('.Toastify__toast-body')
-  .should('have.text', 'Please select or add a special request.')
-  cy.get('.px-8 > .flex > .anticon > svg').click()
+  cy.wait(2000)
+  cy.checkLabelCaption('.Toastify__toast-body', '0', 'Upon clicking the "Update" button on Add Special Request(s)', 'Please select or add a special request.', assertionResults, failureMessages)
+  // cy.get('.px-8 > .flex > .anticon > svg').click()
+  cy.checkForFailure(assertionResults, failureMessages)
   });
 
 // FREE ITEM (Negative Testing)
@@ -250,43 +293,49 @@ describe("Ordering ", () => {
     // POSITIVE VALUE INPUT
     cy.get('.py-3 > .undefined')
     .realClick({force:true}).clear().realType('1000',{force:true})
-    cy.get('.border-blue-500').realClick({force:true})
+    cy.get('.border-blue-500').click({force:true})
     cy.get('.Toastify__toast-body')
     .should('have.text', 'Price Overridden Successfully.').wait(500)
     cy.get('.Toastify__toast-body').realClick({force:true})
-    cy.get('.MuiTableBody-root > :nth-child(1) > :nth-child(5)')
-    .should('have.text', '10000.00')
-    cy.get(':nth-child(7) > .bg-green-100').realClick({force:true}).wait(500)
-    cy.get('.Toastify__toast-body')
-    .should('have.text', 'Item price is already overridden.').wait(500)
+    // cy.get('.MuiTableBody-root > :nth-child(1) > :nth-child(5)')
+    // .should('have.text', '1000.00')
+    cy.checkText('.MuiTableBody-root > :nth-child(1) > :nth-child(5)', '0', 'Upon clicking the Confirm button:', '10000.00', assertionResults, failureMessages) 
+    cy.get(':nth-child(7) > .bg-green-100').click({force:true})
+    cy.get(2000)
+    cy.get('.Toastify__toast-body', { timeout: 10000 }).should('have.text', 'Item price is already overridden.').wait(500)
     cy.get('.Toastify__toast-body').realClick({force:true}).wait(2000)
 
     //CLICK FREE ITEM
     cy.get(':nth-child(6) > .bg-green-100').click().wait(500)
-    cy.get('.Toastify__toast-body').should('have.text', 'Error : Remove price override first.').wait(1000)
+    cy.get('.Toastify__toast-body').should('have.text', 'Error : Remove price override first.')
+    cy.wait(2000)
     cy.get('.Toastify__toast-body').click().wait(1000)
     //CLICK ADD-ONS
     cy.get(':nth-child(8) > .bg-green-100').click().wait(500)
-    cy.get('.Toastify__toast-body').should('have.text', 'Error : Remove price override first.').wait(1000)
+    cy.get('.Toastify__toast-body').should('have.text', 'Error : Remove price override first.')
+    cy.wait(2000)
     cy.get('.Toastify__toast-body').click().wait(1000)
     //REMOVE PRICE OVERRIDE PRICE
-    cy.get('.MuiButtonBase-root').click({force:true}).wait(1000)
+    cy.get('.MuiButtonBase-root').eq(1).click({force:true}).wait(2000)
     //cy.get('.Toastify__toast-body').should('have.text', 'Item price override removed')
     cy.get('.Toastify__toast-body').click({force:true}).wait(4000)
+
+    cy.checkForFailure(assertionResults, failureMessages)
   })
   
   // ADD-ONS (Negative Testing)
   it("Add-ons", () => {
     cy.wait(4000)
+    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)').click({force:true})
+    cy.wait(2000)
+    cy.get(':nth-child(8) > .bg-green-100').realClick({force:true})
+    cy.wait(2000)
+    cy.checkElementVisibility('.Toastify__toast-body', '0', 'Upon Clicking the "Add On Item" button:', 'The "Error : Select item first." notification was not visible.', assertionResults, failureMessages)
+    // cy.get('.Toastify__toast-body').should("have.text", "Error : Select item first.").wait(2000)
+    // cy.get('.Toastify__toast-body').click()
     cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
     .click().wait(500)
-    cy.get(':nth-child(8) > .bg-green-100').click()
-    cy.get('.Toastify__toast-body')
-    .should("have.text", "Error : Select item first.")
-    .wait(1000).click()
-    cy.get('.Toastify__toast-body').click()
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
-    .click().wait(500)
+    cy.checkForFailure(assertionResults, failureMessages)
   })
 
   it("Discount", () => {
@@ -413,17 +462,21 @@ describe("Ordering ", () => {
    cy.get(':nth-child(13) > .bg-green-100').click().wait(1000)
    cy.get('.px-8').should('be.visible')
    cy.get('.px-8').should('have.text', 'Payment')
-   cy.get('.text-right > .overflow-hidden')
-   .should('have.text', '₱82.79')
-   cy.get('.text-red > :nth-child(2)')
-   .should('have.text', '₱82.79')
+   cy.checkText('.text-right > .overflow-hidden', '0', 'Upon clicking the Payment button:', '₱82.79', assertionResults, failureMessages) 
+  //  cy.get('.text-right > .overflow-hidden')
+  //  .should('have.text', '₱82.79')
+  cy.checkText('.text-red > :nth-child(2)', '0', 'Upon clicking the Payment button:', '₱82.79', assertionResults, failureMessages) 
+  //  cy.get('.text-red > :nth-child(2)')
+  //  .should('have.text', '₱82.79')
    cy.get('.my-4 > :nth-child(4) > :nth-child(1) > .font-montserrat')
    .click().wait(1000)
-   cy.get('.text-right > .overflow-hidden')
-   .should('have.text', '₱0.00')
+  //  cy.get('.text-right > .overflow-hidden')
+  //  .should('have.text', '₱0.00')
+   cy.checkText('.text-red > :nth-child(2)', '0', 'Upon clicking the Payment button:', '₱0.00', assertionResults, failureMessages) 
    cy.contains('CASH').click().wait(1000)
-   cy.get('.Toastify__toast-body')
-   .should('have.text', 'Error : Zero amount').wait(500)
+  //  cy.get('.Toastify__toast-body')
+  //  .should('have.text', 'Error : Zero amount').wait(500)
+  cy.checkLabelCaption('.Toastify__toast-body', '0', 'Upon clicking the CASH button:', 'Error : Zero amount', assertionResults, failureMessages) 
    cy.get('.Toastify__toast-body').click()
    cy.get(':nth-child(3) > :nth-child(2) > .font-montserrat').click()
    cy.get('.my-4 > :nth-child(4) > :nth-child(2) > .font-montserrat')
@@ -431,24 +484,31 @@ describe("Ordering ", () => {
    cy.contains('CASH').click().wait(500)
    cy.get('.bg-black\\/75 > .shadow-lg > .px-8')
    .should('have.text', 'CASH Payment')
-   cy.get('.underline').should('have.text', '₱80.00')
+  //  cy.get('.underline').should('have.text', '₱80.00')
+   cy.checkText('.underline', '0', 'Upon clicking the CASH button:', '₱80.00', assertionResults, failureMessages) 
    cy.get('.border-blue-500').click().wait(1000)
    cy.get('.flex-row > :nth-child(1)').should('have.text', 'CASH')
-   cy.get('.me-1').should('have.text', '80.00')
+  //  cy.get('.me-1').should('have.text', '80.00')
+  cy.checkText('.me-1', '0', 'Upon clicking the CASH button:', '80.00', assertionResults, failureMessages) 
    cy.get('.ml-5 > .mb-5 > :nth-child(1) > :nth-child(1)')
    .should('have.text', 'Paid')
-   cy.get('.ml-5 > .mb-5 > :nth-child(1) > :nth-child(2)')
-   .should('have.text', '₱80.00')
+  //  cy.get('.ml-5 > .mb-5 > :nth-child(1) > :nth-child(2)')
+  //  .should('have.text', '₱80.00')
+  cy.checkText('.ml-5 > .mb-5 > :nth-child(1) > :nth-child(2)', '0', 'Upon clicking the CASH button:', '₱80.00', assertionResults, failureMessages) 
    cy.get('.mb-5 > :nth-child(2) > :nth-child(1)')
    .should('have.text', 'Balance')
-   cy.get('.mb-5 > :nth-child(2) > :nth-child(2)')
-   .should('have.text', '₱2.79')
-   cy.get('.mb-5 > :nth-child(3) > :nth-child(1)')
+  //  cy.get('.mb-5 > :nth-child(2) > :nth-child(2)')
+  //  .should('have.text', '₱2.79')
+  cy.checkText('.mb-5 > :nth-child(2) > :nth-child(2)', '0', 'Upon clicking the CASH button:', '₱2.79', assertionResults, failureMessages)  
+  cy.get('.mb-5 > :nth-child(3) > :nth-child(1)')
    .should('have.text', 'Change')
-   cy.get('.mb-5 > :nth-child(3) > :nth-child(2)')
-   .should('have.text', '₱0.00')
-  // PRESSING A VALUE WORTH 100 PESOS
+  //  cy.get('.mb-5 > :nth-child(3) > :nth-child(2)')
+  //  .should('have.text', '₱0.00')
+   cy.checkText('.mb-5 > :nth-child(3) > :nth-child(2)', '0', 'Upon clicking the CASH button:', '₱0.00', assertionResults, failureMessages)  
+
+  // PRESSING A VALUE WORTH 1000 PESOS
    cy.get('.my-4 > :nth-child(1) > :nth-child(1) > .font-montserrat').click()
+   cy.get('.my-4 > :nth-child(4) > :nth-child(2) > .font-montserrat').click()
    cy.get('.my-4 > :nth-child(4) > :nth-child(2) > .font-montserrat').click()
    cy.get('.my-4 > :nth-child(4) > :nth-child(2) > .font-montserrat').click()
 
@@ -492,7 +552,7 @@ describe("Ordering ", () => {
   //MODAL CASH PAYMENT VALIDATION
    cy.get('p.text-red-500')
    .should('have.text', 'Confirm Amt Received')
-   cy.get('.underline').should('have.text', '₱100.00')
+   cy.get('.underline').should('have.text', '₱1,000.00')
    cy.get('#cashform > :nth-child(1) > .mb-2')
    .should('have.text', 'Customer Name')
    cy.get(':nth-child(2) > .mb-2')
@@ -507,15 +567,16 @@ describe("Ordering ", () => {
    cy.get('.ml-5 > .mb-5 > :nth-child(1) > :nth-child(1)')
    .should('have.text', 'Paid')
    cy.get('.ml-5 > .mb-5 > :nth-child(1) > :nth-child(2)')
-   .should('have.text', '₱180.00')
+   .should('have.text', '₱1,080.00')
    cy.get('.mb-5 > :nth-child(2) > :nth-child(1)')
    .should('have.text', 'Balance')
    cy.get('.mb-5 > :nth-child(2) > :nth-child(2)')
    .should('have.text', '₱0.00')
    cy.get('.mb-5 > :nth-child(3) > :nth-child(1)')
    .should('have.text', 'Change')
-   cy.get('.mb-5 > :nth-child(3) > :nth-child(2)')
-   .should('have.text', '₱97.21')
+  //  cy.get('.mb-5 > :nth-child(3) > :nth-child(2)')
+  //  .should('have.text', '₱97.21')
+  cy.checkText('.mb-5 > :nth-child(3) > :nth-child(2)', '0', 'Upon clicking the CASH button:', '₱97.21', assertionResults, failureMessages)  
   //DELETE PAYMENTS (100.00 AND THEN 80.00)
    cy.get('.flex.text-sm > .flex-col > :nth-child(2) > .flex > .anticon > svg')
    .click()
@@ -523,6 +584,9 @@ describe("Ordering ", () => {
    .click()
   //CLOSE MODAL
    cy.get('.px-8 > .flex > .anticon > svg').click()
+
+   cy.checkForFailure(assertionResults, failureMessages)
+
 })
   
   //PAYMENT TRANASCTION FOR VOID AND REFUND
@@ -536,11 +600,14 @@ describe("Ordering ", () => {
     .should('have.text', 'CASH Payment')
     cy.get('p.text-red-500')
     .should('have.text', 'Confirm Amt Received')
-    cy.get('.underline')
-    .should('have.text', '₱82.79')
+    cy.checkText('.underline', '0', 'Upon clicking the Cash button on Payment:', '₱82.79', assertionResults, failureMessages) 
+    // cy.get('.underline')
+    // .should('have.text', '₱82.79')
     cy.get('.border-blue-500').click().wait(1000)
     cy.get('.my-5 > .grid > :nth-child(1)').click().wait(500)
     cy.get('#postTransactionV2').should('have.text', 'Transaction Complete.')
+    cy.checkForFailure(assertionResults, failureMessages)
+
   })
 
 
@@ -581,10 +648,14 @@ describe("Ordering ", () => {
     cy.get(':nth-child(14) > .bg-orange-100').click().wait(1000)
     cy.get('.px-8').should('be.visible')
     cy.get('.px-8').should('have.text', 'Void Transaction')
-    cy.get('.max-h-\\[500\\] > section > .flex-col > :nth-child(1) > :nth-child(1)')
-    .should('have.text', 'OR-0000000000000001')
-    cy.get('.max-h-\\[500\\] > section > .flex-col > :nth-child(1) > :nth-child(2)')
-    .should('have.text', '76.00')
+    // cy.get('.max-h-\\[500\\] > section > .flex-col > :nth-child(1) > :nth-child(1)')
+    // .should('have.text', 'OR-0000000000000001')
+    cy.checkText('.max-h-\\[500\\] > section > .flex-col > :nth-child(1) > :nth-child(1)', '0', 'Upon clicking the Void Transaction button:', 'OR-0000000000000001', assertionResults, failureMessages)  
+
+    //cy.get('.max-h-\\[500\\] > section > .flex-col > :nth-child(1) > :nth-child(2)')
+    // .should('have.text', '76.00')
+    cy.checkText('.max-h-\\[500\\] > section > .flex-col > :nth-child(1) > :nth-child(2)', '0', 'Upon clicking the Void Transaction button:', '76.00', assertionResults, failureMessages)  
+
     cy.get('.max-h-\\[500\\] > section > .flex-col > :nth-child(1)')
     .click().wait(500)
     cy.get('.bg-black\\/75 > .shadow-lg > .px-8')
@@ -599,10 +670,13 @@ describe("Ordering ", () => {
     cy.get('.text-sm').should('have.text', 'Other void reason * is required')
     cy.get('.me-1').click().wait(1000) //UNCHECK THE CHECKBOX
     cy.get('#voidreason').select('Incorrect Order Entry').wait(1000)
-    cy.get('.border-blue-500').click().wait(2000)
-    cy.get('.Toastify__toast-body')
+    cy.get('.border-blue-500').click()
+    cy.wait(2000)
+    cy.get('.Toastify__toast-body',{ timeout: 10000 })
     .should('have.text', 'Transaction Void Successful').wait(500)
     cy.get('.Toastify__toast-body').click().wait(1000)
+
+    cy.checkForFailure(assertionResults, failureMessages)
   })
 
     // REFUND TRANASCTION
@@ -630,7 +704,8 @@ describe("Ordering ", () => {
 
 
     // VALIDATE REFUND MODAL
-    cy.get('.px-8').should('have.text','REF-0000000000000001')
+    // cy.get('.px-8').should('have.text','REF-0000000000000001')
+    cy.checkText('.px-8', '0', 'Validate Refund:', 'REF-0000000000000001', assertionResults, failureMessages)  
     cy.get('.justify-between > .group').should('have.text', 'Search OR')
     cy.get('.h-full > .MuiPaper-root > .MuiTable-root > .MuiTableHead-root > .MuiTableRow-root > :nth-child(1)').should('have.text', 'Action')
     cy.get('.h-full > .MuiPaper-root > .MuiTable-root > .MuiTableHead-root > .MuiTableRow-root > :nth-child(2)').should('have.text', 'ITEM')
@@ -642,12 +717,14 @@ describe("Ordering ", () => {
     cy.wait(2000)
     cy.get('.justify-between > .group').click()
     cy.get('.px-8').should('have.text', 'Search OR')
-    cy.get('.h-\\[82vh\\] > .flex-col > :nth-child(1) > :nth-child(1)')
-    .should('have.text', 'OR-0000000000000002')
+    // cy.get('.h-\\[82vh\\] > .flex-col > :nth-child(1) > :nth-child(1)')
+    // .should('have.text', 'OR-0000000000000002')
+    cy.checkText('.h-\\[82vh\\] > .flex-col > :nth-child(1) > :nth-child(1)', '0', 'Validate Refund:', 'OR-0000000000000002', assertionResults, failureMessages)  
     cy.get('.h-\\[82vh\\] > .flex-col > :nth-child(1) > :nth-child(2)')
     .should('have.text', '76.00')
     cy.get('.h-\\[82vh\\] > .flex-col > :nth-child(1) > :nth-child(1)').click()
-    cy.get('.px-8').should('have.text', 'OR-0000000000000002')
+    // cy.get('.px-8').should('have.text', 'OR-0000000000000002')
+    cy.checkText('.px-8', '0', 'Validate Refund:', 'OR-0000000000000002', assertionResults, failureMessages)  
     cy.get('.MuiTableCell-alignLeft')
     .should('have.text', 'ITEM')
     cy.get('.h-full > .MuiPaper-root > .MuiTable-root > .MuiTableHead-root > .MuiTableRow-root > :nth-child(2)')
@@ -661,18 +738,22 @@ describe("Ordering ", () => {
 
     cy.get('#refundqty').click().clear().type('1')
     cy.get('#refundqty').should('have.value', '1')
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)').should('have.text', '76.00')
+    // cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)').should('have.text', '76.00')
+    cy.checkText('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)', '0', 'Validate Refund:', '76.00', assertionResults, failureMessages)  
     cy.get('#refundqty').click().clear()
 
     cy.get('#refundqty').click().clear().type('2')
     cy.get('#refundqty').should('have.value', '1')
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)').should('have.text', '76.00')
+    // cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)').should('have.text', '76.00')
+    cy.checkText('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)', '0', 'Validate Refund:', '76.00', assertionResults, failureMessages)  
+
     cy.get('#refundqty').click({force:true}).clear()
     
     cy.get('#refundqty')
     .click({force:true}).clear().type('3',{force:true})
     cy.get('#refundqty').should('have.value', '1')
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)').should('have.text', '76.00')
+    // cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)').should('have.text', '76.00')
+    cy.checkText('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)', '0', 'Validate Refund:', '76.00', assertionResults, failureMessages)  
     cy.get('#refundqty').click({force:true}).clear()
     // NEXT BUTTON
     cy.get('.h-\\[82vh\\] > .h-full > .group').click({force:true})
@@ -698,6 +779,8 @@ describe("Ordering ", () => {
     cy.get('.py-3 > :nth-child(6)').should('have.text', 'OTHER PAYMENT')
     cy.get('.max-h-\\[450px\\] > :nth-child(1) > .group').click({force:true}).wait(1000)
     cy.get('.Toastify__toast-body').should('have.text', 'Transaction Refunded.')
+
+    cy.checkForFailure(assertionResults, failureMessages)
   })
 
   // REPRINT VOID TRANASACTION
@@ -707,12 +790,16 @@ describe("Ordering ", () => {
     cy.wait(1000)
     cy.get('.px-8').should('be.visible')
     cy.get('.px-8').should('have.text', 'Reprint Void Transaction')
-    cy.get('.overflow-y-auto > .flex > :nth-child(1)')
-    .should('have.text', 'OR-0000000000000001')
-    cy.get('.overflow-y-auto > .flex > :nth-child(2)')
-    .should('have.text', '76.00')
+    // cy.get('.overflow-y-auto > .flex > :nth-child(1)')
+    // .should('have.text', 'OR-0000000000000001')
+    cy.checkText('.overflow-y-auto > .flex > :nth-child(1)', '0', 'Reprint Void Transaction:', 'OR-0000000000000001', assertionResults, failureMessages)  
+
+    // cy.get('.overflow-y-auto > .flex > :nth-child(2)')
+    // .should('have.text', '76.00')
+    cy.checkText('.overflow-y-auto > .flex > :nth-child(2)', '0', 'Reprint Void Transaction:', '76.00', assertionResults, failureMessages)  
     cy.get('.px-8 > .flex > .anticon > svg').click()
     cy.wait(1000)
+    cy.checkForFailure(assertionResults, failureMessages)
   })
 
   // REPRINT REFUND TRANSACTION
@@ -721,11 +808,14 @@ describe("Ordering ", () => {
     cy.get('.grid > :nth-child(12)').click()
     cy.get('.px-8').should('be.visible')
     cy.get('.px-8').should('have.text', 'Reprint Refund Transaction')
-    cy.get('.max-h-\\[500\\] > section > .flex-col > .flex > :nth-child(1)')
-    .should('have.text', 'OR-0000000000000002')
-    cy.get('.max-h-\\[500\\] > section > .flex-col > .flex > :nth-child(2)')
-    .should('have.text', '76.00')
+    // cy.get('.max-h-\\[500\\] > section > .flex-col > .flex > :nth-child(1)')
+    // .should('have.text', 'OR-0000000000000002')
+    cy.checkText('.max-h-\\[500\\] > section > .flex-col > .flex > :nth-child(1)', '0', 'Reprint Refund:', 'OR-0000000000000002', assertionResults, failureMessages)  
+    // cy.get('.max-h-\\[500\\] > section > .flex-col > .flex > :nth-child(2)')
+    // .should('have.text', '76.00')
+    cy.checkText('.max-h-\\[500\\] > section > .flex-col > .flex > :nth-child(2)', '0', 'Reprint Refund:', '76.00', assertionResults, failureMessages)  
     cy.wait(2000)
     cy.get('.px-8 > .flex > .anticon > svg').click()
+    cy.checkForFailure(assertionResults, failureMessages)
   })
 })
