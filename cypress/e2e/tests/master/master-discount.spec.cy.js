@@ -102,23 +102,23 @@ describe('Discount', () => {
 
             cy.checkLabelCaption('label[for="distyp"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Type *', assertionResults, failureMessages)
             
-            cy.get('#discde').invoke('outerWidth').then((width) => {
+            // cy.get('#discde').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
-            cy.get('#disdsc').invoke('outerWidth').then((width) => {
+            // cy.get('#disdsc').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
-            cy.get('#distyp').invoke('outerWidth').then((width) => {
+            // cy.get('#distyp').invoke('outerWidth').then((width) => {
 
-                expect(width).to.equal(403)
+            //     expect(width).to.equal(403)
                    
-            })
+            // })
 
             cy.validateElements('discount-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 

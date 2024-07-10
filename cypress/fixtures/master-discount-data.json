@@ -70,8 +70,8 @@
     "onlySearchInval": false
   },
   {
-    "discountCode": "HOLIDAY50",
-    "discountDesc": "HOLIDAY50",
+    "discountCode": "HOLIDAY99",
+    "discountDesc": "HOLIDAY99",
     "discountType": "Amount",
     "percentAmount": 5,
     "exemptVAT": "No",

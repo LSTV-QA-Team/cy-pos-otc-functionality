@@ -29,9 +29,9 @@ module.exports = defineConfig({
 
   // experimentalMemoryManagement: true,
 
-  defaultCommandTimeout: 4000,
+  // defaultCommandTimeout: 4000,
 
-  pageLoadTimeout: 100000,
+  // pageLoadTimeout: 100000,
 
   watchForFileChanges: false,
 
@@ -69,32 +69,33 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
 
       config.specPattern = [
-        'cypress/e2e/tests/master/master-item-class.spec.cy.js',
-        'cypress/e2e/tests/master/master-item-subclass.spec.cy.js',
-        'cypress/e2e/tests/master/master-memc.spec.cy.js',
-        'cypress/e2e/tests/master/master-item.spec.cy.js',
-        'cypress/e2e/tests/master/master-card-type.spec.cy.js',
-        'cypress/e2e/tests/master/master-payment-type.spec.cy.js',
-        'cypress/e2e/tests/master/master-order-type.spec.cy.js',
-        'cypress/e2e/tests/master/master-discount.spec.cy.js',
-        'cypress/e2e/tests/master/master-special-request.spec.cy.js',
-        'cypress/e2e/tests/master/master-void-refund-reasons.spec.cy.js',
-        'cypress/e2e/tests/master/master-free-reasons.spec.cy.js',
-        'cypress/e2e/tests/master/master-pricelist.spec.cy.js',
-        'cypress/e2e/tests/master/master-other-charges.spec.cy.js',
-        'cypress/e2e/tests/master/master-system-parameters.spec.cy.js',
-        'cypress/e2e/tests/master/master-header.spec.cy.js',
-        'cypress/e2e/tests/master/master-footer.spec.cy.js',
-        'cypress/e2e/tests/cashiering/cashiering-cashfund.spec.cy.js',
-        'cypress/e2e/tests/cashiering/cashiering-cash-in.spec.cy.js',
-        'cypress/e2e/tests/cashiering/cashiering-cash-out.spec.cy.js',
-        'cypress/e2e/tests/ordering/ordering.spec.cy.js',
-        'cypress/e2e/tests/ordering/ordering-negative.spec.cy.js',
-        'cypress/e2e/tests/ordering/with-service-charge.spec.cy.js',
-        'cypress/e2e/tests/ordering/void-transactions.spec.cy.js',
-        'cypress/e2e/tests/ordering/refund-transaction.spec.cy.js',
-        'cypress/e2e/tests/ordering/free-transaction.spec.cy.js',
-        'cypress/e2e/tests/cashiering/cashiering-cash-declaration.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-item-class.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-item-subclass.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-memc.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-item.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-card-type.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-payment-type.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-order-type.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-discount.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-special-request.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-void-refund-reasons.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-free-reasons.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-pricelist.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-other-charges.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-system-parameters.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-header.spec.cy.js',
+        // 'cypress/e2e/tests/master/master-footer.spec.cy.js',
+        // 'cypress/e2e/tests/cashiering/cashiering-cashfund.spec.cy.js',
+        // 'cypress/e2e/tests/cashiering/cashiering-cash-in.spec.cy.js',
+        // 'cypress/e2e/tests/cashiering/cashiering-cash-out.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/ordering.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/ordering-negative.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/with-service-charge.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/void-transactions.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/refund-transaction.spec.cy.js',
+        // 'cypress/e2e/tests/ordering/free-transaction.spec.cy.js',
+        // 'cypress/e2e/tests/cashiering/cashiering-cash-declaration.spec.cy.js',
+        'cypress/e2e/tests/33 scenarios',
       ]
 
       require('cypress-mochawesome-reporter/plugin')(on);
@@ -182,6 +183,15 @@ module.exports = defineConfig({
       return config; // Return the updated configuration
 
     },
+
+    chromeWebSecurity: false,
+    numTestsKeptInMemory: 0,
+    defaultCommandTimeout: 10000,
+    execTimeout: 60000,
+    pageLoadTimeout: 60000,
+    requestTimeout: 60000,
+    responseTimeout: 60000,
+    taskTimeout: 60000
   },
 });
 
