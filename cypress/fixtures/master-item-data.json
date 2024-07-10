@@ -449,10 +449,10 @@
     "onlySearchInval": false
   },
   {
-    "item": "1-pc Chicken Joy w/ Fries",
+    "item": "1-pc Chickenjoy w/ Fries",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
-    "itemSubclass": "Chicken Joy Perfect Pairs",
+    "itemSubclass": "Chickenjoy Perfect Pairs",
     "unitMeasure": "PCS",
     "unitCost": 0,
     "barcode": "00000000024",
@@ -467,10 +467,10 @@
     "onlySearchInval": false
   },
   {
-    "item": "1-pc Chicken Joy w/ Jolly Spaghetti",
+    "item": "1-pc Chickenjoy w/ Jolly Spaghetti",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
-    "itemSubclass": "Chicken Joy Perfect Pairs",
+    "itemSubclass": "Chickenjoy Perfect Pairs",
     "unitMeasure": "PCS",
     "unitCost": 0,
     "barcode": "00000000025",
@@ -847,10 +847,10 @@
     "onlySearchInval": false
   },
   {
-    "item": "1-pc Chicken Joy w/ Soup",
+    "item": "1-pc Chickenjoy w/ Soup",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
-    "itemSubclass": "Chicken Joy Perfect Pairs",
+    "itemSubclass": "Chickenjoy Perfect Pairs",
     "unitMeasure": "PCS",
     "unitCost": 0,
     "barcode": "00000000046",
@@ -865,10 +865,10 @@
     "onlySearchInval": false
   },
   {
-    "item": "1-pc Chicken Joy w/ Burger Steak",
+    "item": "1-pc Chickenjoy w/ Burger Steak",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
-    "itemSubclass": "Chicken Joy Perfect Pairs",
+    "itemSubclass": "Chickenjoy Perfect Pairs",
     "unitMeasure": "PCS",
     "unitCost": 0,
     "barcode": "00000000047",
