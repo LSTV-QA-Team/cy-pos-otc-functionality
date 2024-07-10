@@ -71,7 +71,7 @@ module.exports = defineConfig({
       config.specPattern = [
         'cypress/e2e/tests/master',
         'cypress/e2e/tests/chashiering',
-        'cypress/e2e/tests/33 scenarios'
+        'cypress/e2e/tests/ordering',
       ]
 
       require('cypress-mochawesome-reporter/plugin')(on);
