@@ -78,7 +78,10 @@ describe("Transaction 1", () => {
       cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
       cy.contains("Food").click().wait(2000);
       cy.contains("Chicken").click().wait(2000);
-      cy.contains("1-pc Chickenjoy").click().wait(2000);
+      // cy.contains("1-pc Chickenjoy").click().wait(2000);
+      cy.xpath('//span[contains(text(), "1-pc Chickenjoy") and text()="1-pc Chickenjoy"]').click().wait(2000)
+
+      
 
       cy.fixture('ordering-scenarios.json').then((data) => {
     
@@ -96,7 +99,8 @@ describe("Transaction 1", () => {
   
       cy.get(":nth-child(13) > .bg-green-100").click();
       cy.get(".px-8").should("have.text", "Payment");
-      cy.get(".overflow-hidden > span").should("have.text", "₱82.79");
+      // cy.get(".text-red > :nth-child(2)").should("have.text", "₱82.79");
+      cy.checkText('.text-red > :nth-child(2)', '0', 'Upon clicking the Payment button:', '₱82.79', assertionResults, failureMessages) 
       cy.contains("CASH").click();
 
       cy.get("#customerName").click().type("Edith");
@@ -109,6 +113,7 @@ describe("Transaction 1", () => {
       );
 
       cy.wait(5000)
+      cy.checkForFailure(assertionResults, failureMessages)
     });
 
 
