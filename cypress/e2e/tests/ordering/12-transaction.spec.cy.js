@@ -13,7 +13,7 @@ describe("Transaction 10", () => {
 
   it("1 Pax with MEMC PWD Discount and Service Charge", () => {
     cy.wait(2000);
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
@@ -24,7 +24,7 @@ describe("Transaction 10", () => {
     cy.contains("Chickenjoy Bucket 8pcs").click();
 
     cy.contains("Add Discount").click();
-    cy.get("#discde").select("Person with Disability");
+    cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
     cy.get(".border-blue-500").click();
 

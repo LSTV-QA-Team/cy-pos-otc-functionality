@@ -13,7 +13,7 @@ describe("Transaction 33", () => {
 
   it("1 Pax with Regular Transaction" , () => {
 
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+
      cy.contains("Food").click();
      cy.contains("Sides").click();
      cy.contains("Buttered Corn").click();

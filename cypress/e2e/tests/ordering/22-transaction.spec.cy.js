@@ -11,7 +11,7 @@ describe("Transaction 22", () => {
     cy.login("lstv", "lstventures");
   });
   it("1 Pax with MEMC PWD Discount", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+
     cy.contains("Food").click();
     cy.contains("Family Super Meals").click();
     cy.contains(
@@ -19,7 +19,7 @@ describe("Transaction 22", () => {
     ).click();
 
     cy.contains("Add Discount").click().wait(2000);
-    cy.get("#discde").select("Person with Disability");
+    cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
     cy.get(".border-blue-500").click();
 

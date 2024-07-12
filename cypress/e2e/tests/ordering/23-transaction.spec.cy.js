@@ -12,11 +12,10 @@ describe("Transaction 23", () => {
   });
 
   it("1 Pax with Regular Transaction", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
 
     cy.contains("Food").click();
     cy.contains("Chicken").click();
-    cy.contains("1pc Chickenjoy w Fries").click();
+    cy.contains("1-pc Chickenjoy w/ Fries Meal").click();
 
     cy.fixture('ordering-scenarios.json').then((data) => {
     
@@ -82,7 +81,7 @@ describe("Transaction 23", () => {
     cy.contains("INV-0000000000000023").click().wait(2000);
 
     cy.get(".css-1ex1afd-MuiTableCell-root")
-      .should("have.text", "1pc Chickenjoy w Fries Meal")
+      .should("have.text", "1-pc Chickenjoy w/ Fries Meal")
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")

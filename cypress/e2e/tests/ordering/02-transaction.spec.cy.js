@@ -24,6 +24,7 @@ describe("Transaction 2", () => {
     cy.contains("Food").click().wait(2000);
     cy.contains("Chicken").click().wait(2000);
     cy.contains("1-pc Chickenjoy w/ Fries Meal").click().wait(2000);
+    cy.contains("Chicken Joy Perfect Pairs").click().wait(2000);
     cy.contains("1-pc Chickenjoy w/ Jolly Spaghetti").click().wait(2000);
 
     cy.contains("Add Discount").click();

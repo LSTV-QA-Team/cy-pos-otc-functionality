@@ -671,7 +671,7 @@ describe("Void Transactions ", () => {
     ).click();
 
     cy.contains("Add Discount").click().wait(2000);
-    cy.get("#discde").select("Person with Disability");
+    cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
     cy.get(".border-blue-500").click();
 

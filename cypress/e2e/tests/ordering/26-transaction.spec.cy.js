@@ -12,10 +12,10 @@ describe("Transaction 26", () => {
   });
 
   it("1 Pax with Senior Discount", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+
     cy.contains("Food").click();
     cy.contains("Chicken").click();
-    cy.contains("1pc Chickenjoy w Burger Steak").click();
+    cy.contains("1-pc Chickenjoy w/ Burger Steak").click();
 
     cy.contains("Add Discount").click().wait(2000);
 
@@ -95,7 +95,7 @@ describe("Transaction 26", () => {
     cy.contains("INV-0000000000000026").click().wait(1500);
 
     cy.get(".css-1ex1afd-MuiTableCell-root")
-      .should("have.text", "1pc Chickenjoy w Burger Steak")
+      .should("have.text", "1-pc Chickenjoy w/ Burger Steak")
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")

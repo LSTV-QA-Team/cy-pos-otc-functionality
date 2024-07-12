@@ -13,7 +13,6 @@ describe("Transaction 7", () => {
 
   it("1 Pax with Medal of Valor Discount and Service Charge", () => {
     cy.wait(2000);
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
@@ -21,7 +20,7 @@ describe("Transaction 7", () => {
 
     cy.contains("Food").click().wait(1000);
     cy.contains("Burger Steak").click().wait(1000);
-    cy.contains("1pc Burger Steak w 3pcs Shanghai").click().wait(1000);
+    cy.contains("1-pc Burger Steak w/ 3pcs Shanghai").click().wait(1000);
 
     cy.contains("Add Discount").click();
     cy.get("#discde").select("MOV");
