@@ -14,7 +14,7 @@ describe("Ordering ", () => {
   });
 
   it("Select Pricelist Modal ", () => {
-    cy.contains('Ordering').click()
+    // cy.contains('Ordering').click()
     //CLEAR TRANSACTION Attempt 1
     cy.wait(4000)
     cy.get(':nth-child(9) > .bg-red-100').click({force:true}).wait(500)
@@ -22,7 +22,7 @@ describe("Ordering ", () => {
     cy.get('section > h1')
     .should('have.text', 'Are you sure you want to cancel this transaction?')
     .wait(500)
-    cy.get('.border-blue-500').click({force:true}).wait(1000)
+    cy.get('.border-blue-500').click().wait(2000)
     cy.get('.Toastify__toast-body')
     .should('have.text', 'Transaction Successfully Cancelled.')
     .wait(1000)
@@ -42,7 +42,7 @@ describe("Ordering ", () => {
       cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
       cy.get('.Toastify__toast-body')
       .should("have.text", "Transaction Opened Successfully.").click().wait(2000);
-      cy.contains("Food").click().wait(2000);
+      cy.contains("Food").click().wait(2000)
       cy.contains("Chicken").click().wait(2000);
       // cy.contains("1-pc Chickenjoy").click().wait(2000);
       cy.xpath('//span[contains(text(), "1-pc Chickenjoy") and text()="1-pc Chickenjoy"]').click().wait(2000)
@@ -68,7 +68,7 @@ describe("Ordering ", () => {
       cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
       cy.get('.Toastify__toast-body')
       .should("have.text", "Transaction Opened Successfully.").click().wait(2000);
-      cy.contains("Food").click().wait(2000);
+      cy.contains("Food").click().wait(2000)
       cy.contains("Chicken").click().wait(2000);
       // cy.contains("1-pc Chickenjoy").click().wait(2000);
       cy.xpath('//span[contains(text(), "1-pc Chickenjoy") and text()="1-pc Chickenjoy"]').click().wait(2000)
@@ -448,7 +448,7 @@ describe("Ordering ", () => {
    cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
    cy.get('.Toastify__toast-body')
    .should("have.text", "Transaction Opened Successfully.").click().wait(2000);
-   cy.contains("Food").click().wait(2000);
+   cy.contains("Food").click().wait(2000)
    cy.contains("Chicken").click().wait(2000);
    cy.contains("1-pc Chickenjoy").click().wait(2000);
    cy.get('.Toastify__toast-body')

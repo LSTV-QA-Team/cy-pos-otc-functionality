@@ -1,7 +1,7 @@
 let assertionResults = [];
 let failureMessages = [];
 
-describe("Transaction 26", () => {
+describe("Transaction 24", () => {
   beforeEach(() => {
     // reset for each test case
     assertionResults = [];
@@ -11,66 +11,58 @@ describe("Transaction 26", () => {
     cy.login("lstv", "lstventures");
   });
 
-  it("1 Pax with Senior Discount", () => {
-
+  it("1 Pax with 10% discount", () => {
     cy.contains("Food").click();
-    cy.contains("Chicken").click();
-    cy.contains("1-pc Chickenjoy w/ Burger Steak").click();
+    cy.contains("Chicken Joy Perfect Pairs").click();
+    cy.contains("1-pc Chickenjoy w/ Jolly Spaghetti").click();
 
     cy.contains("Add Discount").click().wait(2000);
-
-    cy.get("#discde").select("Senior").wait(2000);
+    cy.get("#discde").select("10%");
     cy.get("#orderitmid0").click().wait(2000);
     cy.get(".border-blue-500").click().wait(2000);
 
-    cy.get("#cardholder").click().type("Winter").wait(2000);
-    cy.get("#cardno").click().type("4569084").wait(2000);
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
+      "have.text",
+      "Discount : 10%"
+    );
 
-    cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
-      .should("have.text", "Discount : Senior")
-      .wait(2000);
-
-      cy.fixture('ordering-scenarios.json').then((data) => {
+    cy.fixture('ordering-scenarios.json').then((data) => {
     
-        const ST = data[25].subtotal;
-        const Discount = data[25].discount
-        const Discount1 = Discount.toFixed(2)
-        const LVA = data[25].lessVatAdj
-        const LVA1 = LVA.toFixed(2)
-        const T26_SCharge = data[25].serviceCharge
-        const ServiceCharge1 = T26_SCharge.toFixed(2)
-        const SCharge_dsc = data[25].serviceChargeDiscount
-        const SCharge_dsc1 = SCharge_dsc.toFixed(2)
-        const GT = data[25].total
-        const total1 = GT.toFixed(2)
-  
-        cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
-          "have.text",
-          ST +".00"
-        );
-        cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
-          "have.text",
-          Discount1
-        );
-        cy.get(".bg-black > :nth-child(3) > :nth-child(2)").should(
-          "have.text",
-          LVA1
-        );
-  
-        cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
-        cy.get(":nth-child(5) > :nth-child(2)").should("have.text", SCharge_dsc1);
-        cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
-      
-      })
+      const ST = data[23].subtotal;
+      const Discount = data[23].discount
+      const Discount1 = Discount.toFixed(2)
+      const LVA = data[23].lessVatAdj
+      const LVA1 = LVA.toFixed(2)
+      const T24_SCharge = data[23].serviceCharge
+      const ServiceCharge1 = T24_SCharge.toFixed(2)
+      const SCharge_dsc = data[23].serviceChargeDiscount
+      const SCharge_dsc1 = SCharge_dsc.toFixed(2)
+      const GT = data[23].total
+      const total1 = GT.toFixed(2)
+
+      cy.get(".bg-black > :nth-child(1) > :nth-child(2)").should(
+        "have.text",
+        ST +".00"
+      );
+      cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
+        "have.text",
+        Discount1
+      );
+      cy.get(".bg-black > :nth-child(3) > :nth-child(2)").should(
+        "have.text",
+        LVA1
+      );
+
+      cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
+      cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
+    
+    })
 
     cy.contains("Payment").click();
     cy.contains("CASH").click().wait(2000);
-    cy.get("#customerName").click().type("Ningning").wait(2000);
+    cy.get("#customerName").click().type("qweasrf").wait(2000);
     cy.get(".border-blue-500").click().wait(2000);
-    cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
-      .click()
-      .wait(2000);
+    cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
       "Transaction Complete."
@@ -79,7 +71,7 @@ describe("Transaction 26", () => {
     cy.wait(2000);
     cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
+    cy.contains("Proceed").click()
 
     cy.contains("Refund Transaction").click().wait(2000);
     cy.get('#usrcde').click().type("lstv")
@@ -87,25 +79,25 @@ describe("Transaction 26", () => {
     cy.get('.sc-guDLey').click()
 
     cy.get(".px-8").should("have.text", "Refund Transaction").wait(1500);
-    cy.get("#refundreason").select("Food Quality Issue").wait(2000);
+    cy.get("#refundreason").select("Customer Complaint").wait(2000);
     cy.get(".border-blue-500").click().wait(2000);
 
-    cy.get(".me-2").should("have.text", "REF-0000000000000004");
+    cy.get(".me-2").should("have.text", "REF-0000000000000002");
     cy.get(".justify-between > .group").click().wait(1500);
-    cy.contains("INV-0000000000000026").click().wait(1500);
+    cy.contains("INV-0000000000000024").click().wait(1500);
 
     cy.get(".css-1ex1afd-MuiTableCell-root")
-      .should("have.text", "1-pc Chickenjoy w/ Burger Steak")
+      .should("have.text", "1-pc Chickenjoy w/ Jolly Spaghetti")
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")
-      .should("have.text", "89.29")
+      .should("have.text", "89.10")
       .wait(2000);
     cy.contains("Next").click();
 
     cy.get(".h-full > .justify-between > .font-bold").should(
       "have.text",
-      "TOTAL : 89.29"
+      "TOTAL : 89.10"
     );
     cy.get(":nth-child(3) > .group").click();
     cy.contains("Proceed").click();
@@ -115,5 +107,4 @@ describe("Transaction 26", () => {
     );
     cy.wait(5000)
   });
-
 })
