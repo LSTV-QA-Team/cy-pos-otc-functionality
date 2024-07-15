@@ -10,7 +10,7 @@
     "accredNo": "001MP20220000000008EXTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "accredDate": "2023-05-29",
     "permitNo": "FP112022-125-0358572-00127FP112022-125-0358572-00127FP112022-125-0358572-00127FP112022-125-0358572-00127FP112022-125-0358572-00127FP112022-125-0358572-00127",
-    "yearsValidity": "50000",
+    "yearsValidity": 50000,
     "dateIssued": "2023-05-29",
     "lineMsg1": "This serves as your Official Receipt with an extended message",
     "lineMsg2": "Tell us about your experience. Your feedback is important to us.",
@@ -22,7 +22,7 @@
   },
   {
     "officialReceipt": "No",
-    "suppName": "Sweda Systems Philippines, Inc Sweda Systems Philippines, IncSweda Systems Philippines, Inc",
+    "suppName": "Sweda Systems Philippines, Inc",
     "suppAdd": "21f Rufino Tower, Makati City",
     "suppVAT": "003-510-344-000",
     "suppVATExpected": "003-510-344-001",
@@ -43,7 +43,7 @@
   },
   {
     "officialReceipt": "Yes",
-    "suppName": "Sweda Systems Philippines, Inc Sweda Systems Philippines, IncSweda Systems Philippines, Inc",
+    "suppName": "Sweda Systems Philippines, Inc",
     "suppAdd": "21f Rufino Tower, Makati City",
     "suppVAT": "003-510-344-000",
     "suppVATExpected": "003-510-344-001",

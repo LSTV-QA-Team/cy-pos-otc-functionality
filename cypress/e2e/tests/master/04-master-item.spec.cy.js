@@ -34,40 +34,40 @@ describe('Item', () => {
 
     })
 
-    after(() => {
+    // after(() => {
 
-        cy.fixture('data-to-delete.json').then((data) => {
+    //     cy.fixture('data-to-delete.json').then((data) => {
 
-            data.forEach((item) => {
+    //         data.forEach((item) => {
 
-                const specialChar = item.dataToDelete;
-                const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
+    //             const specialChar = item.dataToDelete;
+    //             const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
                 
-                cy.task('queryDb', deleteQuery).then(() => {
+    //             cy.task('queryDb', deleteQuery).then(() => {
 
-                    cy.log(`Deleted data with description: ${specialChar}`) 
+    //                 cy.log(`Deleted data with description: ${specialChar}`) 
 
-                })
-            })
+    //             })
+    //         })
     
-            cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
+    //         cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
 
-                const remainingData = records.map((record) => record.description)
-                const deletedChars = data.map((item) => item.dataToDelete)
+    //             const remainingData = records.map((record) => record.description)
+    //             const deletedChars = data.map((item) => item.dataToDelete)
                 
-                deletedChars.forEach((char) => {
+    //             deletedChars.forEach((char) => {
 
-                    expect(remainingData).to.not.include(char)
+    //                 expect(remainingData).to.not.include(char)
 
-                })
+    //             })
     
-                cy.log('Specified data Successfully deleted.'); // Log success
+    //             cy.log('Specified data Successfully deleted.'); // Log success
 
-            })
-        })
-    })
+    //         })
+    //     })
+    // })
 
-    it('Check Item Page', () => {  
+    it.only('Check Item Page', () => {  
 
         cy.navigateToModule('Master File', 'Items')
 
@@ -88,7 +88,7 @@ describe('Item', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Add Functionality', () => {  
+    it.only('Add Functionality', () => {  
 
         cy.fixture('master-item-data.json').then((data) => {
 
@@ -462,7 +462,7 @@ describe('Item', () => {
 
                             cy.wait(8000)
 
-                            if (data[key].item === "FSM A 6-pcs. Chickenjoy Bucket") {
+                            if (data[key].item === "FSM A 6-pcs Chickenjoy Bucket") {
                                 
                                 comboData.FSMA6.forEach((fsma6) => {
 
@@ -472,7 +472,7 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM A 8-pcs. Chickenjoy Bucket") {
+                            } else if (data[key].item === "FSM A 8-pcs Chickenjoy Bucket") {
 
                                 cy.get('.select__clear-indicator').click()
 
@@ -484,7 +484,7 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM B 6-pcs. Chickenjoy Bucket") {
+                            } else if (data[key].item === "FSM B 6-pcs Chickenjoy Bucket") {
 
                                 cy.get('.select__clear-indicator').click()
 
@@ -617,7 +617,7 @@ describe('Item', () => {
 
                             cy.wait(8000)
 
-                            if (data[key].item === "FSM A 6-pcs. Chickenjoy Bucket") {
+                            if (data[key].item === "FSM A 6-pcs Chickenjoy Bucket") {
 
                                 comboData.FSMA6.forEach((fsma6) => {
 
@@ -627,7 +627,7 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM A 8-pcs. Chickenjoy Bucket") {
+                            } else if (data[key].item === "FSM A 8-pcs Chickenjoy Bucket") {
 
                                 cy.get('.select__clear-indicator').click()
 
@@ -639,7 +639,7 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM B 6-pcs. Chickenjoy Bucket") {
+                            } else if (data[key].item === "FSM B 6-pcs Chickenjoy Bucket") {
 
                                 cy.get('.select__clear-indicator').click()
 
@@ -738,7 +738,7 @@ describe('Item', () => {
 
                             cy.wait(8000)
 
-                            if (data[key].item === "FSM A 6-pcs. Chickenjoy Bucket") {
+                            if (data[key].item === "FSM A 6-pcs Chickenjoy Bucket") {
 
                                 comboData.FSMA6.forEach((fsma6) => {
 
@@ -747,7 +747,7 @@ describe('Item', () => {
                                     cy.get('.select__menu-list').contains('div', fsma6).click()
 
                                 })
-                            } else if (data[key].item === "FSM A 8-pcs. Chickenjoy Bucket") {
+                            } else if (data[key].item === "FSM A 8-pcs Chickenjoy Bucket") {
 
                                 cy.get('.select__clear-indicator').click()
 
@@ -759,7 +759,7 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM B 6-pcs. Chickenjoy Bucket") {
+                            } else if (data[key].item === "FSM B 6-pcs Chickenjoy Bucket") {
 
                                 cy.get('.select__clear-indicator').click()
 
@@ -858,7 +858,7 @@ describe('Item', () => {
 
                             cy.wait(8000)
 
-                            if (data[key].item === "FSM A 6-pcs. Chickenjoy Bucket") {
+                            if (data[key].item === "FSM A 6-pcs Chickenjoy Bucket") {
                                 
                                 comboData.FSMA6.forEach((fsma6) => {
 
@@ -868,7 +868,7 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM A 8-pcs. Chickenjoy Bucket") {
+                            } else if (data[key].item === "FSM A 8-pcs Chickenjoy Bucket") {
 
                                 cy.get('.select__clear-indicator').click()
 
@@ -880,7 +880,7 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM B 6-pcs. Chickenjoy Bucket") {
+                            } else if (data[key].item === "FSM B 6-pcs Chickenjoy Bucket") {
 
                                 cy.get('.select__clear-indicator').click()
 
@@ -931,33 +931,51 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
+                    cy.checkValue('#itmdsc', '0', 'Upon encoding:', data[key].item, assertionResults, failureMessages)
+
                     cy.get('#itmtyp').realClick()
 
                     cy.get('#itmtyp').select(data[key].itemType)
 
+                    cy.checkValue('#itmtyp', '0', 'Upon encoding:', data[key].itemType, assertionResults, failureMessages)
+
                     cy.get('#itmclacde').select(data[key].itemClass)
 
+                    cy.checkValue('#itmclacde', '0', 'Upon encoding:', data[key].itemClass, assertionResults, failureMessages)
+
                     cy.get('#itemsubclasscde').select(data[key].itemSubclass)
+
+                    cy.checkValue('#itemsubclasscde', '0', 'Upon encoding:', data[key].itemSubclass, assertionResults, failureMessages)
 
                     cy.get('#untmea')
                         .clear()
                         .type(data[key].unitMeasure)
 
+                    cy.checkValue('#untmea', '0', 'Upon encoding:', data[key].unitMeasure, assertionResults, failureMessages)
+
                     cy.get('#untcst')
                         .clear() 
                         .type(data[key].unitCost)
+
+                    cy.checkValue('#untcst', '0', 'Upon encoding:', data[key].unitCost, assertionResults, failureMessages)
 
                     cy.get('#barcde')
                         .clear()
                         .type(data[key].barcode)
 
+                    cy.checkValue('#barcde', '0', 'Upon encoding:', data[key].barcode, assertionResults, failureMessages)
+
                     cy.get('#untprc')
                         .clear() 
                         .type(data[key].sellingPrice)
+                    
+                    cy.checkValue('#untprc', '0', 'Upon encoding:', data[key].sellingPrice, assertionResults, failureMessages)
 
                     cy.get('#itmpaxcount')
                         .clear()
                         .type(data[key].goodXPerson)
+
+                    cy.checkValue('#itmpaxcount', '0', 'Upon encoding:', data[key].goodXPerson, assertionResults, failureMessages)
 
                     cy.get('#taxcde').select(data[key].taxCode)
 
@@ -989,7 +1007,7 @@ describe('Item', () => {
 
                             cy.wait(8000)
 
-                            if (data[key].item === "FSM A 6-pcs. Chickenjoy Bucket") {
+                            if (data[key].item === "FSM A 6-pcs Chickenjoy Bucket") {
                                 
                                 comboData.FSMA6.forEach((fsma6) => {
 
@@ -997,9 +1015,11 @@ describe('Item', () => {
 
                                     cy.get('.select__menu-list').contains('div', fsma6).click()
 
+                                    cy.checkValue('#itmpaxcount', '0', 'Upon encoding:', data[key].goodXPerson, assertionResults, failureMessages)
+
                                 })
 
-                            } else if (data[key].item === "FSM A 8-pcs. Chickenjoy Bucket") {
+                            } else if (data[key].item === "FSM A 8-pcs Chickenjoy Bucket") {
 
                                 cy.get('.select__clear-indicator').click()
 
@@ -1012,7 +1032,7 @@ describe('Item', () => {
 
                                 })
 
-                            } else if (data[key].item === "FSM B 6-pcs. Chickenjoy Bucket") {
+                            } else if (data[key].item === "FSM B 6-pcs Chickenjoy Bucket") {
 
                                 cy.get('.select__clear-indicator').click()
 

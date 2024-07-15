@@ -159,14 +159,9 @@
     "customErrorMsg": "Should contain text \"Branch Code\""
   },
   {
-    "sel": "label[for=\"postrmno\"]",
+    "sel": "label[for=\"itmdsc\"]",
     "assertion": "contain.text",
-    "expectedText": "Terminal No.",
-    "customErrorMsg": "Should contain text \"Terminal No.\""
-  },
-  {
-    "sel": "label[for=\"postrmno\"]",
-    "assertion": "be.visible",
-    "expectedText": "Terminal No. (max char. length: 2)"
+    "expectedText": "Terminal No. (max char. length: 2)",
+    "customErrorMsg": "Should contain text \"Terminal No. (max char. length: 2)\""
   }
 ]

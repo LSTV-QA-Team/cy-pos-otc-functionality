@@ -53,5 +53,9 @@
     "taxCode": [
         "VATABLE",
         "VAT EXEMPT"
+    ],
+    "cashIOReason": [
+        "CASH IN",
+        "CASH OUT"
     ]
 }
