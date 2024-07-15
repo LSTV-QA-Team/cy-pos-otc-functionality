@@ -392,7 +392,7 @@ describe('MEMC', () => {
                 if (data[key].onlySearchInval === true) {
 
                     // search invalid or not existing data
-                    cy.wait(2000)
+                    cy.wait(6000)
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 

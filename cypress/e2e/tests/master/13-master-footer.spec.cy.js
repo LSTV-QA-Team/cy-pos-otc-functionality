@@ -37,106 +37,6 @@ describe('Receipt Footer Set Up', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Valid Update Functionality', () => {
-
-        cy.fixture('master-footer-data.json').then((data) => {
-
-            for (const key in data){
-
-                if (data[key].forValid === true) {
-
-                    cy.wait(4000)
-
-                    cy.get('#officialreceipt').select(data[key].officialReceipt)
-
-                    cy.get('#supname')
-                      .type(data[key].suppName)
-
-                    cy.checkValue('#supname', '3.1', 'After Encoding in "Supplier Name" Textbox:', data[key].suppName, assertionResults, failureMessages)
-
-                    cy.get('#supaddress').clear()
-                      .type(data[key].suppAdd)
-
-                    cy.checkValue('#supaddress', '4.1', 'After Encoding in "Supplier Address" Textbox:', data[key].suppAdd, assertionResults, failureMessages)
-
-                    cy.get('#supvarregtin').clear()
-                      .type(data[key].suppVAT)
-
-                    cy.checkValue('#supvarregtin', '5.1', 'After Encoding in "Supplier VAT Registered TIN" Textbox:', data[key].suppVAT, assertionResults, failureMessages)
-
-                    cy.get('#supnonvatregtin').clear()
-                      .type(data[key].suppNonVAT)
-
-                    cy.checkValue('#supnonvatregtin', '6.1', 'After Encoding in "Supplier Non-VAT Registered TIN" Textbox:', data[key].suppNonVAT, assertionResults, failureMessages)
-                    
-                    cy.get('#accrenum').clear()
-                      .type(data[key].accredNo)
-
-                    cy.checkValue('#accrenum', '7.1', 'After Encoding in "Accredited No." Textbox:"', data[key].accredNo, assertionResults, failureMessages)
-
-                    cy.get('#accredate').clear()
-                      .type(data[key].accredDate)
-
-                    cy.checkValue('#accredate', '8.1', 'After Encoding in "Accredited Date" Textbox:', data[key].accredDate, assertionResults, failureMessages)
-
-                    cy.get('#permitnum').clear()
-                      .type(data[key].permitNo)
-
-                    cy.checkValue('#permitnum', '9.1', 'After Encoding in "Permit No." Textbox:', data[key].permitNo, assertionResults, failureMessages)
-
-                    cy.get('#validyr').clear()
-                      .type(data[key].yearsValidity)
-
-                    cy.checkValue('#validyr', '10.1', 'After Encoding in "Years Validity" Textbox:', data[key].yearsValidity, assertionResults, failureMessages)
-                    
-                    cy.get('#dateissued').clear()
-                      .type(data[key].dateIssued)
-
-                    cy.checkValue('#dateissued', '11.1', 'After Encoding in "Date Issued" Textbox:', data[key].dateIssued, assertionResults, failureMessages)
-
-                    cy.get('#footermsg1').clear()
-                      .type(data[key].lineMsg1)
-
-                    cy.checkValue('#footermsg1', '12.1', 'After Encoding in "Line Message 1" Textbox:', data[key].lineMsg1, assertionResults, failureMessages)
-
-                    cy.get('#footermsg2').clear()
-                      .type(data[key].lineMsg2)
-
-                    cy.checkValue('#footermsg2', '13.1', 'After Encoding in "Line Message 2" Textbox:', data[key].lineMsg2, assertionResults, failureMessages)
-
-                    cy.get('#footermsg3').clear()
-                      .type(data[key].lineMsg3)
-
-                    cy.checkValue('#footermsg3', '14.1', 'After Encoding in "Line Message 3" Textbox:', data[key].lineMsg3, assertionResults, failureMessages)
-
-                    cy.get('#footermsg4').clear()
-                      .type(data[key].lineMsg4)
-
-                    cy.checkValue('#footermsg4', '15.1', 'After Encoding in "Line Message 4" Textbox:', data[key].lineMsg4, assertionResults, failureMessages)
-                        
-                    cy.get('#footermsg5').clear()
-                      .type(data[key].lineMsg5)
-
-                    cy.checkValue('#footermsg5', '16.1', 'After Encoding in "Line Message 5" Textbox:', data[key].lineMsg5, assertionResults, failureMessages)
-                    
-                    cy.get('.border-blue-500').click()
-
-                    cy.wait(2000)
-
-                    cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Update" button:', 'Successfully updated.', assertionResults, failureMessages)
-
-                    // 17.1 Check all encoded data should reflect to the receipt (Validate on Preview) 
-
-                    cy.contains('Footer').click()
-                } 
-                
-            } 
-        })
-        cy.wait(4000)
-
-        cy.checkForFailure(assertionResults, failureMessages)
-    })
-
     it('Check Max Length of Input Characters', () => {
 
         cy.fixture('master-footer-data.json').then((data) => {
@@ -304,4 +204,105 @@ describe('Receipt Footer Set Up', () => {
 
         cy.checkForFailure(assertionResults, failureMessages)
     })
+
+    it('Valid Update Functionality', () => {
+
+      cy.contains('Footer').click()
+
+      cy.fixture('master-footer-data.json').then((data) => {
+
+          for (const key in data){
+
+              if (data[key].forValid === true) {
+
+                  cy.wait(4000)
+
+                  cy.get('#officialreceipt').select(data[key].officialReceipt)
+
+                  cy.get('#supname')
+                    .type(data[key].suppName)
+
+                  cy.checkValue('#supname', '3.1', 'After Encoding in "Supplier Name" Textbox:', data[key].suppName, assertionResults, failureMessages)
+
+                  cy.get('#supaddress').clear()
+                    .type(data[key].suppAdd)
+
+                  cy.checkValue('#supaddress', '4.1', 'After Encoding in "Supplier Address" Textbox:', data[key].suppAdd, assertionResults, failureMessages)
+
+                  cy.get('#supvarregtin').clear()
+                    .type(data[key].suppVAT)
+
+                  cy.checkValue('#supvarregtin', '5.1', 'After Encoding in "Supplier VAT Registered TIN" Textbox:', data[key].suppVAT, assertionResults, failureMessages)
+
+                  cy.get('#supnonvatregtin').clear()
+                    .type(data[key].suppNonVAT)
+
+                  cy.checkValue('#supnonvatregtin', '6.1', 'After Encoding in "Supplier Non-VAT Registered TIN" Textbox:', data[key].suppNonVAT, assertionResults, failureMessages)
+                  
+                  cy.get('#accrenum').clear()
+                    .type(data[key].accredNo)
+
+                  cy.checkValue('#accrenum', '7.1', 'After Encoding in "Accredited No." Textbox:"', data[key].accredNo, assertionResults, failureMessages)
+
+                  cy.get('#accredate').clear()
+                    .type(data[key].accredDate)
+
+                  cy.checkValue('#accredate', '8.1', 'After Encoding in "Accredited Date" Textbox:', data[key].accredDate, assertionResults, failureMessages)
+
+                  cy.get('#permitnum').clear()
+                    .type(data[key].permitNo)
+
+                  cy.checkValue('#permitnum', '9.1', 'After Encoding in "Permit No." Textbox:', data[key].permitNo, assertionResults, failureMessages)
+
+                  cy.get('#validyr').clear()
+                    .type(data[key].yearsValidity)
+
+                  cy.checkValue('#validyr', '10.1', 'After Encoding in "Years Validity" Textbox:', data[key].yearsValidity, assertionResults, failureMessages)
+                  
+                  cy.get('#dateissued').clear()
+                    .type(data[key].dateIssued)
+
+                  cy.checkValue('#dateissued', '11.1', 'After Encoding in "Date Issued" Textbox:', data[key].dateIssued, assertionResults, failureMessages)
+
+                  cy.get('#footermsg1').clear()
+                    .type(data[key].lineMsg1)
+
+                  cy.checkValue('#footermsg1', '12.1', 'After Encoding in "Line Message 1" Textbox:', data[key].lineMsg1, assertionResults, failureMessages)
+
+                  cy.get('#footermsg2').clear()
+                    .type(data[key].lineMsg2)
+
+                  cy.checkValue('#footermsg2', '13.1', 'After Encoding in "Line Message 2" Textbox:', data[key].lineMsg2, assertionResults, failureMessages)
+
+                  cy.get('#footermsg3').clear()
+                    .type(data[key].lineMsg3)
+
+                  cy.checkValue('#footermsg3', '14.1', 'After Encoding in "Line Message 3" Textbox:', data[key].lineMsg3, assertionResults, failureMessages)
+
+                  cy.get('#footermsg4').clear()
+                    .type(data[key].lineMsg4)
+
+                  cy.checkValue('#footermsg4', '15.1', 'After Encoding in "Line Message 4" Textbox:', data[key].lineMsg4, assertionResults, failureMessages)
+                      
+                  cy.get('#footermsg5').clear()
+                    .type(data[key].lineMsg5)
+
+                  cy.checkValue('#footermsg5', '16.1', 'After Encoding in "Line Message 5" Textbox:', data[key].lineMsg5, assertionResults, failureMessages)
+                  
+                  cy.get('.border-blue-500').click()
+
+                  cy.wait(2000)
+
+                  cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Update" button:', 'Successfully updated.', assertionResults, failureMessages)
+
+                  // 17.1 Check all encoded data should reflect to the receipt (Validate on Preview) 
+
+                  cy.contains('Footer').click()
+              } 
+          } 
+      })
+      cy.wait(4000)
+
+      cy.checkForFailure(assertionResults, failureMessages)
+  })
 })
