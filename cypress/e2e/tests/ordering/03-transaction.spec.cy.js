@@ -14,6 +14,9 @@ describe("Transaction 1", () => {
 
   before("Clear Transaction" , () => { 
 
+    cy.wait(4000)
+    cy.execute('npm run sheet-converter ordering-scenarios')
+
     cy.task("queryDb","TRUNCATE TABLE posfile")
     cy.task("queryDb","TRUNCATE TABLE orderfile")
     cy.task("queryDb","TRUNCATE TABLE orderfile2")
