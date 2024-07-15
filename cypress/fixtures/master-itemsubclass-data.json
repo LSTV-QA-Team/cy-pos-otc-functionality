@@ -100,6 +100,13 @@
     "onlySearchInval": false
   },
   {
+    "itemSubclass": "Super Meals",
+    "itemClass": "Food",
+    "onlySearchVal": false,
+    "onlyDelete": false,
+    "onlySearchInval": false
+  },
+  {
     "itemSubclass": "Family Super Meals",
     "itemClass": "Food",
     "onlySearchVal": false,
@@ -143,13 +150,6 @@
   },
   {
     "itemSubclass": "Hotdog",
-    "itemClass": "Food",
-    "onlySearchVal": false,
-    "onlyDelete": false,
-    "onlySearchInval": false
-  },
-  {
-    "itemSubclass": "Super Meals",
     "itemClass": "Food",
     "onlySearchVal": false,
     "onlyDelete": false,
