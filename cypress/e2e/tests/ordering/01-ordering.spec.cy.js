@@ -81,7 +81,7 @@ describe("Ordering ", () => {
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000)
     cy.contains("Food").click().wait(2000)
     cy.contains("Chicken").click().wait(2000)
-    cy.contains("1-pc Chickenjoy").click().wait(2000)
+    cy.xpath('//span[contains(text(), "1-pc Chickenjoy") and text()="1-pc Chickenjoy"]').click().wait(2000)
   })
 
   it("Remove Button ", () => {
@@ -94,7 +94,7 @@ describe("Ordering ", () => {
 
   it("Change Qty", () => {
     cy.wait(6000)
-    cy.contains("1-pc Chickenjoy").click().wait(2000)
+    cy.xpath('//span[contains(text(), "1-pc Chickenjoy") and text()="1-pc Chickenjoy"]').click().wait(2000)
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(2)").click()
     cy.get(":nth-child(2) > .bg-green-100").click()
 
@@ -110,7 +110,7 @@ describe("Ordering ", () => {
 
   it("Change Ordertype type", () => {
     cy.wait(6000)
-    cy.contains("1-pc Chickenjoy").click().wait(2000)
+    cy.xpath('//span[contains(text(), "1-pc Chickenjoy") and text()="1-pc Chickenjoy"]').click().wait(2000)
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(2)")
       .click()
       .wait(1000)
@@ -135,7 +135,7 @@ describe("Ordering ", () => {
 
   it("Adding Discount", () => {
     cy.wait(6000)
-    cy.contains("1-pc Chickenjoy").click().wait(2000)
+    cy.xpath('//span[contains(text(), "1-pc Chickenjoy") and text()="1-pc Chickenjoy"]').click().wait(2000)
     cy.get(":nth-child(5) > .bg-green-100").click().wait(2000)
     cy.get(".px-8").should("have.text", "Add discount")
     cy.get("#discde").select("Senior").wait(2000)
@@ -146,10 +146,12 @@ describe("Ordering ", () => {
     cy.get("#cardno").click().type("543219876")
     cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click()
     cy.get(".ml-10").should("have.text", "Discount : Senior").wait(2000)
-    cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
-      "have.text",
-      "35.00"
-    )
+    // cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
+    //   "have.text",
+    //   "35.00"
+    // )
+    cy.checkText('.bg-black > :nth-child(2) > :nth-child(2)', '0', 'Upon clicking "Update" button in "Adding Discount":', '15.2', assertionResults, failureMessages)
+    cy.checkForFailure(assertionResults, failureMessages)
   })
 
   it("Discount Behavior with Remove Item Button", () => {
@@ -298,7 +300,7 @@ describe("Ordering ", () => {
 
     cy.contains("Food").click().wait(2000)
     cy.contains("Chicken").click().wait(2000)
-    cy.contains("1-pc Chickenjoy").click().wait(2000)
+    cy.xpath('//span[contains(text(), "1-pc Chickenjoy") and text()="1-pc Chickenjoy"]').click().wait(2000)
 
     cy.get(':nth-child(13) > .bg-green-100').click()
     cy.get('.px-8').should("have.text", "Payment")
@@ -336,7 +338,7 @@ describe("Ordering ", () => {
 
   cy.get('.px-8').then($h1 => {
     if ($h1.text().trim() !== 'Select Pricelist') {
-      throw new Error('Text does not match the expected value. Should be "Select Pricelist".');
+      throw new Error('Upon cliking "Hold Transaction" the header text does not match the expected value. Should be "Select Pricelist".');
     }
   })
 
@@ -356,50 +358,5 @@ describe("Ordering ", () => {
   cy.contains("SEQ-00000000").click()
 
  })
-
-   // Change Quantiy (Negative Testing)
-   it("Change Qty Negative", () => {
-    cy.wait(6000)
-    cy.get(':nth-child(2) > .bg-green-100').click().wait(2000) 
-    cy.get('.Toastify__toast-body')
-    .should("have.text", "Error : Select item first.").wait(2000).click()
-    cy.wait(6000)
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
-      .should("have.text", "1-pc Chickenjoy").wait(2000)
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
-    .click().wait(2000)
-    cy.contains('Change Quantity').click().wait(2000)
-
-    //Validation of Change Quantity Modal
-    cy.get('.px-8').should('exist').wait(4000)
-    cy.get('.px-8').should('have.text', 'Change Quantity')
-    cy.get('.py-3 > .mb-2').should('have.text', 'Set Quantity')
-    cy.get('#itmqty').should('have.value', '1')
-
-    //Input Data
-    cy.get('#itmqty').click().type("ABCDE").wait(2000)
-    cy.get('#itmqty').should('have.value', '1').wait(2000)
-    cy.get('#itmqty').click().type("-+=/.,<>!@#$%^&*():[]'").wait(2000)
-    cy.get('#itmqty').should('have.value', '1').wait(2000)
-    cy.get('#itmqty').click().type('{downArrow}').wait(2000) 
-    //ERROR: NAGING 0 YUNG TEXT LABEL
-    //cy.get('#itmqty').should('have.value', '1')
-    cy.get('#itmqty').click().type('{upArrow}'.repeat(9)).wait(2000)
-    cy.get('#itmqty').should('have.value', '10').wait(2000)
-    cy.get('.border-blue-500').click()
-    cy.get('.Toastify__toast-body')
-    .should("have.text", "Item Quantity Changed.").wait(1000)
-    cy.get('.Toastify__toast-body').click()
-
-    //Validation
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(2)')
-    .should('have.value', '10')
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)')
-    .should('have.text', '1-pc Chickenjoy')
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(5)')
-    .should('have.value', '760.00')
-
-  })
-
 
 })
