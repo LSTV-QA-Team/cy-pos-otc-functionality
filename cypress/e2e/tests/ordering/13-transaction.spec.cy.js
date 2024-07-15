@@ -12,16 +12,16 @@ describe("Transaction 13", () => {
   });
 
   it("1 Pax with Regular Transaction", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
     cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
+    
     cy.contains("Food").click();
     cy.contains("Chicken").click();
-    cy.contains("1pc Chickenjoy w Palabok Meal").click();
-    cy.contains("1pc Chickenjoy w Burger Steak").click();
+    cy.contains("1-pc Chickenjoy w/ Palabok Meal").click();
+    cy.contains("1-pc Chickenjoy w/ Burger Steak").click();
 
     cy.fixture('ordering-scenarios.json').then((data) => {
     

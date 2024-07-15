@@ -326,7 +326,7 @@ it("Cash In" , () => {
     cy.contains("Amazing Aloha Yumburger").click().wait(1000);
 
     cy.contains("Add Discount").click();
-    cy.get("#discde").select("Person with Disability"); // SHOULD BE Disability
+    cy.get("#discde").select("PWD"); // SHOULD BE Disability
     cy.get("#orderitmid").click();
     cy.get(".border-blue-500").click();
 
@@ -770,7 +770,7 @@ it("Cash In" , () => {
       .wait(1000);
 
     cy.contains("Add Discount").click();
-    cy.get("#discde").select("Person with Disability");
+    cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
     cy.get(".border-blue-500").click();
 
@@ -953,7 +953,7 @@ it("Cash In" , () => {
     cy.contains("Chickenjoy Bucket 8pcs").click();
 
     cy.contains("Add Discount").click();
-    cy.get("#discde").select("Person with Disability");
+    cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
     cy.get(".border-blue-500").click();
 

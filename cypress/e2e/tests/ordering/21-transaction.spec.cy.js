@@ -12,7 +12,7 @@ describe("Transaction 21", () => {
   });
 
   it("1 Pax with MEMC Senior Discount", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+
     cy.get("#postypcde").select("Takeout").wait(2000);
     cy.get("#warcde").select("Jollibee 2").wait(2000);
     cy.contains("Proceed").click();

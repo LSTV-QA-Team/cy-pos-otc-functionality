@@ -11,10 +11,10 @@ describe("Transaction 25", () => {
     cy.login("lstv", "lstventures");
   });
   it("1 Pax with 20% discount", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+
     cy.contains("Food").click();
     cy.contains("Chicken Joy Perfect Pairs").click();
-    cy.contains("1pc Chicken Joy w Soup").click();
+    cy.contains("1-pc Chickenjoy w/ Soup").click();
 
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("20%");
@@ -87,7 +87,7 @@ describe("Transaction 25", () => {
     cy.contains("INV-0000000000000025").click().wait(1500);
 
     cy.get(".css-1ex1afd-MuiTableCell-root")
-      .should("have.text", "1pc Chicken Joy w Soup")
+      .should("have.text", "1-pc Chickenjoy w/ Soup")
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")

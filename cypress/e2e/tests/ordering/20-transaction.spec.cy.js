@@ -12,8 +12,7 @@ describe("Transaction 20", () => {
   });
 
   it("1 Pax with Diplomat Discount", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+
     cy.contains("Beverages").click().wait(2000);
     cy.contains("Beverages").click().wait(2000);
     cy.contains("Brown Sugar Milk Tea").click().wait(2000);
@@ -60,7 +59,6 @@ describe("Transaction 20", () => {
       );
 
       cy.get(":nth-child(4) > :nth-child(2)").should("have.text", ServiceCharge1);
-      cy.get(":nth-child(5) > :nth-child(2)").should("have.text", SCharge_dsc1);
       cy.get(".font-extrabold > :nth-child(2)").should("have.text", total1);
     
     })

@@ -12,7 +12,7 @@ describe("Transaction 30", () => {
   });
 
   it("1 Pax with Diplomat Discount", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+
     cy.contains("Food").click();
     cy.contains("Kiddie Meal").click();
     cy.contains("KM Burger Steak").click();

@@ -11,14 +11,14 @@ describe("Transaction 27", () => {
     cy.login("lstv", "lstventures");
   });
   it("1 Pax with PWD Discount", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+
     cy.contains("Food").click();
     cy.contains("Chicken").click();
-    cy.contains("2pc Chickenjoy").click();
+    cy.contains("2-pc Chickenjoy").click();
 
     cy.contains("Add Discount").click().wait(2000);
 
-    cy.get("#discde").select("Person with Disability").wait(2000);
+    cy.get("#discde").select("PWD").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
     cy.get(".border-blue-500").click().wait(2000);
 
@@ -95,7 +95,7 @@ describe("Transaction 27", () => {
     cy.contains("INV-0000000000000027").click().wait(1500);
 
     cy.get(".css-1ex1afd-MuiTableCell-root")
-      .should("have.text", "2pc Chickenjoy")
+      .should("have.text", "2-pc Chickenjoy")
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")

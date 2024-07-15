@@ -12,13 +12,12 @@ describe("Transaction 17", () => {
   });
 
   it("1 Pax with PWD Discount", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
     cy.contains("Dessert").click().wait(2000);
     cy.contains("Desserts and Pies").click().wait(2000);
     cy.contains("Buko Pie").click().wait(2000);
 
     cy.contains("Add Discount").click().wait(2000);
-    cy.get("#discde").select("Person with Disability").wait(2000);
+    cy.get("#discde").select("PWD").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
     cy.get(".border-blue-500").click().wait(2000);
 

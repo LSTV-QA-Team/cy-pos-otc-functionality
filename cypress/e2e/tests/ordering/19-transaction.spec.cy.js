@@ -12,10 +12,10 @@ describe("Transaction 19", () => {
   });
 
   it("1 Pax with Medal of Valor Discount", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
+
     cy.contains("Food").click().wait(2000);
     cy.contains("Breakfast").click().wait(2000);
-    cy.contains("BF 2pc Pancake").click().wait(2000);
+    cy.contains("BF 2-pc Pancake").click().wait(2000);
 
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("MOV").wait(2000);
