@@ -4,21 +4,24 @@
     "dineinsercharge": 0,
     "localtax": 0,
     "forValid": true,
-    "forInvalid": false
+    "forInvalid": false,
+    "forTransac": false
   },
   {
     "takeoutsercharge": 50,
     "dineinsercharge": 50,
     "localtax": 50,
     "forValid": true,
-    "forInvalid": false
+    "forInvalid": false,
+    "forTransac": false
   },
   {
     "takeoutsercharge": 100,
     "dineinsercharge": 100,
     "localtax": 100,
     "forValid": true,
-    "forInvalid": false
+    "forInvalid": false,
+    "forTransac": false
   },
   {
     "takeoutsercharge": -10,
@@ -26,6 +29,7 @@
     "localtax": -10,
     "forValid": false,
     "forInvalid": true,
+    "forTransac": false,
     "checkValTakeout": 10,
     "checkValDine": 10,
     "checkValTax": 10
@@ -36,6 +40,7 @@
     "localtax": 150,
     "forValid": false,
     "forInvalid": true,
+    "forTransac": false,
     "checkValTakeout": 15,
     "checkValDine": 15,
     "checkValTax": 15
@@ -46,8 +51,20 @@
     "localtax": 1000,
     "forValid": false,
     "forInvalid": true,
+    "forTransac": false,
     "checkValTakeout": 100,
     "checkValDine": 100,
     "checkValTax": 100
+  },
+  {
+    "takeoutsercharge": 10,
+    "dineinsercharge": 10,
+    "localtax": 0,
+    "forValid": false,
+    "forInvalid": false,
+    "forTransac": true,
+    "checkValTakeout": 10,
+    "checkValDine": 10,
+    "checkValTax": 0
   }
 ]

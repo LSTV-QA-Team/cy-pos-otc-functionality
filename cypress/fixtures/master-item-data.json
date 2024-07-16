@@ -15,7 +15,8 @@
     "comboMeal": false,
     "onlySearchVal": true,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "3-pc Chickenjoy",
@@ -33,7 +34,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": true,
-    "onlySearchInval": true
+    "onlySearchInval": true,
+    "onlyMEMC": false
   },
   {
     "item": "Buko Pandan Sundae",
@@ -52,6 +54,7 @@
     "onlySearchVal": false,
     "onlyDelete": false,
     "onlySearchInval": false,
+    "onlyMEMC": false,
     "editItem": "Iced Mocha Float",
     "editItemType": "NON-INVENTORY",
     "editItemClass": "Beverages",
@@ -82,7 +85,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "6-pcs Chickenjoy Solo",
@@ -100,7 +104,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Ube Cheese Pie",
@@ -118,7 +123,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Extra Rice",
@@ -136,7 +142,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Creamy Macaroni Soup",
@@ -154,7 +161,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Buttered Corn",
@@ -172,7 +180,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Mini Sundaes",
@@ -190,7 +199,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Coke",
@@ -208,7 +218,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Royal",
@@ -226,7 +237,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Sarsi",
@@ -244,7 +256,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Pineapple Juice",
@@ -262,7 +275,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Iced Tea",
@@ -280,7 +294,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Jolly Spaghetti",
@@ -298,7 +313,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "FSM A 6-pcs Chickenjoy Bucket",
@@ -317,7 +333,8 @@
     "comboMeal": true,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": true
   },
   {
     "item": "FSM A 8-pcs Chickenjoy Bucket",
@@ -336,7 +353,8 @@
     "comboMeal": true,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": true
   },
   {
     "item": "FSM B 6-pcs Chickenjoy Bucket",
@@ -355,7 +373,8 @@
     "comboMeal": true,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": true
   },
   {
     "item": "FSM B 8-pcs Chickenjoy Bucket",
@@ -374,7 +393,8 @@
     "comboMeal": true,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": true
   },
   {
     "item": "Delicious and crispy Chickenjoy with a side of Jolly Spaghetti and garlic rice, perfect for a fulfilling meal",
@@ -392,7 +412,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "% & ( ) / - . ,",
@@ -410,7 +431,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "null",
@@ -428,7 +450,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
@@ -446,13 +469,14 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "1-pc Chickenjoy w/ Fries",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
-    "itemSubclass": "Chickenjoy Perfect Pairs",
+    "itemSubclass": "Chicken Joy Perfect Pairs",
     "unitMeasure": "PCS",
     "unitCost": 0,
     "barcode": "00000000024",
@@ -464,13 +488,14 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "1-pc Chickenjoy w/ Jolly Spaghetti",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
-    "itemSubclass": "Chickenjoy Perfect Pairs",
+    "itemSubclass": "Chicken Joy Perfect Pairs",
     "unitMeasure": "PCS",
     "unitCost": 0,
     "barcode": "00000000025",
@@ -482,7 +507,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "BF Hotdog",
@@ -500,7 +526,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "BF Breakfast Steak",
@@ -518,7 +545,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "BF Beef Tapa",
@@ -536,7 +564,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Cheesy Classic Jolly Hotdog",
@@ -554,7 +583,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "2-pc Burger Steak",
@@ -572,7 +602,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Amazing Aloha Yumburger",
@@ -590,7 +621,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Regular Jolly Hotdog",
@@ -608,7 +640,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Cheesy Yumburger",
@@ -626,7 +659,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "1-pc Burger Steak w/ 3pcs Shanghai",
@@ -644,7 +678,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Chickenjoy, Burger Steak, Half Jolly Spaghetti, Rice and Drink",
@@ -662,7 +697,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Chickenjoy Bucket 6pcs",
@@ -681,7 +717,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": true
   },
   {
     "item": "Chickenjoy Bucket 8pcs",
@@ -700,7 +737,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": true
   },
   {
     "item": "1-pc Chickenjoy w/ Palabok Meal",
@@ -718,7 +756,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "1-pc Chickenjoy w/ Burger Steak",
@@ -736,7 +775,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Cheesy Classic w/ Fries",
@@ -754,7 +794,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Jolly Crispy Fries",
@@ -772,7 +813,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "TF Palabok Family Pan",
@@ -790,7 +832,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Buko Pie",
@@ -808,7 +851,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "BF 2-pc Pancake",
@@ -826,7 +870,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "Brown Sugar Milk Tea",
@@ -844,13 +889,14 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "1-pc Chickenjoy w/ Soup",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
-    "itemSubclass": "Chickenjoy Perfect Pairs",
+    "itemSubclass": "Chicken Joy Perfect Pairs",
     "unitMeasure": "PCS",
     "unitCost": 0,
     "barcode": "00000000046",
@@ -862,13 +908,14 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "1-pc Chickenjoy w/ Burger Steak",
     "itemType": "NON-INVENTORY",
     "itemClass": "Food",
-    "itemSubclass": "Chickenjoy Perfect Pairs",
+    "itemSubclass": "Chicken Joy Perfect Pairs",
     "unitMeasure": "PCS",
     "unitCost": 0,
     "barcode": "00000000047",
@@ -880,7 +927,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "2-pc Chickenjoy",
@@ -898,7 +946,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "1-pc Chickenjoy w/ Fries Meal",
@@ -916,7 +965,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "1-pc Chickenjoy w/ Sides",
@@ -934,7 +984,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "KM Burger Steak",
@@ -952,7 +1003,8 @@
     "comboMeal": false,
     "onlySearchVal": false,
     "onlyDelete": false,
-    "onlySearchInval": false
+    "onlySearchInval": false,
+    "onlyMEMC": false
   },
   {
     "item": "1-pc Chickenjoy",

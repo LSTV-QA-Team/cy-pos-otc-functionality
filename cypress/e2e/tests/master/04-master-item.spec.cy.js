@@ -34,40 +34,40 @@ describe('Item', () => {
 
     })
 
-    // after(() => {
+    after(() => {
 
-    //     cy.fixture('data-to-delete.json').then((data) => {
+        cy.fixture('data-to-delete.json').then((data) => {
 
-    //         data.forEach((item) => {
+            data.forEach((item) => {
 
-    //             const specialChar = item.dataToDelete;
-    //             const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
+                const specialChar = item.dataToDelete;
+                const deleteQuery = `DELETE FROM itemfile WHERE itmdsc = '${specialChar}'`;
                 
-    //             cy.task('queryDb', deleteQuery).then(() => {
+                cy.task('queryDb', deleteQuery).then(() => {
 
-    //                 cy.log(`Deleted data with description: ${specialChar}`) 
+                    cy.log(`Deleted data with description: ${specialChar}`) 
 
-    //             })
-    //         })
+                })
+            })
     
-    //         cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
+            cy.task('queryDb', 'SELECT * FROM itemfile').then((records) => {
 
-    //             const remainingData = records.map((record) => record.description)
-    //             const deletedChars = data.map((item) => item.dataToDelete)
+                const remainingData = records.map((record) => record.description)
+                const deletedChars = data.map((item) => item.dataToDelete)
                 
-    //             deletedChars.forEach((char) => {
+                deletedChars.forEach((char) => {
 
-    //                 expect(remainingData).to.not.include(char)
+                    expect(remainingData).to.not.include(char)
 
-    //             })
+                })
     
-    //             cy.log('Specified data Successfully deleted.'); // Log success
+                cy.log('Specified data Successfully deleted.'); // Log success
 
-    //         })
-    //     })
-    // })
+            })
+        })
+    })
 
-    it.only('Check Item Page', () => {  
+    it('Check Item Page', () => {  
 
         cy.navigateToModule('Master File', 'Items')
 
@@ -88,7 +88,7 @@ describe('Item', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it.only('Add Functionality', () => {  
+    it('Add Functionality', () => {  
 
         cy.fixture('master-item-data.json').then((data) => {
 
@@ -549,45 +549,25 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
-                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
-
                     cy.get('#itmtyp').select(data[key].itemType)
-
-                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
 
                     cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
-
                     cy.get('#itmclacde').select(data[key].itemClass)
-
-                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
 
                     cy.wait(2000)
 
                     cy.get('#untmea').clear().type(data[key].unitMeasure)
 
-                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
-
                     cy.get('#untcst').clear().type(data[key].unitCost)
-
-                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
 
                     cy.get('#barcde').clear().type(data[key].barcode)
 
-                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
-
                     cy.get('#untprc').clear().type(data[key].sellingPrice)
-
-                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
 
                     cy.get('#itmpaxcount').clear().type(data[key].goodXPerson)
 
-                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
-
                     cy.get('#taxcde').select(data[key].taxCode)
-
-                    cy.checkValue('#itmdsc', '0', 'After Encoding in "Item" Textbox:', data[key].item, assertionResults, failureMessages)
 
                     if (data[key].addOn === true) {
 

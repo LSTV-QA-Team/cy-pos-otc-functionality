@@ -56,11 +56,11 @@ describe('Other Charges', () => {
 
                 if (data[key].forValid === true) {
 
-                    cy.get('#takeout_scharge').type('{backspace}{backspace}{backspace}{backspace}{backspace}').type(data[key].takeoutsercharge).should('have.value', data[key].takeoutsercharge + '%')
+                    cy.get('#takeout_scharge').clear().type(data[key].takeoutsercharge).should('have.value', data[key].takeoutsercharge + '%')
 
-                    cy.get('#dinein_scharge').type('{backspace}{backspace}{backspace}{backspace}{backspace}').type(data[key].dineinsercharge).should('have.value', data[key].dineinsercharge + '%')
+                    cy.get('#dinein_scharge').clear().type(data[key].dineinsercharge).should('have.value', data[key].dineinsercharge + '%')
 
-                    cy.get('#localtax').type('{backspace}{backspace}{backspace}{backspace}{backspace}').type(data[key].localtax).should('have.value', data[key].localtax + '%')
+                    cy.get('#localtax').clear().type(data[key].localtax).should('have.value', data[key].localtax + '%')
 
                     // 17.1 Check all encoded data should reflect to the receipt (Validate on Preview) 
 
@@ -198,7 +198,7 @@ describe('Other Charges', () => {
 
         cy.get('.border-red-500').click()
 
-        cy.get('.border-blue-500').click({ multiple: true })
+        cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-blue-500').click()
 
         cy.wait(2000)
 
@@ -212,4 +212,36 @@ describe('Other Charges', () => {
 
         cy.checkForFailure(assertionResults, failureMessages)
     })
+
+    it('Valid Input For Transaction', () => {
+
+      cy.contains('Other Charges').click()
+
+      cy.fixture('master-othercharge-data.json').then((data) => {
+          
+          for (const key in data){
+
+              if (data[key].forTransac === true) {
+
+                  cy.get('#takeout_scharge').clear().type(data[key].takeoutsercharge).should('have.value', data[key].takeoutsercharge + '%')
+
+                  cy.get('#dinein_scharge').clear().type(data[key].dineinsercharge).should('have.value', data[key].dineinsercharge + '%')
+
+                  cy.get('#localtax').clear().type(data[key].localtax).should('have.value', data[key].localtax + '%')
+
+                  // 17.1 Check all encoded data should reflect to the receipt (Validate on Preview) 
+
+                  cy.get('.border-blue-500').click()
+
+                  cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
+
+                  cy.contains('Other Charges').click()
+              } 
+              
+          } 
+      })
+      cy.wait(4000)
+
+      cy.checkForFailure(assertionResults, failureMessages)
+  })
 })
