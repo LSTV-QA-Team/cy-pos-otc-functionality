@@ -1,7 +1,7 @@
 let assertionResults = [];
 let failureMessages = [];
 
-describe("Transaction 10", () => {
+describe("Transaction 12", () => {
   beforeEach(() => {
     // reset for each test case
     assertionResults = [];
