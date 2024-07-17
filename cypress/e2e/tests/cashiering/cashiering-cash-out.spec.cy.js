@@ -105,7 +105,15 @@ cy.contains("Transaction Success").should(
 
 cy.checkForFailure(assertionResults, failureMessages)
 
-})
+  })
 
+  it('Back Button Functionality', () => {
 
+    cy.wait(2000)
+
+    cy.get(':nth-child(1) > .flex > .anticon > svg').click()
+
+    cy.wait(2000)
+
+  })
 })

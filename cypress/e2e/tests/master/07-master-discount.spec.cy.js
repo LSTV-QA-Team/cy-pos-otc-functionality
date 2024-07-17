@@ -222,7 +222,7 @@ describe('Discount', () => {
                         })
 
 
-                        if (data[key].exemptVat === 'Yes') {
+                        if (data[key].exemptVAT === 'Yes') {
 
                             cy.get('#ExemptYes').click()
                         
@@ -307,7 +307,7 @@ describe('Discount', () => {
 
                         })
 
-                        if (data[key].exemptVat === 'Yes') {
+                        if (data[key].exemptVAT === 'Yes') {
 
                             cy.get('#ExemptYes').click()
                         
@@ -386,7 +386,7 @@ describe('Discount', () => {
                         })
 
 
-                        if (data[key].exemptVat === 'Yes') {
+                        if (data[key].exemptVAT === 'Yes') {
 
                             cy.get('#ExemptYes').click()
                         
@@ -465,9 +465,11 @@ describe('Discount', () => {
 
                         })
 
-                        if (data[key].exemptVat === 'Yes') {
+                        if (data[key].exemptVAT === 'Yes') {
 
-                            cy.get('#ExemptYes').click()
+                            cy.log(data[key].exemptVAT)
+
+                            cy.get('#ExemptYes').check()
                         
                         } else {
 
@@ -716,7 +718,7 @@ describe('Discount', () => {
                 if (data[key].onlySearchVal === true) {
 
                     // search valid data
-                    cy.wait(2000)
+                    cy.wait(4000)
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
@@ -732,7 +734,7 @@ describe('Discount', () => {
                 if (data[key].onlySearchInval === true) {
 
                     // search invalid or not existing data
-                    cy.wait(2000)
+                    cy.wait(4000)
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 

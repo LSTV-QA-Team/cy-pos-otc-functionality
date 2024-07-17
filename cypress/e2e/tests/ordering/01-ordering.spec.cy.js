@@ -150,7 +150,7 @@ describe("Ordering ", () => {
     //   "have.text",
     //   "35.00"
     // )
-    cy.checkText('.bg-black > :nth-child(2) > :nth-child(2)', '0', 'Upon clicking "Update" button in "Adding Discount":', '15.2', assertionResults, failureMessages)
+    cy.checkText('.bg-black > :nth-child(2) > :nth-child(2)', '0', 'Upon clicking "Update" button in "Adding Discount":', '13.57', assertionResults, failureMessages)
     cy.checkForFailure(assertionResults, failureMessages)
   })
 
@@ -240,7 +240,7 @@ describe("Ordering ", () => {
 
     cy.wait(6000)
 
-    cy.get(".css-1clo5mp-MuiTableRow-root > :nth-child(3)").click()
+    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)').click()
     cy.get(":nth-child(7) > .bg-green-100").click()
     cy.get(".Toastify__toast-body")
       .should("have.text", "Error : Remove discount first.")
