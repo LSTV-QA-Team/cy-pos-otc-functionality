@@ -225,7 +225,7 @@ module.exports = defineConfig({
     },
 
     chromeWebSecurity: false,
-    numTestsKeptInMemory: 0,
+    // numTestsKeptInMemory: 0,
     defaultCommandTimeout: 10000,
     execTimeout: 60000,
     pageLoadTimeout: 60000,

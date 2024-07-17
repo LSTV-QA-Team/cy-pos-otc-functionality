@@ -20,7 +20,7 @@ describe("Transaction 8", () => {
     cy.contains("Proceed").click();
 
     cy.contains("Food").click().wait(1000);
-    cy.contains('Super Meals').click().wait(1000);
+    cy.contains(/^Super Meals$/).click().wait(1000);
     cy.contains(
       "Chickenjoy Burger Steak Half Jolly Spaghetti Rice and Drink"
     )

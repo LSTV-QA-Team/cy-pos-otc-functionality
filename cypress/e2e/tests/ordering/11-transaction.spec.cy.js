@@ -26,6 +26,8 @@ describe("Transaction 9", () => {
     )
       .click()
       .wait(1000);
+    
+    cy.get('.bg-green-500').click()
 
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Senior");

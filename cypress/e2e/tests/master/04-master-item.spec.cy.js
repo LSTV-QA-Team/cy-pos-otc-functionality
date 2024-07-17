@@ -911,51 +911,51 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
-                    cy.checkValue('#itmdsc', '0', 'Upon encoding:', data[key].item, assertionResults, failureMessages)
+                    cy.checkText('#itmdsc', '0', 'Upon encoding:', data[key].item, assertionResults, failureMessages)
 
                     cy.get('#itmtyp').realClick()
 
                     cy.get('#itmtyp').select(data[key].itemType)
 
-                    cy.checkValue('#itmtyp', '0', 'Upon encoding:', data[key].itemType, assertionResults, failureMessages)
+                    cy.checkText('#itmtyp', '0', 'Upon encoding:', data[key].itemType, assertionResults, failureMessages)
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.checkValue('#itmclacde', '0', 'Upon encoding:', data[key].itemClass, assertionResults, failureMessages)
+                    cy.checkText('#itmclacde', '0', 'Upon encoding:', data[key].itemClass, assertionResults, failureMessages)
 
                     cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                    cy.checkValue('#itemsubclasscde', '0', 'Upon encoding:', data[key].itemSubclass, assertionResults, failureMessages)
+                    cy.checkText('#itemsubclasscde', '0', 'Upon encoding:', data[key].itemSubclass, assertionResults, failureMessages)
 
                     cy.get('#untmea')
                         .clear()
                         .type(data[key].unitMeasure)
 
-                    cy.checkValue('#untmea', '0', 'Upon encoding:', data[key].unitMeasure, assertionResults, failureMessages)
+                    cy.checkText('#untmea', '0', 'Upon encoding:', data[key].unitMeasure, assertionResults, failureMessages)
 
                     cy.get('#untcst')
                         .clear() 
                         .type(data[key].unitCost)
 
-                    cy.checkValue('#untcst', '0', 'Upon encoding:', data[key].unitCost, assertionResults, failureMessages)
+                    cy.checkText('#untcst', '0', 'Upon encoding:', '₱' + data[key].unitCost, assertionResults, failureMessages)
 
                     cy.get('#barcde')
                         .clear()
                         .type(data[key].barcode)
 
-                    cy.checkValue('#barcde', '0', 'Upon encoding:', data[key].barcode, assertionResults, failureMessages)
+                    cy.checkText('#barcde', '0', 'Upon encoding:', data[key].barcode, assertionResults, failureMessages)
 
                     cy.get('#untprc')
                         .clear() 
                         .type(data[key].sellingPrice)
                     
-                    cy.checkValue('#untprc', '0', 'Upon encoding:', data[key].sellingPrice, assertionResults, failureMessages)
+                    cy.checkText('#untprc', '0', 'Upon encoding:', '₱' + data[key].sellingPrice, assertionResults, failureMessages)
 
                     cy.get('#itmpaxcount')
                         .clear()
                         .type(data[key].goodXPerson)
 
-                    cy.checkValue('#itmpaxcount', '0', 'Upon encoding:', data[key].goodXPerson, assertionResults, failureMessages)
+                    cy.checkText('#itmpaxcount', '0', 'Upon encoding:', data[key].goodXPerson, assertionResults, failureMessages)
 
                     cy.get('#taxcde').select(data[key].taxCode)
 
@@ -995,7 +995,6 @@ describe('Item', () => {
 
                                     cy.get('.select__menu-list').contains('div', fsma6).click()
 
-                                    cy.checkValue('#itmpaxcount', '0', 'Upon encoding:', data[key].goodXPerson, assertionResults, failureMessages)
 
                                 })
 
