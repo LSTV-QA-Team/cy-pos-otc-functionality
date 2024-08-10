@@ -19,7 +19,7 @@ describe("Transaction 15", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("20%").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get(".border-green-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
       .should("have.text", "Discount : 20%")
@@ -61,7 +61,7 @@ describe("Transaction 15", () => {
 
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Karina");
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get(".border-green-500").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
@@ -81,7 +81,7 @@ describe("Transaction 15", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Food Quality Issue");
-    cy.get(".border-blue-500").click();
+    cy.get(".border-green-500").click();
 
     cy.get(".Toastify__toast-body > :nth-child(2)").should(
       "have.text",
