@@ -21,11 +21,11 @@ describe("Transaction 16", () => {
 
     cy.get("#discde").select("Senior").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get(".border-green-500").click();
 
     cy.get("#cardholder").click().type("Winter").wait(2000);
     cy.get("#cardno").click().type("4569084").wait(2000);
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
       .should("have.text", "Discount : Senior")
