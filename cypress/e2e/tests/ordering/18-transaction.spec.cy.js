@@ -69,7 +69,7 @@ describe("Transaction 16", () => {
 
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Giselle").wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get(".border-green-500").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
@@ -89,7 +89,7 @@ describe("Transaction 16", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Customer Complaint").wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get(".border-green-500").click().wait(2000);
 
     cy.get(".Toastify__toast-body > :nth-child(2)").should(
       "have.text",

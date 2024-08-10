@@ -66,7 +66,7 @@ describe("Transaction 17", () => {
 
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Tanya").wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get(".border-green-500").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.wait(2000);
     cy.get("#postypcde").select("Dine-In").wait(2000);
