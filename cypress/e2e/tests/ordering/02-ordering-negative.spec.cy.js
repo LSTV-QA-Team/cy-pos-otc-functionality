@@ -8,7 +8,7 @@ describe("Ordering ", () => {
     // reset for each test case
     assertionResults = [];
     failureMessages = [];
-
+    
     // Login with valid credentials
     cy.login("lstv", "lstventures");
   });
@@ -22,7 +22,7 @@ describe("Ordering ", () => {
     cy.get('.px-8').should('have.text', 'Confirmation').wait(500)
     cy.get('section > h1')
     .should('have.text', 'Are you sure you want to cancel this transaction?')
-    .wait(500)
+    .wait(500);
     // Click Confirm
     cy.get('.border-green-500').click().wait(2000)
     cy.checkElementVisibility('.Toastify__toast-bodyg', '0', 'Upon Clicking the "Confirm" button in cancelling transaction:', 'The notification message with text "Transaction Successfully Cancelled." was not visible or active.', assertionResults, failureMessages)
@@ -32,7 +32,7 @@ describe("Ordering ", () => {
     // .wait(1000)
     // cy.get('.Toastify__toast-body').click().wait(1000)
     cy.checkText('.p-5 > :nth-child(1) > .font-montserrat', '0', 'Upon Clicking the "Confirm" button in cancelling transaction:', 'TRANSACTION: SEQ-0000000000000004', assertionResults, failureMessages)
-    cy.wait(8000)
+    cy.wait(8000);
 
     // Add Item
     // cy.get(':nth-child(9) > .bg-red-100').click({force:true}).wait(500)
