@@ -52,7 +52,7 @@ describe("Transaction 23", () => {
     cy.contains("Payment").click().wait(2000);
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get(".border-green-500").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
@@ -74,7 +74,7 @@ describe("Transaction 23", () => {
 
     cy.get(".px-8").should("have.text", "Refund Transaction").wait(1500);
     cy.get("#refundreason").select("Customer Complaint").wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get(".border-green-500").click().wait(2000);
 
     cy.get(".px-8").should("have.text", "REF-0000000000000001");
     cy.get(".justify-between > .group").click().wait(2000);

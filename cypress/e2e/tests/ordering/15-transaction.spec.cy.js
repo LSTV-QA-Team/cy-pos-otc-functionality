@@ -78,7 +78,7 @@ describe("Transaction 13", () => {
     cy.contains("INV-0000000000000013").click().wait(1500);
 
     cy.get("#voidreason").select("Employee Mistake");
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get(".border-green-500").click().wait(2000);
     cy.get(".Toastify__toast-body > :nth-child(2)").should(
       "have.text",
       "Transaction Void Successful"
