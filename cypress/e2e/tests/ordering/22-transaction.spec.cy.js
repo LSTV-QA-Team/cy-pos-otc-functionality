@@ -67,7 +67,7 @@ describe("Transaction 20", () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Parehko");
-    cy.get(".border-blue-500").click();
+    cy.get(".border-green-500").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click().wait(2000);
     cy.contains("Transaction Complete.").should(
       "have.text",
