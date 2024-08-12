@@ -125,7 +125,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.get('#voidcde').clear()
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(4000)
 
@@ -133,7 +133,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.get('#voidcde').type('Incorrect Order Entry')
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(2000)
 
@@ -146,21 +146,21 @@ describe('Void/Refund Reasons', () => {
 
                         cy.get('#voidcde').clear().type(data[key].voidReasons)
 
-                        cy.get('.border-red-500').click()
+                        cy.get('.border-gray-300').click()
 
                         cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                        cy.contains('button[class*="border-red-500"]', 'No').click()
+                        cy.contains('button[class*="border-gray-300"]', 'No').click()
 
                         cy.wait(3000)
 
                         cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Void/Refund Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('.border-red-500').click()
+                        cy.get('.border-gray-300').click()
 
                         cy.wait(4000)
 
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').realClick()
+                        cy.contains('button[class*="border-green-500"]', 'Yes').realClick()
 
                         cy.wait(3000)
 
@@ -179,7 +179,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.get('#voidcde').clear().type(data[key].voidReasons)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
                         
                         cy.wait(2000)
 
@@ -201,7 +201,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.checkInputMaxLength('#voidcde', 50, '17.1', 'Upon Encoding in "Card Type" Textbox:', assertionResults, failureMessages)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         // cy.wait(4000)
 
@@ -217,7 +217,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(2000)
 
@@ -233,7 +233,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.get('#voidcde').clear().type(data[key].voidReasons)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(2000)
 
@@ -260,7 +260,7 @@ describe('Void/Refund Reasons', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
         cy.fixture('master-voidreasons-data.json').then((data) => {
 
@@ -295,7 +295,7 @@ describe('Void/Refund Reasons', () => {
 
                 cy.get('#voidcde').type(specificVoidReasons.editVoidReasons)
 
-                cy.get('.border-blue-500').click()
+                cy.get('.border-green-500').click()
 
                 cy.wait(2000)
 
@@ -331,7 +331,7 @@ describe('Void/Refund Reasons', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].voidReasons + ' ?', assertionResults, failureMessages);
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.wait(3000)
 
@@ -343,7 +343,7 @@ describe('Void/Refund Reasons', () => {
 
                     })
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(3000)
 

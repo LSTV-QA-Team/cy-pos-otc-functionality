@@ -134,7 +134,7 @@ describe('Discount', () => {
 
                         cy.get('#disdsc').clear()
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.checkLabelCaption('div:contains("Code *")', '33.2', 'Upon clicking the "Save" button:', 'Code * is required', assertionResults, failureMessages)
 
@@ -150,15 +150,15 @@ describe('Discount', () => {
 
                         cy.get('#disper').clear().type(data[4].percentAmount)
 
-                        cy.get('#ExemptYes').click()
+                        cy.get('#ExemptYes').realClick()
 
-                        cy.get('#SCNo').click()
+                        cy.get('#SCNo').realClick()
 
-                        cy.get('#GovYes').click()
+                        cy.get('#GovYes').realClick()
 
-                        cy.get('#ODNo').click()
+                        cy.get('#ODNo').realClick()
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').realClick()
 
                         cy.wait(2000)
 
@@ -173,19 +173,19 @@ describe('Discount', () => {
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
-                        cy.get('.border-red-500').click()
+                        cy.get('.border-gray-300').click()
 
                         cy.checkLabelCaption('.h-auto', '13.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                        cy.contains('button[class*="border-red-500"]', 'No').click()
+                        cy.contains('button[class*="border-gray-300"]', 'No').click()
 
                         cy.wait(3000)
 
                         cy.checkElementVisibility('.shadow-lg', '13.2.1', 'Upon Clicking the "No" button in "Cancel" modal:', 'The "Add Discount" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('.border-red-500').click()
+                        cy.get('.border-gray-300').click()
 
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                        cy.contains('button[class*="border-green-500"]', 'Yes').click()
 
                         cy.wait(3000)
 
@@ -233,14 +233,16 @@ describe('Discount', () => {
 
                         if (data[key].lessVATDisc === 'Yes') {
 
+                            cy.log('Clicking LessYes');
                             cy.get('#LessYes').click()
 
                         } else if (data[key].lessVATDisc === 'null'){
 
+                            cy.log('Doing nothing for LessVATDisc');
                             // do nothing
 
                         } else {
-
+                            cy.log('Clicking LessNo');
                             cy.get('#LessNo').click()
 
                         }
@@ -272,7 +274,7 @@ describe('Discount', () => {
                             cy.get('#ODNo').click()
                         }
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(2000)
 
@@ -318,14 +320,17 @@ describe('Discount', () => {
 
                         if (data[key].lessVATDisc === 'Yes') {
 
+                            cy.log('Clicking LessYes');
                             cy.get('#LessYes').click()
 
                         } else if (data[key].lessVATDisc === 'null'){
-
+                            
+                            cy.log('Doing nothing for LessVATDisc');
                             // do nothing
 
                         } else {
 
+                            cy.log('Clicking LessNo');
                             cy.get('#LessNo').click()
 
                         }
@@ -357,7 +362,7 @@ describe('Discount', () => {
                             cy.get('#ODNo').click()
                         }
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                     }
 
@@ -367,7 +372,7 @@ describe('Discount', () => {
 
                         cy.get('#disdsc').clear().type(data[key].discountDesc)
 
-                        cy.checkLabelCaption('.Toastify__toast-body', '51.1', 'Upon encoding not allowed special characters:', '"Please use only the following approved special characters: % & ( ) / - ."', assertionResults, failureMessages)
+                        cy.checkLabelCaption('.Toastify__toast-body', '51.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
                         cy.get('#distyp').select(data[key].discountType).then((selected) => {
 
@@ -436,7 +441,7 @@ describe('Discount', () => {
                             cy.get('#ODNo').click()
                         }
 
-                        cy.get('.border-blue-500').click() 
+                        cy.get('.border-green-500').click() 
 
                         cy.wait(2000)
 
@@ -469,7 +474,7 @@ describe('Discount', () => {
 
                             cy.log(data[key].exemptVAT)
 
-                            cy.get('#ExemptYes').check()
+                            cy.get('#ExemptYes').realClick()
                         
                         } else {
 
@@ -478,7 +483,7 @@ describe('Discount', () => {
 
                         if (data[key].lessVATDisc === 'Yes') {
 
-                            cy.get('#LessYes').click()
+                            cy.get('#LessYes').check()
 
                         } else if (data[key].lessVATDisc === 'null'){
 
@@ -486,7 +491,7 @@ describe('Discount', () => {
 
                         } else {
 
-                            cy.get('#LessNo').click()
+                            cy.get('#LessNo').check()
 
                         }
 
@@ -517,7 +522,7 @@ describe('Discount', () => {
                             cy.get('#ODNo').click()
                         }
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(2000)
 
@@ -540,7 +545,7 @@ describe('Discount', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
         cy.wait(8000)
 
@@ -644,7 +649,7 @@ describe('Discount', () => {
                 cy.get('#ODNo').click()
             }
 
-            cy.get('.border-blue-500').click()
+            cy.get('.border-green-500').click()
 
             cy.wait(2000)
 
@@ -680,7 +685,7 @@ describe('Discount', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '63.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].discountDesc + ' ?', assertionResults, failureMessages);
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.wait(3000)
 
@@ -692,7 +697,7 @@ describe('Discount', () => {
 
                     })
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(2000)
 

@@ -144,7 +144,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(6000)
 
@@ -154,7 +154,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
@@ -164,7 +164,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[4].itemClass)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -181,19 +181,19 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').realClick()
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
                     cy.checkLabelCaption('.h-auto', '8.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-red-500').click()
+                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-gray-300').click()
 
                     cy.wait(3000)
 
                     cy.checkElementVisibility('.shadow-lg', '8.2.1', 'Upon Clicking the "No" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
-                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-blue-500').click()
+                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-green-500').click()
 
                     cy.wait(3000)
 
@@ -214,7 +214,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -237,7 +237,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(6000)
                 }
@@ -252,7 +252,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(6000)
 
@@ -267,7 +267,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -291,7 +291,7 @@ describe('Item Subclassification', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
         cy.fixture('master-itemsubclass-data.json').then((data) => {
 
@@ -328,7 +328,7 @@ describe('Item Subclassification', () => {
 
                 cy.get('#itmclacde').select(specificItemSubclass.editItemClass)
 
-                cy.get('.border-blue-500').click()
+                cy.get('.border-green-500').click()
 
                 cy.wait(2000)
 
@@ -369,7 +369,7 @@ describe('Item Subclassification', () => {
 
                     cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Delete" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.wait(3000)
 
@@ -382,7 +382,7 @@ describe('Item Subclassification', () => {
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
                     })
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(2000)
 
@@ -409,8 +409,7 @@ describe('Item Subclassification', () => {
 
                     cy.wait(2000);
 
-                    cy.get('[data-testid="SearchIcon"]')
-                      .click();
+                    cy.get('[data-testid="SearchIcon"]').click();
 
                     cy.get('#\\:re\\:')
                       .clear()

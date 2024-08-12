@@ -131,7 +131,7 @@ describe('Order Type', () => {
 
                     cy.get('#postypdsc').clear().type(data[key].dineType)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -141,7 +141,7 @@ describe('Order Type', () => {
 
                     cy.get('#postypdsc').clear().should('be.empty')
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
                     
                     cy.wait(2000)
 
@@ -155,7 +155,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[0].orderType)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -174,19 +174,19 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').realClick()
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
                     cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-red-500"]', 'No').click()
+                    cy.contains('button[class*="border-gray-300"]', 'No').click()
 
                     cy.wait(3000)
 
                     cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Order Type" modal window was not visible or active.', assertionResults, failureMessages)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
 
                     cy.wait(4000)
 
@@ -207,7 +207,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -228,7 +228,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
                 }
 
                 else if (data[key].dineType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -237,13 +237,13 @@ describe('Order Type', () => {
 
                     cy.get('#postypdsc').clear().type(data[key].dineType)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
                     cy.get('#ordertyp').realClick()
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000) 
 
@@ -258,7 +258,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -289,7 +289,7 @@ describe('Order Type', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
         cy.fixture('master-ordertype-data.json').then((data) => {
 
@@ -324,7 +324,7 @@ describe('Order Type', () => {
 
                 cy.get('#ordertyp').select(specificOrderType.editOrderType)
 
-                cy.get('.border-blue-500').click()
+                cy.get('.border-green-500').click()
 
                 cy.wait(2000)
 
@@ -366,7 +366,7 @@ describe('Order Type', () => {
 
                     cy.validateElements('delete-confirm-el.json', '27.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.wait(3000)
 
@@ -380,7 +380,7 @@ describe('Order Type', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(2000)
 
@@ -425,8 +425,7 @@ describe('Order Type', () => {
                     // search invalid or not existing data
                     cy.wait(2000)
                             
-                    cy.get('[data-testid="SearchIcon"]')
-                        .click()
+                    cy.get('[data-testid="SearchIcon"]').click()
         
                     cy.get('input[placeholder="Search Dine Type')
                         .clear()

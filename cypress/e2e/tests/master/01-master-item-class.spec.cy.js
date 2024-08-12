@@ -23,6 +23,7 @@ describe('Item Classification', () => {
         cy.wait(4000)
         cy.execute('npm run sheet-converter master-itemclass-data')
         cy.execute('npm run sheet-converter itemclass-edit-el')
+        cy.execute('npm run sheet-converter itemclass-add-el')
         cy.wait(4000)
 
     })
@@ -127,13 +128,13 @@ describe('Item Classification', () => {
                     
                     cy.get('#itmcladsc').clear()
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.checkLabelCaption('.text-sm', '10.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
                     
                     cy.get('#itmcladsc').type(data[0].itemClass)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -146,19 +147,19 @@ describe('Item Classification', () => {
 
                     cy.get('#itmcladsc').clear().type(data[key].itemClass)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
                     cy.checkLabelCaption('.h-auto', '5.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-red-500"]', 'No').click()
+                    cy.contains('button[class*="border-gray-300"]', 'No').click()
 
                     cy.wait(3000)
 
                     cy.checkElementVisibility('.shadow-lg', '5.2.1', 'Upon Clicking the "No" button in "Cancel" modal:', 'The "Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
 
                     cy.wait(3000)
 
@@ -175,7 +176,7 @@ describe('Item Classification', () => {
 
                     cy.get('#itmcladsc').clear().type(data[key].itemClass)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -197,7 +198,7 @@ describe('Item Classification', () => {
 
                     // cy.checkElementVisibility('.Toastify__toast-body', '16.2', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(4000)
 
@@ -209,7 +210,7 @@ describe('Item Classification', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.checkElementVisibility('.shadow-lg', '14.2.1', 'Upon clicking the "Save" button:', 'The "Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
                 }
@@ -220,7 +221,7 @@ describe('Item Classification', () => {
 
                     cy.get('#itmcladsc').clear().type(data[key].itemClass)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -241,7 +242,7 @@ describe('Item Classification', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
         cy.fixture('master-itemclass-data.json').then((data) => {
 
@@ -271,7 +272,7 @@ describe('Item Classification', () => {
 
             cy.get('#itmcladsc').type(specificItemClass.editItemClass)
 
-            cy.get('.border-blue-500').click()
+            cy.get('.border-green-500').click()
 
             cy.checkLabelCaption('.Toastify__toast-body', '22.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
@@ -288,7 +289,7 @@ describe('Item Classification', () => {
     it('Delete Functionality', () => {
 
         cy.fixture('master-itemclass-data.json').then((data) => {
-            
+
             for (const key in data) {
 
                 if (data[key].onlyDelete === true) {
@@ -305,7 +306,7 @@ describe('Item Classification', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '41.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].editItemClass + ' ?', assertionResults, failureMessages);
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.wait(3000)
 
@@ -326,7 +327,7 @@ describe('Item Classification', () => {
 
                     })
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(2000)
 

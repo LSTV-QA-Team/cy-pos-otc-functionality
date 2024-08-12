@@ -124,13 +124,13 @@ describe('Free Reasons', () => {
 
                         cy.get('#freereason').clear()
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
                         cy.get('#freereason').type(data[0].freeReasons)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(2000)
 
@@ -147,23 +147,23 @@ describe('Free Reasons', () => {
 
                         cy.get('#freereason').clear().type(data[key].freeReasons)
 
-                        cy.get('.border-red-500').click()
+                        cy.get('.border-gray-300').click()
 
                         cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                        cy.contains('button[class*="border-red-500"]', 'No').click()
+                        cy.contains('button[class*="border-gray-300"]', 'No').click()
 
                         cy.wait(3000)
 
                         cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('.border-red-500').click()
+                        cy.get('.border-gray-300').click()
 
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                        cy.contains('button[class*="border-green-500"]', 'Yes').click()
 
-                        cy.wait(3000)
+                        cy.wait(4000)
 
-                        cy.checkElementVisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
+                        cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
 
                         cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Free Reasons', assertionResults, failureMessages)
 
@@ -178,7 +178,7 @@ describe('Free Reasons', () => {
 
                         cy.get('#freereason').clear().type(data[key].freeReasons)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(2000)
 
@@ -197,7 +197,7 @@ describe('Free Reasons', () => {
 
                         // cy.checkElementVisibility('.text-sm', '17.2', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
                     }
 
                     else if (data[key].freeReasons === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -208,7 +208,7 @@ describe('Free Reasons', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.checkElementVisibility('.shadow-lg', '15.2.1', 'Upon clicking the "Save" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
                     }
@@ -221,7 +221,7 @@ describe('Free Reasons', () => {
 
                         cy.get('#freereason').should('have.value', data[key].freeReasons)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(2000)
 
@@ -243,7 +243,7 @@ describe('Free Reasons', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
         cy.fixture('master-freereasons-data.json').then((data) => {
 
@@ -273,7 +273,7 @@ describe('Free Reasons', () => {
 
                 cy.get('#freereason').type(specificFreeReasons.editFreeReasons)
 
-                cy.get('.border-blue-500').click()
+                cy.get('.border-green-500').click()
 
                 cy.wait(2000)
 
@@ -309,7 +309,7 @@ describe('Free Reasons', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].freeReasons + ' ?', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.wait(3000)
 
@@ -321,7 +321,7 @@ describe('Free Reasons', () => {
 
                     })
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(3000)
 
@@ -351,7 +351,7 @@ describe('Free Reasons', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
-                    cy.get('input[placeholder="Search Discount"]')
+                    cy.get('input[placeholder="Search Free Reason"]')
                       .clear().type(data[key].freeReasons)
 
                     cy.wait(2000)
@@ -367,19 +367,19 @@ describe('Free Reasons', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('input[placeholder="Search Discount"]').then($input => {
+                    cy.get('input[placeholder="Search Free Reason"]').then($input => {
                         if ($input.attr('placeholder') !== 'Search Free Reason') {
                           throw new Error('Placeholder text does not match the expected value. Should be "Search Free Reason".')
                         }
                     })
 
-                    cy.get('input[placeholder="Search Discount"]').clear()
+                    cy.get('input[placeholder="Search Free Reason"]').clear()
                       .type(data[key].freeReasons)
 
                     cy.wait(8000)
 
                     // cy.get('td > .MuiTypography-root').should('have.text', 'No records to display')
-                    cy.get('td > .MuiTypography-root').should('not.conatain', data[key].freeReasons)
+                    cy.get('td > .MuiTypography-root').should('not.contain', data[key].freeReasons)
 
                 }
             }

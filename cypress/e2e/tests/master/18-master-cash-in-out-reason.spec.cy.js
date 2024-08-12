@@ -67,7 +67,7 @@ describe('Cash In and Out Reason', () => {
 
     it('Check Cash In and Out Reason Page', () => {   
 
-        cy.navigateToModule('Master File', 'Cash In and Out Reasons')
+        cy.navigateToModule('Master File', 'Cash In/Out Reason')
 
         cy.url({timeout: 10000}).should('contain', '/cashioreason/?menfield=masterfile_cashioreason')
 
@@ -96,7 +96,7 @@ describe('Cash In and Out Reason', () => {
 
             cy.checkHeaderTitle('.px-8', '2.1.1', 'Upon clicking the "Add" button on pager UI', 'Add Cash In/Out Reason', assertionResults, failureMessages)
 
-            cy.checkLabelCaption('label[for="cashioreason"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Description *', assertionResults,failureMessages)
+            cy.checkLabelCaption('label[for="cashioreason"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Reason *', assertionResults,failureMessages)
 
             cy.checkLabelCaption('label[for="type"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Type *', assertionResults, failureMessages)
 
@@ -143,7 +143,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#cashioreason').clear().type(data[key].cashioreason)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(6000)
 
@@ -153,9 +153,9 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[key].type)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
-                    cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Reason * is required', assertionResults, failureMessages)
 
                     cy.wait(6000)
 
@@ -163,7 +163,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[4].type)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -180,19 +180,19 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').realClick()
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
                     cy.checkLabelCaption('.h-auto', '8.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-red-500').click()
+                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-gray-300').click()
 
                     cy.wait(3000)
 
                     cy.checkElementVisibility('.shadow-lg', '8.2.1', 'Upon Clicking the "No" button:', 'The "Add Cash In/Out Reason" modal window was not visible or active.', assertionResults, failureMessages)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
-                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-blue-500').click()
+                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-green-500').click()
 
                     cy.wait(3000)
 
@@ -213,7 +213,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[key].type)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -236,7 +236,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[key].type)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(6000)
                 }
@@ -251,7 +251,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[key].type)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(6000)
 
@@ -266,7 +266,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[key].type)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -290,13 +290,15 @@ describe('Cash In and Out Reason', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
+
+        // cy.contains('Yes').click()
 
         cy.fixture('master-cashioreason-data.json').then((data) => {
 
-            const specificcashioreason = data[1];
+            const specificcashioreason = data[8];
 
-                cy.get('.MuiSelect-select.MuiTablePagination-select').click();
+                cy.get('.MuiSelect-select.MuiTablePagination-select').click({force:true});
 
                 cy.get('ul[role="listbox"] li').contains('100').click();
 
@@ -309,11 +311,11 @@ describe('Cash In and Out Reason', () => {
 
                 cy.wait(6000)
 
-                cy.checkElementVisibility('.shadow-lg', '22.1', 'Upon Clicking the "Edit" button:', 'The "Edit Cash In and Out Reason" modal window was not visible or active.', assertionResults, failureMessages)
+                cy.checkElementVisibility('.shadow-lg', '22.1', 'Upon Clicking the "Edit" button:', 'The "Edit Cash In/Out Reason" modal window was not visible or active.', assertionResults, failureMessages)
 
-                cy.checkHeaderTitle('.px-8', '22.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Cash In and Out Reason', assertionResults, failureMessages)
+                cy.checkHeaderTitle('.px-8', '22.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit Cash In/Out Reason', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('label[for="cashioreason"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Description *', assertionResults,failureMessages)
+                cy.checkLabelCaption('label[for="cashioreason"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Reason *', assertionResults,failureMessages)
 
                 cy.checkLabelCaption('label[for="type"]', '2.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Type *', assertionResults, failureMessages)
 
@@ -327,12 +329,11 @@ describe('Cash In and Out Reason', () => {
 
                 cy.get('#type').select(specificcashioreason.edittype)
 
-                cy.get('.border-blue-500').click()
+                cy.get('.border-green-500').click()
 
                 cy.wait(2000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
-        
 
                 cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Cash In and Out Reason" modal window still visible', assertionResults, failureMessages)
 
@@ -368,7 +369,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Delete" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.wait(3000)
 
@@ -381,7 +382,7 @@ describe('Cash In and Out Reason', () => {
                         cy.get('[data-icon="delete"][aria-hidden="true"]').click()
                     })
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(2000)
 
@@ -408,8 +409,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.wait(2000);
 
-                    cy.get('[data-testid="SearchIcon"]')
-                      .click();
+                    cy.get('[data-testid="SearchIcon"]').click();
 
                     cy.get('#\\:re\\:')
                       .clear()
