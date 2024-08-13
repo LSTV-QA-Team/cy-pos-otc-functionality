@@ -62,26 +62,26 @@
   {
     "sel": "#postrmno",
     "assertion": "not.be.enabled",
-    "customErrorMsg": "\"Terminal No.\" textbox should be editable"
+    "customErrorMsg": "\"Terminal No.\" textbox should be not editable if already has transaction."
   },
   {
-    "sel": ".border-red-500",
+    "sel": ".border-gray-300",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Cancel\" button  should be clickable"
   },
   {
-    "sel": ".border-blue-500",
+    "sel": ".border-green-500",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Save\" button  should be clickable"
   },
   {
-    "sel": ".border-red-500",
+    "sel": ".border-gray-300",
     "assertion": "contain.text",
     "expectedText": "Cancel",
     "customErrorMsg": "Cancel button should contain text \"Cancel\" instead of \"Close\""
   },
   {
-    "sel": ".border-blue-500",
+    "sel": ".border-green-500",
     "assertion": "contain.text",
     "expectedText": "Update",
     "customErrorMsg": "Update button should contain text \"Update\" instead of \"Save\""

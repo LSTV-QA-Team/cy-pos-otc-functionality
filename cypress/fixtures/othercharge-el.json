@@ -1,12 +1,12 @@
 [
   {
-    "sel": "button.border-blue-500",
+    "sel": "button.border-green-500",
     "assertion": "contain.text",
     "expectedText": "Update",
     "customErrorMsg": "Update button should contain text \"Update\""
   },
   {
-    "sel": "button.border-red-500",
+    "sel": "button.border-gray-300",
     "assertion": "contain.text",
     "expectedText": "Cancel",
     "customErrorMsg": "Cancel should contain text \"Cancel\""
@@ -27,12 +27,12 @@
     "customErrorMsg": "Local Tax textbox should be enabled to allow user to input data."
   },
   {
-    "sel": "button.border-blue-500",
+    "sel": "button.border-green-500",
     "assertion": "be.enabled",
     "customErrorMsg": "\"Update\" button should be enabled and clickable"
   },
   {
-    "sel": "button.border-red-500",
+    "sel": "button.border-gray-300",
     "assertion": "be.enabled",
     "customErrorMsg": "\"Cancel\" button should be enabled and clickable"
   },

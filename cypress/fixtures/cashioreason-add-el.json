@@ -12,9 +12,14 @@
     "customErrorMsg": "Cancel should contain text \"Cancel\""
   },
   {
-    "sel": "#itmcladsc",
+    "sel": "#cashioreason",
     "assertion": "be.enabled",
-    "customErrorMsg": "Item Class Description should be enabled to allow user to input data."
+    "customErrorMsg": "Reason Description should be enabled to allow user to input data."
+  },
+  {
+    "sel": "#type",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Reason Type selector should be enabled to allow user to select data."
   },
   {
     "sel": "button.border-green-500",

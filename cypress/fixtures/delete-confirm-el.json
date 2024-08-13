@@ -1,14 +1,14 @@
 [
   {
-    "sel": ".border-blue-500",
-    "assertion": "contain.text",
-    "expectedText": "No",
-    "customErrorMsg": "Should have button \"No\" instead of \"Cancel\""
-  },
-  {
-    "sel": ".border-red-500",
+    "sel": ".bg-blue-500",
     "assertion": "contain.text",
     "expectedText": "Yes",
-    "customErrorMsg": "Should have button \"Yes\" instead of \"Confirm\""
+    "customErrorMsg": "Should contain text \"Yes\""
+  },
+  {
+    "sel": ".hover\\:bg-green-500",
+    "assertion": "contain.text",
+    "expectedText": "No",
+    "customErrorMsg": "Should contain text \"No\""
   }
 ]

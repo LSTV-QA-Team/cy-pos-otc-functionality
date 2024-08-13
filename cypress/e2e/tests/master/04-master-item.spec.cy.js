@@ -668,7 +668,7 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
-                    cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 100 characters." was not visible.', assertionResults, failureMessages)
 
                     cy.get('#itmtyp').select(data[key].itemType)
 
