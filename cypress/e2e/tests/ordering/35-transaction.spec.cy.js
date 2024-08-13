@@ -55,8 +55,8 @@ describe("Transaction 33", () => {
  
      cy.get('#freeitem > .flex > .me-1').click()
      cy.get('#textreason').click().type("Birthdayyyy")
-     cy.get('.border-green-500').click()
-     cy.get('.border-green-500').click()
+     cy.get('.border-blue-500').click()
+     cy.get('.border-blue-500').click()
  })
  
  })

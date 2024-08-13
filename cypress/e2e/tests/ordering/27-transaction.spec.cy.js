@@ -19,7 +19,7 @@ describe("Transaction 25", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("20%");
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get(".border-blue-500").click().wait(2000);
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -60,7 +60,7 @@ describe("Transaction 25", () => {
     cy.contains("Payment").click();
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("qweasrf").wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get(".border-blue-500").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -80,7 +80,7 @@ describe("Transaction 25", () => {
 
     cy.get(".px-8").should("have.text", "Refund Transaction").wait(1500);
     cy.get("#refundreason").select("Food Quality Issue").wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get(".border-blue-500").click().wait(2000);
 
     cy.get(".me-2").should("have.text", "REF-0000000000000003");
     cy.get(".justify-between > .group").click().wait(1500);

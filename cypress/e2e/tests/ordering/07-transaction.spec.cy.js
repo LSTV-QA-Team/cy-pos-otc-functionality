@@ -28,11 +28,11 @@ describe("Transaction 5", () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("PWD"); // SHOULD BE Disability
     cy.get("#orderitmid").click();
-    cy.get(".border-green-500").click();
+    cy.get(".border-blue-500").click();
 
     cy.get("#cardholder").click().type("Tessa");
     cy.get("#cardno").click().type("87964");
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -101,7 +101,7 @@ describe("Transaction 5", () => {
     
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Marlooonnn");
-    cy.get(".border-green-500").click();
+    cy.get(".border-blue-500").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",

@@ -20,7 +20,8 @@ describe("Transaction 14", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("10%");
     cy.get("#orderitmid").click().wait(2000);
-    cy.get(".border-green-500").click();
+    cy.get(".border-blue-500").click().wait(2000);
+
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",

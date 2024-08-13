@@ -20,11 +20,11 @@ describe("Transaction 27", () => {
 
     cy.get("#discde").select("PWD").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get(".border-blue-500").click().wait(2000);
 
     cy.get("#cardholder").click().type("Kwangya").wait(2000);
     cy.get("#cardno").click().type("2345").wait(2000);
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
       .should("have.text", "Discount : PWD")
@@ -66,7 +66,7 @@ describe("Transaction 27", () => {
     cy.contains("Payment").click();
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("aeNingning").wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get(".border-blue-500").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
@@ -88,7 +88,7 @@ describe("Transaction 27", () => {
 
     cy.get(".px-8").should("have.text", "Refund Transaction").wait(1500);
     cy.get("#refundreason").select("Food Quality Issue").wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get(".border-blue-500").click().wait(2000);
 
     cy.get(".me-2").should("have.text", "REF-0000000000000005");
     cy.get(".justify-between > .group").click().wait(1500);

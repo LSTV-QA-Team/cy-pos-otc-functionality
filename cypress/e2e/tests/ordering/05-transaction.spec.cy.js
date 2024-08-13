@@ -30,7 +30,7 @@ describe("Transaction 3", () => {
     cy.get(".px-8").should("have.text", "Add discount");
     cy.get("#discde").select("20%");
     cy.get("#orderitmid").click();
-    cy.get(".border-green-500").click();
+    cy.get(".border-blue-500").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -68,7 +68,7 @@ describe("Transaction 3", () => {
     cy.contains("Payment").click();
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Edith ulit");
-    cy.get(".border-green-500").click();
+    cy.get(".border-blue-500").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.wait(5000)
   });
