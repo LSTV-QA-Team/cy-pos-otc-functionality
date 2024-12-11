@@ -12,7 +12,12 @@
     "customErrorMsg": "Cancel button should contain text \"Cancel\" instead of \"update Data\""
   },
   {
-    "sel": "#freereason",
+    "sel": "#cashioreason",
+    "assertion": "be.enabled",
+    "customErrorMsg": "Should be enabled to allow user to edit data."
+  },
+  {
+    "sel": "#type",
     "assertion": "be.enabled",
     "customErrorMsg": "Should be enabled to allow user to edit data."
   },

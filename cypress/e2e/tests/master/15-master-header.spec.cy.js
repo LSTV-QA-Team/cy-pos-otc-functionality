@@ -106,7 +106,7 @@ describe('Receipt Header Set Up', () => {
                     // cy.checkInputMaxLength('#postrmno', 50, '34.1', 'Upon Encoding in "Terminal No. 4" Textbox:', assertionResults, failureMessages)
                           
                     
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -152,7 +152,7 @@ describe('Receipt Header Set Up', () => {
 
         // cy.get('#postrmno').clear()
 
-        cy.get('.border-blue-500').click()
+        cy.get('.border-green-500').click()
 
         cy.wait(2000)
 
@@ -192,9 +192,9 @@ describe('Receipt Header Set Up', () => {
 
         // cy.checkElementVisibility('.shadow-lg', '29.1', 'Upon Clicking the "Header Option" in Master File Menu', '"Receipt Header Set Up" modal window was not visible or active.', assertionResults, failureMessages)
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
-        cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-blue-500').click()
+        cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-green-500').click()
 
         cy.checkElementInvisibility('.shadow-lg', '30.1', 'Upon Clicking the "Cancel" button:', '"Receipt Header Set Up" modal window was still visible or active.', assertionResults, failureMessages)
 
@@ -289,7 +289,7 @@ describe('Receipt Header Set Up', () => {
                     //     .type(data[key].terminalNo)
                     
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Update" button:', 'Successfully updated.', assertionResults, failureMessages)
 

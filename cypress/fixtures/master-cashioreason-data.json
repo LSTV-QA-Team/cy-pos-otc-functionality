@@ -1,0 +1,102 @@
+[
+  {
+    "cashioreason": "Customer Payment",
+    "type": "CASH IN",
+    "onlySearchVal": true,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "Change Fund Addition",
+    "type": "CASH IN",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "Cash Deposits",
+    "type": "CASH IN",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "Refund",
+    "type": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "Petty Cash Usage",
+    "type": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "Cash Drops",
+    "type": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "Expense Payments",
+    "type": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "Customer Change",
+    "type": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "Employee Cash Advances",
+    "type": "CASH OUT",
+    "editcashioreason": "Losses or Theft",
+    "edittype": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "Employee Cash Loan",
+    "type": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": true,
+    "onlyDelete": true
+  },
+  {
+    "cashioreason": "null",
+    "type": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "% & ( ) / - .",
+    "type": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :",
+    "type": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  },
+  {
+    "cashioreason": "This is a very long string that exceeds the maximum allowed length.",
+    "type": "CASH OUT",
+    "onlySearchVal": false,
+    "onlySearchInval": false,
+    "onlyDelete": false
+  }
+]

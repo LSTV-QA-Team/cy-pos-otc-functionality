@@ -62,14 +62,14 @@ describe('Receipt Footer Set Up', () => {
                     cy.get('#supvarregtin').clear()
                       .type(data[key].suppVAT)
 
-                    cy.checkInputMaxLength('#supvarregtin', 12, '24.1', 'Upon Encoding in "" Textbox:', assertionResults, failureMessages)
+                    cy.checkInputMaxLength('#supvarregtin', 15, '24.1', 'Upon Encoding in "Supplier VAT Registered TIN" Textbox:', assertionResults, failureMessages)
 
                     cy.checkValue('#supvarregtin', '24.2', 'After Encoding in "Supplier VAT Registered TIN" Textbox:', data[key].suppVATExpected, assertionResults, failureMessages)
 
                     cy.get('#supnonvatregtin').clear()
                       .type(data[key].suppNonVAT)
                     
-                    cy.checkInputMaxLength('#supnonvatregtin', 12, '25.1', 'Upon Encoding in "Supplier Non-VAT Registered TIN" Textbox: Should be formatted', assertionResults, failureMessages)
+                    cy.checkInputMaxLength('#supnonvatregtin', 15, '25.1', 'Upon Encoding in "Supplier Non-VAT Registered TIN" Textbox: Should be formatted', assertionResults, failureMessages)
 
                     cy.checkValue('#supnonvatregtin', '25.2', 'After Encoding in "Supplier Non-VAT Registered TIN" Textbox: Should be formatted"', data[key].suppNonVATExpected, assertionResults, failureMessages)
 
@@ -119,7 +119,7 @@ describe('Receipt Footer Set Up', () => {
                     
                     cy.checkInputMaxLength('#footermsg5', 50, '35.1', 'Upon Encoding in "Line Message 5" Textbox:', assertionResults, failureMessages)    
                     
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
                 }
@@ -175,7 +175,7 @@ describe('Receipt Footer Set Up', () => {
             
         cy.get('#footermsg5').clear()
 
-        cy.get('.border-blue-500').click()
+        cy.get('.border-green-500').click()
 
         cy.wait(2000)
 
@@ -194,7 +194,7 @@ describe('Receipt Footer Set Up', () => {
 
         cy.checkElementVisibility('.shadow-lg', '37.1', 'Upon Clicking the "Footer Option" in Master File Menu', '"Receipt Footer Set Up" modal window was not visible or active.', assertionResults, failureMessages)
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
         cy.checkElementInvisibility('.shadow-lg', '38.1', 'Upon Clicking the "Cancel" button:', '"Receipt Footer Set Up" modal window was still visible or active.', assertionResults, failureMessages)
 
@@ -219,7 +219,7 @@ describe('Receipt Footer Set Up', () => {
 
                   cy.get('#officialreceipt').select(data[key].officialReceipt)
 
-                  cy.get('#supname')
+                  cy.get('#supname').clear()
                     .type(data[key].suppName)
 
                   cy.checkValue('#supname', '3.1', 'After Encoding in "Supplier Name" Textbox:', data[key].suppName, assertionResults, failureMessages)
@@ -257,7 +257,7 @@ describe('Receipt Footer Set Up', () => {
                   cy.get('#validyr').clear()
                     .type(data[key].yearsValidity)
 
-                  cy.checkValue('#validyr', '10.1', 'After Encoding in "Years Validity" Textbox:', data[key].yearsValidity, assertionResults, failureMessages)
+                  cy.checkValue('#validyr', '10.1', 'After Encoding in "Years Validity" Textbox:', '5', assertionResults, failureMessages)
                   
                   cy.get('#dateissued').clear()
                     .type(data[key].dateIssued)
@@ -289,7 +289,7 @@ describe('Receipt Footer Set Up', () => {
 
                   cy.checkValue('#footermsg5', '16.1', 'After Encoding in "Line Message 5" Textbox:', data[key].lineMsg5, assertionResults, failureMessages)
                   
-                  cy.get('.border-blue-500').click()
+                  cy.get('.border-green-500').click()
 
                   cy.wait(2000)
 

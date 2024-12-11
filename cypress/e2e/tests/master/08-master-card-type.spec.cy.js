@@ -120,13 +120,13 @@ describe('Card Type', () => {
                     
                     cy.get('#cardtype').clear()
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.checkLabelCaption('.text-sm', '12.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
                     cy.get('#cardtype').clear().type(data[0].cardType)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -141,19 +141,19 @@ describe('Card Type', () => {
 
                     cy.get('#cardtype').clear().type(data[key].cardType)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
                     cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-red-500"]', 'No').click()
+                    cy.contains('button[class*="border-gray-300"]', 'No').click()
 
                     cy.wait(3000)
 
                     cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Card Type" modal window was not visible or active.', assertionResults, failureMessages)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
 
                     cy.wait(3000)
 
@@ -172,7 +172,7 @@ describe('Card Type', () => {
                       .clear()
                       .type(data[key].cardType)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -191,7 +191,7 @@ describe('Card Type', () => {
 
                     cy.checkInputMaxLength('#cardtype', 50, '17.1', 'Upon Encoding in "Card Type" Textbox:', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
                 }
 
                 else if (data[key].cardType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -202,7 +202,7 @@ describe('Card Type', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -219,7 +219,7 @@ describe('Card Type', () => {
 
                     cy.get('#cardtype').should('have.value', data[key].cardType)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -245,7 +245,7 @@ describe('Card Type', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
         
         cy.fixture('master-cardtype-data.json').then((data) => {
 
@@ -274,7 +274,7 @@ describe('Card Type', () => {
 
                 cy.get('#cardtype').clear().type(specificCardType.editCardType)
 
-                cy.get('.border-blue-500').click()
+                cy.get('.border-green-500').click()
 
                 cy.wait(2000)
 
@@ -310,7 +310,7 @@ describe('Card Type', () => {
                     
                     cy.checkLabelCaption('.h-\\[500px\\] > h1', '25.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].cardType + ' ?', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.wait(3000)
 
@@ -322,7 +322,7 @@ describe('Card Type', () => {
 
                     })
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(4000)
 
@@ -349,8 +349,7 @@ describe('Card Type', () => {
 
                     cy.wait(2000);
 
-                    cy.get('[data-testid="SearchIcon"]')
-                      .click();
+                    cy.get('[data-testid="SearchIcon"]').click()
 
                     cy.get('#\\:rb\\:')
                       .clear()

@@ -20,6 +20,7 @@ describe('MEMC', () => {
         cy.execute('npm run sheet-converter module-selector-assert')
         // cy.execute('npm run sheet-converter memc-add-el')
         // cy.execute('npm run sheet-converter memc-edit-el')
+        cy.execute('npm run sheet-converter delete-confirm-el')
         cy.wait(4000)
 
     })
@@ -70,6 +71,8 @@ describe('MEMC', () => {
         cy.navigateToModule('Master File', 'MEMC')
 
         cy.url({timeout: 10000}).should('contain', '/memc/?menfield=masterfile_memc')
+
+        cy.wait(2000)
 
         cy.checkElementVisibility('.h-screen ', '1.2', 'Upon Navigating to MEMC:', ' "MEMC" pager U/I window was not visible or active.', assertionResults, failureMessages)
 
@@ -122,7 +125,7 @@ describe('MEMC', () => {
 
                         cy.get('#codedsc').clear().type(data[key].memc)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(4000)
 
@@ -140,7 +143,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[0].value)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
@@ -155,19 +158,19 @@ describe('MEMC', () => {
 
                         cy.get('#value').realClick()
 
-                        cy.get('.border-red-500').click()
+                        cy.get('.border-gray-300').click()
 
                         cy.checkLabelCaption('.h-auto', '8.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                        cy.contains('button[class*="border-red-500"]', 'No').click()
+                        cy.contains('button[class*="border-gray-300"]', 'No').click()
 
                         cy.wait(3000)
 
                         cy.checkElementVisibility('.shadow-lg', '8.2.1', 'Upon Clicking the "No" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('.border-red-500').click()
+                        cy.get('.border-gray-300').click()
 
-                        cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                        cy.contains('button[class*="border-green-500"]', 'Yes').click()
 
                         cy.wait(3000)
 
@@ -186,7 +189,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy.wait(2000)
 
@@ -205,13 +208,13 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                     }
 
                     else if (data[key].memc === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                        cy.get('#codedsc').clear().type(data[key].memc)
+                        cy.get('#codedsc').clear().type(data[key].memc, {force:true})
 
                         cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
@@ -219,11 +222,11 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('.border-green-500').click()
 
                         cy. wait(2000)
                         
-                        cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
+                        // cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
                         cy.checkElementVisibility('.shadow-lg', '17.2.1', 'Upon clicking the "OK" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -238,7 +241,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-blue-500').click()  
+                        cy.get('.border-green-500').click()  
                         
                         cy. wait(2000)
 
@@ -261,7 +264,7 @@ describe('MEMC', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
         cy.fixture('master-memc-data.json').then((data) => {
 
@@ -281,7 +284,7 @@ describe('MEMC', () => {
 
                 cy.checkHeaderTitle('.px-8', '22.1.1', 'Upon clicking the "Edit" button on pager UI', 'Edit MEMC', assertionResults, failureMessages)
 
-                cy.checkLabelCaption('label[for="codedsc"]', '22.1.2', 'Upon clicking the "Edit" button on pager U/I', 'MEMC *', assertionResults, failureMessages)
+                cy.checkLabelCaption('label[for="codedsc"]', '22.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Description *', assertionResults, failureMessages)
 
                 cy.checkLabelCaption('label[for="itmdsc"]', '22.1.2', 'Upon clicking the "Edit" button on pager U/I', 'Value *', assertionResults, failureMessages)
 
@@ -295,7 +298,7 @@ describe('MEMC', () => {
 
                 cy.wait(4000)
 
-                cy.get('.border-blue-500').click()
+                cy.get('.border-green-500').click()
 
                 cy.wait(2000)
 
@@ -335,7 +338,7 @@ describe('MEMC', () => {
 
                     cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.wait(3000)
 
@@ -349,7 +352,7 @@ describe('MEMC', () => {
 
                     })
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(4000)
 

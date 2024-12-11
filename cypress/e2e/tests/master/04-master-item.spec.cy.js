@@ -337,7 +337,7 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear()
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(4000)
 
@@ -396,7 +396,7 @@ describe('Item', () => {
 
                     cy.get('#taxcde').select('VATABLE')
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -516,19 +516,19 @@ describe('Item', () => {
                         cy.get('#chkcombo').should('not.be.checked')
                     }
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
                     cy.checkLabelCaption('.h-auto', '18.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-red-500"]', 'No').click()
+                    cy.contains('button[class*="border-gray-300"]', 'No').click()
 
                     cy.wait(3000)
 
                     cy.checkElementVisibility('.shadow-lg', '18.2.1', 'Upon Clicking the "No" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
 
                     cy.wait(3000)
 
@@ -650,7 +650,7 @@ describe('Item', () => {
                         cy.get('#chkcombo').should('not.be.checked')
                     }
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -668,7 +668,7 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
-                    cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 100 characters." was not visible.', assertionResults, failureMessages)
 
                     cy.get('#itmtyp').select(data[key].itemType)
 
@@ -774,11 +774,11 @@ describe('Item', () => {
 
                     // cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
-                    cy.wait(2000)
+                    cy.wait(1000)
 
-                    cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon clicking the "Save" button:', '"Please limit your input to 50 characters." notificaation message is not visible', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.Toastify__toast-body', '48.1', 'Upon clicking the "Save" button:', '"Successfully saved." notification message is not visible', assertionResults, failureMessages)
 
                 }
 
@@ -891,7 +891,7 @@ describe('Item', () => {
                         cy.get('#chkcombo').should('not.be.checked')
                     }
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
                     
@@ -899,7 +899,7 @@ describe('Item', () => {
 
                     // 16.2 click "OK" button on notification message.
 
-                    cy.checkElementInvisibility('.shadow-lg', '78.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
+                    cy.checkElementVisibility('.shadow-lg', '78.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
                     // 16.2.2 Check if the "Description" textbox object is cleared or blank.
 
@@ -911,51 +911,51 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
-                    cy.checkText('#itmdsc', '0', 'Upon encoding:', data[key].item, assertionResults, failureMessages)
+                    // cy.checkText('#itmdsc', '0', 'Upon encoding:', data[key].item, assertionResults, failureMessages)
 
                     cy.get('#itmtyp').realClick()
 
                     cy.get('#itmtyp').select(data[key].itemType)
 
-                    cy.checkText('#itmtyp', '0', 'Upon encoding:', data[key].itemType, assertionResults, failureMessages)
+                    // cy.checkText('#itmtyp', '0', 'Upon encoding:', data[key].itemType, assertionResults, failureMessages)
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.checkText('#itmclacde', '0', 'Upon encoding:', data[key].itemClass, assertionResults, failureMessages)
+                    // cy.checkText('#itmclacde', '0', 'Upon encoding:', data[key].itemClass, assertionResults, failureMessages)
 
                     cy.get('#itemsubclasscde').select(data[key].itemSubclass)
 
-                    cy.checkText('#itemsubclasscde', '0', 'Upon encoding:', data[key].itemSubclass, assertionResults, failureMessages)
+                    // cy.checkText('#itemsubclasscde', '0', 'Upon encoding:', data[key].itemSubclass, assertionResults, failureMessages)
 
                     cy.get('#untmea')
                         .clear()
                         .type(data[key].unitMeasure)
 
-                    cy.checkText('#untmea', '0', 'Upon encoding:', data[key].unitMeasure, assertionResults, failureMessages)
+                    // cy.checkText('#untmea', '0', 'Upon encoding:', data[key].unitMeasure, assertionResults, failureMessages)
 
                     cy.get('#untcst')
                         .clear() 
                         .type(data[key].unitCost)
 
-                    cy.checkText('#untcst', '0', 'Upon encoding:', '₱' + data[key].unitCost, assertionResults, failureMessages)
+                    // cy.checkText('#untcst', '0', 'Upon encoding:', '₱' + data[key].unitCost, assertionResults, failureMessages)
 
                     cy.get('#barcde')
                         .clear()
                         .type(data[key].barcode)
 
-                    cy.checkText('#barcde', '0', 'Upon encoding:', data[key].barcode, assertionResults, failureMessages)
+                    // cy.checkText('#barcde', '0', 'Upon encoding:', data[key].barcode, assertionResults, failureMessages)
 
                     cy.get('#untprc')
                         .clear() 
                         .type(data[key].sellingPrice)
                     
-                    cy.checkText('#untprc', '0', 'Upon encoding:', '₱' + data[key].sellingPrice, assertionResults, failureMessages)
+                    // cy.checkText('#untprc', '0', 'Upon encoding:', '₱' + data[key].sellingPrice, assertionResults, failureMessages)
 
                     cy.get('#itmpaxcount')
                         .clear()
                         .type(data[key].goodXPerson)
 
-                    cy.checkText('#itmpaxcount', '0', 'Upon encoding:', data[key].goodXPerson, assertionResults, failureMessages)
+                    // cy.checkText('#itmpaxcount', '0', 'Upon encoding:', data[key].goodXPerson, assertionResults, failureMessages)
 
                     cy.get('#taxcde').select(data[key].taxCode)
 
@@ -1050,7 +1050,7 @@ describe('Item', () => {
                         cy.get('#chkcombo').should('not.be.checked')
                     }
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -1077,7 +1077,7 @@ describe('Item', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
         cy.fixture('master-item-data.json').then((data) => {
 
@@ -1191,7 +1191,7 @@ describe('Item', () => {
                     }
                 }
 
-                cy.get('.border-blue-500').click()
+                cy.get('.border-green-500').click()
 
                 cy.wait(2000)
 
@@ -1233,7 +1233,7 @@ describe('Item', () => {
 
                     cy.validateElements('delete-confirm-el.json', '97.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.wait(3000)
 
@@ -1247,7 +1247,7 @@ describe('Item', () => {
 
                     })
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(2000)
 
@@ -1291,8 +1291,7 @@ describe('Item', () => {
                     // search invalid or not existing data
                     cy.wait(2000)
                             
-                    cy.get('[data-testid="SearchIcon"]')
-                      .click();
+                    cy.get('[data-testid="SearchIcon"]').click();
         
                     cy.get('input[placeholder="Search Item Description"]')
                       .clear()

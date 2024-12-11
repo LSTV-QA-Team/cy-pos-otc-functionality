@@ -150,7 +150,7 @@ describe('Special Request', () => {
 
                     cy.get('#modcde').clear().type(data[key].specialReq)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.checkLabelCaption('.text-sm', '11.2', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
@@ -162,7 +162,7 @@ describe('Special Request', () => {
 
                     cy.wait(2000)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -176,7 +176,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[0].itemSubclass).click()
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -193,21 +193,21 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
                     cy.wait(2000)
 
                     cy.checkLabelCaption('.h-auto', '6.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
-                    cy.contains('button[class*="border-red-500"]', 'No').click()
+                    cy.contains('button[class*="border-gray-300"]', 'No').click()
 
                     cy.wait(3000)
 
                     cy.checkElementVisibility('.shadow-lg', '6.2.1', 'Upon Clicking the "No" button:', 'The "Add Special Request" modal window was not visible or active.', assertionResults, failureMessages)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-blue-500"]', 'Yes').click()
+                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
 
                     cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Special Request" modal window was visible or active.', assertionResults, failureMessages)
 
@@ -228,7 +228,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -253,7 +253,7 @@ describe('Special Request', () => {
                     
                     cy.wait(4000)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
                 }
 
                 else if (data[key].specialReq === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -268,7 +268,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(4000)
 
@@ -285,7 +285,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.border-green-500').click()
 
                     cy.wait(2000)
 
@@ -309,7 +309,7 @@ describe('Special Request', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-red-500').click()
+        cy.get('.border-gray-300').click()
 
         cy.fixture('master-specialreq-data.json').then((data) => {
 
@@ -351,9 +351,9 @@ describe('Special Request', () => {
 
                 cy.get('.select__menu-list--is-multi').contains('.select__option', specificSpecialReq.editItemSubclass).click()
 
-                cy.get('.border-blue-500').click()
+                cy.get('.border-green-500').click()
 
-                cy.wait(4000)
+                cy.wait(2000)
 
                 cy.checkLabelCaption('.Toastify__toast-body', '25.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
@@ -395,7 +395,7 @@ describe('Special Request', () => {
 
                     cy.validateElements('delete-confirm-el.json', '26.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
-                    cy.get('.border-blue-500').click()
+                    cy.get('.hover\\:bg-green-500').click()
 
                     cy.checkElementInvisibility('.shadow-lg', '26.4.1', 'Upon Clicking the "Cancel" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
 
@@ -409,7 +409,7 @@ describe('Special Request', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.border-red-500').click()
+                    cy.get('.bg-blue-500').click()
 
                     cy.wait(2000)
 

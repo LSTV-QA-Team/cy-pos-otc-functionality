@@ -48,7 +48,7 @@ describe('System Parameters', () => {
             .type('09:00')
             .should('have.value', '09:00')
 
-        cy.get('.border-blue-500').click()
+        cy.get('.border-green-500').click()
 
         cy.checkLabelCaption('.Toastify__toast-body', '3.1', 'Upon Clicking the "Update" button:', 'Successfully updated.', assertionResults, failureMessages) 
     })
