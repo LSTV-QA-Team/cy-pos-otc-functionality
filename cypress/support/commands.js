@@ -49,7 +49,13 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
 
     // cy.visit(Cypress.config('baseUrl'), 5000)
     cy.visit('/login')
-    cy.get('span[role="img"][aria-label="close"][tabindex="-1"].anticon.anticon-close').click()
+    cy.get('.me-2').should('have.text' , "Operation Setup")
+    cy.wait(1000)
+    cy.get('#timeend').click().type("23:00:00")
+    cy.wait(1000)
+    cy.get('.border-green-500').click()
+    cy.wait(4000)
+    cy.contains('Update').realMouseDown().realClick()
     cy.wait(4000)
     cy.get('#usrcde').should('be.enabled')
     cy.get('#usrcde').clear()
@@ -57,8 +63,8 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.get('#usrpwd').should('be.enabled')
     cy.get('#usrpwd').clear()
     cy.get('#usrpwd').realType(userPassword)
-    cy.get('.sc-guDLey').should('be.enabled')
-    cy.get('.mt-8 > .sc-guDLey').click()
+    cy.get('.mt-8 > .sc-gtLWhw').should('be.enabled')
+    cy.get('.mt-8 > .sc-gtLWhw').click()
     cy.wait(4000)
     cy.url({timeout: 10000}).should('contain', '/home')
     cy.get('.text-\\[2rem\\]').should('have.text', 'Welcome, lstv!')
@@ -67,6 +73,7 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
   })
     
 })
+
 
 
 Cypress.Commands.add('navigateToModule', (menuSelector, submenuSelector) => {
