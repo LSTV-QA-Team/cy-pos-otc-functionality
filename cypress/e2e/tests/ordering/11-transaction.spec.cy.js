@@ -13,11 +13,10 @@ describe("Transaction 9", () => {
 
   it("1 Pax with MEMC Senior Discount and Service Charge", () => {
     cy.wait(2000);
-
-    cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("Takeout").wait(2000);
-    cy.get("#warcde").select("Jollibee 2").wait(2000);
-    cy.contains("Proceed").click();
+    cy.get('.sc-dntaoT').click().wait(2000)
+    cy.get('#postypcde').select("Takeout")
+    cy.get('#warcde').select("Jollibee 2")
+    cy.get('.border-green-500').click()
 
     cy.contains("Food").click().wait(1000);
     cy.contains("Family Super Meals").click().wait(1000);
@@ -38,7 +37,7 @@ describe("Transaction 9", () => {
     cy.get("#cardno").click().type("3423456");
 
     cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
-    cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
+    cy.get(":nth-child(3) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : Senior"
     );
@@ -106,6 +105,7 @@ describe("Transaction 9", () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.get('.ant-modal-close').click()
     cy.wait(5000)
   });
 

@@ -74,9 +74,6 @@ describe("Transaction 22", () => {
  
     cy.wait(2000);
 
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
 
     cy.contains("Void Transaction").click();
     cy.get(".me-2").should("have.text", "Void Transaction");
@@ -86,10 +83,11 @@ describe("Transaction 22", () => {
     cy.get("#voidreason").select("Customer Cancelled Order");
     cy.get(".border-green-500").click();
 
-    // cy.get(".Toastify__toast-body > :nth-child(2)").should(
-    //   "have.text",
-    //   "Transaction Void Successfull"
-    // );
+     cy.get(".Toastify__toast-body > :nth-child(2)").should(
+      "have.text",
+      "Transaction Void Successfull"
+     );
+     cy.get('.ant-modal-close').click()
     cy.wait(5000)
   });
 });

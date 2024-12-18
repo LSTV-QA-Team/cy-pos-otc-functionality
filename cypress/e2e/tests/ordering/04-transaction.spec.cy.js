@@ -14,15 +14,10 @@ describe("Transaction 2", () => {
 
   it("1 Pax with 10% discount and Service Charge", () => {
     cy.wait(2000);
-    // cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
-    cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(2000);
     cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
     cy.contains("Food").click().wait(2000);
-    cy.contains("Chicken").click().wait(2000);
+    cy.contains(/^Chicken$/).click().wait(2000)
     cy.contains("1-pc Chickenjoy w/ Fries Meal").click().wait(2000);
     cy.contains("Chicken Joy Perfect Pairs").click().wait(2000);
     cy.contains("1-pc Chickenjoy w/ Jolly Spaghetti").click().wait(2000);
@@ -62,7 +57,6 @@ describe("Transaction 2", () => {
 
 })
 
-
     cy.get(":nth-child(13) > .bg-green-100").click();
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Debong");
@@ -72,6 +66,7 @@ describe("Transaction 2", () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.get('.ant-modal-close').click()
 
     cy.wait(5000)
   });

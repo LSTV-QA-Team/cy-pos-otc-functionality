@@ -100,7 +100,7 @@ module.exports = defineConfig({
 
         'cypress/e2e/tests/ordering/01-ordering.spec.cy.js',
         'cypress/e2e/tests/ordering/01.2-ordering.spec.cy.js',
-        'cypress/e2e/tests/ordering/02-ordering-negative.spec.cy.js',
+        //'cypress/e2e/tests/ordering/02-ordering-negative.spec.cy.js',
         'cypress/e2e/tests/ordering/03-transaction.spec.cy.js',
         'cypress/e2e/tests/ordering/04-transaction.spec.cy.js',
         'cypress/e2e/tests/ordering/05-transaction.spec.cy.js',

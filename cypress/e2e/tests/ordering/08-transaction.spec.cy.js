@@ -13,16 +13,12 @@ describe("Transaction 6", () => {
 
   it("1 Pax with Athlete Discount and Service Charge", () => {
     cy.wait(2000);
-    cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
 
     cy.contains("Food").click().wait(1000);
     cy.contains("Hotdog").click().wait(1000);
     cy.contains("Regular Jolly Hotdog").click().wait(1000);
     cy.contains("Yumburger").click().wait(1000);
-    cy.get(':nth-child(2) > .sc-csKJxZ > .sc-eTNRI').click().wait(1000);
+    cy.contains('Cheesy Yumburger').click().wait(1000);
 
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Athlete");
@@ -106,6 +102,7 @@ describe("Transaction 6", () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.get('.ant-modal-close').click()
     cy.wait(5000)
   });
 

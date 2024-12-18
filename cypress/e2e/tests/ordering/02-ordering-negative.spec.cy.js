@@ -423,7 +423,7 @@ describe("Ordering ", () => {
    cy.get('.Toastify__toast-body').click().wait(1000)
 
    //PAYMENT TRANASCTION
-   cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
+   cy.get(".px-8").should("have.text", "Add new transaction").wait(2000);
    cy.get("#postypcde").select("Dine-In");
    cy.get("#warcde").select("Jollibee 1");
    cy.contains("Proceed").click();
@@ -441,7 +441,7 @@ describe("Ordering ", () => {
   // PAYMENT (Negative Testing)
   it.only("Payment ", () => {
    cy.wait(1000)
-   cy.get(':nth-child(13) > .bg-green-100').click().wait(1000)
+   cy.get(':nth-child(12) > .bg-green-100').click().wait(1000)
    cy.get('.px-8').should('be.visible')
    cy.get('.px-8').should('have.text', 'Payment')
 
@@ -578,7 +578,7 @@ describe("Ordering ", () => {
   //PAYMENT TRANASCTION FOR VOID AND REFUND
   it("Payment transaction for void and refund", () => {
     cy.wait(2000)
-    cy.get(':nth-child(13) > .bg-green-100').click().wait(2000);
+    cy.get(':nth-child(12) > .bg-green-100').click().wait(2000);
     cy.get('.px-8').should('be.visible');
     cy.get('.px-8').should('have.text', 'Payment');
     cy.contains('CASH').click().wait(1000);

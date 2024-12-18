@@ -25,6 +25,7 @@ describe("Transaction 1", () => {
     cy.task("queryDb","TRUNCATE TABLE orderdiscountfile")
     cy.task("queryDb","TRUNCATE TABLE orderitemmodifierfile")
     cy.task("queryDb","TRUNCATE TABLE zreadingfile")
+    cy.task("queryDb","TRUNCATE TABLE posorderingfile")
 
     cy.task('queryDb', `
       UPDATE syspar 
@@ -52,7 +53,7 @@ describe("Transaction 1", () => {
 
   it("Refresh Database", () => { 
 
-    cy.get(':nth-child(1) > .sc-beySPh').click()
+    cy.get(':nth-child(1) > .sc-blHHSb').click()
     cy.get('.bg-white > .flex').click()
     cy.wait(5000)
 
@@ -60,7 +61,7 @@ describe("Transaction 1", () => {
 
   it("Cash In" , () => {
 
-    cy.get(':nth-child(2) > .sc-beySPh').click()
+    cy.get(':nth-child(2) > .sc-blHHSb').click().wait(2000)
     cy.contains("Cash Fund").should('be.enabled').click()
       cy.get('.my-4 > :nth-child(2) > :nth-child(2) > .font-montserrat').click().wait(500)
       for (let i = 0; i < 3; i++){
@@ -73,14 +74,14 @@ describe("Transaction 1", () => {
   })
   
     it("1 Pax with Regular Transaction and Service Charge", () => {
-      cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
-      cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
+      cy.get(':nth-child(3) > .sc-blHHSb').click().wait(2000).wait(2000);
+      cy.get(".px-8").should("have.text", "Add new transaction").wait(2000);
       cy.get("#postypcde").select("Dine-In").wait(2000);
       cy.get("#warcde").select("Jollibee 1").wait(2000);
       cy.contains("Proceed").click();
       cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
       cy.contains("Food").click().wait(2000);
-      cy.contains("Chicken").click().wait(2000);
+      cy.contains(/^Chicken$/).click().wait(2000)
       cy.contains(/^1-pc Chickenjoy$/).click().wait(2000);
 
       cy.fixture('ordering-scenarios.json').then((data) => {
@@ -110,6 +111,7 @@ describe("Transaction 1", () => {
         "have.text",
         "Transaction Complete."
       );
+      cy.get('.ant-modal-close').click()
 
       cy.wait(5000)
     });

@@ -69,11 +69,10 @@ describe("Transaction 15", () => {
       "have.text",
       "Transaction Complete."
     );
-
+    cy.get('.ant-modal-close').click()
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
+    
+
 
     cy.contains("Void Transaction").click();
     cy.get(".me-2").should("have.text", "Void Transaction");
@@ -88,6 +87,7 @@ describe("Transaction 15", () => {
       "Transaction Void Successful"
     );
     cy.wait(5000)
+    cy.get('.ant-modal-close').click()
   });
 
 })

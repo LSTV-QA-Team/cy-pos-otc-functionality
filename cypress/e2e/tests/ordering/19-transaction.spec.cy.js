@@ -69,9 +69,7 @@ describe("Transaction 17", () => {
     cy.get(".border-green-500").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
+    cy.get('.ant-modal-close').click()
 
     cy.contains("Void Transaction").click().wait(2000);
     cy.get(".me-2").should("have.text", "Void Transaction").wait(2000);
@@ -86,6 +84,7 @@ describe("Transaction 17", () => {
       "Transaction Void Successful"
     );
     cy.wait(5000)
+    cy.get('.ant-modal-close').click()
   });
 
 })

@@ -12,14 +12,10 @@ describe("Transaction 13", () => {
   });
 
   it("1 Pax with Regular Transaction", () => {
-    cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
-    cy.url({ timeout: 10000 }).should("contain", "/pages/ordering").wait(2000);
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(2000);
     
     cy.contains("Food").click();
-    cy.contains("Chicken").click();
+    cy.contains(/^Chicken$/).click().wait(2000)
     cy.contains("1-pc Chickenjoy w/ Palabok Meal").click();
     cy.contains("1-pc Chickenjoy w/ Burger Steak").click();
 
@@ -67,11 +63,8 @@ describe("Transaction 13", () => {
       "Transaction Complete."
     );
 
+    cy.get('.ant-modal-close').click()
     cy.wait(2000);
-    cy.get(".px-8").should("have.text", "Select Pricelist");
-    cy.get("#postypcde").select("Dine-In");
-    cy.get("#warcde").select("Jollibee 1");
-    cy.contains("Proceed").click();
 
     cy.contains("Void Transaction").click().wait(1500);
     cy.get(".px-8").should("have.text", "Void Transaction").wait(1500);
@@ -83,6 +76,7 @@ describe("Transaction 13", () => {
       "have.text",
       "Transaction Void Successful"
     );
+    cy.get('.ant-modal-close').click()
     cy.wait(5000)
   });
 

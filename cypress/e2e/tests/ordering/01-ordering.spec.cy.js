@@ -28,6 +28,7 @@ describe("Ordering ", () => {
     cy.task("queryDb","TRUNCATE TABLE orderdiscountfile")
     cy.task("queryDb","TRUNCATE TABLE orderitemmodifierfile")
     cy.task("queryDb","TRUNCATE TABLE zreadingfile")
+    cy.task("queryDb","TRUNCATE TABLE posorderingfile")
 
 
     cy.task('queryDb', `
@@ -280,7 +281,7 @@ describe("Ordering ", () => {
     cy.contains(/^Chicken$/).click().wait(2000)
     cy.contains(/^1-pc Chickenjoy$/).click().wait(2000)
 
-    cy.get(':nth-child(12) > .bg-green-100').click()
+    cy.get(':nth-child(13) > .bg-green-100').click()
     cy.get('.px-8').should("have.text", "Payment")
     cy.contains("CASH").click()
     cy.get('.shadow-lg > .px-8 > .flex > h1').should("have.text", "PaymentCASH Payment")
@@ -289,6 +290,21 @@ describe("Ordering ", () => {
     cy.contains("Transaction Complete.").should("have.text" , "Transaction Complete.")
     cy.get('.ant-modal-close').click()
 
-    
   })
+
+  it("Other Transaction - HOLD" , () => {
+    cy.wait(6000) 
+  
+    cy.contains("Food").click().wait(2000)
+    cy.contains(/^Chicken$/).click().wait(2000)
+    cy.contains(/^1-pc Chickenjoy$/).click().wait(2000)
+  
+    cy.get('.mb-5 > .grid').scrollTo('right')
+    cy.contains('Other Transaction').click()
+  
+    cy.get('.px-8').should("have.text" , "Other Transaction")
+    cy.contains("Hold Transaction").click()
+   })
+
+
 })
