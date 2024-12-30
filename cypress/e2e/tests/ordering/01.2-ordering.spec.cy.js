@@ -12,13 +12,14 @@ describe("Ordering1.2", () => {
     cy.login("lstv", "lstventures")
 
   })
-  it("Select Pricelist Modal ", () => {
+/*   it("Select Pricelist Modal ", () => {
     cy.wait(6000)
     cy.get(':nth-child(3) > .sc-blHHSb').click().wait(2000)
-  })
+  }) */
 
   it("Reprint Transaction", () => {
-
+    
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(2000);
     cy.get(":nth-child(10) > .bg-green-100").click()
     cy.get(".px-8").should("have.text", "Reprint Transaction")
     cy.get('.mx-2 > .py-3 > .ant-picker').click().type("2024-05-01")

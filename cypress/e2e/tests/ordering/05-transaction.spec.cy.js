@@ -14,7 +14,7 @@ describe("Transaction 3", () => {
 
   it("1 Pax with 20% discount and Service Charge", () => {
     cy.wait(2000);
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(2000);
     cy.contains("Food").click().wait(1000);
     cy.contains("Breakfast").click().wait(1000);
     cy.contains("BF Hotdog").click().wait(1000);

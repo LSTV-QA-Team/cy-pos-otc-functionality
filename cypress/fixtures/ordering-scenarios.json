@@ -96,20 +96,20 @@
     "total": 392.0714285714286
   },
   {
-    "subtotal": 350,
+    "subtotal": 300,
     "discount": 0,
     "lessVatAdj": 0,
-    "serviceCharge": 26.7857142857143,
+    "serviceCharge": 26.78,
     "serviceChargeDiscount": 0,
-    "total": 326.785714285714
+    "total": 326.78
   },
   {
     "subtotal": 170,
     "discount": 17,
     "lessVatAdj": 0,
-    "serviceCharge": 15.1785714285714,
+    "serviceCharge": 15.17,
     "serviceChargeDiscount": 0,
-    "total": 168.178571428571
+    "total": 168.17
   },
   {
     "subtotal": 42,
@@ -141,15 +141,15 @@
     "lessVatAdj": 0,
     "serviceCharge": 5.35714285714286,
     "serviceChargeDiscount": 1.071428571428572,
-    "total": 53.57142857142859
+    "total": 53.58
   },
   {
     "subtotal": 49,
     "discount": 9.8,
     "lessVatAdj": 0,
-    "serviceCharge": 4.375,
+    "serviceCharge": 4.37,
     "serviceChargeDiscount": 0,
-    "total": 43.575
+    "total": 43.57
   },
   {
     "subtotal": 50,

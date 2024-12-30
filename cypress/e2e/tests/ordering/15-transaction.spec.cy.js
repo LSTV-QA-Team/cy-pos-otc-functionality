@@ -16,8 +16,8 @@ describe("Transaction 13", () => {
     
     cy.contains("Food").click();
     cy.contains(/^Chicken$/).click().wait(2000)
-    cy.contains("1-pc Chickenjoy w/ Palabok Meal").click();
-    cy.contains("1-pc Chickenjoy w/ Burger Steak").click();
+    cy.contains("1-pc Chickenjoy w/ Palabok Meal").click().wait(2000);
+    cy.contains("1-pc Chickenjoy w/ Burger Steak").click().wait(2000);
 
     cy.fixture('ordering-scenarios.json').then((data) => {
     
@@ -81,3 +81,4 @@ describe("Transaction 13", () => {
   });
 
 })
+

@@ -14,7 +14,7 @@ describe("Transaction 20", () => {
   it("1 Pax with Diplomat Discount", () => {
 
     cy.contains("Beverages").click().wait(2000);
-    cy.contains("Beverages").click().wait(2000);
+    cy.get(':nth-child(2) > .sc-jtQUzJ > .sc-eOzmre').click().wait(2000);
     cy.contains("Brown Sugar Milk Tea").click().wait(2000);
 
     cy.contains("Add Discount").click().wait(2000);

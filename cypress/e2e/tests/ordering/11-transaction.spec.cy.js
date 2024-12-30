@@ -13,6 +13,7 @@ describe("Transaction 9", () => {
 
   it("1 Pax with MEMC Senior Discount and Service Charge", () => {
     cy.wait(2000);
+    
     cy.get('.sc-dntaoT').click().wait(2000)
     cy.get('#postypcde').select("Takeout")
     cy.get('#warcde').select("Jollibee 2")
