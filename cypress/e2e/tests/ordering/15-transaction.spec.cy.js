@@ -12,8 +12,8 @@ describe("Transaction 13", () => {
   });
 
   it("1 Pax with Regular Transaction", () => {
-    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(2000);
-    
+    cy.get(':nth-child(3) > .sc-blHHSb').click()
+
     cy.contains("Food").click();
     cy.contains(/^Chicken$/).click().wait(2000)
     cy.contains("1-pc Chickenjoy w/ Palabok Meal").click().wait(2000);
@@ -76,8 +76,6 @@ describe("Transaction 13", () => {
       "have.text",
       "Transaction Void Successful"
     );
-    cy.get('.ant-modal-close').click()
-    cy.wait(5000)
   });
 
 })

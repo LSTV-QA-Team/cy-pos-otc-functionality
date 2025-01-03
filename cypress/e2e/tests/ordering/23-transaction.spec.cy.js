@@ -12,9 +12,14 @@ describe("Transaction 21", () => {
   });
 
   it("1 Pax with MEMC Senior Discount", () => {
+    cy.get(':nth-child(3) > .sc-blHHSb').click()
+    cy.get('.sc-dntaoT').click().wait(2000)
+    cy.get('#postypcde').select("Takeout")
+    cy.get('#warcde').select("Jollibee 2")
+    cy.get('.border-green-500').click()
 
     cy.contains("Food").click();
-    cy.contains("Family Super Meals").click();
+    cy.contains(/^Family Super Meals$/).click();
     cy.contains(
       "FSM B 6-pcs Chickenjoy Bucket"
     ).click();

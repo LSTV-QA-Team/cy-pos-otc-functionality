@@ -14,7 +14,7 @@ describe("Transaction 29", () => {
   it("1 Pax with Medal of Valor Discount", () => {
 
     cy.contains("Food").click();
-    cy.contains("Chicken").click();
+    cy.contains(/^Chicken$/).click();
     cy.contains("1-pc Chickenjoy w/ Sides").click();
 
     cy.contains("Add Discount").click().wait(2000);

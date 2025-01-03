@@ -12,7 +12,7 @@ describe("Transaction 20", () => {
   });
 
   it("1 Pax with Diplomat Discount", () => {
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click()
     cy.contains("Beverages").click().wait(2000);
     cy.get(':nth-child(2) > .sc-jtQUzJ > .sc-eOzmre').click().wait(2000);
     cy.contains("Brown Sugar Milk Tea").click().wait(2000);
@@ -88,9 +88,5 @@ describe("Transaction 20", () => {
       "have.text",
       "Transaction Void Successfull"
     );
-
-    cy.contains("Cancel Transaction").click();
-    cy.get(".border-green-500").click();
-    cy.get('.ant-modal-close').click()
   });
 })

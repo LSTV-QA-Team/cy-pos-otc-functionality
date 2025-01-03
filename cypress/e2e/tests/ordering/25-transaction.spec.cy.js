@@ -12,9 +12,13 @@ describe("Transaction 23", () => {
   });
 
   it("1 Pax with Regular Transaction", () => {
+    cy.get('.sc-dntaoT').click().wait(2000)
+    cy.get('#postypcde').select("Dine-In")
+    cy.get('#warcde').select("Jollibee 1")
+    cy.get('.border-green-500').click()
 
     cy.contains("Food").click();
-    cy.contains("Chicken").click();
+    cy.contains(/^Chicken$/).click();
     cy.contains("1-pc Chickenjoy w/ Fries Meal").click();
 
     cy.fixture('ordering-scenarios.json').then((data) => {

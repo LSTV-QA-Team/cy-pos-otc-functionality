@@ -11,9 +11,9 @@ describe("Transaction 22", () => {
     cy.login("lstv", "lstventures");
   });
   it("1 Pax with MEMC PWD Discount", () => {
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click()
     cy.contains("Food").click();
-    cy.contains("Family Super Meals").click();
+    cy.contains(/^Family Super Meals$/).click();
     cy.contains(
       "FSM B 8-pcs Chickenjoy Bucket"
     ).click();
@@ -87,7 +87,5 @@ describe("Transaction 22", () => {
       "have.text",
       "Transaction Void Successfull"
      );
-     cy.get('.ant-modal-close').click()
-    cy.wait(5000)
   });
 });

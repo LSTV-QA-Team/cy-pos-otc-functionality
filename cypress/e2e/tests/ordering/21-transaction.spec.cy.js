@@ -12,7 +12,7 @@ describe("Transaction 19", () => {
   });
 
   it("1 Pax with Medal of Valor Discount", () => {
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click()
     cy.contains("Food").click().wait(2000);
     cy.contains("Breakfast").click().wait(2000);
     cy.contains("BF 2-pc Pancake").click().wait(2000);
@@ -91,8 +91,6 @@ describe("Transaction 19", () => {
       "have.text",
       "Transaction Void Successfull"
     );
-    cy.wait(5000)
-    cy.get('.ant-modal-close').click()
   });
 
 })

@@ -13,21 +13,22 @@ describe("Transaction 9", () => {
 
   it("1 Pax with MEMC Senior Discount and Service Charge", () => {
     cy.wait(2000);
-    
+    cy.get(':nth-child(3) > .sc-blHHSb').click()
     cy.get('.sc-dntaoT').click().wait(2000)
     cy.get('#postypcde').select("Takeout")
     cy.get('#warcde').select("Jollibee 2")
     cy.get('.border-green-500').click()
+    cy.wait(3000)
 
-    cy.contains("Food").click().wait(1000);
-    cy.contains("Family Super Meals").click().wait(1000);
+    cy.contains(/^Food$/).click().wait(2000);
+    cy.contains(/^Family Super Meals$/).scrollIntoView().should('be.visible').click().wait(1000);
     cy.contains(
       "FSM A 6-pcs Chickenjoy Bucket"
     )
       .click()
       .wait(1000);
     
-    cy.get('.bg-green-500').click()
+/*    cy.get('.bg-green-500').click() */
 
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Senior");
@@ -38,10 +39,15 @@ describe("Transaction 9", () => {
     cy.get("#cardno").click().type("3423456");
 
     cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
-    cy.get(":nth-child(3) > .MuiTableCell-root > .flex > .ml-10").should(
+/*     cy.get(":nth-child(3) > .MuiTableCell-root > .flex > .ml-10").should(
+      "have.text",
+      "Discount : Senior"
+    ); */
+    cy.get('.MuiTableCell-root > .flex').should(
       "have.text",
       "Discount : Senior"
     );
+
     cy.fixture('ordering-scenarios.json').then((data) => {
     
       const ST = data[8].subtotal;

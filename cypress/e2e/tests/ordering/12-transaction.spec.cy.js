@@ -14,6 +14,7 @@ describe("Transaction 10", () => {
   it("1 Pax with MEMC PWD Discount and Service Charge", () => {
     cy.wait(2000);
 
+    cy.get(':nth-child(3) > .sc-blHHSb').click()
     cy.contains("Food").click().wait(1000);
     cy.contains("Family Super Meals").click().wait(1000);
     cy.contains(

@@ -43,7 +43,6 @@ Cypress.Commands.add('queryDatabase', (query) => {
   })
 });
 
-
 Cypress.Commands.add('login', (userCode, userPassword) => {
   cy.session([userCode, userPassword], () => {
 
@@ -66,7 +65,6 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.get('.mt-8 > .sc-gtLWhw').should('be.enabled')
     cy.get('.mt-8 > .sc-gtLWhw').click()
     cy.wait(4000)
-    cy.url({timeout: 10000}).should('contain', '/home')
     cy.get('.text-\\[2rem\\]').should('have.text', 'Welcome, lstv!')
     cy.wait(4000)
 

@@ -14,7 +14,7 @@ describe("Transaction 26", () => {
   it("1 Pax with Senior Discount", () => {
 
     cy.contains("Food").click();
-    cy.contains("Chicken").click();
+    cy.contains(/^Chicken$/).click();
     cy.contains("1-pc Chickenjoy w/ Burger Steak").click();
 
     cy.contains("Add Discount").click().wait(2000);

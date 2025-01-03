@@ -13,6 +13,12 @@ describe("Transaction 11", () => {
 
   it("1 Pax with MEMC Senior Discount and Service Charge", () => {
     cy.wait(2000);
+    cy.get(':nth-child(3) > .sc-blHHSb').click()
+    cy.get('.sc-dntaoT').click().wait(2000)
+    cy.get('#postypcde').select("Dine-In")
+    cy.get('#warcde').select("Jollibee 1")
+    cy.get('.border-green-500').click().wait(5000)
+
     cy.contains("Food").click().wait(1000);
     cy.contains(/^Chicken$/).click().wait(2000)
     cy.contains("Chickenjoy Bucket 6pcs").click();

@@ -12,6 +12,7 @@ describe("Transaction 17", () => {
   });
 
   it("1 Pax with PWD Discount", () => {
+    cy.get(':nth-child(3) > .sc-blHHSb').click()
     cy.contains("Dessert").click().wait(2000);
     cy.contains("Desserts and Pies").click().wait(2000);
     cy.contains("Buko Pie").click().wait(2000);
@@ -83,8 +84,7 @@ describe("Transaction 17", () => {
       "have.text",
       "Transaction Void Successful"
     );
-    cy.wait(5000)
-    cy.get('.ant-modal-close').click()
+
   });
 
 })

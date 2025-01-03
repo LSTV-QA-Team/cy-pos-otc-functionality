@@ -13,6 +13,7 @@ describe("Transaction 14", () => {
 
   it("1 Pax with 10% discount", () => {
     cy.contains("Food").click().wait(2000);
+    cy.get(':nth-child(3) > .sc-blHHSb').click()
     cy.contains("Hotdog").click().wait(2000);
     cy.contains("Cheesy Classic Jolly Hotdog").click().wait(2000);
     cy.contains("Cheesy Classic w/ Fries").click().wait(2000);
@@ -90,8 +91,6 @@ describe("Transaction 14", () => {
       "have.text",
       "Transaction Void Successful"
     );
-    cy.get('.ant-modal-close').click()
-    cy.wait(5000)
   });
 
 })

@@ -13,7 +13,7 @@ describe("Transaction 27", () => {
   it("1 Pax with PWD Discount", () => {
 
     cy.contains("Food").click();
-    cy.contains("Chicken").click();
+    cy.contains(/^Chicken$/).click();
     cy.contains("2-pc Chickenjoy").click();
 
     cy.contains("Add Discount").click().wait(2000);

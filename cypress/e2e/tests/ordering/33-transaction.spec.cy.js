@@ -14,7 +14,7 @@ describe("Transaction 31", () => {
   it("1 Pax with MEMC Senior Discount", () => {
 
     cy.contains("Food").click();
-    cy.contains("Family Super Meals").click();
+    cy.contains(/^Family Super Meals$/).click();
     cy.contains(
       "FSM B 6-pcs Chickenjoy Bucket"
     ).click();

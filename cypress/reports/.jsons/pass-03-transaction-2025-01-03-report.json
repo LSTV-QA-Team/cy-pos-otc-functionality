@@ -1,0 +1,154 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-01-03T09:50:47.008Z",
+    "end": "2025-01-03T09:51:48.179Z",
+    "duration": 61171,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d37e290c-567b-4300-9dc1-25d14dcde6eb",
+      "title": "",
+      "fullFile": "cypress\\e2e\\tests\\ordering\\03-transaction.spec.cy.js",
+      "file": "cypress\\e2e\\tests\\ordering\\03-transaction.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "245f091d-4d0b-44b4-b312-1d9e43544f7a",
+          "title": "Transaction 1",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Refresh Database",
+              "fullTitle": "Transaction 1 Refresh Database",
+              "timedOut": null,
+              "duration": 29997,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "94f926a4-ca0b-4281-8a2b-dad8d5cafd81",
+              "parentUUID": "245f091d-4d0b-44b4-b312-1d9e43544f7a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Cash In",
+              "fullTitle": "Transaction 1 Cash In",
+              "timedOut": null,
+              "duration": 4463,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "4ee3af6e-d26d-4c0b-bff7-7b6564294481",
+              "parentUUID": "245f091d-4d0b-44b4-b312-1d9e43544f7a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "1 Pax with Regular Transaction and Service Charge",
+              "fullTitle": "Transaction 1 1 Pax with Regular Transaction and Service Charge",
+              "timedOut": null,
+              "duration": 26585,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "f03f40cb-1a4b-4e9e-ba1e-28e7be778ffd",
+              "parentUUID": "245f091d-4d0b-44b4-b312-1d9e43544f7a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "94f926a4-ca0b-4281-8a2b-dad8d5cafd81",
+            "4ee3af6e-d26d-4c0b-bff7-7b6564294481",
+            "f03f40cb-1a4b-4e9e-ba1e-28e7be778ffd"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 61045,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]-[name]-2025-01-03-report",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "Cypress POS-OTC Functionality Report",
+        "reportFilename": "[status]-[name]-2025-01-03-report",
+        "embeddedScreenshots": false,
+        "inlineAssets": true,
+        "overwrite": false,
+        "json": true,
+        "html": false,
+        "debug": false,
+        "quiet": true,
+        "videoOnFailOnly": true,
+        "code": false,
+        "saveAllAttempts": false,
+        "screenshotOnRunFailure": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}
