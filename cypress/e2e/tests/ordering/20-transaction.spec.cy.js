@@ -12,7 +12,7 @@ describe("Transaction 18", () => {
   });
 
   it("1 Pax with Athlete Discount", () => {
-    cy.get(':nth-child(3) > .sc-blHHSb').click()
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Food").click().wait(2000);
     cy.contains("Breakfast").click().wait(2000);
     cy.contains("BF Hotdog").click().wait(2000);

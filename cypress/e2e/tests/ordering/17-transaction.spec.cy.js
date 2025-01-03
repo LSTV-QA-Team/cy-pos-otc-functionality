@@ -12,7 +12,7 @@ describe("Transaction 15", () => {
   });
 
   it("1 Pax with 20% discount", () => {
-    cy.get(':nth-child(3) > .sc-blHHSb').click()
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Dessert").click().wait(2000);
     cy.contains("Desserts and Pies").click().wait(2000);
     cy.contains("Jolly Crispy Fries").click().wait(2000);

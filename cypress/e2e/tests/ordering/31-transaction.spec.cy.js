@@ -12,7 +12,7 @@ describe("Transaction 29", () => {
   });
 
   it("1 Pax with Medal of Valor Discount", () => {
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Food").click();
     cy.contains(/^Chicken$/).click();
     cy.contains("1-pc Chickenjoy w/ Sides").click();

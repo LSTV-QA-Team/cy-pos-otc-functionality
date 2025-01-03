@@ -12,7 +12,7 @@ describe("Transaction 28", () => {
   });
 
   it("1 Pax with Athlete Discount", () => {
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Food").click();
     cy.contains(/^Chicken$/).click();
     cy.contains("1-pc Chickenjoy w/ Fries Meal").click();

@@ -13,7 +13,7 @@ describe("Transaction 16", () => {
   
 
   it("1 Pax with Senior Discount", () => {
-    cy.get(':nth-child(3) > .sc-blHHSb').click()
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Food").click().wait(2000);
     cy.contains("Take-Out Favorites").click().wait(2000);
     cy.contains("TF Palabok Family Pan").click().wait(2000);

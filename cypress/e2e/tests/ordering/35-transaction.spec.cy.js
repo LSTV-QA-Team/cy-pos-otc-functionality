@@ -13,7 +13,6 @@ describe("Transaction 33", () => {
 
   it("1 Pax with Regular Transaction" , () => {
 
-
      cy.contains("Food").click();
      cy.contains("Sides").click();
      cy.contains("Buttered Corn").click();

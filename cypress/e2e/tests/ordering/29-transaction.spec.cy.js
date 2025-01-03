@@ -11,7 +11,7 @@ describe("Transaction 27", () => {
     cy.login("lstv", "lstventures");
   });
   it("1 Pax with PWD Discount", () => {
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Food").click();
     cy.contains(/^Chicken$/).click();
     cy.contains("2-pc Chickenjoy").click();

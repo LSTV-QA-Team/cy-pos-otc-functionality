@@ -11,7 +11,7 @@ describe("Transaction 25", () => {
     cy.login("lstv", "lstventures");
   });
   it("1 Pax with 20% discount", () => {
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Food").click();
     cy.contains("Chicken Joy Perfect Pairs").click();
     cy.contains("1-pc Chickenjoy w/ Soup").click();

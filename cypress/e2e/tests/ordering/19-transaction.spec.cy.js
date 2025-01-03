@@ -12,7 +12,7 @@ describe("Transaction 17", () => {
   });
 
   it("1 Pax with PWD Discount", () => {
-    cy.get(':nth-child(3) > .sc-blHHSb').click()
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Dessert").click().wait(2000);
     cy.contains("Desserts and Pies").click().wait(2000);
     cy.contains("Buko Pie").click().wait(2000);

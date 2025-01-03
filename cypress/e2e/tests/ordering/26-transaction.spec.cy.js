@@ -12,6 +12,7 @@ describe("Transaction 24", () => {
   });
 
   it("1 Pax with 10% discount", () => {
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Food").click();
     cy.contains("Chicken Joy Perfect Pairs").click();
     cy.contains("1-pc Chickenjoy w/ Jolly Spaghetti").click();
