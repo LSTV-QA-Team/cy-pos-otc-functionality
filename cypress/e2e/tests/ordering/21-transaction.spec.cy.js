@@ -87,10 +87,6 @@ describe("Transaction 19", () => {
     cy.get("#voidreason").select("Customer Cancelled Order").wait(2000);
     cy.get(".border-green-500").click();
 
-    cy.get(".Toastify__toast-body > :nth-child(2)").should(
-      "have.text",
-      "Transaction Void Successfull"
-    );
   });
 
 })

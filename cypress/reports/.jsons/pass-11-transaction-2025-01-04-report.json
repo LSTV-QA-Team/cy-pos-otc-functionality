@@ -1,0 +1,116 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-01-04T06:49:25.793Z",
+    "end": "2025-01-04T06:50:11.424Z",
+    "duration": 45631,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "321a50ae-59a1-40fb-97a0-8f0f4ca02ce2",
+      "title": "",
+      "fullFile": "cypress\\e2e\\tests\\ordering\\11-transaction.spec.cy.js",
+      "file": "cypress\\e2e\\tests\\ordering\\11-transaction.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2796db03-f368-4f80-a725-327c032614d9",
+          "title": "Transaction 9",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "1 Pax with MEMC Senior Discount and Service Charge",
+              "fullTitle": "Transaction 9 1 Pax with MEMC Senior Discount and Service Charge",
+              "timedOut": null,
+              "duration": 45572,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "7ae7e08c-dccf-4a13-a635-e21c803172f9",
+              "parentUUID": "2796db03-f368-4f80-a725-327c032614d9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7ae7e08c-dccf-4a13-a635-e21c803172f9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 45572,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]-[name]-2025-01-04-report",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "Cypress POS-OTC Functionality Report",
+        "reportFilename": "[status]-[name]-2025-01-04-report",
+        "embeddedScreenshots": false,
+        "inlineAssets": true,
+        "overwrite": false,
+        "json": true,
+        "html": false,
+        "debug": false,
+        "quiet": true,
+        "videoOnFailOnly": true,
+        "code": false,
+        "saveAllAttempts": false,
+        "screenshotOnRunFailure": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}

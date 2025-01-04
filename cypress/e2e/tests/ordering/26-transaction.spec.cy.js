@@ -68,16 +68,14 @@ describe("Transaction 24", () => {
       "have.text",
       "Transaction Complete."
     );
+    cy.get('.ant-modal-close').click()
+    cy.wait(3000);
 
-    cy.wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click()
 
     cy.contains("Refund Transaction").click().wait(2000);
     cy.get('#usrcde').click().type("lstv")
     cy.get('#usrpwd').click().type("lstventures")
-    cy.get('.sc-guDLey').click()
+    cy.get('.mt-8 > .sc-gtLWhw').click()
 
     cy.get(".px-8").should("have.text", "Refund Transaction").wait(1500);
     cy.get("#refundreason").select("Customer Complaint").wait(2000);

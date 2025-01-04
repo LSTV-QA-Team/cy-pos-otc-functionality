@@ -1,0 +1,120 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-01-04T07:02:00.823Z",
+    "end": "2025-01-04T07:02:36.349Z",
+    "duration": 35526,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2ebaa01d-5b91-4121-9295-6b6a76b5265a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\tests\\ordering\\25-transaction.spec.cy.js",
+      "file": "cypress\\e2e\\tests\\ordering\\25-transaction.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6e03214e-58dd-4a9b-a879-26a53a224472",
+          "title": "Transaction 23",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "1 Pax with Regular Transaction",
+              "fullTitle": "Transaction 23 1 Pax with Regular Transaction",
+              "timedOut": null,
+              "duration": 35462,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\25-transaction.spec.cy.js\\\\Transaction 23 -- 1 Pax with Regular Transaction (failed).png\"\n    ]\n  ]\n}",
+              "code": "",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `.sc-dntaoT`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `.sc-dntaoT`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/tests/ordering/25-transaction.spec.cy.js:16:7)",
+                "diff": null
+              },
+              "uuid": "c33079c9-11c3-4278-b808-c716d56a1223",
+              "parentUUID": "6e03214e-58dd-4a9b-a879-26a53a224472",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "c33079c9-11c3-4278-b808-c716d56a1223"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 35462,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]-[name]-2025-01-04-report",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "Cypress POS-OTC Functionality Report",
+        "reportFilename": "[status]-[name]-2025-01-04-report",
+        "embeddedScreenshots": false,
+        "inlineAssets": true,
+        "overwrite": false,
+        "json": true,
+        "html": false,
+        "debug": false,
+        "quiet": true,
+        "videoOnFailOnly": true,
+        "code": false,
+        "saveAllAttempts": false,
+        "screenshotOnRunFailure": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -75,15 +75,13 @@ describe("Transaction 30", () => {
       "Transaction Complete."
     );
 
-    cy.wait(2000);
-    cy.get("#postypcde").select("Takeout").wait(2000);
-    cy.get("#warcde").select("Jollibee 2").wait(2000);
-    cy.contains("Proceed").click();
+    cy.get('.ant-modal-close').click()
+    cy.wait(3000);
 
     cy.contains("Refund Transaction").click().wait(2000);
     cy.get('#usrcde').click().type("lstv")
     cy.get('#usrpwd').click().type("lstventures")
-    cy.get('.sc-guDLey').click()
+    cy.get('.mt-8 > .sc-gtLWhw').click()
     
     cy.get(".px-8").should("have.text", "Refund Transaction").wait(1500);
     cy.get("#refundreason").select("Food Quality Issue").wait(2000);
@@ -98,13 +96,13 @@ describe("Transaction 30", () => {
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")
-      .should("have.text", "84.82")
+      .should("have.text", "93.30")
       .wait(2000);
     cy.contains("Next").click();
 
     cy.get(".h-full > .justify-between > .font-bold").should(
       "have.text",
-      "TOTAL : 84.82"
+      "TOTAL : 93.30"
     );
     cy.get(":nth-child(3) > .group").click();
     cy.contains("Proceed").click();

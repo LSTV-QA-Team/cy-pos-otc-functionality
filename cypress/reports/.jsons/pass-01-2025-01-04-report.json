@@ -1,0 +1,173 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-01-04T06:41:53.092Z",
+    "end": "2025-01-04T06:43:04.268Z",
+    "duration": 71176,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1f80a47b-10a3-4719-bb72-1fa6b7fd2042",
+      "title": "",
+      "fullFile": "cypress\\e2e\\tests\\ordering\\01.2-ordering.spec.cy.js",
+      "file": "cypress\\e2e\\tests\\ordering\\01.2-ordering.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "91107be2-e794-49c7-88c9-b775cbbe9174",
+          "title": "Ordering1.2",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Reprint Transaction",
+              "fullTitle": "Ordering1.2 Reprint Transaction",
+              "timedOut": null,
+              "duration": 33543,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "384f37fc-a375-4fdd-aa39-236a240623b9",
+              "parentUUID": "91107be2-e794-49c7-88c9-b775cbbe9174",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Reprint Void",
+              "fullTitle": "Ordering1.2 Reprint Void",
+              "timedOut": null,
+              "duration": 12330,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "47e41dc3-11df-46bb-afa4-118088a53daa",
+              "parentUUID": "91107be2-e794-49c7-88c9-b775cbbe9174",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Void Transaction",
+              "fullTitle": "Ordering1.2 Void Transaction",
+              "timedOut": null,
+              "duration": 12295,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "3ff2e700-7509-46c3-b258-11a9e40c3535",
+              "parentUUID": "91107be2-e794-49c7-88c9-b775cbbe9174",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Other Transaction - RECALL",
+              "fullTitle": "Ordering1.2 Other Transaction - RECALL",
+              "timedOut": null,
+              "duration": 12536,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "b64e1696-57a6-4da1-ab04-702b55764796",
+              "parentUUID": "91107be2-e794-49c7-88c9-b775cbbe9174",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "384f37fc-a375-4fdd-aa39-236a240623b9",
+            "47e41dc3-11df-46bb-afa4-118088a53daa",
+            "3ff2e700-7509-46c3-b258-11a9e40c3535",
+            "b64e1696-57a6-4da1-ab04-702b55764796"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 70704,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]-[name]-2025-01-04-report",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "Cypress POS-OTC Functionality Report",
+        "reportFilename": "[status]-[name]-2025-01-04-report",
+        "embeddedScreenshots": false,
+        "inlineAssets": true,
+        "overwrite": false,
+        "json": true,
+        "html": false,
+        "debug": false,
+        "quiet": true,
+        "videoOnFailOnly": true,
+        "code": false,
+        "saveAllAttempts": false,
+        "screenshotOnRunFailure": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}

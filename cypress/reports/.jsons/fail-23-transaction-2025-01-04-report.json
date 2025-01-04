@@ -1,0 +1,120 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-01-04T07:00:30.621Z",
+    "end": "2025-01-04T07:01:08.928Z",
+    "duration": 38307,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "93fe096c-9dee-43e2-9849-048e4e33ae03",
+      "title": "",
+      "fullFile": "cypress\\e2e\\tests\\ordering\\23-transaction.spec.cy.js",
+      "file": "cypress\\e2e\\tests\\ordering\\23-transaction.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a37cda45-1bca-4193-b117-4651f24840d6",
+          "title": "Transaction 21",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "1 Pax with MEMC Senior Discount",
+              "fullTitle": "Transaction 21 1 Pax with MEMC Senior Discount",
+              "timedOut": null,
+              "duration": 38252,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\23-transaction.spec.cy.js\\\\Transaction 21 -- 1 Pax with MEMC Senior Discount (failed).png\"\n    ]\n  ]\n}",
+              "code": "",
+              "err": {
+                "message": "CypressError: Timed out retrying after 10050ms: `cy.click()` failed because the page updated while this command was executing. Cypress tried to locate elements based on this query:\n\n> cy.contains(/^Family Super Meals$/)\n\nWe initially found matching element(s), but while waiting for them to become actionable, they disappeared from the page. Common situations why this happens:\n  - Your JS framework re-rendered asynchronously\n  - Your app code reacted to an event firing and removed the element\n\nYou can typically solve this by breaking up a chain. For example, rewrite:\n\n> `cy.get('button').click().click()`\n\nto\n\n> `cy.get('button').as('btn').click()`\n> `cy.get('@btn').click()`\n\nhttps://on.cypress.io/element-has-detached-from-dom",
+                "estack": "CypressError: Timed out retrying after 10050ms: `cy.click()` failed because the page updated while this command was executing. Cypress tried to locate elements based on this query:\n\n> cy.contains(/^Family Super Meals$/)\n\nWe initially found matching element(s), but while waiting for them to become actionable, they disappeared from the page. Common situations why this happens:\n  - Your JS framework re-rendered asynchronously\n  - Your app code reacted to an event firing and removed the element\n\nYou can typically solve this by breaking up a chain. For example, rewrite:\n\n> `cy.get('button').click().click()`\n\nto\n\n> `cy.get('button').as('btn').click()`\n> `cy.get('@btn').click()`\n\nhttps://on.cypress.io/element-has-detached-from-dom\n    at retryActionability (http://localhost:5173/__cypress/runner/cypress_runner.js:112861:74)\n    at tryCatcher (http://localhost:5173/__cypress/runner/cypress_runner.js:1807:23)\n    at Promise.attempt.Promise.try (http://localhost:5173/__cypress/runner/cypress_runner.js:4315:29)\n    at whenStable (http://localhost:5173/__cypress/runner/cypress_runner.js:143646:68)\n    at <unknown> (http://localhost:5173/__cypress/runner/cypress_runner.js:143587:14)\n    at tryCatcher (http://localhost:5173/__cypress/runner/cypress_runner.js:1807:23)\n    at Promise._settlePromiseFromHandler (http://localhost:5173/__cypress/runner/cypress_runner.js:1519:31)\n    at Promise._settlePromise (http://localhost:5173/__cypress/runner/cypress_runner.js:1576:18)\n    at Promise._settlePromise0 (http://localhost:5173/__cypress/runner/cypress_runner.js:1621:10)\n    at Promise._settlePromises (http://localhost:5173/__cypress/runner/cypress_runner.js:1701:18)\n    at Promise._fulfill (http://localhost:5173/__cypress/runner/cypress_runner.js:1645:18)\n    at <unknown> (http://localhost:5173/__cypress/runner/cypress_runner.js:5450:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/tests/ordering/23-transaction.spec.cy.js:22:40)",
+                "diff": null
+              },
+              "uuid": "9d505e82-d298-41d3-840f-4d511cfd35ca",
+              "parentUUID": "a37cda45-1bca-4193-b117-4651f24840d6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "9d505e82-d298-41d3-840f-4d511cfd35ca"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 38252,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]-[name]-2025-01-04-report",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "Cypress POS-OTC Functionality Report",
+        "reportFilename": "[status]-[name]-2025-01-04-report",
+        "embeddedScreenshots": false,
+        "inlineAssets": true,
+        "overwrite": false,
+        "json": true,
+        "html": false,
+        "debug": false,
+        "quiet": true,
+        "videoOnFailOnly": true,
+        "code": false,
+        "saveAllAttempts": false,
+        "screenshotOnRunFailure": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}
