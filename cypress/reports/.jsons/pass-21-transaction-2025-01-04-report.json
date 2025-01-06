@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-01-04T06:58:41.322Z",
-    "end": "2025-01-04T06:59:48.500Z",
-    "duration": 67178,
+    "start": "2025-01-04T08:25:29.131Z",
+    "end": "2025-01-04T08:26:36.440Z",
+    "duration": 67309,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "943aaf6f-d127-4019-9e07-0cb20ebe86c4",
+      "uuid": "97487ae9-d750-4ee9-a4f9-9d91c4ed8711",
       "title": "",
       "fullFile": "cypress\\e2e\\tests\\ordering\\21-transaction.spec.cy.js",
       "file": "cypress\\e2e\\tests\\ordering\\21-transaction.spec.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "b41e57f3-90ec-43b2-a5f0-7df03014695a",
+          "uuid": "b440c018-9bbd-4d13-ab96-9b6859d04c06",
           "title": "Transaction 19",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "1 Pax with Medal of Valor Discount",
               "fullTitle": "Transaction 19 1 Pax with Medal of Valor Discount",
               "timedOut": null,
-              "duration": 67125,
+              "duration": 67246,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "",
               "err": {},
-              "uuid": "3f2f5c36-0959-4bd3-a04a-cea33225d649",
-              "parentUUID": "b41e57f3-90ec-43b2-a5f0-7df03014695a",
+              "uuid": "e96c20ab-25fe-4595-bcd0-9ed28009f625",
+              "parentUUID": "b440c018-9bbd-4d13-ab96-9b6859d04c06",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "3f2f5c36-0959-4bd3-a04a-cea33225d649"
+            "e96c20ab-25fe-4595-bcd0-9ed28009f625"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 67125,
+          "duration": 67246,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

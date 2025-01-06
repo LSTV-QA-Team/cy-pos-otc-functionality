@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 0,
+    "passes": 1,
     "pending": 0,
-    "failures": 1,
-    "start": "2025-01-04T06:59:50.584Z",
-    "end": "2025-01-04T07:00:28.220Z",
-    "duration": 37636,
+    "failures": 0,
+    "start": "2025-01-04T08:26:38.463Z",
+    "end": "2025-01-04T08:27:26.930Z",
+    "duration": 48467,
     "testsRegistered": 1,
-    "passPercent": 0,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "aa36573c-a398-4260-a6e3-82ab951ef0d8",
+      "uuid": "83cf89e9-28f3-4177-936a-ee865dfdf27c",
       "title": "",
       "fullFile": "cypress\\e2e\\tests\\ordering\\22-transaction.spec.cy.js",
       "file": "cypress\\e2e\\tests\\ordering\\22-transaction.spec.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "2d2bb1ec-a302-47b6-b37a-06b03a7fcd18",
+          "uuid": "ddf702fc-8499-49e6-99ec-3dffefe34863",
           "title": "Transaction 20",
           "fullFile": "",
           "file": "",
@@ -38,33 +38,29 @@
               "title": "1 Pax with Diplomat Discount",
               "fullTitle": "Transaction 20 1 Pax with Diplomat Discount",
               "timedOut": null,
-              "duration": 37588,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 48416,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
               "pending": false,
-              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\22-transaction.spec.cy.js\\\\Transaction 20 -- 1 Pax with Diplomat Discount (failed).png\"\n    ]\n  ]\n}",
+              "context": null,
               "code": "",
-              "err": {
-                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `:nth-child(2) > .sc-jtQUzJ > .sc-eOzmre`, but never found it.",
-                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `:nth-child(2) > .sc-jtQUzJ > .sc-eOzmre`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/tests/ordering/22-transaction.spec.cy.js:18:7)",
-                "diff": null
-              },
-              "uuid": "485869cb-7cff-4c7c-9322-2c192f343ae3",
-              "parentUUID": "2d2bb1ec-a302-47b6-b37a-06b03a7fcd18",
+              "err": {},
+              "uuid": "2f5196e1-b2be-4a80-beca-06c0c3bc61af",
+              "parentUUID": "ddf702fc-8499-49e6-99ec-3dffefe34863",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "485869cb-7cff-4c7c-9322-2c192f343ae3"
+          "passes": [
+            "2f5196e1-b2be-4a80-beca-06c0c3bc61af"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 37588,
+          "duration": 48416,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

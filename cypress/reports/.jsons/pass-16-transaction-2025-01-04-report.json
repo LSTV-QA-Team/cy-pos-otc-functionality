@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-01-04T06:53:19.974Z",
-    "end": "2025-01-04T06:54:19.065Z",
-    "duration": 59091,
+    "start": "2025-01-04T08:20:07.386Z",
+    "end": "2025-01-04T08:21:06.424Z",
+    "duration": 59038,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "2fe295f4-5032-4633-a9c3-9b9c69e068f8",
+      "uuid": "66f52070-7012-413f-afb4-5adde6d9b6da",
       "title": "",
       "fullFile": "cypress\\e2e\\tests\\ordering\\16-transaction.spec.cy.js",
       "file": "cypress\\e2e\\tests\\ordering\\16-transaction.spec.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "a520467f-fe55-43a6-8b80-e80eccd12cbe",
+          "uuid": "266bf8c3-a90a-4360-b863-aefaa5e97841",
           "title": "Transaction 14",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "1 Pax with 10% discount",
               "fullTitle": "Transaction 14 1 Pax with 10% discount",
               "timedOut": null,
-              "duration": 59035,
+              "duration": 58981,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "",
               "err": {},
-              "uuid": "1c382b2e-43cb-407b-b47c-6e1daddfb404",
-              "parentUUID": "a520467f-fe55-43a6-8b80-e80eccd12cbe",
+              "uuid": "12d41dbf-5102-4ebe-a47c-dce7c67e0d4a",
+              "parentUUID": "266bf8c3-a90a-4360-b863-aefaa5e97841",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "1c382b2e-43cb-407b-b47c-6e1daddfb404"
+            "12d41dbf-5102-4ebe-a47c-dce7c67e0d4a"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 59035,
+          "duration": 58981,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

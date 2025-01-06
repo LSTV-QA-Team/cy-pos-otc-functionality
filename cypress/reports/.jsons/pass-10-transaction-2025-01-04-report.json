@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-01-04T06:48:42.942Z",
-    "end": "2025-01-04T06:49:23.635Z",
-    "duration": 40693,
+    "start": "2025-01-04T08:15:30.709Z",
+    "end": "2025-01-04T08:16:11.302Z",
+    "duration": 40593,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "5b6145b9-bbd5-4c3b-bcdf-2a0672fd1648",
+      "uuid": "31c1ff49-15c1-44b7-8b3a-a757cdd7a7f6",
       "title": "",
       "fullFile": "cypress\\e2e\\tests\\ordering\\10-transaction.spec.cy.js",
       "file": "cypress\\e2e\\tests\\ordering\\10-transaction.spec.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "3ec711c6-0a8a-4d00-b722-a6c7dc6f757e",
+          "uuid": "97a8e6dc-4daa-4a5a-9b3f-f64cf70ab8e9",
           "title": "Transaction 8",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "1 Pax with Diplomat Discount and Service Charge",
               "fullTitle": "Transaction 8 1 Pax with Diplomat Discount and Service Charge",
               "timedOut": null,
-              "duration": 40640,
+              "duration": 40533,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "",
               "err": {},
-              "uuid": "5a0cfda3-3148-40ae-ab9d-1236aca60d8b",
-              "parentUUID": "3ec711c6-0a8a-4d00-b722-a6c7dc6f757e",
+              "uuid": "1d39d333-a2bb-411d-bc11-4bdb454404d3",
+              "parentUUID": "97a8e6dc-4daa-4a5a-9b3f-f64cf70ab8e9",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "5a0cfda3-3148-40ae-ab9d-1236aca60d8b"
+            "1d39d333-a2bb-411d-bc11-4bdb454404d3"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 40640,
+          "duration": 40533,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

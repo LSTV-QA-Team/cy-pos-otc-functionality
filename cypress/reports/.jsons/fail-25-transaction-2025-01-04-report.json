@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2025-01-04T07:02:00.823Z",
-    "end": "2025-01-04T07:02:36.349Z",
-    "duration": 35526,
+    "start": "2025-01-04T08:29:01.400Z",
+    "end": "2025-01-04T08:29:37.104Z",
+    "duration": 35704,
     "testsRegistered": 1,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "2ebaa01d-5b91-4121-9295-6b6a76b5265a",
+      "uuid": "4f0f9acf-902e-4afd-947a-2559810ef569",
       "title": "",
       "fullFile": "cypress\\e2e\\tests\\ordering\\25-transaction.spec.cy.js",
       "file": "cypress\\e2e\\tests\\ordering\\25-transaction.spec.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "6e03214e-58dd-4a9b-a879-26a53a224472",
+          "uuid": "764ef5c7-3858-4679-bd1e-3c5b3783720f",
           "title": "Transaction 23",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "1 Pax with Regular Transaction",
               "fullTitle": "Transaction 23 1 Pax with Regular Transaction",
               "timedOut": null,
-              "duration": 35462,
+              "duration": 35649,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -51,8 +51,8 @@
                 "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `.sc-dntaoT`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/tests/ordering/25-transaction.spec.cy.js:16:7)",
                 "diff": null
               },
-              "uuid": "c33079c9-11c3-4278-b808-c716d56a1223",
-              "parentUUID": "6e03214e-58dd-4a9b-a879-26a53a224472",
+              "uuid": "e7820aae-8823-41ee-ac21-61741fb19496",
+              "parentUUID": "764ef5c7-3858-4679-bd1e-3c5b3783720f",
               "isHook": false,
               "skipped": false
             }
@@ -60,11 +60,11 @@
           "suites": [],
           "passes": [],
           "failures": [
-            "c33079c9-11c3-4278-b808-c716d56a1223"
+            "e7820aae-8823-41ee-ac21-61741fb19496"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 35462,
+          "duration": 35649,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
