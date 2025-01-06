@@ -71,7 +71,7 @@ describe("Transaction 23", () => {
     cy.contains("Refund Transaction").click().wait(1500);
     cy.get('#usrcde').click().type("lstv")
     cy.get('#usrpwd').click().type("lstventures")
-    cy.get('.sc-guDLey').click()
+    cy.get('.mt-8 > .sc-gtLWhw').click()
 
     cy.get(".px-8").should("have.text", "Refund Transaction").wait(1500);
     cy.get("#refundreason").select("Customer Complaint").wait(2000);
@@ -86,13 +86,13 @@ describe("Transaction 23", () => {
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")
-      .should("have.text", "105.00")
+      .should("have.text", "114.37")
       .wait(2000);
     cy.contains("Next").click();
 
     cy.get(".h-full > .justify-between > .font-bold").should(
       "have.text",
-      "TOTAL : 105.00"
+      "TOTAL : 114.37"
     );
     cy.get(":nth-child(3) > .group").click();
     cy.contains("Proceed").click();

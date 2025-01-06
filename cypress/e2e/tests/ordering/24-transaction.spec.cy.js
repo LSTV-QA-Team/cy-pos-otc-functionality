@@ -73,6 +73,7 @@ describe("Transaction 22", () => {
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click().wait(1000);
  
     cy.wait(2000);
+    cy.get('.ant-modal-close').click()
 
 
     cy.contains("Void Transaction").click();

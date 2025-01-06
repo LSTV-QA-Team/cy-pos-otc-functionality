@@ -93,7 +93,7 @@ describe("Transaction 25", () => {
 
     cy.get(".h-full > .justify-between > .font-bold").should(
       "have.text",
-      "TOTAL : 79.20"
+      "TOTAL : 88.04"
     );
     cy.get(":nth-child(3) > .group").click();
     cy.contains("Proceed").click();

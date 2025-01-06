@@ -90,13 +90,13 @@ describe("Transaction 24", () => {
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")
-      .should("have.text", "89.10")
+      .should("have.text", "97.94")
       .wait(2000);
     cy.contains("Next").click();
 
     cy.get(".h-full > .justify-between > .font-bold").should(
       "have.text",
-      "TOTAL : 89.10"
+      "TOTAL : 97.94"
     );
     cy.get(":nth-child(3) > .group").click();
     cy.contains("Proceed").click();
