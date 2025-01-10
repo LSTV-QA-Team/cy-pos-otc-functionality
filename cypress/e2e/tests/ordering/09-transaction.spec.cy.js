@@ -13,6 +13,7 @@ describe("Transaction 7", () => {
 
   it("1 Pax with Medal of Valor Discount and Service Charge", () => {
     cy.wait(2000);
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(2000);
     cy.contains("Food").click().wait(1000);
     cy.contains("Burger Steak").click().wait(1000);
     cy.contains("1-pc Burger Steak w/ 3pcs Shanghai").click().wait(1000);

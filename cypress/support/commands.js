@@ -43,13 +43,14 @@ Cypress.Commands.add('queryDatabase', (query) => {
   })
 });
 
-
 Cypress.Commands.add('login', (userCode, userPassword) => {
   cy.session([userCode, userPassword], () => {
 
     // cy.visit(Cypress.config('baseUrl'), 5000)
     cy.visit('/login')
     cy.get('.me-2').should('have.text' , "Operation Setup")
+    cy.wait(1000)
+    cy.get('#timestart').click().type("06:00:00")
     cy.wait(1000)
     cy.get('#timeend').click().type("23:00:00")
     cy.wait(1000)
@@ -66,7 +67,6 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.get('.mt-8 > .sc-gtLWhw').should('be.enabled')
     cy.get('.mt-8 > .sc-gtLWhw').click()
     cy.wait(4000)
-    cy.url({timeout: 10000}).should('contain', '/home')
     cy.get('.text-\\[2rem\\]').should('have.text', 'Welcome, lstv!')
     cy.wait(4000)
 

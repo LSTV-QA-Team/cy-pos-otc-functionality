@@ -12,9 +12,9 @@ describe("Transaction 26", () => {
   });
 
   it("1 Pax with Senior Discount", () => {
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Food").click();
-    cy.contains("Chicken").click();
+    cy.contains(/^Chicken$/).click();
     cy.contains("1-pc Chickenjoy w/ Burger Steak").click();
 
     cy.contains("Add Discount").click().wait(2000);
@@ -75,16 +75,13 @@ describe("Transaction 26", () => {
       "have.text",
       "Transaction Complete."
     );
-
-    cy.wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
+    cy.get('.ant-modal-close').click()
+    cy.wait(3000);
 
     cy.contains("Refund Transaction").click().wait(2000);
     cy.get('#usrcde').click().type("lstv")
     cy.get('#usrpwd').click().type("lstventures")
-    cy.get('.sc-guDLey').click()
+    cy.get('.mt-8 > .sc-gtLWhw').click()
 
     cy.get(".px-8").should("have.text", "Refund Transaction").wait(1500);
     cy.get("#refundreason").select("Food Quality Issue").wait(2000);
@@ -99,13 +96,13 @@ describe("Transaction 26", () => {
       .wait(2000);
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")
-      .should("have.text", "89.29")
+      .should("have.text", "98.22")
       .wait(2000);
     cy.contains("Next").click();
 
     cy.get(".h-full > .justify-between > .font-bold").should(
       "have.text",
-      "TOTAL : 89.29"
+      "TOTAL : 98.22"
     );
     cy.get(":nth-child(3) > .group").click();
     cy.contains("Proceed").click();

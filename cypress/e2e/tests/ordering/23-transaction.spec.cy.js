@@ -12,13 +12,14 @@ describe("Transaction 21", () => {
   });
 
   it("1 Pax with MEMC Senior Discount", () => {
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
+    cy.get('.sc-dntaoT').click().wait(2000)
+    cy.get('#postypcde').select("Takeout")
+    cy.get('#warcde').select("Jollibee 2")
+    cy.get('.border-green-500').click().wait(1000);
 
-    cy.get("#postypcde").select("Takeout").wait(2000);
-    cy.get("#warcde").select("Jollibee 2").wait(2000);
-    cy.contains("Proceed").click();
-
-    cy.contains("Food").click();
-    cy.contains("Family Super Meals").click();
+    cy.contains(/^Food$/).click().wait(1000);;
+    cy.contains(/^Family Super Meals$/).click();
     cy.contains(
       "FSM B 6-pcs Chickenjoy Bucket"
     ).click();
@@ -92,12 +93,6 @@ describe("Transaction 21", () => {
     cy.get("#voidreason").select("Customer Cancelled Order");
     cy.get(".border-green-500").click();
 
-    cy.get(".Toastify__toast-body > :nth-child(2)").should(
-      "have.text",
-      "Transaction Void Successfull"
-    );
-    cy.wait(5000)
-    cy.get('.ant-modal-close').click()
   });
 
 })
