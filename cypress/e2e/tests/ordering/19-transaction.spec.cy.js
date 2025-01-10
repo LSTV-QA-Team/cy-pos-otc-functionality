@@ -12,6 +12,7 @@ describe("Transaction 17", () => {
   });
 
   it("1 Pax with PWD Discount", () => {
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Dessert").click().wait(2000);
     cy.contains("Desserts and Pies").click().wait(2000);
     cy.contains("Buko Pie").click().wait(2000);
@@ -69,9 +70,7 @@ describe("Transaction 17", () => {
     cy.get(".border-green-500").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
+    cy.get('.ant-modal-close').click()
 
     cy.contains("Void Transaction").click().wait(2000);
     cy.get(".me-2").should("have.text", "Void Transaction").wait(2000);
@@ -85,7 +84,7 @@ describe("Transaction 17", () => {
       "have.text",
       "Transaction Void Successful"
     );
-    cy.wait(5000)
+
   });
 
 })

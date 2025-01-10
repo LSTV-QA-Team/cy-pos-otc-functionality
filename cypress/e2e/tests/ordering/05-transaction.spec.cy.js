@@ -14,12 +14,7 @@ describe("Transaction 3", () => {
 
   it("1 Pax with 20% discount and Service Charge", () => {
     cy.wait(2000);
-
-    cy.get(".px-8").should("have.text", "Select Pricelist").wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(2000);
     cy.contains("Food").click().wait(1000);
     cy.contains("Breakfast").click().wait(1000);
     cy.contains("BF Hotdog").click().wait(1000);
@@ -71,8 +66,7 @@ describe("Transaction 3", () => {
     cy.get(".border-green-500").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.wait(5000)
+    cy.get('.ant-modal-close').click()
   });
-
-
 
 })

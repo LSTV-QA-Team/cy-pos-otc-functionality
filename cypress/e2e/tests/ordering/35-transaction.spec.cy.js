@@ -12,7 +12,11 @@ describe("Transaction 33", () => {
   });
 
   it("1 Pax with Regular Transaction" , () => {
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
+    cy.get('.sc-dntaoT').click().wait(2000)
+    cy.get('#postypcde').select("Dine-In").wait(1000)
+    cy.get('#warcde').select("Jollibee 1").wait(1000)
+    cy.get('.border-green-500').click().wait(1000)
 
      cy.contains("Food").click();
      cy.contains("Sides").click();
