@@ -50,6 +50,8 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.visit('/login')
     cy.get('.me-2').should('have.text' , "Operation Setup")
     cy.wait(1000)
+    cy.get('#timestart').click().type("06:00:00")
+    cy.wait(1000)
     cy.get('#timeend').click().type("23:00:00")
     cy.wait(1000)
     cy.get('.border-green-500').click()
