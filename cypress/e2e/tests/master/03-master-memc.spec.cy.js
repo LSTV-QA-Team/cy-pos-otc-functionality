@@ -93,7 +93,7 @@ describe('MEMC', () => {
 
         cy.fixture('master-memc-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+           cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000) 
             
@@ -180,7 +180,7 @@ describe('MEMC', () => {
 
                         cy.wait(4000)
 
-                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+                       cy.get('.sc-dntaoT > .anticon > svg').click()
                     }
 
                     else if (data[key].memc === "% & ( ) / - .") {
@@ -334,7 +334,7 @@ describe('MEMC', () => {
 
                     cy.checkHeaderTitle('.px-8', '30.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].memc + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', 'Do you want to delete: ' + data[key].memc + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 

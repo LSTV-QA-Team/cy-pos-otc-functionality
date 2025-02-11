@@ -308,7 +308,7 @@ describe('Card Type', () => {
 
                     cy.checkHeaderTitle('.px-8', '25.1', 'Upon clicking the "Delete" button on pager U/I', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '25.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].cardType + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '25.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].cardType + ' ?', assertionResults, failureMessages)
 
                     cy.get('.hover\\:bg-green-500').click()
 
@@ -351,7 +351,7 @@ describe('Card Type', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rb\\:')
+                    cy.get('#\\:rc\\:')
                       .clear()
                       .type(data[key].cardType)
                       .type('{enter}')
@@ -367,7 +367,7 @@ describe('Card Type', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rb\\:')
+                    cy.get('#\\:rc\\:')
                       .clear()
                       .type(data[key].cardType)
 

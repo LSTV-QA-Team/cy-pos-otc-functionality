@@ -98,7 +98,7 @@ describe('Payment Type', () => {
 
             cy.wait(4000) 
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(2000)
                 
@@ -170,7 +170,7 @@ describe('Payment Type', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.get('.sc-dntaoT > .anticon > svg').click()
 
 
                 }
@@ -326,7 +326,7 @@ describe('Payment Type', () => {
 
                     cy.checkHeaderTitle('.px-8', '24.1', 'Upon clicking the "Delete" button on pager U/I', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].paymentType + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].paymentType + ' ?', assertionResults, failureMessages)
 
                     cy.get('.hover\\:bg-green-500').click()
 
@@ -368,7 +368,7 @@ describe('Payment Type', () => {
                 cy.get('[data-testid="SearchIcon"]').click()
 
   
-                cy.get('#\\:rb\\:')
+                cy.get('#\\:rc\\:')
                   .clear()
                   .type(data[0].paymentType)
 
@@ -382,7 +382,7 @@ describe('Payment Type', () => {
                 
                 cy.get('[data-testid="SearchIcon"]').click()
 
-                cy.get('#\\:rb\\:')
+                cy.get('#\\:rc\\:')
                   .clear()
                   .type('Electronic Card')
                   .type('{enter}')

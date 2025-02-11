@@ -92,7 +92,7 @@ describe('Item', () => {
 
         cy.fixture('master-item-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+           cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000) 
 
@@ -327,7 +327,7 @@ describe('Item', () => {
 
             for (const key in data){
 
-                // cy.get('.sc-eDLKkx > .anticon > svg').click()
+                //cy.get('.sc-dntaoT > .anticon > svg').click()
 
                 cy.wait(8000) 
 
@@ -538,7 +538,7 @@ describe('Item', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                   cy.get('.sc-dntaoT > .anticon > svg').click()
 
 
                 }
@@ -1229,7 +1229,7 @@ describe('Item', () => {
 
                     cy.checkHeaderTitle('.px-8', '97.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '26.3', 'Upon clicking the "Delete" button on pager UI:', 'Do you want to delete: ' + data[key].item + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '26.3', 'Upon clicking the "Delete" button on pager UI:', 'Do you want to delete: ' + data[key].item + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '97.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 

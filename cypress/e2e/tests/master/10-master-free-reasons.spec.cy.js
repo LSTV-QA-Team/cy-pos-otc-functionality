@@ -307,7 +307,7 @@ describe('Free Reasons', () => {
 
                     cy.checkHeaderTitle('.px-8', '24.2', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].freeReasons + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].freeReasons + ' ?', assertionResults, failureMessages)
 
                     cy.get('.hover\\:bg-green-500').click()
 

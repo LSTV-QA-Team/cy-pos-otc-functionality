@@ -362,7 +362,7 @@ describe('Order Type', () => {
 
                     cy.checkHeaderTitle('.px-8', '27.2.1', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].dineType + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', 'Do you want to delete: ' + data[key].dineType + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '27.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 

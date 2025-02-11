@@ -101,7 +101,7 @@ describe('Item Classification', () => {
 
         cy.fixture('master-itemclass-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+           cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000) 
             
@@ -169,7 +169,7 @@ describe('Item Classification', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                   cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].itemClass === "% & ( ) / - .") {
@@ -304,7 +304,7 @@ describe('Item Classification', () => {
 
                     cy.checkHeaderTitle('.px-8', '28.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '41.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].editItemClass + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '41.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].editItemClass + ' ?', assertionResults, failureMessages);
 
                     cy.get('.hover\\:bg-green-500').click()
 
@@ -316,7 +316,7 @@ describe('Item Classification', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
-                    cy.get('#\\:rb\\:')
+                    cy.get('#\\:rc\\:')
                     .should('be.enabled')
                     .clear()
                     .type(data[key].editItemClass)
@@ -354,7 +354,7 @@ describe('Item Classification', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
-                    cy.get('#\\:rb\\:')
+                    cy.get('#\\:rc\\:')
                     .should('be.enabled')
                     .clear()
                     .type(data[key].itemClass)
@@ -371,7 +371,7 @@ describe('Item Classification', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rb\\:')
+                    cy.get('#\\:rc\\:')
                     .clear()
                     .type(data[key].itemClass)
 

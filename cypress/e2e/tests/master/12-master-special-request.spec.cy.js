@@ -391,7 +391,7 @@ describe('Special Request', () => {
 
                     cy.checkHeaderTitle('.px-8', '26.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '26.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].specialReq + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '26.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].specialReq + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '26.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
@@ -440,7 +440,7 @@ describe('Special Request', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rb\\:')
+                    cy.get('#\\:rc\\:')
                       .clear()
                       .type(data[key].specialReq)
                       .type('{enter}')
@@ -458,7 +458,7 @@ describe('Special Request', () => {
                             
                     cy.get('[data-testid="SearchIcon"]').click()
         
-                    cy.get('#\\:rb\\:')
+                    cy.get('#\\:rc\\:')
                       .clear()
                       .type(data[key].specialReq)
         

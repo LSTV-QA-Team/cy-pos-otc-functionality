@@ -89,7 +89,7 @@ describe('Item Subclassification', () => {
 
         cy.fixture('master-itemsubclass-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+           cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(6000) 
             
@@ -203,7 +203,7 @@ describe('Item Subclassification', () => {
 
                     cy.wait(6000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                   cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].itemSubclass === "% & ( ) / - .") {
@@ -365,7 +365,7 @@ describe('Item Subclassification', () => {
 
                     cy.checkHeaderTitle('.px-8', '30.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].editItemClass + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', 'Do you want to delete: ' + data[key].editItemClass + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Delete" button on pager U/I:', assertionResults, failureMessages)
 

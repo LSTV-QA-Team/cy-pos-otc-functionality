@@ -329,7 +329,7 @@ describe('Void/Refund Reasons', () => {
 
                     cy.checkHeaderTitle('.px-8', '24.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].voidReasons + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].voidReasons + ' ?', assertionResults, failureMessages);
 
                     cy.get('.hover\\:bg-green-500').click()
 
@@ -371,7 +371,7 @@ describe('Void/Refund Reasons', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rb\\:')
+                    cy.get('#\\:rc\\:')
                       .clear()
                       .type(data[key].voidReasons)
                       .type('{enter}')
@@ -388,7 +388,7 @@ describe('Void/Refund Reasons', () => {
                 
         cy.get('[data-testid="SearchIcon"]').click()
 
-        cy.get('#\\:rb\\:')
+        cy.get('#\\:rc\\:')
             .clear()
             .type('Payment Error')
             .type('{enter}')

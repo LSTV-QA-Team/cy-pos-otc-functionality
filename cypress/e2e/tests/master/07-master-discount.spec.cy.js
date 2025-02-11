@@ -683,7 +683,7 @@ describe('Discount', () => {
 
                     cy.checkHeaderTitle('.px-8', '63.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '63.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].discountDesc + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '63.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].discountDesc + ' ?', assertionResults, failureMessages);
 
                     cy.get('.hover\\:bg-green-500').click()
 
