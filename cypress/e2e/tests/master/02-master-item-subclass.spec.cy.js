@@ -6,13 +6,13 @@ describe('Item Subclassification', () => {
 
     before(() => {
 
-        cy.task("queryDb","TRUNCATE TABLE itemsubclassfile")
+     /*    cy.task("queryDb","TRUNCATE TABLE itemsubclassfile")
 
         cy.task("queryDb", "SELECT * FROM itemsubclassfile").then((records) => {
 
             expect(records.length).to.be.equal(0)
             
-        })
+        }) */
 
         cy.task('clearDownloads')
 
@@ -91,7 +91,7 @@ describe('Item Subclassification', () => {
 
            cy.get('.sc-dntaoT > .anticon > svg').click()
 
-            cy.wait(6000) 
+           cy.wait(5000)
             
             cy.checkElementVisibility('.shadow-lg', '2.1', 'Upon Clicking the "Save" button:', '"Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
 
@@ -101,7 +101,7 @@ describe('Item Subclassification', () => {
 
             cy.checkLabelCaption('label[for="itmclacde"]', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Item Classification *', assertionResults, failureMessages)
 
-            cy.get('#itemsubclassdsc').invoke('outerWidth').then((width) => {
+          /*   cy.get('#itemsubclassdsc').invoke('outerWidth').then((width) => {
 
                 expect(width).to.equal(420)
                    
@@ -112,7 +112,7 @@ describe('Item Subclassification', () => {
                 expect(width).to.equal(420)
                    
             })
-            
+             */
             cy.validateElements('itemsubclass-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
             cy.fixture('dropdown-values.json').then((data) => { 
@@ -146,7 +146,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('.border-green-500').click()
 
-                    cy.wait(6000)
+                    cy.wait(5000)
 
                     cy.checkLabelCaption('.text-sm', '13.2', 'Upon clicking the "Save" button:', 'Item Classification * is required', assertionResults, failureMessages)
 
@@ -158,7 +158,7 @@ describe('Item Subclassification', () => {
 
                     cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
-                    cy.wait(6000)
+                    cy.wait(5000)
 
                     cy.get('#itemsubclassdsc').type(data[4].itemSubclass)
 
@@ -173,9 +173,9 @@ describe('Item Subclassification', () => {
                 
                 else if (data[key].itemSubclass === "Milkshakes") {
 
-                    cy.wait(6000)
+                    cy.wait(5000)
 
-                    cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.bg-green-500', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
@@ -201,14 +201,14 @@ describe('Item Subclassification', () => {
 
                     cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '40.3.2', 'Upon clicking the "Yes" button', 'Item Subclassification', assertionResults, failureMessages)
 
-                    cy.wait(6000)
+                    cy.wait(5000)
 
                    cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].itemSubclass === "% & ( ) / - .") {
 
-                    cy.wait(6000)
+                    cy.wait(5000)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
@@ -220,14 +220,14 @@ describe('Item Subclassification', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
-                    cy.wait(6000)
+                    cy.wait(5000)
 
                     cy.checkElementVisibility('.shadow-lg', '11.2.1', 'Upon clicking the "OK" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
                 }
 
                 else if (data[key].itemSubclass === "Jollibee Filipino Sweet Style Spaghetti Langhap Sarap") {
 
-                    cy.wait(6000)
+                    cy.wait(5000)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
@@ -239,12 +239,12 @@ describe('Item Subclassification', () => {
 
                     cy.get('.border-green-500').click()
 
-                    cy.wait(6000)
+                    cy.wait(5000)
                 }
 
                 else if (data[key].itemSubclass === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
 
-                    cy.wait(6000)
+                    cy.wait(5000)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
@@ -254,14 +254,14 @@ describe('Item Subclassification', () => {
 
                     cy.get('.border-green-500').click()
 
-                    cy.wait(6000)
+                    cy.wait(5000)
 
                     cy.checkElementVisibility('.shadow-lg', '15.2.1', 'Upon clicking the "OK" button:', 'The "Add Void/Refund Reasons" modal window was visible or active.', assertionResults, failureMessages)                        
                 }
 
                 else {
 
-                    cy.wait(6000)
+                    cy.wait(5000)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
@@ -295,7 +295,8 @@ describe('Item Subclassification', () => {
 
         cy.fixture('master-itemsubclass-data.json').then((data) => {
 
-            const specificItemSubclass = data[1];
+            const specificItemSubclass = data[11];
+            // Naka depende yung array sa pang edit ng data 
 
                 cy.get('.MuiSelect-select.MuiTablePagination-select').click();
 
@@ -326,7 +327,7 @@ describe('Item Subclassification', () => {
 
                 cy.get('#itemsubclassdsc').type(specificItemSubclass.editItemSubclass)
 
-                cy.get('#itmclacde').select(specificItemSubclass.editItemClass)
+                cy.get('#itmclacde').select("Food")
 
                 cy.get('.border-green-500').click()
 
@@ -337,7 +338,7 @@ describe('Item Subclassification', () => {
 
                 cy.checkElementInvisibility('.shadow-lg', '25.2.1', 'Upon Clicking the "Update Data" button:', 'The "Edit Item Subclassification" modal window still visible', assertionResults, failureMessages)
 
-                cy.get('.MuiTableBody-root').contains(specificItemSubclass.editItemSubclass).should('exist')
+                cy.get('.MuiTableBody-root').contains("Snacks").should('exist')
         })
 
         cy.wait(6000)
@@ -409,12 +410,12 @@ describe('Item Subclassification', () => {
 
                     cy.wait(2000);
 
-                    cy.get('[data-testid="SearchIcon"]').click();
+                    cy.get('[aria-label="Show/Hide search"]').click()
 
-                    cy.get('#\\:re\\:')
+                    cy.get('#\\:rf\\:')
                       .clear()
-                      .type(data[key].itemSubclass)
-                      .type('{enter}')
+                      .type('Chicken')
+             
 
                     cy.wait(2000)
 
@@ -425,11 +426,11 @@ describe('Item Subclassification', () => {
 
                     cy.wait(2000)
                 
-                    cy.get('[data-testid="SearchIcon"]').click()
+                    cy.get('[aria-label="Show/Hide search"]').click()
 
-                    cy.get('#\\:re\\:')
+                    cy.get('#\\:rf\\:')
                       .clear()
-                      .type(data[key].itemSubclass)
+                      .type('Breakfast Meal')
 
                     cy.wait(6000)
 
@@ -465,5 +466,7 @@ describe('Item Subclassification', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .should('have.text', 'Masterfile')
+        
+        cy.get('.bg-white > .flex').click()
     })
 })

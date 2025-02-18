@@ -435,6 +435,7 @@ describe('MEMC', () => {
         cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 
         cy.get('.text-\\[3rem\\]').should('be.visible').should('have.text', 'Masterfile')
-        
+
+        cy.get('.bg-white > .flex').click()
     })
 })

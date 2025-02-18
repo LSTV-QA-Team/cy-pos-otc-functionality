@@ -88,7 +88,8 @@ describe('Discount', () => {
 
         cy.fixture('master-discount-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+        
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000) 
             
@@ -195,7 +196,7 @@ describe('Discount', () => {
 
                         cy.wait(2000)
 
-                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+                       cy.get('.sc-dntaoT > .anticon > svg').click()
 
                     }
 
@@ -782,5 +783,7 @@ describe('Discount', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .and('have.text', 'Masterfile')
+
+          cy.get('.bg-white > .flex').click()
     })
 })

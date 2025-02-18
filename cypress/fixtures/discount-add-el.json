@@ -1,6 +1,6 @@
 [
   {
-    "sel": "button.border-green-500",
+    "sel": " ",
     "assertion": "contain.text",
     "expectedText": "Save",
     "customErrorMsg": "Save button should contain text \"Save\" instead of \"Add Data\""

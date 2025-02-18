@@ -37,7 +37,7 @@
   },
   {
     "selectorName": "Accredited Date",
-    "sel": "#accredate",
+    "sel": ":nth-child(7) > .ant-picker",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Accredited Date\" textbox should be editable"
   },
@@ -55,7 +55,7 @@
   },
   {
     "selectorName": "Date Issued",
-    "sel": "#dateissued",
+    "sel": ":nth-child(10) > .ant-picker",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Date Issued\" textbox should be editable"
   },
@@ -91,26 +91,26 @@
   },
   {
     "selectorName": "Cancel",
-    "sel": ".border-red-500",
+    "sel": ".border-gray-300",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Cancel\" button  should be clickable"
   },
   {
     "selectorName": "Update",
-    "sel": ".border-blue-500",
+    "sel": ".border-green-500",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Save\" button  should be clickable"
   },
   {
     "selectorName": "Cancel",
-    "sel": ".border-red-500",
+    "sel": ".border-gray-300",
     "assertion": "contain.text",
     "expectedText": "Cancel",
     "customErrorMsg": "Cancel button should contain text \"Cancel\" instead of \"Close\""
   },
   {
     "selectorName": "Update",
-    "sel": ".border-blue-500",
+    "sel": ".border-green-500",
     "assertion": "contain.text",
     "expectedText": "Update",
     "customErrorMsg": "Update button should contain text \"Update\" instead of \"Save\""

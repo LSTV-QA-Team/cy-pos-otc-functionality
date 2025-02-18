@@ -68,5 +68,7 @@ describe('Select MEMC', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .and('have.text', 'Masterfile')
+
+          cy.get('.bg-white > .flex').click()
     })
 })

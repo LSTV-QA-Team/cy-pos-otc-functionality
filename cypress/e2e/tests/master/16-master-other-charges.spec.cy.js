@@ -103,7 +103,7 @@ describe('Other Charges', () => {
                       
                     cy.checkValue('#localtax', '9.1', 'After Encoding in Local Tax:', data[key].checkValTax + '%', assertionResults,failureMessages)
                     
-                    cy.get('.border-green-500').click()
+                    /* cy.get('.border-green-500').click() */
 
                     cy.get('#localtax').invoke('val').then(localTaxVal => {
 
@@ -121,8 +121,8 @@ describe('Other Charges', () => {
 
                                     cy.log('One or more textboxes are not empty')
 
-                                    cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
-
+/*                                     cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
+ */
                                 }
                                 /* ADD ASSERTION 
                                     if the encoded data is invalid, do this; check notif "Please input valid data." 

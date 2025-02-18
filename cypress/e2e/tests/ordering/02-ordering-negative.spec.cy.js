@@ -671,7 +671,7 @@ describe("Ordering ", () => {
     cy.get('.px-8').should('have.text', 'Authorized User Only')
     cy.get('#usrcde').click().type('lstv')
     cy.get('#usrpwd').click().type('lstventures')
-    cy.get('.sc-guDLey').click().wait(500)
+    cy.get('..font-monserrat').click().wait(500)
     cy.get('.Toastify__toast-body').should('have.text', 'Authorized!')
     .wait(1000)
     cy.get('.Toastify__toast-body').click()

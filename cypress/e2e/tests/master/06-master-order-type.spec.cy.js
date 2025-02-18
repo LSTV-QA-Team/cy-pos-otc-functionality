@@ -88,7 +88,7 @@ describe('Order Type', () => {
 
         cy.fixture('master-ordertype-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000) 
             
@@ -196,7 +196,7 @@ describe('Order Type', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].dineType === "% & ( ) / - .") {
@@ -461,5 +461,7 @@ describe('Order Type', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .should('have.text', 'Masterfile')
+
+        cy.get('.bg-white > .flex').click()
     })
 })

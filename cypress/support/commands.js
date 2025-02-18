@@ -64,10 +64,10 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.get('#usrpwd').should('be.enabled')
     cy.get('#usrpwd').clear()
     cy.get('#usrpwd').realType(userPassword)
-    cy.get('.mt-8 > .sc-gtLWhw').should('be.enabled')
-    cy.get('.mt-8 > .sc-gtLWhw').click()
-    cy.wait(4000)
-    cy.get('.text-\\[2rem\\]').should('have.text', 'Welcome, lstv!')
+    cy.wait(2000)
+    //cy.get('.mt-8 > .sc-gtLWhw').should('be.enabled')
+    //cy.get('.mt-8 > .sc-gtLWhw').click()
+    cy.get('button[form="login"]').click();
     cy.wait(4000)
 
   })

@@ -96,7 +96,7 @@ describe('Void/Refund Reasons', () => {
 
             cy.wait(4000) 
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(2000)
                 
@@ -170,7 +170,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.wait(4000)
 
-                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+                        cy.get('.sc-dntaoT > .anticon > svg').click()
 
 
                     }
@@ -421,6 +421,8 @@ describe('Void/Refund Reasons', () => {
         cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 
         cy.get('.text-\\[3rem\\]').should('have.text', 'Masterfile')
+
+        cy.get('.bg-white > .flex').click()
     });
 });
 

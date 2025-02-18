@@ -100,7 +100,7 @@ describe('Price List', () => {
 
         cy.fixture('master-pricelist-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000) 
             
@@ -184,7 +184,7 @@ describe('Price List', () => {
 
                         cy.wait(4000)
 
-                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+                        cy.get('.sc-dntaoT > .anticon > svg').click()
 
                     }
 
@@ -505,5 +505,7 @@ describe('Price List', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .and('have.text', 'Masterfile');
+
+          cy.get('.bg-white > .flex').click()
     })
 });

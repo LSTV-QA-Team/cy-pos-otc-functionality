@@ -92,7 +92,7 @@ describe('Card Type', () => {
 
             cy.wait(4000) 
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000)
                 
@@ -161,7 +161,7 @@ describe('Card Type', () => {
 
                     cy.checkHeaderTitle(':nth-child(1) > .text-\\[2rem\\]', '6.3.2', 'Upon clicking the "Yes" button', 'Card Type', assertionResults, failureMessages)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].cardType === "% & ( ) / - .") {
@@ -404,6 +404,8 @@ describe('Card Type', () => {
         cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 
         cy.get('.text-\\[3rem\\]').should('have.text', 'Masterfile')
+
+        cy.get('.bg-white > .flex').click()
     })
 })
 

@@ -88,7 +88,7 @@ describe('Cash In and Out Reason', () => {
 
         cy.fixture('master-cashioreason-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(6000) 
             
@@ -202,7 +202,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.wait(6000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].cashioreason === "% & ( ) / - .") {

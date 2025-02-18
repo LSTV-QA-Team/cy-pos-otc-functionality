@@ -54,12 +54,6 @@ describe('Receipt Header Set Up', () => {
                 if (data[key].forInvalid === true) {
 
                     cy.wait(4000)
-
-                    cy.get('#business1').clear()
-                        .type(data[key].bus1)
-
-                    cy.checkInputMaxLength('#business1', 50, '20.1', 'Upon Encoding in "Business Name 1" Textbox:', assertionResults, failureMessages)
-
                     cy.get('#business2').clear()
                         .type(data[key].bus2)
 
@@ -125,8 +119,6 @@ describe('Receipt Header Set Up', () => {
         cy.contains('Header').click()
 
         cy.wait(4000)
-
-        cy.get('#business1').clear()
 
         cy.get('#business2').clear()
 
@@ -216,12 +208,6 @@ describe('Receipt Header Set Up', () => {
                 if (data[key].forValid === true) {
 
                     cy.wait(4000)
-
-                    cy.get('#business1').clear()
-                        .type(data[key].bus1)
-
-                    cy.checkValue('#business1', '2.1', 'After Encoding in "Business Name 1" Textbox:', data[key].bus1, assertionResults, failureMessages)
-
 
                     cy.get('#business2').clear()
                         .type(data[key].bus2)

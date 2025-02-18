@@ -66,5 +66,8 @@
     "checkValTakeout": 10,
     "checkValDine": 10,
     "checkValTax": 0
+  },
+  {
+    "checkValTax": "          "
   }
 ]

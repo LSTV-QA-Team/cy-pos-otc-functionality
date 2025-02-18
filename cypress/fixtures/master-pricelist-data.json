@@ -39,7 +39,8 @@
     "tableData": false,
     "onlyDelete": true,
     "onlySearchVal": false,
-    "onlySearchInval": true
+    "onlySearchInval": true,
+    "__EMPTY_3": "                   "
   },
   {
     "pricelist": "% & ( ) / - .",

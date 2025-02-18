@@ -334,6 +334,8 @@ describe('Item Classification', () => {
                     cy.checkLabelCaption('.Toastify__toast-body', '28.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                     cy.checkElementInvisibility('.shadow-lg', '28.5.2', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+
+                    cy.get('.MuiInputAdornment-root > [data-mui-internal-clone-element="true"]').click()
                 }
             }
         })
@@ -407,6 +409,8 @@ describe('Item Classification', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .and('have.text', 'Masterfile')
+
+        cy.get('.bg-white > .flex').click()
     })
 })
 

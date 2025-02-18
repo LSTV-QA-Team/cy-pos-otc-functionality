@@ -69,7 +69,8 @@
   {
     "sel": "#isaddon",
     "assertion": "be.enabled",
-    "customErrorMsg": "Add-ons should be enabled to allow user to input data."
+    "customErrorMsg": "Add-ons should be enabled to allow user to input data.",
+    "__EMPTY_6": "                          "
   },
   {
     "sel": "#inactive",

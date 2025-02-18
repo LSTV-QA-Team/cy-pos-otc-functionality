@@ -46,7 +46,8 @@
     "value": 500,
     "onlyDelete": true,
     "onlySearchVal": false,
-    "onlySearchInval": true
+    "onlySearchInval": true,
+    "__EMPTY_1": "                      "
   },
   {
     "memc": "MEMC 600",

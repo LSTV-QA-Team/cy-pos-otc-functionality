@@ -1,7 +1,7 @@
 [
   {
     "selectorName": "Print button",
-    "sel": ":nth-child(2) > .font-monserrat",
+    "sel": ":nth-child(2) > .sc-guDLey",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Print\" button  should be clickable"
   },

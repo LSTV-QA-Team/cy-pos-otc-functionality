@@ -92,7 +92,7 @@ describe('Special Request', () => {
 
         cy.fixture('master-specialreq-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000) 
             
@@ -215,7 +215,7 @@ describe('Special Request', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].specialReq === "% & ( ) / - .") {
@@ -494,5 +494,7 @@ describe('Special Request', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .should('have.text', 'Masterfile')
+
+          cy.get('.bg-white > .flex').click()
     })
 })

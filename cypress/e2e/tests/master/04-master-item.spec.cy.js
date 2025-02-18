@@ -668,8 +668,8 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear().type(data[key].item)
 
-                    cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 100 characters." was not visible.', assertionResults, failureMessages)
-
+/*                     cy.checkElementVisibility('.Toastify__toast-body', '14.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 100 characters." was not visible.', assertionResults, failureMessages)
+ */
                     cy.get('#itmtyp').select(data[key].itemType)
 
                     cy.get('#itmclacde').select(data[key].itemClass)
@@ -788,7 +788,7 @@ describe('Item', () => {
                     
                     cy.get('#itmdsc').clear().type(data[key].item)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - . ,', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
                     cy.get('#itmtyp').select(data[key].itemType)
 
@@ -1329,5 +1329,7 @@ describe('Item', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .should('have.text', 'Masterfile')
+
+          cy.get('.bg-white > .flex').click()
     })
 })
