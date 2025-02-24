@@ -131,7 +131,7 @@ describe('Order Type', () => {
 
                     cy.get('#postypdsc').clear().type(data[key].dineType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -141,7 +141,7 @@ describe('Order Type', () => {
 
                     cy.get('#postypdsc').clear().should('be.empty')
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
                     
                     cy.wait(2000)
 
@@ -155,7 +155,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[0].orderType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -186,7 +186,7 @@ describe('Order Type', () => {
 
                     cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                    cy.get('#warning-button-2').click()
 
                     cy.wait(4000)
 
@@ -207,7 +207,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -228,7 +228,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
                 }
 
                 else if (data[key].dineType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -243,7 +243,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000) 
 
@@ -258,7 +258,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -324,7 +324,7 @@ describe('Order Type', () => {
 
                 cy.get('#ordertyp').select(specificOrderType.editOrderType)
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 

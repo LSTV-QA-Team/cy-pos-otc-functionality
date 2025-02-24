@@ -24,8 +24,8 @@ it("1 Pax with Regular Transaction" , () => {
 
     cy.get('#freeitem > .flex > .me-1').click()
     cy.get('#textreason').click().type("Birthdayyyy")
-    cy.get('.border-green-500').click()
-    cy.get('.border-green-500').click()
+    cy.get('#button-form-2').click()
+    cy.get('#button-form-2').click()
 })
 
 })

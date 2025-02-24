@@ -26,7 +26,7 @@ describe("Transaction 2", () => {
     cy.get(".px-8").should("have.text", "Add discount");
     cy.get("#discde").select("10%");
     cy.get("#orderitmid").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex").should(
       "have.text",
@@ -60,7 +60,7 @@ describe("Transaction 2", () => {
     cy.get(":nth-child(13) > .bg-green-100").click();
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Debong");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",

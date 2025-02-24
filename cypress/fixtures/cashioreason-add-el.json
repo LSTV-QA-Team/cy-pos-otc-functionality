@@ -1,6 +1,6 @@
 [
   {
-    "sel": "button.border-green-500",
+    "sel": "button#button-form-2",
     "assertion": "contain.text",
     "expectedText": "Save",
     "customErrorMsg": "Save button should contain text \"Save\""
@@ -22,7 +22,7 @@
     "customErrorMsg": "Reason Type selector should be enabled to allow user to select data."
   },
   {
-    "sel": "button.border-green-500",
+    "sel": "button#button-form-2",
     "assertion": "be.enabled",
     "customErrorMsg": "\"Save\" button should be enabled and clickable"
   },

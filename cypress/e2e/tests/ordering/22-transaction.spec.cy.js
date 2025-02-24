@@ -23,11 +23,12 @@ describe("Transaction 20", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("Diplomat").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Diploooo");
+    cy.get('#address').click().type ("Philippines")
     cy.get("#cardno").click().type("345345");
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -70,7 +71,7 @@ describe("Transaction 20", () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Parehko");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click().wait(2000);
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -85,7 +86,7 @@ describe("Transaction 20", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Customer Cancelled Order");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
   });
 })

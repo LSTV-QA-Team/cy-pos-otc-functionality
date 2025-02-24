@@ -97,7 +97,7 @@
   },
   {
     "selectorName": "Update",
-    "sel": ".border-green-500",
+    "sel": "#button-form-2",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Save\" button  should be clickable"
   },
@@ -110,7 +110,7 @@
   },
   {
     "selectorName": "Update",
-    "sel": ".border-green-500",
+    "sel": "#button-form-2",
     "assertion": "contain.text",
     "expectedText": "Update",
     "customErrorMsg": "Update button should contain text \"Update\" instead of \"Save\""

@@ -49,7 +49,7 @@ describe('Select MEMC', () => {
 
                     cy.get('#memc').select(data[key].memc)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                 }
             }

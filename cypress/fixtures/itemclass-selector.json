@@ -1,13 +1,13 @@
 [
   {
     "selectorName": "Print button",
-    "itemClassSelector": ":nth-child(2) > .font-monserrat",
+    "itemClassSelector": "#printer-button-button-styled",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Print\" button  should be clickable"
   },
   {
     "selectorName": "Add button",
-    "itemClassSelector": ".sc-eDLKkx > .anticon > svg",
+    "itemClassSelector": "#add-button-icon > svg",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Add\" button  should be clickable"
   },

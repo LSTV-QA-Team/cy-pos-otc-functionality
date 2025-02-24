@@ -9,7 +9,7 @@
     "assertion": "not.be.disabled"
   },
   {
-    "sel": "button.px-4.py-2.rounded.border.border-solid.border-green-500.hover\\\\:bg-blue-500.hover\\\\:text-white.my-5.mx-3",
+    "sel": "button.px-4.py-2.rounded.border.border-solid#button-form-2.hover\\\\:bg-blue-500.hover\\\\:text-white.my-5.mx-3",
     "assertion": "not.be.disabled"
   },
   {

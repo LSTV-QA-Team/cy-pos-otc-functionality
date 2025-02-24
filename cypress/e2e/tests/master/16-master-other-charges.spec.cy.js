@@ -64,7 +64,7 @@ describe('Other Charges', () => {
 
                     // 17.1 Check all encoded data should reflect to the receipt (Validate on Preview) 
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
@@ -103,7 +103,7 @@ describe('Other Charges', () => {
                       
                     cy.checkValue('#localtax', '9.1', 'After Encoding in Local Tax:', data[key].checkValTax + '%', assertionResults,failureMessages)
                     
-                    /* cy.get('.border-green-500').click() */
+                    /* cy.get('#button-form-2').click() */
 
                     cy.get('#localtax').invoke('val').then(localTaxVal => {
 
@@ -164,7 +164,7 @@ describe('Other Charges', () => {
         cy.get('#localtax').clear()
           .type('1.00')
 
-        cy.get('.border-green-500').click()
+        cy.get('#button-form-2').click()
 
         cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Takeout Service Charge * is required', assertionResults, failureMessages)
 
@@ -176,7 +176,7 @@ describe('Other Charges', () => {
         cy.get('#localtax').clear()
           .type('1.00')
 
-        cy.get('.border-green-500').click()
+        cy.get('#button-form-2').click()
 
         cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Dine-In Service Charge * is required', assertionResults, failureMessages)
 
@@ -188,7 +188,7 @@ describe('Other Charges', () => {
 
         cy.get('#localtax').clear()
 
-        cy.get('.border-green-500').click()
+        cy.get('#button-form-2').click()
 
         cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Local Tax * is required', assertionResults, failureMessages)
 
@@ -202,7 +202,7 @@ describe('Other Charges', () => {
 
         cy.get('.border-gray-300').click()
 
-        cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-green-500').click()
+        cy.get('#warning-button-2').click()
 
         cy.wait(2000)
 
@@ -235,7 +235,7 @@ describe('Other Charges', () => {
 
                   // 17.1 Check all encoded data should reflect to the receipt (Validate on Preview) 
 
-                  cy.get('.border-green-500').click()
+                  cy.get('#button-form-2').click()
 
                   cy.checkLabelCaption('.Toastify__toast-body', '11.1', 'Upon clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 

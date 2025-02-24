@@ -11,13 +11,13 @@ describe("Transaction 11", () => {
     cy.login("lstv", "lstventures");
   });
 
-  it("1 Pax with MEMC Senior Discount and Service Charge", () => {
+  it("1 Pax with MEMC Senior Discount and Service Charge - DINE IN ", () => {
     cy.wait(2000);
     cy.get(':nth-child(3) > .sc-blHHSb').click()
     cy.get('.sc-dntaoT').click().wait(2000)
     cy.get('#postypcde').select("Dine-In")
     cy.get('#warcde').select("Jollibee 1")
-    cy.get('.border-green-500').click().wait(5000)
+    cy.get('#button-form-2').click().wait(5000)
 
     cy.contains("Food").click().wait(1000);
     cy.contains(/^Chicken$/).click().wait(2000)
@@ -26,12 +26,12 @@ describe("Transaction 11", () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Senior");
     cy.get("#orderitmid0").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Jessie J");
     cy.get("#cardno").click().type("3452435");
 
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : Senior"
@@ -99,7 +99,7 @@ describe("Transaction 11", () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",

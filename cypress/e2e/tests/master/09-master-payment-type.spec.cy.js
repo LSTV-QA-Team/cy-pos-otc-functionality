@@ -126,13 +126,13 @@ describe('Payment Type', () => {
                     
                     cy.get('#paytyp').clear()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
                     cy.get('#paytyp').type('Cash')
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -160,7 +160,7 @@ describe('Payment Type', () => {
 
                     cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                    cy.get('#warning-button-2').click()
 
                     cy.wait(3000)
 
@@ -181,7 +181,7 @@ describe('Payment Type', () => {
 
                     cy.get('#paytyp').clear().type(data[key].paymentType)
                     
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -218,7 +218,7 @@ describe('Payment Type', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     // cy.get('#paytyp').should('be.empty')
 
@@ -234,7 +234,7 @@ describe('Payment Type', () => {
 
                     cy.get('#paytyp').clear().type(data[key].paymentType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -292,7 +292,7 @@ describe('Payment Type', () => {
 
                 cy.get('#paytyp').type(specificPaymentType.editPaymentType)
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -368,7 +368,7 @@ describe('Payment Type', () => {
                 cy.get('[data-testid="SearchIcon"]').click()
 
   
-                cy.get('#\\:rc\\:')
+               cy.get('#pos-table-search')
                   .clear()
                   .type(data[0].paymentType)
 
@@ -382,7 +382,7 @@ describe('Payment Type', () => {
                 
                 cy.get('[data-testid="SearchIcon"]').click()
 
-                cy.get('#\\:rc\\:')
+               cy.get('#pos-table-search')
                   .clear()
                   .type('Electronic Card')
                   .type('{enter}')

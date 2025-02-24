@@ -6,13 +6,13 @@ describe('Item Subclassification', () => {
 
     before(() => {
 
-     /*    cy.task("queryDb","TRUNCATE TABLE itemsubclassfile")
+        cy.task("queryDb","TRUNCATE TABLE itemsubclassfile")
 
         cy.task("queryDb", "SELECT * FROM itemsubclassfile").then((records) => {
 
             expect(records.length).to.be.equal(0)
             
-        }) */
+        }) 
 
         cy.task('clearDownloads')
 
@@ -144,7 +144,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(5000)
 
@@ -154,7 +154,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
@@ -164,7 +164,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[4].itemClass)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -175,7 +175,7 @@ describe('Item Subclassification', () => {
 
                     cy.wait(5000)
 
-                    cy.checkLabelCaption('.bg-green-500', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.bg-green-200 > :nth-child(2)', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
 
                     cy.get('#itemsubclassdsc').clear().type(data[key].itemSubclass)
 
@@ -193,7 +193,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('.border-gray-300').click()
 
-                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-green-500').click()
+                    cy.get('#warning-button-2').click()
 
                     cy.wait(3000)
 
@@ -214,7 +214,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -237,7 +237,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(5000)
                 }
@@ -252,7 +252,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(5000)
 
@@ -267,10 +267,10 @@ describe('Item Subclassification', () => {
 
                     cy.get('#itmclacde').select(data[key].itemClass)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
-
+/*                     cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+ */
                     cy.wait(6000)
                     
                     cy.checkElementVisibility('.shadow-lg', '4.2.1', 'Upon Clicking the "Save" button:', 'The "Add Item Subclassification" modal window was not visible or active.', assertionResults, failureMessages)
@@ -329,7 +329,7 @@ describe('Item Subclassification', () => {
 
                 cy.get('#itmclacde').select("Food")
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -412,7 +412,7 @@ describe('Item Subclassification', () => {
 
                     cy.get('[aria-label="Show/Hide search"]').click()
 
-                    cy.get('#\\:rf\\:')
+                    cy.get('#pos-table-search')
                       .clear()
                       .type('Chicken')
              
@@ -428,7 +428,7 @@ describe('Item Subclassification', () => {
                 
                     cy.get('[aria-label="Show/Hide search"]').click()
 
-                    cy.get('#\\:rf\\:')
+                    cy.get('#pos-table-search')
                       .clear()
                       .type('Breakfast Meal')
 

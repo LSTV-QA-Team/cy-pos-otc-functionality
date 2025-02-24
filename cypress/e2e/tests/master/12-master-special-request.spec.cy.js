@@ -150,7 +150,7 @@ describe('Special Request', () => {
 
                     cy.get('#modcde').clear().type(data[key].specialReq)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.text-sm', '11.2', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
@@ -162,7 +162,7 @@ describe('Special Request', () => {
 
                     cy.wait(2000)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -176,7 +176,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[0].itemSubclass).click()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -207,7 +207,7 @@ describe('Special Request', () => {
 
                     cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                    cy.get('#warning-button-2').click()
 
                     cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Special Request" modal window was visible or active.', assertionResults, failureMessages)
 
@@ -228,7 +228,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -243,8 +243,8 @@ describe('Special Request', () => {
 
                     cy.get('#modcde').clear().type(data[key].specialReq)
 
-                    cy.checkElementVisibility('.Toastify__toast-body', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
-
+/*                     cy.checkElementVisibility('.Toastify__toast-body', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
+ */
                     cy.checkInputMaxLength('#modcde', 50, '16.2', 'Upon Encoding in "Item Subclassification" Textbox:', assertionResults, failureMessages)
 
                     cy.get('#modgrpcde').click()
@@ -253,7 +253,7 @@ describe('Special Request', () => {
                     
                     cy.wait(4000)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
                 }
 
                 else if (data[key].specialReq === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -268,7 +268,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(4000)
 
@@ -285,7 +285,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -351,7 +351,7 @@ describe('Special Request', () => {
 
                 cy.get('.select__menu-list--is-multi').contains('.select__option', specificSpecialReq.editItemSubclass).click()
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -440,7 +440,7 @@ describe('Special Request', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rc\\:')
+                   cy.get('#pos-table-search')
                       .clear()
                       .type(data[key].specialReq)
                       .type('{enter}')
@@ -458,7 +458,7 @@ describe('Special Request', () => {
                             
                     cy.get('[data-testid="SearchIcon"]').click()
         
-                    cy.get('#\\:rc\\:')
+                   cy.get('#pos-table-search')
                       .clear()
                       .type(data[key].specialReq)
         

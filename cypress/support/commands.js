@@ -54,7 +54,7 @@ Cypress.Commands.add('login', (userCode, userPassword) => {
     cy.wait(1000)
     cy.get('#timeend').click().type("23:00:00")
     cy.wait(1000)
-    cy.get('.border-green-500').click()
+    cy.get('#button-form-2').click()
     cy.wait(4000)
     cy.contains('Update').realMouseDown().realClick()
     cy.wait(4000)

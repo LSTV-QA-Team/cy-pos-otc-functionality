@@ -120,13 +120,13 @@ describe('Card Type', () => {
                     
                     cy.get('#cardtype').clear()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.text-sm', '12.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
                     cy.get('#cardtype').clear().type(data[0].cardType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -153,7 +153,7 @@ describe('Card Type', () => {
 
                     cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                    cy.get('#warning-button-2').click()
 
                     cy.wait(3000)
 
@@ -172,7 +172,7 @@ describe('Card Type', () => {
                       .clear()
                       .type(data[key].cardType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -191,7 +191,7 @@ describe('Card Type', () => {
 
                     cy.checkInputMaxLength('#cardtype', 50, '17.1', 'Upon Encoding in "Card Type" Textbox:', assertionResults, failureMessages)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
                 }
 
                 else if (data[key].cardType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -202,7 +202,7 @@ describe('Card Type', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -219,7 +219,7 @@ describe('Card Type', () => {
 
                     cy.get('#cardtype').should('have.value', data[key].cardType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -274,7 +274,7 @@ describe('Card Type', () => {
 
                 cy.get('#cardtype').clear().type(specificCardType.editCardType)
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -351,7 +351,7 @@ describe('Card Type', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rc\\:')
+                   cy.get('#pos-table-search')
                       .clear()
                       .type(data[key].cardType)
                       .type('{enter}')
@@ -367,7 +367,7 @@ describe('Card Type', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rc\\:')
+                   cy.get('#pos-table-search')
                       .clear()
                       .type(data[key].cardType)
 

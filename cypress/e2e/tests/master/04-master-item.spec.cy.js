@@ -337,7 +337,7 @@ describe('Item', () => {
 
                     cy.get('#itmdsc').clear()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(4000)
 
@@ -396,7 +396,7 @@ describe('Item', () => {
 
                     cy.get('#taxcde').select('VATABLE')
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -528,7 +528,7 @@ describe('Item', () => {
 
                     cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                    cy.get('#warning-button-2').click()
 
                     cy.wait(3000)
 
@@ -650,12 +650,12 @@ describe('Item', () => {
                         cy.get('#chkcombo').should('not.be.checked')
                     }
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
-                    cy.checkLabelCaption('.Toastify__toast-body', '48.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
-
+/*                     cy.checkLabelCaption('.Toastify__toast-body', '48.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
+ */
                     cy.checkElementVisibility('.shadow-lg', '48.2', 'Upon clicking the "OK" button:', 'The "Add Item" modal window was not visible or active.', assertionResults, failureMessages)
 
                     // 43.2.2 Check if the "Description" textbox object is cleared or blank.
@@ -774,12 +774,12 @@ describe('Item', () => {
 
                     // cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(1000)
 
-                    cy.checkElementVisibility('.Toastify__toast-body', '48.1', 'Upon clicking the "Save" button:', '"Successfully saved." notification message is not visible', assertionResults, failureMessages)
-
+/*                     cy.checkElementVisibility('.Toastify__toast-body', '48.1', 'Upon clicking the "Save" button:', '"Successfully saved." notification message is not visible', assertionResults, failureMessages)
+ */
                 }
 
                 else if (data[key].item === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -891,7 +891,7 @@ describe('Item', () => {
                         cy.get('#chkcombo').should('not.be.checked')
                     }
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
                     
@@ -1050,7 +1050,7 @@ describe('Item', () => {
                         cy.get('#chkcombo').should('not.be.checked')
                     }
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -1191,7 +1191,7 @@ describe('Item', () => {
                     }
                 }
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 

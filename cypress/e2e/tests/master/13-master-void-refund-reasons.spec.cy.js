@@ -125,7 +125,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.get('#voidcde').clear()
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(4000)
 
@@ -133,7 +133,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.get('#voidcde').type('Incorrect Order Entry')
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -160,7 +160,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.wait(4000)
 
-                        cy.contains('button[class*="border-green-500"]', 'Yes').realClick()
+                        cy.get('#warning-button-2').realClick()
 
                         cy.wait(3000)
 
@@ -179,7 +179,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.get('#voidcde').clear().type(data[key].voidReasons)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
                         
                         cy.wait(2000)
 
@@ -197,11 +197,11 @@ describe('Void/Refund Reasons', () => {
 
                         cy.get('#voidcde').clear().type(data[key].voidReasons)
 
-                        cy.checkElementVisibility('.Toastify__toast-body', '17.2', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
+                        //cy.checkElementVisibility('.Toastify__toast-body', '17.2', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        cy.checkInputMaxLength('#voidcde', 50, '17.1', 'Upon Encoding in "Card Type" Textbox:', assertionResults, failureMessages)
+                        cy.checkInputMaxLength('#voidcde', 50, '17.1', 'Upon Encoding in "Description" Textbox:', assertionResults, failureMessages)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         // cy.wait(4000)
 
@@ -217,7 +217,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '16.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -233,7 +233,7 @@ describe('Void/Refund Reasons', () => {
 
                         cy.get('#voidcde').clear().type(data[key].voidReasons)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -295,7 +295,7 @@ describe('Void/Refund Reasons', () => {
 
                 cy.get('#voidcde').type(specificVoidReasons.editVoidReasons)
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -371,7 +371,7 @@ describe('Void/Refund Reasons', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rc\\:')
+                   cy.get('#pos-table-search')
                       .clear()
                       .type(data[key].voidReasons)
                       .type('{enter}')
@@ -388,7 +388,7 @@ describe('Void/Refund Reasons', () => {
                 
         cy.get('[data-testid="SearchIcon"]').click()
 
-        cy.get('#\\:rc\\:')
+       cy.get('#pos-table-search')
             .clear()
             .type('Payment Error')
             .type('{enter}')

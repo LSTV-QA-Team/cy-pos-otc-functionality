@@ -65,12 +65,12 @@
     "customErrorMsg": "\"Terminal No.\" textbox should be editable if no transaction."
   },
   {
-    "sel": ".border-gray-300",
+    "sel": "#button-form-2",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Cancel\" button  should be clickable"
   },
   {
-    "sel": ".border-green-500",
+    "sel": "#button-form-1",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Save\" button  should be clickable"
   },

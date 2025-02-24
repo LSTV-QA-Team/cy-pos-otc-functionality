@@ -136,7 +136,7 @@ describe('Price List', () => {
 
                         // cy.checkValue('#prcdsc', '0', 'After encoding data', data[key].pricelist, assertionResults, failureMessages)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Price List * is required', assertionResults, failureMessages)
                         
@@ -144,7 +144,7 @@ describe('Price List', () => {
 
                         cy.get('#postypcde').select('Dine-In')
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -174,7 +174,7 @@ describe('Price List', () => {
 
                         cy.get('.border-gray-300').click()
 
-                        cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                        cy.get('#warning-button-2').click()
 
                         cy.wait(3000)
 
@@ -198,7 +198,7 @@ describe('Price List', () => {
 
                         // cy.checkValue('#prcdsc', '0', 'After encoding data', data[key].pricelist, assertionResults, failureMessages)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -222,7 +222,7 @@ describe('Price List', () => {
 
                         cy.get('#postypcde').select(data[key].ordertype)
 
-                        // cy.get('.border-green-500').click()
+                        // cy.get('#button-form-2').click()
 
                         // cy.wait(2000)
 
@@ -239,7 +239,7 @@ describe('Price List', () => {
                         
                         cy.get('#postypcde').select(data[key].ordertype)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -259,7 +259,7 @@ describe('Price List', () => {
 
                         cy.get('#postypcde').select(data[key].ordertype)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -284,8 +284,8 @@ describe('Price List', () => {
         cy.wait(2000)
 
         cy.get('.border-gray-300').click()
-
-        cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-green-500').click()
+        
+        cy.get('#warning-button-2').click()
 
         cy.fixture('master-pricelist-data.json').then((data) => {
 
@@ -325,7 +325,7 @@ describe('Price List', () => {
                     
                     cy.get('#selectAll').click()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.get('.pl-10 > .flex').click()
                 }
@@ -372,7 +372,7 @@ describe('Price List', () => {
 
             cy.get('#postypcde').select(specificpricelist.editordertype)
 
-            cy.get('.border-green-500').click()
+            cy.get('#button-form-2').click()
 
             cy.wait(2000)
 

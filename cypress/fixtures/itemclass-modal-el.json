@@ -1,6 +1,6 @@
 [
   {
-    "sel": "button.border-green-500",
+    "sel": "button#button-form-2",
     "assertion": "contain.text",
     "expectedText": "Add Data",
     "customErrorMsg": "Should contain text \"Add Data\""
@@ -17,7 +17,7 @@
     "customErrorMsg": "Should be enabled to allow user to input data."
   },
   {
-    "sel": "button.border-green-500",
+    "sel": "button#button-form-2",
     "assertion": "be.enabled",
     "customErrorMsg": "\"Add Data\" button Should be enabled and clickable"
   },

@@ -100,7 +100,7 @@ it("Cash In" , () => {
       "Service Charge " + T1_SCharge
     );
     cy.get("#customerName").click().type("Edith");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
@@ -126,7 +126,7 @@ it("Cash In" , () => {
     cy.get(".px-8").should("have.text", "Add discount");
     cy.get("#discde").select("10%");
     cy.get("#orderitmid").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex").should(
       "have.text",
@@ -155,7 +155,7 @@ it("Cash In" , () => {
     cy.get(":nth-child(13) > .bg-green-100").click();
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Debong");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -180,7 +180,7 @@ it("Cash In" , () => {
     cy.get(".px-8").should("have.text", "Add discount");
     cy.get("#discde").select("20%");
     cy.get("#orderitmid").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -213,7 +213,7 @@ it("Cash In" , () => {
     cy.contains("Payment").click();
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Edith ulit");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
   });
 
@@ -235,11 +235,11 @@ it("Cash In" , () => {
     cy.get(".px-8").should("have.text", "Add discount");
     cy.get("#discde").select("Senior");
     cy.get("#orderitmid").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Karding");
     cy.get("#cardno").click().type("523634");
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -304,7 +304,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Debongggg");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -328,11 +328,11 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("PWD"); // SHOULD BE Disability
     cy.get("#orderitmid").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Tessa");
     cy.get("#cardno").click().type("87964");
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -397,7 +397,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Marlooonnn");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -422,11 +422,11 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Athlete");
     cy.get("#orderitmid").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Mary");
     cy.get("#cardno").click().type("997675");
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -489,7 +489,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Reneeee");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -512,12 +512,12 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("MOV");
     cy.get("#orderitmid0").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Winter");
     cy.get("#cardno").click().type("89745467");
 
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -569,7 +569,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Jeromeeeee");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -596,12 +596,12 @@ it("Cash In" , () => {
 
     cy.get("#discde").select("Diplomat");
     cy.get("#orderitmid0").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Karina");
     cy.get("#cardno").click().type("678656");
     
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -653,7 +653,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Kaaarrrllll");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -679,12 +679,12 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Senior");
     cy.get("#orderitmid0").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Giselle");
     cy.get("#cardno").click().type("3423456");
 
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : Senior"
@@ -745,7 +745,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ediiithhhhhhhhh");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -772,12 +772,12 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Ariana Grande");
     cy.get("#cardno").click().type("464345");
    
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : PWD"
@@ -838,7 +838,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -860,12 +860,12 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Senior");
     cy.get("#orderitmid0").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Jessie J");
     cy.get("#cardno").click().type("3452435");
 
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : Senior"
@@ -932,7 +932,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -955,12 +955,12 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Nicky Minaj");
     cy.get("#cardno").click().type("98756790");
 
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : PWD"
@@ -1021,7 +1021,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",

@@ -93,7 +93,7 @@ describe('MEMC', () => {
 
         cy.fixture('master-memc-data.json').then((data) => {
 
-           cy.get('.sc-dntaoT > .anticon > svg').click()
+           cy.get('#add-button-icon > svg').click()
 
             cy.wait(4000) 
             
@@ -125,7 +125,7 @@ describe('MEMC', () => {
 
                         cy.get('#codedsc').clear().type(data[key].memc)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(4000)
 
@@ -143,7 +143,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[0].value)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
@@ -158,7 +158,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').realClick()
 
-                        cy.get('.border-gray-300').click()
+                        cy.get('#button-form-1').click()
 
                         cy.checkLabelCaption('.h-auto', '8.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
@@ -168,9 +168,9 @@ describe('MEMC', () => {
 
                         cy.checkElementVisibility('.shadow-lg', '8.2.1', 'Upon Clicking the "No" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('.border-gray-300').click()
+                        cy.get('#button-form-1').click()
 
-                        cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                        cy.get('#warning-button-2').click()
 
                         cy.wait(3000)
 
@@ -189,7 +189,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -208,7 +208,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                     }
 
@@ -222,7 +222,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy. wait(2000)
                         
@@ -241,7 +241,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-green-500').click()  
+                        cy.get('#button-form-2').click()  
                         
                         cy. wait(2000)
 
@@ -264,7 +264,7 @@ describe('MEMC', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-gray-300').click()
+        cy.get('#button-form-1').click()
 
         cy.fixture('master-memc-data.json').then((data) => {
 
@@ -298,7 +298,7 @@ describe('MEMC', () => {
 
                 cy.wait(4000)
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 

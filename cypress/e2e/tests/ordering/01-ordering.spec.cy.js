@@ -102,7 +102,7 @@ describe("Ordering ", () => {
 
     cy.get(".px-8").should("have.text", "Change Quantity").wait(2000)
     cy.get("#itmqty").click().type("2").wait(2000)
-    cy.get(".border-green-500").click().wait(2000)
+    cy.get("#button-form-2").click().wait(2000)
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(2)")
       .should("have.text", "12")
       .wait(2000)
@@ -150,7 +150,7 @@ describe("Ordering ", () => {
 
     cy.get("#cardholder").click().type("Nova")
     cy.get("#cardno").click().type("543219876")
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click()
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click()
     cy.get(".ml-10").should("have.text", "Discount : Senior").wait(2000)
     // cy.get(".bg-black > :nth-child(2) > :nth-child(2)").should(
     //   "have.text",
@@ -225,7 +225,7 @@ describe("Ordering ", () => {
       .wait(2000)
     cy.get(":nth-child(7) > .bg-green-100").click()
     cy.get(".px-8").should("have.text", "Price Override")
-    cy.get('#input-container > .undefined').click().clear().type("120")
+    cy.get('#input-number-div-3 > .undefined').click().clear().type("120")
     cy.contains("Confirm").click()
 
     cy.get(".MuiTableCell-root > .flex").should("have.text", "Price Override")
@@ -244,7 +244,7 @@ describe("Ordering ", () => {
 
     cy.get("#cardholder").click().type("Nova2")
     cy.get("#cardno").click().type("543219876")
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click()
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click()
 
     cy.wait(6000)
 
@@ -262,7 +262,7 @@ describe("Ordering ", () => {
     cy.get(".grid > :nth-child(8)").click().wait(2000)
     cy.get(".px-8").should("have.text", "Add on")
     cy.get("#isaddon").click()
-    cy.get(".border-green-500").click()
+    cy.get('#button-form-2').click()
     cy.get(".ml-10").should("have.text", "Add on : Coke")
   })
 
@@ -270,7 +270,7 @@ describe("Ordering ", () => {
     cy.wait(6000)
     cy.get(".grid > :nth-child(9)").click()
     cy.get(".px-8").should("have.text", "Confirmation")
-    cy.get(".border-green-500").click()
+    cy.get("#button-form-2").click()
   })
 
 
@@ -285,7 +285,7 @@ describe("Ordering ", () => {
     cy.get('.px-8').should("have.text", "Payment")
     cy.contains("CASH").click()
     cy.get('.shadow-lg > .px-8 > .flex > h1').should("have.text", "PaymentCASH Payment")
-    cy.get('.border-green-500').click()
+    cy.get('#button-form-2').click()
     cy.get('.my-5 > .grid > :nth-child(1)').click()
     cy.contains("Transaction Complete.").should("have.text" , "Transaction Complete.")
     cy.get('.ant-modal-close').click()
@@ -298,8 +298,7 @@ describe("Ordering ", () => {
     cy.contains("Food").click().wait(2000)
     cy.contains(/^Chicken$/).click().wait(2000)
     cy.contains(/^1-pc Chickenjoy$/).click().wait(2000)
-  
-    cy.get('.mb-5 > .grid').scrollTo('right')
+
     cy.contains('Other Transaction').click()
   
     cy.get('.px-8').should("have.text" , "Other Transaction")

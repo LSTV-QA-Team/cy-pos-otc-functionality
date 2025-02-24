@@ -16,7 +16,7 @@ describe("Transaction 33", () => {
     cy.get('.sc-dntaoT').click().wait(2000)
     cy.get('#postypcde').select("Dine-In").wait(1000)
     cy.get('#warcde').select("Jollibee 1").wait(1000)
-    cy.get('.border-green-500').click().wait(1000)
+    cy.get('#button-form-2').click().wait(1000)
 
      cy.contains("Food").click();
      cy.contains("Sides").click();
@@ -59,8 +59,8 @@ describe("Transaction 33", () => {
  
      cy.get('#freeitem > .flex > .me-1').click()
      cy.get('#textreason').click().type("Birthdayyyy")
-     cy.get('.border-green-500').click()
-     cy.get('.border-green-500').click()
+     cy.get('#button-form-2').click()
+     cy.get('#button-form-2').click()
  })
  
  })
