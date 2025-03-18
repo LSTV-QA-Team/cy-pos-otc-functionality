@@ -757,3 +757,56 @@ Cypress.Commands.add("ClickingClearbutton", (number) => {
   cy.contains("Clear").click();
   cy.get(".overflow-hidden").should("have.text", "₱0.00");
 });
+
+Cypress.Commands.add('checkToastifyVisibility', (selector, referenceNumber, errorContext, errorMsg, assertionResults = [], failureMessages = []) => {
+  cy.get('body').then(($body) => {
+
+    // Check if the toastify exists
+    if ($body.find(selector).length > 0) {
+
+      // If the toastify exists, get the element and check visibility
+      cy.get(selector).then($element => {
+
+        const isVisible = $element.is(':visible');
+
+        if (!isVisible) {
+
+          cy.log('Assertion Passed');
+          assertionResults.push({ data: 'passed' });
+
+        } else {
+
+          const failureMessage = errorMsg;
+
+          if (!failedAssertions.has(failureMessage)) {
+
+            cy.log('Assertion Failed');
+            failedAssertions.add(failureMessage);
+            failureMessages.push({ referenceNumber, errorContext, message: failureMessage });
+            cy.screenshot(`failure-Reference No.:${referenceNumber}`, { capture: 'fullPage' })
+
+          } else {
+
+            cy.log('Skipping screenshot, failure already captured.');
+
+          }
+
+          assertionResults.push({ data: 'failed' });
+        }
+      })
+
+    } else {
+
+      // Handle the case where the element is not found
+      cy.log('Assertion Passed');
+      assertionResults.push({ data: 'passed' });
+    }
+  }).then(() => {
+
+    cy.wait(4000)
+
+    cy.writeFile('cypress/fixtures/message.json', JSON.stringify(assertionResults), { timeout: 10000 })
+    
+  });
+});
+

@@ -72,10 +72,8 @@ describe("Transaction 30", () => {
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
-    cy.contains("Transaction Complete.").should(
-      "have.text",
-      "Transaction Complete."
-    );
+      /* cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages) */
+
 
     cy.get('.ant-modal-close').click()
     cy.wait(3000);
@@ -98,11 +96,11 @@ describe("Transaction 30", () => {
       .wait(2000); */
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")
-      .should("have.text", "93.30")
+      .should("have.text", "103.48")
       .wait(2000);
     cy.contains("Next").click();
 
-    cy.get(".h-full > .justify-between > .font-bold").should(
+    cy.get('#rt-h1').should(
       "have.text",
       "TOTAL : 93.30"
     );

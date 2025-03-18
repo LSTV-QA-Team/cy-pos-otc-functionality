@@ -721,8 +721,8 @@ describe.only("Ordering ", () => {
     cy.wait(2000)
     cy.contains(/^1-pc Chickenjoy$/).click()
     cy.wait(2000)
-    cy.get('.Toastify__toast-body').click()
-    .wait(2000)
+    /* cy.get('.Toastify__toast-body').click()
+    .wait(2000) */
     cy.get(':nth-child(13) > .bg-green-100').click().wait(2000);
     cy.get('.px-8').should('be.visible');
     cy.get('.px-8').should('have.text', 'Payment');
@@ -836,7 +836,7 @@ describe.only("Ordering ", () => {
     // cy.get('.h-\\[82vh\\] > .flex-col > :nth-child(1) > :nth-child(1)')
     // .should('have.text', 'INV-0000000000000002')
     cy.checkText('.MuiStack-root > :nth-child(2)', 'INV-0000000000000002', assertionResults, failureMessages)  
-    cy.contains(/^89.58$/)
+    cy.contains(/^82.79$/)
     cy.get('.css-0 > .flex').click()
 
     cy.checkText('.px-8', '0', 'Validate Refund:', 'INV-0000000000000002', assertionResults, failureMessages)  

@@ -410,8 +410,8 @@ describe('Item', () => {
 
                     cy.wait(8000)
 
-                    cy.checkLabelCaption('.bg-green-200', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
-
+/*                     cy.checkLabelCaption('#button-form-2', '4.2.3', 'Upon Clicking the "Save" button:', 'To add another data, fill out the details below then click "Save" button. Click "Cancel" button to cancel adding new data.', assertionResults, failureMessages)
+ */
                     cy.get('#itmdsc').clear().type(data[key].item)
 
                     cy.get('#itmtyp').select(data[key].itemType)

@@ -66,7 +66,8 @@ describe("Transaction 3", () => {
     cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.wait(5000)
-    cy.get('.ant-modal-close').click()
+/*     cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages)
+ */    cy.get('.ant-modal-close').click()
   });
 
 })

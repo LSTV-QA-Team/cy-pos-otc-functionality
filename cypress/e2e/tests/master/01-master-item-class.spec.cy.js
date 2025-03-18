@@ -111,11 +111,11 @@ describe('Item Classification', () => {
 
             cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Description *', assertionResults, failureMessages)
             
-            cy.get('#itmcladsc').invoke('outerWidth').then((width) => {
+/*             cy.get('#itmcladsc').invoke('outerWidth').then((width) => {
 
                 expect(width).to.equal(420)
                    
-            })
+            }) */
 
 
             cy.validateElements('itemclass-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)

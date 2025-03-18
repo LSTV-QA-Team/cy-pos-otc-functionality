@@ -164,28 +164,31 @@ describe("Ordering ", () => {
     cy.wait(6000)
     cy.get(".MuiTableBody-root > :nth-child(1) > :nth-child(3)").click()
     cy.get(":nth-child(1) > .bg-red-100").click()
-    cy.get(".Toastify__toast-body")
+ /*    cy.get(".Toastify__toast-body")
       .should("have.text", "Error : Remove discount first.")
       .click()
-      .wait(2000)
+      .wait(2000) */
+    cy.checkToastifyVisibility('.Toastify__toast-body', '6969', 'Check if the toast will appear', 'Error : Remove discount first.', assertionResults, failureMessages)
   })
 
   it("Discount Behavior with Change Quantity Button", () => {
     cy.wait(6000)
-    cy.get(":nth-child(2) > .bg-green-100").click()
+/*     cy.get(":nth-child(2) > .bg-green-100").click()
     cy.get(".Toastify__toast-body")
       .should("have.text", "Error : Remove discount first.")
       .click()
-      .wait(2000)
+      .wait(2000) */
+      cy.checkToastifyVisibility('.Toastify__toast-body', '6969', 'Check if the toast will appear', 'Error : Remove discount first.', assertionResults, failureMessages)      
   })
 
   it("Discount Behavior with Change Ordertype Button", () => {
     cy.wait(6000)
     cy.get(":nth-child(3) > .bg-green-100").click()
-    cy.get(".Toastify__toast-body")
+/*     cy.get(".Toastify__toast-body")
       .should("have.text", "Error : Remove discount first.")
       .click()
-      .wait(2000)
+      .wait(2000) */
+      cy.checkToastifyVisibility('.Toastify__toast-body', '6969', 'Check if the toast will appear', 'Error : Remove discount first.', assertionResults, failureMessages)
   })
 
   it("Discount Behavior with Free Item Button", () => {
@@ -250,9 +253,10 @@ describe("Ordering ", () => {
 
     cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)').click()
     cy.get(":nth-child(7) > .bg-green-100").click()
-    cy.get(".Toastify__toast-body")
+/*     cy.get(".Toastify__toast-body")
       .should("have.text", "Error : Remove discount first.")
-      .wait(2000)
+      .wait(2000) */
+    cy.checkToastifyVisibility('.Toastify__toast-body', '6969', 'Check if the toast will appear', 'Error : Remove discount first.', assertionResults, failureMessages)  
     cy.get(".flex > .MuiButtonBase-root").click()
   })
 

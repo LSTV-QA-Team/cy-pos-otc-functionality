@@ -74,7 +74,7 @@ module.exports = defineConfig({
       //   'cypress/e2e/tests/chashiering',
       //   'cypress/e2e/tests/ordering',
       // ]
-
+      
       config.specPattern = [
          'cypress/e2e/tests/master/01-master-item-class.spec.cy.js',
         'cypress/e2e/tests/master/02-master-item-subclass.spec.cy.js',
@@ -98,7 +98,7 @@ module.exports = defineConfig({
         'cypress/e2e/tests/cashiering/cashiering-cashfund.spec.cy.js',
         'cypress/e2e/tests/cashiering/cashiering-cash-in.spec.cy.js',
         'cypress/e2e/tests/cashiering/cashiering-cash-out.spec.cy.js', 
-
+ 
         'cypress/e2e/tests/ordering/01-ordering.spec.cy.js',
         'cypress/e2e/tests/ordering/01.2-ordering.spec.cy.js',
         'cypress/e2e/tests/ordering/02-ordering-negative.spec.cy.js',
@@ -137,7 +137,7 @@ module.exports = defineConfig({
         'cypress/e2e/tests/ordering/35-transaction.spec.cy.js',
         'cypress/e2e/tests/ordering/36-transaction.spec.cy.js',
 
-        'cypress/e2e/tests/cashiering/cashiering-cash-declaration.spec.cy.js',  
+        'cypress/e2e/tests/cashiering/cashiering-cash-declaration.spec.cy.js', 
       ]
 
       require('cypress-mochawesome-reporter/plugin')(on);

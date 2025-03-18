@@ -71,7 +71,8 @@ describe("Transaction 22", () => {
     cy.get("#customerName").click().type("YOR").wait(1000);
     cy.get("#button-form-2").click().wait(1000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click().wait(1000);
- 
+    cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages)
+
     cy.wait(2000);
     cy.get('.ant-modal-close').click()
 
