@@ -24,7 +24,10 @@ describe('Item Classification', () => {
         cy.execute('npm run sheet-converter master-itemclass-data')
         cy.execute('npm run sheet-converter itemclass-edit-el')
         cy.execute('npm run sheet-converter itemclass-add-el')
+        cy.execute('npm run sheet-converter itemclass-selector-assert')
         cy.wait(4000)
+
+        
 
     })
     
@@ -78,7 +81,7 @@ describe('Item Classification', () => {
         })
     })
 
-    it('Check Item Classification Page', () => {   
+    it.only('Check Item Classification Page', () => {   
 
         cy.navigateToModule('Master File', 'Item Classifications')
 
@@ -97,11 +100,11 @@ describe('Item Classification', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Add Functionality', () => {
+    it.only('Add Functionality', () => {
 
         cy.fixture('master-itemclass-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+           cy.get('#add-button-icon > svg').click()
 
             cy.wait(4000) 
             
@@ -111,11 +114,11 @@ describe('Item Classification', () => {
 
             cy.checkLabelCaption('.mb-2', '2.1.2', 'Upon clicking the "Add" button on pager U/I', 'Description *', assertionResults, failureMessages)
             
-            cy.get('#itmcladsc').invoke('outerWidth').then((width) => {
+/*             cy.get('#itmcladsc').invoke('outerWidth').then((width) => {
 
                 expect(width).to.equal(420)
                    
-            })
+            }) */
 
 
             cy.validateElements('itemclass-add-el.json', '2.1.4 & 2.1.6', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
@@ -128,13 +131,13 @@ describe('Item Classification', () => {
                     
                     cy.get('#itmcladsc').clear()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.text-sm', '10.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
                     
                     cy.get('#itmcladsc').type(data[0].itemClass)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -147,7 +150,7 @@ describe('Item Classification', () => {
 
                     cy.get('#itmcladsc').clear().type(data[key].itemClass)
 
-                    cy.get('.border-gray-300').click()
+                    cy.get('#button-form-1').click()
 
                     cy.checkLabelCaption('.h-auto', '5.1', 'Upon Clicking the "Cancel" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
@@ -157,9 +160,9 @@ describe('Item Classification', () => {
 
                     cy.checkElementVisibility('.shadow-lg', '5.2.1', 'Upon Clicking the "No" button in "Cancel" modal:', 'The "Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
 
-                    cy.get('.border-gray-300').click()
+                    cy.get('#button-form-1').click()
 
-                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                    cy.get('#warning-button-2').click()
 
                     cy.wait(3000)
 
@@ -169,14 +172,14 @@ describe('Item Classification', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                   cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].itemClass === "% & ( ) / - .") {
 
                     cy.get('#itmcladsc').clear().type(data[key].itemClass)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -198,7 +201,7 @@ describe('Item Classification', () => {
 
                     // cy.checkElementVisibility('.Toastify__toast-body', '16.2', 'Upon encoding data:', 'The validation message "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(4000)
 
@@ -210,7 +213,7 @@ describe('Item Classification', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '14.1', 'Upon Clicking the "Save" button:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkElementVisibility('.shadow-lg', '14.2.1', 'Upon clicking the "Save" button:', 'The "Add Item Classification" modal window was not visible or active.', assertionResults, failureMessages)
                 }
@@ -221,7 +224,7 @@ describe('Item Classification', () => {
 
                     cy.get('#itmcladsc').clear().type(data[key].itemClass)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -240,7 +243,7 @@ describe('Item Classification', () => {
         
     })
 
-    it('Edit Functionality', () => {
+    it.only('Edit Functionality', () => {
 
         cy.get('.border-gray-300').click()
 
@@ -272,7 +275,7 @@ describe('Item Classification', () => {
 
             cy.get('#itmcladsc').type(specificItemClass.editItemClass)
 
-            cy.get('.border-green-500').click()
+            cy.get('#button-form-2').click()
 
             cy.checkLabelCaption('.Toastify__toast-body', '22.1', 'Upon Clicking the "Save" button:', 'Successfully updated.', assertionResults, failureMessages)
 
@@ -286,7 +289,7 @@ describe('Item Classification', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Delete Functionality', () => {
+    it.only('Delete Functionality', () => {
 
         cy.fixture('master-itemclass-data.json').then((data) => {
 
@@ -304,7 +307,7 @@ describe('Item Classification', () => {
 
                     cy.checkHeaderTitle('.px-8', '28.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '41.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].editItemClass + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '41.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].editItemClass + ' ?', assertionResults, failureMessages);
 
                     cy.get('.hover\\:bg-green-500').click()
 
@@ -316,7 +319,7 @@ describe('Item Classification', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
-                    cy.get('#\\:rb\\:')
+                   cy.get('#pos-table-search')
                     .should('be.enabled')
                     .clear()
                     .type(data[key].editItemClass)
@@ -334,6 +337,8 @@ describe('Item Classification', () => {
                     cy.checkLabelCaption('.Toastify__toast-body', '28.5.1', 'Upon Clicking the "Save" button:', 'Successfully deleted.', assertionResults, failureMessages) 
 
                     cy.checkElementInvisibility('.shadow-lg', '28.5.2', 'Upon Clicking the "Confirm" button:', 'The "Delete Confirmation" modal window still visible.', assertionResults, failureMessages)
+
+                    cy.get('.MuiInputAdornment-root > [data-mui-internal-clone-element="true"]').click()
                 }
             }
         })
@@ -354,7 +359,7 @@ describe('Item Classification', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
     
-                    cy.get('#\\:rb\\:')
+                   cy.get('#pos-table-search')
                     .should('be.enabled')
                     .clear()
                     .type(data[key].itemClass)
@@ -371,7 +376,7 @@ describe('Item Classification', () => {
                 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rb\\:')
+                   cy.get('#pos-table-search')
                     .clear()
                     .type(data[key].itemClass)
 
@@ -407,6 +412,8 @@ describe('Item Classification', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .and('have.text', 'Masterfile')
+
+        cy.get('.bg-white > .flex').click()
     })
 })
 

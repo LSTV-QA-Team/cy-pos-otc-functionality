@@ -1,8 +1,8 @@
 [
   {
     "sel": "#business1",
-    "assertion": "not.be.disabled",
-    "customErrorMsg": "\"Business Name 1\" textbox should be editable"
+    "assertion": "not.be.enabled",
+    "customErrorMsg": "\"Business Name 1\" textbox should not be editable"
   },
   {
     "sel": "#business2",
@@ -61,16 +61,16 @@
   },
   {
     "sel": "#postrmno",
-    "assertion": "not.be.enabled",
-    "customErrorMsg": "\"Terminal No.\" textbox should be not editable if already has transaction."
+    "assertion": "not.be.disabled",
+    "customErrorMsg": "\"Terminal No.\" textbox should be editable if no transaction."
   },
   {
-    "sel": ".border-gray-300",
+    "sel": "#button-form-2",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Cancel\" button  should be clickable"
   },
   {
-    "sel": ".border-green-500",
+    "sel": "#button-form-1",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Save\" button  should be clickable"
   },
@@ -157,11 +157,5 @@
     "assertion": "contain.text",
     "expectedText": "Branch Code",
     "customErrorMsg": "Should contain text \"Branch Code\""
-  },
-  {
-    "sel": "label[for=\"itmdsc\"]",
-    "assertion": "contain.text",
-    "expectedText": "Terminal No. (max char. length: 2)",
-    "customErrorMsg": "Should contain text \"Terminal No. (max char. length: 2)\""
   }
 ]

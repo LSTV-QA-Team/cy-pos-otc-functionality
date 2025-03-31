@@ -93,7 +93,7 @@ describe('MEMC', () => {
 
         cy.fixture('master-memc-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+           cy.get('#add-button-icon > svg').click()
 
             cy.wait(4000) 
             
@@ -125,7 +125,7 @@ describe('MEMC', () => {
 
                         cy.get('#codedsc').clear().type(data[key].memc)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(4000)
 
@@ -143,7 +143,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[0].value)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Save" button:', 'Duplicate entry! Kindly check your inputs', assertionResults, failureMessages) 
 
@@ -158,7 +158,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').realClick()
 
-                        cy.get('.border-gray-300').click()
+                        cy.get('#button-form-1').click()
 
                         cy.checkLabelCaption('.h-auto', '8.1', 'Upon Clicking the "Save" button:', 'Are you sure you want to cancel?', assertionResults, failureMessages)
 
@@ -168,9 +168,9 @@ describe('MEMC', () => {
 
                         cy.checkElementVisibility('.shadow-lg', '8.2.1', 'Upon Clicking the "No" button:', 'The "Add MEMC" modal window was not visible or active.', assertionResults, failureMessages)
 
-                        cy.get('.border-gray-300').click()
+                        cy.get('#button-form-1').click()
 
-                        cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                        cy.get('#warning-button-2').click()
 
                         cy.wait(3000)
 
@@ -180,7 +180,7 @@ describe('MEMC', () => {
 
                         cy.wait(4000)
 
-                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+                       cy.get('.sc-dntaoT > .anticon > svg').click()
                     }
 
                     else if (data[key].memc === "% & ( ) / - .") {
@@ -189,7 +189,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -208,7 +208,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                     }
 
@@ -222,7 +222,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy. wait(2000)
                         
@@ -241,7 +241,7 @@ describe('MEMC', () => {
 
                         cy.get('#value').clear().type(data[key].value)
 
-                        cy.get('.border-green-500').click()  
+                        cy.get('#button-form-2').click()  
                         
                         cy. wait(2000)
 
@@ -264,7 +264,7 @@ describe('MEMC', () => {
 
     it('Edit Functionality', () => {
 
-        cy.get('.border-gray-300').click()
+        cy.get('#button-form-1').click()
 
         cy.fixture('master-memc-data.json').then((data) => {
 
@@ -298,7 +298,7 @@ describe('MEMC', () => {
 
                 cy.wait(4000)
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -334,7 +334,7 @@ describe('MEMC', () => {
 
                     cy.checkHeaderTitle('.px-8', '30.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].memc + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', 'Do you want to delete: ' + data[key].memc + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
@@ -435,6 +435,7 @@ describe('MEMC', () => {
         cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 
         cy.get('.text-\\[3rem\\]').should('be.visible').should('have.text', 'Masterfile')
-        
+
+        cy.get('.bg-white > .flex').click()
     })
 })

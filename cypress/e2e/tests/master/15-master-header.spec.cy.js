@@ -13,7 +13,47 @@ describe('Receipt Header Set Up', () => {
         cy.wait(4000)
 
     })
+
     
+  before("Clear Transaction" , () => {
+    cy.task("queryDb","TRUNCATE TABLE posfile")
+    cy.task("queryDb","TRUNCATE TABLE orderfile")
+    cy.task("queryDb","TRUNCATE TABLE orderfile2")
+    cy.task("queryDb","TRUNCATE TABLE tabletranfile")
+    cy.task("queryDb","TRUNCATE TABLE tabletranfile2")
+    cy.task("queryDb","TRUNCATE TABLE takeouttranfile")
+    cy.task("queryDb","TRUNCATE TABLE billingfile")
+    cy.task("queryDb","TRUNCATE TABLE voidrequestfile")
+    cy.task("queryDb","TRUNCATE TABLE orderitemdiscountfile")
+    cy.task("queryDb","TRUNCATE TABLE orderdiscountfile")
+    cy.task("queryDb","TRUNCATE TABLE orderitemmodifierfile")
+    cy.task("queryDb","TRUNCATE TABLE zreadingfile")
+    cy.task("queryDb","TRUNCATE TABLE posorderingfile")
+
+
+    cy.task('queryDb', `
+      UPDATE syspar 
+      SET ordocnum = 'INV-0000000000000001', 
+          posdocnum = 'POS-0000000000000001', 
+          seqnum = 'SEQ-0000000000000000', 
+          billnum = 'BILL-0000000000000001', 
+          voidnum = 'VOID-0000000000000001', 
+          billdocnum = 'BLN-0000000000001', 
+          ordercde = 'ORD-0000000000001', 
+          rddocnum = 'RD-0000000000000', 
+          rsdocnum = 'RS-0000000000000', 
+          tidocnum = 'TI-0000000000000', 
+          todocnum = 'TO-0000000000000', 
+          wsdocnum = 'WS-0000000000000', 
+          pcdocnum = 'PC-0000000000000', 
+          refnum = 'REF-0000000000000001'
+
+    `).then((result) => {
+
+      cy.log('Update successful:', result)
+
+    })
+})
     beforeEach(() => {
 
         // reset for each test case
@@ -54,12 +94,6 @@ describe('Receipt Header Set Up', () => {
                 if (data[key].forInvalid === true) {
 
                     cy.wait(4000)
-
-                    cy.get('#business1').clear()
-                        .type(data[key].bus1)
-
-                    cy.checkInputMaxLength('#business1', 50, '20.1', 'Upon Encoding in "Business Name 1" Textbox:', assertionResults, failureMessages)
-
                     cy.get('#business2').clear()
                         .type(data[key].bus2)
 
@@ -106,7 +140,7 @@ describe('Receipt Header Set Up', () => {
                     // cy.checkInputMaxLength('#postrmno', 50, '34.1', 'Upon Encoding in "Terminal No. 4" Textbox:', assertionResults, failureMessages)
                           
                     
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -125,8 +159,6 @@ describe('Receipt Header Set Up', () => {
         cy.contains('Header').click()
 
         cy.wait(4000)
-
-        cy.get('#business1').clear()
 
         cy.get('#business2').clear()
 
@@ -152,7 +184,7 @@ describe('Receipt Header Set Up', () => {
 
         // cy.get('#postrmno').clear()
 
-        cy.get('.border-green-500').click()
+        cy.get('#button-form-2').click()
 
         cy.wait(2000)
 
@@ -194,7 +226,7 @@ describe('Receipt Header Set Up', () => {
 
         cy.get('.border-gray-300').click()
 
-        cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-green-500').click()
+        cy.get('#warning-button-2').click()
 
         cy.checkElementInvisibility('.shadow-lg', '30.1', 'Upon Clicking the "Cancel" button:', '"Receipt Header Set Up" modal window was still visible or active.', assertionResults, failureMessages)
 
@@ -216,12 +248,6 @@ describe('Receipt Header Set Up', () => {
                 if (data[key].forValid === true) {
 
                     cy.wait(4000)
-
-                    cy.get('#business1').clear()
-                        .type(data[key].bus1)
-
-                    cy.checkValue('#business1', '2.1', 'After Encoding in "Business Name 1" Textbox:', data[key].bus1, assertionResults, failureMessages)
-
 
                     cy.get('#business2').clear()
                         .type(data[key].bus2)
@@ -289,7 +315,7 @@ describe('Receipt Header Set Up', () => {
                     //     .type(data[key].terminalNo)
                     
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon Clicking the "Update" button:', 'Successfully updated.', assertionResults, failureMessages)
 

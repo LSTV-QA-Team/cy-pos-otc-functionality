@@ -88,7 +88,8 @@ describe('Discount', () => {
 
         cy.fixture('master-discount-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+        
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000) 
             
@@ -134,7 +135,7 @@ describe('Discount', () => {
 
                         cy.get('#disdsc').clear()
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.checkLabelCaption('div:contains("Code *")', '33.2', 'Upon clicking the "Save" button:', 'Code * is required', assertionResults, failureMessages)
 
@@ -158,7 +159,7 @@ describe('Discount', () => {
 
                         cy.get('#ODNo').realClick()
 
-                        cy.get('.border-green-500').realClick()
+                        cy.get('#button-form-2').realClick()
 
                         cy.wait(2000)
 
@@ -185,7 +186,7 @@ describe('Discount', () => {
 
                         cy.get('.border-gray-300').click()
 
-                        cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                        cy.get('#warning-button-2').click()
 
                         cy.wait(3000)
 
@@ -195,7 +196,7 @@ describe('Discount', () => {
 
                         cy.wait(2000)
 
-                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+                       cy.get('.sc-dntaoT > .anticon > svg').click()
 
                     }
 
@@ -274,7 +275,7 @@ describe('Discount', () => {
                             cy.get('#ODNo').click()
                         }
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -362,7 +363,7 @@ describe('Discount', () => {
                             cy.get('#ODNo').click()
                         }
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                     }
 
@@ -441,7 +442,7 @@ describe('Discount', () => {
                             cy.get('#ODNo').click()
                         }
 
-                        cy.get('.border-green-500').click() 
+                        cy.get('#button-form-2').click() 
 
                         cy.wait(2000)
 
@@ -522,7 +523,7 @@ describe('Discount', () => {
                             cy.get('#ODNo').click()
                         }
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -649,7 +650,7 @@ describe('Discount', () => {
                 cy.get('#ODNo').click()
             }
 
-            cy.get('.border-green-500').click()
+            cy.get('#button-form-2').click()
 
             cy.wait(2000)
 
@@ -683,7 +684,7 @@ describe('Discount', () => {
 
                     cy.checkHeaderTitle('.px-8', '63.1', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '63.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].discountDesc + ' ?', assertionResults, failureMessages);
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '63.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].discountDesc + ' ?', assertionResults, failureMessages);
 
                     cy.get('.hover\\:bg-green-500').click()
 
@@ -782,5 +783,7 @@ describe('Discount', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .and('have.text', 'Masterfile')
+
+          cy.get('.bg-white > .flex').click()
     })
 })

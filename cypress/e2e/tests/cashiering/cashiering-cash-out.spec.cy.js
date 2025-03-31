@@ -14,7 +14,7 @@ describe("Cash Out", () => {
 
 it('Cash Out', () => {
 
-  cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
+  cy.get(':nth-child(2) > .sc-blHHSb').click().wait(2000);
 
  //  4.1 Check if the Cash Out Button is enable
   cy.contains("Cash Out").click().wait(1000);

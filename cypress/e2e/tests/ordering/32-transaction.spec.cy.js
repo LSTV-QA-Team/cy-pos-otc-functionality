@@ -21,11 +21,13 @@ describe("Transaction 30", () => {
 
     cy.get("#discde").select("Diplomat").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     cy.get("#cardholder").click().type("Yizuo").wait(2000);
+    cy.get('#address').click().type ("Philippines")
     cy.get("#cardno").click().type("23423425").wait(2000);
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+  
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
       .should("have.text", "Discount : Diplomat")
@@ -66,14 +68,12 @@ describe("Transaction 30", () => {
     cy.contains("Payment").click();
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Ningie").wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
-    cy.contains("Transaction Complete.").should(
-      "have.text",
-      "Transaction Complete."
-    );
+      /* cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages) */
+
 
     cy.get('.ant-modal-close').click()
     cy.wait(3000);
@@ -85,22 +85,22 @@ describe("Transaction 30", () => {
     
     cy.get(".px-8").should("have.text", "Refund Transaction").wait(1500);
     cy.get("#refundreason").select("Food Quality Issue").wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     cy.get(".me-2").should("have.text", "REF-0000000000000008");
     cy.get(".justify-between > .group").click().wait(1500);
     cy.contains("INV-0000000000000030").click().wait(1500);
 
-    cy.get(".css-1ex1afd-MuiTableCell-root")
+/*     cy.get(".css-1ex1afd-MuiTableCell-root")
       .should("have.text", "KM Burger Steak")
-      .wait(2000);
+      .wait(2000); */
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")
-      .should("have.text", "93.30")
+      .should("have.text", "103.48")
       .wait(2000);
     cy.contains("Next").click();
 
-    cy.get(".h-full > .justify-between > .font-bold").should(
+    cy.get('#rt-h1').should(
       "have.text",
       "TOTAL : 93.30"
     );

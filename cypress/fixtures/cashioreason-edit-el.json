@@ -1,6 +1,6 @@
 [
   {
-    "sel": "button.border-green-500",
+    "sel": "button#button-form-2",
     "assertion": "contain.text",
     "expectedText": "Save",
     "customErrorMsg": "Save button should contain text \"Save\" instead of \"Update Data\""
@@ -22,7 +22,7 @@
     "customErrorMsg": "Should be enabled to allow user to edit data."
   },
   {
-    "sel": "button.border-green-500",
+    "sel": "button#button-form-2",
     "assertion": "be.enabled",
     "customErrorMsg": "\"Update Data\" button Should be enabled and clickable"
   },

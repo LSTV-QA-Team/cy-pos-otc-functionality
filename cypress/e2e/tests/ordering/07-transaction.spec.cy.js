@@ -24,11 +24,11 @@ describe("Transaction 5", () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("PWD"); // SHOULD BE Disability
     cy.get("#orderitmid").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Tessa");
     cy.get("#cardno").click().type("87964");
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -97,12 +97,9 @@ describe("Transaction 5", () => {
     
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Marlooonnn");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
-    cy.contains("Transaction Complete.").should(
-      "have.text",
-      "Transaction Complete."
-    );
+    cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages)
     cy.get('.ant-modal-close').click()
     cy.wait(5000)
   });

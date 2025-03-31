@@ -1,8 +1,8 @@
 {
     "itemclass": [
-        "Food",
+        "Beverages",
         "Dessert",
-        "Beverages"
+        "Food"
     ],
     "itemSubclass": [
         "Snacks",
@@ -27,12 +27,12 @@
         "Sides",
         "Family Super Meals"
     ],
-    "beverages":[
+    "beverages": [
         "Soft Drinks",
         "Coffee",
         "Juices"
     ],
-    "dessert":[
+    "dessert": [
         "Pies",
         "Ice Cream"
     ],

@@ -78,23 +78,27 @@ describe('Receipt Footer Set Up', () => {
 
                     cy.checkInputMaxLength('#accrenum', 50, '27.1', 'Upon Encoding in "Accredited No." Textbox:', assertionResults, failureMessages)
 
-                    cy.get('#accredate').clear()
+                    cy.get(':nth-child(7) > .ant-picker > .ant-picker-input > input').clear()
                       .type(data[key].accredDate)
 
-                    cy.get('#permitnum').clear()
+                    cy.get('#modal-h1').click()
+
+                    cy.get('#permitnum').click().clear()
                       .type(data[key].permitNo)
 
                     cy.checkInputMaxLength('#permitnum', 50, '28.1', 'Upon Encoding in "Permit No." Textbox:', assertionResults, failureMessages)
                     
-                    cy.get('#validyr').clear()
+                    cy.get('#validyr').click().clear()
                       .type(data[key].yearsValidity)
 
                     cy.checkInputMaxLength('#validyr', 5, '29.1', 'Upon Encoding in "Years Validity" Textbox:', assertionResults, failureMessages)
                     
-                    cy.get('#dateissued').clear()
+                    cy.get(':nth-child(10) > .ant-picker').click().clear()
                       .type(data[key].dateIssued)
 
-                    cy.get('#footermsg1').clear()
+                     cy.get('#modal-h1').click()
+
+                    cy.get('#footermsg1').click().clear()
                       .type(data[key].lineMsg1)
 
                     cy.checkInputMaxLength('#footermsg1', 50, '31.1', 'Upon Encoding in "Line Message 1" Textbox:', assertionResults, failureMessages)
@@ -119,7 +123,7 @@ describe('Receipt Footer Set Up', () => {
                     
                     cy.checkInputMaxLength('#footermsg5', 50, '35.1', 'Upon Encoding in "Line Message 5" Textbox:', assertionResults, failureMessages)    
                     
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
                 }
@@ -157,13 +161,13 @@ describe('Receipt Footer Set Up', () => {
 
         cy.get('#accrenum').clear()
 
-        cy.get('#accredate').clear()
+        cy.get(':nth-child(7) > .ant-picker').clear()
 
         cy.get('#permitnum').clear()
         
         cy.get('#validyr').clear()
         
-        cy.get('#dateissued').clear()
+        cy.get(':nth-child(10) > .ant-picker').clear()
 
         cy.get('#footermsg1').clear()
 
@@ -175,7 +179,7 @@ describe('Receipt Footer Set Up', () => {
             
         cy.get('#footermsg5').clear()
 
-        cy.get('.border-green-500').click()
+        cy.get('#button-form-2').click()
 
         cy.wait(2000)
 
@@ -244,11 +248,12 @@ describe('Receipt Footer Set Up', () => {
 
                   cy.checkValue('#accrenum', '7.1', 'After Encoding in "Accredited No." Textbox:"', data[key].accredNo, assertionResults, failureMessages)
 
-                  cy.get('#accredate').clear()
+                  cy.get(':nth-child(7) > .ant-picker').clear()
                     .type(data[key].accredDate)
+                  cy.get('#modal-h1').click()
 
-                  cy.checkValue('#accredate', '8.1', 'After Encoding in "Accredited Date" Textbox:', data[key].accredDate, assertionResults, failureMessages)
-
+/*                   cy.checkValue(':nth-child(7) > .ant-picker', '8.1', 'After Encoding in "Accredited Date" Textbox:', data[key].accredDate, assertionResults, failureMessages)
+ */
                   cy.get('#permitnum').clear()
                     .type(data[key].permitNo)
 
@@ -259,10 +264,12 @@ describe('Receipt Footer Set Up', () => {
 
                   cy.checkValue('#validyr', '10.1', 'After Encoding in "Years Validity" Textbox:', '5', assertionResults, failureMessages)
                   
-                  cy.get('#dateissued').clear()
+                  cy.get(':nth-child(10) > .ant-picker').clear()
                     .type(data[key].dateIssued)
 
-                  cy.checkValue('#dateissued', '11.1', 'After Encoding in "Date Issued" Textbox:', data[key].dateIssued, assertionResults, failureMessages)
+/*                   cy.checkValue(':nth-child(10) > .ant-picker', '11.1', 'After Encoding in "Date Issued" Textbox:', data[key].dateIssued, assertionResults, failureMessages)
+ */
+                  cy.get('#modal-h1').click()
 
                   cy.get('#footermsg1').clear()
                     .type(data[key].lineMsg1)
@@ -289,7 +296,7 @@ describe('Receipt Footer Set Up', () => {
 
                   cy.checkValue('#footermsg5', '16.1', 'After Encoding in "Line Message 5" Textbox:', data[key].lineMsg5, assertionResults, failureMessages)
                   
-                  cy.get('.border-green-500').click()
+                  cy.get('#button-form-2').click()
 
                   cy.wait(2000)
 

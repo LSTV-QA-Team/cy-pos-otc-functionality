@@ -98,7 +98,7 @@ describe('Payment Type', () => {
 
             cy.wait(4000) 
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(2000)
                 
@@ -126,13 +126,13 @@ describe('Payment Type', () => {
                     
                     cy.get('#paytyp').clear()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
                     cy.get('#paytyp').type('Cash')
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -160,7 +160,7 @@ describe('Payment Type', () => {
 
                     cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                    cy.get('#warning-button-2').click()
 
                     cy.wait(3000)
 
@@ -170,7 +170,7 @@ describe('Payment Type', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.get('.sc-dntaoT > .anticon > svg').click()
 
 
                 }
@@ -181,7 +181,7 @@ describe('Payment Type', () => {
 
                     cy.get('#paytyp').clear().type(data[key].paymentType)
                     
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -218,7 +218,7 @@ describe('Payment Type', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     // cy.get('#paytyp').should('be.empty')
 
@@ -234,7 +234,7 @@ describe('Payment Type', () => {
 
                     cy.get('#paytyp').clear().type(data[key].paymentType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -292,7 +292,7 @@ describe('Payment Type', () => {
 
                 cy.get('#paytyp').type(specificPaymentType.editPaymentType)
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -326,7 +326,7 @@ describe('Payment Type', () => {
 
                     cy.checkHeaderTitle('.px-8', '24.1', 'Upon clicking the "Delete" button on pager U/I', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].paymentType + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager U/I', 'Do you want to delete: ' + data[key].paymentType + ' ?', assertionResults, failureMessages)
 
                     cy.get('.hover\\:bg-green-500').click()
 
@@ -368,7 +368,7 @@ describe('Payment Type', () => {
                 cy.get('[data-testid="SearchIcon"]').click()
 
   
-                cy.get('#\\:rb\\:')
+               cy.get('#pos-table-search')
                   .clear()
                   .type(data[0].paymentType)
 
@@ -382,7 +382,7 @@ describe('Payment Type', () => {
                 
                 cy.get('[data-testid="SearchIcon"]').click()
 
-                cy.get('#\\:rb\\:')
+               cy.get('#pos-table-search')
                   .clear()
                   .type('Electronic Card')
                   .type('{enter}')
@@ -415,6 +415,8 @@ describe('Payment Type', () => {
         cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 
         cy.get('.text-\\[3rem\\]').should('have.text', 'Masterfile')
+
+        cy.get('.bg-white > .flex').click()
     })
 })
 

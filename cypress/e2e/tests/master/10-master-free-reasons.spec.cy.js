@@ -94,7 +94,7 @@ describe('Free Reasons', () => {
 
             cy.wait(4000) 
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(2000)
                 
@@ -124,13 +124,13 @@ describe('Free Reasons', () => {
 
                         cy.get('#freereason').clear()
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.checkLabelCaption('.text-sm', '11.1', 'Upon clicking the "Save" button:', 'Description * is required', assertionResults, failureMessages)
 
                         cy.get('#freereason').type(data[0].freeReasons)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -159,7 +159,7 @@ describe('Free Reasons', () => {
 
                         cy.get('.border-gray-300').click()
 
-                        cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                        cy.get('#warning-button-2').click()
 
                         cy.wait(4000)
 
@@ -169,7 +169,7 @@ describe('Free Reasons', () => {
 
                         cy.wait(6000)
 
-                        cy.get('.sc-eDLKkx > .anticon > svg').click()
+                        cy.get('.sc-dntaoT > .anticon > svg').click()
                     }
 
                     else if (data[key].freeReasons === "% & ( ) / - .") {
@@ -178,7 +178,7 @@ describe('Free Reasons', () => {
 
                         cy.get('#freereason').clear().type(data[key].freeReasons)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -197,7 +197,7 @@ describe('Free Reasons', () => {
 
                         // cy.checkElementVisibility('.text-sm', '17.2', 'Upon encoding data:', 'The validation message for "check if the validation message appear "Please limit your input to 50 characters." was not visible.', assertionResults, failureMessages)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
                     }
 
                     else if (data[key].freeReasons === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -208,7 +208,7 @@ describe('Free Reasons', () => {
 
                         cy.checkLabelCaption('.Toastify__toast-body', '15.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages) 
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.checkElementVisibility('.shadow-lg', '15.2.1', 'Upon clicking the "Save" button:', 'The "Add Free Reasons" modal window was not visible or active.', assertionResults, failureMessages)
                     }
@@ -221,7 +221,7 @@ describe('Free Reasons', () => {
 
                         cy.get('#freereason').should('have.value', data[key].freeReasons)
 
-                        cy.get('.border-green-500').click()
+                        cy.get('#button-form-2').click()
 
                         cy.wait(2000)
 
@@ -273,7 +273,7 @@ describe('Free Reasons', () => {
 
                 cy.get('#freereason').type(specificFreeReasons.editFreeReasons)
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -307,7 +307,7 @@ describe('Free Reasons', () => {
 
                     cy.checkHeaderTitle('.px-8', '24.2', 'Upon clicking the "Delete" button on pager UI', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].freeReasons + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '24.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].freeReasons + ' ?', assertionResults, failureMessages)
 
                     cy.get('.hover\\:bg-green-500').click()
 
@@ -409,5 +409,7 @@ describe('Free Reasons', () => {
         cy.get(':nth-child(1) > .flex > .anticon > svg').click()
 
         cy.get('.text-\\[3rem\\]').should('have.text', 'Masterfile')
+
+        cy.get('.bg-white > .flex').click()
     })
 })

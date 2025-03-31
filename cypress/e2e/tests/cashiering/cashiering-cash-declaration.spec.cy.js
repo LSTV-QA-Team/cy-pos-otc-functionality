@@ -13,7 +13,7 @@ describe("Cash Declaration", () => {
 
   it("Cash Declaration Click ", () => {
 
-    cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
+    cy.get(':nth-child(2) > .sc-blHHSb').click().wait(2000);
     //5. Click Cash Declaration Button
     //5.1 Check if the Cash Declaration Button is enable
     cy.contains("Cash Declaration").should("be.enabled").click().wait(1000);
@@ -333,8 +333,8 @@ describe("Cash Declaration", () => {
 
     cy.wait(8000)
 
-    cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);    
-    //5.6 Click Cash Declaration Button
+    cy.get(':nth-child(2) > .sc-blHHSb').click().wait(2000);    
+    //5.6 Click Cash Declaration Button+
     //5.6.1 Check if the Cash Declaration button is enable
     cy.contains("Cash Declaration").should("be.enabled").click()
     //5.6.2 Click or type numbers on the designated textfield ( 5 in 1000 and 1 in 100 )

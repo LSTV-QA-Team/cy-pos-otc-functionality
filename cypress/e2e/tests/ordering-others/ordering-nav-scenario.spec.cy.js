@@ -32,7 +32,7 @@ describe('Ordering', () => {
                 cy.get('.flex-col > .text-right').should('have.text', '₱1,000.00')
 
                 //click save 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 // back
                 cy.get('.ps-10 > .flex').click()
@@ -54,7 +54,7 @@ describe('Ordering', () => {
 
                         cy.get('#warcde').select('Jollibee 3')
 
-                        cy.get('.border-blue-500').click()
+                        cy.get('#button-form-2').click()
 
                     } else {
                         
@@ -72,7 +72,7 @@ describe('Ordering', () => {
 
                 cy.get('#warcde').select('Jollibee 3')
 
-                cy.get('.border-blue-500').click()
+                cy.get('#button-form-2').click()
 
                 // just to assert if successfully navigated to ordering module
                 cy.get('.bg-black > .font-extrabold > :nth-child(1)').should('have.text', 'Grand Total')
