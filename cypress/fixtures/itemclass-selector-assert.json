@@ -1,13 +1,13 @@
 [
   {
     "selectorName": "Print button",
-    "sel": ":nth-child(2) > .sc-guDLey",
+    "sel": "[aria-label=\"printer\"]",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Print\" button  should be clickable"
   },
   {
     "selectorName": "Add button",
-    "sel": ".sc-eDLKkx > .anticon > svg",
+    "sel": "[aria-label=\"plus-circle\"]",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Add\" button  should be clickable"
   },
@@ -55,7 +55,7 @@
   },
   {
     "selectorName": "Rows per page button",
-    "sel": "[id=\":r9:\"]",
+    "sel": "[role=\"combobox\"].MuiSelect-select",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Rows per page\" button  should be clickable"
   }
