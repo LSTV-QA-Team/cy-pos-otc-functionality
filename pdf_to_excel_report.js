@@ -17,7 +17,7 @@ files.forEach((file) => {
   }
 });
 
-console.log("Latest PDF Report FOund :", latestPath);
+console.log("Latest PDF Report Found :", latestPath);
 
 try {
   pdfToExcelGenerator.genXlsx(
