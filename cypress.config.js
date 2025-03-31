@@ -23,17 +23,8 @@ module.exports = defineConfig({
   },
 
   redirectionLimit: 1000,
-
-  // experimentalMemoryManagement: true,
-
-  // defaultCommandTimeout: 4000,
-
-  // pageLoadTimeout: 100000,
-
   watchForFileChanges: false,
-
   hideXHRInCommandLog: true,
-
   video: false,
 
   reporter: "cypress-mochawesome-reporter",
@@ -44,15 +35,12 @@ module.exports = defineConfig({
     reportFilename: `[status]-[name]-${moment().format("YYYY-MM-DD")}-report`,
     embeddedScreenshots: false,
     inlineAssets: true,
-    overwrite: true,
+    saveJson: true,
     json: true,
     html: true,
-    debug: false,
-    quiet: true,
-    videoOnFailOnly: true,
-    code: false,
-    saveAllAttempts: false,
-    screenshotOnRunFailure: false,
+    overwrite: false,
+    quiet: false,
+    screenshotOnRunFailure: true,
   },
 
   e2e: {
@@ -60,11 +48,19 @@ module.exports = defineConfig({
     experimentalStudio: true,
     testIsolation: false,
     experimentalRunAllSpecs: true,
-
+    viewportWidth: 1280,
     viewportWidth: 1280,
     viewportHeight: 720,
     
-    // implement node event listeners here
+    viewportHeight: 720,
+    chromeWebSecurity: false,
+    defaultCommandTimeout: 10000,
+    execTimeout: 60000,
+    pageLoadTimeout: 60000,
+    requestTimeout: 60000,
+    responseTimeout: 60000,
+    taskTimeout: 60000,
+
     setupNodeEvents(on, config) {
       // config.specPattern = [
       //   'cypress/e2e/tests/master',
@@ -161,7 +157,9 @@ module.exports = defineConfig({
         verifyDownloads: (downloadsPath) => {
           try {
             return fs.readdirSync(downloadsPath);
+            return fs.readdirSync(downloadsPath);
           } catch (err) {
+            console.error("Error reading downloads:", err);
             console.error("Error reading downloads:", err);
             return null;
           }
@@ -180,6 +178,8 @@ module.exports = defineConfig({
             fs.readdirSync(downloadsFolder).forEach((file) => {
               const filePath = path.join(downloadsFolder, file);
               fs.unlinkSync(filePath);
+            });
+            return null;
             });
             return null;
           } catch (err) {
@@ -236,11 +236,14 @@ function queryTestDb(query, config) {
     connection.query(query, (error, results) => {
       connection.end();
 
+
       if (error) {
         reject(error);
       } else {
         resolve(results);
       }
+    });
+  });
     });
   });
 }

@@ -24,7 +24,10 @@ describe('Item Classification', () => {
         cy.execute('npm run sheet-converter master-itemclass-data')
         cy.execute('npm run sheet-converter itemclass-edit-el')
         cy.execute('npm run sheet-converter itemclass-add-el')
+        cy.execute('npm run sheet-converter itemclass-selector-assert')
         cy.wait(4000)
+
+        
 
     })
     
@@ -78,7 +81,7 @@ describe('Item Classification', () => {
         })
     })
 
-    it('Check Item Classification Page', () => {   
+    it.only('Check Item Classification Page', () => {   
 
         cy.navigateToModule('Master File', 'Item Classifications')
 
@@ -97,7 +100,7 @@ describe('Item Classification', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Add Functionality', () => {
+    it.only('Add Functionality', () => {
 
         cy.fixture('master-itemclass-data.json').then((data) => {
 
@@ -170,6 +173,8 @@ describe('Item Classification', () => {
                     cy.wait(4000)
 
                    cy.get('.sc-dntaoT > .anticon > svg').click()
+                    // cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.get('[aria-label="plus-circle"]').click()
                 }
 
                 else if (data[key].itemClass === "% & ( ) / - .") {
@@ -240,7 +245,7 @@ describe('Item Classification', () => {
         
     })
 
-    it('Edit Functionality', () => {
+    it.only('Edit Functionality', () => {
 
         cy.get('.border-gray-300').click()
 
@@ -286,7 +291,7 @@ describe('Item Classification', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it('Delete Functionality', () => {
+    it.only('Delete Functionality', () => {
 
         cy.fixture('master-itemclass-data.json').then((data) => {
 

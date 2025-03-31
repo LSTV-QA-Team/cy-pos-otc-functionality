@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 cypress/videos/
 cypress/screenshots/
 cypress/reports/
 node_modules/
+=======
+node_modules/
+cypress/downloads/
+cypress/reports/
+cypress/screenshots/
+>>>>>>> develop

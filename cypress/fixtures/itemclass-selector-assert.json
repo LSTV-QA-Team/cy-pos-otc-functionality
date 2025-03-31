@@ -55,7 +55,7 @@
   },
   {
     "selectorName": "Rows per page button",
-    "sel": "[id=\":r9:\"]",
+    "sel": "[role=\"combobox\"].MuiSelect-select",
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Rows per page\" button  should be clickable"
   }
