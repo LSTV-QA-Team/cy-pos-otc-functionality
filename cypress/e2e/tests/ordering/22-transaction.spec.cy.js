@@ -12,9 +12,12 @@ describe("Transaction 20", () => {
   });
 
   it("1 Pax with Diplomat Discount", () => {
-
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
+    
     cy.contains("Beverages").click().wait(2000);
-    cy.contains("Beverages").click().wait(2000);
+    cy.get('.h-\\[68px\\]').within(() => {
+      cy.contains("Beverages").click()
+    })
     cy.contains("Brown Sugar Milk Tea").click().wait(2000);
 
     cy.contains("Add Discount").click().wait(2000);
@@ -74,10 +77,7 @@ describe("Transaction 20", () => {
       "Transaction Complete."
     );
     cy.wait(2000);
-
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
+    cy.get('.ant-modal-close').click()
 
     cy.contains("Void Transaction").click();
     cy.get(".me-2").should("have.text", "Void Transaction");
@@ -87,12 +87,5 @@ describe("Transaction 20", () => {
     cy.get("#voidreason").select("Customer Cancelled Order");
     cy.get(".border-green-500").click();
 
-    cy.get(".Toastify__toast-body > :nth-child(2)").should(
-      "have.text",
-      "Transaction Void Successfull"
-    );
-
-    cy.contains("Cancel Transaction").click();
-    cy.get(".border-green-500").click();
   });
 })

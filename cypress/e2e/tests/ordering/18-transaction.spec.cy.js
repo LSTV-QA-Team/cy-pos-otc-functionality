@@ -13,6 +13,7 @@ describe("Transaction 16", () => {
   
 
   it("1 Pax with Senior Discount", () => {
+    cy.get(':nth-child(3) > .sc-blHHSb').click().wait(1000);
     cy.contains("Food").click().wait(2000);
     cy.contains("Take-Out Favorites").click().wait(2000);
     cy.contains("TF Palabok Family Pan").click().wait(2000);
@@ -77,11 +78,8 @@ describe("Transaction 16", () => {
       "have.text",
       "Transaction Complete."
     );
-
+    cy.get('.ant-modal-close').click()
     cy.wait(2000);
-    cy.get("#postypcde").select("Dine-In").wait(2000);
-    cy.get("#warcde").select("Jollibee 1").wait(2000);
-    cy.contains("Proceed").click();
 
     cy.contains("Void Transaction").click();
     cy.get(".me-2").should("have.text", "Void Transaction").wait(2000);
@@ -95,6 +93,5 @@ describe("Transaction 16", () => {
       "have.text",
       "Transaction Void Successful"
     );
-    cy.wait(5000)
   });
 })

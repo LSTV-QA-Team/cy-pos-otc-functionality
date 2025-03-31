@@ -48,6 +48,9 @@ module.exports = defineConfig({
     testIsolation: false,
     experimentalRunAllSpecs: true,
     viewportWidth: 1280,
+    viewportWidth: 1280,
+    viewportHeight: 720,
+    
     viewportHeight: 720,
     chromeWebSecurity: false,
     defaultCommandTimeout: 10000,
@@ -77,10 +80,13 @@ module.exports = defineConfig({
         'cypress/e2e/tests/master/15-master-header.spec.cy.js',
         'cypress/e2e/tests/master/16-master-other-charges.spec.cy.js',
         'cypress/e2e/tests/master/17-master-system.parameter.spec.cy.js',
+        // 'cypress/e2e/tests/master/18-master-cash-in-out-reason.spec.cy.js',
+
         'cypress/e2e/tests/cashiering/cashiering-cashfund.spec.cy.js',
         'cypress/e2e/tests/cashiering/cashiering-cash-in.spec.cy.js',
         'cypress/e2e/tests/cashiering/cashiering-cash-out.spec.cy.js',
         'cypress/e2e/tests/ordering/01-ordering.spec.cy.js',
+        'cypress/e2e/tests/ordering/01.2-ordering.spec.cy.js',
         'cypress/e2e/tests/ordering/02-ordering-negative.spec.cy.js',
         'cypress/e2e/tests/ordering/03-transaction.spec.cy.js',
         'cypress/e2e/tests/ordering/04-transaction.spec.cy.js',
@@ -166,12 +172,23 @@ module.exports = defineConfig({
           });
         }
       });
+      
+      return config; // Return the updated configuration
 
-      return config;
-    }
-  }
+    },
+
+    chromeWebSecurity: false,
+    // numTestsKeptInMemory: 0,
+    defaultCommandTimeout: 10000,
+    execTimeout: 60000,
+    pageLoadTimeout: 60000,
+    requestTimeout: 60000,
+    responseTimeout: 60000,
+    taskTimeout: 60000
+  },
 });
 
+// Database query function
 function queryTestDb(query, config) {
   const connection = mysql.createConnection(config.env.db);
 
