@@ -1,7 +1,12 @@
 {
   "devDependencies": {
+<<<<<<< HEAD
     "cypress": "^14.2.1",
     "cypress-mochawesome-reporter": "^3.8.2",
+=======
+    "cypress": "^13.17.0",
+    "cypress-multi-reporters": "^1.6.4",
+>>>>>>> a8d6490dccce70719a622d6b1bde742e6462e526
     "cypress-real-events": "^1.12.0",
     "cypress-xpath": "^2.0.1",
     "mocha": "^10.4.0"
@@ -12,6 +17,7 @@
     "moment": "^2.30.1",
     "mysql": "^2.18.1",
     "pdf-parse": "^1.1.1",
+    "pdf-to-excel": "^0.3.2",
     "xlsx": "^0.18.5",
     "xpath": "^0.0.34"
   },

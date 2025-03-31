@@ -13,7 +13,7 @@ describe("Cash In", () => {
 
   it("Cash In ", () => {
 
-    cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
+    cy.get(':nth-child(2) > .sc-blHHSb').click().wait(2000);
     //3.Click Cash In Button
     //3.1 Check if the Cash In Button is enable
     cy.contains("Cash In").click().wait(1000);

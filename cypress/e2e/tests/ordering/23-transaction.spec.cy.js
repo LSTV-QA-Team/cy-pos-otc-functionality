@@ -16,7 +16,7 @@ describe("Transaction 21", () => {
     cy.get('.sc-dntaoT').click().wait(2000)
     cy.get('#postypcde').select("Takeout")
     cy.get('#warcde').select("Jollibee 2")
-    cy.get('.border-green-500').click().wait(1000);
+    cy.get('#button-form-2').click().wait(1000);
 
     cy.contains(/^Food$/).click().wait(1000);;
     cy.contains(/^Family Super Meals$/).click();
@@ -27,11 +27,11 @@ describe("Transaction 21", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("Senior");
     cy.get("#orderitmid0").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Seniorrrritoo");
     cy.get("#cardno").click().type("234");
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -75,12 +75,9 @@ describe("Transaction 21", () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("MEMSIIII");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
-    cy.contains("Transaction Complete.").should(
-      "have.text",
-      "Transaction Complete."
-    );
+    cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages)
     cy.get('.ant-modal-close').click()
     cy.wait(2000);
 
@@ -91,7 +88,7 @@ describe("Transaction 21", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Customer Cancelled Order");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
   });
 

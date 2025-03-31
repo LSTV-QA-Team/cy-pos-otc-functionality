@@ -20,11 +20,11 @@ describe("Transaction 17", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("PWD").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Tanya").wait(2000);
     cy.get("#cardno").click().type("12342345235").wait(2000);
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
       .should("have.text", "Discount : PWD")
@@ -67,9 +67,11 @@ describe("Transaction 17", () => {
 
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Tanya").wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.wait(2000);
+    cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages)
+
     cy.get('.ant-modal-close').click()
 
     cy.contains("Void Transaction").click().wait(2000);
@@ -78,7 +80,7 @@ describe("Transaction 17", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Order Duplication");
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     cy.get(".Toastify__toast-body > :nth-child(2)").should(
       "have.text",

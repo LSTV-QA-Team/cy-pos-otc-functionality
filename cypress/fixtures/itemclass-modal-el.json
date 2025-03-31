@@ -1,12 +1,12 @@
 [
   {
-    "sel": "button.border-blue-500",
+    "sel": "button#button-form-2",
     "assertion": "contain.text",
     "expectedText": "Add Data",
     "customErrorMsg": "Should contain text \"Add Data\""
   },
   {
-    "sel": "button.border-red-500",
+    "sel": "button.border-gray-500",
     "assertion": "contain.text",
     "expectedText": "Cancel",
     "customErrorMsg": "Should contain text \"Cancel\""
@@ -17,12 +17,12 @@
     "customErrorMsg": "Should be enabled to allow user to input data."
   },
   {
-    "sel": "button.border-blue-500",
+    "sel": "button#button-form-2",
     "assertion": "be.enabled",
     "customErrorMsg": "\"Add Data\" button Should be enabled and clickable"
   },
   {
-    "sel": "button.border-red-500",
+    "sel": "button.border-gray-500",
     "assertion": "be.enabled",
     "customErrorMsg": "\"Cancel\" button Should be enabled and clickable"
   }

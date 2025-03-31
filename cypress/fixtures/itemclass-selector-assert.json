@@ -1,13 +1,21 @@
 [
   {
     "selectorName": "Print button",
+<<<<<<< HEAD
     "sel": "[aria-label=\"printer\"]",
+=======
+    "sel": "#printer-button-button-styled",
+>>>>>>> a8d6490dccce70719a622d6b1bde742e6462e526
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Print\" button  should be clickable"
   },
   {
     "selectorName": "Add button",
+<<<<<<< HEAD
     "sel": "[aria-label=\"plus-circle\"]",
+=======
+    "sel": "#add-button-icon > svg",
+>>>>>>> a8d6490dccce70719a622d6b1bde742e6462e526
     "assertion": "not.be.disabled",
     "customErrorMsg": "\"Add\" button  should be clickable"
   },

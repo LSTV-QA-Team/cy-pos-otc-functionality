@@ -1,12 +1,12 @@
 [
   {
-    "sel": "button.border-green-500",
+    "sel": "#button-form-2",
     "assertion": "contain.text",
     "expectedText": "Save",
-    "customErrorMsg": "Save button should contain text \"Save\" instead of \"Update\""
+    "customErrorMsg": "Save button should contain text \"Save\""
   },
   {
-    "sel": "button.border-gray-300",
+    "sel": "#button-form-1",
     "assertion": "contain.text",
     "expectedText": "Cancel",
     "customErrorMsg": "Cancel button should contain text \"Cancel\""
@@ -77,12 +77,12 @@
     "customErrorMsg": "Inactive should be enabled to allow user to edit data."
   },
   {
-    "sel": "button.border-green-500",
+    "sel": "#button-form-2",
     "assertion": "be.enabled",
     "customErrorMsg": "Combo Mealshould be enabled to allow user to edit data."
   },
   {
-    "sel": "button.border-gray-300",
+    "sel": "#button-form-1",
     "assertion": "be.enabled",
     "customErrorMsg": "\"Cancel\" button Should be enabled and clickable"
   }

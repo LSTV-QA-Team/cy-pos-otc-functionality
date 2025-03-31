@@ -1,12 +1,12 @@
 [
   {
-    "sel": "button.border-green-500",
+    "sel": "#button-form-2",
     "assertion": "contain.text",
     "expectedText": "Save",
     "customErrorMsg": "Save button should contain text \"Save\""
   },
   {
-    "sel": "button.border-gray-300",
+    "sel": "#button-form-1",
     "assertion": "contain.text",
     "expectedText": "Cancel",
     "customErrorMsg": "Cancel should contain text \"Cancel\""
@@ -17,12 +17,12 @@
     "customErrorMsg": "Item Class Description should be enabled to allow user to input data."
   },
   {
-    "sel": "button.border-green-500",
+    "sel": "#button-form-2",
     "assertion": "be.enabled",
     "customErrorMsg": "\"Save\" button should be enabled and clickable"
   },
   {
-    "sel": "button.border-gray-300",
+    "sel": "#button-form-1",
     "assertion": "be.enabled",
     "customErrorMsg": "\"Cancel\" button should be enabled and clickable"
   }

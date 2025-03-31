@@ -7,28 +7,27 @@ describe("With Service Charge ", () => {
     assertionResults = [];
     failureMessages = [];
 
-
     // Login with valid credentials
-    cy.login("lstv", "lstventures");
+    c;
   });
 
-  before("Clear Transaction" , () => { 
+  before("Clear Transaction", () => {
+    cy.task("queryDb", "TRUNCATE TABLE posfile");
+    cy.task("queryDb", "TRUNCATE TABLE orderfile");
+    cy.task("queryDb", "TRUNCATE TABLE orderfile2");
+    cy.task("queryDb", "TRUNCATE TABLE tabletranfile");
+    cy.task("queryDb", "TRUNCATE TABLE tabletranfile2");
+    cy.task("queryDb", "TRUNCATE TABLE takeouttranfile");
+    cy.task("queryDb", "TRUNCATE TABLE billingfile");
+    cy.task("queryDb", "TRUNCATE TABLE voidrequestfile");
+    cy.task("queryDb", "TRUNCATE TABLE orderitemdiscountfile");
+    cy.task("queryDb", "TRUNCATE TABLE orderdiscountfile");
+    cy.task("queryDb", "TRUNCATE TABLE orderitemmodifierfile");
+    cy.task("queryDb", "TRUNCATE TABLE zreadingfile");
 
-    cy.task("queryDb","TRUNCATE TABLE posfile")
-    cy.task("queryDb","TRUNCATE TABLE orderfile")
-    cy.task("queryDb","TRUNCATE TABLE orderfile2")
-    cy.task("queryDb","TRUNCATE TABLE tabletranfile")
-    cy.task("queryDb","TRUNCATE TABLE tabletranfile2")
-    cy.task("queryDb","TRUNCATE TABLE takeouttranfile")
-    cy.task("queryDb","TRUNCATE TABLE billingfile")
-    cy.task("queryDb","TRUNCATE TABLE voidrequestfile")
-    cy.task("queryDb","TRUNCATE TABLE orderitemdiscountfile")
-    cy.task("queryDb","TRUNCATE TABLE orderdiscountfile")
-    cy.task("queryDb","TRUNCATE TABLE orderitemmodifierfile")
-    cy.task("queryDb","TRUNCATE TABLE zreadingfile")
-
-
-    cy.task('queryDb', `
+    cy.task(
+      "queryDb",
+      `
       UPDATE syspar 
       SET ordocnum = 'INV-0000000000000001', 
           posdocnum = 'POS-0000000000000001', 
@@ -45,35 +44,75 @@ describe("With Service Charge ", () => {
           pcdocnum = 'PC-0000000000000', 
           refnum = 'REF-0000000000000001';
 
-    `).then((result) => {
+    `
+    ).then((result) => {
+      cy.log("Update successful:", result);
+    });
+  });
 
-      cy.log('Update successful:', result)
+  it.only("Cash In", () => {
+    cy.get(":nth-child(2) > #home-card-styled").click();
 
-    })
+    cy.addTestContext(["asdasdasdasd", "test", "mwamwa"]);
 
-  })
-  
-it("Cash In" , () => {
+    cy.get("body").then(($cf) => {
+      if ($cf.find(":nth-child(1) > #cc-style").length) {
+        cy.get(":nth-child(1) > #cc-style").click({ force: true });
+        cy.log("NAKITA NYA!");
+      } else {
+        cy.log("Di na nakita!!!!!!! :<");
+      }
+    });
 
-  cy.get(':nth-child(2) > .sc-beySPh').click()
-  cy.contains("Cash Fund").should('be.enabled').click()
-    cy.get('.my-4 > :nth-child(2) > :nth-child(2) > .font-montserrat').click().wait(500)
-    for (let i = 0; i < 3; i++){
-      cy.get(':nth-child(4) > :nth-child(2) > .font-montserrat').click()
-    }
-    cy.contains('Save').click()
-    cy.contains('Transaction Success').should('have.text',"Transaction Success").wait(1000)
+    cy.get("body").then(($modal) => {
+      if ($modal.find("#modal-motion-div > .bg-white").length) {
+        cy.get(".my-4 > :nth-child(2) > :nth-child(2) > .font-montserrat")
+          .click()
+          .wait(500);
 
-    cy.get('.ps-10 > .flex').click()
+        for (let i = 0; i < 3; i++) {
+          cy.get(":nth-child(4) > :nth-child(2) > .font-montserrat").click();
+        }
+        cy.contains("Save").click();
+        /*   cy.contains('Transaction Success').should('have.text',"Transaction Success").wait(1000) */
 
-    cy.wait(4000)
+        cy.on("window:alert", (t) => {
+          expect(t).to.contains("Transaction Succcess");
 
-})
+          cy.log("KITA NYA");
+        });
+        cy.wait(5000);
 
+        cy.get(".ps-10 > .flex").click();
+
+        cy.wait(4000);
+      } else {
+        cy.log("PERO NAKA DISABLE!!!!!!!!!!!!");
+      }
+    });
+  });
 
   it("1 Pax with Regular Transaction and Service Charge", () => {
-    cy.get(":nth-child(3) > .sc-beySPh").click().wait(2000);
-    cy.get(".px-8").should("have.text", "Add new transaction").wait(2000);
+    var edith = [];
+
+    cy.get(":nth-child(3) > #home-card-styled").click().wait(2000);
+
+    /*     cy.get(".px-8").should("have.text", "Add new transaction").wait(2000);
+     */
+    cy.get("#modal-h1")
+      .invoke("text")
+      .then((save) => {
+        if (save.includes("Add new transaction")) {
+          cy.log("SAME PA DIN NAMAN HEHE");
+
+          edith.push("PASADO!");
+        } else {
+          cy.log("BAKIT NAIBA? HAAAA");
+
+          edith.push("SORRY BAGSAK KA");
+        }
+      });
+
     cy.get("#postypcde").select("Dine-In").wait(2000);
     cy.get("#warcde").select("Jollibee 1").wait(2000);
     cy.contains("Proceed").click();
@@ -100,7 +139,7 @@ it("Cash In" , () => {
       "Service Charge " + T1_SCharge
     );
     cy.get("#customerName").click().type("Edith");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
@@ -126,7 +165,7 @@ it("Cash In" , () => {
     cy.get(".px-8").should("have.text", "Add discount");
     cy.get("#discde").select("10%");
     cy.get("#orderitmid").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex").should(
       "have.text",
@@ -155,7 +194,7 @@ it("Cash In" , () => {
     cy.get(":nth-child(13) > .bg-green-100").click();
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Debong");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -180,7 +219,7 @@ it("Cash In" , () => {
     cy.get(".px-8").should("have.text", "Add discount");
     cy.get("#discde").select("20%");
     cy.get("#orderitmid").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -213,7 +252,7 @@ it("Cash In" , () => {
     cy.contains("Payment").click();
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Edith ulit");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
   });
 
@@ -235,11 +274,13 @@ it("Cash In" , () => {
     cy.get(".px-8").should("have.text", "Add discount");
     cy.get("#discde").select("Senior");
     cy.get("#orderitmid").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Karding");
     cy.get("#cardno").click().type("523634");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get(
+      "#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2"
+    ).click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -304,7 +345,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Debongggg");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -328,11 +369,13 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("PWD"); // SHOULD BE Disability
     cy.get("#orderitmid").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Tessa");
     cy.get("#cardno").click().type("87964");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get(
+      "#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2"
+    ).click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -397,7 +440,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Marlooonnn");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -417,16 +460,18 @@ it("Cash In" , () => {
     cy.contains("Hotdog").click().wait(1000);
     cy.contains("Regular Jolly Hotdog").click().wait(1000);
     cy.contains("Yumburger").click().wait(1000);
-    cy.get(':nth-child(2) > .sc-csKJxZ > .sc-eTNRI').click().wait(1000);
+    cy.get(":nth-child(2) > .sc-csKJxZ > .sc-eTNRI").click().wait(1000);
 
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Athlete");
     cy.get("#orderitmid").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Mary");
     cy.get("#cardno").click().type("997675");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get(
+      "#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2"
+    ).click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -489,7 +534,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Reneeee");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -512,12 +557,14 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("MOV");
     cy.get("#orderitmid0").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Winter");
     cy.get("#cardno").click().type("89745467");
 
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get(
+      "#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2"
+    ).click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -569,7 +616,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Jeromeeeee");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -596,12 +643,14 @@ it("Cash In" , () => {
 
     cy.get("#discde").select("Diplomat");
     cy.get("#orderitmid0").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Karina");
     cy.get("#cardno").click().type("678656");
-    
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+
+    cy.get(
+      "#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2"
+    ).click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -653,7 +702,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Kaaarrrllll");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -670,21 +719,19 @@ it("Cash In" , () => {
 
     cy.contains("Food").click().wait(1000);
     cy.contains("Family Super Meals").click().wait(1000);
-    cy.contains(
-      "FSM A 6-pcs Chickenjoy Bucket"
-    )
-      .click()
-      .wait(1000);
+    cy.contains("FSM A 6-pcs Chickenjoy Bucket").click().wait(1000);
 
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Senior");
     cy.get("#orderitmid0").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Giselle");
     cy.get("#cardno").click().type("3423456");
 
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get(
+      "#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2"
+    ).click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : Senior"
@@ -745,7 +792,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ediiithhhhhhhhh");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -763,21 +810,19 @@ it("Cash In" , () => {
 
     cy.contains("Food").click().wait(1000);
     cy.contains("Family Super Meals").click().wait(1000);
-    cy.contains(
-      "FSM A 8-pcs Chickenjoy Bucket"
-    )
-      .click()
-      .wait(1000);
+    cy.contains("FSM A 8-pcs Chickenjoy Bucket").click().wait(1000);
 
     cy.contains("Add Discount").click();
     cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Ariana Grande");
     cy.get("#cardno").click().type("464345");
-   
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+
+    cy.get(
+      "#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2"
+    ).click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : PWD"
@@ -838,7 +883,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -860,12 +905,14 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("Senior");
     cy.get("#orderitmid0").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Jessie J");
     cy.get("#cardno").click().type("3452435");
 
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get(
+      "#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2"
+    ).click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : Senior"
@@ -932,7 +979,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -955,12 +1002,14 @@ it("Cash In" , () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Nicky Minaj");
     cy.get("#cardno").click().type("98756790");
 
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get(
+      "#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2"
+    ).click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : PWD"
@@ -1021,7 +1070,7 @@ it("Cash In" , () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",

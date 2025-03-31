@@ -39,14 +39,14 @@ describe("Reports Negative Testing", () => {
     cy.contains("Manager's Report").click().wait(1000);
 
     //Click the Generate Report without selecting any report type
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     //It should validate "Report Type (Required *) is required"
     cy.get(".text-sm")
       .should("have.text", "Report Type (Required *) is required")
       .wait(2000);
 
     cy.get("#reportType").select("Itemized").wait(2000);
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     //Check if the Report Representation field if visible
     cy.get(".pt-2 > .mb-2")
       .should("have.text", "Report Representation (Required *)")
@@ -60,10 +60,10 @@ describe("Reports Negative Testing", () => {
     cy.contains("Manager's Report").click();
     cy.get("#reportType").select("Class and subclass").wait(2000);
     cy.get("#startDate").clear(2000);
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".text-sm").should("have.text", "Start (Required *) is required");
     cy.get("#endDate").clear(2000);
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(":nth-child(4) > .text-sm").should(
       "have.text",
       "End (Required *) is required"

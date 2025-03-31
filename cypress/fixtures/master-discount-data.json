@@ -143,7 +143,7 @@
     "lessVATDisc": "No",
     "serviceChargeDisc": "Yes",
     "govDisc": "No",
-    "onlineDeals": "Yes",
+    "onlineDeals": "                    ",
     "onlyDelete": false,
     "onlySearchVal": false,
     "onlySearchInval": false

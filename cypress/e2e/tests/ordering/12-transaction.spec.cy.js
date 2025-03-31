@@ -11,7 +11,7 @@ describe("Transaction 10", () => {
     cy.login("lstv", "lstventures");
   });
 
-  it("1 Pax with MEMC PWD Discount and Service Charge", () => {
+  it("1 Pax with MEMC PWD Discount and Service Charge - TAKEOUT ", () => {
     cy.wait(2000);
 
     cy.get(':nth-child(3) > .sc-blHHSb').click()
@@ -26,12 +26,12 @@ describe("Transaction 10", () => {
     cy.contains("Add Discount").click();
     cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Ariana Grande");
     cy.get("#cardno").click().type("464345");
    
-    cy.get("#discountUser > .flex-col > #buttons > .border-green-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
       "Discount : PWD"
@@ -96,12 +96,9 @@ describe("Transaction 10", () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-green-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
-    cy.contains("Transaction Complete.").should(
-      "have.text",
-      "Transaction Complete."
-    );
+    cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages)
     cy.get('.ant-modal-close').click()
     cy.wait(5000)
   });

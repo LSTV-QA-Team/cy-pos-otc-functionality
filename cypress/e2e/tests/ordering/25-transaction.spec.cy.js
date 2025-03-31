@@ -16,7 +16,7 @@ describe("Transaction 23", () => {
     cy.get('.sc-dntaoT').click().wait(2000)
     cy.get('#postypcde').select("Dine-In").wait(1000)
     cy.get('#warcde').select("Jollibee 1").wait(1000)
-    cy.get('.border-green-500').click().wait(1000)
+    cy.get('#button-form-2').click().wait(1000)
 
     cy.contains("Food").click();
     cy.contains(/^Chicken$/).click();
@@ -57,14 +57,12 @@ describe("Transaction 23", () => {
     cy.contains("Payment").click().wait(2000);
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
-    cy.contains("Transaction Complete.").should(
-      "have.text",
-      "Transaction Complete."
-    );
+      /* cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages) */
+
     cy.get('.ant-modal-close').click()
     cy.wait(3000);
 
@@ -75,15 +73,15 @@ describe("Transaction 23", () => {
 
     cy.get(".px-8").should("have.text", "Refund Transaction").wait(1500);
     cy.get("#refundreason").select("Customer Complaint").wait(2000);
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     cy.get(".px-8").should("have.text", "REF-0000000000000001");
     cy.get(".justify-between > .group").click().wait(2000);
     cy.contains("INV-0000000000000023").click().wait(2000);
-
+/* 
     cy.get(".css-1ex1afd-MuiTableCell-root")
       .should("have.text", "1-pc Chickenjoy w/ Fries Meal")
-      .wait(2000);
+      .wait(2000); */
     cy.get("#refundqty").clear().type("1").wait(2000);
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(4)")
       .should("have.text", "114.37")

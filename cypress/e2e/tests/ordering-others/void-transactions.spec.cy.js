@@ -26,7 +26,7 @@ describe("Void Transactions ", () => {
     cy.contains("Payment").click().wait(2000);
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
@@ -46,7 +46,7 @@ describe("Void Transactions ", () => {
     cy.contains("INV-0000000000000013").click().wait(1500);
 
     cy.get("#voidreason").select("Employee Mistake");
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     // cy.get(".Toastify__toast-body > :nth-child(2)").should(
     //   "have.text",
     //   "Transaction Void Successfull"
@@ -62,7 +62,7 @@ describe("Void Transactions ", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("10%");
     cy.get("#orderitmid").click().wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
@@ -100,7 +100,7 @@ describe("Void Transactions ", () => {
     cy.contains("Payment").click();
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Ariana G").wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -120,7 +120,7 @@ describe("Void Transactions ", () => {
       .should("have.text", "Set void reason")
       .wait(2000);
     cy.get("#voidreason").select("Order Duplication");
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     // cy.get(".Toastify__toast-body > :nth-child(2)").should(
     //   "have.text",
@@ -136,7 +136,7 @@ describe("Void Transactions ", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("20%").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
       .should("have.text", "Discount : 20%")
@@ -169,7 +169,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Karina");
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
@@ -189,7 +189,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Food Quality Issue");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     // cy.get(".Toastify__toast-body > :nth-child(2)").should(
     //   "have.text",
@@ -207,11 +207,11 @@ describe("Void Transactions ", () => {
 
     cy.get("#discde").select("Senior").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     cy.get("#cardholder").click().type("Winter").wait(2000);
     cy.get("#cardno").click().type("4569084").wait(2000);
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
       .should("have.text", "Discount : Senior")
@@ -250,7 +250,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Giselle").wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
@@ -270,7 +270,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Customer Complaint").wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     // cy.get(".Toastify__toast-body > :nth-child(2)").should(
     //   "have.text",
@@ -287,11 +287,11 @@ describe("Void Transactions ", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("Person with Disability").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     cy.get("#cardholder").click().type("Tanya").wait(2000);
     cy.get("#cardno").click().type("12342345235").wait(2000);
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
       .should("have.text", "Discount : PWD")
@@ -330,7 +330,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Tanya").wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.wait(2000);
     cy.get("#postypcde").select("Dine-In").wait(2000);
@@ -343,7 +343,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Order Duplication");
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
   });
 
   it("1 Pax with Athlete Discount", () => {
@@ -355,11 +355,11 @@ describe("Void Transactions ", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("Athlete").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     cy.get("#cardholder").click().type("Tony");
     cy.get("#cardno").click().type("645734");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10")
       .should("have.text", "Discount : Athlete")
@@ -396,7 +396,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Guru").wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -415,7 +415,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Customer Cancelled Order");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     // cy.get(".Toastify__toast-body > :nth-child(2)").should(
     //   "have.text",
@@ -432,11 +432,11 @@ describe("Void Transactions ", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("MOV").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     cy.get("#cardholder").click().type("Mingmangmeng").wait(2000);
     cy.get("#cardno").click().type("563566").wait(2000);
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -473,7 +473,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Celine").wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click().wait(2000);
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -490,7 +490,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Customer Cancelled Order").wait(2000);
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     // cy.get(".Toastify__toast-body > :nth-child(2)").should(
     //   "have.text",
@@ -507,11 +507,11 @@ describe("Void Transactions ", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("Diplomat").wait(2000);
     cy.get("#orderitmid0").click().wait(2000);
-    cy.get(".border-blue-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
 
     cy.get("#cardholder").click().type("Diploooo");
     cy.get("#cardno").click().type("345345");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -547,7 +547,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("Parehko");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click().wait(2000);
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -565,7 +565,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Customer Cancelled Order");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     // cy.get(".Toastify__toast-body > :nth-child(2)").should(
     //   "have.text",
@@ -573,7 +573,7 @@ describe("Void Transactions ", () => {
     // );
 
     cy.contains("Cancel Transaction").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
   });
 
   it("1 Pax with MEMC Senior Discount", () => {
@@ -591,11 +591,11 @@ describe("Void Transactions ", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("Senior");
     cy.get("#orderitmid0").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("Seniorrrritoo");
     cy.get("#cardno").click().type("234");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -635,7 +635,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("MEMSIIII");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
     cy.contains("Transaction Complete.").should(
       "have.text",
@@ -654,7 +654,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Customer Cancelled Order");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     // cy.get(".Toastify__toast-body > :nth-child(2)").should(
     //   "have.text",
@@ -673,11 +673,11 @@ describe("Void Transactions ", () => {
     cy.contains("Add Discount").click().wait(2000);
     cy.get("#discde").select("PWD");
     cy.get("#orderitmid0").click();
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     cy.get("#cardholder").click().type("PIDABALYUDI");
     cy.get("#cardno").click().type("234");
-    cy.get("#discountUser > .flex-col > #buttons > .border-blue-500").click();
+    cy.get('#discountUser > #button-form-div-1 > #button-form-div-2 > #button-form-2').click();
 
     cy.get(":nth-child(2) > .MuiTableCell-root > .flex > .ml-10").should(
       "have.text",
@@ -717,7 +717,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("CASH").click();
     cy.get("#customerName").click().type("YOR");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
  
     cy.wait(2000);
@@ -732,7 +732,7 @@ describe("Void Transactions ", () => {
 
     cy.contains("Set void reason").should("have.text", "Set void reason");
     cy.get("#voidreason").select("Customer Cancelled Order");
-    cy.get(".border-blue-500").click();
+    cy.get("#button-form-2").click();
 
     // cy.get(".Toastify__toast-body > :nth-child(2)").should(
     //   "have.text",

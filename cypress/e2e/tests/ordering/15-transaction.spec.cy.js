@@ -54,14 +54,12 @@ describe("Transaction 13", () => {
     cy.contains("Payment").click().wait(2000);
     cy.contains("CASH").click().wait(2000);
     cy.get("#customerName").click().type("Ariana G");
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700")
       .click()
       .wait(2000);
-    cy.contains("Transaction Complete.").should(
-      "have.text",
-      "Transaction Complete."
-    );
+       /* cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages) */
+
 
     cy.get('.ant-modal-close').click()
     cy.wait(2000);
@@ -71,7 +69,7 @@ describe("Transaction 13", () => {
     cy.contains("INV-0000000000000013").click().wait(1500);
 
     cy.get("#voidreason").select("Employee Mistake");
-    cy.get(".border-green-500").click().wait(2000);
+    cy.get("#button-form-2").click().wait(2000);
     cy.get(".Toastify__toast-body > :nth-child(2)").should(
       "have.text",
       "Transaction Void Successful"

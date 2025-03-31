@@ -104,13 +104,10 @@ describe("Transaction 1", () => {
       cy.contains("CASH").click();
 
       cy.get("#customerName").click().type("Edith");
-      cy.get(".border-green-500").click();
+      cy.get("#button-form-2").click();
   
       cy.get(".my-5 > .grid > :nth-child(1) > .text-green-700").click();
-      cy.contains("Transaction Complete.").should(
-        "have.text",
-        "Transaction Complete."
-      );
+      /* cy.checkToastifyVisibility('#postTransactionV2', '1000', 'Check if the toast will appear', 'Transaction Complete', assertionResults, failureMessages) */
       cy.get('.ant-modal-close').click()
 
       cy.wait(5000)

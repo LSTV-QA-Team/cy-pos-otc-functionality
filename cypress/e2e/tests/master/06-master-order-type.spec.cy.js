@@ -88,7 +88,7 @@ describe('Order Type', () => {
 
         cy.fixture('master-ordertype-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000) 
             
@@ -131,7 +131,7 @@ describe('Order Type', () => {
 
                     cy.get('#postypdsc').clear().type(data[key].dineType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -141,7 +141,7 @@ describe('Order Type', () => {
 
                     cy.get('#postypdsc').clear().should('be.empty')
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
                     
                     cy.wait(2000)
 
@@ -155,7 +155,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[0].orderType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -186,7 +186,7 @@ describe('Order Type', () => {
 
                     cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                    cy.get('#warning-button-2').click()
 
                     cy.wait(4000)
 
@@ -196,7 +196,7 @@ describe('Order Type', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].dineType === "% & ( ) / - .") {
@@ -207,7 +207,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -228,7 +228,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
                 }
 
                 else if (data[key].dineType === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -243,7 +243,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000) 
 
@@ -258,7 +258,7 @@ describe('Order Type', () => {
 
                     cy.get('#ordertyp').select(data[key].orderType)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -324,7 +324,7 @@ describe('Order Type', () => {
 
                 cy.get('#ordertyp').select(specificOrderType.editOrderType)
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -362,7 +362,7 @@ describe('Order Type', () => {
 
                     cy.checkHeaderTitle('.px-8', '27.2.1', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].dineType + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', 'Do you want to delete: ' + data[key].dineType + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '27.3', 'Upon clicking the "Add" button on pager U/I:', assertionResults, failureMessages)
 
@@ -461,5 +461,7 @@ describe('Order Type', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .should('have.text', 'Masterfile')
+
+        cy.get('.bg-white > .flex').click()
     })
 })

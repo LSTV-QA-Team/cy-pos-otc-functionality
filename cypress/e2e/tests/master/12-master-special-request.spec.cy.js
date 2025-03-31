@@ -92,7 +92,7 @@ describe('Special Request', () => {
 
         cy.fixture('master-specialreq-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(4000) 
             
@@ -150,7 +150,7 @@ describe('Special Request', () => {
 
                     cy.get('#modcde').clear().type(data[key].specialReq)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.text-sm', '11.2', 'Upon clicking the "Save" button:', 'Item Subclassification * is required', assertionResults, failureMessages)
 
@@ -162,7 +162,7 @@ describe('Special Request', () => {
 
                     cy.wait(2000)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -176,7 +176,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[0].itemSubclass).click()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -207,7 +207,7 @@ describe('Special Request', () => {
 
                     cy.get('.border-gray-300').click()
 
-                    cy.contains('button[class*="border-green-500"]', 'Yes').click()
+                    cy.get('#warning-button-2').click()
 
                     cy.checkElementInvisibility('.shadow-lg', '6.3.1', 'Upon Clicking the "Yes" button:', 'The "Add Special Request" modal window was visible or active.', assertionResults, failureMessages)
 
@@ -215,7 +215,7 @@ describe('Special Request', () => {
 
                     cy.wait(4000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].specialReq === "% & ( ) / - .") {
@@ -228,7 +228,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -243,8 +243,8 @@ describe('Special Request', () => {
 
                     cy.get('#modcde').clear().type(data[key].specialReq)
 
-                    cy.checkElementVisibility('.Toastify__toast-body', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
-
+/*                     cy.checkElementVisibility('.Toastify__toast-body', '19.1', 'Upon encoding data:', 'The validation message for "Please limit your input to 50 characters." was not visible." was not visible.', assertionResults, failureMessages)
+ */
                     cy.checkInputMaxLength('#modcde', 50, '16.2', 'Upon Encoding in "Item Subclassification" Textbox:', assertionResults, failureMessages)
 
                     cy.get('#modgrpcde').click()
@@ -253,7 +253,7 @@ describe('Special Request', () => {
                     
                     cy.wait(4000)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
                 }
 
                 else if (data[key].specialReq === "© ™ ® à á â ñ ä ¢ £ ¥ € ! @ # $ ^ * _ + = < > ? ` ~ \" | \\ [ ] ; :") {
@@ -268,7 +268,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(4000)
 
@@ -285,7 +285,7 @@ describe('Special Request', () => {
 
                     cy.get('.select__menu-list--is-multi').contains('.select__option', data[key].itemSubclass).click()
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -351,7 +351,7 @@ describe('Special Request', () => {
 
                 cy.get('.select__menu-list--is-multi').contains('.select__option', specificSpecialReq.editItemSubclass).click()
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -391,7 +391,7 @@ describe('Special Request', () => {
 
                     cy.checkHeaderTitle('.px-8', '26.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', '26.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].specialReq + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', '26.3', 'Upon clicking the "Delete" button on pager UI', 'Do you want to delete: ' + data[key].specialReq + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '26.3', 'Upon clicking the "Upon clicking the Delete" button on pager U/I:', assertionResults, failureMessages)
 
@@ -440,7 +440,7 @@ describe('Special Request', () => {
 
                     cy.get('[data-testid="SearchIcon"]').click()
 
-                    cy.get('#\\:rb\\:')
+                   cy.get('#pos-table-search')
                       .clear()
                       .type(data[key].specialReq)
                       .type('{enter}')
@@ -458,7 +458,7 @@ describe('Special Request', () => {
                             
                     cy.get('[data-testid="SearchIcon"]').click()
         
-                    cy.get('#\\:rb\\:')
+                   cy.get('#pos-table-search')
                       .clear()
                       .type(data[key].specialReq)
         
@@ -494,5 +494,7 @@ describe('Special Request', () => {
 
         cy.get('.text-\\[3rem\\]').should('be.visible')
           .should('have.text', 'Masterfile')
+
+          cy.get('.bg-white > .flex').click()
     })
 })

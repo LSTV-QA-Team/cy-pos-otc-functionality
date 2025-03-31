@@ -88,7 +88,7 @@ describe('Cash In and Out Reason', () => {
 
         cy.fixture('master-cashioreason-data.json').then((data) => {
 
-            cy.get('.sc-eDLKkx > .anticon > svg').click()
+            cy.get('.sc-dntaoT > .anticon > svg').click()
 
             cy.wait(6000) 
             
@@ -143,7 +143,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#cashioreason').clear().type(data[key].cashioreason)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(6000)
 
@@ -153,7 +153,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[key].type)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.text-sm', '13.1', 'Upon clicking the "Save" button:', 'Reason * is required', assertionResults, failureMessages)
 
@@ -163,7 +163,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[4].type)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -192,7 +192,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('.border-gray-300').click()
 
-                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > .border-green-500').click()
+                    cy.get('.bg-black\\/75 > .bg-white > .justify-center > #button-form-2').click()
 
                     cy.wait(3000)
 
@@ -202,7 +202,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.wait(6000)
 
-                    cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    cy.get('.sc-dntaoT > .anticon > svg').click()
                 }
 
                 else if (data[key].cashioreason === "% & ( ) / - .") {
@@ -213,7 +213,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[key].type)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(2000)
 
@@ -236,7 +236,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[key].type)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(6000)
                 }
@@ -251,7 +251,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[key].type)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.wait(6000)
 
@@ -266,7 +266,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.get('#type').select(data[key].type)
 
-                    cy.get('.border-green-500').click()
+                    cy.get('#button-form-2').click()
 
                     cy.checkLabelCaption('.Toastify__toast-body', '4.1', 'Upon Clicking the "Save" button:', 'Successfully saved.', assertionResults, failureMessages) 
 
@@ -329,7 +329,7 @@ describe('Cash In and Out Reason', () => {
 
                 cy.get('#type').select(specificcashioreason.edittype)
 
-                cy.get('.border-green-500').click()
+                cy.get('#button-form-2').click()
 
                 cy.wait(2000)
 
@@ -365,7 +365,7 @@ describe('Cash In and Out Reason', () => {
 
                     cy.checkHeaderTitle('.px-8', '30.2', 'Upon clicking the "Delete" button on pager UI:', 'Delete Confirmation', assertionResults, failureMessages)
                     
-                    cy.checkLabelCaption('.h-\\[500px\\] > h1', 'Do you want to delete: ' + data[key].edittype + ' ?', assertionResults, failureMessages)
+                    cy.checkLabelCaption('.max-h-\\[450px\\] > h1', 'Do you want to delete: ' + data[key].edittype + ' ?', assertionResults, failureMessages)
 
                     cy.validateElements('delete-confirm-el.json', '30.3', 'Upon clicking the "Delete" button on pager U/I:', assertionResults, failureMessages)
 

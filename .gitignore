@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 node_modules/
 cypress/downloads/
 cypress/reports/
 cypress/screenshots/
+=======
+cypress/videos/
+cypress/screenshots/
+cypress/reports/
+node_modules/
+>>>>>>> a8d6490dccce70719a622d6b1bde742e6462e526

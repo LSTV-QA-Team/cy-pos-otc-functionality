@@ -12,7 +12,7 @@ describe("Cash Fund", () => {
     // Login with valid credentials
     cy.login('lstv', 'lstventures');
 
-    cy.get(":nth-child(2) > .sc-beySPh").click().wait(2000);
+    cy.get(':nth-child(2) > .sc-blHHSb').click().wait(2000);
   });
 
   it("Cash Fund ", () => {
