@@ -250,6 +250,8 @@ describe('Item Subclassification', () => {
 
                     cy.checkLabelCaption('.Toastify__toast-body', '17.1', 'Upon encoding not allowed special characters:', 'Please use only the following approved special characters: % & ( ) / - .', assertionResults, failureMessages)
 
+                    cy.wait(2000)
+
                     cy.get('#itmclacde').select(data[key].itemClass)
 
                     cy.get('#button-form-2').click()

@@ -1,12 +1,7 @@
 {
   "devDependencies": {
-<<<<<<< HEAD
-    "cypress": "^13.17.0",
-    "cypress-multi-reporters": "^1.6.4",
-=======
     "cypress": "^14.2.1",
     "cypress-mochawesome-reporter": "^3.8.2",
->>>>>>> develop
     "cypress-real-events": "^1.12.0",
     "cypress-xpath": "^2.0.1",
     "mocha": "^10.4.0"

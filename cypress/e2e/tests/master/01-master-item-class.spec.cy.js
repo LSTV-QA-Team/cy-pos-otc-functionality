@@ -81,7 +81,7 @@ describe('Item Classification', () => {
         })
     })
 
-    it.only('Check Item Classification Page', () => {   
+    it('Check Item Classification Page', () => {   
 
         cy.navigateToModule('Master File', 'Item Classifications')
 
@@ -100,7 +100,7 @@ describe('Item Classification', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it.only('Add Functionality', () => {
+    it('Add Functionality', () => {
 
         cy.fixture('master-itemclass-data.json').then((data) => {
 
@@ -172,8 +172,7 @@ describe('Item Classification', () => {
 
                     cy.wait(4000)
 
-                   cy.get('.sc-dntaoT > .anticon > svg').click()
-                    // cy.get('.sc-eDLKkx > .anticon > svg').click()
+                    // cy.get('.sc-dntaoT > .anticon > svg').click()
                     cy.get('[aria-label="plus-circle"]').click()
                 }
 
@@ -245,7 +244,7 @@ describe('Item Classification', () => {
         
     })
 
-    it.only('Edit Functionality', () => {
+    it('Edit Functionality', () => {
 
         cy.get('.border-gray-300').click()
 
@@ -291,7 +290,7 @@ describe('Item Classification', () => {
         cy.checkForFailure(assertionResults, failureMessages)
     })
 
-    it.only('Delete Functionality', () => {
+    it('Delete Functionality', () => {
 
         cy.fixture('master-itemclass-data.json').then((data) => {
 

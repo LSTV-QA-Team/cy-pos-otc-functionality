@@ -94,6 +94,10 @@ describe('Receipt Header Set Up', () => {
                 if (data[key].forInvalid === true) {
 
                     cy.wait(4000)
+
+                    cy.get('#business2').clear()
+                        .type(data[key].bus2)
+
                     cy.get('#business2').clear()
                         .type(data[key].bus2)
 
